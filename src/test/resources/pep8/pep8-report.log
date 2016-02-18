@@ -1,0 +1,2 @@
+trunk/src/python/file.py:1:2: W291 trailing whitespace
+trunk/src/python/file.py:98:11: E111 Message #has! 12special-_ chars|?.

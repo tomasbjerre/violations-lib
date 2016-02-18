@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<csslint>
+ <file name="some/file.css">",
+  <issue line="1" char="1" severity="warning" reason="BOGUS" evidence="ALSO BOGUS"/>
+  <issue line="2" char="1" severity="error" reason="BOGUS" evidence="ALSO BOGUS"/>
+ </file>
+</csslint>

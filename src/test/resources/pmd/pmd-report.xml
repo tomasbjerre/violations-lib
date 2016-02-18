@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<pmd version="5.1.1" timestamp="2015-03-20T13:37:22.507">
+	<file
+		name="/path/to/jenkins/workspace/jobname/module/src/main/java/se/bjurr/PMDFile.java">
+		<violation beginline="312" endline="312" begincolumn="19"
+			endcolumn="37" rule="OverrideBothEqualsAndHashcode" ruleset="Basic"
+			package="se.bjurr" class="PMDFile" method="equals"
+			externalInfoUrl="http://pmd.sourceforge.net/pmd-5.1.1/rules/java/basic.html#OverrideBothEqualsAndHashcode"
+			priority="3">
+			PMD file comment
+		</violation>
+	</file>
+
+	<file
+		name="/path/to/jenkins/workspace/jobname/module/src/main/java/se/bjurr/PMDAndCheckstyle.java">
+		<violation beginline="312" endline="312" begincolumn="19"
+			endcolumn="37" rule="OverrideBothEqualsAndHashcode" ruleset="Basic"
+			package="se.bjurr" class="PMDAndCheckstyle" method="equals"
+			externalInfoUrl="http://pmd.sourceforge.net/pmd-5.1.1/rules/java/basic.html#OverrideBothEqualsAndHashcode"
+			priority="3">
+			PMDAndCheckstyle comment in pmd
+		</violation>
+	</file>
+
+	<file
+		name="/path/to/jenkins/workspace/jobname/module/src/main/java/se/bjurr/UnchangedInPR.java">
+		<violation beginline="312" endline="312" begincolumn="19"
+			endcolumn="37" rule="OverrideBothEqualsAndHashcode" ruleset="Basic"
+			package="se.bjurr" class="UnchangedInPR" method="equals"
+			externalInfoUrl="http://pmd.sourceforge.net/pmd-5.1.1/rules/java/basic.html#OverrideBothEqualsAndHashcode"
+			priority="3">
+			UnchangedInPR comment in pmd, this one is not changed in PR
+		</violation>
+	</file>
+</pmd>

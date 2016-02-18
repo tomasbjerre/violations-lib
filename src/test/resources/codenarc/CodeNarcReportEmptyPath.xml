@@ -1,0 +1,21 @@
+<?xml version='1.0'?>
+<CodeNarc url='http://www.codenarc.org' version='0.10'>
+  <Report timestamp='Oct 28, 2010 4:10:38 PM'/>
+  <Project title=''>
+    <SourceDirectory></SourceDirectory>
+  </Project>
+  <PackageSummary totalFiles='192' filesWithViolations='100' priority1='0' priority2='359'
+                  priority3='163'></PackageSummary>
+   <Package path="" totalFiles="13" filesWithViolations="13" priority1="0" priority2="64" priority3="240">
+    <File name='Test.groovy'>
+      <Violation ruleName='EmptyCatchBlock' priority='2' lineNumber='192'>
+        <SourceLine><![CDATA[} catch (Exception e) {]]></SourceLine>
+      </Violation>
+    </File>
+  </Package>
+  <Rules>
+    <Rule name='EmptyCatchBlock'>
+      <Description><![CDATA[In most cases, exceptions should not be caught and ignored (swallowed).]]></Description>
+    </Rule>
+  </Rules>
+</CodeNarc>

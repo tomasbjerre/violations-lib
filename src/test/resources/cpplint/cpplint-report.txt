@@ -1,0 +1,7 @@
+hello.cpp:0:  No copyright message found.  You should have a line: "Copyright [year] <Copyright Owner>"  [legal/copyright] [5]
+hello.cpp:2:  Do not use namespace using-directives.  Use using-declarations instead.  [build/namespaces] [5]
+hello.cpp:4:  Extra space before ( in function call  [whitespace/parens] [4]
+hello.cpp:5:  { should almost always be at the end of the previous line  [whitespace/braces] [4]
+Done processing hello.cpp
+Total errors found: 4
+

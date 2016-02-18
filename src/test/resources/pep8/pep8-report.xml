@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<file path="../cpy25/Lib/textwrap.py">
+  <error code="E401" pos="10,14">multiple imports on one line</error>
+  <error code="E302" pos="32,1">expected 2 blank lines, found 1</error>
+  <error code="E303" pos="94,5">too many blank lines (2)</error>
+  <error code="E303" pos="114,5">too many blank lines (2)</error>
+  <error code="E303" pos="131,5">too many blank lines (2)</error>
+  <error code="E303" pos="265,5">too many blank lines (2)</error>
+  <error code="E302" pos="305,1">expected 2 blank lines, found 1</error>
+  <error code="E302" pos="323,1">expected 2 blank lines, found 1</error>
+  <error code="E121" pos="365,20">continuation line indentation is not a multiple of four</error>
+</file>
+<file path="../cpy25/Lib/netrc.py">
+  <error code="E401" pos="5,10">multiple imports on one line</error>
+  <error code="E501" pos="58,80">line too long (80 &gt; 79 characters)</error>
+  <error code="E225" pos="64,23">missing whitespace around operator</error>
+  <error code="E125" pos="65,21">continuation line does not distinguish itself from next logical line</error>
+  <error code="E225" pos="65,45">missing whitespace around operator</error>
+  <error code="E225" pos="99,35">missing whitespace around operator</error>
+</file>

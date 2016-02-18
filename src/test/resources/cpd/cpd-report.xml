@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<pmd-cpd>
+  <duplication lines="12" tokens="38">
+    <file path="/home/goetas/gits/webservices/src/goetas/webservices/bindings/soap12/transport/http/Http.php" line="36"/>
+    <file path="/home/goetas/gits/webservices/src/goetas/webservices/bindings/soap/transport/http/Http.php" line="41"/>
+    <codefragment>        $request-&gt;setBody($xml, 'application/soap+xml; charset=utf-8;  action="' . $soapAction . '"');
+
+        if ($this-&gt;debugUri){
+            $request-&gt;setUrl($this-&gt;debugUri);
+        }
+        $response = $this-&gt;client-&gt;send($request);
+
+        if(!$response-&gt;isSuccessful()){
+            throw new TransportException($response-&gt;getReasonPhrase(), $response-&gt;getStatusCode());
+        }
+
+        return $response-&gt;getBody(true);
+</codefragment>
+  </duplication>
+</pmd-cpd>

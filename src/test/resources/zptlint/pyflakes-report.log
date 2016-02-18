@@ -1,0 +1,2 @@
+cpplint.py:4796: local variable 'fullname' is assigned to but never used
+cpplint.py:4797: something

@@ -1,0 +1,12 @@
+xmlfile.xml:3: parser error : AttValue: ' expected
+
+^
+xmlfile.xml:3: parser error : attributes construct error
+
+^
+xmlfile.xml:3: parser error : Couldn't find end of Start Tag head line 2
+
+^
+xmlfile.xml:3: parser error : Premature end of data in tag html line 1
+
+^

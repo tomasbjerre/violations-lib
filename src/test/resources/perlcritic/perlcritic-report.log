@@ -1,0 +1,3 @@
+example.pl: "require" statement with library name as string at line 2, column 5.  Use a bareword instead.  (Severity: 5)
+example.pl: "require" statement with library name as string at line 3, column 5.  Use a bareword instead.  (Severity: 5)
+example.pl: Code before strictures are enabled at line 5, column 5.  See page 429 of PBP.  (Severity: 5)

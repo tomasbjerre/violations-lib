@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<checkstyle version="5.7">
+<file name="/path/to/jenkins/workspace/jobname/module/src/main/java/se/bjurr/code/CheckstyleFile.java">
+ <error line="60" severity="info" message="Checkstyle &quot;comment&quot;." source="com.puppycrawl.tools.checkstyle.checks.TrailingCommentCheck"/>
+ <error line="64" column="25" severity="warning" message="Other &apos;checkstyle&apos; comment." source="com.puppycrawl.tools.checkstyle.checks.naming.MemberNameCheck"/>
+</file>
+<file name="/path/to/jenkins/workspace/jobname/module/src/main/java/se/bjurr/PMDAndCheckstyle.java">
+ <error line="60" severity="info" message="PMDAndCheckstyle comment in checkstyle." source="com.puppycrawl.tools.checkstyle.checks.TrailingCommentCheck"/>
+</file>
+<file name="/path/to/jenkins/workspace/jobname/module/src/main/java/se/bjurr/UnchangedFileInCheckstyle.java">
+ <error line="60" severity="info" message="UnchangedFileInCheckstyle comment in checkstyle this one is not changed in PR." source="com.puppycrawl.tools.checkstyle.checks.TrailingCommentCheck"/>
+</file>
+</checkstyle>
