@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<BugCollection version="3.0.1" sequence="0" timestamp="1455996687110" analysisTimestamp="1455996687135" release="">
+  <Project projectName="">
+    <Jar>/build/classes/main/se/bjurr/violations/lib/example/MyClass.class</Jar>
+    <Jar>/build/classes/main/se/bjurr/violations/lib/example/OtherClass.class</Jar>
+    <SrcDir>/src/main/java/se/bjurr/violations/lib/example/OtherClass.java</SrcDir>
+    <SrcDir>/src/main/java/se/bjurr/violations/lib/example/MyClass.java</SrcDir>
+  </Project>
+  <BugInstance type="EQ_ALWAYS_TRUE" priority="1" rank="7" abbrev="Eq" category="CORRECTNESS">
+    <Class classname="se.bjurr.violations.lib.example.MyClass">
+      <SourceLine classname="se.bjurr.violations.lib.example.MyClass" start="3" end="17" sourcefile="MyClass.java" sourcepath="se/bjurr/violations/lib/example/MyClass.java"/>
+    </Class>
+    <Method classname="se.bjurr.violations.lib.example.MyClass" name="equals" signature="(Ljava/lang/Object;)Z" isStatic="false">
+      <SourceLine classname="se.bjurr.violations.lib.example.MyClass" start="17" end="17" startBytecode="0" endBytecode="53" sourcefile="MyClass.java" sourcepath="se/bjurr/violations/lib/example/MyClass.java"/>
+    </Method>
+    <SourceLine classname="se.bjurr.violations.lib.example.MyClass" start="17" end="17" startBytecode="1" endBytecode="1" sourcefile="MyClass.java" sourcepath="se/bjurr/violations/lib/example/MyClass.java"/>
+  </BugInstance>
+  <BugInstance type="HE_EQUALS_USE_HASHCODE" priority="1" rank="14" abbrev="HE" category="BAD_PRACTICE">
+    <Class classname="se.bjurr.violations.lib.example.MyClass">
+      <SourceLine classname="se.bjurr.violations.lib.example.MyClass" start="3" end="17" sourcefile="MyClass.java" sourcepath="se/bjurr/violations/lib/example/MyClass.java"/>
+    </Class>
+    <Method classname="se.bjurr.violations.lib.example.MyClass" name="equals" signature="(Ljava/lang/Object;)Z" isStatic="false">
+      <SourceLine classname="se.bjurr.violations.lib.example.MyClass" start="17" end="17" startBytecode="0" endBytecode="53" sourcefile="MyClass.java" sourcepath="se/bjurr/violations/lib/example/MyClass.java"/>
+    </Method>
+  </BugInstance>
+  <BugInstance type="NP_NULL_ON_SOME_PATH" priority="1" rank="6" abbrev="NP" category="CORRECTNESS">
+    <Class classname="se.bjurr.violations.lib.example.MyClass">
+      <SourceLine classname="se.bjurr.violations.lib.example.MyClass" start="3" end="17" sourcefile="MyClass.java" sourcepath="se/bjurr/violations/lib/example/MyClass.java"/>
+    </Class>
+    <Method classname="se.bjurr.violations.lib.example.MyClass" name="npe" signature="(Ljava/lang/String;Ljava/lang/String;)V" isStatic="false">
+      <SourceLine classname="se.bjurr.violations.lib.example.MyClass" start="7" end="13" startBytecode="0" endBytecode="98" sourcefile="MyClass.java" sourcepath="se/bjurr/violations/lib/example/MyClass.java"/>
+    </Method>
+    <LocalVariable name="a" register="1" pc="10" role="LOCAL_VARIABLE_VALUE_OF"/>
+    <SourceLine classname="se.bjurr.violations.lib.example.MyClass" start="12" end="12" startBytecode="11" endBytecode="11" sourcefile="MyClass.java" sourcepath="se/bjurr/violations/lib/example/MyClass.java" role="SOURCE_LINE_DEREF"/>
+    <SourceLine classname="se.bjurr.violations.lib.example.MyClass" start="7" end="7" startBytecode="1" endBytecode="1" sourcefile="MyClass.java" sourcepath="se/bjurr/violations/lib/example/MyClass.java" role="SOURCE_LINE_NULL_VALUE"/>
+    <SourceLine classname="se.bjurr.violations.lib.example.MyClass" start="8" end="8" startBytecode="4" endBytecode="4" sourcefile="MyClass.java" sourcepath="se/bjurr/violations/lib/example/MyClass.java" role="SOURCE_LINE_KNOWN_NULL"/>
+  </BugInstance>
+  <BugInstance type="MS_SHOULD_BE_FINAL" priority="1" rank="16" abbrev="MS" category="MALICIOUS_CODE">
+    <Class classname="se.bjurr.violations.lib.example.OtherClass">
+      <SourceLine classname="se.bjurr.violations.lib.example.OtherClass" start="6" end="26" sourcefile="OtherClass.java" sourcepath="se/bjurr/violations/lib/example/OtherClass.java"/>
+    </Class>
+    <Field classname="se.bjurr.violations.lib.example.OtherClass" name="CoNstANT" signature="Ljava/lang/String;" isStatic="true">
+      <SourceLine classname="se.bjurr.violations.lib.example.OtherClass" sourcefile="OtherClass.java" sourcepath="se/bjurr/violations/lib/example/OtherClass.java"/>
+    </Field>
+    <SourceLine classname="se.bjurr.violations.lib.example.OtherClass" start="7" end="7" startBytecode="2" endBytecode="2" sourcefile="OtherClass.java" sourcepath="se/bjurr/violations/lib/example/OtherClass.java"/>
+  </BugInstance>
+  <BugInstance type="NM_FIELD_NAMING_CONVENTION" priority="2" rank="16" abbrev="Nm" category="BAD_PRACTICE">
+    <Class classname="se.bjurr.violations.lib.example.OtherClass">
+      <SourceLine classname="se.bjurr.violations.lib.example.OtherClass" start="6" end="26" sourcefile="OtherClass.java" sourcepath="se/bjurr/violations/lib/example/OtherClass.java"/>
+    </Class>
+    <Field classname="se.bjurr.violations.lib.example.OtherClass" name="CoNstANT" signature="Ljava/lang/String;" isStatic="true">
+      <SourceLine classname="se.bjurr.violations.lib.example.OtherClass" sourcefile="OtherClass.java" sourcepath="se/bjurr/violations/lib/example/OtherClass.java"/>
+    </Field>
+  </BugInstance>
+  <Errors errors="0" missingClasses="0"></Errors>
+  <FindBugsSummary timestamp="Sat, 20 Feb 2016 20:31:27 +0100" total_classes="2" referenced_classes="13" total_bugs="5" total_size="26" num_packages="1" java_version="1.8.0_72" vm_version="25.72-b15" cpu_seconds="5.74" clock_seconds="1.28" peak_mbytes="106.74" alloc_mbytes="3552.00" gc_seconds="0.04" priority_2="1" priority_1="4">
+    <PackageStats package="se.bjurr.violations.lib.example" total_bugs="5" total_types="2" total_size="26" priority_2="1" priority_1="4">
+      <ClassStats class="se.bjurr.violations.lib.example.MyClass" sourceFile="MyClass.java" interface="false" size="13" bugs="3" priority_1="3"/>
+      <ClassStats class="se.bjurr.violations.lib.example.OtherClass" sourceFile="OtherClass.java" interface="false" size="13" bugs="2" priority_2="1" priority_1="1"/>
+    </PackageStats>
+    <FindBugsProfile>
+      <ClassProfile name="edu.umd.cs.findbugs.classfile.engine.ClassInfoAnalysisEngine" totalMilliseconds="235" invocations="329" avgMicrosecondsPerInvocation="714" maxMicrosecondsPerInvocation="24296" standardDeviationMircosecondsPerInvocation="1763"/>
+      <ClassProfile name="edu.umd.cs.findbugs.detect.FieldItemSummary" totalMilliseconds="66" invocations="13" avgMicrosecondsPerInvocation="5088" maxMicrosecondsPerInvocation="20692" standardDeviationMircosecondsPerInvocation="6233"/>
+      <ClassProfile name="edu.umd.cs.findbugs.util.TopologicalSort" totalMilliseconds="62" invocations="297" avgMicrosecondsPerInvocation="209" maxMicrosecondsPerInvocation="17642" standardDeviationMircosecondsPerInvocation="1051"/>
+      <ClassProfile name="edu.umd.cs.findbugs.OpcodeStack$JumpInfoFactory" totalMilliseconds="51" invocations="67" avgMicrosecondsPerInvocation="769" maxMicrosecondsPerInvocation="5533" standardDeviationMircosecondsPerInvocation="964"/>
+      <ClassProfile name="edu.umd.cs.findbugs.classfile.engine.bcel.MethodGenFactory" totalMilliseconds="44" invocations="9" avgMicrosecondsPerInvocation="4951" maxMicrosecondsPerInvocation="42070" standardDeviationMircosecondsPerInvocation="13126"/>
+      <ClassProfile name="edu.umd.cs.findbugs.detect.FindNoSideEffectMethods" totalMilliseconds="44" invocations="13" avgMicrosecondsPerInvocation="3390" maxMicrosecondsPerInvocation="15157" standardDeviationMircosecondsPerInvocation="4145"/>
+      <ClassProfile name="edu.umd.cs.findbugs.detect.OverridingEqualsNotSymmetrical" totalMilliseconds="33" invocations="13" avgMicrosecondsPerInvocation="2589" maxMicrosecondsPerInvocation="13808" standardDeviationMircosecondsPerInvocation="4293"/>
+      <ClassProfile name="edu.umd.cs.findbugs.classfile.engine.bcel.JavaClassAnalysisEngine" totalMilliseconds="28" invocations="28" avgMicrosecondsPerInvocation="1001" maxMicrosecondsPerInvocation="14170" standardDeviationMircosecondsPerInvocation="2650"/>
+      <ClassProfile name="edu.umd.cs.findbugs.detect.NoteDirectlyRelevantTypeQualifiers" totalMilliseconds="26" invocations="13" avgMicrosecondsPerInvocation="2040" maxMicrosecondsPerInvocation="11459" standardDeviationMircosecondsPerInvocation="2971"/>
+      <ClassProfile name="edu.umd.cs.findbugs.detect.FunctionsThatMightBeMistakenForProcedures" totalMilliseconds="22" invocations="13" avgMicrosecondsPerInvocation="1715" maxMicrosecondsPerInvocation="7264" standardDeviationMircosecondsPerInvocation="2235"/>
+      <ClassProfile name="edu.umd.cs.findbugs.detect.FindInconsistentSync2" totalMilliseconds="18" invocations="2" avgMicrosecondsPerInvocation="9448" maxMicrosecondsPerInvocation="18705" standardDeviationMircosecondsPerInvocation="9256"/>
+      <ClassProfile name="edu.umd.cs.findbugs.detect.BuildObligationPolicyDatabase" totalMilliseconds="18" invocations="13" avgMicrosecondsPerInvocation="1416" maxMicrosecondsPerInvocation="5908" standardDeviationMircosecondsPerInvocation="1696"/>
+      <ClassProfile name="edu.umd.cs.findbugs.detect.BuildStringPassthruGraph" totalMilliseconds="18" invocations="13" avgMicrosecondsPerInvocation="1407" maxMicrosecondsPerInvocation="6895" standardDeviationMircosecondsPerInvocation="1855"/>
+      <ClassProfile name="edu.umd.cs.findbugs.classfile.engine.bcel.ValueNumberDataflowFactory" totalMilliseconds="17" invocations="9" avgMicrosecondsPerInvocation="1991" maxMicrosecondsPerInvocation="13917" standardDeviationMircosecondsPerInvocation="4239"/>
+    </FindBugsProfile>
+  </FindBugsSummary>
+  <ClassFeatures></ClassFeatures>
+  <History></History>
+</BugCollection>

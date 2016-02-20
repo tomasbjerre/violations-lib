@@ -1,10 +1,18 @@
 package se.bjurr.violations.lib;
 
+import static se.bjurr.violations.lib.reports.ReportsFinder.findAllReports;
+
+import java.io.File;
 import java.util.List;
 
 import se.bjurr.violations.lib.model.Violation;
+import se.bjurr.violations.lib.reports.Reporter;
 
 public class ViolationsApi {
+ private String pattern;
+ private Reporter reporter;
+ private File startFile;
+
  private ViolationsApi() {
  }
 
@@ -13,14 +21,25 @@ public class ViolationsApi {
  }
 
  public ViolationsApi withPattern(String regularExpression) {
+  this.pattern = regularExpression;
   return this;
  }
 
  public ViolationsApi findAll(Reporter reporter) {
+  this.reporter = reporter;
+  return this;
+ }
+
+ public ViolationsApi inFolder(String folder) {
+  this.startFile = new File(folder);
+  if (!startFile.exists()) {
+   throw new RuntimeException(folder + " not found");
+  }
   return this;
  }
 
  public List<Violation> violations() {
-  return null;
+  List<File> includedFiles = findAllReports(startFile, pattern);
+  return reporter.findViolations(includedFiles);
  }
 }
