@@ -60,6 +60,20 @@ public abstract class ViolationsParser {
   return chunks;
  }
 
+ public static String getContent(String in, String tag) {
+  Pattern pattern = Pattern.compile("<" + tag + ">[^<]*<!\\[CDATA\\[(" + ".+?" + ")\\]\\]>[^<]*</" + tag + ">", DOTALL);
+  Matcher matcher = pattern.matcher(in);
+  if (matcher.find()) {
+   return matcher.group(1);
+  }
+  pattern = Pattern.compile("<" + tag + ">(" + ".+?" + ")</" + tag + ">", DOTALL);
+  matcher = pattern.matcher(in);
+  if (matcher.find()) {
+   return matcher.group(1);
+  }
+  throw new RuntimeException("\"" + tag + "\" not found in " + in);
+ }
+
  public abstract List<Violation> parseFile(File file) throws Exception;
 
 }

@@ -49,6 +49,11 @@ public class Violation {
    return this;
   }
 
+  public ViolationBuilder setSpecific(String specificsKey, Integer specificsValue) {
+   this.specifics.put(specificsKey, Integer.toString(specificsValue));
+   return this;
+  }
+
   public ViolationBuilder setEndLine(Integer endLine) {
    this.endLine = endLine;
    return this;
@@ -87,6 +92,7 @@ public class Violation {
   public Violation build() {
    return new Violation(this);
   }
+
  }
 
  private final Integer startLine;

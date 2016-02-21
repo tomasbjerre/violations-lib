@@ -10,11 +10,13 @@ import java.util.logging.Logger;
 import se.bjurr.violations.lib.model.Violation;
 import se.bjurr.violations.lib.parsers.CSSLintParser;
 import se.bjurr.violations.lib.parsers.CheckStyleParser;
+import se.bjurr.violations.lib.parsers.FindbugsParser;
 import se.bjurr.violations.lib.parsers.ViolationsParser;
 
 public enum Reporter {
  CHECKSTYLE(new CheckStyleParser()), //
- CSSLINT(new CSSLintParser());
+ CSSLINT(new CSSLintParser()), //
+ FINDBUGS(new FindbugsParser());
 
  private static Logger LOG = Logger.getLogger(Reporter.class.getSimpleName());
  private ViolationsParser violationsParser;
