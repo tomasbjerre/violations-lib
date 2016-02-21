@@ -1,33 +1,54 @@
 package se.bjurr.violations.lib;
 
+import static com.google.common.collect.Iterables.filter;
 import static org.assertj.core.api.Assertions.assertThat;
+import static se.bjurr.violations.lib.TestUtils.filterRule;
 import static se.bjurr.violations.lib.TestUtils.getRootFolder;
-import static se.bjurr.violations.lib.ViolationsApi.violationsApi;
+import static se.bjurr.violations.lib.ViolationsReporterApi.violationsReporterApi;
 import static se.bjurr.violations.lib.model.SEVERITY.ERROR;
 import static se.bjurr.violations.lib.parsers.FindbugsParser.FINDBUGS_SPECIFIC_RANK;
 import static se.bjurr.violations.lib.reports.Reporter.FINDBUGS;
 
 import java.util.List;
 
+import org.junit.Before;
 import org.junit.Test;
 
 import se.bjurr.violations.lib.model.Violation;
 
 public class FindbugsTest {
 
- @Test
- public void testThatViolationsCanBeParsed() {
-  String rootFolder = getRootFolder();
+ private List<Violation> actual;
 
-  List<Violation> actual = violationsApi() //
-    .withPattern(".*/findbugs/.*\\.xml$") //
+ @Before
+ public void before() {
+  String rootFolder = getRootFolder();
+  actual = violationsReporterApi() //
+    .withPattern(".*/findbugs/main\\.xml$") //
     .inFolder(rootFolder) //
     .findAll(FINDBUGS) //
     .violations();
 
   assertThat(actual)//
     .hasSize(13);
+ }
 
+ @Test
+ public void testThatEqualsUseHashCodeCanBeParsed() {
+  Iterable<Violation> equalsUseHashCode = filter(actual, filterRule("HE_EQUALS_USE_HASHCODE"));
+  assertThat(equalsUseHashCode)//
+    .hasSize(2);
+ }
+
+ @Test
+ public void testThatNamingConventionCanBeParsed() {
+  Iterable<Violation> equalsUseHashCode = filter(actual, filterRule("NM_FIELD_NAMING_CONVENTION"));
+  assertThat(equalsUseHashCode)//
+    .hasSize(1);
+ }
+
+ @Test
+ public void testThatViolationsCanBeParsed() {
   assertThat(actual.get(0).getFile())//
     .isEqualTo("se/bjurr/violations/lib/example/MyClass.java");
   assertThat(actual.get(0).getMessage())//

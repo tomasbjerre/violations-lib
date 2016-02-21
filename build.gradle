@@ -70,7 +70,7 @@ if (JavaVersion.current().isJava8Compatible()) {
 modifyPom {
  project {
   name 'Violations Lib'
-  description 'Library for parsing report files from static code analyzis.'
+  description 'Library for parsing report files from static code analysis.'
   url 'https://github.com/tomasbjerre/violations-lib'
   inceptionYear '2015'
    scm {

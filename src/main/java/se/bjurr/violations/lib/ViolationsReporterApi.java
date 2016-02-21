@@ -8,29 +8,29 @@ import java.util.List;
 import se.bjurr.violations.lib.model.Violation;
 import se.bjurr.violations.lib.reports.Reporter;
 
-public class ViolationsApi {
+public class ViolationsReporterApi {
  private String pattern;
  private Reporter reporter;
  private File startFile;
 
- private ViolationsApi() {
+ private ViolationsReporterApi() {
  }
 
- public static ViolationsApi violationsApi() {
-  return new ViolationsApi();
+ public static ViolationsReporterApi violationsReporterApi() {
+  return new ViolationsReporterApi();
  }
 
- public ViolationsApi withPattern(String regularExpression) {
+ public ViolationsReporterApi withPattern(String regularExpression) {
   this.pattern = regularExpression;
   return this;
  }
 
- public ViolationsApi findAll(Reporter reporter) {
+ public ViolationsReporterApi findAll(Reporter reporter) {
   this.reporter = reporter;
   return this;
  }
 
- public ViolationsApi inFolder(String folder) {
+ public ViolationsReporterApi inFolder(String folder) {
   this.startFile = new File(folder);
   if (!startFile.exists()) {
    throw new RuntimeException(folder + " not found");

@@ -1,2 +1,2 @@
 #!/bin/bash
-./gradlew clean build -i
+./gradlew clean gitChangelogTask build -i

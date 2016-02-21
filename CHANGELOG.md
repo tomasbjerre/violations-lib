@@ -5,10 +5,21 @@ Changelog of Git Changelog.
 ## Unreleased
 ### No issue
 
+**Adding accumulated builder**
+
+ * With sorting by file or severity. 
+ * With filtering of severity. 
+
+[3d6ec1ca77e0f45](https://github.com/tomasbjerre/git-changelog-lib/commit/3d6ec1ca77e0f45) Tomas Bjerre *2016-02-28 19:37:34*
+
+
+## 1.0
+### No issue
+
 **Update README.md**
 
 
-[d2da496ed772fd4](https://github.com/tomasbjerre/git-changelog-lib/commit/d2da496ed772fd4) Tomas Bjerre *2016-02-21 12:27:49*
+[2dca003de3f0764](https://github.com/tomasbjerre/git-changelog-lib/commit/2dca003de3f0764) Tomas Bjerre *2016-02-21 13:09:41*
 
 **JSHint and PMD parsers**
 

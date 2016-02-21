@@ -2,7 +2,7 @@ package se.bjurr.violations.lib;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static se.bjurr.violations.lib.TestUtils.getRootFolder;
-import static se.bjurr.violations.lib.ViolationsApi.violationsApi;
+import static se.bjurr.violations.lib.ViolationsReporterApi.violationsReporterApi;
 import static se.bjurr.violations.lib.model.SEVERITY.WARN;
 import static se.bjurr.violations.lib.reports.Reporter.JSHINT;
 
@@ -18,7 +18,7 @@ public class JSHintTest {
  public void testThatViolationsCanBeParsed() {
   String rootFolder = getRootFolder();
 
-  List<Violation> actual = violationsApi() //
+  List<Violation> actual = violationsReporterApi() //
     .withPattern(".*/jshint/.*\\.xml$") //
     .inFolder(rootFolder) //
     .findAll(JSHINT) //
