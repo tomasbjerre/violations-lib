@@ -34,6 +34,7 @@ public class CheckstyleTest {
         .setSource(null)//
         .setStartLine(0)//
         .setEndLine(0)//
+        .setColumn(null)//
         .setMessage("Missing package-info.java file.")//
         .setRule("com.puppycrawl.tools.checkstyle.checks.javadoc.JavadocPackageCheck")//
         .setSeverity(ERROR)//
@@ -43,6 +44,7 @@ public class CheckstyleTest {
         .setSource(null)//
         .setStartLine(9)//
         .setEndLine(9)//
+        .setColumn(10)//
         .setMessage("Must have at least one statement.")//
         .setRule("com.puppycrawl.tools.checkstyle.checks.blocks.EmptyBlockCheck")//
         .setSeverity(INFO)//
@@ -52,6 +54,7 @@ public class CheckstyleTest {
         .setSource(null)//
         .setStartLine(10)//
         .setEndLine(10)//
+        .setColumn(31)//
         .setMessage("Must have at least one statement.")//
         .setRule("com.puppycrawl.tools.checkstyle.checks.blocks.EmptyBlockCheck")//
         .setSeverity(INFO)//
@@ -61,6 +64,7 @@ public class CheckstyleTest {
         .setSource(null)//
         .setStartLine(26)//
         .setEndLine(26)//
+        .setColumn(3)//
         .setMessage("Boolean expression complexity is 8 (max allowed is 1).")//
         .setRule("com.puppycrawl.tools.checkstyle.checks.metrics.BooleanExpressionComplexityCheck")//
         .setSeverity(WARN)//

@@ -13,6 +13,7 @@ import se.bjurr.violations.lib.model.SEVERITY;
 import se.bjurr.violations.lib.model.Violation;
 
 import com.google.common.base.Charsets;
+import com.google.common.base.Optional;
 import com.google.common.io.Files;
 
 public class CSSLintParser extends ViolationsParser {
@@ -26,14 +27,16 @@ public class CSSLintParser extends ViolationsParser {
    String filename = getAttribute(fileChunk, "name");
    List<String> issues = getChunks(fileChunk, "<issue", "/>");
    for (String errorChunk : issues) {
-    String line = getAttribute(errorChunk, "line");
+    Integer line = getIntegerAttribute(errorChunk, "line");
+    Optional<Integer> charAttrib = findIntegerAttribute(errorChunk, "char");
     String severity = getAttribute(errorChunk, "severity");
 
     String message = getAttribute(errorChunk, "reason");
     String evidence = getAttribute(errorChunk, "evidence").trim();
     violations.add(//
       violationBuilder()//
-        .setStartLine(Integer.parseInt(line))//
+        .setStartLine(line)//
+        .setColumn(charAttrib.orNull())//
         .setFile(filename)//
         .setSeverity(toSeverity(severity))//
         .setMessage(message + ": " + evidence)//

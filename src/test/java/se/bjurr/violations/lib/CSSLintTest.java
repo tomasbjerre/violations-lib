@@ -32,6 +32,7 @@ public class CSSLintTest {
         .setSource(null)//
         .setStartLine(3)//
         .setEndLine(3)//
+        .setColumn(2)//
         .setMessage("Duplicate property 'font-size' found.: font-size: 14px;")//
         .setRule(null)//
         .setSeverity(WARN)//
@@ -41,6 +42,7 @@ public class CSSLintTest {
         .setSource(null)//
         .setStartLine(2)//
         .setEndLine(2)//
+        .setColumn(2)//
         .setMessage("Unknown property 'thisisnotarule'.: thisisnotarule: 1;")//
         .setRule(null)//
         .setSeverity(WARN)//
@@ -50,6 +52,7 @@ public class CSSLintTest {
         .setSource(null)//
         .setStartLine(3)//
         .setEndLine(3)//
+        .setColumn(2)//
         .setMessage("Unknown property 'thisisalsonotarule'.: thisisalsonotarule: 1;")//
         .setRule(null)//
         .setSeverity(WARN)//

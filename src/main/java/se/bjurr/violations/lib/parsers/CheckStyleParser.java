@@ -13,6 +13,7 @@ import se.bjurr.violations.lib.model.SEVERITY;
 import se.bjurr.violations.lib.model.Violation;
 
 import com.google.common.base.Charsets;
+import com.google.common.base.Optional;
 import com.google.common.io.Files;
 
 public class CheckStyleParser extends ViolationsParser {
@@ -26,13 +27,15 @@ public class CheckStyleParser extends ViolationsParser {
    String filename = getAttribute(fileChunk, "name");
    List<String> errors = getChunks(fileChunk, "<error", "/>");
    for (String errorChunk : errors) {
-    String line = getAttribute(errorChunk, "line");
+    Integer line = getIntegerAttribute(errorChunk, "line");
+    Optional<Integer> column = findIntegerAttribute(errorChunk, "column");
     String severity = getAttribute(errorChunk, "severity");
     String message = getAttribute(errorChunk, "message");
     String rule = getAttribute(errorChunk, "source");
     violations.add(//
       violationBuilder()//
-        .setStartLine(Integer.parseInt(line))//
+        .setStartLine(line)//
+        .setColumn(column.orNull())//
         .setFile(filename)//
         .setSeverity(toSeverity(severity))//
         .setMessage(message)//
