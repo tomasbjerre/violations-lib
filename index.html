@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <meta charset='utf-8'>
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <meta name="description" content="Violations-lib : Library for parsing report files from static code analyzis.">
+
+    <link rel="stylesheet" type="text/css" media="screen" href="stylesheets/stylesheet.css">
+
+    <title>Violations-lib</title>
+  </head>
+
+  <body>
+
+    <!-- HEADER -->
+    <div id="header_wrap" class="outer">
+        <header class="inner">
+          <a id="forkme_banner" href="https://github.com/tomasbjerre/violations-lib">View on GitHub</a>
+
+          <h1 id="project_title">Violations-lib</h1>
+          <h2 id="project_tagline">Library for parsing report files from static code analyzis.</h2>
+
+            <section id="downloads">
+              <a class="zip_download_link" href="https://github.com/tomasbjerre/violations-lib/zipball/master">Download this project as a .zip file</a>
+              <a class="tar_download_link" href="https://github.com/tomasbjerre/violations-lib/tarball/master">Download this project as a tar.gz file</a>
+            </section>
+        </header>
+    </div>
+
+    <!-- MAIN CONTENT -->
+    <div id="main_content_wrap" class="outer">
+      <section id="main_content" class="inner">
+        <h1>
+<a id="violations-lib--" class="anchor" href="#violations-lib--" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Violations Lib <a href="https://travis-ci.org/tomasbjerre/violations-lib"><img src="https://travis-ci.org/tomasbjerre/violations-lib.svg?branch=master" alt="Build Status"></a> <a href="https://maven-badges.herokuapp.com/maven-central/se.bjurr.violations/violations-lib"><img src="https://maven-badges.herokuapp.com/maven-central/se.bjurr.violations/violations-lib/badge.svg" alt="Maven Central"></a>
+</h1>
+
+<p>This is a library for parsing report files from static code analyzis.</p>
+
+<p>It supports:</p>
+
+<ul>
+<li><a href="https://pmd.github.io/"><em>PMD</em></a></li>
+<li><a href="http://findbugs.sourceforge.net/"><em>Findbugs</em></a></li>
+<li><a href="http://checkstyle.sourceforge.net/"><em>Checkstyle</em></a></li>
+<li><a href="https://github.com/CSSLint/csslint"><em>CSSLint</em></a></li>
+<li><a href="http://jshint.com/"><em>JSHint</em></a></li>
+</ul>
+
+<p>Very easy to use with a nice builder patternn</p>
+
+<pre><code>  List&lt;Violation&gt; actual = violationsApi() //
+    .withPattern(".*/findbugs/.*\\.xml$") //
+    .inFolder(rootFolder) //
+    .findAll(FINDBUGS) //
+    .violations();
+</code></pre>
+
+<h2>
+<a id="developer-instructions" class="anchor" href="#developer-instructions" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Developer instructions</h2>
+
+<p>To build the code, have a look at <code>.travis.yml</code>.</p>
+
+<p>To do a release you need to do <code>./gradlew release</code> and release the artifact from <a href="https://oss.sonatype.org/#stagingRepositories">staging</a>. More information <a href="http://central.sonatype.org/pages/releasing-the-deployment.html">here</a>.</p>
+      </section>
+    </div>
+
+    <!-- FOOTER  -->
+    <div id="footer_wrap" class="outer">
+      <footer class="inner">
+        <p class="copyright">Violations-lib maintained by <a href="https://github.com/tomasbjerre">tomasbjerre</a></p>
+        <p>Published with <a href="https://pages.github.com">GitHub Pages</a></p>
+      </footer>
+    </div>
+
+    
+
+  </body>
+</html>
