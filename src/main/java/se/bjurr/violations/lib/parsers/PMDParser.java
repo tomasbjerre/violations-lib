@@ -13,10 +13,9 @@ import se.bjurr.violations.lib.model.SEVERITY;
 import se.bjurr.violations.lib.model.Violation;
 
 import com.google.common.base.Charsets;
-import com.google.common.base.Optional;
 import com.google.common.io.Files;
 
-public class CSSLintParser extends ViolationsParser {
+public class PMDParser extends ViolationsParser {
 
  @Override
  public List<Violation> parseFile(File file) throws Exception {
@@ -25,21 +24,26 @@ public class CSSLintParser extends ViolationsParser {
   List<String> files = getChunks(string, "<file", "</file>");
   for (String fileChunk : files) {
    String filename = getAttribute(fileChunk, "name");
-   List<String> issues = getChunks(fileChunk, "<issue", "/>");
-   for (String issueChunk : issues) {
-    Integer line = getIntegerAttribute(issueChunk, "line");
-    Optional<Integer> charAttrib = findIntegerAttribute(issueChunk, "char");
-    String severity = getAttribute(issueChunk, "severity");
+   List<String> violationsChunks = getChunks(fileChunk, "<violation", "</violation>");
+   for (String violationChunk : violationsChunks) {
+    Integer beginLine = getIntegerAttribute(violationChunk, "beginline");
+    Integer endLine = getIntegerAttribute(violationChunk, "endline");
+    Integer beginColumn = getIntegerAttribute(violationChunk, "begincolumn");
+    String rule = getAttribute(violationChunk, "rule").trim();
+    String ruleSet = getAttribute(violationChunk, "ruleset").trim();
+    String externalInfoUrl = getAttribute(violationChunk, "externalInfoUrl").trim();
+    Integer priority = getIntegerAttribute(violationChunk, "priority");
+    SEVERITY severity = toSeverity(priority);
 
-    String message = getAttribute(issueChunk, "reason");
-    String evidence = getAttribute(issueChunk, "evidence").trim();
     violations.add(//
       violationBuilder()//
-        .setStartLine(line)//
-        .setColumn(charAttrib.orNull())//
+        .setStartLine(beginLine)//
+        .setEndLine(endLine)//
+        .setColumn(beginColumn)//
         .setFile(filename)//
-        .setSeverity(toSeverity(severity))//
-        .setMessage(message + ": " + evidence)//
+        .setSeverity(severity)//
+        .setRule(rule)//
+        .setMessage(ruleSet + " " + externalInfoUrl)//
         .build()//
       );
    }
@@ -47,11 +51,11 @@ public class CSSLintParser extends ViolationsParser {
   return violations;
  }
 
- public SEVERITY toSeverity(String severity) {
-  if (severity.equalsIgnoreCase("ERROR")) {
+ public SEVERITY toSeverity(Integer priority) {
+  if (priority < 3) {
    return ERROR;
   }
-  if (severity.equalsIgnoreCase("WARNING")) {
+  if (priority < 5) {
    return WARN;
   }
   return INFO;

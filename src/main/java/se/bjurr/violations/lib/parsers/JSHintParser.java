@@ -13,10 +13,9 @@ import se.bjurr.violations.lib.model.SEVERITY;
 import se.bjurr.violations.lib.model.Violation;
 
 import com.google.common.base.Charsets;
-import com.google.common.base.Optional;
 import com.google.common.io.Files;
 
-public class CSSLintParser extends ViolationsParser {
+public class JSHintParser extends ViolationsParser {
 
  @Override
  public List<Violation> parseFile(File file) throws Exception {
@@ -28,18 +27,19 @@ public class CSSLintParser extends ViolationsParser {
    List<String> issues = getChunks(fileChunk, "<issue", "/>");
    for (String issueChunk : issues) {
     Integer line = getIntegerAttribute(issueChunk, "line");
-    Optional<Integer> charAttrib = findIntegerAttribute(issueChunk, "char");
+    Integer charAttrib = getIntegerAttribute(issueChunk, "char");
     String severity = getAttribute(issueChunk, "severity");
-
-    String message = getAttribute(issueChunk, "reason");
+    String reason = getAttribute(issueChunk, "reason").trim();
     String evidence = getAttribute(issueChunk, "evidence").trim();
+    String message = reason + ": " + evidence;
+
     violations.add(//
       violationBuilder()//
         .setStartLine(line)//
-        .setColumn(charAttrib.orNull())//
+        .setColumn(charAttrib)//
         .setFile(filename)//
         .setSeverity(toSeverity(severity))//
-        .setMessage(message + ": " + evidence)//
+        .setMessage(message)//
         .build()//
       );
    }
@@ -48,10 +48,10 @@ public class CSSLintParser extends ViolationsParser {
  }
 
  public SEVERITY toSeverity(String severity) {
-  if (severity.equalsIgnoreCase("ERROR")) {
+  if (severity.equalsIgnoreCase("E")) {
    return ERROR;
   }
-  if (severity.equalsIgnoreCase("WARNING")) {
+  if (severity.equalsIgnoreCase("W")) {
    return WARN;
   }
   return INFO;
