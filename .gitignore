@@ -7,5 +7,4 @@ target
 bin
 temp
 .gradle
-.couscous
-couscous.phar
+node_modules
