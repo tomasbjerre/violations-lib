@@ -5,12 +5,21 @@ Changelog of Git Changelog.
 ## Unreleased
 ### No issue
 
+**Moving example reports to its own repo**
+
+
+[7a2e967de70bc6f](https://github.com/tomasbjerre/git-changelog-lib/commit/7a2e967de70bc6f) Tomas Bjerre *2016-03-03 18:36:49*
+
+
+## 1.1
+### No issue
+
 **Adding accumulated builder**
 
  * With sorting by file or severity. 
  * With filtering of severity. 
 
-[3d6ec1ca77e0f45](https://github.com/tomasbjerre/git-changelog-lib/commit/3d6ec1ca77e0f45) Tomas Bjerre *2016-02-28 19:37:34*
+[9b87b1d1184d184](https://github.com/tomasbjerre/git-changelog-lib/commit/9b87b1d1184d184) Tomas Bjerre *2016-02-28 19:40:26*
 
 
 ## 1.0

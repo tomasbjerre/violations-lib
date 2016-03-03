@@ -28,7 +28,7 @@ public class JSHintTest {
     .hasSize(6);
 
   assertThat(actual.get(0).getFile())//
-    .isEqualTo("../../../../example-reports/web/js-file.js");
+    .isEqualTo("../../../../../violations-test/web/js-file.js");
   assertThat(actual.get(0).getMessage())//
     .startsWith("Use")//
     .doesNotContain("CDATA");
