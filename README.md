@@ -41,6 +41,12 @@ Or
     .violations();
 ```
 
+It is used by:
+ * [Violation Comments to GitHub Gradle Plugin](https://github.com/tomasbjerre/violation-comments-to-github-gradle-plugin).
+ * [Violation Comments to GitHub Maven Plugin](https://github.com/tomasbjerre/violation-comments-to-github-maven-plugin).
+ * [Violation Comments to GitHub Lib](https://github.com/tomasbjerre/violation-comments-to-github-lib).
+ * [Violation Comments Lib](https://github.com/tomasbjerre/violation-comments-lib).
+
 ## Developer instructions
 
 To build the code, have a look at `.travis.yml`.
