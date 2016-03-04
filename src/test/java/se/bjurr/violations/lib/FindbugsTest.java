@@ -30,14 +30,14 @@ public class FindbugsTest {
     .violations();
 
   assertThat(actual)//
-    .hasSize(13);
+    .hasSize(5);
  }
 
  @Test
  public void testThatEqualsUseHashCodeCanBeParsed() {
   Iterable<Violation> equalsUseHashCode = filter(actual, filterRule("HE_EQUALS_USE_HASHCODE"));
   assertThat(equalsUseHashCode)//
-    .hasSize(2);
+    .hasSize(1);
  }
 
  @Test
@@ -55,7 +55,7 @@ public class FindbugsTest {
     .startsWith("equals method always returns true")//
     .doesNotContain("CDATA");
   assertThat(actual.get(0).getStartLine())//
-    .isEqualTo(3);
+    .isEqualTo(17);
   assertThat(actual.get(0).getEndLine())//
     .isEqualTo(17);
   assertThat(actual.get(0).getRule().get())//

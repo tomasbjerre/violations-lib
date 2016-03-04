@@ -43,6 +43,7 @@ public class FindbugsParser extends ViolationsParser {
    SEVERITY severity = toSeverity(rank);
 
    List<String> sourceLineChunks = getChunks(bugInstanceChunk, "<SourceLine", "/>");
+   List<Violation> candidates = newArrayList();
    for (String sourceLineChunk : sourceLineChunks) {
     Optional<Integer> startLine = findIntegerAttribute(sourceLineChunk, "start");
     Optional<Integer> endLine = findIntegerAttribute(sourceLineChunk, "end");
@@ -51,7 +52,7 @@ public class FindbugsParser extends ViolationsParser {
     }
     String filename = getAttribute(sourceLineChunk, "sourcepath");
     String classname = getAttribute(sourceLineChunk, "classname");
-    violations.add(//
+    candidates.add(//
       violationBuilder()//
         .setReporter(FINDBUGS)//
         .setMessage(message)//
@@ -64,6 +65,13 @@ public class FindbugsParser extends ViolationsParser {
         .setSpecific(FINDBUGS_SPECIFIC_RANK, rank)//
         .build()//
       );
+   }
+   if (!candidates.isEmpty()) {
+    /**
+     * Last one is the most specific, first 2 may be class and method when the
+     * third is source line.
+     */
+    violations.add(candidates.get(candidates.size() - 1));
    }
   }
   return violations;

@@ -5,10 +5,14 @@ import static se.bjurr.violations.lib.reports.ReportsFinder.findAllReports;
 import java.io.File;
 import java.util.List;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 import se.bjurr.violations.lib.model.Violation;
 import se.bjurr.violations.lib.reports.Reporter;
 
 public class ViolationsReporterApi {
+ private static Logger LOG = LoggerFactory.getLogger(ViolationsReporterApi.class);
  private String pattern;
  private Reporter reporter;
  private File startFile;
@@ -40,6 +44,20 @@ public class ViolationsReporterApi {
 
  public List<Violation> violations() {
   List<File> includedFiles = findAllReports(startFile, pattern);
-  return reporter.findViolations(includedFiles);
+  if (LOG.isDebugEnabled()) {
+   LOG.debug("Found " + includedFiles.size() + " reports:");
+   for (File f : includedFiles) {
+    LOG.debug(f.getAbsolutePath());
+   }
+  }
+  List<Violation> foundViolations = reporter.findViolations(includedFiles);
+  if (LOG.isDebugEnabled()) {
+   LOG.debug("Found " + foundViolations.size() + " violations:");
+   for (Violation v : foundViolations) {
+    LOG.debug(v.getReporter() + " (" + v.getRule() + ") " + v.getFile() + " " + v.getStartLine() + " -> "
+      + v.getEndLine());
+   }
+  }
+  return foundViolations;
  }
 }
