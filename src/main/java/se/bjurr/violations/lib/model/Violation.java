@@ -11,6 +11,8 @@ import static com.google.common.collect.Maps.newHashMap;
 import java.util.Map;
 import java.util.Map.Entry;
 
+import se.bjurr.violations.lib.reports.Reporter;
+
 import com.google.common.base.Function;
 import com.google.common.base.Optional;
 
@@ -29,6 +31,7 @@ public class Violation {
   private String file;
   private String source;
   private String rule;
+  private Reporter reporter;
   private Map<String, String> specifics = newHashMap();
 
   private ViolationBuilder() {
@@ -41,6 +44,11 @@ public class Violation {
 
   public ViolationBuilder setSpecifics(Map<String, String> specifics) {
    this.specifics = specifics;
+   return this;
+  }
+
+  public ViolationBuilder setReporter(Reporter reporter) {
+   this.reporter = reporter;
    return this;
   }
 
@@ -104,6 +112,7 @@ public class Violation {
  private final String rule;
  private Integer column;
  private Map<String, String> specifics;
+ private Reporter reporter;
 
  public Violation() {
   this.startLine = null;
@@ -116,6 +125,7 @@ public class Violation {
  }
 
  public Violation(ViolationBuilder vb) {
+  this.reporter = checkNotNull(vb.reporter, "reporter");
   this.startLine = checkNotNull(vb.startLine, "startline");
   this.endLine = firstNonNull(vb.endLine, vb.startLine);
   this.column = vb.column;
@@ -125,6 +135,10 @@ public class Violation {
   this.source = emptyToNull(vb.source);
   this.rule = emptyToNull(vb.rule);
   this.specifics = vb.specifics;
+ }
+
+ public Reporter getReporter() {
+  return reporter;
  }
 
  public Optional<Integer> getColumn() {

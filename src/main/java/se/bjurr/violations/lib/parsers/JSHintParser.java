@@ -5,6 +5,7 @@ import static se.bjurr.violations.lib.model.SEVERITY.ERROR;
 import static se.bjurr.violations.lib.model.SEVERITY.INFO;
 import static se.bjurr.violations.lib.model.SEVERITY.WARN;
 import static se.bjurr.violations.lib.model.Violation.violationBuilder;
+import static se.bjurr.violations.lib.reports.Reporter.JSHINT;
 
 import java.io.File;
 import java.util.List;
@@ -35,6 +36,7 @@ public class JSHintParser extends ViolationsParser {
 
     violations.add(//
       violationBuilder()//
+        .setReporter(JSHINT)//
         .setStartLine(line)//
         .setColumn(charAttrib)//
         .setFile(filename)//

@@ -5,6 +5,7 @@ import static se.bjurr.violations.lib.model.SEVERITY.ERROR;
 import static se.bjurr.violations.lib.model.SEVERITY.INFO;
 import static se.bjurr.violations.lib.model.SEVERITY.WARN;
 import static se.bjurr.violations.lib.model.Violation.violationBuilder;
+import static se.bjurr.violations.lib.reports.Reporter.PMD;
 
 import java.io.File;
 import java.util.List;
@@ -37,6 +38,7 @@ public class PMDParser extends ViolationsParser {
 
     violations.add(//
       violationBuilder()//
+        .setReporter(PMD)//
         .setStartLine(beginLine)//
         .setEndLine(endLine)//
         .setColumn(beginColumn)//

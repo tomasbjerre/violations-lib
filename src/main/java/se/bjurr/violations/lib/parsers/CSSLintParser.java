@@ -5,6 +5,7 @@ import static se.bjurr.violations.lib.model.SEVERITY.ERROR;
 import static se.bjurr.violations.lib.model.SEVERITY.INFO;
 import static se.bjurr.violations.lib.model.SEVERITY.WARN;
 import static se.bjurr.violations.lib.model.Violation.violationBuilder;
+import static se.bjurr.violations.lib.reports.Reporter.CSSLINT;
 
 import java.io.File;
 import java.util.List;
@@ -35,6 +36,7 @@ public class CSSLintParser extends ViolationsParser {
     String evidence = getAttribute(issueChunk, "evidence").trim();
     violations.add(//
       violationBuilder()//
+        .setReporter(CSSLINT)//
         .setStartLine(line)//
         .setColumn(charAttrib.orNull())//
         .setFile(filename)//

@@ -6,6 +6,7 @@ import static com.google.common.collect.Lists.newArrayList;
 import static com.google.common.collect.Maps.newHashMap;
 import static com.google.common.io.Resources.getResource;
 import static se.bjurr.violations.lib.model.Violation.violationBuilder;
+import static se.bjurr.violations.lib.reports.Reporter.FINDBUGS;
 
 import java.io.File;
 import java.io.IOException;
@@ -52,6 +53,7 @@ public class FindbugsParser extends ViolationsParser {
     String classname = getAttribute(sourceLineChunk, "classname");
     violations.add(//
       violationBuilder()//
+        .setReporter(FINDBUGS)//
         .setMessage(message)//
         .setFile(filename)//
         .setStartLine(startLine.get())//

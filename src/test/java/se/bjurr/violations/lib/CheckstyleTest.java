@@ -30,6 +30,7 @@ public class CheckstyleTest {
   assertThat(actual)//
     .containsExactly(//
       violationBuilder()//
+        .setReporter(CHECKSTYLE)//
         .setFile("/src/main/java/se/bjurr/violations/lib/example/MyClass.java")//
         .setSource(null)//
         .setStartLine(0)//
@@ -40,6 +41,7 @@ public class CheckstyleTest {
         .setSeverity(ERROR)//
         .build(), //
       violationBuilder()//
+        .setReporter(CHECKSTYLE)//
         .setFile("/src/main/java/se/bjurr/violations/lib/example/MyClass.java")//
         .setSource(null)//
         .setStartLine(9)//
@@ -50,6 +52,7 @@ public class CheckstyleTest {
         .setSeverity(INFO)//
         .build(), //
       violationBuilder()//
+        .setReporter(CHECKSTYLE)//
         .setFile("/src/main/java/se/bjurr/violations/lib/example/OtherClass.java")//
         .setSource(null)//
         .setStartLine(10)//
@@ -60,6 +63,7 @@ public class CheckstyleTest {
         .setSeverity(INFO)//
         .build(), //
       violationBuilder()//
+        .setReporter(CHECKSTYLE)//
         .setFile("/src/main/java/se/bjurr/violations/lib/example/OtherClass.java")//
         .setSource(null)//
         .setStartLine(26)//

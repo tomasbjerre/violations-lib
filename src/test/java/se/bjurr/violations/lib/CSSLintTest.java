@@ -28,6 +28,7 @@ public class CSSLintTest {
   assertThat(actual)//
     .containsExactly(//
       violationBuilder()//
+        .setReporter(CSSLINT)//
         .setFile("web/css-file.css")//
         .setSource(null)//
         .setStartLine(3)//
@@ -38,6 +39,7 @@ public class CSSLintTest {
         .setSeverity(WARN)//
         .build(), //
       violationBuilder()//
+        .setReporter(CSSLINT)//
         .setFile("web/css-file2.css")//
         .setSource(null)//
         .setStartLine(2)//
@@ -48,6 +50,7 @@ public class CSSLintTest {
         .setSeverity(WARN)//
         .build(), //
       violationBuilder()//
+        .setReporter(CSSLINT)//
         .setFile("web/css-file2.css")//
         .setSource(null)//
         .setStartLine(3)//
