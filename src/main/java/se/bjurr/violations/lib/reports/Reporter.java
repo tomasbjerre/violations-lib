@@ -8,6 +8,7 @@ import java.util.List;
 import java.util.logging.Logger;
 
 import se.bjurr.violations.lib.model.Violation;
+import se.bjurr.violations.lib.parsers.CPPCheckParser;
 import se.bjurr.violations.lib.parsers.CSSLintParser;
 import se.bjurr.violations.lib.parsers.CheckStyleParser;
 import se.bjurr.violations.lib.parsers.FindbugsParser;
@@ -20,7 +21,8 @@ public enum Reporter {
  CSSLINT(new CSSLintParser()), //
  FINDBUGS(new FindbugsParser()), //
  JSHINT(new JSHintParser()), //
- PMD(new PMDParser());
+ PMD(new PMDParser()), //
+ CPPCHECK(new CPPCheckParser());
 
  private static Logger LOG = Logger.getLogger(Reporter.class.getSimpleName());
  private ViolationsParser violationsParser;

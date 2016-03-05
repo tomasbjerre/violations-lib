@@ -6,6 +6,7 @@ It supports:
  * [_PMD_](https://pmd.github.io/)
  * [_Findbugs_](http://findbugs.sourceforge.net/)
  * [_Checkstyle_](http://checkstyle.sourceforge.net/)
+ * [_CPPCheck_](http://cppcheck.sourceforge.net/)
  * [_CSSLint_](https://github.com/CSSLint/csslint)
  * [_JSHint_](http://jshint.com/)
 
