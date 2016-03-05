@@ -9,6 +9,7 @@ It supports:
  * [_CPPCheck_](http://cppcheck.sourceforge.net/)
  * [_CSSLint_](https://github.com/CSSLint/csslint)
  * [_JSHint_](http://jshint.com/)
+ * [_Resharper_](https://www.jetbrains.com/resharper/)
 
 Very easy to use with a nice builder pattern
 ```

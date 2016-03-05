@@ -3,12 +3,55 @@
 Changelog of Git Changelog.
 
 ## Unreleased
+### GitHub [#1](https://github.com/tomasbjerre/violations-lib/issues/#1) 
+
+**Resharper support**
+
+
+[4b00706b1d9cbc4](https://github.com/tomasbjerre/git-changelog-lib/commit/4b00706b1d9cbc4) Tomas Bjerre *2016-03-05 21:14:33*
+
+**CPPCheck support**
+
+
+[d92013ebb6f4111](https://github.com/tomasbjerre/git-changelog-lib/commit/d92013ebb6f4111) Tomas Bjerre *2016-03-05 20:28:19*
+
+
+## 1.4
 ### No issue
+
+**Adding possibility to set findbugs messages**
+
+
+[3a8c7089d924848](https://github.com/tomasbjerre/git-changelog-lib/commit/3a8c7089d924848) Tomas Bjerre *2016-03-05 09:34:51*
+
+
+## 1.3
+### No issue
+
+**Only most specific FindBugs line**
+
+ * Also SLF4J and some debug logging. 
+
+[b50c549861119cf](https://github.com/tomasbjerre/git-changelog-lib/commit/b50c549861119cf) Tomas Bjerre *2016-03-04 17:16:52*
+
+
+## 1.2
+### No issue
+
+**Adding reporter to Violation**
+
+
+[ddddaefba1f1aee](https://github.com/tomasbjerre/git-changelog-lib/commit/ddddaefba1f1aee) Tomas Bjerre *2016-03-04 05:34:23*
+
+**Adding links to projects using this lib**
+
+
+[b6b4b74339b5008](https://github.com/tomasbjerre/git-changelog-lib/commit/b6b4b74339b5008) Tomas Bjerre *2016-03-03 21:05:58*
 
 **Moving example reports to its own repo**
 
 
-[7a2e967de70bc6f](https://github.com/tomasbjerre/git-changelog-lib/commit/7a2e967de70bc6f) Tomas Bjerre *2016-03-03 18:36:49*
+[344567418ac1167](https://github.com/tomasbjerre/git-changelog-lib/commit/344567418ac1167) Tomas Bjerre *2016-03-03 18:53:24*
 
 
 ## 1.1
