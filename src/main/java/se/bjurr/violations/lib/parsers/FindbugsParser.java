@@ -1,6 +1,7 @@
 package se.bjurr.violations.lib.parsers;
 
 import static com.google.common.base.Charsets.UTF_8;
+import static com.google.common.base.Strings.isNullOrEmpty;
 import static com.google.common.base.Throwables.propagate;
 import static com.google.common.collect.Lists.newArrayList;
 import static com.google.common.collect.Maps.newHashMap;
@@ -26,6 +27,11 @@ public class FindbugsParser extends ViolationsParser {
   * Severity rank.
   */
  public static final String FINDBUGS_SPECIFIC_RANK = "RANK";
+ private static String findbugsMessagesXml;
+
+ public static void setFindbugsMessagesXml(String findbugsMessagesXml) {
+  FindbugsParser.findbugsMessagesXml = findbugsMessagesXml;
+ }
 
  @Override
  public List<Violation> parseFile(File file) throws Exception {
@@ -94,8 +100,10 @@ public class FindbugsParser extends ViolationsParser {
  private Map<String, String> getMessagesPerType() {
   Map<String, String> messagesPerType = newHashMap();
   try {
-   String string = Resources.toString(getResource("findbugs/messages.xml"), UTF_8);
-   List<String> bugPatterns = getChunks(string, "<BugPattern", "</BugPattern>");
+   if (isNullOrEmpty(findbugsMessagesXml)) {
+    findbugsMessagesXml = Resources.toString(getResource("findbugs/messages.xml"), UTF_8);
+   }
+   List<String> bugPatterns = getChunks(findbugsMessagesXml, "<BugPattern", "</BugPattern>");
    for (String bugPattern : bugPatterns) {
     String type = getAttribute(bugPattern, "type");
     String shortDescription = getContent(bugPattern, "ShortDescription");
