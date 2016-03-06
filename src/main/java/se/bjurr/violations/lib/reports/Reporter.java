@@ -17,8 +17,10 @@ import se.bjurr.violations.lib.parsers.Flake8Parser;
 import se.bjurr.violations.lib.parsers.JSHintParser;
 import se.bjurr.violations.lib.parsers.LintParser;
 import se.bjurr.violations.lib.parsers.PMDParser;
+import se.bjurr.violations.lib.parsers.PerlCriticParser;
 import se.bjurr.violations.lib.parsers.ResharperParser;
 import se.bjurr.violations.lib.parsers.ViolationsParser;
+import se.bjurr.violations.lib.parsers.XMLLintParser;
 
 public enum Reporter {
  CHECKSTYLE(new CheckStyleParser()), //
@@ -30,8 +32,9 @@ public enum Reporter {
  CPPCHECK(new CPPCheckParser()), //
  RESHARPER(new ResharperParser()), //
  FLAKE8(new Flake8Parser()), //
- CPPLINT(new CppLintParser())//
- ;
+ CPPLINT(new CppLintParser()), //
+ XMLLINT(new XMLLintParser()), //
+ PERLCRITIC(new PerlCriticParser());
 
  private static Logger LOG = Logger.getLogger(Reporter.class.getSimpleName());
  private ViolationsParser violationsParser;

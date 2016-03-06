@@ -25,7 +25,7 @@ task gitChangelogTask(type: se.bjurr.gitchangelog.plugin.gradle.GitChangelogTask
  templateContent = new File('changelog.mustache').getText('UTF-8');
  removeIssueFromMessage = true
  customIssues = [
-  [ "GitHub", "#([0-9]+)", "https://github.com/tomasbjerre/violations-lib/issues/\${PATTERN_GROUP}" ]
+  [ "GitHub", "#([0-9]+)", "https://github.com/tomasbjerre/violations-lib/issues/\${PATTERN_GROUP_1}" ]
  ]
 }
 
@@ -109,4 +109,6 @@ extraArchive {
  javadoc = true
 }
 
-afterReleaseBuild.dependsOn uploadArchives
+afterReleaseBuild.dependsOn {
+ [install, uploadArchives]
+}

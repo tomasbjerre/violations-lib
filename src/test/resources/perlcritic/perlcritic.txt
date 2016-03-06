@@ -1,0 +1,7 @@
+Fel: No word lists can be found for the language "sv_SE".
+perl/example.pl: Code is not tidy at line 1, column 1.  See page 33 of PBP.  (Severity: 1)
+perl/example.pl: Code not contained in explicit package at line 1, column 1.  Violates encapsulation.  (Severity: 4)
+perl/example.pl: No package-scoped "$VERSION" variable found at line 1, column 1.  See page 404 of PBP.  (Severity: 2)
+perl/example.pl: Module does not end with "1;" at line 4, column 1.  Must end with a recognizable true value.  (Severity: 4)
+perl/example.pl: Postfix control "if" used at line 7, column 10.  See pages 93,94 of PBP.  (Severity: 2)
+perl/example.pl: Return value of flagged function ignored - print at line 8, column 5.  See pages 208,278 of PBP.  (Severity: 1)

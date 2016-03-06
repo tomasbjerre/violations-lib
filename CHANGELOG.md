@@ -3,27 +3,32 @@
 Changelog of Git Changelog.
 
 ## Unreleased
-### GitHub [#1](https://github.com/tomasbjerre/violations-lib/issues/#1) 
+### GitHub [#3](https://github.com/tomasbjerre/violations-lib/issues/3) 
+
+**Support PerlCritic and XMLLint**
+
+
+[c3677c738317827](https://github.com/tomasbjerre/git-changelog-lib/commit/c3677c738317827) Tomas Bjerre *2016-03-06 13:39:48*
 
 **Support CPPLint**
 
 
-[7b6ea9ed545ee7f](https://github.com/tomasbjerre/git-changelog-lib/commit/7b6ea9ed545ee7f) Tomas Bjerre *2016-03-06 12:22:35*
+[319eaabe55b383b](https://github.com/tomasbjerre/git-changelog-lib/commit/319eaabe55b383b) Tomas Bjerre *2016-03-06 13:39:27*
 
 **Flake8 (PyLint) and Lint parser**
 
 
-[bd02db749408fef](https://github.com/tomasbjerre/git-changelog-lib/commit/bd02db749408fef) Tomas Bjerre *2016-03-06 11:18:46*
+[30ba7fd5ed017d3](https://github.com/tomasbjerre/git-changelog-lib/commit/30ba7fd5ed017d3) Tomas Bjerre *2016-03-06 13:39:25*
 
 **Resharper support**
 
 
-[ac0f4eba53c400b](https://github.com/tomasbjerre/git-changelog-lib/commit/ac0f4eba53c400b) Tomas Bjerre *2016-03-05 21:16:24*
+[5bfc5d3448ab978](https://github.com/tomasbjerre/git-changelog-lib/commit/5bfc5d3448ab978) Tomas Bjerre *2016-03-06 13:39:23*
 
 **CPPCheck support**
 
 
-[d92013ebb6f4111](https://github.com/tomasbjerre/git-changelog-lib/commit/d92013ebb6f4111) Tomas Bjerre *2016-03-05 20:28:19*
+[e1a7ad7be14653b](https://github.com/tomasbjerre/git-changelog-lib/commit/e1a7ad7be14653b) Tomas Bjerre *2016-03-06 13:39:20*
 
 
 ## 1.4
