@@ -8,7 +8,7 @@ It supports:
  * [_CPPCheck_](http://cppcheck.sourceforge.net/)
  * [_CSSLint_](https://github.com/CSSLint/csslint)
  * [_Findbugs_](http://findbugs.sourceforge.net/)
- * [_Flake8_](http://flake8.readthedocs.org/en/latest/) ([_PyLint_](https://www.pylint.org/), [_Pep8_](https://github.com/PyCQA/pycodestyle))
+ * [_Flake8_](http://flake8.readthedocs.org/en/latest/) ([_PyLint_](https://www.pylint.org/), [_Pep8_](https://github.com/PyCQA/pycodestyle), [_Mccabe_](https://pypi.python.org/pypi/mccabe), [_PyFlakes_](https://pypi.python.org/pypi/pyflakes))
  * [_JSHint_](http://jshint.com/)
  * _Lint_ A common XML format, used by different linters.
  * [_PerlCritic_](https://github.com/Perl-Critic)
@@ -51,6 +51,7 @@ Or
 It is used by:
  * [Violation Comments to GitHub Gradle Plugin](https://github.com/tomasbjerre/violation-comments-to-github-gradle-plugin).
  * [Violation Comments to GitHub Maven Plugin](https://github.com/tomasbjerre/violation-comments-to-github-maven-plugin).
+ * [Violation Comments to GitHub Jenkins Plugin](https://github.com/tomasbjerre/violation-comments-to-github-jenkins-plugin).
  * [Violation Comments to GitHub Lib](https://github.com/tomasbjerre/violation-comments-to-github-lib).
  * [Violation Comments Lib](https://github.com/tomasbjerre/violation-comments-lib).
 
