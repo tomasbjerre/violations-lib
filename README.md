@@ -3,14 +3,15 @@
 This is a library for parsing report files from static code analysis.
 
 It supports:
- * [_PMD_](https://pmd.github.io/)
- * [_Findbugs_](http://findbugs.sourceforge.net/)
- * [_Flake8_](http://flake8.readthedocs.org/en/latest/) ([_PyLint_](https://www.pylint.org/), [_Pep8_](https://github.com/PyCQA/pycodestyle))
  * [_Checkstyle_](http://checkstyle.sourceforge.net/)
+ * [_CPPLint_](https://github.com/theandrewdavis/cpplint)
  * [_CPPCheck_](http://cppcheck.sourceforge.net/)
  * [_CSSLint_](https://github.com/CSSLint/csslint)
+ * [_Findbugs_](http://findbugs.sourceforge.net/)
+ * [_Flake8_](http://flake8.readthedocs.org/en/latest/) ([_PyLint_](https://www.pylint.org/), [_Pep8_](https://github.com/PyCQA/pycodestyle))
  * [_JSHint_](http://jshint.com/)
  * _Lint_ A common XML format, used by different linters.
+ * [_PMD_](https://pmd.github.io/)
  * [_Resharper_](https://www.jetbrains.com/resharper/)
 
 Very easy to use with a nice builder pattern

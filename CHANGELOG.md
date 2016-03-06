@@ -5,10 +5,15 @@ Changelog of Git Changelog.
 ## Unreleased
 ### GitHub [#1](https://github.com/tomasbjerre/violations-lib/issues/#1) 
 
-**PyLint parser**
+**Support CPPLint**
 
 
-[7a80f1f9db231de](https://github.com/tomasbjerre/git-changelog-lib/commit/7a80f1f9db231de) Tomas Bjerre *2016-03-06 08:15:44*
+[7b6ea9ed545ee7f](https://github.com/tomasbjerre/git-changelog-lib/commit/7b6ea9ed545ee7f) Tomas Bjerre *2016-03-06 12:22:35*
+
+**Flake8 (PyLint) and Lint parser**
+
+
+[bd02db749408fef](https://github.com/tomasbjerre/git-changelog-lib/commit/bd02db749408fef) Tomas Bjerre *2016-03-06 11:18:46*
 
 **Resharper support**
 

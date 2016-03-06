@@ -5,8 +5,10 @@ import static com.google.common.base.Optional.of;
 import static com.google.common.collect.Lists.newArrayList;
 import static java.lang.Integer.parseInt;
 import static java.util.regex.Pattern.DOTALL;
+import static java.util.regex.Pattern.quote;
 
 import java.io.File;
+import java.util.Arrays;
 import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -72,6 +74,30 @@ public abstract class ViolationsParser {
    return matcher.group(1);
   }
   throw new RuntimeException("\"" + tag + "\" not found in " + in);
+ }
+
+ public static List<String> getLines(String string) {
+  return Arrays.asList(string.split("\n"));
+ }
+
+ /**
+  * Match one regexp at a time. Remove the matched part from the string, trim,
+  * and match next regexp on that string...
+  */
+ public static List<String> getParts(String string, String... regexpList) {
+  List<String> parts = newArrayList();
+  for (String regexp : regexpList) {
+   Pattern pattern = Pattern.compile(regexp);
+   Matcher matcher = pattern.matcher(string);
+   boolean found = matcher.find();
+   if (!found) {
+    return newArrayList();
+   }
+   String part = matcher.group(1).trim();
+   parts.add(part);
+   string = string.replaceFirst(quote(matcher.group()), "").trim();
+  }
+  return parts;
  }
 
  /**
