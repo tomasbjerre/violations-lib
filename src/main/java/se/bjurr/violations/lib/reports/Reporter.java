@@ -12,7 +12,9 @@ import se.bjurr.violations.lib.parsers.CPPCheckParser;
 import se.bjurr.violations.lib.parsers.CSSLintParser;
 import se.bjurr.violations.lib.parsers.CheckStyleParser;
 import se.bjurr.violations.lib.parsers.FindbugsParser;
+import se.bjurr.violations.lib.parsers.Flake8Parser;
 import se.bjurr.violations.lib.parsers.JSHintParser;
+import se.bjurr.violations.lib.parsers.LintParser;
 import se.bjurr.violations.lib.parsers.PMDParser;
 import se.bjurr.violations.lib.parsers.ResharperParser;
 import se.bjurr.violations.lib.parsers.ViolationsParser;
@@ -20,11 +22,14 @@ import se.bjurr.violations.lib.parsers.ViolationsParser;
 public enum Reporter {
  CHECKSTYLE(new CheckStyleParser()), //
  CSSLINT(new CSSLintParser()), //
+ LINT(new LintParser()), //
  FINDBUGS(new FindbugsParser()), //
  JSHINT(new JSHintParser()), //
  PMD(new PMDParser()), //
  CPPCHECK(new CPPCheckParser()), //
- RESHARPER(new ResharperParser());
+ RESHARPER(new ResharperParser()), //
+ FLAKE8(new Flake8Parser())//
+ ;
 
  private static Logger LOG = Logger.getLogger(Reporter.class.getSimpleName());
  private ViolationsParser violationsParser;

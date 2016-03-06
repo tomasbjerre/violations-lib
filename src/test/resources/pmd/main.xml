@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<pmd version="5.2.3" timestamp="2016-03-04T18:09:24.205">
+<pmd version="5.2.3" timestamp="2016-03-06T12:06:59.291">
 <file name="/src/main/java/se/bjurr/violations/lib/example/MyClass.java">
 <violation beginline="9" endline="11" begincolumn="10" endcolumn="3" rule="EmptyIfStmt" ruleset="Empty Code" package="se.bjurr.violations.lib.example" class="MyClass" method="npe" externalInfoUrl="http://pmd.sourceforge.net/pmd-5.2.3/pmd-java/rules/java/empty.html#EmptyIfStmt" priority="3">
 Avoid empty if statements

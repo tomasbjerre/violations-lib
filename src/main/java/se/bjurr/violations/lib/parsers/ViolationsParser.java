@@ -74,6 +74,26 @@ public abstract class ViolationsParser {
   throw new RuntimeException("\"" + tag + "\" not found in " + in);
  }
 
+ /**
+  * @return List per line in String, with groups from regexpPerLine.
+  */
+ public static List<List<String>> getLines(String string, String regexpPerLine) {
+  List<List<String>> results = newArrayList();
+  Pattern pattern = Pattern.compile(regexpPerLine);
+  for (String line : string.split("\n")) {
+   Matcher matcher = pattern.matcher(line);
+   if (!matcher.find()) {
+    continue;
+   }
+   List<String> lineParts = newArrayList();
+   for (int g = 0; g <= matcher.groupCount(); g++) {
+    lineParts.add(matcher.group(g));
+   }
+   results.add(lineParts);
+  }
+  return results;
+ }
+
  public abstract List<Violation> parseFile(File file) throws Exception;
 
 }

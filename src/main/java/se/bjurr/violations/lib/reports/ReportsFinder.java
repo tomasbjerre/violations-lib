@@ -2,6 +2,7 @@ package se.bjurr.violations.lib.reports;
 
 import static com.google.common.base.Throwables.propagate;
 import static com.google.common.collect.Lists.newArrayList;
+import static com.google.common.collect.Ordering.natural;
 import static java.nio.file.Files.walkFileTree;
 import static java.util.regex.Pattern.matches;
 
@@ -32,7 +33,7 @@ public class ReportsFinder {
   } catch (IOException e) {
    propagate(e);
   }
-  return found;
+  return natural().sortedCopy(found);
  }
 
 }

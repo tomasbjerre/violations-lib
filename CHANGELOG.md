@@ -5,10 +5,15 @@ Changelog of Git Changelog.
 ## Unreleased
 ### GitHub [#1](https://github.com/tomasbjerre/violations-lib/issues/#1) 
 
+**PyLint parser**
+
+
+[7a80f1f9db231de](https://github.com/tomasbjerre/git-changelog-lib/commit/7a80f1f9db231de) Tomas Bjerre *2016-03-06 08:15:44*
+
 **Resharper support**
 
 
-[4b00706b1d9cbc4](https://github.com/tomasbjerre/git-changelog-lib/commit/4b00706b1d9cbc4) Tomas Bjerre *2016-03-05 21:14:33*
+[ac0f4eba53c400b](https://github.com/tomasbjerre/git-changelog-lib/commit/ac0f4eba53c400b) Tomas Bjerre *2016-03-05 21:16:24*
 
 **CPPCheck support**
 

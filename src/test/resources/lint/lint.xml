@@ -1,0 +1,3 @@
+<?xml version="1.0" encoding="utf-8"?><lint>
+<file name="/web/css-file2.css"><issue line="2" char="2" severity="warning" reason="Unknown property 'thisisnotarule'." evidence=" thisisnotarule: 1;"/><issue line="3" char="2" severity="warning" reason="Unknown property 'thisisalsonotarule'." evidence=" thisisalsonotarule: 1;"/></file>
+</lint>

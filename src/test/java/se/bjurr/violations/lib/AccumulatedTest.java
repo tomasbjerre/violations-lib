@@ -49,7 +49,7 @@ public class AccumulatedTest {
     .orderedBy(FILE)//
     .violations()//
     .get(0).getFile())//
-    .isEqualTo("../../../../../violations-test/web/js-file.js");
+    .isEqualTo("../../../web/js-file.js");
 
   assertThat(reverse(violationsAccumulatedReporterApi//
     .withAtLeastSeverity(INFO)//

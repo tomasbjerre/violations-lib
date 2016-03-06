@@ -1,0 +1,5 @@
+python/project/file.py:4:18: W291 trailing whitespace
+python/project/file.py:11:1: E302 expected 2 blank lines, found 1
+python/project/file.py:47:1: E302 expected 2 blank lines, found 1
+python/project/file.py:54:5: E122 continuation line missing indentation or outdented
+python/project/file.py:57:1: E302 expected 2 blank lines, found 1

@@ -54,8 +54,8 @@ public class ViolationsReporterApi {
   if (LOG.isDebugEnabled()) {
    LOG.debug("Found " + foundViolations.size() + " violations:");
    for (Violation v : foundViolations) {
-    LOG.debug(v.getReporter() + " (" + v.getRule() + ") " + v.getFile() + " " + v.getStartLine() + " -> "
-      + v.getEndLine());
+    LOG.debug(v.getReporter() + " " + v.getSeverity() + " (" + v.getRule().or("?") + ") " + v.getFile() + " "
+      + v.getStartLine() + " -> " + v.getEndLine());
    }
   }
   return foundViolations;
