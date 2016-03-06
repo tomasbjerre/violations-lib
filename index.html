@@ -35,26 +35,72 @@
 <a id="violations-lib--" class="anchor" href="#violations-lib--" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Violations Lib <a href="https://travis-ci.org/tomasbjerre/violations-lib"><img src="https://travis-ci.org/tomasbjerre/violations-lib.svg?branch=master" alt="Build Status"></a> <a href="https://maven-badges.herokuapp.com/maven-central/se.bjurr.violations/violations-lib"><img src="https://maven-badges.herokuapp.com/maven-central/se.bjurr.violations/violations-lib/badge.svg" alt="Maven Central"></a>
 </h1>
 
-<p>This is a library for parsing report files from static code analyzis.</p>
+<p>This is a library for parsing report files from static code analysis.</p>
 
 <p>It supports:</p>
 
 <ul>
-<li><a href="https://pmd.github.io/"><em>PMD</em></a></li>
-<li><a href="http://findbugs.sourceforge.net/"><em>Findbugs</em></a></li>
 <li><a href="http://checkstyle.sourceforge.net/"><em>Checkstyle</em></a></li>
+<li><a href="https://github.com/theandrewdavis/cpplint"><em>CPPLint</em></a></li>
+<li><a href="http://cppcheck.sourceforge.net/"><em>CPPCheck</em></a></li>
 <li><a href="https://github.com/CSSLint/csslint"><em>CSSLint</em></a></li>
+<li><a href="http://findbugs.sourceforge.net/"><em>Findbugs</em></a></li>
+<li>
+<a href="http://flake8.readthedocs.org/en/latest/"><em>Flake8</em></a> (<a href="https://www.pylint.org/"><em>PyLint</em></a>, <a href="https://github.com/PyCQA/pycodestyle"><em>Pep8</em></a>)</li>
 <li><a href="http://jshint.com/"><em>JSHint</em></a></li>
+<li>
+<em>Lint</em> A common XML format, used by different linters.</li>
+<li><a href="https://github.com/Perl-Critic"><em>PerlCritic</em></a></li>
+<li><a href="https://pmd.github.io/"><em>PMD</em></a></li>
+<li><a href="https://www.jetbrains.com/resharper/"><em>ReSharper</em></a></li>
+<li><a href="http://xmlsoft.org/xmllint.html"><em>XMLLint</em></a></li>
 </ul>
 
-<p>Very easy to use with a nice builder patternn</p>
+<p>Very easy to use with a nice builder pattern</p>
 
-<pre><code>  List&lt;Violation&gt; actual = violationsApi() //
+<pre><code>  List&lt;Violation&gt; violations = violationsReporterApi() //
     .withPattern(".*/findbugs/.*\\.xml$") //
     .inFolder(rootFolder) //
     .findAll(FINDBUGS) //
     .violations();
 </code></pre>
+
+<p>Or</p>
+
+<pre><code>  List&lt;Violation&gt; violations = violationsAccumulatedReporterApi() //
+    .withViolations( //
+      violationsReporterApi() //
+      .withPattern(".*/findbugs/.*\\.xml$") //
+      .inFolder(rootFolder) //
+      .findAll(FINDBUGS) //
+      .violations() //
+    ) //
+    .withViolations( //
+      violationsReporterApi() //
+      .withPattern(".*/pmd/.*\\.xml$") //
+      .inFolder(rootFolder) //
+      .findAll(PMD) //
+      .violations() //
+    ) //
+    .withAtLeastSeverity(ERROR)//
+    .orderedBy(FILE)//
+    .violations();
+</code></pre>
+
+<p>It is used by:</p>
+
+<ul>
+<li>
+<a href="https://github.com/tomasbjerre/violation-comments-to-github-gradle-plugin">Violation Comments to GitHub Gradle Plugin</a>.</li>
+<li>
+<a href="https://github.com/tomasbjerre/violation-comments-to-github-maven-plugin">Violation Comments to GitHub Maven Plugin</a>.</li>
+<li>
+<a href="https://github.com/tomasbjerre/violation-comments-to-github-jenkins-plugin">Violation Comments to GitHub Jenkins Plugin</a>.</li>
+<li>
+<a href="https://github.com/tomasbjerre/violation-comments-to-github-lib">Violation Comments to GitHub Lib</a>.</li>
+<li>
+<a href="https://github.com/tomasbjerre/violation-comments-lib">Violation Comments Lib</a>.</li>
+</ul>
 
 <h2>
 <a id="developer-instructions" class="anchor" href="#developer-instructions" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Developer instructions</h2>
