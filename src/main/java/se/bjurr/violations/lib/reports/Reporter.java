@@ -18,6 +18,7 @@ import se.bjurr.violations.lib.parsers.JSHintParser;
 import se.bjurr.violations.lib.parsers.LintParser;
 import se.bjurr.violations.lib.parsers.PMDParser;
 import se.bjurr.violations.lib.parsers.PerlCriticParser;
+import se.bjurr.violations.lib.parsers.PiTestParser;
 import se.bjurr.violations.lib.parsers.ResharperParser;
 import se.bjurr.violations.lib.parsers.ViolationsParser;
 import se.bjurr.violations.lib.parsers.XMLLintParser;
@@ -34,7 +35,8 @@ public enum Reporter {
  FLAKE8(new Flake8Parser()), //
  CPPLINT(new CppLintParser()), //
  XMLLINT(new XMLLintParser()), //
- PERLCRITIC(new PerlCriticParser());
+ PERLCRITIC(new PerlCriticParser()), //
+ PITEST(new PiTestParser());
 
  private static Logger LOG = Logger.getLogger(Reporter.class.getSimpleName());
  private ViolationsParser violationsParser;

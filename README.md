@@ -12,6 +12,7 @@ It supports:
  * [_JSHint_](http://jshint.com/)
  * _Lint_ A common XML format, used by different linters.
  * [_PerlCritic_](https://github.com/Perl-Critic)
+ * [_PiTest_](http://pitest.org/)
  * [_PMD_](https://pmd.github.io/)
  * [_ReSharper_](https://www.jetbrains.com/resharper/)
  * [_XMLLint_](http://xmlsoft.org/xmllint.html)

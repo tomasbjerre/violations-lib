@@ -3,12 +3,29 @@
 Changelog of Git Changelog.
 
 ## Unreleased
+### GitHub [#5](https://github.com/tomasbjerre/violations-lib/issues/5) 
+
+**Adding pitest parser**
+
+
+[d92f4e82fc3f4d6](https://github.com/tomasbjerre/git-changelog-lib/commit/d92f4e82fc3f4d6) Tomas Bjerre *2016-03-26 19:20:29*
+
+
+### No issue
+
+**Adding Jenkins plugin link to README.md**
+
+
+[eb90c644065c9b6](https://github.com/tomasbjerre/git-changelog-lib/commit/eb90c644065c9b6) Tomas Bjerre *2016-03-06 20:20:42*
+
+
+## 1.5
 ### GitHub [#3](https://github.com/tomasbjerre/violations-lib/issues/3) 
 
 **Support PerlCritic and XMLLint**
 
 
-[c3677c738317827](https://github.com/tomasbjerre/git-changelog-lib/commit/c3677c738317827) Tomas Bjerre *2016-03-06 13:39:48*
+[b7c4ea0c66a4c69](https://github.com/tomasbjerre/git-changelog-lib/commit/b7c4ea0c66a4c69) Tomas Bjerre *2016-03-06 13:45:16*
 
 **Support CPPLint**
 

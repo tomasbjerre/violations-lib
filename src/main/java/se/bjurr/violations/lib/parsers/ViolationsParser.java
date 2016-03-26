@@ -76,6 +76,11 @@ public abstract class ViolationsParser {
   throw new RuntimeException("\"" + tag + "\" not found in " + in);
  }
 
+ public static Integer getIntegerContent(String in, String tag) {
+  String content = getContent(in, tag);
+  return parseInt(content);
+ }
+
  public static List<String> getLines(String string) {
   return Arrays.asList(string.split("\n"));
  }
