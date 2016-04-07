@@ -8,10 +8,29 @@ Changelog of Git Changelog.
 **Adding pitest parser**
 
 
-[d92f4e82fc3f4d6](https://github.com/tomasbjerre/git-changelog-lib/commit/d92f4e82fc3f4d6) Tomas Bjerre *2016-03-26 19:20:29*
+[eeb2a624a99a7ff](https://github.com/tomasbjerre/git-changelog-lib/commit/eeb2a624a99a7ff) Tomas Bjerre *2016-03-26 19:22:06*
+
+
+### GitHub [#7](https://github.com/tomasbjerre/violations-lib/issues/7) 
+
+**Correcting exception message thrown if attribute not found**
+
+ * XMLStreamReader does not have its own implementation of toString. 
+
+[d3e3260e49072d9](https://github.com/tomasbjerre/git-changelog-lib/commit/d3e3260e49072d9) Tomas Bjerre *2016-04-07 16:23:24*
 
 
 ### No issue
+
+**FindBugsParser is using string matching to try to parse XML, which is**
+
+ * failing because SourceLine elements may, or may not self-terminate. 
+ * Convert to use a StAX parser, which is likely more performant since it 
+ * does not need to construct regexes and lists to store the results in, but 
+ * instead will do a forwards-only stream read. 
+ * Signed-off-by: Nigel Magnay &lt;nigel.magnay@gmail.com&gt; 
+
+[c6679a504380bcd](https://github.com/tomasbjerre/git-changelog-lib/commit/c6679a504380bcd) Nigel Magnay *2016-04-07 15:41:56*
 
 **Adding Jenkins plugin link to README.md**
 

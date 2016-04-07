@@ -2,22 +2,28 @@ package se.bjurr.violations.lib.parsers;
 
 import static com.google.common.base.Optional.absent;
 import static com.google.common.base.Optional.of;
+import static com.google.common.base.Throwables.propagate;
 import static com.google.common.collect.Lists.newArrayList;
 import static java.lang.Integer.parseInt;
 import static java.util.regex.Pattern.DOTALL;
 import static java.util.regex.Pattern.quote;
 
 import java.io.File;
+import java.io.StringWriter;
 import java.util.Arrays;
 import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
+import javax.xml.stream.XMLStreamReader;
+import javax.xml.transform.Transformer;
+import javax.xml.transform.TransformerFactory;
+import javax.xml.transform.stax.StAXSource;
+import javax.xml.transform.stream.StreamResult;
+
 import se.bjurr.violations.lib.model.Violation;
 
 import com.google.common.base.Optional;
-
-import javax.xml.stream.XMLStreamReader;
 
 public abstract class ViolationsParser {
 
@@ -53,8 +59,13 @@ public abstract class ViolationsParser {
 
  public static String getAttribute(XMLStreamReader in, String attribute) {
   String foundOpt = in.getAttributeValue("", attribute);
-  if( foundOpt == null)
-   throw new RuntimeException("\"" + attribute + "\" not found in \"" + in + "\"");
+  if (foundOpt == null) {
+   try {
+    throw new RuntimeException("\"" + attribute + "\" not found in:\n" + asString(in));
+   } catch (Exception e) {
+    propagate(e);
+   }
+  }
   return foundOpt;
  }
 
@@ -66,11 +77,12 @@ public abstract class ViolationsParser {
  }
 
  public static Optional<Integer> findIntegerAttribute(XMLStreamReader in, String attribute) {
-  String attr = in.getAttributeValue("",attribute);
-  if( attr == null )
+  String attr = in.getAttributeValue("", attribute);
+  if (attr == null) {
    return Optional.absent();
-  else
-   return Optional.of( Integer.parseInt(attr) );
+  } else {
+   return Optional.of(Integer.parseInt(attr));
+  }
  }
 
  public static List<String> getChunks(String in, String includingStart, String includingEnd) {
@@ -144,6 +156,13 @@ public abstract class ViolationsParser {
    results.add(lineParts);
   }
   return results;
+ }
+
+ private static String asString(XMLStreamReader xmlr) throws Exception {
+  Transformer transformer = TransformerFactory.newInstance().newTransformer();
+  StringWriter stringWriter = new StringWriter();
+  transformer.transform(new StAXSource(xmlr), new StreamResult(stringWriter));
+  return stringWriter.toString();
  }
 
  public abstract List<Violation> parseFile(File file) throws Exception;
