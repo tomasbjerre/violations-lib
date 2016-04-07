@@ -19,7 +19,10 @@ import se.bjurr.violations.lib.model.Violation;
 import com.google.common.io.Files;
 
 /**
- * PyLint. Format used by Flake8.
+ * PyLint. Format used by Flake8.<br>
+ * <code>
+ * msg-template='{path}:{line}:{column} [{msg_id}] {msg}'
+ * </code>
  */
 public class Flake8Parser extends ViolationsParser {
 

@@ -17,6 +17,8 @@ It supports:
  * [_ReSharper_](https://www.jetbrains.com/resharper/)
  * [_XMLLint_](http://xmlsoft.org/xmllint.html)
 
+Example reports are available [in the test resources](https://github.com/tomasbjerre/violations-lib/tree/master/src/test/resources), examples of how to generate them are available [here](https://github.com/tomasbjerre/violations-test/blob/master/build.sh).
+
 Very easy to use with a nice builder pattern
 ```
   List<Violation> violations = violationsReporterApi() //

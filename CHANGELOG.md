@@ -2,7 +2,7 @@
 
 Changelog of Git Changelog.
 
-## Unreleased
+## 1.6
 ### GitHub [#5](https://github.com/tomasbjerre/violations-lib/issues/5) 
 
 **Adding pitest parser**
@@ -17,7 +17,7 @@ Changelog of Git Changelog.
 
  * XMLStreamReader does not have its own implementation of toString. 
 
-[d3e3260e49072d9](https://github.com/tomasbjerre/git-changelog-lib/commit/d3e3260e49072d9) Tomas Bjerre *2016-04-07 16:23:24*
+[53719338add95a3](https://github.com/tomasbjerre/git-changelog-lib/commit/53719338add95a3) Tomas Bjerre *2016-04-07 16:24:14*
 
 
 ### No issue
