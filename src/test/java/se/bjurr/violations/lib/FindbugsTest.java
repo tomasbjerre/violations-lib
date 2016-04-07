@@ -67,4 +67,17 @@ public class FindbugsTest {
   assertThat(actual.get(0).getSpecifics().get(FINDBUGS_SPECIFIC_RANK))//
     .isEqualTo("7");
  }
+
+ @Test
+ public void testMavenGeneratedFindbugs() {
+  String rootFolder = getRootFolder();
+  List<Violation> maven = violationsReporterApi() //
+          .withPattern(".*/findbugs/fromMaven.xml$") //
+          .inFolder(rootFolder) //
+          .findAll(FINDBUGS) //
+          .violations();
+
+  assertThat(maven)//
+          .hasSize(1);
+ }
 }

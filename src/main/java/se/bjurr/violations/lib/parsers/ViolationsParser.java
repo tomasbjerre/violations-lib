@@ -17,6 +17,8 @@ import se.bjurr.violations.lib.model.Violation;
 
 import com.google.common.base.Optional;
 
+import javax.xml.stream.XMLStreamReader;
+
 public abstract class ViolationsParser {
 
  public static Optional<String> findAttribute(String in, String attribute) {
@@ -37,6 +39,10 @@ public abstract class ViolationsParser {
   return parseInt(getAttribute(in, attribute));
  }
 
+ public static Integer getIntegerAttribute(XMLStreamReader in, String attribute) {
+  return parseInt(getAttribute(in, attribute));
+ }
+
  public static String getAttribute(String in, String attribute) {
   Optional<String> foundOpt = findAttribute(in, attribute);
   if (foundOpt.isPresent()) {
@@ -45,11 +51,26 @@ public abstract class ViolationsParser {
   throw new RuntimeException("\"" + attribute + "\" not found in \"" + in + "\"");
  }
 
+ public static String getAttribute(XMLStreamReader in, String attribute) {
+  String foundOpt = in.getAttributeValue("", attribute);
+  if( foundOpt == null)
+   throw new RuntimeException("\"" + attribute + "\" not found in \"" + in + "\"");
+  return foundOpt;
+ }
+
  public static Optional<Integer> findIntegerAttribute(String in, String attribute) {
   if (findAttribute(in, attribute).isPresent()) {
    return of(parseInt(getAttribute(in, attribute)));
   }
   return absent();
+ }
+
+ public static Optional<Integer> findIntegerAttribute(XMLStreamReader in, String attribute) {
+  String attr = in.getAttributeValue("",attribute);
+  if( attr == null )
+   return Optional.absent();
+  else
+   return Optional.of( Integer.parseInt(attr) );
  }
 
  public static List<String> getChunks(String in, String includingStart, String includingEnd) {
