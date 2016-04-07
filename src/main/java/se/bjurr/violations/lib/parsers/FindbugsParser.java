@@ -10,7 +10,9 @@ import static se.bjurr.violations.lib.model.Violation.violationBuilder;
 import static se.bjurr.violations.lib.reports.Reporter.FINDBUGS;
 
 import java.io.File;
+import java.io.FileInputStream;
 import java.io.IOException;
+import java.io.InputStream;
 import java.util.List;
 import java.util.Map;
 
@@ -20,6 +22,11 @@ import se.bjurr.violations.lib.model.Violation;
 import com.google.common.base.Optional;
 import com.google.common.io.Files;
 import com.google.common.io.Resources;
+
+import javax.xml.stream.XMLInputFactory;
+import javax.xml.stream.XMLStreamException;
+import javax.xml.stream.XMLStreamReader;
+import javax.xml.stream.events.XMLEvent;
 
 public class FindbugsParser extends ViolationsParser {
 
@@ -37,41 +44,69 @@ public class FindbugsParser extends ViolationsParser {
  public List<Violation> parseFile(File file) throws Exception {
   List<Violation> violations = newArrayList();
   Map<String, String> messagesPerType = getMessagesPerType();
-  String string = Files.toString(file, UTF_8);
-  List<String> bugInstances = getChunks(string, "<BugInstance", "</BugInstance>");
-  for (String bugInstanceChunk : bugInstances) {
-   String type = getAttribute(bugInstanceChunk, "type");
-   Integer rank = getIntegerAttribute(bugInstanceChunk, "rank");
+
+  try(InputStream input = new FileInputStream(file)) {
+
+   XMLInputFactory factory = XMLInputFactory.newInstance();
+   XMLStreamReader xmlr = factory.createXMLStreamReader(input);
+
+   while (xmlr.hasNext()) {
+    int eventType = xmlr.next();
+    if (eventType == XMLEvent.START_ELEMENT) {
+     if (xmlr.getLocalName().equals("BugInstance")) {
+      parseBugInstance(xmlr, violations, messagesPerType);
+     }
+    }
+   }
+  }
+  return violations;
+ }
+
+ private void parseBugInstance(XMLStreamReader xmlr, List<Violation> violations, Map<String, String> messagesPerType) throws XMLStreamException {
+   String type = getAttribute(xmlr,"type");
+   Integer rank = getIntegerAttribute(xmlr,"rank");
    String message = messagesPerType.get(type);
    if (message == null) {
     message = type;
    }
    SEVERITY severity = toSeverity(rank);
 
-   List<String> sourceLineChunks = getChunks(bugInstanceChunk, "<SourceLine", "/>");
-   List<Violation> candidates = newArrayList();
-   for (String sourceLineChunk : sourceLineChunks) {
-    Optional<Integer> startLine = findIntegerAttribute(sourceLineChunk, "start");
-    Optional<Integer> endLine = findIntegerAttribute(sourceLineChunk, "end");
-    if (!startLine.isPresent() || !endLine.isPresent()) {
-     continue;
+  List<Violation> candidates = newArrayList();
+
+  while(xmlr.hasNext()) {
+   int eventType = xmlr.next();
+   if( eventType == XMLEvent.START_ELEMENT) {
+    if( xmlr.getLocalName().equals("SourceLine")) {
+     Optional<Integer> startLine = findIntegerAttribute(xmlr, "start");
+     Optional<Integer> endLine = findIntegerAttribute(xmlr, "end");
+     if (!startLine.isPresent() || !endLine.isPresent()) {
+      continue;
+     }
+     String filename = getAttribute(xmlr, "sourcepath");
+     String classname = getAttribute(xmlr, "classname");
+     candidates.add(//
+             violationBuilder()//
+                     .setReporter(FINDBUGS)//
+                     .setMessage(message)//
+                     .setFile(filename)//
+                     .setStartLine(startLine.get())//
+                     .setEndLine(endLine.get())//
+                     .setRule(type)//
+                     .setSeverity(severity)//
+                     .setSource(classname)//
+                     .setSpecific(FINDBUGS_SPECIFIC_RANK, rank)//
+                     .build()//
+     );
     }
-    String filename = getAttribute(sourceLineChunk, "sourcepath");
-    String classname = getAttribute(sourceLineChunk, "classname");
-    candidates.add(//
-      violationBuilder()//
-        .setReporter(FINDBUGS)//
-        .setMessage(message)//
-        .setFile(filename)//
-        .setStartLine(startLine.get())//
-        .setEndLine(endLine.get())//
-        .setRule(type)//
-        .setSeverity(severity)//
-        .setSource(classname)//
-        .setSpecific(FINDBUGS_SPECIFIC_RANK, rank)//
-        .build()//
-      );
    }
+   if( eventType == XMLEvent.END_ELEMENT) {
+    if( xmlr.getLocalName().equals("BugInstance") ) {
+     // End of the bug instance.
+     break;
+    }
+   }
+  }
+
    if (!candidates.isEmpty()) {
     /**
      * Last one is the most specific, first 2 may be class and method when the
@@ -79,8 +114,7 @@ public class FindbugsParser extends ViolationsParser {
      */
     violations.add(candidates.get(candidates.size() - 1));
    }
-  }
-  return violations;
+
  }
 
  /**
