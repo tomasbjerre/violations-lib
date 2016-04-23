@@ -2,6 +2,29 @@
 
 Changelog of Git Changelog.
 
+## Unreleased
+### No issue
+
+**Doc**
+
+
+[049609560b124e9](https://github.com/tomasbjerre/git-changelog-lib/commit/049609560b124e9) Tomas Bjerre *2016-04-23 17:08:15*
+
+
+## 1.7
+### No issue
+
+**Making Violation class serializable**
+
+
+[408ea213a51516c](https://github.com/tomasbjerre/git-changelog-lib/commit/408ea213a51516c) Tomas Bjerre *2016-04-23 17:06:14*
+
+**Updating docs**
+
+
+[30e7ac53b0b7efd](https://github.com/tomasbjerre/git-changelog-lib/commit/30e7ac53b0b7efd) Tomas Bjerre *2016-04-07 16:39:05*
+
+
 ## 1.6
 ### GitHub [#5](https://github.com/tomasbjerre/violations-lib/issues/5) 
 
