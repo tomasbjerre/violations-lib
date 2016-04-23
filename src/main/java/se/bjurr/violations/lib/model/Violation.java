@@ -8,6 +8,7 @@ import static com.google.common.base.Strings.emptyToNull;
 import static com.google.common.collect.Iterables.transform;
 import static com.google.common.collect.Maps.newHashMap;
 
+import java.io.Serializable;
 import java.util.Map;
 import java.util.Map.Entry;
 
@@ -16,7 +17,9 @@ import se.bjurr.violations.lib.reports.Reporter;
 import com.google.common.base.Function;
 import com.google.common.base.Optional;
 
-public class Violation {
+public class Violation implements Serializable {
+ private static final long serialVersionUID = -6052921679385466168L;
+
  public static ViolationBuilder violationBuilder() {
   return new ViolationBuilder();
  }
