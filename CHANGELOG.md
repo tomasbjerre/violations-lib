@@ -5,10 +5,21 @@ Changelog of Git Changelog.
 ## Unreleased
 ### No issue
 
+**Updating README.md**
+
+ * And formatting code after merge of PR. 
+
+[a8bef0a533ffc34](https://github.com/tomasbjerre/git-changelog-lib/commit/a8bef0a533ffc34) Tomas Bjerre *2016-04-27 05:33:29*
+
+**Add Android Lint parser**
+
+
+[05a11ed65560142](https://github.com/tomasbjerre/git-changelog-lib/commit/05a11ed65560142) panpanini *2016-04-27 04:38:50*
+
 **Doc**
 
 
-[049609560b124e9](https://github.com/tomasbjerre/git-changelog-lib/commit/049609560b124e9) Tomas Bjerre *2016-04-23 17:08:15*
+[8a3d860da48c56d](https://github.com/tomasbjerre/git-changelog-lib/commit/8a3d860da48c56d) Tomas Bjerre *2016-04-23 17:08:41*
 
 
 ## 1.7
