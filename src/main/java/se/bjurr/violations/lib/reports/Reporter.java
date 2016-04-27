@@ -8,20 +8,7 @@ import java.util.List;
 import java.util.logging.Logger;
 
 import se.bjurr.violations.lib.model.Violation;
-import se.bjurr.violations.lib.parsers.CPPCheckParser;
-import se.bjurr.violations.lib.parsers.CSSLintParser;
-import se.bjurr.violations.lib.parsers.CheckStyleParser;
-import se.bjurr.violations.lib.parsers.CppLintParser;
-import se.bjurr.violations.lib.parsers.FindbugsParser;
-import se.bjurr.violations.lib.parsers.Flake8Parser;
-import se.bjurr.violations.lib.parsers.JSHintParser;
-import se.bjurr.violations.lib.parsers.LintParser;
-import se.bjurr.violations.lib.parsers.PMDParser;
-import se.bjurr.violations.lib.parsers.PerlCriticParser;
-import se.bjurr.violations.lib.parsers.PiTestParser;
-import se.bjurr.violations.lib.parsers.ResharperParser;
-import se.bjurr.violations.lib.parsers.ViolationsParser;
-import se.bjurr.violations.lib.parsers.XMLLintParser;
+import se.bjurr.violations.lib.parsers.*;
 
 public enum Reporter {
  CHECKSTYLE(new CheckStyleParser()), //
@@ -36,7 +23,8 @@ public enum Reporter {
  CPPLINT(new CppLintParser()), //
  XMLLINT(new XMLLintParser()), //
  PERLCRITIC(new PerlCriticParser()), //
- PITEST(new PiTestParser());
+ PITEST(new PiTestParser()), //
+ ANDROIDLINT(new AndroidLintParser());
 
  private static Logger LOG = Logger.getLogger(Reporter.class.getSimpleName());
  private ViolationsParser violationsParser;
