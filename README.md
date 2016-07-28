@@ -55,8 +55,10 @@ Or
 It is used by:
  * [Violation Comments to GitHub Gradle Plugin](https://github.com/tomasbjerre/violation-comments-to-github-gradle-plugin).
  * [Violation Comments to GitHub Maven Plugin](https://github.com/tomasbjerre/violation-comments-to-github-maven-plugin).
- * [Violation Comments to GitHub Jenkins Plugin](https://github.com/tomasbjerre/violation-comments-to-github-jenkins-plugin).
+ * [Violation Comments to GitHub Jenkins Plugin](https://github.com/jenkinsci/violation-comments-to-github-plugin).
  * [Violation Comments to GitHub Lib](https://github.com/tomasbjerre/violation-comments-to-github-lib).
+ * [Violation Comments to Bitbucket Server Jenkins Plugin](https://github.com/jenkinsci/violation-comments-to-stash-plugin).
+ * [Violation Comments to Bitbucket Server Lib](https://github.com/tomasbjerre/violation-comments-to-bitbucket-server-lib).
  * [Violation Comments Lib](https://github.com/tomasbjerre/violation-comments-lib).
 
 ## Developer instructions
