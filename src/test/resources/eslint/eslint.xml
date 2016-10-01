@@ -1,0 +1,1 @@
+<?xml version="1.0" encoding="utf-8"?><checkstyle version="4.3"><file name="/home/bjerre/workspace/violations-test/web/js-file.js"><error line="10" column="1" severity="warning" message="Unexpected alert. (no-alert)" source="eslint.rules.no-alert" /></file><file name="/home/bjerre/workspace/violations-test/web/js-file2.js"></file></checkstyle>
