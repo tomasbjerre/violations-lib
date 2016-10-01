@@ -22,6 +22,7 @@ import se.bjurr.violations.lib.parsers.PMDParser;
 import se.bjurr.violations.lib.parsers.PerlCriticParser;
 import se.bjurr.violations.lib.parsers.PiTestParser;
 import se.bjurr.violations.lib.parsers.ResharperParser;
+import se.bjurr.violations.lib.parsers.StyleCopParser;
 import se.bjurr.violations.lib.parsers.ViolationsParser;
 import se.bjurr.violations.lib.parsers.XMLLintParser;
 
@@ -40,6 +41,7 @@ public enum Reporter {
  PITEST(new PiTestParser()), //
  PMD(new PMDParser()), //
  RESHARPER(new ResharperParser()), //
+ STYLECOP(new StyleCopParser()), //
  XMLLINT(new XMLLintParser());
 
  private static Logger LOG = Logger.getLogger(Reporter.class.getSimpleName());

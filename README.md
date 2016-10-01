@@ -17,6 +17,7 @@ It supports:
  * [_PiTest_](http://pitest.org/)
  * [_PMD_](https://pmd.github.io/)
  * [_ReSharper_](https://www.jetbrains.com/resharper/)
+ * [_StyleCop_](https://stylecop.codeplex.com/) Not fully supported. Cannot figure out how to get the filename from the reportfile.
  * [_XMLLint_](http://xmlsoft.org/xmllint.html)
 
 Example reports are available [in the test resources](https://github.com/tomasbjerre/violations-lib/tree/master/src/test/resources), examples of how to generate them are available [here](https://github.com/tomasbjerre/violations-test/blob/master/build.sh).

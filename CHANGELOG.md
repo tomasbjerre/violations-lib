@@ -5,11 +5,36 @@ Changelog of Git Changelog.
 ## Unreleased
 ### No issue
 
+**Preliminary support for StyleCop**
+
+
+[82b0da58252b97e](https://github.com/tomasbjerre/git-changelog-lib/commit/82b0da58252b97e) Tomas Bjerre *2016-10-01 10:22:55*
+
+**Support for FxCop**
+
+
+[ac5a58c002f8c97](https://github.com/tomasbjerre/git-changelog-lib/commit/ac5a58c002f8c97) Tomas Bjerre *2016-10-01 09:55:19*
+
+**Refactoring, adding ViolationsParser interface**
+
+ * Also preparing for FxCop. 
+
+[adef3f6ed9c6cfc](https://github.com/tomasbjerre/git-changelog-lib/commit/adef3f6ed9c6cfc) Tomas Bjerre *2016-10-01 08:38:19*
+
+**doc**
+
+
+[4f54260b7b47e96](https://github.com/tomasbjerre/git-changelog-lib/commit/4f54260b7b47e96) Tomas Bjerre *2016-07-28 20:22:22*
+
+
+## 1.8
+### No issue
+
 **Updating README.md**
 
  * And formatting code after merge of PR. 
 
-[a8bef0a533ffc34](https://github.com/tomasbjerre/git-changelog-lib/commit/a8bef0a533ffc34) Tomas Bjerre *2016-04-27 05:33:29*
+[34cc693dfcc7bad](https://github.com/tomasbjerre/git-changelog-lib/commit/34cc693dfcc7bad) Tomas Bjerre *2016-04-27 05:34:51*
 
 **Add Android Lint parser**
 
