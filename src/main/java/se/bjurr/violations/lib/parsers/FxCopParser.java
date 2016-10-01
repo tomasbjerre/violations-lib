@@ -1,10 +1,24 @@
 package se.bjurr.violations.lib.parsers;
 
 import static com.google.common.collect.Lists.newArrayList;
+import static javax.xml.stream.XMLStreamConstants.START_ELEMENT;
+import static se.bjurr.violations.lib.model.SEVERITY.ERROR;
+import static se.bjurr.violations.lib.model.SEVERITY.INFO;
+import static se.bjurr.violations.lib.model.SEVERITY.WARN;
+import static se.bjurr.violations.lib.model.Violation.violationBuilder;
+import static se.bjurr.violations.lib.parsers.ViolationParserUtils.getAttribute;
+import static se.bjurr.violations.lib.parsers.ViolationParserUtils.getIntegerAttribute;
+import static se.bjurr.violations.lib.reports.Reporter.FXCOP;
 
 import java.io.File;
+import java.io.FileInputStream;
+import java.io.InputStream;
 import java.util.List;
 
+import javax.xml.stream.XMLInputFactory;
+import javax.xml.stream.XMLStreamReader;
+
+import se.bjurr.violations.lib.model.SEVERITY;
 import se.bjurr.violations.lib.model.Violation;
 
 public class FxCopParser implements ViolationsParser {
@@ -12,6 +26,65 @@ public class FxCopParser implements ViolationsParser {
  @Override
  public List<Violation> parseFile(File file) throws Exception {
   List<Violation> violations = newArrayList();
+
+  try (InputStream input = new FileInputStream(file)) {
+
+   XMLInputFactory factory = XMLInputFactory.newInstance();
+   XMLStreamReader xmlr = factory.createXMLStreamReader(input);
+
+   String targetName = null;
+   String typeName = null;
+   String classname = null;
+   while (xmlr.hasNext()) {
+    int eventType = xmlr.next();
+    if (eventType == START_ELEMENT) {
+     if (xmlr.getLocalName().equals("Target")) {
+      targetName = getAttribute(xmlr, "Name").replaceAll("\\\\", "/");
+     }
+     if (xmlr.getLocalName().equals("Message")) {
+      typeName = getAttribute(xmlr, "TypeName");
+     }
+     if (xmlr.getLocalName().equals("Type")) {
+      classname = getAttribute(xmlr, "Name");
+     }
+     if (xmlr.getLocalName().equals("Issue")) {
+      String level = getAttribute(xmlr, "Level");
+      String path = getAttribute(xmlr, "Path");
+      String fileName = getAttribute(xmlr, "File");
+      Integer line = getIntegerAttribute(xmlr, "Line");
+      String message = xmlr.getElementText().replaceAll("\\s+", " ");
+
+      String filename = path + "/" + fileName;
+      SEVERITY severity = toSeverity(level);
+      violations.add(//
+        violationBuilder()//
+          .setReporter(FXCOP)//
+          .setMessage(message)//
+          .setFile(filename)//
+          .setStartLine(line)//
+          .setRule(typeName)//
+          .setSeverity(severity)//
+          .setSource(classname)//
+          .setSpecific("TARGET_NAME", targetName)//
+          .build()//
+      );
+     }
+    }
+   }
+  }
   return violations;
+ }
+
+ private SEVERITY toSeverity(String issueLevel) {
+  if (issueLevel.contains("CriticalError")) {
+   return ERROR;
+  } else if (issueLevel.contains("Error")) {
+   return ERROR;
+  } else if (issueLevel.contains("CriticalWarning")) {
+   return WARN;
+  } else if (issueLevel.contains("Warning")) {
+   return WARN;
+  }
+  return INFO;
  }
 }

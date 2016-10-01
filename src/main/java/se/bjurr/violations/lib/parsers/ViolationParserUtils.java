@@ -23,6 +23,13 @@ import javax.xml.transform.stream.StreamResult;
 import com.google.common.base.Optional;
 
 public final class ViolationParserUtils {
+ public static String asString(XMLStreamReader xmlr) throws Exception {
+  Transformer transformer = TransformerFactory.newInstance().newTransformer();
+  StringWriter stringWriter = new StringWriter();
+  transformer.transform(new StAXSource(xmlr), new StreamResult(stringWriter));
+  return stringWriter.toString();
+ }
+
  public static Optional<String> findAttribute(String in, String attribute) {
   Pattern pattern = Pattern.compile(attribute + "='([^']+?)'");
   Matcher matcher = pattern.matcher(in);
@@ -152,13 +159,6 @@ public final class ViolationParserUtils {
    string = string.replaceFirst(quote(matcher.group()), "").trim();
   }
   return parts;
- }
-
- private static String asString(XMLStreamReader xmlr) throws Exception {
-  Transformer transformer = TransformerFactory.newInstance().newTransformer();
-  StringWriter stringWriter = new StringWriter();
-  transformer.transform(new StAXSource(xmlr), new StreamResult(stringWriter));
-  return stringWriter.toString();
  }
 
  private ViolationParserUtils() {
