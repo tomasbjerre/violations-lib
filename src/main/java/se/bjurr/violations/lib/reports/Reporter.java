@@ -15,6 +15,7 @@ import se.bjurr.violations.lib.parsers.CheckStyleParser;
 import se.bjurr.violations.lib.parsers.CppLintParser;
 import se.bjurr.violations.lib.parsers.FindbugsParser;
 import se.bjurr.violations.lib.parsers.Flake8Parser;
+import se.bjurr.violations.lib.parsers.FxCopParser;
 import se.bjurr.violations.lib.parsers.JSHintParser;
 import se.bjurr.violations.lib.parsers.LintParser;
 import se.bjurr.violations.lib.parsers.PMDParser;
@@ -25,20 +26,21 @@ import se.bjurr.violations.lib.parsers.ViolationsParser;
 import se.bjurr.violations.lib.parsers.XMLLintParser;
 
 public enum Reporter {
+ ANDROIDLINT(new AndroidLintParser()), //
  CHECKSTYLE(new CheckStyleParser()), //
- CSSLINT(new CSSLintParser()), //
- LINT(new LintParser()), //
- FINDBUGS(new FindbugsParser()), //
- JSHINT(new JSHintParser()), //
- PMD(new PMDParser()), //
  CPPCHECK(new CPPCheckParser()), //
- RESHARPER(new ResharperParser()), //
- FLAKE8(new Flake8Parser()), //
  CPPLINT(new CppLintParser()), //
- XMLLINT(new XMLLintParser()), //
+ CSSLINT(new CSSLintParser()), //
+ FINDBUGS(new FindbugsParser()), //
+ FLAKE8(new Flake8Parser()), //
+ FXCOP(new FxCopParser()), //
+ JSHINT(new JSHintParser()), //
+ LINT(new LintParser()), //
  PERLCRITIC(new PerlCriticParser()), //
  PITEST(new PiTestParser()), //
- ANDROIDLINT(new AndroidLintParser());
+ PMD(new PMDParser()), //
+ RESHARPER(new ResharperParser()), //
+ XMLLINT(new XMLLintParser());
 
  private static Logger LOG = Logger.getLogger(Reporter.class.getSimpleName());
  private ViolationsParser violationsParser;
@@ -51,7 +53,7 @@ public enum Reporter {
   List<Violation> violations = newArrayList();
   for (File file : includedFiles) {
    try {
-    violations.addAll(violationsParser.parseFile(file));
+    violations.addAll(this.violationsParser.parseFile(file));
    } catch (Exception e) {
     LOG.log(SEVERE, "Error when parsing " + file.getAbsolutePath() + " as " + this.name(), e);
    }

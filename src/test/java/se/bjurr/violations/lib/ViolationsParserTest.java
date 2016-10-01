@@ -2,8 +2,8 @@ package se.bjurr.violations.lib;
 
 import static com.google.common.collect.Lists.newArrayList;
 import static org.assertj.core.api.Assertions.assertThat;
-import static se.bjurr.violations.lib.parsers.ViolationsParser.getAttribute;
-import static se.bjurr.violations.lib.parsers.ViolationsParser.getChunks;
+import static se.bjurr.violations.lib.parsers.ViolationParserUtils.getAttribute;
+import static se.bjurr.violations.lib.parsers.ViolationParserUtils.getChunks;
 
 import org.junit.Test;
 

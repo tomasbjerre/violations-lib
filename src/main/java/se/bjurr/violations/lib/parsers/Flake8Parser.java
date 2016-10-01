@@ -8,6 +8,7 @@ import static se.bjurr.violations.lib.model.SEVERITY.ERROR;
 import static se.bjurr.violations.lib.model.SEVERITY.INFO;
 import static se.bjurr.violations.lib.model.SEVERITY.WARN;
 import static se.bjurr.violations.lib.model.Violation.violationBuilder;
+import static se.bjurr.violations.lib.parsers.ViolationParserUtils.getLines;
 import static se.bjurr.violations.lib.reports.Reporter.FLAKE8;
 
 import java.io.File;
@@ -24,7 +25,7 @@ import com.google.common.io.Files;
  * msg-template='{path}:{line}:{column} [{msg_id}] {msg}'
  * </code>
  */
-public class Flake8Parser extends ViolationsParser {
+public class Flake8Parser implements ViolationsParser {
 
  @Override
  public List<Violation> parseFile(File file) throws Exception {

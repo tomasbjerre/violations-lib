@@ -7,6 +7,11 @@ import static se.bjurr.violations.lib.model.SEVERITY.ERROR;
 import static se.bjurr.violations.lib.model.SEVERITY.INFO;
 import static se.bjurr.violations.lib.model.SEVERITY.WARN;
 import static se.bjurr.violations.lib.model.Violation.violationBuilder;
+/**
+ * PyLint. Format used by Flake8.
+ */
+import static se.bjurr.violations.lib.parsers.ViolationParserUtils.getLines;
+import static se.bjurr.violations.lib.parsers.ViolationParserUtils.getParts;
 import static se.bjurr.violations.lib.reports.Reporter.CPPLINT;
 
 import java.io.File;
@@ -17,10 +22,7 @@ import se.bjurr.violations.lib.model.Violation;
 
 import com.google.common.io.Files;
 
-/**
- * PyLint. Format used by Flake8.
- */
-public class CppLintParser extends ViolationsParser {
+public class CppLintParser implements ViolationsParser {
 
  @Override
  public List<Violation> parseFile(File file) throws Exception {

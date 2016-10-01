@@ -5,6 +5,9 @@ import static se.bjurr.violations.lib.model.SEVERITY.ERROR;
 import static se.bjurr.violations.lib.model.SEVERITY.INFO;
 import static se.bjurr.violations.lib.model.SEVERITY.WARN;
 import static se.bjurr.violations.lib.model.Violation.violationBuilder;
+import static se.bjurr.violations.lib.parsers.ViolationParserUtils.getAttribute;
+import static se.bjurr.violations.lib.parsers.ViolationParserUtils.getChunks;
+import static se.bjurr.violations.lib.parsers.ViolationParserUtils.getIntegerAttribute;
 import static se.bjurr.violations.lib.reports.Reporter.JSHINT;
 
 import java.io.File;
@@ -16,7 +19,7 @@ import se.bjurr.violations.lib.model.Violation;
 import com.google.common.base.Charsets;
 import com.google.common.io.Files;
 
-public class JSHintParser extends ViolationsParser {
+public class JSHintParser implements ViolationsParser {
 
  @Override
  public List<Violation> parseFile(File file) throws Exception {

@@ -5,6 +5,8 @@ import static com.google.common.collect.Lists.newArrayList;
 import static java.lang.Integer.parseInt;
 import static se.bjurr.violations.lib.model.SEVERITY.ERROR;
 import static se.bjurr.violations.lib.model.Violation.violationBuilder;
+import static se.bjurr.violations.lib.parsers.ViolationParserUtils.getLines;
+import static se.bjurr.violations.lib.parsers.ViolationParserUtils.getParts;
 import static se.bjurr.violations.lib.reports.Reporter.XMLLINT;
 
 import java.io.File;
@@ -14,7 +16,7 @@ import se.bjurr.violations.lib.model.Violation;
 
 import com.google.common.io.Files;
 
-public class XMLLintParser extends ViolationsParser {
+public class XMLLintParser implements ViolationsParser {
 
  @Override
  public List<Violation> parseFile(File file) throws Exception {

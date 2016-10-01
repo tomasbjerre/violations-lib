@@ -6,6 +6,10 @@ import static se.bjurr.violations.lib.model.SEVERITY.ERROR;
 import static se.bjurr.violations.lib.model.SEVERITY.INFO;
 import static se.bjurr.violations.lib.model.SEVERITY.WARN;
 import static se.bjurr.violations.lib.model.Violation.violationBuilder;
+import static se.bjurr.violations.lib.parsers.ViolationParserUtils.findIntegerAttribute;
+import static se.bjurr.violations.lib.parsers.ViolationParserUtils.getAttribute;
+import static se.bjurr.violations.lib.parsers.ViolationParserUtils.getChunks;
+import static se.bjurr.violations.lib.parsers.ViolationParserUtils.getIntegerAttribute;
 import static se.bjurr.violations.lib.reports.Reporter.LINT;
 
 import java.io.File;
@@ -17,7 +21,7 @@ import se.bjurr.violations.lib.model.Violation;
 import com.google.common.base.Optional;
 import com.google.common.io.Files;
 
-public class LintParser extends ViolationsParser {
+public class LintParser implements ViolationsParser {
 
  @Override
  public List<Violation> parseFile(File file) throws Exception {

@@ -7,6 +7,8 @@ import static se.bjurr.violations.lib.model.SEVERITY.ERROR;
 import static se.bjurr.violations.lib.model.SEVERITY.INFO;
 import static se.bjurr.violations.lib.model.SEVERITY.WARN;
 import static se.bjurr.violations.lib.model.Violation.violationBuilder;
+import static se.bjurr.violations.lib.parsers.ViolationParserUtils.getLines;
+import static se.bjurr.violations.lib.parsers.ViolationParserUtils.getParts;
 import static se.bjurr.violations.lib.reports.Reporter.CPPLINT;
 
 import java.io.File;
@@ -17,7 +19,7 @@ import se.bjurr.violations.lib.model.Violation;
 
 import com.google.common.io.Files;
 
-public class PerlCriticParser extends ViolationsParser {
+public class PerlCriticParser implements ViolationsParser {
 
  @Override
  public List<Violation> parseFile(File file) throws Exception {
