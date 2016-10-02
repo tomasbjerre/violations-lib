@@ -47,7 +47,7 @@ public class CSSLintParser implements ViolationsParser {
         .setSeverity(toSeverity(severity))//
         .setMessage(message + ": " + evidence)//
         .build()//
-      );
+    );
    }
   }
   return violations;

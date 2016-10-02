@@ -44,7 +44,7 @@ public class CPPCheckParser implements ViolationsParser {
         .setMessage(msg + ". " + verbose)//
         .setRule(id)//
         .build()//
-      );
+    );
    }
   }
   return violations;

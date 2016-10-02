@@ -55,7 +55,7 @@ public class ResharperParser implements ViolationsParser {
        .setMessage(message)//
        .setRule(typeId)//
        .build()//
-     );
+   );
   }
   return violations;
  }

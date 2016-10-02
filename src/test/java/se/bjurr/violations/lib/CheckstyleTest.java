@@ -73,6 +73,6 @@ public class CheckstyleTest {
         .setRule("com.puppycrawl.tools.checkstyle.checks.metrics.BooleanExpressionComplexityCheck")//
         .setSeverity(WARN)//
         .build()//
-    );
+  );
  }
 }

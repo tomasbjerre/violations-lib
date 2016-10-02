@@ -12,9 +12,9 @@ import static se.bjurr.violations.lib.reports.Reporter.XMLLINT;
 import java.io.File;
 import java.util.List;
 
-import se.bjurr.violations.lib.model.Violation;
-
 import com.google.common.io.Files;
+
+import se.bjurr.violations.lib.model.Violation;
 
 public class XMLLintParser implements ViolationsParser {
 
@@ -41,7 +41,7 @@ public class XMLLintParser implements ViolationsParser {
        .setSeverity(ERROR)//
        .setMessage(message)//
        .build()//
-     );
+   );
   }
   return violations;
  }

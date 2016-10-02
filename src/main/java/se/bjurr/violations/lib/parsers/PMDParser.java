@@ -50,7 +50,7 @@ public class PMDParser implements ViolationsParser {
         .setRule(rule)//
         .setMessage(ruleSet + " " + externalInfoUrl)//
         .build()//
-      );
+    );
    }
   }
   return violations;

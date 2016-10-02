@@ -47,7 +47,7 @@ public class CheckStyleParser implements ViolationsParser {
         .setMessage(message)//
         .setRule(rule)//
         .build()//
-      );
+    );
    }
   }
   return violations;

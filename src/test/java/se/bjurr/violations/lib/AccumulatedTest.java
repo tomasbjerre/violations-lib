@@ -25,19 +25,19 @@ public class AccumulatedTest {
     .withAtLeastSeverity(ERROR)//
     .orderedBy(FILE)//
     .violations())//
-    .hasSize(1);
+      .hasSize(1);
 
   assertThat(violationsAccumulatedReporterApi//
     .withAtLeastSeverity(WARN)//
     .orderedBy(FILE)//
     .violations())//
-    .hasSize(8);
+      .hasSize(8);
 
   assertThat(violationsAccumulatedReporterApi//
     .withAtLeastSeverity(INFO)//
     .orderedBy(FILE)//
     .violations())//
-    .hasSize(10);
+      .hasSize(10);
  }
 
  @Test
@@ -49,28 +49,28 @@ public class AccumulatedTest {
     .orderedBy(FILE)//
     .violations()//
     .get(0).getFile())//
-    .isEqualTo("../../../web/js-file.js");
+      .isEqualTo("../../../web/js-file.js");
 
   assertThat(reverse(violationsAccumulatedReporterApi//
     .withAtLeastSeverity(INFO)//
     .orderedBy(FILE)//
     .violations())//
-    .get(0).getFile())//
-    .isEqualTo("/src/main/java/se/bjurr/violations/lib/example/OtherClass.java");
+      .get(0).getFile())//
+        .isEqualTo("/src/main/java/se/bjurr/violations/lib/example/OtherClass.java");
 
   assertThat(violationsAccumulatedReporterApi//
     .withAtLeastSeverity(INFO)//
     .orderedBy(SEVERITY)//
     .violations()//
     .get(0).getSeverity())//
-    .isEqualTo(INFO);
+      .isEqualTo(INFO);
 
   assertThat(reverse(violationsAccumulatedReporterApi//
     .withAtLeastSeverity(INFO)//
     .orderedBy(SEVERITY)//
     .violations())//
-    .get(0).getSeverity())//
-    .isEqualTo(ERROR);
+      .get(0).getSeverity())//
+        .isEqualTo(ERROR);
 
  }
 
@@ -91,6 +91,6 @@ public class AccumulatedTest {
         .inFolder(rootFolder) //
         .findAll(JSHINT) //
         .violations()//
-    );
+  );
  }
 }

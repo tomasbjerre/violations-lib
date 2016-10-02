@@ -72,12 +72,12 @@ public class FindbugsTest {
  public void testMavenGeneratedFindbugs() {
   String rootFolder = getRootFolder();
   List<Violation> maven = violationsReporterApi() //
-          .withPattern(".*/findbugs/fromMaven.xml$") //
-          .inFolder(rootFolder) //
-          .findAll(FINDBUGS) //
-          .violations();
+    .withPattern(".*/findbugs/fromMaven.xml$") //
+    .inFolder(rootFolder) //
+    .findAll(FINDBUGS) //
+    .violations();
 
   assertThat(maven)//
-          .hasSize(1);
+    .hasSize(1);
  }
 }

@@ -120,7 +120,7 @@ public class FindbugsParser implements ViolationsParser {
          .setSource(classname)//
          .setSpecific(FINDBUGS_SPECIFIC_RANK, rank)//
          .build()//
-       );
+     );
     }
    }
    if (eventType == XMLStreamConstants.END_ELEMENT) {

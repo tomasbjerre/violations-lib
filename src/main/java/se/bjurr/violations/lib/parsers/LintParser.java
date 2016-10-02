@@ -47,7 +47,7 @@ public class LintParser implements ViolationsParser {
         .setSeverity(toSeverity(severity))//
         .setMessage(message + ": " + evidence)//
         .build()//
-      );
+    );
    }
   }
   return violations;

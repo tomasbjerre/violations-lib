@@ -21,7 +21,7 @@ public class ViolationTest {
       .build()//
       .getFile()//
   )//
-  .isEqualTo("c:/path/to/file.xml");
+    .isEqualTo("c:/path/to/file.xml");
  }
 
 }

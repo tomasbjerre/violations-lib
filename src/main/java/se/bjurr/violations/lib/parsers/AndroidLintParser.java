@@ -55,7 +55,7 @@ public class AndroidLintParser implements ViolationsParser {
        .setRule(rule)//
        .setMessage(id + ": " + summary + "\n" + message + "\n" + explanation)//
        .build()//
-     );
+   );
 
   }
   return violations;

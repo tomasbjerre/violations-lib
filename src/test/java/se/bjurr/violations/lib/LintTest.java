@@ -49,6 +49,6 @@ public class LintTest {
         .setRule(null)//
         .setSeverity(WARN)//
         .build() //
-    );
+  );
  }
 }

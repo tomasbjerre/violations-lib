@@ -50,13 +50,13 @@ public class PiTestParser implements ViolationsParser {
        .setMessage(message)//
        .setSpecifics(//
          of(//
-           "detected", detected,//
-           "mutatedMethod", mutatedMethod,//
-           "mutatedClass", mutatedClass,//
-           "status", status,//
+           "detected", detected, //
+           "mutatedMethod", mutatedMethod, //
+           "mutatedClass", mutatedClass, //
+           "status", status, //
            "methodDescription", methodDescription))//
        .build()//
-     );
+   );
   }
   return violations;
  }

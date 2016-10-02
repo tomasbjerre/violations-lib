@@ -52,7 +52,7 @@ public class Flake8Parser implements ViolationsParser {
        .setSeverity(toSeverity(severity))//
        .setMessage(message)//
        .build()//
-     );
+   );
   }
   return violations;
  }

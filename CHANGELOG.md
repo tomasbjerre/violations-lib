@@ -5,10 +5,27 @@ Changelog of Git Changelog.
 ## Unreleased
 ### No issue
 
+**Formatting code**
+
+
+[86012292c5f70a4](https://github.com/tomasbjerre/git-changelog-lib/commit/86012292c5f70a4) Tomas Bjerre *2016-10-02 12:34:32*
+
+
+## 1.9
+### GitHub [#4](https://github.com/tomasbjerre/violations-lib/issues/4) 
+
+**ESLint**
+
+
+[e9f338ef44d3a45](https://github.com/tomasbjerre/git-changelog-lib/commit/e9f338ef44d3a45) Tomas Bjerre *2016-10-01 11:25:19*
+
+
+### No issue
+
 **Preliminary support for StyleCop**
 
 
-[82b0da58252b97e](https://github.com/tomasbjerre/git-changelog-lib/commit/82b0da58252b97e) Tomas Bjerre *2016-10-01 10:22:55*
+[81e30321fa1619b](https://github.com/tomasbjerre/git-changelog-lib/commit/81e30321fa1619b) Tomas Bjerre *2016-10-01 10:24:14*
 
 **Support for FxCop**
 

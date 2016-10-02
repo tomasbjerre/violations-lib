@@ -46,7 +46,7 @@ public class JSHintParser implements ViolationsParser {
         .setSeverity(toSeverity(severity))//
         .setMessage(message)//
         .build()//
-      );
+    );
    }
   }
   return violations;

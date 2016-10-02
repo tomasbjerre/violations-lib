@@ -60,6 +60,6 @@ public class CSSLintTest {
         .setRule(null)//
         .setSeverity(WARN)//
         .build() //
-    );
+  );
  }
 }
