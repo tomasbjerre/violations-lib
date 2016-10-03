@@ -1,6 +1,7 @@
 package se.bjurr.violations.lib.parsers;
 
 import static com.google.common.collect.Lists.newArrayList;
+import static java.util.logging.Level.FINE;
 import static javax.xml.stream.XMLStreamConstants.START_ELEMENT;
 import static se.bjurr.violations.lib.model.SEVERITY.ERROR;
 import static se.bjurr.violations.lib.model.SEVERITY.INFO;
@@ -14,14 +15,18 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.io.InputStream;
 import java.util.List;
+import java.util.logging.Logger;
 
 import javax.xml.stream.XMLInputFactory;
 import javax.xml.stream.XMLStreamReader;
+
+import com.google.common.base.Optional;
 
 import se.bjurr.violations.lib.model.SEVERITY;
 import se.bjurr.violations.lib.model.Violation;
 
 public class FxCopParser implements ViolationsParser {
+ private static Logger LOG = Logger.getLogger(FxCopParser.class.getSimpleName());
 
  @Override
  public List<Violation> parseFile(File file) throws Exception {
@@ -49,12 +54,16 @@ public class FxCopParser implements ViolationsParser {
      }
      if (xmlr.getLocalName().equals("Issue")) {
       String level = getAttribute(xmlr, "Level");
-      String path = getAttribute(xmlr, "Path");
+      Optional<String> path = ViolationParserUtils.findAttribute(xmlr, "Path");
+      if (!path.isPresent()) {
+       LOG.log(FINE, "Ignoring project level issue");
+       continue;
+      }
       String fileName = getAttribute(xmlr, "File");
       Integer line = getIntegerAttribute(xmlr, "Line");
       String message = xmlr.getElementText().replaceAll("\\s+", " ");
 
-      String filename = path + "/" + fileName;
+      String filename = path.get() + "/" + fileName;
       SEVERITY severity = toSeverity(level);
       violations.add(//
         violationBuilder()//

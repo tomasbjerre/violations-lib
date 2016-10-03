@@ -42,7 +42,7 @@ public class StyleCopParser implements ViolationsParser {
       Integer lineNumber = getIntegerAttribute(xmlr, "LineNumber");
       String message = xmlr.getElementText().replaceAll("\\s+", " ");
       SEVERITY severity = INFO;
-      String filename = toFile(source);
+      String filename = source.replaceAll("\\\\", "/");
       violations.add(//
         violationBuilder()//
           .setReporter(STYLECOP)//
@@ -51,7 +51,7 @@ public class StyleCopParser implements ViolationsParser {
           .setStartLine(lineNumber)//
           .setRule(rule)//
           .setSeverity(severity)//
-          .setSource(source)//
+          .setSource(filename)//
           .setSpecific("section", section)//
           .setSpecific("source", source)//
           .setSpecific("ruleNamespace", ruleNamespace)//
@@ -64,9 +64,5 @@ public class StyleCopParser implements ViolationsParser {
    }
   }
   return violations;
- }
-
- private String toFile(String source) {
-  return source.replaceAll("\\.", "/");
  }
 }

@@ -1,6 +1,7 @@
 package se.bjurr.violations.lib.parsers;
 
 import static com.google.common.base.Optional.absent;
+import static com.google.common.base.Optional.fromNullable;
 import static com.google.common.base.Optional.of;
 import static com.google.common.base.Throwables.propagate;
 import static com.google.common.collect.Lists.newArrayList;
@@ -42,6 +43,10 @@ public final class ViolationParserUtils {
    return of(matcher.group(1));
   }
   return absent();
+ }
+
+ public static Optional<String> findAttribute(XMLStreamReader in, String attribute) {
+  return fromNullable(in.getAttributeValue("", attribute));
  }
 
  public static Optional<Integer> findIntegerAttribute(String in, String attribute) {

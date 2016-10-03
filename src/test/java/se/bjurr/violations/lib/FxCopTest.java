@@ -3,7 +3,7 @@ package se.bjurr.violations.lib;
 import static org.assertj.core.api.Assertions.assertThat;
 import static se.bjurr.violations.lib.TestUtils.getRootFolder;
 import static se.bjurr.violations.lib.ViolationsReporterApi.violationsReporterApi;
-import static se.bjurr.violations.lib.model.SEVERITY.ERROR;
+import static se.bjurr.violations.lib.model.SEVERITY.WARN;
 import static se.bjurr.violations.lib.reports.Reporter.FXCOP;
 
 import java.util.List;
@@ -25,43 +25,43 @@ public class FxCopTest {
     .violations();
 
   assertThat(actual)//
-    .hasSize(2);
+    .hasSize(25);
 
   Violation actualViolationZero = actual.get(0);
   assertThat(actualViolationZero.getFile())//
-    .isEqualTo("c:/Hudson/data/jobs/job1/workspace/test/Space/TestBase.cs");
+    .isEqualTo("C:/git/test-project/Test Solution 1/GenericsSample/Form1.Designer.cs");
   assertThat(actualViolationZero.getStartLine())//
-    .isEqualTo(299);
+    .isEqualTo(212);
   assertThat(actualViolationZero.getMessage())//
-    .startsWith("Because the behavior o");
+    .startsWith("Method 'Form");
   assertThat(actualViolationZero.getReporter())//
     .isEqualTo(FXCOP);
   assertThat(actualViolationZero.getRule().orNull())//
-    .isEqualTo("SpecifyIFormatProvider");
+    .isEqualTo("Do not pass literals as localized parameters");
   assertThat(actualViolationZero.getSeverity())//
-    .isEqualTo(ERROR);
+    .isEqualTo(WARN);
   assertThat(actualViolationZero.getSource().orNull())//
-    .isEqualTo("TestBase");
+    .isEqualTo("Form1");
   assertThat(actualViolationZero.getSpecifics().get("TARGET_NAME"))//
-    .isEqualTo("C:/Hudson/data/jobs/job1/workspace/test/bin/test.dll");
+    .isEqualTo("C:/git/test-project/Test Solution 1/GenericsSample/bin/Debug/GenericsSample.exe");
 
   Violation actualViolationOne = actual.get(1);
   assertThat(actualViolationOne.getFile())//
-    .isEqualTo("c:/Hudson/data/jobs/job1/workspace/web/UserControls/MyControl.ascx.cs");
+    .isEqualTo("C:/git/test-project/Test Solution 1/GenericsSample/Form1.Designer.cs");
   assertThat(actualViolationOne.getStartLine())//
-    .isEqualTo(37);
+    .isEqualTo(203);
   assertThat(actualViolationOne.getMessage())//
-    .startsWith("In member");
+    .startsWith("Method 'Form");
   assertThat(actualViolationOne.getReporter())//
     .isEqualTo(FXCOP);
   assertThat(actualViolationOne.getRule().orNull())//
-    .isEqualTo("CompoundWordsShouldBeCasedCorrectly");
+    .isEqualTo("Do not pass literals as localized parameters");
   assertThat(actualViolationOne.getSeverity())//
-    .isEqualTo(ERROR);
+    .isEqualTo(WARN);
   assertThat(actualViolationOne.getSource().orNull())//
-    .isEqualTo("MyControl");
+    .isEqualTo("Form1");
   assertThat(actualViolationOne.getSpecifics().get("TARGET_NAME"))//
-    .isEqualTo("C:/Hudson/data/jobs/job1/workspace/web/bin/web.dll");
+    .isEqualTo("C:/git/test-project/Test Solution 1/GenericsSample/bin/Debug/GenericsSample.exe");
 
  }
 }

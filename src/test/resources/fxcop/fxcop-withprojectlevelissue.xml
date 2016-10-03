@@ -1,0 +1,158 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet type="text/xsl" href="c:\program files (x86)\microsoft visual studio 14.0\team tools\static analysis tools\fxcop\Xml\CodeAnalysisReport.xsl"?>
+<FxCopReport Version="14.0">
+ <Targets>
+  <Target Name="C:\git\test-project\Test Solution 1\GenericsSample\bin\Debug\GenericsSample.exe">
+   <Modules>
+    <Module Name="genericssample.exe">
+     <Messages>
+      <Message TypeName="MarkAssembliesWithNeutralResourcesLanguage" Category="Microsoft.Performance" CheckId="CA1824" Status="Active" Created="2016-10-03 16:25:35Z" FixCategory="NonBreaking">
+       <Issue Certainty="95" Level="Warning">Because assembly 'GenericsSample.exe' contains a ResX-based resource file, mark it with the NeutralResourcesLanguage attribute, specifying the language of the resources within the assembly. This could improve lookup performance the first time a resource is retrieved.</Issue>
+      </Message>
+     </Messages>
+     <Namespaces>
+      <Namespace Name="GenericsSample">
+       <Types>
+        <Type Name="Form1" Kind="Class" Accessibility="Public" ExternallyVisible="True">
+         <Members>
+          <Member Name="#InitializeComponent()" Kind="Method" Static="False" Accessibility="Private" ExternallyVisible="False">
+           <Messages>
+            <Message Id="System.Windows.Forms.Control.set_Text(System.String)" TypeName="Do not pass literals as localized parameters" Category="Microsoft.Globalization" CheckId="CA1303" Status="Active" Created="2016-10-03 16:25:35Z" FixCategory="DependsOnFix">
+             <Issue Name="KnownValue" Certainty="75" Level="Warning" Path="C:\git\test-project\Test Solution 1\GenericsSample" File="Form1.Designer.cs" Line="212">Method 'Form1.InitializeComponent()' passes a literal string as parameter 'value' of a call to 'Control.Text.set(string)'. Retrieve the following string(s) from a resource table instead: "Add to Safe List".</Issue>
+             <Issue Name="KnownValue" Certainty="75" Level="Warning" Path="C:\git\test-project\Test Solution 1\GenericsSample" File="Form1.Designer.cs" Line="203">Method 'Form1.InitializeComponent()' passes a literal string as parameter 'value' of a call to 'Control.Text.set(string)'. Retrieve the following string(s) from a resource table instead: "Add to unsafe List".</Issue>
+             <Issue Name="KnownValue" Certainty="75" Level="Warning" Path="C:\git\test-project\Test Solution 1\GenericsSample" File="Form1.Designer.cs" Line="85">Method 'Form1.InitializeComponent()' passes a literal string as parameter 'value' of a call to 'Control.Text.set(string)'. Retrieve the following string(s) from a resource table instead: "Exception Log".</Issue>
+             <Issue Name="KnownValue" Certainty="75" Level="Warning" Path="C:\git\test-project\Test Solution 1\GenericsSample" File="Form1.Designer.cs" Line="288">Method 'Form1.InitializeComponent()' passes a literal string as parameter 'value' of a call to 'Control.Text.set(string)'. Retrieve the following string(s) from a resource table instead: "Generics Sample".</Issue>
+             <Issue Name="KnownValue" Certainty="75" Level="Warning" Path="C:\git\test-project\Test Solution 1\GenericsSample" File="Form1.Designer.cs" Line="159">Method 'Form1.InitializeComponent()' passes a literal string as parameter 'value' of a call to 'Control.Text.set(string)'. Retrieve the following string(s) from a resource table instead: "Iterate Safe List(ms):".</Issue>
+             <Issue Name="KnownValue" Certainty="75" Level="Warning" Path="C:\git\test-project\Test Solution 1\GenericsSample" File="Form1.Designer.cs" Line="141">Method 'Form1.InitializeComponent()' passes a literal string as parameter 'value' of a call to 'Control.Text.set(string)'. Retrieve the following string(s) from a resource table instead: "Iterate Unsafe List(ms):".</Issue>
+             <Issue Name="KnownValue" Certainty="75" Level="Warning" Path="C:\git\test-project\Test Solution 1\GenericsSample" File="Form1.Designer.cs" Line="168">Method 'Form1.InitializeComponent()' passes a literal string as parameter 'value' of a call to 'Control.Text.set(string)'. Retrieve the following string(s) from a resource table instead: "Load Safe List(ms):".</Issue>
+             <Issue Name="KnownValue" Certainty="75" Level="Warning" Path="C:\git\test-project\Test Solution 1\GenericsSample" File="Form1.Designer.cs" Line="150">Method 'Form1.InitializeComponent()' passes a literal string as parameter 'value' of a call to 'Control.Text.set(string)'. Retrieve the following string(s) from a resource table instead: "Load Unsafe List(ms):".</Issue>
+             <Issue Name="KnownValue" Certainty="75" Level="Warning" Path="C:\git\test-project\Test Solution 1\GenericsSample" File="Form1.Designer.cs" Line="233">Method 'Form1.InitializeComponent()' passes a literal string as parameter 'value' of a call to 'Control.Text.set(string)'. Retrieve the following string(s) from a resource table instead: "Master List".</Issue>
+             <Issue Name="KnownValue" Certainty="75" Level="Warning" Path="C:\git\test-project\Test Solution 1\GenericsSample" File="Form1.Designer.cs" Line="67">Method 'Form1.InitializeComponent()' passes a literal string as parameter 'value' of a call to 'Control.Text.set(string)'. Retrieve the following string(s) from a resource table instead: "Safe List".</Issue>
+             <Issue Name="KnownValue" Certainty="75" Level="Warning" Path="C:\git\test-project\Test Solution 1\GenericsSample" File="Form1.Designer.cs" Line="266">Method 'Form1.InitializeComponent()' passes a literal string as parameter 'value' of a call to 'Control.Text.set(string)'. Retrieve the following string(s) from a resource table instead: "Select items from the master list, and select add to safe list and add to unsafe...".</Issue>
+             <Issue Name="KnownValue" Certainty="75" Level="Warning" Path="C:\git\test-project\Test Solution 1\GenericsSample" File="Form1.Designer.cs" Line="275">Method 'Form1.InitializeComponent()' passes a literal string as parameter 'value' of a call to 'Control.Text.set(string)'. Retrieve the following string(s) from a resource table instead: "Select the \"Start Speed test\" button to see the speed difference between an Ar...".</Issue>
+             <Issue Name="KnownValue" Certainty="75" Level="Warning" Path="C:\git\test-project\Test Solution 1\GenericsSample" File="Form1.Designer.cs" Line="104">Method 'Form1.InitializeComponent()' passes a literal string as parameter 'value' of a call to 'Control.Text.set(string)'. Retrieve the following string(s) from a resource table instead: "Speed Test".</Issue>
+             <Issue Name="KnownValue" Certainty="75" Level="Warning" Path="C:\git\test-project\Test Solution 1\GenericsSample" File="Form1.Designer.cs" Line="176">Method 'Form1.InitializeComponent()' passes a literal string as parameter 'value' of a call to 'Control.Text.set(string)'. Retrieve the following string(s) from a resource table instead: "Start Speed test".</Issue>
+             <Issue Name="KnownValue" Certainty="75" Level="Warning" Path="C:\git\test-project\Test Solution 1\GenericsSample" File="Form1.Designer.cs" Line="195">Method 'Form1.InitializeComponent()' passes a literal string as parameter 'value' of a call to 'Control.Text.set(string)'. Retrieve the following string(s) from a resource table instead: "Type Safety".</Issue>
+             <Issue Name="KnownValue" Certainty="75" Level="Warning" Path="C:\git\test-project\Test Solution 1\GenericsSample" File="Form1.Designer.cs" Line="223">Method 'Form1.InitializeComponent()' passes a literal string as parameter 'value' of a call to 'Control.Text.set(string)'. Retrieve the following string(s) from a resource table instead: "Unsafe List".</Issue>
+            </Message>
+            <Message Id="ArrayList" TypeName="Literals should be spelled correctly" Category="Microsoft.Naming" CheckId="CA2204" Status="Active" Created="2016-10-03 16:25:35Z" FixCategory="DependsOnFix">
+             <Issue Certainty="75" Level="Warning" Path="C:\git\test-project\Test Solution 1\GenericsSample" File="Form1.Designer.cs" Line="275">Correct the spelling of the unrecognized token 'ArrayList' in the literal '"Select the \"Start Speed test\" button to see the speed difference between an Ar..."'.</Issue>
+            </Message>
+            <Message Id="Genric" TypeName="Literals should be spelled correctly" Category="Microsoft.Naming" CheckId="CA2204" Status="Active" Created="2016-10-03 16:25:35Z" FixCategory="DependsOnFix">
+             <Issue Certainty="75" Level="Warning" Path="C:\git\test-project\Test Solution 1\GenericsSample" File="Form1.Designer.cs" Line="275">Correct the spelling of the unrecognized token 'Genric' in the literal '"Select the \"Start Speed test\" button to see the speed difference between an Ar..."'.</Issue>
+            </Message>
+            <Message Id="ms" TypeName="Literals should be spelled correctly" Category="Microsoft.Naming" CheckId="CA2204" Status="Active" Created="2016-10-03 16:25:35Z" FixCategory="DependsOnFix">
+             <Issue Certainty="75" Level="Warning" Path="C:\git\test-project\Test Solution 1\GenericsSample" File="Form1.Designer.cs" Line="159">Correct the spelling of the unrecognized token 'ms' in the literal '"Iterate Safe List(ms):"'.</Issue>
+             <Issue Certainty="75" Level="Warning" Path="C:\git\test-project\Test Solution 1\GenericsSample" File="Form1.Designer.cs" Line="141">Correct the spelling of the unrecognized token 'ms' in the literal '"Iterate Unsafe List(ms):"'.</Issue>
+             <Issue Certainty="75" Level="Warning" Path="C:\git\test-project\Test Solution 1\GenericsSample" File="Form1.Designer.cs" Line="168">Correct the spelling of the unrecognized token 'ms' in the literal '"Load Safe List(ms):"'.</Issue>
+             <Issue Certainty="75" Level="Warning" Path="C:\git\test-project\Test Solution 1\GenericsSample" File="Form1.Designer.cs" Line="150">Correct the spelling of the unrecognized token 'ms' in the literal '"Load Unsafe List(ms):"'.</Issue>
+            </Message>
+           </Messages>
+          </Member>
+         </Members>
+        </Type>
+        <Type Name="Program" Kind="Class" Accessibility="Assembly" ExternallyVisible="False">
+         <Members>
+          <Member Name="#Main()" Kind="Method" Static="True" Accessibility="Private" ExternallyVisible="False">
+           <Messages>
+            <Message Id="System.Windows.Forms.MessageBox.Show(System.String,System.String,System.Windows.Forms.MessageBoxButtons,System.Windows.Forms.MessageBoxIcon)" TypeName="Do not pass literals as localized parameters" Category="Microsoft.Globalization" CheckId="CA1303" Status="Active" Created="2016-10-03 16:25:35Z" FixCategory="DependsOnFix">
+             <Issue Name="KnownValue" Certainty="75" Level="Warning" Path="C:\git\test-project\Test Solution 1\GenericsSample" File="Program.cs" Line="22">Method 'Program.Main()' passes a literal string as parameter 'caption' of a call to 'MessageBox.Show(string, string, MessageBoxButtons, MessageBoxIcon)'. Retrieve the following string(s) from a resource table instead: "Application Error".</Issue>
+            </Message>
+           </Messages>
+          </Member>
+         </Members>
+        </Type>
+       </Types>
+      </Namespace>
+     </Namespaces>
+    </Module>
+   </Modules>
+  </Target>
+ </Targets>
+ <Rules>
+  <Rule TypeName="Do not pass literals as localized parameters" Category="Microsoft.Globalization" CheckId="CA1303">
+   <Name>Do not pass literals as localized parameters</Name>
+   <Description>Literal strings that are embedded in source code are difficult to localize. Avoid passing literal strings as arguments in circumstances where a localized string is generally expected.</Description>
+   <Resolution Name="KnownValue">Method {0} passes a literal string as parameter '{1}' of a call to {2}. Retrieve the following string(s) from a resource table instead: {3}.</Resolution>
+   <Owner>RuleOwner</Owner>
+   <Url>http://msdn.microsoft.com/library/ms182187.aspx</Url>
+   <Email />
+   <MessageLevel Certainty="75">Warning</MessageLevel>
+   <File Name="dataflowrules.dll" Version="14.0.0.0" />
+  </Rule>
+  <Rule TypeName="Literals should be spelled correctly" Category="Microsoft.Naming" CheckId="CA2204">
+   <Name>Literals should be spelled correctly</Name>
+   <Description>This rule parses the literal string into words, tokenizing compound words, and checks the spelling of each word/token.</Description>
+   <Resolution Name="Default">Correct the spelling of the unrecognized token '{0}' in the literal '{1}'.</Resolution>
+   <Owner>RuleOwner</Owner>
+   <Url>http://msdn.microsoft.com/library/bb264488.aspx</Url>
+   <Email />
+   <MessageLevel Certainty="75">Warning</MessageLevel>
+   <File Name="dataflowrules.dll" Version="14.0.0.0" />
+  </Rule>
+  <Rule TypeName="MarkAssembliesWithNeutralResourcesLanguage" Category="Microsoft.Performance" CheckId="CA1824">
+   <Name>Mark assemblies with NeutralResourcesLanguageAttribute</Name>
+   <Description>The NeutralResourcesLanguage attribute informs the ResourceManager of the language used to render the neutral culture's resources for an assembly. When looking up resources in the same culture as the neutral resources language, the ResourceManager automatically uses the resources located in the main assembly, instead of searching for a satellite assembly with the current user interface culture for the current thread. This will improve lookup performance for the first resource you load and can reduce your working set.</Description>
+   <Resolution Name="Default">Because assembly {0} contains a ResX-based resource file, mark it with the NeutralResourcesLanguage attribute, specifying the language of the resources within the assembly. This could improve lookup performance the first time a resource is retrieved.</Resolution>
+   <Owner />
+   <Url>http://msdn.microsoft.com/library/bb385967.aspx</Url>
+   <Email>[none]</Email>
+   <MessageLevel Certainty="95">Warning</MessageLevel>
+   <File Name="performancerules.dll" Version="14.0.0.0" />
+  </Rule>
+ </Rules>
+ <Localized>
+  <String Key="Category">Category</String>
+  <String Key="Certainty">Certainty</String>
+  <String Key="CollapseAll">Collapse All</String>
+  <String Key="CheckId">Check Id</String>
+  <String Key="Error">Error</String>
+  <String Key="Errors">error(s)</String>
+  <String Key="ExpandAll">Expand All</String>
+  <String Key="Help">Help</String>
+  <String Key="Line">Line</String>
+  <String Key="Messages">message(s)</String>
+  <String Key="LocationNotStoredInPdb">[Location not stored in Pdb]</String>
+  <String Key="Project">Project</String>
+  <String Key="Resolution">Resolution</String>
+  <String Key="Rule">Rule</String>
+  <String Key="RuleFile">Rule File</String>
+  <String Key="RuleDescription">Rule Description</String>
+  <String Key="Source">Source</String>
+  <String Key="Status">Status</String>
+  <String Key="Target">Target</String>
+  <String Key="Warning">Warning</String>
+  <String Key="Warnings">warning(s)</String>
+  <String Key="ReportTitle">Code Analysis Report</String>
+ </Localized>
+ <DebugInfo>
+  <SearchPaths>
+   <SearchPath>C:\git\test-project\Test Solution 1\GenericsSample\bin\Debug</SearchPath>
+   <SearchPath>C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.5</SearchPath>
+   <SearchPath>C:\Program Files (x86)\Microsoft.NET\ADOMD.NET\120</SearchPath>
+   <SearchPath>C:\Program Files (x86)\Common Files\ComponentOne\ActiveReports 9</SearchPath>
+   <SearchPath>C:\Program Files (x86)\IBM\WebSphere MQ\Tools\lib</SearchPath>
+   <SearchPath>C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\v3.0</SearchPath>
+   <SearchPath>C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\v3.5</SearchPath>
+   <SearchPath>C:\Program Files\IIS\Microsoft Web Deploy V3</SearchPath>
+   <SearchPath>C:\Program Files (x86)\Microsoft SQL Server\130\SDK\Assemblies</SearchPath>
+   <SearchPath>C:\Program Files (x86)\WiX Toolset v3.10\SDK</SearchPath>
+   <SearchPath>C:\Windows\Microsoft.NET\Framework\v3.0\Windows Communication Foundation</SearchPath>
+   <SearchPath>C:\Windows\Microsoft.NET\Framework\v3.0\WPF</SearchPath>
+   <SearchPath>C:\Windows\Microsoft.NET\Framework\v3.5</SearchPath>
+  </SearchPaths>
+  <ResolvedAssemblies>
+   <ResolvedAssembly AssemblyName="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" FileName="C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.5\System.Windows.Forms.dll" />
+   <ResolvedAssembly AssemblyName="Accessibility, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" FileName="C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.5\Accessibility.dll" />
+   <ResolvedAssembly AssemblyName="System.Configuration, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" FileName="C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.5\System.Configuration.dll" />
+   <ResolvedAssembly AssemblyName="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" FileName="C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.5\System.Drawing.dll" />
+   <ResolvedAssembly AssemblyName="System.Xml, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" FileName="C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.5\System.Xml.dll" />
+   <ResolvedAssembly AssemblyName="mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" FileName="C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.5\mscorlib.dll" />
+   <ResolvedAssembly AssemblyName="System, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" FileName="C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.5\System.dll" />
+   <ResolvedAssembly AssemblyName="System.Security, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" FileName="C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.5\System.Security.dll" />
+   <ResolvedAssembly AssemblyName="System.Deployment, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" FileName="C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.5\System.Deployment.dll" />
+   <ResolvedAssembly AssemblyName="System.Core, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" FileName="C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.5\System.Core.dll" />
+   <ResolvedAssembly AssemblyName="System.Runtime.Serialization.Formatters.Soap, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" FileName="C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.5\System.Runtime.Serialization.Formatters.Soap.dll" />
+  </ResolvedAssemblies>
+ </DebugInfo>
+</FxCopReport>

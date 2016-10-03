@@ -25,39 +25,39 @@ public class StyleCopTest {
     .violations();
 
   assertThat(actual)//
-    .hasSize(2);
+    .hasSize(53);
 
   Violation actualViolationZero = actual.get(0);
   assertThat(actualViolationZero.getFile())//
-    .isEqualTo("Form1/Designer/cs");
+    .isEqualTo("E:/Jenkins/jobs/Tools Development/workspace/Tools/Tools.SSOTester/Form1.cs");
   assertThat(actualViolationZero.getStartLine())//
-    .isEqualTo(18);
+    .isEqualTo(17);
   assertThat(actualViolationZero.getMessage())//
-    .startsWith("The call to");
+    .startsWith("The do");
   assertThat(actualViolationZero.getReporter())//
     .isEqualTo(STYLECOP);
   assertThat(actualViolationZero.getRule().orNull())//
-    .isEqualTo("PrefixLocalCallsWithThis");
+    .isEqualTo("ElementDocumentationMustNotHaveDefaultSummary");
   assertThat(actualViolationZero.getSeverity())//
     .isEqualTo(INFO);
   assertThat(actualViolationZero.getSource().orNull())//
-    .isEqualTo("Form1.Designer.cs");
+    .isEqualTo("E:/Jenkins/jobs/Tools Development/workspace/Tools/Tools.SSOTester/Form1.cs");
 
   Violation actualViolationOne = actual.get(1);
   assertThat(actualViolationOne.getFile())//
-    .isEqualTo("Form1/Designer/cs");
+    .isEqualTo("E:/Jenkins/jobs/Tools Development/workspace/Tools/Tools.SSOTester/Form1.cs");
   assertThat(actualViolationOne.getStartLine())//
-    .isEqualTo(16);
+    .isEqualTo(19);
   assertThat(actualViolationOne.getMessage())//
-    .startsWith("The call to");
+    .startsWith("The field");
   assertThat(actualViolationOne.getReporter())//
     .isEqualTo(STYLECOP);
   assertThat(actualViolationOne.getRule().orNull())//
-    .isEqualTo("PrefixLocalCallsWithThis");
+    .isEqualTo("ElementsMustBeDocumented");
   assertThat(actualViolationOne.getSeverity())//
     .isEqualTo(INFO);
   assertThat(actualViolationOne.getSource().orNull())//
-    .isEqualTo("Form1.Designer.cs");
+    .isEqualTo("E:/Jenkins/jobs/Tools Development/workspace/Tools/Tools.SSOTester/Form1.cs");
 
  }
 }
