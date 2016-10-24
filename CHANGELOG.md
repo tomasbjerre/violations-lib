@@ -5,10 +5,25 @@ Changelog of Git Changelog.
 ## Unreleased
 ### No issue
 
+**PyLint parser**
+
+
+[10929695672b31f](https://github.com/tomasbjerre/git-changelog-lib/commit/10929695672b31f) Tomas Bjerre *2016-10-24 17:16:22*
+
+
+## 1.10
+### No issue
+
+**Supporting StyleCop**
+
+ * And project level issue in FxCop. 
+
+[d68d368e8ffc609](https://github.com/tomasbjerre/git-changelog-lib/commit/d68d368e8ffc609) Tomas Bjerre *2016-10-03 17:00:57*
+
 **Formatting code**
 
 
-[86012292c5f70a4](https://github.com/tomasbjerre/git-changelog-lib/commit/86012292c5f70a4) Tomas Bjerre *2016-10-02 12:34:32*
+[09347946765a096](https://github.com/tomasbjerre/git-changelog-lib/commit/09347946765a096) Tomas Bjerre *2016-10-02 12:34:51*
 
 
 ## 1.9

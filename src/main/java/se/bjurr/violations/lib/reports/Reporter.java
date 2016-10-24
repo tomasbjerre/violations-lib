@@ -21,6 +21,7 @@ import se.bjurr.violations.lib.parsers.LintParser;
 import se.bjurr.violations.lib.parsers.PMDParser;
 import se.bjurr.violations.lib.parsers.PerlCriticParser;
 import se.bjurr.violations.lib.parsers.PiTestParser;
+import se.bjurr.violations.lib.parsers.PyLintParser;
 import se.bjurr.violations.lib.parsers.ResharperParser;
 import se.bjurr.violations.lib.parsers.StyleCopParser;
 import se.bjurr.violations.lib.parsers.ViolationsParser;
@@ -40,6 +41,7 @@ public enum Reporter {
  PERLCRITIC(new PerlCriticParser()), //
  PITEST(new PiTestParser()), //
  PMD(new PMDParser()), //
+ PYLINT(new PyLintParser()), //
  RESHARPER(new ResharperParser()), //
  STYLECOP(new StyleCopParser()), //
  XMLLINT(new XMLLintParser());

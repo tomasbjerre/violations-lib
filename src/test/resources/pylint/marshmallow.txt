@@ -1,0 +1,173 @@
+************* Module marshmallow.schema
+marshmallow/schema.py:190: [C0330(bad-continuation), ] Wrong continued indentation (add 1 space).
+                            " for the same Schema.")
+                            ^|
+marshmallow/schema.py:471: [C0330(bad-continuation), ] Wrong continued indentation (remove 2 spaces).
+                            'many=True to serialize a collection.',
+                          | ^
+marshmallow/schema.py:472: [C0330(bad-continuation), ] Wrong continued indentation (remove 2 spaces).
+                            category=DeprecationWarning)
+                          | ^
+marshmallow/schema.py:735: [C0330(bad-continuation), ] Wrong continued indentation (remove 1 space).
+                            self.set_class(self.opts.additional))
+                           |^
+marshmallow/schema.py:827: [C0330(bad-continuation), ] Wrong continued indentation (add 27 spaces).
+            data=data, many=many, original_data=original_data)
+            ^                          |
+marshmallow/schema.py:829: [C0330(bad-continuation), ] Wrong continued indentation (add 27 spaces).
+            data=data, many=many, original_data=original_data)
+            ^                          |
+marshmallow/schema.py:836: [C0330(bad-continuation), ] Wrong continued indentation (add 27 spaces).
+            data=data, many=many, original_data=original_data)
+            ^                          |
+marshmallow/schema.py:838: [C0330(bad-continuation), ] Wrong continued indentation (add 27 spaces).
+            data=data, many=many, original_data=original_data)
+            ^                          |
+marshmallow/schema.py:902: [C0330(bad-continuation), ] Wrong continued indentation (add 4 spaces).
+                                                  item, original_data, self.fields, many=many,
+                                                  ^   |
+marshmallow/schema.py:903: [C0330(bad-continuation), ] Wrong continued indentation (add 4 spaces).
+                                                  index=idx, pass_original=pass_original)
+                                                  ^   |
+marshmallow/schema.py:909: [C0330(bad-continuation), ] Wrong continued indentation (add 4 spaces).
+                                              data, original_data, self.fields, many=many,
+                                              ^   |
+marshmallow/schema.py:910: [C0330(bad-continuation), ] Wrong continued indentation (add 4 spaces).
+                                              pass_original=pass_original)
+                                              ^   |
+marshmallow/schema.py:39: [W0621(redefined-outer-name), _get_fields] Redefining name 'fields' from outer scope (line 16)
+marshmallow/schema.py:47: [W0212(protected-access), _get_fields.<lambda>] Access to a protected member _creation_index of a client class
+marshmallow/schema.py:112: [W0212(protected-access), SchemaMeta.__new__] Access to a protected member _declared_fields of a client class
+marshmallow/schema.py:136: [C0203(bad-mcs-method-argument), SchemaMeta.__init__] Metaclass method __init__ should have 'cls' as first argument
+marshmallow/schema.py:142: [C0203(bad-mcs-method-argument), SchemaMeta._resolve_processors] Metaclass method _resolve_processors should have 'cls' as first argument
+marshmallow/schema.py:361: [E1124(redundant-keyword-arg), BaseSchema.__repr__] Argument 'self' passed by position and keyword in method call
+marshmallow/schema.py:549: [W0221(arguments-differ), BaseSchema.load] Arguments number differs from overridden 'load' method
+marshmallow/schema.py:766: [W0212(protected-access), BaseSchema.__set_field_attrs] Access to a protected member _add_to_schema of a client class
+marshmallow/schema.py:13: [C0412(ungrouped-imports), ] Imports from package collections are not grouped
+************* Module marshmallow.fields
+marshmallow/fields.py:397: [C0330(bad-continuation), ] Wrong continued indentation (add 20 spaces).
+                        only=only, exclude=self.exclude, context=context)
+                        ^                   |
+marshmallow/fields.py:402: [C0330(bad-continuation), ] Wrong continued indentation (add 21 spaces).
+                            exclude=self.exclude, context=context)
+                            ^                    |
+marshmallow/fields.py:406: [C0330(bad-continuation), ] Wrong continued indentation (add 21 spaces).
+                            only=only, exclude=self.exclude, context=context)
+                            ^                    |
+marshmallow/fields.py:423: [C0330(bad-continuation), ] Wrong continued indentation (add 10 spaces).
+                update_fields=not self.__updated_fields).data
+                ^         |
+marshmallow/fields.py:461: [C0330(bad-continuation), ] Wrong hanging indentation before block (add 4 spaces).
+                    isinstance(field, Nested) and
+                    ^   |
+marshmallow/fields.py:462: [C0330(bad-continuation), ] Wrong hanging indentation before block (add 4 spaces).
+                    self.nested != _RECURSIVE_NESTED and
+                    ^   |
+marshmallow/fields.py:463: [C0330(bad-continuation), ] Wrong hanging indentation before block (add 4 spaces).
+                    field.nested != _RECURSIVE_NESTED
+                    ^   |
+marshmallow/fields.py:504: [C0330(bad-continuation), ] Wrong continued indentation (remove 10 spaces).
+                                           'must be a subclass of '
+                                 |         ^
+marshmallow/fields.py:510: [C0330(bad-continuation), ] Wrong continued indentation (remove 10 spaces).
+                                           'elements must be of type '
+                                 |         ^
+marshmallow/fields.py:1: [C0302(too-many-lines), ] Too many lines in module (1250/1000)
+marshmallow/fields.py:16: [W0622(redefined-builtin), ] Redefining built-in 'basestring'
+marshmallow/fields.py:127: [W0621(redefined-outer-name), Field.__init__] Redefining name 'validate' from outer scope (line 13)
+marshmallow/fields.py:150: [R0102(simplifiable-if-statement), Field.__init__] The if statement can be replaced with 'var = bool(test)'
+marshmallow/fields.py:171: [E1124(redundant-keyword-arg), Field.__repr__] Argument 'self' passed by position and keyword in method call
+marshmallow/fields.py:254: [W0221(arguments-differ), Field.deserialize] Arguments number differs from overridden 'deserialize' method
+marshmallow/fields.py:420: [W0212(protected-access), Nested._serialize] Access to a protected member _update_fields of a client class
+marshmallow/fields.py:465: [W0212(protected-access), Nested._check_required] Access to a protected member _check_required of a client class
+marshmallow/fields.py:468: [W0212(protected-access), Nested._check_required] Access to a protected member _validate_missing of a client class
+marshmallow/fields.py:514: [W0221(arguments-differ), List.get_value] Arguments number differs from overridden 'get_value' method
+marshmallow/fields.py:535: [W0212(protected-access), List._serialize] Access to a protected member _serialize of a client class
+marshmallow/fields.py:536: [W0212(protected-access), List._serialize] Access to a protected member _serialize of a client class
+marshmallow/fields.py:842: [W0622(redefined-builtin), DateTime.__init__] Redefining built-in 'format'
+marshmallow/fields.py:927: [E0602(undefined-variable), Time._deserialize] Undefined variable 'err'
+marshmallow/fields.py:1074: [W0231(super-init-not-called), Url.__init__] __init__ method from base class 'ValidatedField' is not called
+marshmallow/fields.py:1101: [W0231(super-init-not-called), Email.__init__] __init__ method from base class 'ValidatedField' is not called
+************* Module marshmallow.utils
+marshmallow/utils.py:121: [C0330(bad-continuation), ] Wrong continued indentation (remove 1 space).
+                  if not attr.startswith("__") and not attr.endswith("__")])
+                 |^
+marshmallow/utils.py:130: [C0325(superfluous-parens), ] Unnecessary parens after u'print' keyword
+marshmallow/utils.py:197: [C0330(bad-continuation), ] Wrong continued indentation (add 43 spaces).
+        dt.year, dt.hour, dt.minute, dt.second, tz_offset)
+        ^                                          |
+************* Module marshmallow.ordereddict
+marshmallow/ordereddict.py:30: [W0231(super-init-not-called), OrderedDict.__init__] __init__ method from base class 'dict' is not called
+marshmallow/ordereddict.py:54: [W0622(redefined-builtin), OrderedDict.__delitem__] Redefining built-in 'next'
+marshmallow/ordereddict.py:87: [W0201(attribute-defined-outside-init), OrderedDict.__reduce__] Attribute '__end' defined outside __init__
+marshmallow/ordereddict.py:87: [W0201(attribute-defined-outside-init), OrderedDict.__reduce__] Attribute '__map' defined outside __init__
+************* Module marshmallow.marshalling
+marshmallow/marshalling.py:121: [C0330(bad-continuation), ] Wrong continued indentation (remove 2 spaces).
+                                    dict_class=dict_class, accessor=accessor,
+                                  | ^
+marshmallow/marshalling.py:122: [C0330(bad-continuation), ] Wrong continued indentation (remove 2 spaces).
+                                    index=idx, index_errors=index_errors)
+                                  | ^
+marshmallow/marshalling.py:123: [C0330(bad-continuation), ] Wrong continued indentation (remove 1 space).
+                    for idx, d in enumerate(obj)]
+                   |^
+marshmallow/marshalling.py:176: [C0330(bad-continuation), ] Wrong continued indentation (add 10 spaces).
+            original_data, fields_dict, index=None,
+            ^         |
+marshmallow/marshalling.py:177: [C0330(bad-continuation), ] Wrong continued indentation (add 10 spaces).
+            many=False, pass_original=False):
+            ^         |
+marshmallow/marshalling.py:213: [C0330(bad-continuation), ] Wrong continued indentation (add 8 spaces).
+            dict_class=dict, index_errors=True, index=None):
+            ^       |
+marshmallow/marshalling.py:236: [C0330(bad-continuation), ] Wrong continued indentation (add 12 spaces).
+                        partial=partial, dict_class=dict_class,
+                        ^           |
+marshmallow/marshalling.py:237: [C0330(bad-continuation), ] Wrong continued indentation (add 12 spaces).
+                        index=idx, index_errors=index_errors)
+                        ^           |
+marshmallow/marshalling.py:238: [C0330(bad-continuation), ] Wrong continued indentation (remove 1 space).
+                    for idx, d in enumerate(data)]
+                   |^
+marshmallow/marshalling.py:275: [C0330(bad-continuation), ] Wrong hanging indentation before block (add 4 spaces).
+                        partial is True or
+                        ^   |
+marshmallow/marshalling.py:276: [C0330(bad-continuation), ] Wrong hanging indentation before block (add 4 spaces).
+                        (partial_is_collection and attr_name in partial)
+                        ^   |
+marshmallow/marshalling.py:140: [W0640(cell-var-from-loop), Marshaller.serialize.<lambda>] Cell variable field_obj defined in loop
+marshmallow/marshalling.py:140: [W0640(cell-var-from-loop), Marshaller.serialize.<lambda>] Cell variable attr_name defined in loop
+marshmallow/marshalling.py:284: [W0640(cell-var-from-loop), Unmarshaller.deserialize.<lambda>] Cell variable field_obj defined in loop
+marshmallow/marshalling.py:286: [W0640(cell-var-from-loop), Unmarshaller.deserialize.<lambda>] Cell variable field_obj defined in loop
+marshmallow/marshalling.py:286: [W0640(cell-var-from-loop), Unmarshaller.deserialize.<lambda>] Cell variable attr_name defined in loop
+************* Module marshmallow.orderedset
+marshmallow/orderedset.py:88: [C0325(superfluous-parens), ] Unnecessary parens after u'print' keyword
+marshmallow/orderedset.py:89: [C0325(superfluous-parens), ] Unnecessary parens after u'print' keyword
+marshmallow/orderedset.py:90: [C0325(superfluous-parens), ] Unnecessary parens after u'print' keyword
+marshmallow/orderedset.py:49: [W0622(redefined-builtin), OrderedSet.discard] Redefining built-in 'next'
+marshmallow/orderedset.py:67: [W0221(arguments-differ), OrderedSet.pop] Arguments number differs from overridden 'pop' method
+************* Module marshmallow.class_registry
+marshmallow/class_registry.py:68: [C0330(bad-continuation), ] Wrong continued indentation (add 16 spaces).
+            'to import the class.'.format(classname))
+            ^               |
+marshmallow/class_registry.py:73: [C0330(bad-continuation), ] Wrong continued indentation (add 16 spaces).
+            'were found. Please use the full, '
+            ^               |
+marshmallow/class_registry.py:58: [W0622(redefined-builtin), get_class] Redefining built-in 'all'
+************* Module marshmallow.validate
+marshmallow/validate.py:9: [W0622(redefined-builtin), ] Redefining built-in 'basestring'
+marshmallow/validate.py:26: [W1306(missing-format-attribute), Validator.__repr__] Missing format attribute u'error' in format specifier 'self.error'
+marshmallow/validate.py:26: [E1124(redundant-keyword-arg), Validator.__repr__] Argument 'self' passed by position and keyword in method call
+marshmallow/validate.py:178: [W0622(redefined-builtin), Range.__init__] Redefining built-in 'max'
+marshmallow/validate.py:178: [W0622(redefined-builtin), Range.__init__] Redefining built-in 'min'
+marshmallow/validate.py:221: [W0622(redefined-builtin), Length.__init__] Redefining built-in 'max'
+marshmallow/validate.py:221: [W0622(redefined-builtin), Length.__init__] Redefining built-in 'min'
+************* Module marshmallow.exceptions
+marshmallow/exceptions.py:4: [W0622(redefined-builtin), ] Redefining built-in 'basestring'
+************* Module marshmallow.compat
+marshmallow/compat.py:15: [W0622(redefined-builtin), ] Redefining built-in 'basestring'
+marshmallow/compat.py:14: [W0622(redefined-builtin), ] Redefining built-in 'unicode'
+marshmallow/compat.py:26: [E0611(no-name-in-module), ] No name 'parse' in module 'urllib'
+marshmallow/compat.py:26: [E0401(import-error), ] Unable to import 'urllib.parse'
+marshmallow/compat.py:32: [R0204(redefined-variable-type), ] Redefinition of basestring type from type to tuple
+marshmallow/compat.py:37: [C0412(ungrouped-imports), ] Imports from package collections are not grouped

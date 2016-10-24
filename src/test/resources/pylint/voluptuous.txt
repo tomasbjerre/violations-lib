@@ -1,0 +1,51 @@
+
+************* Module voluptuous
+voluptuous/__init__.py:4: [W0622(redefined-builtin), ] Redefining built-in 'unicode'
+voluptuous/__init__.py:4: [W0622(redefined-builtin), ] Redefining built-in 'basestring'
+voluptuous/__init__.py:4: [W0622(redefined-builtin), ] Redefining built-in 'long'
+voluptuous/__init__.py:4: [W0401(wildcard-import), ] Wildcard import schema_builder
+voluptuous/__init__.py:4: [W0403(relative-import), ] Relative import 'schema_builder', should be 'voluptuous.schema_builder'
+voluptuous/__init__.py:5: [W0401(wildcard-import), ] Wildcard import validators
+voluptuous/__init__.py:5: [W0403(relative-import), ] Relative import 'validators', should be 'voluptuous.validators'
+voluptuous/__init__.py:6: [W0401(wildcard-import), ] Wildcard import util
+voluptuous/__init__.py:6: [W0403(relative-import), ] Relative import 'util', should be 'voluptuous.util'
+voluptuous/__init__.py:7: [W0401(wildcard-import), ] Wildcard import error
+voluptuous/__init__.py:7: [W0403(relative-import), ] Relative import 'error', should be 'voluptuous.error'
+voluptuous/__init__.py:9: [W0401(wildcard-import), ] Wildcard import schema_builder
+voluptuous/__init__.py:10: [W0401(wildcard-import), ] Wildcard import validators
+voluptuous/__init__.py:11: [W0401(wildcard-import), ] Wildcard import util
+voluptuous/__init__.py:12: [W0401(wildcard-import), ] Wildcard import error
+************* Module voluptuous.schema_builder
+voluptuous/schema_builder.py:1: [C0302(too-many-lines), ] Too many lines in module (1094/1000)
+voluptuous/schema_builder.py:15: [W0622(redefined-builtin), ] Redefining built-in 'unicode'
+voluptuous/schema_builder.py:16: [W0622(redefined-builtin), ] Redefining built-in 'basestring'
+voluptuous/schema_builder.py:14: [W0622(redefined-builtin), ] Redefining built-in 'long'
+voluptuous/schema_builder.py:9: [W0403(relative-import), ] Relative import 'error', should be 'voluptuous.error'
+voluptuous/schema_builder.py:101: [W0105(pointless-string-statement), ] String statement has no effect
+voluptuous/schema_builder.py:164: [W0621(redefined-outer-name), Schema.__init__] Redefining name 'extra' from outer scope (line 144)
+voluptuous/schema_builder.py:355: [R0204(redefined-variable-type), Schema._compile_object.validate_object] Redefinition of iterable type from generator to itertools.ifilter
+voluptuous/schema_builder.py:527: [W0621(redefined-outer-name), Schema._compile_sequence.validate_sequence] Redefining name 'validate' from outer scope (line 1050)
+voluptuous/schema_builder.py:575: [W0621(redefined-outer-name), Schema.extend] Redefining name 'extra' from outer scope (line 144)
+voluptuous/schema_builder.py:589: [C0123(unidiomatic-typecheck), Schema.extend] Using type() instead of isinstance() for a typecheck.
+voluptuous/schema_builder.py:589: [C0123(unidiomatic-typecheck), Schema.extend] Using type() instead of isinstance() for a typecheck.
+************* Module voluptuous.validators
+voluptuous/validators.py:24: [W0622(redefined-builtin), ] Redefining built-in 'basestring'
+voluptuous/validators.py:9: [W0403(relative-import), ] Relative import 'schema_builder', should be 'voluptuous.schema_builder'
+voluptuous/validators.py:10: [W0403(relative-import), ] Relative import 'error', should be 'voluptuous.error'
+voluptuous/validators.py:23: [E0611(no-name-in-module), ] No name 'parse' in module 'urllib'
+voluptuous/validators.py:23: [E0401(import-error), ] Unable to import 'urllib.parse'
+voluptuous/validators.py:94: [W0622(redefined-builtin), Coerce.__init__] Redefining built-in 'type'
+voluptuous/validators.py:228: [W0120(useless-else-on-loop), Any.__call__] Else clause on loop without a break statement
+voluptuous/validators.py:483: [W0622(redefined-builtin), Range.__init__] Redefining built-in 'min'
+voluptuous/validators.py:483: [W0622(redefined-builtin), Range.__init__] Redefining built-in 'max'
+voluptuous/validators.py:531: [W0622(redefined-builtin), Clamp.__init__] Redefining built-in 'max'
+voluptuous/validators.py:531: [W0622(redefined-builtin), Clamp.__init__] Redefining built-in 'min'
+voluptuous/validators.py:550: [W0622(redefined-builtin), Length.__init__] Redefining built-in 'max'
+voluptuous/validators.py:550: [W0622(redefined-builtin), Length.__init__] Redefining built-in 'min'
+voluptuous/validators.py:573: [W0622(redefined-builtin), Datetime.__init__] Redefining built-in 'format'
+************* Module voluptuous.util
+voluptuous/util.py:2: [W0403(relative-import), ] Relative import 'error', should be 'voluptuous.error'
+voluptuous/util.py:3: [W0403(relative-import), ] Relative import 'schema_builder', should be 'voluptuous.schema_builder'
+voluptuous/util.py:4: [W0403(relative-import), ] Relative import 'validators', should be 'voluptuous.validators'
+************* Module voluptuous.error
+voluptuous/error.py:43: [W0231(super-init-not-called), MultipleInvalid.__init__] __init__ method from base class 'Invalid' is not called
