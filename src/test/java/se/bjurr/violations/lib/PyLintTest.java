@@ -16,9 +16,9 @@ public class PyLintTest {
 
  @Test
  public void testThatViolationsCanBeParsed() {
-  String rootFolder = getRootFolder();
+  final String rootFolder = getRootFolder();
 
-  List<Violation> actual = violationsReporterApi() //
+  final List<Violation> actual = violationsReporterApi() //
     .withPattern(".*/pylint/.*\\.txt$") //
     .inFolder(rootFolder) //
     .findAll(PYLINT) //
@@ -35,5 +35,7 @@ public class PyLintTest {
     .isEqualTo("Wrong continued indentation (add 1 space).");
   assertThat(actual.get(0).getSeverity())//
     .isEqualTo(INFO);
+  assertThat(actual.get(0).getRule().orNull())//
+    .isEqualTo("0330(bad-continuation)");
  }
 }

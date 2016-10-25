@@ -27,23 +27,25 @@ import se.bjurr.violations.lib.model.Violation;
 public class PyLintParser implements ViolationsParser {
 
  @Override
- public List<Violation> parseFile(File file) throws Exception {
-  String string = Files.toString(file, UTF_8);
-  List<Violation> violations = newArrayList();
-  List<List<String>> partsPerLine = getLines(string, "([^:]*):(\\d+): \\[(\\D)(\\d*)\\(([^\\]]*)\\), ([^\\]]*)] (.*)");
-  for (List<String> parts : partsPerLine) {
-   String filename = parts.get(1);
-   Integer line = parseInt(parts.get(2));
-   String severity = parts.get(3);
-   String rule = parts.get(5);
-   String method = parts.get(6);
-   String message = parts.get(7);
+ public List<Violation> parseFile(final File file) throws Exception {
+  final String string = Files.toString(file, UTF_8);
+  final List<Violation> violations = newArrayList();
+  final List<List<String>> partsPerLine = getLines(string,
+    "([^:]*):(\\d+): \\[(\\D)(\\d*)\\(([^\\]]*)\\), ([^\\]]*)] (.*)");
+  for (final List<String> parts : partsPerLine) {
+   final String filename = parts.get(1);
+   final Integer line = parseInt(parts.get(2));
+   final String severity = parts.get(3);
+   final String ruleCode = parts.get(4);
+   final String rule = parts.get(5);
+   final String method = parts.get(6);
+   final String message = parts.get(7);
    violations.add(//
      violationBuilder()//
        .setReporter(PYLINT)//
        .setStartLine(line)//
        .setFile(filename)//
-       .setRule(rule)//
+       .setRule(ruleCode + "(" + rule + ")")//
        .setSeverity(toSeverity(severity))//
        .setMessage(message)//
        .setSpecific("method", method)//
@@ -64,7 +66,7 @@ public class PyLintParser implements ViolationsParser {
   *     further processing.
   * </pre>
   */
- public SEVERITY toSeverity(String severity) {
+ public SEVERITY toSeverity(final String severity) {
   if (severity.equalsIgnoreCase("E") || severity.equalsIgnoreCase("F")) {
    return ERROR;
   }
