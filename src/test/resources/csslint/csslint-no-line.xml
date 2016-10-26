@@ -1,0 +1,7 @@
+<csslint>
+<file name="foo/bar/style.css>
+<issue evidence="" reason="Too many !important declarations (38), try to use less than 10 to avoid specificity issues." severity="warning"/>
+<issue evidence="" reason="Too many font-size declarations (35), abstraction needed." severity="warning"/>
+<issue evidence="" reason="You have 5 h1s, 7 h2s, 5 h3s, 7 h4s, 2 h5s defined in this stylesheet." severity="warning"/>
+</file>
+</csslint>

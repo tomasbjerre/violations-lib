@@ -26,7 +26,8 @@ public class CSSLintTest {
     .violations();
 
   assertThat(actual)//
-    .containsExactly(//
+    .hasSize(6)//
+    .contains(//
       violationBuilder()//
         .setReporter(CSSLINT)//
         .setFile("web/css-file.css")//

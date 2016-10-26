@@ -5,21 +5,21 @@ import static se.bjurr.violations.lib.model.SEVERITY.ERROR;
 import static se.bjurr.violations.lib.model.SEVERITY.INFO;
 import static se.bjurr.violations.lib.model.SEVERITY.WARN;
 import static se.bjurr.violations.lib.model.Violation.violationBuilder;
+import static se.bjurr.violations.lib.parsers.ViolationParserUtils.findAttribute;
 import static se.bjurr.violations.lib.parsers.ViolationParserUtils.findIntegerAttribute;
 import static se.bjurr.violations.lib.parsers.ViolationParserUtils.getAttribute;
 import static se.bjurr.violations.lib.parsers.ViolationParserUtils.getChunks;
-import static se.bjurr.violations.lib.parsers.ViolationParserUtils.getIntegerAttribute;
 import static se.bjurr.violations.lib.reports.Reporter.CSSLINT;
 
 import java.io.File;
 import java.util.List;
 
-import se.bjurr.violations.lib.model.SEVERITY;
-import se.bjurr.violations.lib.model.Violation;
-
 import com.google.common.base.Charsets;
 import com.google.common.base.Optional;
 import com.google.common.io.Files;
+
+import se.bjurr.violations.lib.model.SEVERITY;
+import se.bjurr.violations.lib.model.Violation;
 
 public class CSSLintParser implements ViolationsParser {
 
@@ -32,12 +32,12 @@ public class CSSLintParser implements ViolationsParser {
    String filename = getAttribute(fileChunk, "name");
    List<String> issues = getChunks(fileChunk, "<issue", "/>");
    for (String issueChunk : issues) {
-    Integer line = getIntegerAttribute(issueChunk, "line");
+    Integer line = findIntegerAttribute(issueChunk, "line").or(1);
     Optional<Integer> charAttrib = findIntegerAttribute(issueChunk, "char");
     String severity = getAttribute(issueChunk, "severity");
 
     String message = getAttribute(issueChunk, "reason");
-    String evidence = getAttribute(issueChunk, "evidence").trim();
+    String evidence = findAttribute(issueChunk, "evidence").or("").trim();
     violations.add(//
       violationBuilder()//
         .setReporter(CSSLINT)//

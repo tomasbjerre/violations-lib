@@ -36,6 +36,6 @@ public class PyLintTest {
   assertThat(actual.get(0).getSeverity())//
     .isEqualTo(INFO);
   assertThat(actual.get(0).getRule().orNull())//
-    .isEqualTo("0330(bad-continuation)");
+    .isEqualTo("C0330(bad-continuation)");
  }
 }

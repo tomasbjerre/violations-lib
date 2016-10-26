@@ -45,7 +45,7 @@ public class PyLintParser implements ViolationsParser {
        .setReporter(PYLINT)//
        .setStartLine(line)//
        .setFile(filename)//
-       .setRule(ruleCode + "(" + rule + ")")//
+       .setRule(severity + ruleCode + "(" + rule + ")")//
        .setSeverity(toSeverity(severity))//
        .setMessage(message)//
        .setSpecific("method", method)//
