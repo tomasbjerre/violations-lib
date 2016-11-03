@@ -11,8 +11,7 @@ import static se.bjurr.violations.lib.parsers.ViolationParserUtils.getAttribute;
 import static se.bjurr.violations.lib.parsers.ViolationParserUtils.getIntegerAttribute;
 import static se.bjurr.violations.lib.reports.Reporter.FXCOP;
 
-import java.io.File;
-import java.io.FileInputStream;
+import java.io.ByteArrayInputStream;
 import java.io.InputStream;
 import java.util.List;
 import java.util.logging.Logger;
@@ -29,10 +28,10 @@ public class FxCopParser implements ViolationsParser {
  private static Logger LOG = Logger.getLogger(FxCopParser.class.getSimpleName());
 
  @Override
- public List<Violation> parseFile(File file) throws Exception {
+ public List<Violation> parseFile(String string) throws Exception {
   List<Violation> violations = newArrayList();
 
-  try (InputStream input = new FileInputStream(file)) {
+  try (InputStream input = new ByteArrayInputStream(string.getBytes())) {
 
    XMLInputFactory factory = XMLInputFactory.newInstance();
    XMLStreamReader xmlr = factory.createXMLStreamReader(input);

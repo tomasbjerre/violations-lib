@@ -1,6 +1,5 @@
 package se.bjurr.violations.lib.parsers;
 
-import static com.google.common.base.Charsets.UTF_8;
 import static com.google.common.collect.Lists.newArrayList;
 import static se.bjurr.violations.lib.model.SEVERITY.ERROR;
 import static se.bjurr.violations.lib.model.SEVERITY.INFO;
@@ -12,20 +11,16 @@ import static se.bjurr.violations.lib.parsers.ViolationParserUtils.getChunks;
 import static se.bjurr.violations.lib.parsers.ViolationParserUtils.getIntegerAttribute;
 import static se.bjurr.violations.lib.reports.Reporter.LINT;
 
-import java.io.File;
 import java.util.List;
+
+import com.google.common.base.Optional;
 
 import se.bjurr.violations.lib.model.SEVERITY;
 import se.bjurr.violations.lib.model.Violation;
 
-import com.google.common.base.Optional;
-import com.google.common.io.Files;
-
 public class LintParser implements ViolationsParser {
-
  @Override
- public List<Violation> parseFile(File file) throws Exception {
-  String string = Files.toString(file, UTF_8);
+ public List<Violation> parseFile(String string) throws Exception {
   List<Violation> violations = newArrayList();
   List<String> files = getChunks(string, "<file", "</file>");
   for (String fileChunk : files) {

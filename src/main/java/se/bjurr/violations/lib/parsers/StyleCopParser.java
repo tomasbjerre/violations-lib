@@ -8,8 +8,7 @@ import static se.bjurr.violations.lib.parsers.ViolationParserUtils.getAttribute;
 import static se.bjurr.violations.lib.parsers.ViolationParserUtils.getIntegerAttribute;
 import static se.bjurr.violations.lib.reports.Reporter.STYLECOP;
 
-import java.io.File;
-import java.io.FileInputStream;
+import java.io.ByteArrayInputStream;
 import java.io.InputStream;
 import java.util.List;
 
@@ -22,10 +21,10 @@ import se.bjurr.violations.lib.model.Violation;
 public class StyleCopParser implements ViolationsParser {
 
  @Override
- public List<Violation> parseFile(File file) throws Exception {
+ public List<Violation> parseFile(String string) throws Exception {
   List<Violation> violations = newArrayList();
 
-  try (InputStream input = new FileInputStream(file)) {
+  try (InputStream input = new ByteArrayInputStream(string.getBytes())) {
 
    XMLInputFactory factory = XMLInputFactory.newInstance();
    XMLStreamReader xmlr = factory.createXMLStreamReader(input);

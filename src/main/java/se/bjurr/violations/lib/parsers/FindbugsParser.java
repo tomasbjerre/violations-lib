@@ -14,8 +14,7 @@ import static se.bjurr.violations.lib.parsers.ViolationParserUtils.getContent;
 import static se.bjurr.violations.lib.parsers.ViolationParserUtils.getIntegerAttribute;
 import static se.bjurr.violations.lib.reports.Reporter.FINDBUGS;
 
-import java.io.File;
-import java.io.FileInputStream;
+import java.io.ByteArrayInputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.List;
@@ -26,11 +25,11 @@ import javax.xml.stream.XMLStreamConstants;
 import javax.xml.stream.XMLStreamException;
 import javax.xml.stream.XMLStreamReader;
 
-import se.bjurr.violations.lib.model.SEVERITY;
-import se.bjurr.violations.lib.model.Violation;
-
 import com.google.common.base.Optional;
 import com.google.common.io.Resources;
+
+import se.bjurr.violations.lib.model.SEVERITY;
+import se.bjurr.violations.lib.model.Violation;
 
 public class FindbugsParser implements ViolationsParser {
 
@@ -42,28 +41,6 @@ public class FindbugsParser implements ViolationsParser {
 
  public static void setFindbugsMessagesXml(String findbugsMessagesXml) {
   FindbugsParser.findbugsMessagesXml = findbugsMessagesXml;
- }
-
- @Override
- public List<Violation> parseFile(File file) throws Exception {
-  List<Violation> violations = newArrayList();
-  Map<String, String> messagesPerType = getMessagesPerType();
-
-  try (InputStream input = new FileInputStream(file)) {
-
-   XMLInputFactory factory = XMLInputFactory.newInstance();
-   XMLStreamReader xmlr = factory.createXMLStreamReader(input);
-
-   while (xmlr.hasNext()) {
-    int eventType = xmlr.next();
-    if (eventType == XMLStreamConstants.START_ELEMENT) {
-     if (xmlr.getLocalName().equals("BugInstance")) {
-      parseBugInstance(xmlr, violations, messagesPerType);
-     }
-    }
-   }
-  }
-  return violations;
  }
 
  private Map<String, String> getMessagesPerType() {
@@ -139,6 +116,28 @@ public class FindbugsParser implements ViolationsParser {
    violations.add(candidates.get(candidates.size() - 1));
   }
 
+ }
+
+ @Override
+ public List<Violation> parseFile(String string) throws Exception {
+  List<Violation> violations = newArrayList();
+  Map<String, String> messagesPerType = getMessagesPerType();
+
+  try (InputStream input = new ByteArrayInputStream(string.getBytes())) {
+
+   XMLInputFactory factory = XMLInputFactory.newInstance();
+   XMLStreamReader xmlr = factory.createXMLStreamReader(input);
+
+   while (xmlr.hasNext()) {
+    int eventType = xmlr.next();
+    if (eventType == XMLStreamConstants.START_ELEMENT) {
+     if (xmlr.getLocalName().equals("BugInstance")) {
+      parseBugInstance(xmlr, violations, messagesPerType);
+     }
+    }
+   }
+  }
+  return violations;
  }
 
  /**

@@ -1,11 +1,14 @@
 package se.bjurr.violations.lib.reports;
 
+import static com.google.common.base.Charsets.UTF_8;
 import static com.google.common.collect.Lists.newArrayList;
 import static java.util.logging.Level.SEVERE;
 
 import java.io.File;
 import java.util.List;
 import java.util.logging.Logger;
+
+import com.google.common.io.Files;
 
 import se.bjurr.violations.lib.model.Violation;
 import se.bjurr.violations.lib.parsers.AndroidLintParser;
@@ -57,7 +60,8 @@ public enum Reporter {
   List<Violation> violations = newArrayList();
   for (File file : includedFiles) {
    try {
-    violations.addAll(this.violationsParser.parseFile(file));
+    String string = Files.toString(file, UTF_8);
+    violations.addAll(violationsParser.parseFile(string));
    } catch (Exception e) {
     LOG.log(SEVERE, "Error when parsing " + file.getAbsolutePath() + " as " + this.name(), e);
    }
