@@ -68,4 +68,8 @@ public enum Reporter {
   }
   return violations;
  }
+
+ public ViolationsParser getViolationsParser() {
+  return violationsParser;
+ }
 }
