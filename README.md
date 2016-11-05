@@ -5,6 +5,7 @@ This is a library for parsing report files from static code analysis.
 It supports:
  * [_AndoidLint_](http://developer.android.com/tools/help/lint.html)
  * [_Checkstyle_](http://checkstyle.sourceforge.net/) ([_ESLint_](https://github.com/sindresorhus/grunt-eslint) with `format: 'checkstyle'`)
+ * [_CodeNarc_](http://codenarc.sourceforge.net/)
  * [_CPPLint_](https://github.com/theandrewdavis/cpplint)
  * [_CPPCheck_](http://cppcheck.sourceforge.net/)
  * [_CSSLint_](https://github.com/CSSLint/csslint)

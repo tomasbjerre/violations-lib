@@ -15,6 +15,7 @@ import se.bjurr.violations.lib.parsers.AndroidLintParser;
 import se.bjurr.violations.lib.parsers.CPPCheckParser;
 import se.bjurr.violations.lib.parsers.CSSLintParser;
 import se.bjurr.violations.lib.parsers.CheckStyleParser;
+import se.bjurr.violations.lib.parsers.CodeNarcParser;
 import se.bjurr.violations.lib.parsers.CppLintParser;
 import se.bjurr.violations.lib.parsers.FindbugsParser;
 import se.bjurr.violations.lib.parsers.Flake8Parser;
@@ -33,6 +34,7 @@ import se.bjurr.violations.lib.parsers.XMLLintParser;
 public enum Reporter {
  ANDROIDLINT(new AndroidLintParser()), //
  CHECKSTYLE(new CheckStyleParser()), //
+ CODENARC(new CodeNarcParser()), //
  CPPCHECK(new CPPCheckParser()), //
  CPPLINT(new CppLintParser()), //
  CSSLINT(new CSSLintParser()), //
