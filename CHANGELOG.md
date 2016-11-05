@@ -5,10 +5,71 @@ Changelog of Git Changelog.
 ## Unreleased
 ### No issue
 
+**Simian, ZPTLint, JCReport**
+
+
+[3128473c31455e8](https://github.com/tomasbjerre/git-changelog-lib/commit/3128473c31455e8) Tomas Bjerre *2016-11-05 22:38:58*
+
+**Gendarme**
+
+
+[3ac58ccc82b8360](https://github.com/tomasbjerre/git-changelog-lib/commit/3ac58ccc82b8360) Tomas Bjerre *2016-11-05 21:28:33*
+
+**CPD**
+
+
+[7a4e651c53ab3b2](https://github.com/tomasbjerre/git-changelog-lib/commit/7a4e651c53ab3b2) Tomas Bjerre *2016-11-05 19:16:50*
+
+**CodeNarc**
+
+
+[23fa562feee2bb2](https://github.com/tomasbjerre/git-changelog-lib/commit/23fa562feee2bb2) Tomas Bjerre *2016-11-05 18:58:32*
+
+
+## 1.15
+### No issue
+
+**Exposing parser in reporter**
+
+
+[2e216ee38cb2fdb](https://github.com/tomasbjerre/git-changelog-lib/commit/2e216ee38cb2fdb) Tomas Bjerre *2016-11-03 18:03:08*
+
+
+## 1.14
+### No issue
+
+**Letting the reporters parse strings, not files**
+
+
+[375706d8e579bfc](https://github.com/tomasbjerre/git-changelog-lib/commit/375706d8e579bfc) Tomas Bjerre *2016-11-03 17:54:20*
+
+
+## 1.13
+### GitHub [#11](https://github.com/tomasbjerre/violations-lib/issues/11) 
+
+**Handling css-lint reports where there are not line or evidence**
+
+ * Also setting severity level for PyLint. 
+
+[35d5d33b447b37a](https://github.com/tomasbjerre/git-changelog-lib/commit/35d5d33b447b37a) Tomas Bjerre *2016-10-26 15:39:37*
+
+
+## 1.12
+### No issue
+
+**Changing rule format in PyLint to CODE(codeName)**
+
+
+[24618707a88497c](https://github.com/tomasbjerre/git-changelog-lib/commit/24618707a88497c) Tomas Bjerre *2016-10-25 17:44:33*
+
+
+## 1.11
+### No issue
+
 **PyLint parser**
 
 
-[10929695672b31f](https://github.com/tomasbjerre/git-changelog-lib/commit/10929695672b31f) Tomas Bjerre *2016-10-24 17:16:22*
+[ec90aa741fdeb67](https://github.com/tomasbjerre/git-changelog-lib/commit/ec90aa741fdeb67) Tomas Bjerre *2016-10-24 17:16:46*
 
 
 ## 1.10

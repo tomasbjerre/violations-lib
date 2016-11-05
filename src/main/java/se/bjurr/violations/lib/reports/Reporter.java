@@ -22,6 +22,7 @@ import se.bjurr.violations.lib.parsers.FindbugsParser;
 import se.bjurr.violations.lib.parsers.Flake8Parser;
 import se.bjurr.violations.lib.parsers.FxCopParser;
 import se.bjurr.violations.lib.parsers.GendarmeParser;
+import se.bjurr.violations.lib.parsers.JCReportParser;
 import se.bjurr.violations.lib.parsers.JSHintParser;
 import se.bjurr.violations.lib.parsers.LintParser;
 import se.bjurr.violations.lib.parsers.PMDParser;
@@ -29,9 +30,11 @@ import se.bjurr.violations.lib.parsers.PerlCriticParser;
 import se.bjurr.violations.lib.parsers.PiTestParser;
 import se.bjurr.violations.lib.parsers.PyLintParser;
 import se.bjurr.violations.lib.parsers.ResharperParser;
+import se.bjurr.violations.lib.parsers.SimianParser;
 import se.bjurr.violations.lib.parsers.StyleCopParser;
 import se.bjurr.violations.lib.parsers.ViolationsParser;
 import se.bjurr.violations.lib.parsers.XMLLintParser;
+import se.bjurr.violations.lib.parsers.ZPTLintParser;
 
 public enum Reporter {
  ANDROIDLINT(new AndroidLintParser()), //
@@ -45,6 +48,7 @@ public enum Reporter {
  FLAKE8(new Flake8Parser()), //
  FXCOP(new FxCopParser()), //
  GENDARME(new GendarmeParser()), //
+ JCREPORT(new JCReportParser()), //
  JSHINT(new JSHintParser()), //
  LINT(new LintParser()), //
  PERLCRITIC(new PerlCriticParser()), //
@@ -52,8 +56,10 @@ public enum Reporter {
  PMD(new PMDParser()), //
  PYLINT(new PyLintParser()), //
  RESHARPER(new ResharperParser()), //
+ SIMIAN(new SimianParser()), //
  STYLECOP(new StyleCopParser()), //
- XMLLINT(new XMLLintParser());
+ XMLLINT(new XMLLintParser()), //
+ ZPTLINT(new ZPTLintParser());
 
  private static Logger LOG = Logger.getLogger(Reporter.class.getSimpleName());
  private ViolationsParser violationsParser;
