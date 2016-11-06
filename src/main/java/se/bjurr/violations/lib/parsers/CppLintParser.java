@@ -15,9 +15,6 @@ import java.util.List;
 import se.bjurr.violations.lib.model.SEVERITY;
 import se.bjurr.violations.lib.model.Violation;
 
-/**
- * PyLint. Format used by Flake8.
- */
 public class CppLintParser implements ViolationsParser {
 
  @Override

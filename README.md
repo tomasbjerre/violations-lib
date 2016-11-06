@@ -68,6 +68,7 @@ It is used by:
  * [Violation Comments to GitHub Lib](https://github.com/tomasbjerre/violation-comments-to-github-lib).
  * [Violation Comments to Bitbucket Server Jenkins Plugin](https://github.com/jenkinsci/violation-comments-to-stash-plugin).
  * [Violation Comments to Bitbucket Server Lib](https://github.com/tomasbjerre/violation-comments-to-bitbucket-server-lib).
+ * [Violations Jenkins Plugin](https://github.com/jenkinsci/violations-plugin).
  * [Violation Comments Lib](https://github.com/tomasbjerre/violation-comments-lib).
 
 ## Developer instructions
