@@ -1,6 +1,5 @@
 package se.bjurr.violations.lib.parsers;
 
-import static com.google.common.collect.Lists.newArrayList;
 import static java.lang.Integer.parseInt;
 import static se.bjurr.violations.lib.model.SEVERITY.ERROR;
 import static se.bjurr.violations.lib.model.SEVERITY.INFO;
@@ -10,6 +9,7 @@ import static se.bjurr.violations.lib.parsers.ViolationParserUtils.getLines;
 import static se.bjurr.violations.lib.parsers.ViolationParserUtils.getParts;
 import static se.bjurr.violations.lib.reports.Reporter.CPPLINT;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import se.bjurr.violations.lib.model.SEVERITY;
@@ -18,7 +18,7 @@ import se.bjurr.violations.lib.model.Violation;
 public class PerlCriticParser implements ViolationsParser {
  @Override
  public List<Violation> parseFile(String string) throws Exception {
-  List<Violation> violations = newArrayList();
+  List<Violation> violations = new ArrayList<>();
   List<String> lines = getLines(string);
   for (String line : lines) {
    List<String> parts = getParts(line, "\\(Severity: (\\d*)\\)$", "^([^:]*):", "^(.+?) at line ", "^(\\d*), ",

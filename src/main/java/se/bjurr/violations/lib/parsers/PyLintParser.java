@@ -1,6 +1,5 @@
 package se.bjurr.violations.lib.parsers;
 
-import static com.google.common.collect.Lists.newArrayList;
 import static java.lang.Integer.parseInt;
 import static se.bjurr.violations.lib.model.SEVERITY.ERROR;
 import static se.bjurr.violations.lib.model.SEVERITY.INFO;
@@ -9,6 +8,7 @@ import static se.bjurr.violations.lib.model.Violation.violationBuilder;
 import static se.bjurr.violations.lib.parsers.ViolationParserUtils.getLines;
 import static se.bjurr.violations.lib.reports.Reporter.PYLINT;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import se.bjurr.violations.lib.model.SEVERITY;
@@ -24,7 +24,7 @@ public class PyLintParser implements ViolationsParser {
 
  @Override
  public List<Violation> parseFile(String string) throws Exception {
-  final List<Violation> violations = newArrayList();
+  final List<Violation> violations = new ArrayList<>();
   final List<List<String>> partsPerLine = getLines(string,
     "([^:]*):(\\d+): \\[(\\D)(\\d*)\\(([^\\]]*)\\), ([^\\]]*)] (.*)");
   for (final List<String> parts : partsPerLine) {

@@ -5,10 +5,24 @@ Changelog of Git Changelog.
 ## Unreleased
 ### No issue
 
+**Removing Guava dependency**
+
+
+[a4d55312f0a3481](https://github.com/tomasbjerre/git-changelog-lib/commit/a4d55312f0a3481) Tomas Bjerre *2016-12-14 17:40:28*
+
+**doc**
+
+
+[5d94e7f3626a273](https://github.com/tomasbjerre/git-changelog-lib/commit/5d94e7f3626a273) Tomas Bjerre *2016-11-06 18:12:13*
+
+
+## 1.16
+### No issue
+
 **Simian, ZPTLint, JCReport**
 
 
-[3128473c31455e8](https://github.com/tomasbjerre/git-changelog-lib/commit/3128473c31455e8) Tomas Bjerre *2016-11-05 22:38:58*
+[60fa8a9b6091ddd](https://github.com/tomasbjerre/git-changelog-lib/commit/60fa8a9b6091ddd) Tomas Bjerre *2016-11-05 22:39:23*
 
 **Gendarme**
 
@@ -45,7 +59,7 @@ Changelog of Git Changelog.
 
 
 ## 1.13
-### GitHub [#11](https://github.com/tomasbjerre/violations-lib/issues/11) 
+### GitHub [#11](https://github.com/tomasbjerre/violations-lib/issues/11) CSSLint rollup output causes parsing error
 
 **Handling css-lint reports where there are not line or evidence**
 
@@ -88,7 +102,7 @@ Changelog of Git Changelog.
 
 
 ## 1.9
-### GitHub [#4](https://github.com/tomasbjerre/violations-lib/issues/4) 
+### GitHub [#4](https://github.com/tomasbjerre/violations-lib/issues/4) eslint
 
 **ESLint**
 
@@ -155,7 +169,7 @@ Changelog of Git Changelog.
 
 
 ## 1.6
-### GitHub [#5](https://github.com/tomasbjerre/violations-lib/issues/5) 
+### GitHub [#5](https://github.com/tomasbjerre/violations-lib/issues/5) PiTest
 
 **Adding pitest parser**
 
@@ -163,7 +177,7 @@ Changelog of Git Changelog.
 [eeb2a624a99a7ff](https://github.com/tomasbjerre/git-changelog-lib/commit/eeb2a624a99a7ff) Tomas Bjerre *2016-03-26 19:22:06*
 
 
-### GitHub [#7](https://github.com/tomasbjerre/violations-lib/issues/7) 
+### GitHub [#7](https://github.com/tomasbjerre/violations-lib/issues/7) Findbugs parser misses bugs
 
 **Correcting exception message thrown if attribute not found**
 
@@ -191,7 +205,7 @@ Changelog of Git Changelog.
 
 
 ## 1.5
-### GitHub [#3](https://github.com/tomasbjerre/violations-lib/issues/3) 
+### GitHub [#3](https://github.com/tomasbjerre/violations-lib/issues/3) Support more formats
 
 **Support PerlCritic and XMLLint**
 

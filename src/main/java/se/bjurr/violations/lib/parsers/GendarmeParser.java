@@ -1,6 +1,5 @@
 package se.bjurr.violations.lib.parsers;
 
-import static com.google.common.collect.Lists.newArrayList;
 import static javax.xml.stream.XMLStreamConstants.START_ELEMENT;
 import static se.bjurr.violations.lib.model.SEVERITY.ERROR;
 import static se.bjurr.violations.lib.model.SEVERITY.INFO;
@@ -11,6 +10,7 @@ import static se.bjurr.violations.lib.reports.Reporter.GENDARME;
 
 import java.io.ByteArrayInputStream;
 import java.io.InputStream;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -38,7 +38,7 @@ public class GendarmeParser implements ViolationsParser {
 
  @Override
  public List<Violation> parseFile(String string) throws Exception {
-  List<Violation> violations = newArrayList();
+  List<Violation> violations = new ArrayList<>();
 
   try (InputStream input = new ByteArrayInputStream(string.getBytes())) {
 

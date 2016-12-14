@@ -1,7 +1,5 @@
 package se.bjurr.violations.lib.parsers;
 
-import static com.google.common.base.Strings.isNullOrEmpty;
-import static com.google.common.collect.Lists.newArrayList;
 import static java.lang.Integer.parseInt;
 import static se.bjurr.violations.lib.model.SEVERITY.ERROR;
 import static se.bjurr.violations.lib.model.SEVERITY.INFO;
@@ -9,7 +7,9 @@ import static se.bjurr.violations.lib.model.SEVERITY.WARN;
 import static se.bjurr.violations.lib.model.Violation.violationBuilder;
 import static se.bjurr.violations.lib.parsers.ViolationParserUtils.getLines;
 import static se.bjurr.violations.lib.reports.Reporter.FLAKE8;
+import static se.bjurr.violations.lib.util.Utils.isNullOrEmpty;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import se.bjurr.violations.lib.model.SEVERITY;
@@ -25,7 +25,7 @@ public class Flake8Parser implements ViolationsParser {
 
  @Override
  public List<Violation> parseFile(String string) throws Exception {
-  List<Violation> violations = newArrayList();
+  List<Violation> violations = new ArrayList<>();
   List<List<String>> partsPerLine = getLines(string, "([^:]*):(\\d+)?:?(\\d*)?:? \\[?(\\D)(\\d*)\\]? (.*)");
   for (List<String> parts : partsPerLine) {
    String filename = parts.get(1);

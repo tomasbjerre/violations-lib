@@ -1,24 +1,24 @@
 package se.bjurr.violations.lib;
 
 import java.io.File;
+import java.util.ArrayList;
+import java.util.List;
 
 import se.bjurr.violations.lib.model.Violation;
 
-import com.google.common.base.Predicate;
-import com.google.common.io.Resources;
-
 public class TestUtils {
 
- public static String getRootFolder() {
-  return new File(Resources.getResource("root.txt").getFile()).getParent();
+ public static List<Violation> filterRule(List<Violation> all, final String rule) {
+  List<Violation> filtered = new ArrayList<>();
+  for (Violation v : all) {
+   if (v.getRule().or("").equals(rule)) {
+    filtered.add(v);
+   }
+  }
+  return filtered;
  }
 
- public static Predicate<Violation> filterRule(final String rule) {
-  return new Predicate<Violation>() {
-   @Override
-   public boolean apply(Violation input) {
-    return input.getRule().or("").equals(rule);
-   }
-  };
+ public static String getRootFolder() {
+  return new File(TestUtils.class.getClassLoader().getResource("root.txt").getFile()).getParent();
  }
 }

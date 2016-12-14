@@ -1,11 +1,11 @@
 package se.bjurr.violations.lib.parsers;
 
-import static com.google.common.collect.Lists.newArrayList;
 import static se.bjurr.violations.lib.model.SEVERITY.ERROR;
 import static se.bjurr.violations.lib.model.Violation.violationBuilder;
 import static se.bjurr.violations.lib.parsers.ViolationParserUtils.getLines;
 import static se.bjurr.violations.lib.reports.Reporter.ZPTLINT;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import se.bjurr.violations.lib.model.Violation;
@@ -14,7 +14,7 @@ public class ZPTLintParser implements ViolationsParser {
 
  @Override
  public List<Violation> parseFile(String string) throws Exception {
-  List<Violation> violations = newArrayList();
+  List<Violation> violations = new ArrayList<>();
   for (List<String> parts : getLines(string, "[ ]+Error in: (.*)  (.*)  , at line (\\d+).*")) {
    if (parts.size() < 3) {
     continue;

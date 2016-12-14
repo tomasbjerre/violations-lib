@@ -1,7 +1,5 @@
 package se.bjurr.violations.lib.parsers;
 
-import static com.google.common.collect.Lists.newArrayList;
-import static com.google.common.collect.Maps.newHashMap;
 import static se.bjurr.violations.lib.model.SEVERITY.ERROR;
 import static se.bjurr.violations.lib.model.SEVERITY.INFO;
 import static se.bjurr.violations.lib.model.SEVERITY.WARN;
@@ -11,6 +9,8 @@ import static se.bjurr.violations.lib.parsers.ViolationParserUtils.getAttribute;
 import static se.bjurr.violations.lib.parsers.ViolationParserUtils.getChunks;
 import static se.bjurr.violations.lib.reports.Reporter.RESHARPER;
 
+import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -21,11 +21,11 @@ public class ResharperParser implements ViolationsParser {
 
  @Override
  public List<Violation> parseFile(String string) throws Exception {
-  List<Violation> violations = newArrayList();
+  List<Violation> violations = new ArrayList<>();
   List<String> issueTypeChunks = getChunks(string, "<IssueType ", "/>");
-  Map<String, Map<String, String>> issueTypesPerTypeId = newHashMap();
+  Map<String, Map<String, String>> issueTypesPerTypeId = new HashMap<>();
   for (String issueTypesChunk : issueTypeChunks) {
-   Map<String, String> issueType = newHashMap();
+   Map<String, String> issueType = new HashMap<>();
    String id = getAttribute(issueTypesChunk, "Id");
    issueType.put("category", getAttribute(issueTypesChunk, "Category"));
    issueType.put("description", getAttribute(issueTypesChunk, "Description"));

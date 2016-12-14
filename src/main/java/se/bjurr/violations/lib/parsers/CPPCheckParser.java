@@ -1,6 +1,5 @@
 package se.bjurr.violations.lib.parsers;
 
-import static com.google.common.collect.Lists.newArrayList;
 import static se.bjurr.violations.lib.model.SEVERITY.ERROR;
 import static se.bjurr.violations.lib.model.SEVERITY.INFO;
 import static se.bjurr.violations.lib.model.SEVERITY.WARN;
@@ -10,6 +9,7 @@ import static se.bjurr.violations.lib.parsers.ViolationParserUtils.getChunks;
 import static se.bjurr.violations.lib.parsers.ViolationParserUtils.getIntegerAttribute;
 import static se.bjurr.violations.lib.reports.Reporter.CPPCHECK;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import se.bjurr.violations.lib.model.SEVERITY;
@@ -19,7 +19,7 @@ public class CPPCheckParser implements ViolationsParser {
 
  @Override
  public List<Violation> parseFile(String string) throws Exception {
-  List<Violation> violations = newArrayList();
+  List<Violation> violations = new ArrayList<>();
   List<String> errorChunks = getChunks(string, "<error", "</error>");
   for (String errorChunk : errorChunks) {
    String severity = getAttribute(errorChunk, "severity");

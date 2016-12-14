@@ -1,7 +1,5 @@
 package se.bjurr.violations.lib.parsers;
 
-import static com.google.common.collect.Lists.newArrayList;
-import static com.google.common.collect.Maps.newHashMap;
 import static javax.xml.stream.XMLStreamConstants.START_ELEMENT;
 import static se.bjurr.violations.lib.model.SEVERITY.ERROR;
 import static se.bjurr.violations.lib.model.SEVERITY.INFO;
@@ -13,6 +11,8 @@ import static se.bjurr.violations.lib.reports.Reporter.CODENARC;
 
 import java.io.ByteArrayInputStream;
 import java.io.InputStream;
+import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -36,8 +36,8 @@ public class CodeNarcParser implements ViolationsParser {
 
  @Override
  public List<Violation> parseFile(String string) throws Exception {
-  List<Violation> violations = newArrayList();
-  Map<String, String> rules = newHashMap();
+  List<Violation> violations = new ArrayList<>();
+  Map<String, String> rules = new HashMap<>();
   try (InputStream input = new ByteArrayInputStream(string.getBytes())) {
    XMLInputFactory factory = XMLInputFactory.newInstance();
    XMLStreamReader xmlr = factory.createXMLStreamReader(input);

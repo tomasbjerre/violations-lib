@@ -1,15 +1,13 @@
 package se.bjurr.violations.lib.parsers;
 
-import static com.google.common.base.Optional.absent;
-import static com.google.common.base.Optional.fromNullable;
-import static com.google.common.base.Optional.of;
-import static com.google.common.base.Throwables.propagate;
-import static com.google.common.collect.Lists.newArrayList;
 import static java.lang.Integer.parseInt;
 import static java.util.regex.Pattern.DOTALL;
 import static java.util.regex.Pattern.quote;
+import static se.bjurr.violations.lib.util.Optional.absent;
+import static se.bjurr.violations.lib.util.Optional.fromNullable;
 
 import java.io.StringWriter;
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.regex.Matcher;
@@ -21,7 +19,7 @@ import javax.xml.transform.TransformerFactory;
 import javax.xml.transform.stax.StAXSource;
 import javax.xml.transform.stream.StreamResult;
 
-import com.google.common.base.Optional;
+import se.bjurr.violations.lib.util.Optional;
 
 public final class ViolationParserUtils {
  public static String asString(XMLStreamReader xmlr) throws Exception {
@@ -35,12 +33,12 @@ public final class ViolationParserUtils {
   Pattern pattern = Pattern.compile(attribute + "='([^']+?)'");
   Matcher matcher = pattern.matcher(in);
   if (matcher.find()) {
-   return of(matcher.group(1));
+   return fromNullable(matcher.group(1));
   }
   pattern = Pattern.compile(attribute + "=\"([^\"]+?)\"");
   matcher = pattern.matcher(in);
   if (matcher.find()) {
-   return of(matcher.group(1));
+   return fromNullable(matcher.group(1));
   }
   return absent();
  }
@@ -51,7 +49,7 @@ public final class ViolationParserUtils {
 
  public static Optional<Integer> findIntegerAttribute(String in, String attribute) {
   if (findAttribute(in, attribute).isPresent()) {
-   return of(parseInt(getAttribute(in, attribute)));
+   return fromNullable(parseInt(getAttribute(in, attribute)));
   }
   return absent();
  }
@@ -61,7 +59,7 @@ public final class ViolationParserUtils {
   if (attr == null) {
    return Optional.absent();
   } else {
-   return Optional.of(Integer.parseInt(attr));
+   return fromNullable(Integer.parseInt(attr));
   }
  }
 
@@ -76,11 +74,13 @@ public final class ViolationParserUtils {
  public static String getAttribute(XMLStreamReader in, String attribute) {
   String foundOpt = in.getAttributeValue("", attribute);
   if (foundOpt == null) {
+   String foundin;
    try {
-    throw new RuntimeException("\"" + attribute + "\" not found in:\n" + asString(in));
+    foundin = asString(in);
    } catch (Exception e) {
-    propagate(e);
+    throw new RuntimeException(e);
    }
+   throw new RuntimeException("\"" + attribute + "\" not found in:\n" + foundin);
   }
   return foundOpt;
  }
@@ -88,7 +88,7 @@ public final class ViolationParserUtils {
  public static List<String> getChunks(String in, String includingStart, String includingEnd) {
   Pattern pattern = Pattern.compile("(" + includingStart + ".+?" + includingEnd + ")", DOTALL);
   Matcher matcher = pattern.matcher(in);
-  List<String> chunks = newArrayList();
+  List<String> chunks = new ArrayList<>();
   while (matcher.find()) {
    chunks.add(matcher.group());
   }
@@ -130,14 +130,14 @@ public final class ViolationParserUtils {
   * @return List per line in String, with groups from regexpPerLine.
   */
  public static List<List<String>> getLines(String string, String regexpPerLine) {
-  List<List<String>> results = newArrayList();
+  List<List<String>> results = new ArrayList<>();
   Pattern pattern = Pattern.compile(regexpPerLine);
   for (String line : string.split("\n")) {
    Matcher matcher = pattern.matcher(line);
    if (!matcher.find()) {
     continue;
    }
-   List<String> lineParts = newArrayList();
+   List<String> lineParts = new ArrayList<>();
    for (int g = 0; g <= matcher.groupCount(); g++) {
     lineParts.add(matcher.group(g));
    }
@@ -151,13 +151,13 @@ public final class ViolationParserUtils {
   * and match next regexp on that string...
   */
  public static List<String> getParts(String string, String... regexpList) {
-  List<String> parts = newArrayList();
+  List<String> parts = new ArrayList<>();
   for (String regexp : regexpList) {
    Pattern pattern = Pattern.compile(regexp);
    Matcher matcher = pattern.matcher(string);
    boolean found = matcher.find();
    if (!found) {
-    return newArrayList();
+    return new ArrayList<>();
    }
    String part = matcher.group(1).trim();
    parts.add(part);

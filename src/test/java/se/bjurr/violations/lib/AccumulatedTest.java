@@ -1,6 +1,5 @@
 package se.bjurr.violations.lib;
 
-import static com.google.common.collect.Lists.reverse;
 import static org.assertj.core.api.Assertions.assertThat;
 import static se.bjurr.violations.lib.ORDERED_BY.FILE;
 import static se.bjurr.violations.lib.ORDERED_BY.SEVERITY;
@@ -13,9 +12,33 @@ import static se.bjurr.violations.lib.model.SEVERITY.WARN;
 import static se.bjurr.violations.lib.reports.Reporter.CHECKSTYLE;
 import static se.bjurr.violations.lib.reports.Reporter.JSHINT;
 
+import java.util.List;
+
 import org.junit.Test;
 
+import se.bjurr.violations.lib.model.Violation;
+
 public class AccumulatedTest {
+
+ private ViolationsAccumulatedReporterApi getAccumulatedReporterApi() {
+  String rootFolder = getRootFolder();
+
+  return violationsAccumulatedReporterApi()//
+    .withViolationsReporterApiList(//
+      violationsReporterApi() //
+        .withPattern(".*/checkstyle/.*\\.xml$") //
+        .inFolder(rootFolder) //
+        .findAll(CHECKSTYLE) //
+        .violations()//
+    ) //
+    .withViolationsReporterApiList(//
+      violationsReporterApi() //
+        .withPattern(".*/jshint/.*\\.xml$") //
+        .inFolder(rootFolder) //
+        .findAll(JSHINT) //
+        .violations()//
+  );
+ }
 
  @Test
  public void testThatViolationsCanBeFiltered() {
@@ -44,53 +67,29 @@ public class AccumulatedTest {
  public void testThatViolationsCanBeOrdered() {
   ViolationsAccumulatedReporterApi violationsAccumulatedReporterApi = getAccumulatedReporterApi();
 
-  assertThat(violationsAccumulatedReporterApi//
+  List<Violation> violations = violationsAccumulatedReporterApi//
     .withAtLeastSeverity(INFO)//
     .orderedBy(FILE)//
-    .violations()//
+    .violations();
+  assertThat(violations//
     .get(0).getFile())//
       .isEqualTo("../../../web/js-file.js");
 
-  assertThat(reverse(violationsAccumulatedReporterApi//
-    .withAtLeastSeverity(INFO)//
-    .orderedBy(FILE)//
-    .violations())//
-      .get(0).getFile())//
-        .isEqualTo("/src/main/java/se/bjurr/violations/lib/example/OtherClass.java");
+  assertThat(violations//
+    .get(violations.size() - 1).getFile())//
+      .isEqualTo("/src/main/java/se/bjurr/violations/lib/example/OtherClass.java");
 
-  assertThat(violationsAccumulatedReporterApi//
+  List<Violation> violations2 = violationsAccumulatedReporterApi//
     .withAtLeastSeverity(INFO)//
     .orderedBy(SEVERITY)//
-    .violations()//
+    .violations();
+  assertThat(violations2//
     .get(0).getSeverity())//
       .isEqualTo(INFO);
 
-  assertThat(reverse(violationsAccumulatedReporterApi//
-    .withAtLeastSeverity(INFO)//
-    .orderedBy(SEVERITY)//
-    .violations())//
-      .get(0).getSeverity())//
-        .isEqualTo(ERROR);
+  assertThat(violations2//
+    .get(violations2.size() - 1).getSeverity())//
+      .isEqualTo(ERROR);
 
- }
-
- private ViolationsAccumulatedReporterApi getAccumulatedReporterApi() {
-  String rootFolder = getRootFolder();
-
-  return violationsAccumulatedReporterApi()//
-    .withViolationsReporterApiList(//
-      violationsReporterApi() //
-        .withPattern(".*/checkstyle/.*\\.xml$") //
-        .inFolder(rootFolder) //
-        .findAll(CHECKSTYLE) //
-        .violations()//
-    ) //
-    .withViolationsReporterApiList(//
-      violationsReporterApi() //
-        .withPattern(".*/jshint/.*\\.xml$") //
-        .inFolder(rootFolder) //
-        .findAll(JSHINT) //
-        .violations()//
-  );
  }
 }

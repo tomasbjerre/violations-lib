@@ -21,12 +21,12 @@ apply plugin: 'net.researchgate.release'
 apply plugin: "se.bjurr.gitchangelog.git-changelog-gradle-plugin"
 
 task gitChangelogTask(type: se.bjurr.gitchangelog.plugin.gradle.GitChangelogTask) {
+ gitHubApi = "https://api.github.com/repos/tomasbjerre/violations-lib";
+ gitHubToken = System.properties['GITHUB_OAUTH2TOKEN'];
+ gitHubIssuePattern = "#([0-9]*)";
  filePath = "CHANGELOG.md";
  templateContent = new File('changelog.mustache').getText('UTF-8');
  removeIssueFromMessage = true
- customIssues = [
-  [ "GitHub", "#([0-9]+)", "https://github.com/tomasbjerre/violations-lib/issues/\${PATTERN_GROUP_1}" ]
- ]
 }
 
 group = 'se.bjurr.violations'
@@ -40,7 +40,6 @@ repositories {
 }
 
 dependencies {
- compile 'com.google.guava:guava:11.0.1'
  compile 'org.slf4j:slf4j-api:1.7.18'
  testCompile 'org.slf4j:slf4j-simple:1.7.18'
  testCompile 'junit:junit:4.12'

@@ -1,11 +1,5 @@
 package se.bjurr.violations.lib.parsers;
 
-import static com.google.common.base.Charsets.UTF_8;
-import static com.google.common.base.Strings.isNullOrEmpty;
-import static com.google.common.base.Throwables.propagate;
-import static com.google.common.collect.Lists.newArrayList;
-import static com.google.common.collect.Maps.newHashMap;
-import static com.google.common.io.Resources.getResource;
 import static se.bjurr.violations.lib.model.Violation.violationBuilder;
 import static se.bjurr.violations.lib.parsers.ViolationParserUtils.findIntegerAttribute;
 import static se.bjurr.violations.lib.parsers.ViolationParserUtils.getAttribute;
@@ -13,10 +7,14 @@ import static se.bjurr.violations.lib.parsers.ViolationParserUtils.getChunks;
 import static se.bjurr.violations.lib.parsers.ViolationParserUtils.getContent;
 import static se.bjurr.violations.lib.parsers.ViolationParserUtils.getIntegerAttribute;
 import static se.bjurr.violations.lib.reports.Reporter.FINDBUGS;
+import static se.bjurr.violations.lib.util.Utils.getResource;
+import static se.bjurr.violations.lib.util.Utils.isNullOrEmpty;
 
 import java.io.ByteArrayInputStream;
 import java.io.IOException;
 import java.io.InputStream;
+import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -25,11 +23,10 @@ import javax.xml.stream.XMLStreamConstants;
 import javax.xml.stream.XMLStreamException;
 import javax.xml.stream.XMLStreamReader;
 
-import com.google.common.base.Optional;
-import com.google.common.io.Resources;
-
 import se.bjurr.violations.lib.model.SEVERITY;
 import se.bjurr.violations.lib.model.Violation;
+import se.bjurr.violations.lib.util.Optional;
+import se.bjurr.violations.lib.util.Utils;
 
 public class FindbugsParser implements ViolationsParser {
 
@@ -44,10 +41,10 @@ public class FindbugsParser implements ViolationsParser {
  }
 
  private Map<String, String> getMessagesPerType() {
-  Map<String, String> messagesPerType = newHashMap();
+  Map<String, String> messagesPerType = new HashMap<>();
   try {
    if (isNullOrEmpty(findbugsMessagesXml)) {
-    findbugsMessagesXml = Resources.toString(getResource("findbugs/messages.xml"), UTF_8);
+    findbugsMessagesXml = Utils.toString(getResource("findbugs/messages.xml"));
    }
    List<String> bugPatterns = getChunks(findbugsMessagesXml, "<BugPattern", "</BugPattern>");
    for (String bugPattern : bugPatterns) {
@@ -57,7 +54,7 @@ public class FindbugsParser implements ViolationsParser {
     messagesPerType.put(type, shortDescription + "\n\n" + details);
    }
   } catch (IOException e) {
-   propagate(e);
+   throw new RuntimeException(e);
   }
   return messagesPerType;
  }
@@ -72,7 +69,7 @@ public class FindbugsParser implements ViolationsParser {
   }
   SEVERITY severity = toSeverity(rank);
 
-  List<Violation> candidates = newArrayList();
+  List<Violation> candidates = new ArrayList<>();
 
   while (xmlr.hasNext()) {
    int eventType = xmlr.next();
@@ -120,7 +117,7 @@ public class FindbugsParser implements ViolationsParser {
 
  @Override
  public List<Violation> parseFile(String string) throws Exception {
-  List<Violation> violations = newArrayList();
+  List<Violation> violations = new ArrayList<>();
   Map<String, String> messagesPerType = getMessagesPerType();
 
   try (InputStream input = new ByteArrayInputStream(string.getBytes())) {

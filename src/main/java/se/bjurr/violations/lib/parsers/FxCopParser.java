@@ -1,6 +1,5 @@
 package se.bjurr.violations.lib.parsers;
 
-import static com.google.common.collect.Lists.newArrayList;
 import static java.util.logging.Level.FINE;
 import static javax.xml.stream.XMLStreamConstants.START_ELEMENT;
 import static se.bjurr.violations.lib.model.SEVERITY.ERROR;
@@ -13,23 +12,23 @@ import static se.bjurr.violations.lib.reports.Reporter.FXCOP;
 
 import java.io.ByteArrayInputStream;
 import java.io.InputStream;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Logger;
 
 import javax.xml.stream.XMLInputFactory;
 import javax.xml.stream.XMLStreamReader;
 
-import com.google.common.base.Optional;
-
 import se.bjurr.violations.lib.model.SEVERITY;
 import se.bjurr.violations.lib.model.Violation;
+import se.bjurr.violations.lib.util.Optional;
 
 public class FxCopParser implements ViolationsParser {
  private static Logger LOG = Logger.getLogger(FxCopParser.class.getSimpleName());
 
  @Override
  public List<Violation> parseFile(String string) throws Exception {
-  List<Violation> violations = newArrayList();
+  List<Violation> violations = new ArrayList<>();
 
   try (InputStream input = new ByteArrayInputStream(string.getBytes())) {
 

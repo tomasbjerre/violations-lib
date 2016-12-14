@@ -1,6 +1,5 @@
 package se.bjurr.violations.lib.parsers;
 
-import static com.google.common.collect.Lists.newArrayList;
 import static javax.xml.stream.XMLStreamConstants.START_ELEMENT;
 import static se.bjurr.violations.lib.model.SEVERITY.ERROR;
 import static se.bjurr.violations.lib.model.SEVERITY.INFO;
@@ -12,6 +11,7 @@ import static se.bjurr.violations.lib.reports.Reporter.CODENARC;
 
 import java.io.ByteArrayInputStream;
 import java.io.InputStream;
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.xml.stream.XMLInputFactory;
@@ -34,14 +34,14 @@ public class CPDParser implements ViolationsParser {
 
  @Override
  public List<Violation> parseFile(String string) throws Exception {
-  List<Violation> violations = newArrayList();
+  List<Violation> violations = new ArrayList<>();
   try (InputStream input = new ByteArrayInputStream(string.getBytes())) {
 
    XMLInputFactory factory = XMLInputFactory.newInstance();
    XMLStreamReader xmlr = factory.createXMLStreamReader(input);
 
-   List<String> files = newArrayList();
-   List<Integer> filesLine = newArrayList();
+   List<String> files = new ArrayList<>();
+   List<Integer> filesLine = new ArrayList<>();
    Integer tokens = null;
    while (xmlr.hasNext()) {
     int eventType = xmlr.next();

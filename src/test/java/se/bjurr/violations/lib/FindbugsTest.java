@@ -1,6 +1,5 @@
 package se.bjurr.violations.lib;
 
-import static com.google.common.collect.Iterables.filter;
 import static org.assertj.core.api.Assertions.assertThat;
 import static se.bjurr.violations.lib.TestUtils.filterRule;
 import static se.bjurr.violations.lib.TestUtils.getRootFolder;
@@ -34,15 +33,28 @@ public class FindbugsTest {
  }
 
  @Test
+ public void testMavenGeneratedFindbugs() {
+  String rootFolder = getRootFolder();
+  List<Violation> maven = violationsReporterApi() //
+    .withPattern(".*/findbugs/fromMaven.xml$") //
+    .inFolder(rootFolder) //
+    .findAll(FINDBUGS) //
+    .violations();
+
+  assertThat(maven)//
+    .hasSize(1);
+ }
+
+ @Test
  public void testThatEqualsUseHashCodeCanBeParsed() {
-  Iterable<Violation> equalsUseHashCode = filter(actual, filterRule("HE_EQUALS_USE_HASHCODE"));
+  Iterable<Violation> equalsUseHashCode = filterRule(actual, "HE_EQUALS_USE_HASHCODE");
   assertThat(equalsUseHashCode)//
     .hasSize(1);
  }
 
  @Test
  public void testThatNamingConventionCanBeParsed() {
-  Iterable<Violation> equalsUseHashCode = filter(actual, filterRule("NM_FIELD_NAMING_CONVENTION"));
+  Iterable<Violation> equalsUseHashCode = filterRule(actual, "NM_FIELD_NAMING_CONVENTION");
   assertThat(equalsUseHashCode)//
     .hasSize(1);
  }
@@ -66,18 +78,5 @@ public class FindbugsTest {
     .isEqualTo("se.bjurr.violations.lib.example.MyClass");
   assertThat(actual.get(0).getSpecifics().get(FINDBUGS_SPECIFIC_RANK))//
     .isEqualTo("7");
- }
-
- @Test
- public void testMavenGeneratedFindbugs() {
-  String rootFolder = getRootFolder();
-  List<Violation> maven = violationsReporterApi() //
-    .withPattern(".*/findbugs/fromMaven.xml$") //
-    .inFolder(rootFolder) //
-    .findAll(FINDBUGS) //
-    .violations();
-
-  assertThat(maven)//
-    .hasSize(1);
  }
 }
