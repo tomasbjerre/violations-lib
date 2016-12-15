@@ -1,32 +1,28 @@
 package se.bjurr.violations.lib;
 
+import static java.util.logging.Level.FINE;
 import static se.bjurr.violations.lib.reports.ReportsFinder.findAllReports;
 
 import java.io.File;
 import java.util.List;
-
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import java.util.logging.Logger;
 
 import se.bjurr.violations.lib.model.Violation;
 import se.bjurr.violations.lib.reports.Reporter;
 
 public class ViolationsReporterApi {
- private static Logger LOG = LoggerFactory.getLogger(ViolationsReporterApi.class);
- private String pattern;
- private Reporter reporter;
- private File startFile;
-
- private ViolationsReporterApi() {
- }
+ private static Logger LOG = Logger.getLogger(ViolationsReporterApi.class.getSimpleName());
 
  public static ViolationsReporterApi violationsReporterApi() {
   return new ViolationsReporterApi();
  }
 
- public ViolationsReporterApi withPattern(String regularExpression) {
-  this.pattern = regularExpression;
-  return this;
+ private String pattern;
+ private Reporter reporter;
+
+ private File startFile;
+
+ private ViolationsReporterApi() {
  }
 
  public ViolationsReporterApi findAll(Reporter reporter) {
@@ -35,7 +31,7 @@ public class ViolationsReporterApi {
  }
 
  public ViolationsReporterApi inFolder(String folder) {
-  this.startFile = new File(folder);
+  startFile = new File(folder);
   if (!startFile.exists()) {
    throw new RuntimeException(folder + " not found");
   }
@@ -44,20 +40,25 @@ public class ViolationsReporterApi {
 
  public List<Violation> violations() {
   List<File> includedFiles = findAllReports(startFile, pattern);
-  if (LOG.isDebugEnabled()) {
-   LOG.debug("Found " + includedFiles.size() + " reports:");
+  if (LOG.isLoggable(FINE)) {
+   LOG.log(FINE, "Found " + includedFiles.size() + " reports:");
    for (File f : includedFiles) {
-    LOG.debug(f.getAbsolutePath());
+    LOG.log(FINE, f.getAbsolutePath());
    }
   }
   List<Violation> foundViolations = reporter.findViolations(includedFiles);
-  if (LOG.isDebugEnabled()) {
-   LOG.debug("Found " + foundViolations.size() + " violations:");
+  if (LOG.isLoggable(FINE)) {
+   LOG.log(FINE, "Found " + foundViolations.size() + " violations:");
    for (Violation v : foundViolations) {
-    LOG.debug(v.getReporter() + " " + v.getSeverity() + " (" + v.getRule().or("?") + ") " + v.getFile() + " "
+    LOG.log(FINE, v.getReporter() + " " + v.getSeverity() + " (" + v.getRule().or("?") + ") " + v.getFile() + " "
       + v.getStartLine() + " -> " + v.getEndLine());
    }
   }
   return foundViolations;
+ }
+
+ public ViolationsReporterApi withPattern(String regularExpression) {
+  pattern = regularExpression;
+  return this;
  }
 }

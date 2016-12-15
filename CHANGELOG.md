@@ -5,10 +5,19 @@ Changelog of Git Changelog.
 ## Unreleased
 ### No issue
 
+**Removing SLF4J dependency**
+
+
+[81c1cdaf4be93f7](https://github.com/tomasbjerre/git-changelog-lib/commit/81c1cdaf4be93f7) Tomas Bjerre *2016-12-15 17:26:07*
+
+
+## 1.17
+### No issue
+
 **Removing Guava dependency**
 
 
-[a4d55312f0a3481](https://github.com/tomasbjerre/git-changelog-lib/commit/a4d55312f0a3481) Tomas Bjerre *2016-12-14 17:40:28*
+[0b8af64b20efcca](https://github.com/tomasbjerre/git-changelog-lib/commit/0b8af64b20efcca) Tomas Bjerre *2016-12-14 17:48:47*
 
 **doc**
 
