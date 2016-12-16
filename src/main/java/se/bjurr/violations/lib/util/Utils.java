@@ -28,7 +28,7 @@ public class Utils {
 
  @SuppressWarnings("static-access")
  public static InputStream getResource(String filename) {
-  return Thread.currentThread().getContextClassLoader().getSystemResourceAsStream("findbugs/messages.xml");
+  return Thread.currentThread().getContextClassLoader().getSystemResourceAsStream(filename);
  }
 
  public static boolean isNullOrEmpty(String findbugsMessagesXml) {
