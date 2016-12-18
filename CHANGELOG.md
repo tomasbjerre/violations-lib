@@ -5,10 +5,28 @@ Changelog of Git Changelog.
 ## Unreleased
 ### No issue
 
+**doc**
+
+
+[204e16467fb92a4](https://github.com/tomasbjerre/git-changelog-lib/commit/204e16467fb92a4) Tomas Bjerre *2016-12-18 07:49:55*
+
+
+## 1.19
+### No issue
+
+**Correcting utility method for finding resource**
+
+
+[5dd52bd39c5265a](https://github.com/tomasbjerre/git-changelog-lib/commit/5dd52bd39c5265a) Tomas Bjerre *2016-12-16 07:19:49*
+
+
+## 1.18
+### No issue
+
 **Removing SLF4J dependency**
 
 
-[81c1cdaf4be93f7](https://github.com/tomasbjerre/git-changelog-lib/commit/81c1cdaf4be93f7) Tomas Bjerre *2016-12-15 17:26:07*
+[8961db105e44f36](https://github.com/tomasbjerre/git-changelog-lib/commit/8961db105e44f36) Tomas Bjerre *2016-12-15 17:32:00*
 
 
 ## 1.17
