@@ -116,7 +116,7 @@ public class FindbugsParser implements ViolationsParser {
  }
 
  @Override
- public List<Violation> parseFile(String string) throws Exception {
+ public List<Violation> parseReportOutput(String string) throws Exception {
   List<Violation> violations = new ArrayList<>();
   Map<String, String> messagesPerType = getMessagesPerType();
 

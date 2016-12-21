@@ -19,7 +19,7 @@ import se.bjurr.violations.lib.util.Optional;
 public class AndroidLintParser implements ViolationsParser {
 
  @Override
- public List<Violation> parseFile(String string) throws Exception {
+ public List<Violation> parseReportOutput(String string) throws Exception {
   List<Violation> violations = new ArrayList<>();
   List<String> issues = getChunks(string, "<issue", "</issue>");
   for (String issueChunk : issues) {

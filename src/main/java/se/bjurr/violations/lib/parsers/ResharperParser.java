@@ -20,7 +20,7 @@ import se.bjurr.violations.lib.model.Violation;
 public class ResharperParser implements ViolationsParser {
 
  @Override
- public List<Violation> parseFile(String string) throws Exception {
+ public List<Violation> parseReportOutput(String string) throws Exception {
   List<Violation> violations = new ArrayList<>();
   List<String> issueTypeChunks = getChunks(string, "<IssueType ", "/>");
   Map<String, Map<String, String>> issueTypesPerTypeId = new HashMap<>();

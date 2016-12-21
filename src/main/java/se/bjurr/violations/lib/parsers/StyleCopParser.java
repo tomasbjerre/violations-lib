@@ -21,7 +21,7 @@ import se.bjurr.violations.lib.model.Violation;
 public class StyleCopParser implements ViolationsParser {
 
  @Override
- public List<Violation> parseFile(String string) throws Exception {
+ public List<Violation> parseReportOutput(String string) throws Exception {
   List<Violation> violations = new ArrayList<>();
 
   try (InputStream input = new ByteArrayInputStream(string.getBytes())) {

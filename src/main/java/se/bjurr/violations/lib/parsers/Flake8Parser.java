@@ -24,7 +24,7 @@ import se.bjurr.violations.lib.model.Violation;
 public class Flake8Parser implements ViolationsParser {
 
  @Override
- public List<Violation> parseFile(String string) throws Exception {
+ public List<Violation> parseReportOutput(String string) throws Exception {
   List<Violation> violations = new ArrayList<>();
   List<List<String>> partsPerLine = getLines(string, "([^:]*):(\\d+)?:?(\\d*)?:? \\[?(\\D)(\\d*)\\]? (.*)");
   for (List<String> parts : partsPerLine) {

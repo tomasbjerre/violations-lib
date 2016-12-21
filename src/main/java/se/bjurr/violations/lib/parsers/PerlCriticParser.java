@@ -17,7 +17,7 @@ import se.bjurr.violations.lib.model.Violation;
 
 public class PerlCriticParser implements ViolationsParser {
  @Override
- public List<Violation> parseFile(String string) throws Exception {
+ public List<Violation> parseReportOutput(String string) throws Exception {
   List<Violation> violations = new ArrayList<>();
   List<String> lines = getLines(string);
   for (String line : lines) {

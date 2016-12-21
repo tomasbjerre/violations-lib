@@ -6,6 +6,6 @@ import se.bjurr.violations.lib.model.Violation;
 
 public interface ViolationsParser {
 
- List<Violation> parseFile(String string) throws Exception;
+ List<Violation> parseReportOutput(String reportContent) throws Exception;
 
 }

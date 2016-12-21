@@ -72,7 +72,7 @@ public enum Reporter {
   for (File file : includedFiles) {
    try {
     String string = Utils.toString(new FileInputStream(file));
-    violations.addAll(violationsParser.parseFile(string));
+    violations.addAll(violationsParser.parseReportOutput(string));
    } catch (Exception e) {
     LOG.log(SEVERE, "Error when parsing " + file.getAbsolutePath() + " as " + this.name(), e);
    }

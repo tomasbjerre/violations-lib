@@ -23,7 +23,7 @@ import se.bjurr.violations.lib.model.Violation;
 public class PyLintParser implements ViolationsParser {
 
  @Override
- public List<Violation> parseFile(String string) throws Exception {
+ public List<Violation> parseReportOutput(String string) throws Exception {
   final List<Violation> violations = new ArrayList<>();
   final List<List<String>> partsPerLine = getLines(string,
     "([^:]*):(\\d+): \\[(\\D)(\\d*)\\(([^\\]]*)\\), ([^\\]]*)] (.*)");

@@ -18,7 +18,7 @@ import se.bjurr.violations.lib.model.Violation;
 public class CPPCheckParser implements ViolationsParser {
 
  @Override
- public List<Violation> parseFile(String string) throws Exception {
+ public List<Violation> parseReportOutput(String string) throws Exception {
   List<Violation> violations = new ArrayList<>();
   List<String> errorChunks = getChunks(string, "<error", "</error>");
   for (String errorChunk : errorChunks) {

@@ -13,7 +13,7 @@ import se.bjurr.violations.lib.model.Violation;
 public class ZPTLintParser implements ViolationsParser {
 
  @Override
- public List<Violation> parseFile(String string) throws Exception {
+ public List<Violation> parseReportOutput(String string) throws Exception {
   List<Violation> violations = new ArrayList<>();
   for (List<String> parts : getLines(string, "[ ]+Error in: (.*)  (.*)  , at line (\\d+).*")) {
    if (parts.size() < 3) {

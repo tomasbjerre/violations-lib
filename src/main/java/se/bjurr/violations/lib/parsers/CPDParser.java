@@ -33,7 +33,7 @@ public class CPDParser implements ViolationsParser {
  }
 
  @Override
- public List<Violation> parseFile(String string) throws Exception {
+ public List<Violation> parseReportOutput(String string) throws Exception {
   List<Violation> violations = new ArrayList<>();
   try (InputStream input = new ByteArrayInputStream(string.getBytes())) {
 

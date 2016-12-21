@@ -27,7 +27,7 @@ public class FxCopParser implements ViolationsParser {
  private static Logger LOG = Logger.getLogger(FxCopParser.class.getSimpleName());
 
  @Override
- public List<Violation> parseFile(String string) throws Exception {
+ public List<Violation> parseReportOutput(String string) throws Exception {
   List<Violation> violations = new ArrayList<>();
 
   try (InputStream input = new ByteArrayInputStream(string.getBytes())) {

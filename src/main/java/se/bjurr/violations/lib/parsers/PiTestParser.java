@@ -18,7 +18,7 @@ import se.bjurr.violations.lib.model.Violation;
 public class PiTestParser implements ViolationsParser {
 
  @Override
- public List<Violation> parseFile(String string) throws Exception {
+ public List<Violation> parseReportOutput(String string) throws Exception {
   List<Violation> violations = new ArrayList<>();
   String mutations = getContent(string, "mutations");
   List<String> mutationChunks = getChunks(mutations, "<mutation", "</mutation>");

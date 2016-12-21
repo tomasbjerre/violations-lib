@@ -18,7 +18,7 @@ import se.bjurr.violations.lib.model.Violation;
 public class PMDParser implements ViolationsParser {
 
  @Override
- public List<Violation> parseFile(String string) throws Exception {
+ public List<Violation> parseReportOutput(String string) throws Exception {
   List<Violation> violations = new ArrayList<>();
   List<String> files = getChunks(string, "<file", "</file>");
   for (String fileChunk : files) {
