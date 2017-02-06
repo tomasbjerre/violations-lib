@@ -23,9 +23,11 @@ import se.bjurr.violations.lib.parsers.GendarmeParser;
 import se.bjurr.violations.lib.parsers.JCReportParser;
 import se.bjurr.violations.lib.parsers.JSHintParser;
 import se.bjurr.violations.lib.parsers.LintParser;
+import se.bjurr.violations.lib.parsers.MyPyParser;
 import se.bjurr.violations.lib.parsers.PMDParser;
 import se.bjurr.violations.lib.parsers.PerlCriticParser;
 import se.bjurr.violations.lib.parsers.PiTestParser;
+import se.bjurr.violations.lib.parsers.PyDocStyleParser;
 import se.bjurr.violations.lib.parsers.PyLintParser;
 import se.bjurr.violations.lib.parsers.ResharperParser;
 import se.bjurr.violations.lib.parsers.SimianParser;
@@ -50,9 +52,11 @@ public enum Reporter {
  JCREPORT(new JCReportParser()), //
  JSHINT(new JSHintParser()), //
  LINT(new LintParser()), //
+ MYPY(new MyPyParser()), //
  PERLCRITIC(new PerlCriticParser()), //
  PITEST(new PiTestParser()), //
  PMD(new PMDParser()), //
+ PYDOCSTYLE(new PyDocStyleParser()), //
  PYLINT(new PyLintParser()), //
  RESHARPER(new ResharperParser()), //
  SIMIAN(new SimianParser()), //

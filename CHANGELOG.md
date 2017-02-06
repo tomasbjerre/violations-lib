@@ -2,6 +2,36 @@
 
 Changelog of Git Changelog.
 
+## Unreleased
+### GitHub [#12](https://github.com/tomasbjerre/violations-lib/issues/12) Support pydocstyle (old pep257)
+
+**Adding MyPy and PyDocStyle parsers**
+
+
+[31b2ded01433fb8](https://github.com/tomasbjerre/violations-lib/commit/31b2ded01433fb8) Tomas Bjerre *2017-02-06 17:06:43*
+
+
+### GitHub [#13](https://github.com/tomasbjerre/violations-lib/issues/13) Support mypy
+
+**Adding MyPy and PyDocStyle parsers**
+
+
+[31b2ded01433fb8](https://github.com/tomasbjerre/violations-lib/commit/31b2ded01433fb8) Tomas Bjerre *2017-02-06 17:06:43*
+
+
+### No issue
+
+**Set theme jekyll-theme-slate**
+
+
+[6063d15ecfbb8a7](https://github.com/tomasbjerre/violations-lib/commit/6063d15ecfbb8a7) Tomas Bjerre *2017-01-12 03:06:06*
+
+**doc**
+
+
+[943154cb27cfd1e](https://github.com/tomasbjerre/violations-lib/commit/943154cb27cfd1e) Tomas Bjerre *2016-12-21 16:46:56*
+
+
 ## 1.20
 ### No issue
 
