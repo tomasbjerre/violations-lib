@@ -2,13 +2,13 @@
 
 Changelog of Git Changelog.
 
-## Unreleased
+## 1.21
 ### GitHub [#12](https://github.com/tomasbjerre/violations-lib/issues/12) Support pydocstyle (old pep257)
 
 **Adding MyPy and PyDocStyle parsers**
 
 
-[31b2ded01433fb8](https://github.com/tomasbjerre/violations-lib/commit/31b2ded01433fb8) Tomas Bjerre *2017-02-06 17:06:43*
+[acfe3312656237f](https://github.com/tomasbjerre/violations-lib/commit/acfe3312656237f) Tomas Bjerre *2017-02-06 17:07:33*
 
 
 ### GitHub [#13](https://github.com/tomasbjerre/violations-lib/issues/13) Support mypy
@@ -16,7 +16,7 @@ Changelog of Git Changelog.
 **Adding MyPy and PyDocStyle parsers**
 
 
-[31b2ded01433fb8](https://github.com/tomasbjerre/violations-lib/commit/31b2ded01433fb8) Tomas Bjerre *2017-02-06 17:06:43*
+[acfe3312656237f](https://github.com/tomasbjerre/violations-lib/commit/acfe3312656237f) Tomas Bjerre *2017-02-06 17:07:33*
 
 
 ### No issue
