@@ -25,7 +25,7 @@ public class CodeNarcTest {
     .violations();
 
   assertThat(actual)//
-    .hasSize(12);
+    .hasSize(32);
 
   assertThat(actual.get(0).getMessage())//
     .isEqualTo("In most cases, exceptions should not be caught and ignored (swallowed).");
