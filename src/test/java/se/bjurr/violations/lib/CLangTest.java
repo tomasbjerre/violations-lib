@@ -5,6 +5,7 @@ import static se.bjurr.violations.lib.TestUtils.getRootFolder;
 import static se.bjurr.violations.lib.ViolationsReporterApi.violationsReporterApi;
 import static se.bjurr.violations.lib.model.SEVERITY.ERROR;
 import static se.bjurr.violations.lib.model.SEVERITY.INFO;
+import static se.bjurr.violations.lib.model.SEVERITY.WARN;
 import static se.bjurr.violations.lib.reports.Reporter.CLANG;
 
 import java.util.List;
@@ -20,7 +21,7 @@ public class CLangTest {
     String rootFolder = getRootFolder();
 
     List<Violation> actual = violationsReporterApi() //
-        .withPattern(".*/clang/.*\\.txt$") //
+        .withPattern(".*/clang/clang.*\\.txt$") //
         .inFolder(rootFolder) //
         .findAll(CLANG) //
         .violations();
@@ -50,6 +51,35 @@ public class CLangTest {
         .isEqualTo(null);
     assertThat(actual.get(2).getStartLine())//
         .isEqualTo(4);
+  }
+
+  @Test
+  public void testThatRubycopViolationsCanBeParsed() {
+    String rootFolder = getRootFolder();
+
+    List<Violation> actual = violationsReporterApi() //
+        .withPattern(".*/clang/rubycop\\.txt$") //
+        .inFolder(rootFolder) //
+        .findAll(CLANG) //
+        .violations();
+
+    assertThat(actual)//
+        .hasSize(4);
+
+    assertThat(actual.get(0).getMessage())//
+        .isEqualTo(
+            "Use snake_case for method names.");
+    assertThat(actual.get(0).getFile())//
+        .isEqualTo("test.rb");
+    assertThat(actual.get(0).getSeverity())//
+        .isEqualTo(ERROR);
+    assertThat(actual.get(0).getRule().orNull())//
+        .isEqualTo(null);
+    assertThat(actual.get(0).getStartLine())//
+        .isEqualTo(1);
+
+    assertThat(actual.get(3).getSeverity())//
+        .isEqualTo(WARN);
   }
 
 }

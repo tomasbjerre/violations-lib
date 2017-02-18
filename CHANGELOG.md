@@ -11,12 +11,20 @@ Changelog of Git Changelog.
 [f7212555f7a986b](https://github.com/tomasbjerre/violations-lib/commit/f7212555f7a986b) Tomas Bjerre *2017-02-18 20:01:36*
 
 
+### GitHub [#15](https://github.com/tomasbjerre/violations-lib/issues/15) Support Rubycop
+
+**Support RubyCop**
+
+
+[1ac049fe42feaf0](https://github.com/tomasbjerre/violations-lib/commit/1ac049fe42feaf0) Tomas Bjerre *2017-02-18 21:36:15*
+
+
 ### GitHub [#16](https://github.com/tomasbjerre/violations-lib/issues/16) Support clang
 
 **Support CLang**
 
 
-[ed80dc48dffafa9](https://github.com/tomasbjerre/violations-lib/commit/ed80dc48dffafa9) Tomas Bjerre *2017-02-18 21:28:15*
+[68ac9c8cf268d17](https://github.com/tomasbjerre/violations-lib/commit/68ac9c8cf268d17) Tomas Bjerre *2017-02-18 21:28:31*
 
 
 ### GitHub [#17](https://github.com/tomasbjerre/violations-lib/issues/17) Support golint

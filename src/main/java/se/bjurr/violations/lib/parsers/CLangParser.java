@@ -51,10 +51,10 @@ public class CLangParser implements ViolationsParser {
     if (isNullOrEmpty(severity)) {
       return INFO;
     }
-    if (severity.contains("error")) {
+    if (severity.contains("error") || severity.contains("C")) {
       return ERROR;
     }
-    if (severity.contains("warning")) {
+    if (severity.contains("warning") || severity.contains("W")) {
       return WARN;
     }
     return INFO;

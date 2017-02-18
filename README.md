@@ -8,6 +8,7 @@ It supports:
   * [_ESLint_](https://github.com/sindresorhus/grunt-eslint) with `format: 'checkstyle'`.
   * [_PHPCS_](https://github.com/squizlabs/PHP_CodeSniffer) with `phpcs api.php --report=checkstyle`.
  * [_CLang_](https://clang-analyzer.llvm.org/)
+  * [_RubyCop_](http://rubocop.readthedocs.io/en/latest/formatters/) with `rubycop -f clang file.rb`
  * [_CodeNarc_](http://codenarc.sourceforge.net/)
  * [_CPD_](http://pmd.sourceforge.net/pmd-4.3.0/cpd.html)
  * [_CPPLint_](https://github.com/theandrewdavis/cpplint)
