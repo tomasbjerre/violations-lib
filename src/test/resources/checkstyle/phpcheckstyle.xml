@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<checkstyle version="2.5.1">
+<file name="/home/bjerre/workspace/pull-request-notifier-for-stash/api.php">
+ <error line="2" column="1" severity="error" message="Missing file doc comment" source="PEAR.Commenting.FileComment.Missing"/>
+ <error line="2" column="1" severity="error" message="Missing class doc comment" source="PEAR.Commenting.ClassComment.Missing"/>
+ <error line="4" column="20" severity="error" message="Private member variable &quot;FOO&quot; must be prefixed with an underscore" source="PEAR.NamingConventions.ValidVariableName.PrivateNoUnderscore"/>
+ <error line="5" column="13" severity="error" message="Private member variable &quot;i&quot; must be prefixed with an underscore" source="PEAR.NamingConventions.ValidVariableName.PrivateNoUnderscore"/>
+ <error line="6" column="13" severity="error" message="Private member variable &quot;j&quot; must be prefixed with an underscore" source="PEAR.NamingConventions.ValidVariableName.PrivateNoUnderscore"/>
+ <error line="7" column="12" severity="error" message="Missing function doc comment" source="PEAR.Commenting.FunctionComment.Missing"/>
+</file>
+</checkstyle>

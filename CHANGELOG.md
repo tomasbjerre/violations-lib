@@ -2,6 +2,31 @@
 
 Changelog of Git Changelog.
 
+## Unreleased
+### GitHub [#14](https://github.com/tomasbjerre/violations-lib/issues/14) Support php checkers
+
+**PHPMD and PHPCS**
+
+
+[7a14ff2c22834d4](https://github.com/tomasbjerre/violations-lib/commit/7a14ff2c22834d4) Tomas Bjerre *2017-02-18 19:57:29*
+
+
+## 1.22
+### No issue
+
+**Finding findbugsmessages and correcting codenarc**
+
+ * Was finding findbugs messages xml incorrectly in classpath. 
+ * Was not handling codenarc reports with empty line numbers. 
+
+[60d19fedbefdf85](https://github.com/tomasbjerre/violations-lib/commit/60d19fedbefdf85) Tomas Bjerre *2017-02-16 20:51:05*
+
+**doc**
+
+
+[84e505343e497a2](https://github.com/tomasbjerre/violations-lib/commit/84e505343e497a2) Tomas Bjerre *2017-02-07 05:42:45*
+
+
 ## 1.21
 ### GitHub [#12](https://github.com/tomasbjerre/violations-lib/issues/12) Support pydocstyle (old pep257)
 

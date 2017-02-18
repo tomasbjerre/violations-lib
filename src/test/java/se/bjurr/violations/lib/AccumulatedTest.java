@@ -48,19 +48,19 @@ public class AccumulatedTest {
     .withAtLeastSeverity(ERROR)//
     .orderedBy(FILE)//
     .violations())//
-      .hasSize(1);
+      .hasSize(7);
 
   assertThat(violationsAccumulatedReporterApi//
     .withAtLeastSeverity(WARN)//
     .orderedBy(FILE)//
     .violations())//
-      .hasSize(8);
+      .hasSize(14);
 
   assertThat(violationsAccumulatedReporterApi//
     .withAtLeastSeverity(INFO)//
     .orderedBy(FILE)//
     .violations())//
-      .hasSize(10);
+      .hasSize(16);
  }
 
  @Test

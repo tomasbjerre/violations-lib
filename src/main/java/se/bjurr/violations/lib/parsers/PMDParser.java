@@ -4,6 +4,7 @@ import static se.bjurr.violations.lib.model.SEVERITY.ERROR;
 import static se.bjurr.violations.lib.model.SEVERITY.INFO;
 import static se.bjurr.violations.lib.model.SEVERITY.WARN;
 import static se.bjurr.violations.lib.model.Violation.violationBuilder;
+import static se.bjurr.violations.lib.parsers.ViolationParserUtils.findIntegerAttribute;
 import static se.bjurr.violations.lib.parsers.ViolationParserUtils.getAttribute;
 import static se.bjurr.violations.lib.parsers.ViolationParserUtils.getChunks;
 import static se.bjurr.violations.lib.parsers.ViolationParserUtils.getIntegerAttribute;
@@ -14,6 +15,7 @@ import java.util.List;
 
 import se.bjurr.violations.lib.model.SEVERITY;
 import se.bjurr.violations.lib.model.Violation;
+import se.bjurr.violations.lib.util.Optional;
 
 public class PMDParser implements ViolationsParser {
 
@@ -27,7 +29,7 @@ public class PMDParser implements ViolationsParser {
    for (String violationChunk : violationsChunks) {
     Integer beginLine = getIntegerAttribute(violationChunk, "beginline");
     Integer endLine = getIntegerAttribute(violationChunk, "endline");
-    Integer beginColumn = getIntegerAttribute(violationChunk, "begincolumn");
+    Optional<Integer> beginColumn = findIntegerAttribute(violationChunk, "begincolumn");
     String rule = getAttribute(violationChunk, "rule").trim();
     String ruleSet = getAttribute(violationChunk, "ruleset").trim();
     String externalInfoUrl = getAttribute(violationChunk, "externalInfoUrl").trim();
@@ -39,7 +41,7 @@ public class PMDParser implements ViolationsParser {
         .setReporter(PMD)//
         .setStartLine(beginLine)//
         .setEndLine(endLine)//
-        .setColumn(beginColumn)//
+        .setColumn(beginColumn.orNull())//
         .setFile(filename)//
         .setSeverity(severity)//
         .setRule(rule)//

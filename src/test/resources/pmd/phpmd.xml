@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<pmd version="@project.version@" timestamp="2017-02-18T19:43:19+00:00">
+  <file name="/home/bjerre/workspace/pull-request-notifier-for-stash/api.php">
+    <violation beginline="4" endline="4" rule="UnusedPrivateField" ruleset="Unused Code Rules" externalInfoUrl="http://phpmd.org/rules/unusedcode.html#unusedprivatefield" priority="3">
+      Avoid unused private fields such as '$FOO'.
+    </violation>
+    <violation beginline="5" endline="5" rule="UnusedPrivateField" ruleset="Unused Code Rules" externalInfoUrl="http://phpmd.org/rules/unusedcode.html#unusedprivatefield" priority="3">
+      Avoid unused private fields such as '$i'.
+    </violation>
+  </file>
+</pmd>
