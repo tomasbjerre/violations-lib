@@ -32,8 +32,8 @@ public class Utils {
     return Thread.currentThread().getContextClassLoader().getSystemResourceAsStream(filename);
   }
 
-  public static boolean isNullOrEmpty(String findbugsMessagesXml) {
-    return findbugsMessagesXml == null || findbugsMessagesXml.isEmpty();
+  public static boolean isNullOrEmpty(String str) {
+    return str == null || str.isEmpty();
   }
 
   @SuppressWarnings("resource")

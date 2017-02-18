@@ -8,7 +8,15 @@ Changelog of Git Changelog.
 **PHPMD and PHPCS**
 
 
-[7a14ff2c22834d4](https://github.com/tomasbjerre/violations-lib/commit/7a14ff2c22834d4) Tomas Bjerre *2017-02-18 19:57:29*
+[f7212555f7a986b](https://github.com/tomasbjerre/violations-lib/commit/f7212555f7a986b) Tomas Bjerre *2017-02-18 20:01:36*
+
+
+### GitHub [#17](https://github.com/tomasbjerre/violations-lib/issues/17) Support golint
+
+**Support GoLint**
+
+
+[1e7a469c3dd8dd0](https://github.com/tomasbjerre/violations-lib/commit/1e7a469c3dd8dd0) Tomas Bjerre *2017-02-18 20:55:53*
 
 
 ## 1.22

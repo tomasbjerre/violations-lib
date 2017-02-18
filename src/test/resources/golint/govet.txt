@@ -1,0 +1,2 @@
+my_file.go:46: this is a message
+exit status 1

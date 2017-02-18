@@ -1,0 +1,7 @@
+src/bla/bla/bla/dataSource.go:28:1: comment on exported type RestDataSource should be of the form "RestDataSource ..." (with optional leading article)
+journalevent.go:308:1:warning: exported function NewSendJournalEventJob should have comment or be unexported (golint)
+journalevent.go:182::warning: declaration of err shadows declaration at journalevent.go:165: (vet shadow)  
+journalevent.go:::: testing1
+journalevent.go::: testing2
+journalevent.go:: testing3
+journalevent.go: testing4

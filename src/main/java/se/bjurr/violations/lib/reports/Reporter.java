@@ -20,6 +20,7 @@ import se.bjurr.violations.lib.parsers.FindbugsParser;
 import se.bjurr.violations.lib.parsers.Flake8Parser;
 import se.bjurr.violations.lib.parsers.FxCopParser;
 import se.bjurr.violations.lib.parsers.GendarmeParser;
+import se.bjurr.violations.lib.parsers.GoLintParser;
 import se.bjurr.violations.lib.parsers.JCReportParser;
 import se.bjurr.violations.lib.parsers.JSHintParser;
 import se.bjurr.violations.lib.parsers.LintParser;
@@ -53,6 +54,7 @@ public enum Reporter {
  JSHINT(new JSHintParser()), //
  LINT(new LintParser()), //
  MYPY(new MyPyParser()), //
+ GOLINT(new GoLintParser()), //
  PERLCRITIC(new PerlCriticParser()), //
  PITEST(new PiTestParser()), //
  PMD(new PMDParser()), //
