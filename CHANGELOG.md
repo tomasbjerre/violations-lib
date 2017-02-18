@@ -11,12 +11,20 @@ Changelog of Git Changelog.
 [f7212555f7a986b](https://github.com/tomasbjerre/violations-lib/commit/f7212555f7a986b) Tomas Bjerre *2017-02-18 20:01:36*
 
 
+### GitHub [#16](https://github.com/tomasbjerre/violations-lib/issues/16) Support clang
+
+**Support CLang**
+
+
+[ed80dc48dffafa9](https://github.com/tomasbjerre/violations-lib/commit/ed80dc48dffafa9) Tomas Bjerre *2017-02-18 21:28:15*
+
+
 ### GitHub [#17](https://github.com/tomasbjerre/violations-lib/issues/17) Support golint
 
 **Support GoLint**
 
 
-[1e7a469c3dd8dd0](https://github.com/tomasbjerre/violations-lib/commit/1e7a469c3dd8dd0) Tomas Bjerre *2017-02-18 20:55:53*
+[fdbc050e06fd90a](https://github.com/tomasbjerre/violations-lib/commit/fdbc050e06fd90a) Tomas Bjerre *2017-02-18 21:01:02*
 
 
 ## 1.22

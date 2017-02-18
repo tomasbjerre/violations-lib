@@ -1,0 +1,9 @@
+main.cpp:5:1: warning: Potential leak of memory pointed to by 'x'
+}
+^
+main.cpp:4:12: note: Memory is allocated
+  int *x = new int;
+           ^~~~~~~
+main.cpp:5:1: note: Potential leak of memory pointed to by 'x'
+}
+^
