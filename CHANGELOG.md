@@ -3,6 +3,20 @@
 Changelog of Git Changelog.
 
 ## Unreleased
+### No issue
+
+**Google Java Format**
+
+
+[c9724a8971fac04](https://github.com/tomasbjerre/violations-lib/commit/c9724a8971fac04) Tomas Bjerre *2017-02-25 12:25:11*
+
+**doc**
+
+
+[6dd871dfa4713e9](https://github.com/tomasbjerre/violations-lib/commit/6dd871dfa4713e9) Tomas Bjerre *2017-02-19 14:15:07*
+
+
+## 1.23
 ### GitHub [#14](https://github.com/tomasbjerre/violations-lib/issues/14) Support php checkers
 
 **PHPMD and PHPCS**
@@ -16,7 +30,7 @@ Changelog of Git Changelog.
 **Support RubyCop**
 
 
-[1ac049fe42feaf0](https://github.com/tomasbjerre/violations-lib/commit/1ac049fe42feaf0) Tomas Bjerre *2017-02-18 21:36:15*
+[75ad3b3d415384a](https://github.com/tomasbjerre/violations-lib/commit/75ad3b3d415384a) Tomas Bjerre *2017-02-18 21:36:36*
 
 
 ### GitHub [#16](https://github.com/tomasbjerre/violations-lib/issues/16) Support clang

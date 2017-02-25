@@ -7,39 +7,38 @@ import static se.bjurr.violations.lib.model.SEVERITY.INFO;
 import static se.bjurr.violations.lib.reports.Reporter.SIMIAN;
 
 import java.util.List;
-
 import org.junit.Test;
-
 import se.bjurr.violations.lib.model.Violation;
 
 public class SimianTest {
- @Test
- public void testThatViolationsCanBeParsed() {
-  String rootFolder = getRootFolder();
+  @Test
+  public void testThatViolationsCanBeParsed() {
+    String rootFolder = getRootFolder();
 
-  List<Violation> actual = violationsReporterApi() //
-    .withPattern(".*/simian/.*\\.xml$") //
-    .inFolder(rootFolder) //
-    .findAll(SIMIAN) //
-    .violations();
+    List<Violation> actual =
+        violationsReporterApi() //
+            .withPattern(".*/simian/.*\\.xml$") //
+            .inFolder(rootFolder) //
+            .findAll(SIMIAN) //
+            .violations();
 
-  assertThat(actual)//
-    .hasSize(12);
+    assertThat(actual) //
+        .hasSize(12);
 
-  assertThat(actual.get(0).getMessage())//
-    .startsWith("Duplication");
-  assertThat(actual.get(0).getFile())//
-    .isEqualTo("c:/java/foo1.java");
-  assertThat(actual.get(0).getSeverity())//
-    .isEqualTo(INFO);
-  assertThat(actual.get(0).getRule().get())//
-    .isEqualTo("DUPLICATION");
-  assertThat(actual.get(0).getStartLine())//
-    .isEqualTo(11);
-  assertThat(actual.get(0).getEndLine())//
-    .isEqualTo(16);
+    assertThat(actual.get(0).getMessage()) //
+        .startsWith("Duplication");
+    assertThat(actual.get(0).getFile()) //
+        .isEqualTo("c:/java/foo1.java");
+    assertThat(actual.get(0).getSeverity()) //
+        .isEqualTo(INFO);
+    assertThat(actual.get(0).getRule().get()) //
+        .isEqualTo("DUPLICATION");
+    assertThat(actual.get(0).getStartLine()) //
+        .isEqualTo(11);
+    assertThat(actual.get(0).getEndLine()) //
+        .isEqualTo(16);
 
-  assertThat(actual.get(5).getMessage())//
-    .startsWith("Duplication");
- }
+    assertThat(actual.get(5).getMessage()) //
+        .startsWith("Duplication");
+  }
 }

@@ -9,19 +9,18 @@ import org.junit.Test;
 
 public class ViolationTest {
 
- @Test
- public void testThatFilePathsAreAlwaysFronSlashes() {
-  assertThat(//
-    violationBuilder()//
-      .setReporter(CHECKSTYLE)//
-      .setFile("c:\\path\\to\\file.xml")//
-      .setMessage("message")//
-      .setSeverity(ERROR)//
-      .setStartLine(1)//
-      .build()//
-      .getFile()//
-  )//
-    .isEqualTo("c:/path/to/file.xml");
- }
-
+  @Test
+  public void testThatFilePathsAreAlwaysFronSlashes() {
+    assertThat( //
+            violationBuilder() //
+                .setReporter(CHECKSTYLE) //
+                .setFile("c:\\path\\to\\file.xml") //
+                .setMessage("message") //
+                .setSeverity(ERROR) //
+                .setStartLine(1) //
+                .build() //
+                .getFile() //
+            ) //
+        .isEqualTo("c:/path/to/file.xml");
+  }
 }

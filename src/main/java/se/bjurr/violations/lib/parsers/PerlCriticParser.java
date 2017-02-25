@@ -11,51 +11,56 @@ import static se.bjurr.violations.lib.reports.Reporter.CPPLINT;
 
 import java.util.ArrayList;
 import java.util.List;
-
 import se.bjurr.violations.lib.model.SEVERITY;
 import se.bjurr.violations.lib.model.Violation;
 
 public class PerlCriticParser implements ViolationsParser {
- @Override
- public List<Violation> parseReportOutput(String string) throws Exception {
-  List<Violation> violations = new ArrayList<>();
-  List<String> lines = getLines(string);
-  for (String line : lines) {
-   List<String> parts = getParts(line, "\\(Severity: (\\d*)\\)$", "^([^:]*):", "^(.+?) at line ", "^(\\d*), ",
-     "column (\\d*)\\.  ", "(.*)");
-   if (parts.isEmpty()) {
-    continue;
-   }
-   Integer severity = parseInt(parts.get(0));
-   String filename = parts.get(1);
-   String message = parts.get(2);
-   Integer lineNumber = parseInt(parts.get(3));
-   Integer columnNumber = parseInt(parts.get(4));
-   String rule = parts.get(5);
+  @Override
+  public List<Violation> parseReportOutput(String string) throws Exception {
+    List<Violation> violations = new ArrayList<>();
+    List<String> lines = getLines(string);
+    for (String line : lines) {
+      List<String> parts =
+          getParts(
+              line,
+              "\\(Severity: (\\d*)\\)$",
+              "^([^:]*):",
+              "^(.+?) at line ",
+              "^(\\d*), ",
+              "column (\\d*)\\.  ",
+              "(.*)");
+      if (parts.isEmpty()) {
+        continue;
+      }
+      Integer severity = parseInt(parts.get(0));
+      String filename = parts.get(1);
+      String message = parts.get(2);
+      Integer lineNumber = parseInt(parts.get(3));
+      Integer columnNumber = parseInt(parts.get(4));
+      String rule = parts.get(5);
 
-   violations.add(//
-     violationBuilder()//
-       .setReporter(CPPLINT)//
-       .setStartLine(lineNumber)//
-       .setColumn(columnNumber)//
-       .setFile(filename)//
-       .setRule(rule)//
-       .setSeverity(toSeverity(severity))//
-       .setMessage(message)//
-       .build()//
-   );
+      violations.add( //
+          violationBuilder() //
+              .setReporter(CPPLINT) //
+              .setStartLine(lineNumber) //
+              .setColumn(columnNumber) //
+              .setFile(filename) //
+              .setRule(rule) //
+              .setSeverity(toSeverity(severity)) //
+              .setMessage(message) //
+              .build() //
+          );
+    }
+    return violations;
   }
-  return violations;
- }
 
- public SEVERITY toSeverity(Integer severity) {
-  if (severity >= 4) {
-   return ERROR;
+  public SEVERITY toSeverity(Integer severity) {
+    if (severity >= 4) {
+      return ERROR;
+    }
+    if (severity >= 3) {
+      return WARN;
+    }
+    return INFO;
   }
-  if (severity >= 3) {
-   return WARN;
-  }
-  return INFO;
- }
-
 }

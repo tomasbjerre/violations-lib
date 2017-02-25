@@ -15,25 +15,27 @@ import java.util.List;
 
 public class ReportsFinder {
 
- public static List<File> findAllReports(File startFile, final String pattern) {
-  final List<File> found = new ArrayList<>();
-  Path startPath = startFile.toPath();
-  try {
-   walkFileTree(startPath, new SimpleFileVisitor<Path>() {
-    @Override
-    public FileVisitResult visitFile(Path file, BasicFileAttributes attrs) throws IOException {
-     String absoluteFile = file.toFile().getAbsolutePath();
-     if (matches(pattern, absoluteFile)) {
-      found.add(file.toFile());
-     }
-     return super.visitFile(file, attrs);
+  public static List<File> findAllReports(File startFile, final String pattern) {
+    final List<File> found = new ArrayList<>();
+    Path startPath = startFile.toPath();
+    try {
+      walkFileTree(
+          startPath,
+          new SimpleFileVisitor<Path>() {
+            @Override
+            public FileVisitResult visitFile(Path file, BasicFileAttributes attrs)
+                throws IOException {
+              String absoluteFile = file.toFile().getAbsolutePath();
+              if (matches(pattern, absoluteFile)) {
+                found.add(file.toFile());
+              }
+              return super.visitFile(file, attrs);
+            }
+          });
+    } catch (IOException e) {
+      new RuntimeException(e);
     }
-   });
-  } catch (IOException e) {
-   new RuntimeException(e);
+    Collections.sort(found);
+    return found;
   }
-  Collections.sort(found);
-  return found;
- }
-
 }

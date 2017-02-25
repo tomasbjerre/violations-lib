@@ -9,9 +9,7 @@ import static se.bjurr.violations.lib.model.SEVERITY.WARN;
 import static se.bjurr.violations.lib.reports.Reporter.CLANG;
 
 import java.util.List;
-
 import org.junit.Test;
-
 import se.bjurr.violations.lib.model.Violation;
 
 public class CLangTest {
@@ -20,36 +18,36 @@ public class CLangTest {
   public void testThatViolationsCanBeParsed() {
     String rootFolder = getRootFolder();
 
-    List<Violation> actual = violationsReporterApi() //
-        .withPattern(".*/clang/clang.*\\.txt$") //
-        .inFolder(rootFolder) //
-        .findAll(CLANG) //
-        .violations();
+    List<Violation> actual =
+        violationsReporterApi() //
+            .withPattern(".*/clang/clang.*\\.txt$") //
+            .inFolder(rootFolder) //
+            .findAll(CLANG) //
+            .violations();
 
-    assertThat(actual)//
+    assertThat(actual) //
         .hasSize(4);
 
-    assertThat(actual.get(0).getMessage())//
-        .isEqualTo(
-            "'test.h' file not found");
-    assertThat(actual.get(0).getFile())//
+    assertThat(actual.get(0).getMessage()) //
+        .isEqualTo("'test.h' file not found");
+    assertThat(actual.get(0).getFile()) //
         .isEqualTo("./test.h");
-    assertThat(actual.get(0).getSeverity())//
+    assertThat(actual.get(0).getSeverity()) //
         .isEqualTo(ERROR);
-    assertThat(actual.get(0).getRule().orNull())//
+    assertThat(actual.get(0).getRule().orNull()) //
         .isEqualTo(null);
-    assertThat(actual.get(0).getStartLine())//
+    assertThat(actual.get(0).getStartLine()) //
         .isEqualTo(10);
 
-    assertThat(actual.get(2).getMessage())//
+    assertThat(actual.get(2).getMessage()) //
         .isEqualTo("Memory is allocated");
-    assertThat(actual.get(2).getFile())//
+    assertThat(actual.get(2).getFile()) //
         .isEqualTo("main.cpp");
-    assertThat(actual.get(2).getSeverity())//
+    assertThat(actual.get(2).getSeverity()) //
         .isEqualTo(INFO);
-    assertThat(actual.get(2).getRule().orNull())//
+    assertThat(actual.get(2).getRule().orNull()) //
         .isEqualTo(null);
-    assertThat(actual.get(2).getStartLine())//
+    assertThat(actual.get(2).getStartLine()) //
         .isEqualTo(4);
   }
 
@@ -57,29 +55,28 @@ public class CLangTest {
   public void testThatRubycopViolationsCanBeParsed() {
     String rootFolder = getRootFolder();
 
-    List<Violation> actual = violationsReporterApi() //
-        .withPattern(".*/clang/rubycop\\.txt$") //
-        .inFolder(rootFolder) //
-        .findAll(CLANG) //
-        .violations();
+    List<Violation> actual =
+        violationsReporterApi() //
+            .withPattern(".*/clang/rubycop\\.txt$") //
+            .inFolder(rootFolder) //
+            .findAll(CLANG) //
+            .violations();
 
-    assertThat(actual)//
+    assertThat(actual) //
         .hasSize(4);
 
-    assertThat(actual.get(0).getMessage())//
-        .isEqualTo(
-            "Use snake_case for method names.");
-    assertThat(actual.get(0).getFile())//
+    assertThat(actual.get(0).getMessage()) //
+        .isEqualTo("Use snake_case for method names.");
+    assertThat(actual.get(0).getFile()) //
         .isEqualTo("test.rb");
-    assertThat(actual.get(0).getSeverity())//
+    assertThat(actual.get(0).getSeverity()) //
         .isEqualTo(ERROR);
-    assertThat(actual.get(0).getRule().orNull())//
+    assertThat(actual.get(0).getRule().orNull()) //
         .isEqualTo(null);
-    assertThat(actual.get(0).getStartLine())//
+    assertThat(actual.get(0).getStartLine()) //
         .isEqualTo(1);
 
-    assertThat(actual.get(3).getSeverity())//
+    assertThat(actual.get(3).getSeverity()) //
         .isEqualTo(WARN);
   }
-
 }

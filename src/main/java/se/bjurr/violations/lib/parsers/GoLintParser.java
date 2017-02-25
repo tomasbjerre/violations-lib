@@ -11,7 +11,6 @@ import static se.bjurr.violations.lib.util.Utils.isNullOrEmpty;
 
 import java.util.ArrayList;
 import java.util.List;
-
 import se.bjurr.violations.lib.model.SEVERITY;
 import se.bjurr.violations.lib.model.Violation;
 
@@ -20,7 +19,8 @@ public class GoLintParser implements ViolationsParser {
   @Override
   public List<Violation> parseReportOutput(String reportContent) throws Exception {
     List<Violation> violations = new ArrayList<>();
-    List<List<String>> partsPerLine = getLines(reportContent, "^([^:]+?):(\\d*):?(\\d*?):?([^:]*?)?:? (.*)$");
+    List<List<String>> partsPerLine =
+        getLines(reportContent, "^([^:]+?):(\\d*):?(\\d*?):?([^:]*?)?:? (.*)$");
     for (List<String> parts : partsPerLine) {
       String fileName = parts.get(1);
       Integer lineNumber = 0;
@@ -33,16 +33,16 @@ public class GoLintParser implements ViolationsParser {
       }
       String severity = parts.get(4);
       String message = parts.get(5);
-      violations.add(//
-          violationBuilder()//
-              .setReporter(GOLINT)//
-              .setStartLine(lineNumber)//
-              .setColumn(columnNumber)//
-              .setFile(fileName)//
-              .setSeverity(toSeverity(severity))//
-              .setMessage(message)//
-              .build()//
-      );
+      violations.add( //
+          violationBuilder() //
+              .setReporter(GOLINT) //
+              .setStartLine(lineNumber) //
+              .setColumn(columnNumber) //
+              .setFile(fileName) //
+              .setSeverity(toSeverity(severity)) //
+              .setMessage(message) //
+              .build() //
+          );
     }
     return violations;
   }

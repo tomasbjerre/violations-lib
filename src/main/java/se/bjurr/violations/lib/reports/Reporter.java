@@ -7,7 +7,6 @@ import java.io.FileInputStream;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Logger;
-
 import se.bjurr.violations.lib.model.Violation;
 import se.bjurr.violations.lib.parsers.AndroidLintParser;
 import se.bjurr.violations.lib.parsers.CLangParser;
@@ -40,55 +39,55 @@ import se.bjurr.violations.lib.parsers.ZPTLintParser;
 import se.bjurr.violations.lib.util.Utils;
 
 public enum Reporter {
- ANDROIDLINT(new AndroidLintParser()), //
- CHECKSTYLE(new CheckStyleParser()), //
- CODENARC(new CodeNarcParser()), //
- CLANG(new CLangParser()), //
- CPD(new CPDParser()), //
- CPPCHECK(new CPPCheckParser()), //
- CPPLINT(new CppLintParser()), //
- CSSLINT(new CSSLintParser()), //
- FINDBUGS(new FindbugsParser()), //
- FLAKE8(new Flake8Parser()), //
- FXCOP(new FxCopParser()), //
- GENDARME(new GendarmeParser()), //
- JCREPORT(new JCReportParser()), //
- JSHINT(new JSHintParser()), //
- LINT(new LintParser()), //
- MYPY(new MyPyParser()), //
- GOLINT(new GoLintParser()), //
- PERLCRITIC(new PerlCriticParser()), //
- PITEST(new PiTestParser()), //
- PMD(new PMDParser()), //
- PYDOCSTYLE(new PyDocStyleParser()), //
- PYLINT(new PyLintParser()), //
- RESHARPER(new ResharperParser()), //
- SIMIAN(new SimianParser()), //
- STYLECOP(new StyleCopParser()), //
- XMLLINT(new XMLLintParser()), //
- ZPTLINT(new ZPTLintParser());
+  ANDROIDLINT(new AndroidLintParser()), //
+  CHECKSTYLE(new CheckStyleParser()), //
+  CODENARC(new CodeNarcParser()), //
+  CLANG(new CLangParser()), //
+  CPD(new CPDParser()), //
+  CPPCHECK(new CPPCheckParser()), //
+  CPPLINT(new CppLintParser()), //
+  CSSLINT(new CSSLintParser()), //
+  FINDBUGS(new FindbugsParser()), //
+  FLAKE8(new Flake8Parser()), //
+  FXCOP(new FxCopParser()), //
+  GENDARME(new GendarmeParser()), //
+  JCREPORT(new JCReportParser()), //
+  JSHINT(new JSHintParser()), //
+  LINT(new LintParser()), //
+  MYPY(new MyPyParser()), //
+  GOLINT(new GoLintParser()), //
+  PERLCRITIC(new PerlCriticParser()), //
+  PITEST(new PiTestParser()), //
+  PMD(new PMDParser()), //
+  PYDOCSTYLE(new PyDocStyleParser()), //
+  PYLINT(new PyLintParser()), //
+  RESHARPER(new ResharperParser()), //
+  SIMIAN(new SimianParser()), //
+  STYLECOP(new StyleCopParser()), //
+  XMLLINT(new XMLLintParser()), //
+  ZPTLINT(new ZPTLintParser());
 
- private static Logger LOG = Logger.getLogger(Reporter.class.getSimpleName());
- private ViolationsParser violationsParser;
+  private static Logger LOG = Logger.getLogger(Reporter.class.getSimpleName());
+  private ViolationsParser violationsParser;
 
- private Reporter(ViolationsParser violationsParser) {
-  this.violationsParser = violationsParser;
- }
-
- public List<Violation> findViolations(List<File> includedFiles) {
-  List<Violation> violations = new ArrayList<>();
-  for (File file : includedFiles) {
-   try {
-    String string = Utils.toString(new FileInputStream(file));
-    violations.addAll(violationsParser.parseReportOutput(string));
-   } catch (Exception e) {
-    LOG.log(SEVERE, "Error when parsing " + file.getAbsolutePath() + " as " + this.name(), e);
-   }
+  private Reporter(ViolationsParser violationsParser) {
+    this.violationsParser = violationsParser;
   }
-  return violations;
- }
 
- public ViolationsParser getViolationsParser() {
-  return violationsParser;
- }
+  public List<Violation> findViolations(List<File> includedFiles) {
+    List<Violation> violations = new ArrayList<>();
+    for (File file : includedFiles) {
+      try {
+        String string = Utils.toString(new FileInputStream(file));
+        violations.addAll(violationsParser.parseReportOutput(string));
+      } catch (Exception e) {
+        LOG.log(SEVERE, "Error when parsing " + file.getAbsolutePath() + " as " + this.name(), e);
+      }
+    }
+    return violations;
+  }
+
+  public ViolationsParser getViolationsParser() {
+    return violationsParser;
+  }
 }

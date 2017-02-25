@@ -8,7 +8,6 @@ import static se.bjurr.violations.lib.reports.Reporter.PYDOCSTYLE;
 
 import java.util.ArrayList;
 import java.util.List;
-
 import se.bjurr.violations.lib.model.Violation;
 
 public class PyDocStyleParser implements ViolationsParser {
@@ -30,16 +29,16 @@ public class PyDocStyleParser implements ViolationsParser {
         String rule = parts.get(0);
         String message = parts.get(1);
 
-        violations.add(//
-            violationBuilder()//
-                .setReporter(PYDOCSTYLE)//
-                .setStartLine(line)//
-                .setFile(filename)//
-                .setRule(rule)//
-                .setSeverity(ERROR)//
-                .setMessage(message)//
-                .build()//
-        );
+        violations.add( //
+            violationBuilder() //
+                .setReporter(PYDOCSTYLE) //
+                .setStartLine(line) //
+                .setFile(filename) //
+                .setRule(rule) //
+                .setSeverity(ERROR) //
+                .setMessage(message) //
+                .build() //
+            );
       }
       fileLine = !fileLine;
     }

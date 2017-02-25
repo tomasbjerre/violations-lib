@@ -9,7 +9,6 @@ import static se.bjurr.violations.lib.reports.Reporter.MYPY;
 
 import java.util.ArrayList;
 import java.util.List;
-
 import se.bjurr.violations.lib.model.SEVERITY;
 import se.bjurr.violations.lib.model.Violation;
 
@@ -27,15 +26,15 @@ public class MyPyParser implements ViolationsParser {
       }
       String severity = parts.get(3);
       String message = parts.get(4);
-      violations.add(//
-          violationBuilder()//
-              .setReporter(MYPY)//
-              .setStartLine(lineNumber)//
-              .setFile(fileName)//
-              .setSeverity(toSeverity(severity))//
-              .setMessage(message)//
-              .build()//
-      );
+      violations.add( //
+          violationBuilder() //
+              .setReporter(MYPY) //
+              .setStartLine(lineNumber) //
+              .setFile(fileName) //
+              .setSeverity(toSeverity(severity)) //
+              .setMessage(message) //
+              .build() //
+          );
     }
     return violations;
   }

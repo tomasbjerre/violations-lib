@@ -19,23 +19,20 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.logging.Logger;
-
 import javax.xml.stream.XMLInputFactory;
 import javax.xml.stream.XMLStreamConstants;
 import javax.xml.stream.XMLStreamException;
 import javax.xml.stream.XMLStreamReader;
-
 import se.bjurr.violations.lib.model.SEVERITY;
 import se.bjurr.violations.lib.model.Violation;
 import se.bjurr.violations.lib.util.Optional;
 import se.bjurr.violations.lib.util.Utils;
 
 public class FindbugsParser implements ViolationsParser {
-private static Logger LOG = Logger.getLogger(FindbugsParser.class.getSimpleName());
-  /**
-   * Severity rank.
-   */
+  private static Logger LOG = Logger.getLogger(FindbugsParser.class.getSimpleName());
+  /** Severity rank. */
   public static final String FINDBUGS_SPECIFIC_RANK = "RANK";
+
   private static String findbugsMessagesXml;
 
   public static void setFindbugsMessagesXml(String findbugsMessagesXml) {
@@ -66,8 +63,9 @@ private static Logger LOG = Logger.getLogger(FindbugsParser.class.getSimpleName(
     return messagesPerType;
   }
 
-  private void parseBugInstance(XMLStreamReader xmlr, List<Violation> violations,
-      Map<String, String> messagesPerType) throws XMLStreamException {
+  private void parseBugInstance(
+      XMLStreamReader xmlr, List<Violation> violations, Map<String, String> messagesPerType)
+      throws XMLStreamException {
     String type = getAttribute(xmlr, "type");
     Integer rank = getIntegerAttribute(xmlr, "rank");
     String message = messagesPerType.get(type);
@@ -89,19 +87,19 @@ private static Logger LOG = Logger.getLogger(FindbugsParser.class.getSimpleName(
           }
           String filename = getAttribute(xmlr, "sourcepath");
           String classname = getAttribute(xmlr, "classname");
-          candidates.add(//
-              violationBuilder()//
-                  .setReporter(FINDBUGS)//
-                  .setMessage(message)//
-                  .setFile(filename)//
-                  .setStartLine(startLine.get())//
-                  .setEndLine(endLine.get())//
-                  .setRule(type)//
-                  .setSeverity(severity)//
-                  .setSource(classname)//
-                  .setSpecific(FINDBUGS_SPECIFIC_RANK, rank)//
-                  .build()//
-          );
+          candidates.add( //
+              violationBuilder() //
+                  .setReporter(FINDBUGS) //
+                  .setMessage(message) //
+                  .setFile(filename) //
+                  .setStartLine(startLine.get()) //
+                  .setEndLine(endLine.get()) //
+                  .setRule(type) //
+                  .setSeverity(severity) //
+                  .setSource(classname) //
+                  .setSpecific(FINDBUGS_SPECIFIC_RANK, rank) //
+                  .build() //
+              );
         }
       }
       if (eventType == XMLStreamConstants.END_ELEMENT) {
@@ -119,7 +117,6 @@ private static Logger LOG = Logger.getLogger(FindbugsParser.class.getSimpleName(
        */
       violations.add(candidates.get(candidates.size() - 1));
     }
-
   }
 
   @Override
@@ -157,5 +154,4 @@ private static Logger LOG = Logger.getLogger(FindbugsParser.class.getSimpleName(
     }
     return SEVERITY.INFO;
   }
-
 }
