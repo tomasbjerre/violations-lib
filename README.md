@@ -50,29 +50,6 @@ Very easy to use with a nice builder pattern
     .violations();
 ```
 
-Or
-
-```
-  List<Violation> violations = violationsAccumulatedReporterApi() //
-    .withViolations( //
-      violationsReporterApi() //
-      .withPattern(".*/findbugs/.*\\.xml$") //
-      .inFolder(rootFolder) //
-      .findAll(FINDBUGS) //
-      .violations() //
-    ) //
-    .withViolations( //
-      violationsReporterApi() //
-      .withPattern(".*/pmd/.*\\.xml$") //
-      .inFolder(rootFolder) //
-      .findAll(PMD) //
-      .violations() //
-    ) //
-    .withAtLeastSeverity(ERROR)//
-    .orderedBy(FILE)//
-    .violations();
-```
-
 It is used by:
  * [Violation Comments to GitHub Gradle Plugin](https://github.com/tomasbjerre/violation-comments-to-github-gradle-plugin).
  * [Violation Comments to GitHub Maven Plugin](https://github.com/tomasbjerre/violation-comments-to-github-maven-plugin).
