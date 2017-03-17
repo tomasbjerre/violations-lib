@@ -9,71 +9,71 @@ import static se.bjurr.violations.lib.model.Violation.violationBuilder;
 import static se.bjurr.violations.lib.reports.Reporter.CHECKSTYLE;
 
 import java.util.List;
-
 import org.junit.Test;
-
 import se.bjurr.violations.lib.model.Violation;
 
 public class FilteringTest {
 
   @Test
   public void testFilteringINFO() {
-    List<Violation> unfiltered = newArrayList(//
-        violationBuilder()//
-            .setFile("file")//
-            .setStartLine(2)//
-            .setMessage("message")//
-            .setReporter(CHECKSTYLE)//
-            .setSeverity(INFO)//
-            .build()//
-    );
+    List<Violation> unfiltered =
+        newArrayList( //
+            violationBuilder() //
+                .setFile("file") //
+                .setStartLine(2) //
+                .setMessage("message") //
+                .setReporter(CHECKSTYLE) //
+                .setSeverity(INFO) //
+                .build() //
+            );
 
-    assertThat(Filtering.withAtLEastSeverity(unfiltered, ERROR))//
+    assertThat(Filtering.withAtLEastSeverity(unfiltered, ERROR)) //
         .hasSize(0);
-    assertThat(Filtering.withAtLEastSeverity(unfiltered, WARN))//
+    assertThat(Filtering.withAtLEastSeverity(unfiltered, WARN)) //
         .hasSize(0);
-    assertThat(Filtering.withAtLEastSeverity(unfiltered, INFO))//
+    assertThat(Filtering.withAtLEastSeverity(unfiltered, INFO)) //
         .hasSize(1);
   }
 
   @Test
   public void testFilteringWARN() {
-    List<Violation> unfiltered = newArrayList(//
-        violationBuilder()//
-            .setFile("file")//
-            .setStartLine(2)//
-            .setMessage("message")//
-            .setReporter(CHECKSTYLE)//
-            .setSeverity(WARN)//
-            .build()//
-    );
+    List<Violation> unfiltered =
+        newArrayList( //
+            violationBuilder() //
+                .setFile("file") //
+                .setStartLine(2) //
+                .setMessage("message") //
+                .setReporter(CHECKSTYLE) //
+                .setSeverity(WARN) //
+                .build() //
+            );
 
-    assertThat(Filtering.withAtLEastSeverity(unfiltered, ERROR))//
+    assertThat(Filtering.withAtLEastSeverity(unfiltered, ERROR)) //
         .hasSize(0);
-    assertThat(Filtering.withAtLEastSeverity(unfiltered, WARN))//
+    assertThat(Filtering.withAtLEastSeverity(unfiltered, WARN)) //
         .hasSize(1);
-    assertThat(Filtering.withAtLEastSeverity(unfiltered, INFO))//
+    assertThat(Filtering.withAtLEastSeverity(unfiltered, INFO)) //
         .hasSize(1);
   }
 
   @Test
   public void testFilteringERROR() {
-    List<Violation> unfiltered = newArrayList(//
-        violationBuilder()//
-            .setFile("file")//
-            .setStartLine(2)//
-            .setMessage("message")//
-            .setReporter(CHECKSTYLE)//
-            .setSeverity(ERROR)//
-            .build()//
-    );
+    List<Violation> unfiltered =
+        newArrayList( //
+            violationBuilder() //
+                .setFile("file") //
+                .setStartLine(2) //
+                .setMessage("message") //
+                .setReporter(CHECKSTYLE) //
+                .setSeverity(ERROR) //
+                .build() //
+            );
 
-    assertThat(Filtering.withAtLEastSeverity(unfiltered, ERROR))//
+    assertThat(Filtering.withAtLEastSeverity(unfiltered, ERROR)) //
         .hasSize(1);
-    assertThat(Filtering.withAtLEastSeverity(unfiltered, WARN))//
+    assertThat(Filtering.withAtLEastSeverity(unfiltered, WARN)) //
         .hasSize(1);
-    assertThat(Filtering.withAtLEastSeverity(unfiltered, INFO))//
+    assertThat(Filtering.withAtLEastSeverity(unfiltered, INFO)) //
         .hasSize(1);
   }
-
 }
