@@ -7,9 +7,7 @@ import static se.bjurr.violations.lib.model.SEVERITY.INFO;
 import static se.bjurr.violations.lib.reports.Reporter.KLOCWORK;
 
 import java.util.List;
-
 import org.junit.Test;
-
 import se.bjurr.violations.lib.model.Violation;
 
 public class KlocworkTest {
@@ -30,8 +28,7 @@ public class KlocworkTest {
 
     Violation violation0 = actual.get(0);
     assertThat(violation0.getMessage()) //
-        .isEqualTo(
-            "Variable 'bzz' was never read after null being assigned.");
+        .isEqualTo("Variable 'bzz' was never read after null being assigned.");
     assertThat(violation0.getFile()) //
         .isEqualTo("/home/test_build/src/main/java/Main.java");
     assertThat(violation0.getSeverity()) //
@@ -43,14 +40,15 @@ public class KlocworkTest {
 
     Violation violation1 = actual.get(1);
     assertThat(violation1.getMessage()) //
-        .isEqualTo("The 'getURLConnection' method throws a generic exception 'java.lang.Exception'");
+        .isEqualTo(
+            "The 'getURLConnection' method throws a generic exception 'java.lang.Exception'");
     assertThat(violation1.getFile()) //
-    .isEqualTo("/home/test_build/src/main/java/Main2.java");
-assertThat(violation0.getSeverity()) //
-    .isEqualTo(INFO);
-assertThat(violation0.getRule().get()) //
-    .isEqualTo("JD.VNU.NULL");
-assertThat(violation0.getStartLine()) //
-    .isEqualTo(1);
+        .isEqualTo("/home/test_build/src/main/java/Main2.java");
+    assertThat(violation0.getSeverity()) //
+        .isEqualTo(INFO);
+    assertThat(violation0.getRule().get()) //
+        .isEqualTo("JD.VNU.NULL");
+    assertThat(violation0.getStartLine()) //
+        .isEqualTo(1);
   }
 }
