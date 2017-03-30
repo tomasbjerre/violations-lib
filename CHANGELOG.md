@@ -2,13 +2,32 @@
 
 Changelog of Git Changelog.
 
-## Unreleased
+## 1.25
 ### No issue
+
+**Klocwork parser**
+
+
+[4a875240f568a02](https://github.com/tomasbjerre/violations-lib/commit/4a875240f568a02) Tomas Bjerre *2017-03-30 17:14:56*
+
+**doc**
+
+
+[009b846e120e0ff](https://github.com/tomasbjerre/violations-lib/commit/009b846e120e0ff) Tomas Bjerre *2017-03-17 21:39:52*
+
+
+## 1.24
+### No issue
+
+**Adding filtering util**
+
+
+[30788adc503bdd4](https://github.com/tomasbjerre/violations-lib/commit/30788adc503bdd4) Tomas Bjerre *2017-03-17 14:09:58*
 
 **Google Java Format**
 
 
-[c9724a8971fac04](https://github.com/tomasbjerre/violations-lib/commit/c9724a8971fac04) Tomas Bjerre *2017-02-25 12:25:11*
+[71746a1614d51b3](https://github.com/tomasbjerre/violations-lib/commit/71746a1614d51b3) Tomas Bjerre *2017-02-25 12:25:45*
 
 **doc**
 

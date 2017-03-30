@@ -12,9 +12,11 @@ import java.io.ByteArrayInputStream;
 import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.List;
+
 import javax.xml.stream.XMLInputFactory;
 import javax.xml.stream.XMLStreamException;
 import javax.xml.stream.XMLStreamReader;
+
 import se.bjurr.violations.lib.model.SEVERITY;
 import se.bjurr.violations.lib.model.Violation;
 
@@ -45,6 +47,7 @@ public class KlocworkParser implements ViolationsParser {
     String message = null;
     String code = null;
     Integer severitylevel = null;
+    String method = null;
     while (xmlr.hasNext()) {
       int eventType = xmlr.next();
       if (eventType == END_ELEMENT && xmlr.getLocalName().equals("problem")) {
@@ -65,11 +68,14 @@ public class KlocworkParser implements ViolationsParser {
       if (xmlr.getLocalName().equals("severitylevel")) {
         severitylevel = Integer.parseInt(xmlr.getElementText());
       }
+      if (xmlr.getLocalName().equals("method")) {
+        method = xmlr.getElementText();
+      }
     }
     return violationBuilder() //
         .setReporter(KLOCWORK) //
         .setFile(file) //
-        .setMessage(message) //
+        .setMessage("In method "+method+". "+message) //
         .setRule(code) //
         .setSeverity(getSeverity(severitylevel)) //
         .setStartLine(1) //
