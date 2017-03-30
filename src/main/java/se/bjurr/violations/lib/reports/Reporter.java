@@ -7,6 +7,7 @@ import java.io.FileInputStream;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Logger;
+
 import se.bjurr.violations.lib.model.Violation;
 import se.bjurr.violations.lib.parsers.AndroidLintParser;
 import se.bjurr.violations.lib.parsers.CLangParser;
@@ -23,6 +24,7 @@ import se.bjurr.violations.lib.parsers.GendarmeParser;
 import se.bjurr.violations.lib.parsers.GoLintParser;
 import se.bjurr.violations.lib.parsers.JCReportParser;
 import se.bjurr.violations.lib.parsers.JSHintParser;
+import se.bjurr.violations.lib.parsers.KlocworkParser;
 import se.bjurr.violations.lib.parsers.LintParser;
 import se.bjurr.violations.lib.parsers.MyPyParser;
 import se.bjurr.violations.lib.parsers.PMDParser;
@@ -54,6 +56,7 @@ public enum Reporter {
   JCREPORT(new JCReportParser()), //
   JSHINT(new JSHintParser()), //
   LINT(new LintParser()), //
+  KLOCWORK(new KlocworkParser()), //
   MYPY(new MyPyParser()), //
   GOLINT(new GoLintParser()), //
   PERLCRITIC(new PerlCriticParser()), //
