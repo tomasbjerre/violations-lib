@@ -1,0 +1,19 @@
+[info] Loading global plugins from /Users/johndoe/.sbt/0.13/plugins
+[info] Loading project definition from /Users/johndoe/workspace/org/prj/prj
+[info] Set current project to haru (in build file:/Users/johndoe/workspace/org/prj/)
+[info] Compiling 8 Scala sources to /Users/johndoe/workspace/org/prj/prj-server/target/scala-2.12/classes...
+[error] /Users/johndoe/workspace/org/prj/prj-server/src/main/scala/org/prj/server/ProjectServerApp.scala:19: object creation impossible, since value system in trait ProjectServers of type akka.actor.ActorSystem is not defined
+[error] object ProjectServerApp extends App with ProjectServers {
+[error]        ^
+[error] /Users/johndoe/workspace/org/prj/prj-server/src/main/scala/org/prj/server/authentication/AuthenticationServer.scala:23: class AuthenticationServer needs to be abstract, since value scheduler in trait TokenAuthentication of type monix.execution.Scheduler is not defined
+[error] final class AuthenticationServer(
+[error]             ^
+[error] /Users/johndoe/workspace/org/prj/prj-server/src/main/scala/org/prj/server/profile/UserProfileServer.scala:28: class UserProfileServer needs to be abstract, since value scheduler in trait TokenAuthentication of type monix.execution.Scheduler is not defined
+[error] final class UserProfileServer(
+[error]             ^
+[error] /Users/johndoe/workspace/org/prj/prj-server/src/main/scala/org/prj/server/user/UserServer.scala:29: class UserServer needs to be abstract, since value scheduler in trait TokenAuthentication of type monix.execution.Scheduler is not defined
+[error] final class UserServer(
+[error]             ^
+[error] four errors found
+[error] (project-server/compile:compileIncremental) Compilation failed
+[error] Total time: 5 s, completed Apr 10, 2017 1:30:34 PM

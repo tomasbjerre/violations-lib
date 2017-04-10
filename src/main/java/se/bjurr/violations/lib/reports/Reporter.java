@@ -32,6 +32,7 @@ import se.bjurr.violations.lib.parsers.PiTestParser;
 import se.bjurr.violations.lib.parsers.PyDocStyleParser;
 import se.bjurr.violations.lib.parsers.PyLintParser;
 import se.bjurr.violations.lib.parsers.ResharperParser;
+import se.bjurr.violations.lib.parsers.SbtScalacParser;
 import se.bjurr.violations.lib.parsers.SimianParser;
 import se.bjurr.violations.lib.parsers.StyleCopParser;
 import se.bjurr.violations.lib.parsers.ViolationsParser;
@@ -64,6 +65,7 @@ public enum Reporter {
   PYDOCSTYLE(new PyDocStyleParser()), //
   PYLINT(new PyLintParser()), //
   RESHARPER(new ResharperParser()), //
+  SBTSCALAC(new SbtScalacParser()), //
   SIMIAN(new SimianParser()), //
   STYLECOP(new StyleCopParser()), //
   XMLLINT(new XMLLintParser()), //
