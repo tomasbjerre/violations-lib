@@ -5,10 +5,10 @@ This is a library for parsing report files from static code analysis.
 It supports:
  * [_AndroidLint_](http://developer.android.com/tools/help/lint.html)
  * [_Checkstyle_](http://checkstyle.sourceforge.net/)
-  * [_ESLint_](https://github.com/sindresorhus/grunt-eslint) with `format: 'checkstyle'`.
-  * [_PHPCS_](https://github.com/squizlabs/PHP_CodeSniffer) with `phpcs api.php --report=checkstyle`.
+   * [_ESLint_](https://github.com/sindresorhus/grunt-eslint) with `format: 'checkstyle'`.
+   * [_PHPCS_](https://github.com/squizlabs/PHP_CodeSniffer) with `phpcs api.php --report=checkstyle`.
  * [_CLang_](https://clang-analyzer.llvm.org/)
-  * [_RubyCop_](http://rubocop.readthedocs.io/en/latest/formatters/) with `rubycop -f clang file.rb`
+   * [_RubyCop_](http://rubocop.readthedocs.io/en/latest/formatters/) with `rubycop -f clang file.rb`
  * [_CodeNarc_](http://codenarc.sourceforge.net/)
  * [_CPD_](http://pmd.sourceforge.net/pmd-4.3.0/cpd.html)
  * [_CPPLint_](https://github.com/theandrewdavis/cpplint)
@@ -16,13 +16,14 @@ It supports:
  * [_CSSLint_](https://github.com/CSSLint/csslint)
  * [_Findbugs_](http://findbugs.sourceforge.net/)
  * [_Flake8_](http://flake8.readthedocs.org/en/latest/)
-  * [_Pep8_](https://github.com/PyCQA/pycodestyle)
-  * [_Mccabe_](https://pypi.python.org/pypi/mccabe)
-  * [_PyFlakes_](https://pypi.python.org/pypi/pyflakes)
+   * [_AnsibleLint_](https://github.com/willthames/ansible-lint) with `-p'`
+   * [_Mccabe_](https://pypi.python.org/pypi/mccabe)
+   * [_Pep8_](https://github.com/PyCQA/pycodestyle)
+   * [_PyFlakes_](https://pypi.python.org/pypi/pyflakes)
  * [_FxCop_](https://en.wikipedia.org/wiki/FxCop)
  * [_Gendarme_](http://www.mono-project.com/docs/tools+libraries/tools/gendarme/)
  * [_GoLint_](https://github.com/golang/lint)
-  * [_GoVet_](https://golang.org/cmd/vet/) Same format as GoLint.
+   * [_GoVet_](https://golang.org/cmd/vet/) Same format as GoLint.
  * [_JSHint_](http://jshint.com/)
  * _Lint_ A common XML format, used by different linters.
  * [_JCReport_](https://github.com/jCoderZ/fawkez/wiki/JcReport)
@@ -33,7 +34,7 @@ It supports:
  * [_PyDocStyle_](https://pypi.python.org/pypi/pydocstyle)
  * [_PyLint_](https://www.pylint.org/)
  * [_PMD_](https://pmd.github.io/)
-  * [_PHPPMD_](https://phpmd.org/) with `phpmd api.php xml ruleset.xml`.
+   * [_PHPPMD_](https://phpmd.org/) with `phpmd api.php xml ruleset.xml`.
  * [_ReSharper_](https://www.jetbrains.com/resharper/)
  * [_SbtScalac_](http://www.scala-sbt.org/)
  * [_Simian_](http://www.harukizaemon.com/simian/)
