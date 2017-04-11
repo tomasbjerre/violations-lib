@@ -16,7 +16,7 @@ It supports:
  * [_CSSLint_](https://github.com/CSSLint/csslint)
  * [_Findbugs_](http://findbugs.sourceforge.net/)
  * [_Flake8_](http://flake8.readthedocs.org/en/latest/)
-   * [_AnsibleLint_](https://github.com/willthames/ansible-lint) with `-p'`
+   * [_AnsibleLint_](https://github.com/willthames/ansible-lint) with `-p`
    * [_Mccabe_](https://pypi.python.org/pypi/mccabe)
    * [_Pep8_](https://github.com/PyCQA/pycodestyle)
    * [_PyFlakes_](https://pypi.python.org/pypi/pyflakes)
