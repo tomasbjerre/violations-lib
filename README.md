@@ -1,10 +1,11 @@
 # Violations Lib [![Build Status](https://travis-ci.org/tomasbjerre/violations-lib.svg?branch=master)](https://travis-ci.org/tomasbjerre/violations-lib) [![Maven Central](https://maven-badges.herokuapp.com/maven-central/se.bjurr.violations/violations-lib/badge.svg)](https://maven-badges.herokuapp.com/maven-central/se.bjurr.violations/violations-lib)
 
-This is a library for parsing report files from static code analysis.
+This is a Java library for parsing report files from static code analysis.
 
 It supports:
  * [_AndroidLint_](http://developer.android.com/tools/help/lint.html)
  * [_Checkstyle_](http://checkstyle.sourceforge.net/)
+   * [_Detekt_](https://github.com/arturbosch/detekt) with `--output-format xml`.
    * [_ESLint_](https://github.com/sindresorhus/grunt-eslint) with `format: 'checkstyle'`.
    * [_PHPCS_](https://github.com/squizlabs/PHP_CodeSniffer) with `phpcs api.php --report=checkstyle`.
  * [_CLang_](https://clang-analyzer.llvm.org/)
