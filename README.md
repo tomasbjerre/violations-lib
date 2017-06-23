@@ -25,6 +25,7 @@ It supports:
  * [_Gendarme_](http://www.mono-project.com/docs/tools+libraries/tools/gendarme/)
  * [_GoLint_](https://github.com/golang/lint)
    * [_GoVet_](https://golang.org/cmd/vet/) Same format as GoLint.
+ * [_Infer_](http://fbinfer.com/) Facebook Infer.
  * [_JSHint_](http://jshint.com/)
  * _Lint_ A common XML format, used by different linters.
  * [_JCReport_](https://github.com/jCoderZ/fawkez/wiki/JcReport)

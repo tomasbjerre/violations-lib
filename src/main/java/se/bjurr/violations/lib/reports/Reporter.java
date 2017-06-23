@@ -21,6 +21,7 @@ import se.bjurr.violations.lib.parsers.Flake8Parser;
 import se.bjurr.violations.lib.parsers.FxCopParser;
 import se.bjurr.violations.lib.parsers.GendarmeParser;
 import se.bjurr.violations.lib.parsers.GoLintParser;
+import se.bjurr.violations.lib.parsers.InferParser;
 import se.bjurr.violations.lib.parsers.JCReportParser;
 import se.bjurr.violations.lib.parsers.JSHintParser;
 import se.bjurr.violations.lib.parsers.KlocworkParser;
@@ -53,6 +54,7 @@ public enum Reporter {
   FLAKE8(new Flake8Parser()), //
   FXCOP(new FxCopParser()), //
   GENDARME(new GendarmeParser()), //
+  INFER(new InferParser()), //
   JCREPORT(new JCReportParser()), //
   JSHINT(new JSHintParser()), //
   LINT(new LintParser()), //
