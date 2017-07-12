@@ -2,6 +2,56 @@
 
 Changelog of Git Changelog.
 
+## Unreleased
+### GitHub [#19](https://github.com/tomasbjerre/violations-lib/issues/19) Support detekt
+
+**Updating doc about Detekt**
+
+
+[bf5475d3e59fb3d](https://github.com/tomasbjerre/violations-lib/commit/bf5475d3e59fb3d) Tomas Bjerre *2017-06-13 18:14:41*
+
+
+### GitHub [#20](https://github.com/tomasbjerre/violations-lib/issues/20) Support Facebook Infer
+
+**Updating doc on Infer**
+
+
+[22a2eb9add9884c](https://github.com/tomasbjerre/violations-lib/commit/22a2eb9add9884c) Tomas Bjerre *2017-06-23 12:44:57*
+
+
+## 1.27
+### No issue
+
+**URL in Klocwork**
+
+
+[43fc14f46fcfb98](https://github.com/tomasbjerre/violations-lib/commit/43fc14f46fcfb98) Tomas Bjerre *2017-04-11 18:11:22*
+
+**doc**
+
+
+[4c367bce8658529](https://github.com/tomasbjerre/violations-lib/commit/4c367bce8658529) Tomas Bjerre *2017-04-10 20:12:21*
+
+
+## 1.26
+### No issue
+
+**Testing that parsers are mentioned in README.md**
+
+
+[0f27abfb54542f3](https://github.com/tomasbjerre/violations-lib/commit/0f27abfb54542f3) Tomas Bjerre *2017-04-10 18:10:28*
+
+**Support sbt-scalac**
+
+
+[bc75205ca390a62](https://github.com/tomasbjerre/violations-lib/commit/bc75205ca390a62) Trung Nguyen *2017-04-10 17:35:19*
+
+**doc**
+
+
+[9a44d279d312230](https://github.com/tomasbjerre/violations-lib/commit/9a44d279d312230) Tomas Bjerre *2017-03-30 19:22:00*
+
+
 ## 1.25
 ### No issue
 
@@ -454,10 +504,5 @@ Changelog of Git Changelog.
 
 
 [b8d5a66e8ec407c](https://github.com/tomasbjerre/violations-lib/commit/b8d5a66e8ec407c) Tomas Bjerre *2016-02-20 21:40:52*
-
-**First commit**
-
-
-[f141f3565174869](https://github.com/tomasbjerre/violations-lib/commit/f141f3565174869) Tomas Bjerre *2016-02-18 18:17:50*
 
 
