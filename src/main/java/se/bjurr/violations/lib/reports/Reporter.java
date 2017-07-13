@@ -49,6 +49,7 @@ public enum Reporter {
   CPPCHECK(new CPPCheckParser()), //
   CPPLINT(new CppLintParser()), //
   CSSLINT(new CSSLintParser()), //
+  DETEKT(new CheckStyleParser()), //
   FINDBUGS(new FindbugsParser()), //
   FLAKE8(new Flake8Parser()), //
   FXCOP(new FxCopParser()), //
