@@ -2,6 +2,7 @@ package se.bjurr.violations.lib;
 
 import static java.util.logging.Level.FINE;
 import static se.bjurr.violations.lib.reports.ReportsFinder.findAllReports;
+import static se.bjurr.violations.lib.util.Utils.setReporter;
 
 import java.io.File;
 import java.util.List;
@@ -17,13 +18,20 @@ public class ViolationsReporterApi {
   }
 
   private String pattern;
-  private Parser reporter;
+  private Parser parser;
 
   private File startFile;
 
+  private String reporter;
+
   private ViolationsReporterApi() {}
 
-  public ViolationsReporterApi findAll(Parser reporter) {
+  public ViolationsReporterApi findAll(Parser parser) {
+    this.parser = parser;
+    return this;
+  }
+
+  public ViolationsReporterApi withReporter(String reporter) {
     this.reporter = reporter;
     return this;
   }
@@ -44,7 +52,13 @@ public class ViolationsReporterApi {
         LOG.log(FINE, f.getAbsolutePath());
       }
     }
-    List<Violation> foundViolations = reporter.findViolations(includedFiles);
+    List<Violation> foundViolations = parser.findViolations(includedFiles);
+    boolean reporterWasSupplied =
+        reporter != null && !reporter.trim().isEmpty() && !reporter.equals(parser.name());
+    if (reporterWasSupplied) {
+      setReporter(foundViolations, reporter);
+    }
+
     if (LOG.isLoggable(FINE)) {
       LOG.log(FINE, "Found " + foundViolations.size() + " violations:");
       for (Violation v : foundViolations) {

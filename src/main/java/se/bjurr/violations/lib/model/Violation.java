@@ -137,7 +137,11 @@ public class Violation implements Serializable {
 
   public Violation(ViolationBuilder vb) {
     parser = checkNotNull(vb.parser, "reporter");
-    reporter = firstNonNull(vb.reporter, parser.name());
+    if (vb.reporter != null && !vb.reporter.trim().isEmpty()) {
+      reporter = vb.reporter;
+    } else {
+      reporter = parser.name();
+    }
     startLine = checkNotNull(vb.startLine, "startline");
     endLine = firstNonNull(vb.endLine, vb.startLine);
     column = vb.column;

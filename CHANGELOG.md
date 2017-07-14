@@ -2,7 +2,7 @@
 
 Changelog of Git Changelog.
 
-## Unreleased
+## 1.28
 ### GitHub [#19](https://github.com/tomasbjerre/violations-lib/issues/19) Support detekt
 
 **Updating doc about Detekt**
@@ -17,6 +17,15 @@ Changelog of Git Changelog.
 
 
 [22a2eb9add9884c](https://github.com/tomasbjerre/violations-lib/commit/22a2eb9add9884c) Tomas Bjerre *2017-06-23 12:44:57*
+
+
+### GitHub [#22](https://github.com/tomasbjerre/violations-lib/pull/22) Renaming Reporter to Parser
+
+**Renaming Reporter to Parser**
+
+ * Also adding a reporter String in Violation to record the tool being used to produce the Violation. 
+
+[8401c647572fb5d](https://github.com/tomasbjerre/violations-lib/commit/8401c647572fb5d) Tomas Bjerre *2017-07-14 18:50:23*
 
 
 ### No issue
