@@ -5,7 +5,7 @@ import static se.bjurr.violations.lib.model.SEVERITY.INFO;
 import static se.bjurr.violations.lib.model.Violation.violationBuilder;
 import static se.bjurr.violations.lib.parsers.ViolationParserUtils.getAttribute;
 import static se.bjurr.violations.lib.parsers.ViolationParserUtils.getIntegerAttribute;
-import static se.bjurr.violations.lib.reports.Reporter.STYLECOP;
+import static se.bjurr.violations.lib.reports.Parser.STYLECOP;
 
 import java.io.ByteArrayInputStream;
 import java.io.InputStream;
@@ -42,7 +42,7 @@ public class StyleCopParser implements ViolationsParser {
             String filename = source.replaceAll("\\\\", "/");
             violations.add( //
                 violationBuilder() //
-                    .setReporter(STYLECOP) //
+                    .setParser(STYLECOP) //
                     .setMessage(message) //
                     .setFile(filename) //
                     .setStartLine(lineNumber) //

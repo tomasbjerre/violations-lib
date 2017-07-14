@@ -7,7 +7,7 @@ import static se.bjurr.violations.lib.model.SEVERITY.WARN;
 import static se.bjurr.violations.lib.model.Violation.violationBuilder;
 import static se.bjurr.violations.lib.parsers.ViolationParserUtils.getLines;
 import static se.bjurr.violations.lib.parsers.ViolationParserUtils.getParts;
-import static se.bjurr.violations.lib.reports.Reporter.CPPLINT;
+import static se.bjurr.violations.lib.reports.Parser.CPPLINT;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -41,7 +41,7 @@ public class PerlCriticParser implements ViolationsParser {
 
       violations.add( //
           violationBuilder() //
-              .setReporter(CPPLINT) //
+              .setParser(CPPLINT) //
               .setStartLine(lineNumber) //
               .setColumn(columnNumber) //
               .setFile(filename) //

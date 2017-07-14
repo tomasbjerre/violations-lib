@@ -7,7 +7,7 @@ import static se.bjurr.violations.lib.model.Violation.violationBuilder;
 import static se.bjurr.violations.lib.parsers.ViolationParserUtils.getAttribute;
 import static se.bjurr.violations.lib.parsers.ViolationParserUtils.getChunks;
 import static se.bjurr.violations.lib.parsers.ViolationParserUtils.getIntegerAttribute;
-import static se.bjurr.violations.lib.reports.Reporter.CPPCHECK;
+import static se.bjurr.violations.lib.reports.Parser.CPPCHECK;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -31,7 +31,7 @@ public class CPPCheckParser implements ViolationsParser {
         String fileString = getAttribute(errorChunk, "file");
         violations.add( //
             violationBuilder() //
-                .setReporter(CPPCHECK) //
+                .setParser(CPPCHECK) //
                 .setStartLine(line) //
                 .setFile(fileString) //
                 .setSeverity(toSeverity(severity)) //

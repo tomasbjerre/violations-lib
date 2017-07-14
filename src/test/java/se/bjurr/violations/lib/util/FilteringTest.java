@@ -6,7 +6,7 @@ import static se.bjurr.violations.lib.model.SEVERITY.ERROR;
 import static se.bjurr.violations.lib.model.SEVERITY.INFO;
 import static se.bjurr.violations.lib.model.SEVERITY.WARN;
 import static se.bjurr.violations.lib.model.Violation.violationBuilder;
-import static se.bjurr.violations.lib.reports.Reporter.CHECKSTYLE;
+import static se.bjurr.violations.lib.reports.Parser.CHECKSTYLE;
 
 import java.util.List;
 import org.junit.Test;
@@ -22,7 +22,7 @@ public class FilteringTest {
                 .setFile("file") //
                 .setStartLine(2) //
                 .setMessage("message") //
-                .setReporter(CHECKSTYLE) //
+                .setParser(CHECKSTYLE) //
                 .setSeverity(INFO) //
                 .build() //
             );
@@ -43,7 +43,7 @@ public class FilteringTest {
                 .setFile("file") //
                 .setStartLine(2) //
                 .setMessage("message") //
-                .setReporter(CHECKSTYLE) //
+                .setParser(CHECKSTYLE) //
                 .setSeverity(WARN) //
                 .build() //
             );
@@ -64,7 +64,7 @@ public class FilteringTest {
                 .setFile("file") //
                 .setStartLine(2) //
                 .setMessage("message") //
-                .setReporter(CHECKSTYLE) //
+                .setParser(CHECKSTYLE) //
                 .setSeverity(ERROR) //
                 .build() //
             );

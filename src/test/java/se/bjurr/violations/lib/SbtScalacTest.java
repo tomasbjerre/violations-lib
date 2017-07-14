@@ -5,7 +5,7 @@ import static se.bjurr.violations.lib.TestUtils.getRootFolder;
 import static se.bjurr.violations.lib.ViolationsReporterApi.violationsReporterApi;
 import static se.bjurr.violations.lib.model.SEVERITY.*;
 import static se.bjurr.violations.lib.model.Violation.violationBuilder;
-import static se.bjurr.violations.lib.reports.Reporter.SBTSCALAC;
+import static se.bjurr.violations.lib.reports.Parser.SBTSCALAC;
 
 import java.util.List;
 import org.junit.Test;
@@ -27,7 +27,7 @@ public class SbtScalacTest {
     assertThat(actual) //
         .containsExactly( //
             violationBuilder() //
-                .setReporter(SBTSCALAC) //
+                .setParser(SBTSCALAC) //
                 .setFile(
                     "/Users/johndoe/workspace/org/prj/prj-server/src/main/scala/org/prj/server/ProjectServerApp.scala") //
                 .setStartLine(19) //
@@ -36,7 +36,7 @@ public class SbtScalacTest {
                 .setSeverity(ERROR) //
                 .build(), //
             violationBuilder() //
-                .setReporter(SBTSCALAC) //
+                .setParser(SBTSCALAC) //
                 .setFile(
                     "/Users/johndoe/workspace/org/prj/prj-server/src/main/scala/org/prj/server/authentication/AuthenticationServer.scala") //
                 .setStartLine(23) //
@@ -45,7 +45,7 @@ public class SbtScalacTest {
                 .setSeverity(ERROR) //
                 .build(), //
             violationBuilder() //
-                .setReporter(SBTSCALAC) //
+                .setParser(SBTSCALAC) //
                 .setFile(
                     "/Users/johndoe/workspace/org/prj/prj-server/src/main/scala/org/prj/server/profile/UserProfileServer.scala") //
                 .setStartLine(28) //
@@ -54,7 +54,7 @@ public class SbtScalacTest {
                 .setSeverity(ERROR) //
                 .build(), //
             violationBuilder() //
-                .setReporter(SBTSCALAC) //
+                .setParser(SBTSCALAC) //
                 .setFile(
                     "/Users/johndoe/workspace/org/prj/prj-server/src/main/scala/org/prj/server/user/UserServer.scala") //
                 .setStartLine(29) //

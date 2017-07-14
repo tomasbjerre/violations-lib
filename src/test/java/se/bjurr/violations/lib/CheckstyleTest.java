@@ -7,7 +7,7 @@ import static se.bjurr.violations.lib.model.SEVERITY.ERROR;
 import static se.bjurr.violations.lib.model.SEVERITY.INFO;
 import static se.bjurr.violations.lib.model.SEVERITY.WARN;
 import static se.bjurr.violations.lib.model.Violation.violationBuilder;
-import static se.bjurr.violations.lib.reports.Reporter.CHECKSTYLE;
+import static se.bjurr.violations.lib.reports.Parser.CHECKSTYLE;
 
 import java.util.List;
 import org.junit.Test;
@@ -29,7 +29,7 @@ public class CheckstyleTest {
     assertThat(actual) //
         .containsExactly( //
             violationBuilder() //
-                .setReporter(CHECKSTYLE) //
+                .setParser(CHECKSTYLE) //
                 .setFile("/src/main/java/se/bjurr/violations/lib/example/MyClass.java") //
                 .setSource(null) //
                 .setStartLine(0) //
@@ -40,7 +40,7 @@ public class CheckstyleTest {
                 .setSeverity(ERROR) //
                 .build(), //
             violationBuilder() //
-                .setReporter(CHECKSTYLE) //
+                .setParser(CHECKSTYLE) //
                 .setFile("/src/main/java/se/bjurr/violations/lib/example/MyClass.java") //
                 .setSource(null) //
                 .setStartLine(9) //
@@ -51,7 +51,7 @@ public class CheckstyleTest {
                 .setSeverity(INFO) //
                 .build(), //
             violationBuilder() //
-                .setReporter(CHECKSTYLE) //
+                .setParser(CHECKSTYLE) //
                 .setFile("/src/main/java/se/bjurr/violations/lib/example/OtherClass.java") //
                 .setSource(null) //
                 .setStartLine(10) //
@@ -62,7 +62,7 @@ public class CheckstyleTest {
                 .setSeverity(INFO) //
                 .build(), //
             violationBuilder() //
-                .setReporter(CHECKSTYLE) //
+                .setParser(CHECKSTYLE) //
                 .setFile("/src/main/java/se/bjurr/violations/lib/example/OtherClass.java") //
                 .setSource(null) //
                 .setStartLine(26) //

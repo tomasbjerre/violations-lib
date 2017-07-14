@@ -4,7 +4,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 import static se.bjurr.violations.lib.TestUtils.getRootFolder;
 import static se.bjurr.violations.lib.ViolationsReporterApi.violationsReporterApi;
 import static se.bjurr.violations.lib.model.SEVERITY.INFO;
-import static se.bjurr.violations.lib.reports.Reporter.GENDARME;
+import static se.bjurr.violations.lib.reports.Parser.GENDARME;
 
 import java.util.List;
 import org.junit.Test;

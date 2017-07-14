@@ -6,7 +6,7 @@ import static se.bjurr.violations.lib.model.SEVERITY.INFO;
 import static se.bjurr.violations.lib.model.SEVERITY.WARN;
 import static se.bjurr.violations.lib.model.Violation.violationBuilder;
 import static se.bjurr.violations.lib.parsers.ViolationParserUtils.getLines;
-import static se.bjurr.violations.lib.reports.Reporter.PYLINT;
+import static se.bjurr.violations.lib.reports.Parser.PYLINT;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -36,7 +36,7 @@ public class PyLintParser implements ViolationsParser {
       final String message = parts.get(7);
       violations.add( //
           violationBuilder() //
-              .setReporter(PYLINT) //
+              .setParser(PYLINT) //
               .setStartLine(line) //
               .setFile(filename) //
               .setRule(severity + ruleCode + "(" + rule + ")") //

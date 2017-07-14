@@ -7,7 +7,7 @@ import static se.bjurr.violations.lib.model.Violation.violationBuilder;
 import static se.bjurr.violations.lib.parsers.ViolationParserUtils.getAttribute;
 import static se.bjurr.violations.lib.parsers.ViolationParserUtils.getChunks;
 import static se.bjurr.violations.lib.parsers.ViolationParserUtils.getIntegerAttribute;
-import static se.bjurr.violations.lib.reports.Reporter.JSHINT;
+import static se.bjurr.violations.lib.reports.Parser.JSHINT;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -32,7 +32,7 @@ public class JSHintParser implements ViolationsParser {
 
         violations.add( //
             violationBuilder() //
-                .setReporter(JSHINT) //
+                .setParser(JSHINT) //
                 .setStartLine(line) //
                 .setColumn(charAttrib) //
                 .setFile(filename) //

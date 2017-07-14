@@ -8,7 +8,7 @@ import static se.bjurr.violations.lib.parsers.ViolationParserUtils.findAttribute
 import static se.bjurr.violations.lib.parsers.ViolationParserUtils.findIntegerAttribute;
 import static se.bjurr.violations.lib.parsers.ViolationParserUtils.getAttribute;
 import static se.bjurr.violations.lib.parsers.ViolationParserUtils.getChunks;
-import static se.bjurr.violations.lib.reports.Reporter.CSSLINT;
+import static se.bjurr.violations.lib.reports.Parser.CSSLINT;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -34,7 +34,7 @@ public class CSSLintParser implements ViolationsParser {
         String evidence = findAttribute(issueChunk, "evidence").or("").trim();
         violations.add( //
             violationBuilder() //
-                .setReporter(CSSLINT) //
+                .setParser(CSSLINT) //
                 .setStartLine(line) //
                 .setColumn(charAttrib.orNull()) //
                 .setFile(filename) //

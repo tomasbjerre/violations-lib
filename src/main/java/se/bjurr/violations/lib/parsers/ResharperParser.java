@@ -7,7 +7,7 @@ import static se.bjurr.violations.lib.model.Violation.violationBuilder;
 import static se.bjurr.violations.lib.parsers.ViolationParserUtils.findIntegerAttribute;
 import static se.bjurr.violations.lib.parsers.ViolationParserUtils.getAttribute;
 import static se.bjurr.violations.lib.parsers.ViolationParserUtils.getChunks;
-import static se.bjurr.violations.lib.reports.Reporter.RESHARPER;
+import static se.bjurr.violations.lib.reports.Parser.RESHARPER;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -46,7 +46,7 @@ public class ResharperParser implements ViolationsParser {
       String severity = issueTypesPerTypeId.get(typeId).get("severity");
       violations.add( //
           violationBuilder() //
-              .setReporter(RESHARPER) //
+              .setParser(RESHARPER) //
               .setStartLine(line) //
               .setFile(filename) //
               .setSeverity(toSeverity(severity)) //

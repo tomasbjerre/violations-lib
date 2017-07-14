@@ -5,7 +5,7 @@ import static se.bjurr.violations.lib.model.SEVERITY.ERROR;
 import static se.bjurr.violations.lib.model.Violation.violationBuilder;
 import static se.bjurr.violations.lib.parsers.ViolationParserUtils.getLines;
 import static se.bjurr.violations.lib.parsers.ViolationParserUtils.getParts;
-import static se.bjurr.violations.lib.reports.Reporter.XMLLINT;
+import static se.bjurr.violations.lib.reports.Parser.XMLLINT;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -28,7 +28,7 @@ public class XMLLintParser implements ViolationsParser {
       String message = parts.get(3);
       violations.add( //
           violationBuilder() //
-              .setReporter(XMLLINT) //
+              .setParser(XMLLINT) //
               .setStartLine(lineNumber) //
               .setFile(filename) //
               .setRule(rule) //

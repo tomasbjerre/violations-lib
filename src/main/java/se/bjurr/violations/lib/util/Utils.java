@@ -3,7 +3,9 @@ package se.bjurr.violations.lib.util;
 import java.io.IOException;
 import java.io.InputStream;
 import java.net.URL;
+import java.util.List;
 import java.util.Scanner;
+import se.bjurr.violations.lib.model.Violation;
 
 public class Utils {
   public static <T> T checkNotNull(T reference, String errorMessage) {
@@ -52,5 +54,12 @@ public class Utils {
     } catch (IOException e) {
       throw e;
     }
+  }
+
+  public static List<Violation> setReporter(List<Violation> violations, String reporter) {
+    for (Violation v : violations) {
+      v.setReporter(reporter);
+    }
+    return violations;
   }
 }

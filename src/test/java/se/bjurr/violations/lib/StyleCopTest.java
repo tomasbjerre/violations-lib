@@ -4,7 +4,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 import static se.bjurr.violations.lib.TestUtils.getRootFolder;
 import static se.bjurr.violations.lib.ViolationsReporterApi.violationsReporterApi;
 import static se.bjurr.violations.lib.model.SEVERITY.INFO;
-import static se.bjurr.violations.lib.reports.Reporter.STYLECOP;
+import static se.bjurr.violations.lib.reports.Parser.STYLECOP;
 
 import java.util.List;
 import org.junit.Test;
@@ -34,7 +34,7 @@ public class StyleCopTest {
     assertThat(actualViolationZero.getMessage()) //
         .startsWith("The do");
     assertThat(actualViolationZero.getReporter()) //
-        .isEqualTo(STYLECOP);
+        .isEqualTo(STYLECOP.name());
     assertThat(actualViolationZero.getRule().orNull()) //
         .isEqualTo("ElementDocumentationMustNotHaveDefaultSummary");
     assertThat(actualViolationZero.getSeverity()) //
@@ -50,7 +50,7 @@ public class StyleCopTest {
     assertThat(actualViolationOne.getMessage()) //
         .startsWith("The field");
     assertThat(actualViolationOne.getReporter()) //
-        .isEqualTo(STYLECOP);
+        .isEqualTo(STYLECOP.name());
     assertThat(actualViolationOne.getRule().orNull()) //
         .isEqualTo("ElementsMustBeDocumented");
     assertThat(actualViolationOne.getSeverity()) //

@@ -40,7 +40,7 @@ import se.bjurr.violations.lib.parsers.XMLLintParser;
 import se.bjurr.violations.lib.parsers.ZPTLintParser;
 import se.bjurr.violations.lib.util.Utils;
 
-public enum Reporter {
+public enum Parser {
   ANDROIDLINT(new AndroidLintParser()), //
   CHECKSTYLE(new CheckStyleParser()), //
   CODENARC(new CodeNarcParser()), //
@@ -71,10 +71,10 @@ public enum Reporter {
   XMLLINT(new XMLLintParser()), //
   ZPTLINT(new ZPTLintParser());
 
-  private static Logger LOG = Logger.getLogger(Reporter.class.getSimpleName());
+  private static Logger LOG = Logger.getLogger(Parser.class.getSimpleName());
   private ViolationsParser violationsParser;
 
-  private Reporter(ViolationsParser violationsParser) {
+  private Parser(ViolationsParser violationsParser) {
     this.violationsParser = violationsParser;
   }
 

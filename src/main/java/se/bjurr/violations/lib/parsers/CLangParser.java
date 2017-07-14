@@ -6,7 +6,7 @@ import static se.bjurr.violations.lib.model.SEVERITY.INFO;
 import static se.bjurr.violations.lib.model.SEVERITY.WARN;
 import static se.bjurr.violations.lib.model.Violation.violationBuilder;
 import static se.bjurr.violations.lib.parsers.ViolationParserUtils.getLines;
-import static se.bjurr.violations.lib.reports.Reporter.CLANG;
+import static se.bjurr.violations.lib.reports.Parser.CLANG;
 import static se.bjurr.violations.lib.util.Utils.isNullOrEmpty;
 
 import java.util.ArrayList;
@@ -35,7 +35,7 @@ public class CLangParser implements ViolationsParser {
       String message = parts.get(5);
       violations.add( //
           violationBuilder() //
-              .setReporter(CLANG) //
+              .setParser(CLANG) //
               .setStartLine(lineNumber) //
               .setColumn(columnNumber) //
               .setFile(fileName) //

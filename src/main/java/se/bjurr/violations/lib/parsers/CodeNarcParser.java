@@ -7,7 +7,7 @@ import static se.bjurr.violations.lib.model.SEVERITY.WARN;
 import static se.bjurr.violations.lib.model.Violation.violationBuilder;
 import static se.bjurr.violations.lib.parsers.ViolationParserUtils.getAttribute;
 import static se.bjurr.violations.lib.parsers.ViolationParserUtils.getIntegerAttribute;
-import static se.bjurr.violations.lib.reports.Reporter.CODENARC;
+import static se.bjurr.violations.lib.reports.Parser.CODENARC;
 
 import java.io.ByteArrayInputStream;
 import java.io.InputStream;
@@ -88,7 +88,7 @@ public class CodeNarcParser implements ViolationsParser {
             }
             Violation violation =
                 violationBuilder() //
-                    .setReporter(CODENARC) //
+                    .setParser(CODENARC) //
                     .setFile(path + "/" + name) //
                     .setMessage(message) //
                     .setRule(ruleName) //

@@ -5,7 +5,7 @@ import static se.bjurr.violations.lib.TestUtils.getRootFolder;
 import static se.bjurr.violations.lib.ViolationsReporterApi.violationsReporterApi;
 import static se.bjurr.violations.lib.model.SEVERITY.ERROR;
 import static se.bjurr.violations.lib.model.Violation.violationBuilder;
-import static se.bjurr.violations.lib.reports.Reporter.MYPY;
+import static se.bjurr.violations.lib.reports.Parser.MYPY;
 
 import java.util.List;
 import org.junit.Test;
@@ -32,7 +32,7 @@ public class MyPyTest {
     assertThat(actual.get(0)) //
         .isEqualTo( //
             violationBuilder() //
-                .setReporter(MYPY) //
+                .setParser(MYPY) //
                 .setFile("fs/cs/backend/log.py") //
                 .setStartLine(16) //
                 .setMessage("\"LogRecord\" has no attribute \"user_uuid\"") //
@@ -43,7 +43,7 @@ public class MyPyTest {
     assertThat(actual.get(1)) //
         .isEqualTo( //
             violationBuilder() //
-                .setReporter(MYPY) //
+                .setParser(MYPY) //
                 .setFile("fs/cs/backend/log.py") //
                 .setStartLine(17) //
                 .setMessage("\"LogRecord\" has no attribute \"tenant_id\"") //

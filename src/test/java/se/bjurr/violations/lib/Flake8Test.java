@@ -7,7 +7,7 @@ import static se.bjurr.violations.lib.model.SEVERITY.ERROR;
 import static se.bjurr.violations.lib.model.SEVERITY.INFO;
 import static se.bjurr.violations.lib.model.SEVERITY.WARN;
 import static se.bjurr.violations.lib.model.Violation.violationBuilder;
-import static se.bjurr.violations.lib.reports.Reporter.FLAKE8;
+import static se.bjurr.violations.lib.reports.Parser.FLAKE8;
 
 import java.util.List;
 import org.junit.Test;
@@ -29,7 +29,7 @@ public class Flake8Test {
     assertThat(actual) //
         .contains( //
             violationBuilder() //
-                .setReporter(FLAKE8) //
+                .setParser(FLAKE8) //
                 .setFile("myproject/__init__.py") //
                 .setStartLine(7) //
                 .setEndLine(7) //

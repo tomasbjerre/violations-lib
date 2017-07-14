@@ -8,7 +8,7 @@ import static se.bjurr.violations.lib.parsers.ViolationParserUtils.findIntegerAt
 import static se.bjurr.violations.lib.parsers.ViolationParserUtils.getAttribute;
 import static se.bjurr.violations.lib.parsers.ViolationParserUtils.getChunks;
 import static se.bjurr.violations.lib.parsers.ViolationParserUtils.getIntegerAttribute;
-import static se.bjurr.violations.lib.reports.Reporter.LINT;
+import static se.bjurr.violations.lib.reports.Parser.LINT;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -33,7 +33,7 @@ public class LintParser implements ViolationsParser {
         String evidence = getAttribute(issueChunk, "evidence").trim();
         violations.add( //
             violationBuilder() //
-                .setReporter(LINT) //
+                .setParser(LINT) //
                 .setStartLine(line) //
                 .setColumn(charAttrib.orNull()) //
                 .setFile(filename) //

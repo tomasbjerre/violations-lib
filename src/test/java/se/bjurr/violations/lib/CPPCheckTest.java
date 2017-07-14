@@ -6,7 +6,7 @@ import static se.bjurr.violations.lib.ViolationsReporterApi.violationsReporterAp
 import static se.bjurr.violations.lib.model.SEVERITY.ERROR;
 import static se.bjurr.violations.lib.model.SEVERITY.INFO;
 import static se.bjurr.violations.lib.model.Violation.violationBuilder;
-import static se.bjurr.violations.lib.reports.Reporter.CPPCHECK;
+import static se.bjurr.violations.lib.reports.Parser.CPPCHECK;
 
 import java.util.List;
 import org.junit.Test;
@@ -33,7 +33,7 @@ public class CPPCheckTest {
     assertThat(actual) //
         .contains( //
             violationBuilder() //
-                .setReporter(CPPCHECK) //
+                .setParser(CPPCHECK) //
                 .setFile("api.c") //
                 .setStartLine(498) //
                 .setEndLine(498) //
@@ -43,7 +43,7 @@ public class CPPCheckTest {
                 .build()) //
         .contains( //
             violationBuilder() //
-                .setReporter(CPPCHECK) //
+                .setParser(CPPCHECK) //
                 .setFile("api_storage.c") //
                 .setStartLine(104) //
                 .setEndLine(104) //

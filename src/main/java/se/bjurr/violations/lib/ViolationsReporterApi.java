@@ -7,7 +7,7 @@ import java.io.File;
 import java.util.List;
 import java.util.logging.Logger;
 import se.bjurr.violations.lib.model.Violation;
-import se.bjurr.violations.lib.reports.Reporter;
+import se.bjurr.violations.lib.reports.Parser;
 
 public class ViolationsReporterApi {
   private static Logger LOG = Logger.getLogger(ViolationsReporterApi.class.getSimpleName());
@@ -17,13 +17,13 @@ public class ViolationsReporterApi {
   }
 
   private String pattern;
-  private Reporter reporter;
+  private Parser reporter;
 
   private File startFile;
 
   private ViolationsReporterApi() {}
 
-  public ViolationsReporterApi findAll(Reporter reporter) {
+  public ViolationsReporterApi findAll(Parser reporter) {
     this.reporter = reporter;
     return this;
   }

@@ -8,7 +8,7 @@ import static se.bjurr.violations.lib.util.Utils.firstNonNull;
 import java.io.Serializable;
 import java.util.HashMap;
 import java.util.Map;
-import se.bjurr.violations.lib.reports.Reporter;
+import se.bjurr.violations.lib.reports.Parser;
 import se.bjurr.violations.lib.util.Optional;
 
 public class Violation implements Serializable {
@@ -18,7 +18,8 @@ public class Violation implements Serializable {
     private Integer endLine;
     private String file;
     private String message;
-    private Reporter reporter;
+    private Parser parser;
+    private String reporter;
     private String rule;
     private SEVERITY severity;
     private String source;
@@ -51,7 +52,12 @@ public class Violation implements Serializable {
       return this;
     }
 
-    public ViolationBuilder setReporter(Reporter reporter) {
+    public ViolationBuilder setParser(Parser parser) {
+      this.parser = parser;
+      return this;
+    }
+
+    public ViolationBuilder setReporter(String reporter) {
       this.reporter = reporter;
       return this;
     }
@@ -102,11 +108,18 @@ public class Violation implements Serializable {
   private final Integer endLine;
   private final String file;
   private final String message;
-  private Reporter reporter;
+  /** The algorithm, the format, used. */
+  private final Parser parser;
+  /**
+   * Intended as the tool used to find the violation. Like Detekt, when it is being used to find
+   * violations and report them in the {@link Parser#CHECKSTYLE} format.
+   */
+  private String reporter;
+
   private final String rule;
   private final SEVERITY severity;
   private final String source;
-  private Map<String, String> specifics;
+  private final Map<String, String> specifics;
   private final Integer startLine;
 
   public Violation() {
@@ -117,10 +130,14 @@ public class Violation implements Serializable {
     file = null;
     source = null;
     rule = null;
+    reporter = null;
+    specifics = null;
+    parser = null;
   }
 
   public Violation(ViolationBuilder vb) {
-    reporter = checkNotNull(vb.reporter, "reporter");
+    parser = checkNotNull(vb.parser, "reporter");
+    reporter = firstNonNull(vb.reporter, parser.name());
     startLine = checkNotNull(vb.startLine, "startline");
     endLine = firstNonNull(vb.endLine, vb.startLine);
     column = vb.column;
@@ -170,6 +187,16 @@ public class Violation implements Serializable {
         return false;
       }
     } else if (!message.equals(other.message)) {
+      return false;
+    }
+    if (parser != other.parser) {
+      return false;
+    }
+    if (reporter == null) {
+      if (other.reporter != null) {
+        return false;
+      }
+    } else if (!reporter.equals(other.reporter)) {
       return false;
     }
     if (rule == null) {
@@ -222,7 +249,15 @@ public class Violation implements Serializable {
     return message;
   }
 
-  public Reporter getReporter() {
+  public Parser getParser() {
+    return parser;
+  }
+
+  public void setReporter(String reporter) {
+    this.reporter = checkNotNull(reporter, "reporter");
+  }
+
+  public String getReporter() {
     return reporter;
   }
 
@@ -260,6 +295,8 @@ public class Violation implements Serializable {
     result = prime * result + (endLine == null ? 0 : endLine.hashCode());
     result = prime * result + (file == null ? 0 : file.hashCode());
     result = prime * result + (message == null ? 0 : message.hashCode());
+    result = prime * result + (parser == null ? 0 : parser.hashCode());
+    result = prime * result + (reporter == null ? 0 : reporter.hashCode());
     result = prime * result + (rule == null ? 0 : rule.hashCode());
     result = prime * result + (severity == null ? 0 : severity.hashCode());
     result = prime * result + (source == null ? 0 : source.hashCode());
@@ -279,7 +316,7 @@ public class Violation implements Serializable {
         + ", message="
         + message
         + ", reporter="
-        + reporter
+        + parser
         + ", rule="
         + rule
         + ", severity="

@@ -6,7 +6,7 @@ import static se.bjurr.violations.lib.model.SEVERITY.ERROR;
 import static se.bjurr.violations.lib.model.SEVERITY.INFO;
 import static se.bjurr.violations.lib.model.SEVERITY.WARN;
 import static se.bjurr.violations.lib.model.Violation.violationBuilder;
-import static se.bjurr.violations.lib.reports.Reporter.KLOCWORK;
+import static se.bjurr.violations.lib.reports.Parser.KLOCWORK;
 
 import java.io.ByteArrayInputStream;
 import java.io.InputStream;
@@ -75,7 +75,7 @@ public class KlocworkParser implements ViolationsParser {
       }
     }
     return violationBuilder() //
-        .setReporter(KLOCWORK) //
+        .setParser(KLOCWORK) //
         .setFile(file) //
         .setMessage("In method " + method + ". " + message + " " + url) //
         .setRule(code) //

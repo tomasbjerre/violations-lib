@@ -6,7 +6,7 @@ import static se.bjurr.violations.lib.model.SEVERITY.INFO;
 import static se.bjurr.violations.lib.model.SEVERITY.WARN;
 import static se.bjurr.violations.lib.model.Violation.violationBuilder;
 import static se.bjurr.violations.lib.parsers.ViolationParserUtils.getAttribute;
-import static se.bjurr.violations.lib.reports.Reporter.GENDARME;
+import static se.bjurr.violations.lib.reports.Parser.GENDARME;
 
 import java.io.ByteArrayInputStream;
 import java.io.InputStream;
@@ -70,7 +70,7 @@ public class GendarmeParser implements ViolationsParser {
               Integer lineNumber = Integer.parseInt(matcher.group(2));
               Violation violation =
                   violationBuilder() //
-                      .setReporter(GENDARME) //
+                      .setParser(GENDARME) //
                       .setFile(filepath) //
                       .setMessage(message) //
                       .setRule(name) //
