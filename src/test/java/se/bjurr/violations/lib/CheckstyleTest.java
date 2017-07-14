@@ -30,6 +30,7 @@ public class CheckstyleTest {
         .containsExactly( //
             violationBuilder() //
                 .setParser(CHECKSTYLE) //
+                .setReporter(CHECKSTYLE.name()) //
                 .setFile("/src/main/java/se/bjurr/violations/lib/example/MyClass.java") //
                 .setSource(null) //
                 .setStartLine(0) //
@@ -85,6 +86,7 @@ public class CheckstyleTest {
             .withPattern(".*/checkstyle/phpcheckstyle\\.xml$") //
             .inFolder(rootFolder) //
             .findAll(CHECKSTYLE) //
+            .withReporter("PHP") //
             .violations();
 
     assertThat(actual) //
@@ -92,5 +94,7 @@ public class CheckstyleTest {
 
     assertThat(actual.get(0).getMessage()) //
         .isEqualTo("Missing file doc comment");
+    assertThat(actual.get(0).getReporter()) //
+        .isEqualTo("PHP");
   }
 }

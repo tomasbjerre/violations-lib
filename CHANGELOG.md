@@ -2,6 +2,24 @@
 
 Changelog of Git Changelog.
 
+## Unreleased
+### No issue
+
+**Testing with reporter**
+
+
+[b68214779e22b79](https://github.com/tomasbjerre/violations-lib/commit/b68214779e22b79) Tomas Bjerre *2017-07-14 19:30:01*
+
+
+## 1.29
+### No issue
+
+**Adding withReporter in reporter API**
+
+
+[5a013dc35c75504](https://github.com/tomasbjerre/violations-lib/commit/5a013dc35c75504) Tomas Bjerre *2017-07-14 19:25:23*
+
+
 ## 1.28
 ### GitHub [#19](https://github.com/tomasbjerre/violations-lib/issues/19) Support detekt
 
