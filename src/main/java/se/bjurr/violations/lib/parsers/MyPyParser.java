@@ -5,7 +5,7 @@ import static se.bjurr.violations.lib.model.SEVERITY.ERROR;
 import static se.bjurr.violations.lib.model.SEVERITY.INFO;
 import static se.bjurr.violations.lib.model.Violation.violationBuilder;
 import static se.bjurr.violations.lib.parsers.ViolationParserUtils.getLines;
-import static se.bjurr.violations.lib.reports.Reporter.MYPY;
+import static se.bjurr.violations.lib.reports.Parser.MYPY;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -28,7 +28,7 @@ public class MyPyParser implements ViolationsParser {
       String message = parts.get(4);
       violations.add( //
           violationBuilder() //
-              .setReporter(MYPY) //
+              .setParser(MYPY) //
               .setStartLine(lineNumber) //
               .setFile(fileName) //
               .setSeverity(toSeverity(severity)) //

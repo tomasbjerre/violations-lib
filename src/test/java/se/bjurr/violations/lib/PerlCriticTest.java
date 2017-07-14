@@ -5,7 +5,7 @@ import static se.bjurr.violations.lib.TestUtils.getRootFolder;
 import static se.bjurr.violations.lib.ViolationsReporterApi.violationsReporterApi;
 import static se.bjurr.violations.lib.model.SEVERITY.ERROR;
 import static se.bjurr.violations.lib.model.SEVERITY.INFO;
-import static se.bjurr.violations.lib.reports.Reporter.PERLCRITIC;
+import static se.bjurr.violations.lib.reports.Parser.PERLCRITIC;
 
 import java.util.List;
 import org.junit.Test;

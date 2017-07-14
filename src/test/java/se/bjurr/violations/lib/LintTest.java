@@ -5,7 +5,7 @@ import static se.bjurr.violations.lib.TestUtils.getRootFolder;
 import static se.bjurr.violations.lib.ViolationsReporterApi.violationsReporterApi;
 import static se.bjurr.violations.lib.model.SEVERITY.WARN;
 import static se.bjurr.violations.lib.model.Violation.violationBuilder;
-import static se.bjurr.violations.lib.reports.Reporter.LINT;
+import static se.bjurr.violations.lib.reports.Parser.LINT;
 
 import java.util.List;
 import org.junit.Test;
@@ -27,7 +27,7 @@ public class LintTest {
     assertThat(actual) //
         .containsExactly( //
             violationBuilder() //
-                .setReporter(LINT) //
+                .setParser(LINT) //
                 .setFile("/web/css-file2.css") //
                 .setSource(null) //
                 .setStartLine(2) //
@@ -38,7 +38,7 @@ public class LintTest {
                 .setSeverity(WARN) //
                 .build(), //
             violationBuilder() //
-                .setReporter(LINT) //
+                .setParser(LINT) //
                 .setFile("/web/css-file2.css") //
                 .setSource(null) //
                 .setStartLine(3) //

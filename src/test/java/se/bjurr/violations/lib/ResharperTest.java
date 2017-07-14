@@ -5,7 +5,7 @@ import static se.bjurr.violations.lib.TestUtils.getRootFolder;
 import static se.bjurr.violations.lib.ViolationsReporterApi.violationsReporterApi;
 import static se.bjurr.violations.lib.model.SEVERITY.INFO;
 import static se.bjurr.violations.lib.model.SEVERITY.WARN;
-import static se.bjurr.violations.lib.reports.Reporter.RESHARPER;
+import static se.bjurr.violations.lib.reports.Parser.RESHARPER;
 
 import java.util.List;
 import org.junit.Test;
@@ -28,7 +28,7 @@ public class ResharperTest {
         .hasSize(3);
 
     assertThat(actual.get(0).getReporter()) //
-        .isEqualTo(RESHARPER);
+        .isEqualTo(RESHARPER.name());
 
     assertThat(actual.get(0).getMessage()) //
         .isEqualTo(

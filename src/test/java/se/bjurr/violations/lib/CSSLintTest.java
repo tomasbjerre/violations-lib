@@ -5,7 +5,7 @@ import static se.bjurr.violations.lib.TestUtils.getRootFolder;
 import static se.bjurr.violations.lib.ViolationsReporterApi.violationsReporterApi;
 import static se.bjurr.violations.lib.model.SEVERITY.WARN;
 import static se.bjurr.violations.lib.model.Violation.violationBuilder;
-import static se.bjurr.violations.lib.reports.Reporter.CSSLINT;
+import static se.bjurr.violations.lib.reports.Parser.CSSLINT;
 
 import java.util.List;
 import org.junit.Test;
@@ -28,7 +28,7 @@ public class CSSLintTest {
         .hasSize(6) //
         .contains( //
             violationBuilder() //
-                .setReporter(CSSLINT) //
+                .setParser(CSSLINT) //
                 .setFile("web/css-file.css") //
                 .setSource(null) //
                 .setStartLine(3) //
@@ -39,7 +39,7 @@ public class CSSLintTest {
                 .setSeverity(WARN) //
                 .build(), //
             violationBuilder() //
-                .setReporter(CSSLINT) //
+                .setParser(CSSLINT) //
                 .setFile("web/css-file2.css") //
                 .setSource(null) //
                 .setStartLine(2) //
@@ -50,7 +50,7 @@ public class CSSLintTest {
                 .setSeverity(WARN) //
                 .build(), //
             violationBuilder() //
-                .setReporter(CSSLINT) //
+                .setParser(CSSLINT) //
                 .setFile("web/css-file2.css") //
                 .setSource(null) //
                 .setStartLine(3) //

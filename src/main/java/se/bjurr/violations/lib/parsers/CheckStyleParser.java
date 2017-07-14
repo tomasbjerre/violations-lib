@@ -8,7 +8,7 @@ import static se.bjurr.violations.lib.parsers.ViolationParserUtils.findIntegerAt
 import static se.bjurr.violations.lib.parsers.ViolationParserUtils.getAttribute;
 import static se.bjurr.violations.lib.parsers.ViolationParserUtils.getChunks;
 import static se.bjurr.violations.lib.parsers.ViolationParserUtils.getIntegerAttribute;
-import static se.bjurr.violations.lib.reports.Reporter.CHECKSTYLE;
+import static se.bjurr.violations.lib.reports.Parser.CHECKSTYLE;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -33,7 +33,7 @@ public class CheckStyleParser implements ViolationsParser {
         String rule = getAttribute(errorChunk, "source");
         violations.add( //
             violationBuilder() //
-                .setReporter(CHECKSTYLE) //
+                .setParser(CHECKSTYLE) //
                 .setStartLine(line) //
                 .setColumn(column.orNull()) //
                 .setFile(filename) //

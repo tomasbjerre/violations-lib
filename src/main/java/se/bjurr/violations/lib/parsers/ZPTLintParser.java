@@ -3,7 +3,7 @@ package se.bjurr.violations.lib.parsers;
 import static se.bjurr.violations.lib.model.SEVERITY.ERROR;
 import static se.bjurr.violations.lib.model.Violation.violationBuilder;
 import static se.bjurr.violations.lib.parsers.ViolationParserUtils.getLines;
-import static se.bjurr.violations.lib.reports.Reporter.ZPTLINT;
+import static se.bjurr.violations.lib.reports.Parser.ZPTLINT;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -23,7 +23,7 @@ public class ZPTLintParser implements ViolationsParser {
       String fileName = parts.get(1);
       Violation violation =
           violationBuilder() //
-              .setReporter(ZPTLINT) //
+              .setParser(ZPTLINT) //
               .setFile(fileName) //
               .setMessage(message) //
               .setRule("ZPT") //

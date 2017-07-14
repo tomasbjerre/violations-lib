@@ -4,7 +4,7 @@ import static java.lang.Integer.parseInt;
 import static se.bjurr.violations.lib.model.SEVERITY.ERROR;
 import static se.bjurr.violations.lib.model.Violation.violationBuilder;
 import static se.bjurr.violations.lib.parsers.ViolationParserUtils.getParts;
-import static se.bjurr.violations.lib.reports.Reporter.PYDOCSTYLE;
+import static se.bjurr.violations.lib.reports.Parser.PYDOCSTYLE;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -31,7 +31,7 @@ public class PyDocStyleParser implements ViolationsParser {
 
         violations.add( //
             violationBuilder() //
-                .setReporter(PYDOCSTYLE) //
+                .setParser(PYDOCSTYLE) //
                 .setStartLine(line) //
                 .setFile(filename) //
                 .setRule(rule) //

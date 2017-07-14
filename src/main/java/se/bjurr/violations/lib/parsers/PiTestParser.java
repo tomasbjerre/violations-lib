@@ -6,7 +6,7 @@ import static se.bjurr.violations.lib.parsers.ViolationParserUtils.getAttribute;
 import static se.bjurr.violations.lib.parsers.ViolationParserUtils.getChunks;
 import static se.bjurr.violations.lib.parsers.ViolationParserUtils.getContent;
 import static se.bjurr.violations.lib.parsers.ViolationParserUtils.getIntegerContent;
-import static se.bjurr.violations.lib.reports.Reporter.PITEST;
+import static se.bjurr.violations.lib.reports.Parser.PITEST;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -43,7 +43,7 @@ public class PiTestParser implements ViolationsParser {
           violationBuilder() //
               .setRule(mutator) //
               .setSource(sourceFile) //
-              .setReporter(PITEST) //
+              .setParser(PITEST) //
               .setStartLine(startLine) //
               .setColumn(index) //
               .setFile(filename) //

@@ -6,7 +6,7 @@ import static se.bjurr.violations.lib.model.SEVERITY.INFO;
 import static se.bjurr.violations.lib.model.SEVERITY.WARN;
 import static se.bjurr.violations.lib.model.Violation.violationBuilder;
 import static se.bjurr.violations.lib.parsers.ViolationParserUtils.getLines;
-import static se.bjurr.violations.lib.reports.Reporter.FLAKE8;
+import static se.bjurr.violations.lib.reports.Parser.FLAKE8;
 import static se.bjurr.violations.lib.util.Utils.isNullOrEmpty;
 
 import java.util.ArrayList;
@@ -39,7 +39,7 @@ public class Flake8Parser implements ViolationsParser {
       String message = parts.get(6);
       violations.add( //
           violationBuilder() //
-              .setReporter(FLAKE8) //
+              .setParser(FLAKE8) //
               .setStartLine(line) //
               .setColumn(column) //
               .setFile(filename) //

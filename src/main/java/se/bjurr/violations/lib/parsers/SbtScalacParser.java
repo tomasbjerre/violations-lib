@@ -4,7 +4,7 @@ import static java.lang.Integer.parseInt;
 import static se.bjurr.violations.lib.model.SEVERITY.*;
 import static se.bjurr.violations.lib.model.Violation.violationBuilder;
 import static se.bjurr.violations.lib.parsers.ViolationParserUtils.getLines;
-import static se.bjurr.violations.lib.reports.Reporter.SBTSCALAC;
+import static se.bjurr.violations.lib.reports.Parser.SBTSCALAC;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -25,7 +25,7 @@ public class SbtScalacParser implements ViolationsParser {
       String message = parts.get(4);
       violations.add( //
           violationBuilder() //
-              .setReporter(SBTSCALAC) //
+              .setParser(SBTSCALAC) //
               .setStartLine(lineNumber) //
               .setFile(fileName) //
               .setSeverity(toSeverity(severity)) //

@@ -7,7 +7,7 @@ import static se.bjurr.violations.lib.model.SEVERITY.WARN;
 import static se.bjurr.violations.lib.model.Violation.violationBuilder;
 import static se.bjurr.violations.lib.parsers.ViolationParserUtils.getAttribute;
 import static se.bjurr.violations.lib.parsers.ViolationParserUtils.getIntegerAttribute;
-import static se.bjurr.violations.lib.reports.Reporter.SIMIAN;
+import static se.bjurr.violations.lib.reports.Parser.SIMIAN;
 
 import java.io.ByteArrayInputStream;
 import java.io.InputStream;
@@ -46,7 +46,7 @@ public class SimianParser implements ViolationsParser {
 
             Violation violation =
                 violationBuilder() //
-                    .setReporter(SIMIAN) //
+                    .setParser(SIMIAN) //
                     .setFile(sourceFile) //
                     .setMessage("Duplication") //
                     .setRule("DUPLICATION") //

@@ -7,7 +7,7 @@ import static se.bjurr.violations.lib.parsers.ViolationParserUtils.getAttribute;
 import static se.bjurr.violations.lib.parsers.ViolationParserUtils.getChunks;
 import static se.bjurr.violations.lib.parsers.ViolationParserUtils.getContent;
 import static se.bjurr.violations.lib.parsers.ViolationParserUtils.getIntegerAttribute;
-import static se.bjurr.violations.lib.reports.Reporter.FINDBUGS;
+import static se.bjurr.violations.lib.reports.Parser.FINDBUGS;
 import static se.bjurr.violations.lib.util.Utils.isNullOrEmpty;
 
 import java.io.ByteArrayInputStream;
@@ -89,7 +89,7 @@ public class FindbugsParser implements ViolationsParser {
           String classname = getAttribute(xmlr, "classname");
           candidates.add( //
               violationBuilder() //
-                  .setReporter(FINDBUGS) //
+                  .setParser(FINDBUGS) //
                   .setMessage(message) //
                   .setFile(filename) //
                   .setStartLine(startLine.get()) //

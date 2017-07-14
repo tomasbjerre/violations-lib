@@ -19,6 +19,14 @@ Changelog of Git Changelog.
 [22a2eb9add9884c](https://github.com/tomasbjerre/violations-lib/commit/22a2eb9add9884c) Tomas Bjerre *2017-06-23 12:44:57*
 
 
+### No issue
+
+**Doc**
+
+
+[e6c85825c084b59](https://github.com/tomasbjerre/violations-lib/commit/e6c85825c084b59) Tomas Bjerre *2017-07-12 18:03:16*
+
+
 ## 1.27
 ### No issue
 

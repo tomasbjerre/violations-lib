@@ -4,7 +4,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 import static se.bjurr.violations.lib.TestUtils.getRootFolder;
 import static se.bjurr.violations.lib.ViolationsReporterApi.violationsReporterApi;
 import static se.bjurr.violations.lib.model.SEVERITY.WARN;
-import static se.bjurr.violations.lib.reports.Reporter.FXCOP;
+import static se.bjurr.violations.lib.reports.Parser.FXCOP;
 
 import java.util.List;
 import org.junit.Test;
@@ -34,7 +34,7 @@ public class FxCopTest {
     assertThat(actualViolationZero.getMessage()) //
         .startsWith("Method 'Form");
     assertThat(actualViolationZero.getReporter()) //
-        .isEqualTo(FXCOP);
+        .isEqualTo(FXCOP.name());
     assertThat(actualViolationZero.getRule().orNull()) //
         .isEqualTo("Do not pass literals as localized parameters");
     assertThat(actualViolationZero.getSeverity()) //
@@ -53,7 +53,7 @@ public class FxCopTest {
     assertThat(actualViolationOne.getMessage()) //
         .startsWith("Method 'Form");
     assertThat(actualViolationOne.getReporter()) //
-        .isEqualTo(FXCOP);
+        .isEqualTo(FXCOP.name());
     assertThat(actualViolationOne.getRule().orNull()) //
         .isEqualTo("Do not pass literals as localized parameters");
     assertThat(actualViolationOne.getSeverity()) //

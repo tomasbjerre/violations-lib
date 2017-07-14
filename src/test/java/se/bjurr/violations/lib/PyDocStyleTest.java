@@ -5,7 +5,7 @@ import static se.bjurr.violations.lib.TestUtils.getRootFolder;
 import static se.bjurr.violations.lib.ViolationsReporterApi.violationsReporterApi;
 import static se.bjurr.violations.lib.model.SEVERITY.ERROR;
 import static se.bjurr.violations.lib.model.Violation.violationBuilder;
-import static se.bjurr.violations.lib.reports.Reporter.PYDOCSTYLE;
+import static se.bjurr.violations.lib.reports.Parser.PYDOCSTYLE;
 
 import java.util.List;
 import org.junit.Test;
@@ -32,7 +32,7 @@ public class PyDocStyleTest {
     assertThat(actual.get(0)) //
         .isEqualTo( //
             violationBuilder() //
-                .setReporter(PYDOCSTYLE) //
+                .setParser(PYDOCSTYLE) //
                 .setFile("fs/csm/admin_api/ui_api.py") //
                 .setStartLine(1) //
                 .setRule("D100") //
@@ -44,7 +44,7 @@ public class PyDocStyleTest {
     assertThat(actual.get(1)) //
         .isEqualTo( //
             violationBuilder() //
-                .setReporter(PYDOCSTYLE) //
+                .setParser(PYDOCSTYLE) //
                 .setFile("fs/csm/admin_api/main.py") //
                 .setStartLine(1) //
                 .setRule("D100") //
@@ -56,7 +56,7 @@ public class PyDocStyleTest {
     assertThat(actual.get(20)) //
         .isEqualTo( //
             violationBuilder() //
-                .setReporter(PYDOCSTYLE) //
+                .setParser(PYDOCSTYLE) //
                 .setFile("fs/csm/admin_api/auth.py") //
                 .setStartLine(73) //
                 .setRule("D101") //

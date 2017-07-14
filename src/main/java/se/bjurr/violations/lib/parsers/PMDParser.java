@@ -8,7 +8,7 @@ import static se.bjurr.violations.lib.parsers.ViolationParserUtils.findIntegerAt
 import static se.bjurr.violations.lib.parsers.ViolationParserUtils.getAttribute;
 import static se.bjurr.violations.lib.parsers.ViolationParserUtils.getChunks;
 import static se.bjurr.violations.lib.parsers.ViolationParserUtils.getIntegerAttribute;
-import static se.bjurr.violations.lib.reports.Reporter.PMD;
+import static se.bjurr.violations.lib.reports.Parser.PMD;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -37,7 +37,7 @@ public class PMDParser implements ViolationsParser {
 
         violations.add( //
             violationBuilder() //
-                .setReporter(PMD) //
+                .setParser(PMD) //
                 .setStartLine(beginLine) //
                 .setEndLine(endLine) //
                 .setColumn(beginColumn.orNull()) //

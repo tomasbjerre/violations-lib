@@ -7,7 +7,7 @@ import static se.bjurr.violations.lib.model.SEVERITY.WARN;
 import static se.bjurr.violations.lib.model.Violation.violationBuilder;
 import static se.bjurr.violations.lib.parsers.ViolationParserUtils.getAttribute;
 import static se.bjurr.violations.lib.parsers.ViolationParserUtils.getIntegerAttribute;
-import static se.bjurr.violations.lib.reports.Reporter.JCREPORT;
+import static se.bjurr.violations.lib.reports.Parser.JCREPORT;
 
 import java.io.ByteArrayInputStream;
 import java.io.InputStream;
@@ -49,7 +49,7 @@ public class JCReportParser implements ViolationsParser {
             severity = getAttribute(xmlr, "severity");
             Violation violation =
                 violationBuilder() //
-                    .setReporter(JCREPORT) //
+                    .setParser(JCREPORT) //
                     .setFile(name) //
                     .setMessage(message) //
                     .setRule(findingType + "(" + origin + ")") //

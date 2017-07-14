@@ -6,7 +6,7 @@ import static se.bjurr.violations.lib.ViolationsReporterApi.violationsReporterAp
 import static se.bjurr.violations.lib.model.SEVERITY.ERROR;
 import static se.bjurr.violations.lib.model.SEVERITY.WARN;
 import static se.bjurr.violations.lib.model.Violation.violationBuilder;
-import static se.bjurr.violations.lib.reports.Reporter.ANDROIDLINT;
+import static se.bjurr.violations.lib.reports.Parser.ANDROIDLINT;
 
 import java.util.List;
 import org.junit.Test;
@@ -30,7 +30,7 @@ public class AndroidLintTest {
     assertThat(actual) //
         .containsExactly( //
             violationBuilder() //
-                .setReporter(ANDROIDLINT) //
+                .setParser(ANDROIDLINT) //
                 .setFile("app/src/main/res/layout/fragment_main.xml") //
                 .setSource(null) //
                 .setStartLine(10) //
@@ -44,7 +44,7 @@ public class AndroidLintTest {
                 .setSeverity(WARN) //
                 .build(), //
             violationBuilder() //
-                .setReporter(ANDROIDLINT) //
+                .setParser(ANDROIDLINT) //
                 .setFile(
                     ".gradle/caches/modules-2/files-2.1/com.squareup.okio/okio/1.4.0/5b72bf48563ea8410e650de14aa33ff69a3e8c35/okio-1.4.0.jar") //
                 .setSource(null) //

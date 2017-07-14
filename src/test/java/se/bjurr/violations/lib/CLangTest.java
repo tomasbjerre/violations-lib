@@ -6,7 +6,7 @@ import static se.bjurr.violations.lib.ViolationsReporterApi.violationsReporterAp
 import static se.bjurr.violations.lib.model.SEVERITY.ERROR;
 import static se.bjurr.violations.lib.model.SEVERITY.INFO;
 import static se.bjurr.violations.lib.model.SEVERITY.WARN;
-import static se.bjurr.violations.lib.reports.Reporter.CLANG;
+import static se.bjurr.violations.lib.reports.Parser.CLANG;
 
 import java.util.List;
 import org.junit.Test;

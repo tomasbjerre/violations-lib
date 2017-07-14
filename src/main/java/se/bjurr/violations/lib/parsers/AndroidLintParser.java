@@ -7,7 +7,7 @@ import static se.bjurr.violations.lib.model.Violation.violationBuilder;
 import static se.bjurr.violations.lib.parsers.ViolationParserUtils.findIntegerAttribute;
 import static se.bjurr.violations.lib.parsers.ViolationParserUtils.getAttribute;
 import static se.bjurr.violations.lib.parsers.ViolationParserUtils.getChunks;
-import static se.bjurr.violations.lib.reports.Reporter.ANDROIDLINT;
+import static se.bjurr.violations.lib.reports.Parser.ANDROIDLINT;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -39,7 +39,7 @@ public class AndroidLintParser implements ViolationsParser {
 
       violations.add( //
           violationBuilder() //
-              .setReporter(ANDROIDLINT) //
+              .setParser(ANDROIDLINT) //
               .setStartLine(line.or(0)) //
               .setColumn(charAttrib.orNull()) //
               .setFile(filename) //

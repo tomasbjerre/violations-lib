@@ -6,7 +6,7 @@ import static se.bjurr.violations.lib.TestUtils.getRootFolder;
 import static se.bjurr.violations.lib.ViolationsReporterApi.violationsReporterApi;
 import static se.bjurr.violations.lib.model.SEVERITY.ERROR;
 import static se.bjurr.violations.lib.parsers.FindbugsParser.FINDBUGS_SPECIFIC_RANK;
-import static se.bjurr.violations.lib.reports.Reporter.FINDBUGS;
+import static se.bjurr.violations.lib.reports.Parser.FINDBUGS;
 
 import java.util.List;
 import org.junit.Before;
