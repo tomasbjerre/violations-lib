@@ -2,6 +2,7 @@ package se.bjurr.violations.lib;
 
 import static java.util.logging.Level.FINE;
 import static se.bjurr.violations.lib.reports.ReportsFinder.findAllReports;
+import static se.bjurr.violations.lib.util.Utils.checkNotNull;
 import static se.bjurr.violations.lib.util.Utils.setReporter;
 
 import java.io.File;
@@ -27,17 +28,17 @@ public class ViolationsReporterApi {
   private ViolationsReporterApi() {}
 
   public ViolationsReporterApi findAll(Parser parser) {
-    this.parser = parser;
+    this.parser = checkNotNull(parser, "parser");
     return this;
   }
 
   public ViolationsReporterApi withReporter(String reporter) {
-    this.reporter = reporter;
+    this.reporter = checkNotNull(reporter, "reporter");
     return this;
   }
 
   public ViolationsReporterApi inFolder(String folder) {
-    startFile = new File(folder);
+    startFile = new File(checkNotNull(folder, "folder"));
     if (!startFile.exists()) {
       throw new RuntimeException(folder + " not found");
     }
@@ -45,15 +46,15 @@ public class ViolationsReporterApi {
   }
 
   public List<Violation> violations() {
-    List<File> includedFiles = findAllReports(startFile, pattern);
+    final List<File> includedFiles = findAllReports(startFile, pattern);
     if (LOG.isLoggable(FINE)) {
       LOG.log(FINE, "Found " + includedFiles.size() + " reports:");
-      for (File f : includedFiles) {
+      for (final File f : includedFiles) {
         LOG.log(FINE, f.getAbsolutePath());
       }
     }
-    List<Violation> foundViolations = parser.findViolations(includedFiles);
-    boolean reporterWasSupplied =
+    final List<Violation> foundViolations = parser.findViolations(includedFiles);
+    final boolean reporterWasSupplied =
         reporter != null && !reporter.trim().isEmpty() && !reporter.equals(parser.name());
     if (reporterWasSupplied) {
       setReporter(foundViolations, reporter);
@@ -61,7 +62,7 @@ public class ViolationsReporterApi {
 
     if (LOG.isLoggable(FINE)) {
       LOG.log(FINE, "Found " + foundViolations.size() + " violations:");
-      for (Violation v : foundViolations) {
+      for (final Violation v : foundViolations) {
         LOG.log(
             FINE,
             v.getReporter()

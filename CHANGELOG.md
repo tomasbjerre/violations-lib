@@ -5,10 +5,16 @@ Changelog of Git Changelog.
 ## Unreleased
 ### No issue
 
+**Checking for null in API-calls**
+
+ * For better error messages. 
+
+[18c745ae65282d7](https://github.com/tomasbjerre/violations-lib/commit/18c745ae65282d7) Tomas Bjerre *2017-08-11 09:42:01*
+
 **Testing with reporter**
 
 
-[b68214779e22b79](https://github.com/tomasbjerre/violations-lib/commit/b68214779e22b79) Tomas Bjerre *2017-07-14 19:30:01*
+[b73430f34a55ff6](https://github.com/tomasbjerre/violations-lib/commit/b73430f34a55ff6) Tomas Bjerre *2017-07-14 19:31:04*
 
 
 ## 1.29
