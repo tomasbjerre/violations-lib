@@ -13,7 +13,6 @@ import static se.bjurr.violations.lib.reports.Parser.CHECKSTYLE;
 
 import java.util.ArrayList;
 import java.util.List;
-
 import se.bjurr.violations.lib.model.SEVERITY;
 import se.bjurr.violations.lib.model.Violation;
 import se.bjurr.violations.lib.util.Optional;

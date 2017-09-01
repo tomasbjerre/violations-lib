@@ -10,9 +10,7 @@ import static se.bjurr.violations.lib.model.Violation.violationBuilder;
 import static se.bjurr.violations.lib.reports.Parser.CHECKSTYLE;
 
 import java.util.List;
-
 import org.junit.Test;
-
 import se.bjurr.violations.lib.model.Violation;
 
 public class CheckstyleTest {
