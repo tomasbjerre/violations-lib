@@ -10,16 +10,18 @@ import static se.bjurr.violations.lib.model.Violation.violationBuilder;
 import static se.bjurr.violations.lib.reports.Parser.CHECKSTYLE;
 
 import java.util.List;
+
 import org.junit.Test;
+
 import se.bjurr.violations.lib.model.Violation;
 
 public class CheckstyleTest {
 
   @Test
   public void testThatViolationsCanBeParsed() {
-    String rootFolder = getRootFolder();
+    final String rootFolder = getRootFolder();
 
-    List<Violation> actual =
+    final List<Violation> actual =
         violationsReporterApi() //
             .withPattern(".*/checkstyle/main\\.xml$") //
             .inFolder(rootFolder) //
@@ -79,9 +81,9 @@ public class CheckstyleTest {
 
   @Test
   public void testThatPHPViolationsCanBeParsed() {
-    String rootFolder = getRootFolder();
+    final String rootFolder = getRootFolder();
 
-    List<Violation> actual =
+    final List<Violation> actual =
         violationsReporterApi() //
             .withPattern(".*/checkstyle/phpcheckstyle\\.xml$") //
             .inFolder(rootFolder) //
@@ -94,6 +96,27 @@ public class CheckstyleTest {
 
     assertThat(actual.get(0).getMessage()) //
         .isEqualTo("Missing file doc comment");
+    assertThat(actual.get(0).getReporter()) //
+        .isEqualTo("PHP");
+  }
+
+  @Test
+  public void testThatPHPViolationsCanBeParsedIfNoSource() {
+    final String rootFolder = getRootFolder();
+
+    final List<Violation> actual =
+        violationsReporterApi() //
+            .withPattern(".*/checkstyle/checkstyle-no-source\\.xml$") //
+            .inFolder(rootFolder) //
+            .findAll(CHECKSTYLE) //
+            .withReporter("PHP") //
+            .violations();
+
+    assertThat(actual) //
+        .hasSize(1);
+
+    assertThat(actual.get(0).getMessage()) //
+        .isEqualTo("Must have at least one statement.");
     assertThat(actual.get(0).getReporter()) //
         .isEqualTo("PHP");
   }

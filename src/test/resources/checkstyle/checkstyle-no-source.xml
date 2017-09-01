@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<checkstyle version="5.9">
+<file name="nosource.php">
+<error line="11" column="33" severity="info" message="Must have at least one statement."/>
+</file>
+</checkstyle>

@@ -4,6 +4,7 @@ import static se.bjurr.violations.lib.model.SEVERITY.ERROR;
 import static se.bjurr.violations.lib.model.SEVERITY.INFO;
 import static se.bjurr.violations.lib.model.SEVERITY.WARN;
 import static se.bjurr.violations.lib.model.Violation.violationBuilder;
+import static se.bjurr.violations.lib.parsers.ViolationParserUtils.findAttribute;
 import static se.bjurr.violations.lib.parsers.ViolationParserUtils.findIntegerAttribute;
 import static se.bjurr.violations.lib.parsers.ViolationParserUtils.getAttribute;
 import static se.bjurr.violations.lib.parsers.ViolationParserUtils.getChunks;
@@ -12,6 +13,7 @@ import static se.bjurr.violations.lib.reports.Parser.CHECKSTYLE;
 
 import java.util.ArrayList;
 import java.util.List;
+
 import se.bjurr.violations.lib.model.SEVERITY;
 import se.bjurr.violations.lib.model.Violation;
 import se.bjurr.violations.lib.util.Optional;
@@ -20,17 +22,17 @@ public class CheckStyleParser implements ViolationsParser {
 
   @Override
   public List<Violation> parseReportOutput(String string) throws Exception {
-    List<Violation> violations = new ArrayList<>();
-    List<String> files = getChunks(string, "<file", "</file>");
-    for (String fileChunk : files) {
-      String filename = getAttribute(fileChunk, "name");
-      List<String> errors = getChunks(fileChunk, "<error", "/>");
-      for (String errorChunk : errors) {
-        Integer line = getIntegerAttribute(errorChunk, "line");
-        Optional<Integer> column = findIntegerAttribute(errorChunk, "column");
-        String severity = getAttribute(errorChunk, "severity");
-        String message = getAttribute(errorChunk, "message");
-        String rule = getAttribute(errorChunk, "source");
+    final List<Violation> violations = new ArrayList<>();
+    final List<String> files = getChunks(string, "<file", "</file>");
+    for (final String fileChunk : files) {
+      final String filename = getAttribute(fileChunk, "name");
+      final List<String> errors = getChunks(fileChunk, "<error", "/>");
+      for (final String errorChunk : errors) {
+        final Integer line = getIntegerAttribute(errorChunk, "line");
+        final Optional<Integer> column = findIntegerAttribute(errorChunk, "column");
+        final String severity = getAttribute(errorChunk, "severity");
+        final String message = getAttribute(errorChunk, "message");
+        final String rule = findAttribute(errorChunk, "source").orNull();
         violations.add( //
             violationBuilder() //
                 .setParser(CHECKSTYLE) //
