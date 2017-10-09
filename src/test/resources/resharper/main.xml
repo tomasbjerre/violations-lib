@@ -10,12 +10,14 @@
   <IssueTypes>
     <IssueType Id="JoinDeclarationAndInitializer" Category="Common Practices and Code Improvements" Description="Join local variable declaration and assignment" Severity="SUGGESTION" />
     <IssueType Id="RedundantUsingDirective" Category="Redundancies in Code" Description="Redundant using directive" Severity="WARNING" WikiUrl="http://confluence.jetbrains.net/display/ReSharper/Redundant+using+directive" />
+    <IssueType Id="CSharpErrors" Category="C# Compiler Errors" Description="" Severity="ERROR"/>
   </IssueTypes>
   <Issues>
     <Project Name="MyLibrary">
       <Issue TypeId="RedundantUsingDirective" File="MyLibrary\Class1.cs" Offset="0-13" Message="Using directive is not required by the code and can be safely removed" />
       <Issue TypeId="JoinDeclarationAndInitializer" File="MyLibrary\Class1.cs" Offset="138-144" Line="9" Message="Join declaration and assignment" />
       <Issue TypeId="RedundantUsingDirective" File="MyLibrary\Properties\AssemblyInfo.cs" Offset="26-64" Line="2" Message="Using directive is not required by the code and can be safely removed" />
+      <Issue TypeId="CSharpErrors" File="MyLibrary\Class1.cs" Offset="1-10" Line="10" Message="Cannot resolve symbol 'GetError'" />
     </Project>
   </Issues>
 </Report>

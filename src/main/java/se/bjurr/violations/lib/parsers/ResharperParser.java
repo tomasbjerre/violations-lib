@@ -6,6 +6,7 @@ import static se.bjurr.violations.lib.model.SEVERITY.WARN;
 import static se.bjurr.violations.lib.model.Violation.violationBuilder;
 import static se.bjurr.violations.lib.parsers.ViolationParserUtils.findIntegerAttribute;
 import static se.bjurr.violations.lib.parsers.ViolationParserUtils.getAttribute;
+import static se.bjurr.violations.lib.parsers.ViolationParserUtils.findAttribute;
 import static se.bjurr.violations.lib.parsers.ViolationParserUtils.getChunks;
 import static se.bjurr.violations.lib.reports.Parser.RESHARPER;
 
@@ -15,6 +16,7 @@ import java.util.List;
 import java.util.Map;
 import se.bjurr.violations.lib.model.SEVERITY;
 import se.bjurr.violations.lib.model.Violation;
+import se.bjurr.violations.lib.util.Optional;
 
 public class ResharperParser implements ViolationsParser {
 
@@ -27,7 +29,8 @@ public class ResharperParser implements ViolationsParser {
       Map<String, String> issueType = new HashMap<>();
       String id = getAttribute(issueTypesChunk, "Id");
       issueType.put("category", getAttribute(issueTypesChunk, "Category"));
-      issueType.put("description", getAttribute(issueTypesChunk, "Description"));
+      Optional<String> description = findAttribute(issueTypesChunk, "Description");
+      issueType.put("description", description.isPresent() ? description.get() : id); //use the description if it's present, otherwise default to the id
       issueType.put("severity", getAttribute(issueTypesChunk, "Severity"));
       issueTypesPerTypeId.put(id, issueType);
     }
