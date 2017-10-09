@@ -3,6 +3,7 @@ package se.bjurr.violations.lib;
 import static org.assertj.core.api.Assertions.assertThat;
 import static se.bjurr.violations.lib.TestUtils.getRootFolder;
 import static se.bjurr.violations.lib.ViolationsReporterApi.violationsReporterApi;
+import static se.bjurr.violations.lib.model.SEVERITY.ERROR;
 import static se.bjurr.violations.lib.model.SEVERITY.INFO;
 import static se.bjurr.violations.lib.model.SEVERITY.WARN;
 import static se.bjurr.violations.lib.reports.Parser.RESHARPER;
@@ -25,7 +26,7 @@ public class ResharperTest {
             .violations();
 
     assertThat(actual) //
-        .hasSize(3);
+        .hasSize(4);
 
     assertThat(actual.get(0).getReporter()) //
         .isEqualTo(RESHARPER.name());
@@ -59,5 +60,14 @@ public class ResharperTest {
         .isEqualTo("MyLibrary/Properties/AssemblyInfo.cs");
     assertThat(actual.get(2).getSeverity()) //
         .isEqualTo(WARN);
+
+    assertThat(actual.get(3).getMessage()) //
+        .isEqualTo("Cannot resolve symbol 'GetError'. C# Compiler Errors. CSharpErrors");
+    assertThat(actual.get(3).getRule().get()) //
+        .isEqualTo("CSharpErrors");
+    assertThat(actual.get(3).getFile()) //
+        .isEqualTo("MyLibrary/Class1.cs");
+    assertThat(actual.get(3).getSeverity()) //
+        .isEqualTo(ERROR);
   }
 }
