@@ -3,13 +3,44 @@
 Changelog of Git Changelog.
 
 ## Unreleased
+### GitHub [#24](https://github.com/tomasbjerre/violations-lib/pull/24) Added handling for empty IssueType Description attributes for Resharper
+
+**Cleanup after merge**
+
+
+[0cff2a078dd84d4](https://github.com/tomasbjerre/violations-lib/commit/0cff2a078dd84d4) Tomas Bjerre *2017-10-09 16:27:10*
+
+
+### No issue
+
+**Added handling for empty IssueType Description attributes for Resharper**
+
+
+[dbb61563dc31487](https://github.com/tomasbjerre/violations-lib/commit/dbb61563dc31487) nickfish *2017-10-09 03:32:29*
+
+**Travis with JDK8**
+
+
+[4298d4b63e9ba3f](https://github.com/tomasbjerre/violations-lib/commit/4298d4b63e9ba3f) Tomas Bjerre *2017-09-01 19:23:05*
+
+
+## 1.31
+### GitHub [#23](https://github.com/tomasbjerre/violations-lib/issues/23) Checkstyle: don&#39;t fail if rule attribute is not present
+
+**Allowing absent source in Checkstyle parser**
+
+
+[dd522411c894105](https://github.com/tomasbjerre/violations-lib/commit/dd522411c894105) Tomas Bjerre *2017-09-01 10:54:30*
+
+
+## 1.30
 ### No issue
 
 **Checking for null in API-calls**
 
  * For better error messages. 
 
-[18c745ae65282d7](https://github.com/tomasbjerre/violations-lib/commit/18c745ae65282d7) Tomas Bjerre *2017-08-11 09:42:01*
+[214765989fbc706](https://github.com/tomasbjerre/violations-lib/commit/214765989fbc706) Tomas Bjerre *2017-08-11 09:42:30*
 
 **Testing with reporter**
 

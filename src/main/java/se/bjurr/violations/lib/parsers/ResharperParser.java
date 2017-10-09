@@ -4,9 +4,9 @@ import static se.bjurr.violations.lib.model.SEVERITY.ERROR;
 import static se.bjurr.violations.lib.model.SEVERITY.INFO;
 import static se.bjurr.violations.lib.model.SEVERITY.WARN;
 import static se.bjurr.violations.lib.model.Violation.violationBuilder;
+import static se.bjurr.violations.lib.parsers.ViolationParserUtils.findAttribute;
 import static se.bjurr.violations.lib.parsers.ViolationParserUtils.findIntegerAttribute;
 import static se.bjurr.violations.lib.parsers.ViolationParserUtils.getAttribute;
-import static se.bjurr.violations.lib.parsers.ViolationParserUtils.findAttribute;
 import static se.bjurr.violations.lib.parsers.ViolationParserUtils.getChunks;
 import static se.bjurr.violations.lib.reports.Parser.RESHARPER;
 
@@ -30,7 +30,7 @@ public class ResharperParser implements ViolationsParser {
       String id = getAttribute(issueTypesChunk, "Id");
       issueType.put("category", getAttribute(issueTypesChunk, "Category"));
       Optional<String> description = findAttribute(issueTypesChunk, "Description");
-      issueType.put("description", description.isPresent() ? description.get() : id); //use the description if it's present, otherwise default to the id
+      issueType.put("description", description.or(id));
       issueType.put("severity", getAttribute(issueTypesChunk, "Severity"));
       issueTypesPerTypeId.put(id, issueType);
     }
