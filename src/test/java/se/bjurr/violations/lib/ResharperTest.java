@@ -33,7 +33,7 @@ public class ResharperTest {
 
     assertThat(actual.get(0).getMessage()) //
         .isEqualTo(
-            "Using directive is not required by the code and can be safely removed. Redundancies in Code. Redundant using directive");
+            "Using directive is not required by the code and can be safely removed. Redundancies in Code. Redundant using directive. For more info, visit http://confluence.jetbrains.net/display/ReSharper/Redundant+using+directive");
     assertThat(actual.get(0).getRule().get()) //
         .isEqualTo("RedundantUsingDirective");
     assertThat(actual.get(0).getFile()) //
@@ -53,7 +53,7 @@ public class ResharperTest {
 
     assertThat(actual.get(2).getMessage()) //
         .isEqualTo(
-            "Using directive is not required by the code and can be safely removed. Redundancies in Code. Redundant using directive");
+             "Using directive is not required by the code and can be safely removed. Redundancies in Code. Redundant using directive. For more info, visit http://confluence.jetbrains.net/display/ReSharper/Redundant+using+directive");
     assertThat(actual.get(2).getRule().get()) //
         .isEqualTo("RedundantUsingDirective");
     assertThat(actual.get(2).getFile()) //

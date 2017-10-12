@@ -32,6 +32,7 @@ public class ResharperParser implements ViolationsParser {
       Optional<String> description = findAttribute(issueTypesChunk, "Description");
       issueType.put("description", description.or(id));
       issueType.put("severity", getAttribute(issueTypesChunk, "Severity"));
+      issueType.put("url", findAttribute(issueTypesChunk, "WikiUrl").orNull());
       issueTypesPerTypeId.put(id, issueType);
     }
 
@@ -39,12 +40,14 @@ public class ResharperParser implements ViolationsParser {
     for (String issueChunk : issueChunks) {
       String typeId = getAttribute(issueChunk, "TypeId");
       String filename = getAttribute(issueChunk, "File");
+      String url = issueTypesPerTypeId.get(typeId).get("url");
       String message =
           getAttribute(issueChunk, "Message")
               + ". "
               + issueTypesPerTypeId.get(typeId).get("category")
               + ". "
-              + issueTypesPerTypeId.get(typeId).get("description");
+              + issueTypesPerTypeId.get(typeId).get("description")
+              + (url != null ? ". For more info, visit " + url : "");
       Integer line = findIntegerAttribute(issueChunk, "Line").or(0);
       String severity = issueTypesPerTypeId.get(typeId).get("severity");
       violations.add( //
