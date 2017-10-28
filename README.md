@@ -7,6 +7,7 @@ It supports:
  * [_Checkstyle_](http://checkstyle.sourceforge.net/)
    * [_Detekt_](https://github.com/arturbosch/detekt) with `--output-format xml`.
    * [_ESLint_](https://github.com/sindresorhus/grunt-eslint) with `format: 'checkstyle'`.
+   * [_KTLint_](https://github.com/shyiko/ktlint)
    * [_PHPCS_](https://github.com/squizlabs/PHP_CodeSniffer) with `phpcs api.php --report=checkstyle`.
  * [_CLang_](https://clang-analyzer.llvm.org/)
    * [_RubyCop_](http://rubocop.readthedocs.io/en/latest/formatters/) with `rubycop -f clang file.rb`
@@ -63,6 +64,8 @@ It is used by:
  * [Violation Comments to Bitbucket Server Jenkins Plugin](https://github.com/jenkinsci/violation-comments-to-stash-plugin).
  * [Violation Comments to Bitbucket Server Lib](https://github.com/tomasbjerre/violation-comments-to-bitbucket-server-lib).
  * [Violation Comments to GitLab Lib](https://github.com/tomasbjerre/violation-comments-to-gitlab-lib).
+ * [Violation Comments to GitLab Gradle Plugin](https://github.com/tomasbjerre/violation-comments-to-gitlab-gradle-plugin).
+ * [Violation Comments to GitLab Maven Plugin](https://github.com/tomasbjerre/violation-comments-to-gitlab-maven-plugin).
  * [Violation Comments to GitLab Jenkins Plugin](https://github.com/jenkinsci/violation-comments-to-gitlab-plugin).
  * [Violation Comments Lib](https://github.com/tomasbjerre/violation-comments-lib).
 
