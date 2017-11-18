@@ -8,6 +8,7 @@ It supports:
    * [_Detekt_](https://github.com/arturbosch/detekt) with `--output-format xml`.
    * [_ESLint_](https://github.com/sindresorhus/grunt-eslint) with `format: 'checkstyle'`.
    * [_KTLint_](https://github.com/shyiko/ktlint)
+   * [_SwiftLint_](https://github.com/realm/SwiftLint) with `--reporter checkstyle`.
    * [_PHPCS_](https://github.com/squizlabs/PHP_CodeSniffer) with `phpcs api.php --report=checkstyle`.
  * [_CLang_](https://clang-analyzer.llvm.org/)
    * [_RubyCop_](http://rubocop.readthedocs.io/en/latest/formatters/) with `rubycop -f clang file.rb`
