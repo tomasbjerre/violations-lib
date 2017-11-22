@@ -3,12 +3,43 @@
 Changelog of Git Changelog.
 
 ## Unreleased
+### GitHub [#27](https://github.com/tomasbjerre/violations-lib/issues/27) PMD may miss ruleSet
+
+**Accepting PMD files without ruleset-tag**
+
+
+[65cfbb224f618c3](https://github.com/tomasbjerre/violations-lib/commit/65cfbb224f618c3) Tomas Bjerre *2017-11-22 19:54:34*
+
+
+### No issue
+
+**Adding SwiftLint to Readme**
+
+
+[709283d45a6537c](https://github.com/tomasbjerre/violations-lib/commit/709283d45a6537c) Tomas Bjerre *2017-11-18 13:37:31*
+
+**Doc**
+
+
+[f845737670c5e10](https://github.com/tomasbjerre/violations-lib/commit/f845737670c5e10) Tomas Bjerre *2017-10-28 20:19:52*
+
+
+## 1.33
+### No issue
+
+**Add Resharper WikiUrl to output message**
+
+
+[7c1024d3326478d](https://github.com/tomasbjerre/violations-lib/commit/7c1024d3326478d) nickfish *2017-10-12 00:51:10*
+
+
+## 1.32
 ### GitHub [#24](https://github.com/tomasbjerre/violations-lib/pull/24) Added handling for empty IssueType Description attributes for Resharper
 
 **Cleanup after merge**
 
 
-[0cff2a078dd84d4](https://github.com/tomasbjerre/violations-lib/commit/0cff2a078dd84d4) Tomas Bjerre *2017-10-09 16:27:10*
+[9eed4592d38dff7](https://github.com/tomasbjerre/violations-lib/commit/9eed4592d38dff7) Tomas Bjerre *2017-10-09 16:27:38*
 
 
 ### No issue

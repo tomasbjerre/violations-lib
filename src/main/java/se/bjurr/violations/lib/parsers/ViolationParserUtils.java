@@ -21,8 +21,8 @@ import se.bjurr.violations.lib.util.Optional;
 
 public final class ViolationParserUtils {
   public static String asString(XMLStreamReader xmlr) throws Exception {
-    Transformer transformer = TransformerFactory.newInstance().newTransformer();
-    StringWriter stringWriter = new StringWriter();
+    final Transformer transformer = TransformerFactory.newInstance().newTransformer();
+    final StringWriter stringWriter = new StringWriter();
     transformer.transform(new StAXSource(xmlr), new StreamResult(stringWriter));
     return stringWriter.toString();
   }
@@ -53,7 +53,7 @@ public final class ViolationParserUtils {
   }
 
   public static Optional<Integer> findIntegerAttribute(XMLStreamReader in, String attribute) {
-    String attr = in.getAttributeValue("", attribute);
+    final String attr = in.getAttributeValue("", attribute);
     if (attr == null) {
       return Optional.absent();
     } else {
@@ -62,7 +62,7 @@ public final class ViolationParserUtils {
   }
 
   public static String getAttribute(String in, String attribute) {
-    Optional<String> foundOpt = findAttribute(in, attribute);
+    final Optional<String> foundOpt = findAttribute(in, attribute);
     if (foundOpt.isPresent()) {
       return foundOpt.get();
     }
@@ -70,12 +70,12 @@ public final class ViolationParserUtils {
   }
 
   public static String getAttribute(XMLStreamReader in, String attribute) {
-    String foundOpt = in.getAttributeValue("", attribute);
+    final String foundOpt = in.getAttributeValue("", attribute);
     if (foundOpt == null) {
       String foundin;
       try {
         foundin = asString(in);
-      } catch (Exception e) {
+      } catch (final Exception e) {
         throw new RuntimeException(e);
       }
       throw new RuntimeException("\"" + attribute + "\" not found in:\n" + foundin);
@@ -84,9 +84,10 @@ public final class ViolationParserUtils {
   }
 
   public static List<String> getChunks(String in, String includingStart, String includingEnd) {
-    Pattern pattern = Pattern.compile("(" + includingStart + ".+?" + includingEnd + ")", DOTALL);
-    Matcher matcher = pattern.matcher(in);
-    List<String> chunks = new ArrayList<>();
+    final Pattern pattern =
+        Pattern.compile("(" + includingStart + ".+?" + includingEnd + ")", DOTALL);
+    final Matcher matcher = pattern.matcher(in);
+    final List<String> chunks = new ArrayList<>();
     while (matcher.find()) {
       chunks.add(matcher.group());
     }
@@ -96,12 +97,13 @@ public final class ViolationParserUtils {
   public static String getContent(String in, String tag) {
     Pattern pattern =
         Pattern.compile(
-            "<" + tag + ">[^<]*<!\\[CDATA\\[(" + ".+?" + ")\\]\\]>[^<]*</" + tag + ">", DOTALL);
+            "<" + tag + "\\s?[^>]*>[^<]*<!\\[CDATA\\[(" + ".+?" + ")\\]\\]>[^<]*</" + tag + ">",
+            DOTALL);
     Matcher matcher = pattern.matcher(in);
     if (matcher.find()) {
       return matcher.group(1);
     }
-    pattern = Pattern.compile("<" + tag + ">(" + ".+?" + ")</" + tag + ">", DOTALL);
+    pattern = Pattern.compile("<" + tag + "\\s?[^>]*>(" + ".+?" + ")</" + tag + ">", DOTALL);
     matcher = pattern.matcher(in);
     if (matcher.find()) {
       return matcher.group(1);
@@ -118,7 +120,7 @@ public final class ViolationParserUtils {
   }
 
   public static Integer getIntegerContent(String in, String tag) {
-    String content = getContent(in, tag);
+    final String content = getContent(in, tag);
     return parseInt(content);
   }
 
@@ -128,14 +130,14 @@ public final class ViolationParserUtils {
 
   /** @return List per line in String, with groups from regexpPerLine. */
   public static List<List<String>> getLines(String string, String regexpPerLine) {
-    List<List<String>> results = new ArrayList<>();
-    Pattern pattern = Pattern.compile(regexpPerLine);
-    for (String line : string.split("\n")) {
-      Matcher matcher = pattern.matcher(line);
+    final List<List<String>> results = new ArrayList<>();
+    final Pattern pattern = Pattern.compile(regexpPerLine);
+    for (final String line : string.split("\n")) {
+      final Matcher matcher = pattern.matcher(line);
       if (!matcher.find()) {
         continue;
       }
-      List<String> lineParts = new ArrayList<>();
+      final List<String> lineParts = new ArrayList<>();
       for (int g = 0; g <= matcher.groupCount(); g++) {
         lineParts.add(matcher.group(g));
       }
@@ -149,15 +151,15 @@ public final class ViolationParserUtils {
    * regexp on that string...
    */
   public static List<String> getParts(String string, String... regexpList) {
-    List<String> parts = new ArrayList<>();
-    for (String regexp : regexpList) {
-      Pattern pattern = Pattern.compile(regexp);
-      Matcher matcher = pattern.matcher(string);
-      boolean found = matcher.find();
+    final List<String> parts = new ArrayList<>();
+    for (final String regexp : regexpList) {
+      final Pattern pattern = Pattern.compile(regexp);
+      final Matcher matcher = pattern.matcher(string);
+      final boolean found = matcher.find();
       if (!found) {
         return new ArrayList<>();
       }
-      String part = matcher.group(1).trim();
+      final String part = matcher.group(1).trim();
       parts.add(part);
       string = string.replaceFirst(quote(matcher.group()), "").trim();
     }

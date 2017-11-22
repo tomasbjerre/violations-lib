@@ -3,6 +3,7 @@ package se.bjurr.violations.lib;
 import static org.assertj.core.api.Assertions.assertThat;
 import static se.bjurr.violations.lib.TestUtils.getRootFolder;
 import static se.bjurr.violations.lib.ViolationsReporterApi.violationsReporterApi;
+import static se.bjurr.violations.lib.model.SEVERITY.ERROR;
 import static se.bjurr.violations.lib.model.SEVERITY.WARN;
 import static se.bjurr.violations.lib.reports.Parser.PMD;
 
@@ -14,9 +15,9 @@ public class PMDTest {
 
   @Test
   public void testThatViolationsCanBeParsed() {
-    String rootFolder = getRootFolder();
+    final String rootFolder = getRootFolder();
 
-    List<Violation> actual =
+    final List<Violation> actual =
         violationsReporterApi() //
             .withPattern(".*/pmd/main\\.xml$") //
             .inFolder(rootFolder) //
@@ -26,26 +27,58 @@ public class PMDTest {
     assertThat(actual) //
         .hasSize(4);
 
-    assertThat(actual.get(0).getFile()) //
+    final Violation violationZero = actual.get(0);
+    assertThat(violationZero.getFile()) //
         .isEqualTo("/src/main/java/se/bjurr/violations/lib/example/MyClass.java");
-    assertThat(actual.get(0).getMessage()) //
-        .startsWith("Empty Code http://") //
+    assertThat(violationZero.getMessage()) //
+        .startsWith("Avoid empt") //
         .doesNotContain("CDATA");
-    assertThat(actual.get(0).getStartLine()) //
+    assertThat(violationZero.getStartLine()) //
         .isEqualTo(9);
-    assertThat(actual.get(0).getEndLine()) //
+    assertThat(violationZero.getEndLine()) //
         .isEqualTo(11);
-    assertThat(actual.get(0).getRule().get()) //
+    assertThat(violationZero.getRule().get()) //
         .isEqualTo("EmptyIfStmt");
-    assertThat(actual.get(0).getSeverity()) //
+    assertThat(violationZero.getSeverity()) //
         .isEqualTo(WARN);
   }
 
   @Test
-  public void testThatPHPMDViolationsCanBeParsed() {
-    String rootFolder = getRootFolder();
+  public void testThatViolationsCanBeParsedIfNoRuleset() {
+    final String rootFolder = getRootFolder();
 
-    List<Violation> actual =
+    final List<Violation> actual =
+        violationsReporterApi() //
+            .withPattern(".*/pmd/no-ruleset\\.xml$") //
+            .inFolder(rootFolder) //
+            .findAll(PMD) //
+            .violations();
+
+    assertThat(actual) //
+        .hasSize(3);
+
+    final Violation violationZero = actual.get(0);
+    assertThat(violationZero.getFile()) //
+        .isEqualTo(
+            "/home/cm/prod/workspace/applikation-mr-pipeline@3/applikation-web/src/main/java/pkg/applikation/application/Some.java");
+    assertThat(violationZero.getMessage()) //
+        .isEqualTo("Applikationslagret f&#xe5;r inte kommunicera upp&#xe5;t.") //
+        .doesNotContain("CDATA");
+    assertThat(violationZero.getStartLine()) //
+        .isEqualTo(1);
+    assertThat(violationZero.getEndLine()) //
+        .isEqualTo(149);
+    assertThat(violationZero.getRule().get()) //
+        .isEqualTo("ApplicationAccessLimit");
+    assertThat(violationZero.getSeverity()) //
+        .isEqualTo(ERROR);
+  }
+
+  @Test
+  public void testThatPHPMDViolationsCanBeParsed() {
+    final String rootFolder = getRootFolder();
+
+    final List<Violation> actual =
         violationsReporterApi() //
             .withPattern(".*/pmd/phpmd\\.xml$") //
             .inFolder(rootFolder) //
@@ -55,7 +88,10 @@ public class PMDTest {
     assertThat(actual) //
         .hasSize(2);
 
-    assertThat(actual.get(0).getFile()) //
+    final Violation violationZero = actual.get(0);
+    assertThat(violationZero.getFile()) //
         .isEqualTo("/home/bjerre/workspace/pull-request-notifier-for-stash/api.php");
+    assertThat(violationZero.getMessage()) //
+        .startsWith("Avoid unused");
   }
 }
