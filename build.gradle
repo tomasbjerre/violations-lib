@@ -7,7 +7,7 @@ buildscript {
  }
  dependencies {
   classpath 'com.bmuschko:gradle-nexus-plugin:2.3.1'
-  classpath 'net.researchgate:gradle-release:2.2.2'
+  classpath 'net.researchgate:gradle-release:2.4.0'
   classpath "gradle.plugin.se.bjurr.gitchangelog:git-changelog-gradle-plugin:1.48"
   classpath 'gradle.plugin.com.github.sherter.google-java-format:google-java-format-gradle-plugin:0.6'
  }
