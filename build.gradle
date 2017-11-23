@@ -6,8 +6,6 @@ buildscript {
   }
  }
  dependencies {
-  classpath 'com.bmuschko:gradle-nexus-plugin:2.3.1'
-  classpath 'net.researchgate:gradle-release:2.4.0'
   classpath "gradle.plugin.se.bjurr.gitchangelog:git-changelog-gradle-plugin:1.48"
   classpath 'gradle.plugin.com.github.sherter.google-java-format:google-java-format-gradle-plugin:0.6'
  }
@@ -17,8 +15,6 @@ apply plugin: 'java'
 apply plugin: 'maven'
 apply plugin: 'eclipse'
 apply plugin: 'signing'
-apply plugin: 'com.bmuschko.nexus'
-apply plugin: 'net.researchgate.release'
 apply plugin: "se.bjurr.gitchangelog.git-changelog-gradle-plugin"
 apply plugin: 'com.github.sherter.google-java-format'
 
@@ -72,13 +68,26 @@ if (JavaVersion.current().isJava8Compatible()) {
  }
 }
 
-modifyPom {
- project {
+
+uploadArchives {
+  repositories {
+    mavenDeployer {
+      beforeDeployment { MavenDeployment deployment -> signing.signPom(deployment) }
+
+      repository(url: "https://oss.sonatype.org/service/local/staging/deploy/maven2/") {
+        authentication(userName: nexusUsername, password: nexusPassword)
+      }
+
+      snapshotRepository(url: "https://oss.sonatype.org/content/repositories/snapshots/") {
+        authentication(userName: nexusUsername, password: nexusPassword)
+      }
+pom.project {
   name 'Violations Lib'
+  packaging 'jar'
   description 'Library for parsing report files from static code analysis.'
   url 'https://github.com/tomasbjerre/violations-lib'
-  inceptionYear '2015'
-   scm {
+
+  scm {
    url 'https://github.com/tomasbjerre/violations-lib'
    connection 'scm:https://tomasbjerre@github.com/tomasbjerre/violations-lib.git'
    developerConnection 'scm:git://github.com/tomasbjerre/violations-lib.git'
@@ -99,17 +108,33 @@ modifyPom {
     email 'tomas.bjerre85@gmail.com'
    }
   }
- }
 }
 
-extraArchive {
- sources = true
- tests = true
- javadoc = true
+    }
+  }
 }
 
 compileJava.dependsOn 'googleJavaFormat'
 
-afterReleaseBuild.dependsOn {
- [install, uploadArchives]
+task javadocJar(type: Jar) {
+    classifier = 'javadoc'
+    from javadoc
 }
+
+task sourcesJar(type: Jar) {
+    classifier = 'sources'
+    from sourceSets.main.allSource
+}
+
+artifacts {
+    archives javadocJar, sourcesJar
+}
+
+signing {
+    sign configurations.archives
+}
+
+
+//afterReleaseBuild.dependsOn {
+// [install, uploadArchives]
+//}
