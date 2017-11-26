@@ -1,0 +1,93 @@
+pom {
+ project {
+  name 'Violations Lib'
+  description 'Library for parsing report files from static code analysis.'
+  url 'https://github.com/tomasbjerre/violations-lib'
+  inceptionYear '2015'
+   scm {
+   url 'https://github.com/tomasbjerre/violations-lib'
+   connection 'scm:https://tomasbjerre@github.com/tomasbjerre/violations-lib.git'
+   developerConnection 'scm:git://github.com/tomasbjerre/violations-lib.git'
+  }
+
+  licenses {
+   license {
+    name 'The Apache Software License, Version 2.0'
+    url 'http://www.apache.org/licenses/LICENSE-2.0.txt'
+    distribution 'repo'
+   }
+  }
+
+  developers {
+   developer {
+    id 'tomasbjerre'
+    name 'Tomas Bjerre'
+    email 'tomas.bjerre85@gmail.com'
+   }
+  }
+ }
+}
+
+task sourcesJar(type: Jar, dependsOn: classes) {
+ classifier = 'sources'
+ from sourceSets.main.allSource
+}
+
+task javadocJar(type: Jar, dependsOn: javadoc) {
+ classifier = 'javadoc'
+ from javadoc.destinationDir
+}
+
+artifacts {
+ archives sourcesJar, javadocJar
+}
+
+publishing {
+ publications {
+  MyPublication(MavenPublication) {
+   from components.java
+   artifact sourcesJar
+   artifact javadocJar
+   groupId 'se.bjurr.violations'
+   artifactId 'violations-lib'
+   version version
+  }
+ }
+}
+
+bintray {
+ user = System.getenv('BINTRAY_USER')
+ key = System.getenv('BINTRAY_KEY')
+ publications = ['MyPublication']
+ pkg {
+  repo = 'maven'
+  name = 'violations-lib'
+  desc = 'Library for parsing report files from static code analysis.'
+  licenses = ['Apache-2.0']
+  vcsUrl = 'git@github.com:tomasbjerre/violations-lib.git'
+  websiteUrl = 'https://github.com/tomasbjerre/violations-lib'
+  issueTrackerUrl = 'https://github.com/tomasbjerre/violations-lib/issues'
+  labels = ['violations', 'static code analysis', 'lint']
+  publicDownloadNumbers = true
+  githubRepo = 'tomasbjerre/violations-lib'
+  githubReleaseNotesFile = 'CHANGELOG.md'
+  version {
+   name = version
+   released  = new Date()
+   vcsTag = version
+   gpg {
+    sign = true
+    passphrase = System.getenv('SIGNING_PASSWORD')
+   }
+   mavenCentralSync {
+    sync = true
+    user = System.getenv('NEXUS_USERNAME')
+    password = System.getenv('NEXUS_PASSWORD')
+   }
+  }
+ }
+}
+
+afterReleaseBuild.dependsOn {
+ [install, bintrayUpload]
+}
