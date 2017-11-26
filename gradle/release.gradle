@@ -1,0 +1,96 @@
+task sourcesJar(type: Jar, dependsOn: classes) {
+ classifier = 'sources'
+ from sourceSets.main.allSource
+}
+
+task javadocJar(type: Jar, dependsOn: javadoc) {
+ classifier = 'javadoc'
+ from javadoc.destinationDir
+}
+
+artifacts {
+ archives sourcesJar, javadocJar
+}
+
+def pomConfig = {
+  scm {
+   url 'https://github.com/tomasbjerre/'+project.name
+   connection 'scm:https://tomasbjerre@github.com/tomasbjerre/'+project.name+'.git'
+   developerConnection 'scm:git://github.com/tomasbjerre/'+project.name+'.git'
+  }
+
+  licenses {
+   license {
+    name 'The Apache Software License, Version 2.0'
+    url 'http://www.apache.org/licenses/LICENSE-2.0.txt'
+    distribution 'repo'
+   }
+  }
+
+  developers {
+   developer {
+    id 'tomasbjerre'
+    name 'Tomas Bjerre'
+    email 'tomas.bjerre85@gmail.com'
+   }
+  }
+}
+
+publishing {
+ publications {
+  MyPublication(MavenPublication) {
+   from components.java
+   artifact sourcesJar
+   artifact javadocJar
+   groupId 'se.bjurr.violations'
+   artifactId project.name
+   version version
+   pom.withXml {
+    def root = asNode()
+    root.appendNode('description', 'Library for parsing report files from static code analysis.')
+    root.appendNode('name', 'Violations Lib')
+    root.appendNode('url', 'https://github.com/tomasbjerre/'+project.name)
+    root.appendNode('inceptionYear', '2015')
+    root.children().last() + pomConfig
+   }
+  }
+ }
+}
+
+bintray {
+ user = System.getenv('BINTRAY_USER')
+ key = System.getenv('BINTRAY_KEY')
+ publications = ['MyPublication']
+ publish = true
+ pkg {
+  repo = 'bjurr'
+  name = project.name
+  userOrg = 'tomasbjerre'
+  desc = 'Library for parsing report files from static code analysis.'
+  licenses = ['Apache-2.0']
+  vcsUrl = 'git@github.com:tomasbjerre/'+project.name+'.git'
+  websiteUrl = 'https://github.com/tomasbjerre/violations-lib'
+  issueTrackerUrl = 'https://github.com/tomasbjerre/'+project.name+'/issues'
+  labels = ['violations', 'static code analysis', 'lint']
+  publicDownloadNumbers = true
+  githubRepo = 'tomasbjerre/' + project.name
+  githubReleaseNotesFile = 'README.md'
+  version {
+   name = project.version
+   released  = new Date()
+   vcsTag = project.version
+   gpg {
+    sign = true
+   }
+   mavenCentralSync {
+    sync = true
+    user = System.getenv('NEXUS_USERNAME')
+    password = System.getenv('NEXUS_PASSWORD')
+   }
+  }
+ }
+}
+
+afterReleaseBuild.dependsOn {
+ [install, bintrayUpload]
+}

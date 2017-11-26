@@ -1,26 +1,19 @@
-buildscript {
- repositories {
-  jcenter()
-  maven {
-   url "https://plugins.gradle.org/m2/"
-  }
- }
- dependencies {
-  classpath 'com.bmuschko:gradle-nexus-plugin:2.3.1'
-  classpath 'net.researchgate:gradle-release:2.2.2'
-  classpath "gradle.plugin.se.bjurr.gitchangelog:git-changelog-gradle-plugin:1.48"
-  classpath 'gradle.plugin.com.github.sherter.google-java-format:google-java-format-gradle-plugin:0.6'
- }
+plugins {
+ id "se.bjurr.gitchangelog.git-changelog-gradle-plugin" version "1.53"
+ id "com.github.sherter.google-java-format" version "0.6"
+ id "net.researchgate.release" version "2.6.0"
+ id "com.jfrog.bintray" version "1.7.3"
 }
 
 apply plugin: 'java'
+apply plugin: 'java-library'
 apply plugin: 'maven'
+apply plugin: 'maven-publish'
 apply plugin: 'eclipse'
-apply plugin: 'signing'
-apply plugin: 'com.bmuschko.nexus'
-apply plugin: 'net.researchgate.release'
 apply plugin: "se.bjurr.gitchangelog.git-changelog-gradle-plugin"
 apply plugin: 'com.github.sherter.google-java-format'
+
+apply from: "$rootDir/gradle/release.gradle"
 
 task gitChangelogTask(type: se.bjurr.gitchangelog.plugin.gradle.GitChangelogTask) {
  gitHubApi = "https://api.github.com/repos/tomasbjerre/violations-lib";
@@ -39,6 +32,7 @@ targetCompatibility = 1.7
 repositories {
  mavenLocal()
  mavenCentral()
+ jcenter()
 }
 
 dependencies {
@@ -72,44 +66,4 @@ if (JavaVersion.current().isJava8Compatible()) {
  }
 }
 
-modifyPom {
- project {
-  name 'Violations Lib'
-  description 'Library for parsing report files from static code analysis.'
-  url 'https://github.com/tomasbjerre/violations-lib'
-  inceptionYear '2015'
-   scm {
-   url 'https://github.com/tomasbjerre/violations-lib'
-   connection 'scm:https://tomasbjerre@github.com/tomasbjerre/violations-lib.git'
-   developerConnection 'scm:git://github.com/tomasbjerre/violations-lib.git'
-  }
-
-  licenses {
-   license {
-    name 'The Apache Software License, Version 2.0'
-    url 'http://www.apache.org/licenses/LICENSE-2.0.txt'
-    distribution 'repo'
-   }
-  }
-
-  developers {
-   developer {
-    id 'tomasbjerre'
-    name 'Tomas Bjerre'
-    email 'tomas.bjerre85@gmail.com'
-   }
-  }
- }
-}
-
-extraArchive {
- sources = true
- tests = true
- javadoc = true
-}
-
 compileJava.dependsOn 'googleJavaFormat'
-
-afterReleaseBuild.dependsOn {
- [install, uploadArchives]
-}
