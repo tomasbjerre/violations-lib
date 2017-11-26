@@ -8,7 +8,7 @@ Changelog of Git Changelog.
 **Accepting PMD files without ruleset-tag**
 
 
-[65cfbb224f618c3](https://github.com/tomasbjerre/violations-lib/commit/65cfbb224f618c3) Tomas Bjerre *2017-11-22 19:54:34*
+[a8e1e2ded94e9be](https://github.com/tomasbjerre/violations-lib/commit/a8e1e2ded94e9be) Tomas Bjerre *2017-11-22 19:56:15*
 
 
 ### No issue
