@@ -1,26 +1,14 @@
-buildscript {
- repositories {
-  jcenter()
-  maven {
-   url "https://plugins.gradle.org/m2/"
-  }
- }
- dependencies {
-  classpath 'com.bmuschko:gradle-nexus-plugin:2.3.1'
-  classpath 'net.researchgate:gradle-release:2.2.2'
-  classpath "gradle.plugin.se.bjurr.gitchangelog:git-changelog-gradle-plugin:1.48"
-  classpath 'gradle.plugin.com.github.sherter.google-java-format:google-java-format-gradle-plugin:0.6'
- }
+plugins {
+ id "java"
+ id "maven"
+ id "eclipse"
+ id "signing"
+ id "se.bjurr.gitchangelog.git-changelog-gradle-plugin" version "1.53"
+ id "com.github.sherter.google-java-format" version "0.6"
+ id "com.bmuschko.nexus" version "2.3.1"
+ id "net.researchgate.release" version "2.6.0"
+ id "com.jfrog.bintray" version "1.8.0"
 }
-
-apply plugin: 'java'
-apply plugin: 'maven'
-apply plugin: 'eclipse'
-apply plugin: 'signing'
-apply plugin: 'com.bmuschko.nexus'
-apply plugin: 'net.researchgate.release'
-apply plugin: "se.bjurr.gitchangelog.git-changelog-gradle-plugin"
-apply plugin: 'com.github.sherter.google-java-format'
 
 task gitChangelogTask(type: se.bjurr.gitchangelog.plugin.gradle.GitChangelogTask) {
  gitHubApi = "https://api.github.com/repos/tomasbjerre/violations-lib";
@@ -29,6 +17,10 @@ task gitChangelogTask(type: se.bjurr.gitchangelog.plugin.gradle.GitChangelogTask
  file = new File("CHANGELOG.md");
  templateContent = new File('changelog.mustache').getText('UTF-8');
  removeIssueFromMessage = true
+}
+
+wrapper {
+ gradleVersion = "4.3.1"
 }
 
 group = 'se.bjurr.violations'
@@ -110,6 +102,34 @@ extraArchive {
 
 compileJava.dependsOn 'googleJavaFormat'
 
+bintray {
+ user = System.getenv('BINTRAY_USER')
+ key = System.getenv('BINTRAY_KEY')
+ publish = true
+ pkg {
+  repo = 'maven'
+  name = project.name
+  desc = project.description
+  licenses = ['Apache-2.0']
+  vcsUrl = 'git@github.com:tomasbjerre/violations-lib.git'
+  websiteUrl = 'https://github.com/tomasbjerre/violations-lib'
+  issueTrackerUrl = 'https://github.com/tomasbjerre/violations-lib/issues'
+  labels = ['violations', 'static code analysis', 'lint']
+  publicDownloadNumbers = true
+  githubRepo = 'tomasbjerre/violations-lib'
+  githubReleaseNotesFile = 'CHANGELOG.md'
+  version {
+   name = version
+   released  = new Date()
+   mavenCentralSync {
+    sync = true
+    user = System.getenv('NEXUS_USERNAME')
+    password = System.getenv('NEXUS_PASSWORD')
+   }
+  }
+ }
+}
+
 afterReleaseBuild.dependsOn {
- [install, uploadArchives]
+ [install, bintrayUpload]
 }
