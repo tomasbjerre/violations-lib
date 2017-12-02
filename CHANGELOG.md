@@ -1,17 +1,46 @@
-# Git Changelog changelog
 
-Changelog of Git Changelog.
+ # Violations lib changelog
+
+Changelog of Violations lib.
 
 ## Unreleased
+### No issue
+
+**Cleaning up build scripts**
+
+
+[2570599b76d4049](https://github.com/tomasbjerre/violations-lib/commit/2570599b76d4049) Tomas Bjerre *2017-12-02 17:27:03*
+
+
+## 1.35
+### No issue
+
+**Adjusting to OSS repo in Bintray**
+
+
+[f8c0ad2397d2894](https://github.com/tomasbjerre/violations-lib/commit/f8c0ad2397d2894) Tomas Bjerre *2017-12-02 07:29:54*
+
+**Doc**
+
+
+[8e0c4d426273dd8](https://github.com/tomasbjerre/violations-lib/commit/8e0c4d426273dd8) Tomas Bjerre *2017-12-02 05:56:31*
+
+
+## 1.34
 ### GitHub [#27](https://github.com/tomasbjerre/violations-lib/issues/27) PMD may miss ruleSet
 
 **Accepting PMD files without ruleset-tag**
 
 
-[65cfbb224f618c3](https://github.com/tomasbjerre/violations-lib/commit/65cfbb224f618c3) Tomas Bjerre *2017-11-22 19:54:34*
+[a8e1e2ded94e9be](https://github.com/tomasbjerre/violations-lib/commit/a8e1e2ded94e9be) Tomas Bjerre *2017-11-22 19:56:15*
 
 
 ### No issue
+
+**Bintray release scripts**
+
+
+[a0c35cce38d7689](https://github.com/tomasbjerre/violations-lib/commit/a0c35cce38d7689) Tomas Bjerre *2017-12-01 18:42:50*
 
 **Adding SwiftLint to Readme**
 
@@ -609,3 +638,4 @@ Changelog of Git Changelog.
 [b8d5a66e8ec407c](https://github.com/tomasbjerre/violations-lib/commit/b8d5a66e8ec407c) Tomas Bjerre *2016-02-20 21:40:52*
 
 
+ 

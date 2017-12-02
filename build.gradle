@@ -1,69 +1,27 @@
-plugins {
- id "se.bjurr.gitchangelog.git-changelog-gradle-plugin" version "1.53"
- id "com.github.sherter.google-java-format" version "0.6"
- id "net.researchgate.release" version "2.6.0"
- id "com.jfrog.bintray" version "1.7.3"
-}
-
 apply plugin: 'java'
-apply plugin: 'java-library'
-apply plugin: 'maven'
-apply plugin: 'maven-publish'
-apply plugin: 'eclipse'
-apply plugin: "se.bjurr.gitchangelog.git-changelog-gradle-plugin"
-apply plugin: 'com.github.sherter.google-java-format'
 
-apply from: "$rootDir/gradle/release.gradle"
-
-task gitChangelogTask(type: se.bjurr.gitchangelog.plugin.gradle.GitChangelogTask) {
- gitHubApi = "https://api.github.com/repos/tomasbjerre/violations-lib";
- gitHubToken = System.properties['GITHUB_OAUTH2TOKEN'];
- gitHubIssuePattern = "#([0-9]*)";
- file = new File("CHANGELOG.md");
- templateContent = new File('changelog.mustache').getText('UTF-8');
- removeIssueFromMessage = true
-}
-
+project.ext.tags = ['violation', 'static code analysis', 'Checkstyle', 'CPPLint', 'CPPCheck', 'CSSLint', 'Findbugs', 'Flake8', 'PyLint', 'Pep8', 'Mccabe', 'PyFlakes', 'JSHint', 'Lint', 'PerlCritic', 'PMD', 'ReSharper', 'XMLLint']
 group = 'se.bjurr.violations'
+description = 'Library for parsing report files from static code analysis'
 
-sourceCompatibility = 1.7
-targetCompatibility = 1.7
 
-repositories {
- mavenLocal()
- mavenCentral()
- jcenter()
+buildscript {
+ repositories {
+  jcenter()
+  maven { url "https://jitpack.io" }
+ }
+ dependencies {
+  classpath 'com.github.tomasbjerre:gradle-scripts:master-SNAPSHOT'
+  classpath 'net.researchgate:gradle-release:2.6.0'
+  classpath 'com.jfrog.bintray.gradle:gradle-bintray-plugin:1.7.3'
+ }
 }
+apply from: project.buildscript.classLoader.getResource('java.gradle').toURI()
+apply from: project.buildscript.classLoader.getResource('changelog.gradle').toURI()
+apply from: project.buildscript.classLoader.getResource('release.gradle').toURI()
+
 
 dependencies {
  testCompile 'junit:junit:4.12'
  testCompile 'org.assertj:assertj-core:2.3.0'
 }
-
-test {
- if (System.getProperty('DEBUG', 'false') == 'true') {
-  jvmArgs '-Xdebug', '-Xrunjdwp:transport=dt_socket,server=y,suspend=y,address=9009'
- }
-}
-
-eclipse {
- classpath {
-  downloadSources = true
-  downloadJavadoc = true
- }
-}
-
-sourceSets {
- main.java.srcDirs = ['src/main/java' ]
- test.java.srcDirs = ['src/test/java' ]
-}
-
-if (JavaVersion.current().isJava8Compatible()) {
- allprojects {
-  tasks.withType(Javadoc) {
-   options.addStringOption('Xdoclint:none', '-quiet')
-  }
- }
-}
-
-compileJava.dependsOn 'googleJavaFormat'
