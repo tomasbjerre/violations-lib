@@ -1,4 +1,4 @@
-# Violations Lib [![Build Status](https://travis-ci.org/tomasbjerre/violations-lib.svg?branch=master)](https://travis-ci.org/tomasbjerre/violations-lib) [ ![Download](https://api.bintray.com/packages/tomasbjerre/bjurr/violations-lib/images/download.svg?version=1.34) ](https://bintray.com/tomasbjerre/bjurr/violations-lib/1.34/link)
+# Violations Lib [![Build Status](https://travis-ci.org/tomasbjerre/violations-lib.svg?branch=master)](https://travis-ci.org/tomasbjerre/violations-lib) [ ![Download](https://api.bintray.com/packages/tomasbjerre/tomasbjerre/violations-lib/images/download.svg) ](https://bintray.com/tomasbjerre/tomasbjerre/violations-lib/_latestVersion)
 
 This is a Java library for parsing report files from static code analysis.
 
