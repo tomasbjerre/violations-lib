@@ -63,9 +63,8 @@ bintray {
  publications = ['MyPublication']
  publish = true
  pkg {
-  repo = 'bjurr'
+  repo = 'tomasbjerre'
   name = project.name
-  userOrg = 'tomasbjerre'
   desc = 'Library for parsing report files from static code analysis.'
   licenses = ['Apache-2.0']
   vcsUrl = 'git@github.com:tomasbjerre/'+project.name+'.git'
@@ -81,11 +80,6 @@ bintray {
    vcsTag = project.version
    gpg {
     sign = true
-   }
-   mavenCentralSync {
-    sync = true
-    user = System.getenv('NEXUS_USERNAME')
-    password = System.getenv('NEXUS_PASSWORD')
    }
   }
  }
