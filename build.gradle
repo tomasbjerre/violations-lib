@@ -4,7 +4,7 @@ buildscript {
   maven { url "https://jitpack.io" }
  }
  dependencies {
-  classpath 'com.github.tomasbjerre:gradle-scripts:master-SNAPSHOT'
+  classpath 'com.github.tomasbjerre:gradle-scripts:checkCommitNeeded-fails-SNAPSHOT'
  }
  dependencies {
   ant.unjar src: configurations.classpath.singleFile, dest: 'build/gradle'
