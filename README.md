@@ -1,4 +1,4 @@
-# Violations Lib [![Build Status](https://travis-ci.org/tomasbjerre/violations-lib.svg?branch=master)](https://travis-ci.org/tomasbjerre/violations-lib) [ ![Download](https://api.bintray.com/packages/tomasbjerre/tomasbjerre/violations-lib/images/download.svg) ](https://bintray.com/tomasbjerre/tomasbjerre/violations-lib/_latestVersion)
+# Violations Lib [![Build Status](https://travis-ci.org/tomasbjerre/violations-lib.svg?branch=master)](https://travis-ci.org/tomasbjerre/violations-lib) [![Maven Central](https://maven-badges.herokuapp.com/maven-central/se.bjurr.violations/violations-lib/badge.svg)](https://maven-badges.herokuapp.com/maven-central/se.bjurr.violations/violations-lib) [ ![Bintray](https://api.bintray.com/packages/tomasbjerre/tomasbjerre/se.bjurr.violations%3Aviolations-lib/images/download.svg) ](https://bintray.com/tomasbjerre/tomasbjerre/se.bjurr.violations%3Aviolations-lib/_latestVersion)
 
 This is a Java library for parsing report files from static code analysis.
 
@@ -69,9 +69,3 @@ It is used by:
  * [Violation Comments to GitLab Maven Plugin](https://github.com/tomasbjerre/violation-comments-to-gitlab-maven-plugin).
  * [Violation Comments to GitLab Jenkins Plugin](https://github.com/jenkinsci/violation-comments-to-gitlab-plugin).
  * [Violation Comments Lib](https://github.com/tomasbjerre/violation-comments-lib).
-
-## Developer instructions
-
-To build the code, have a look at `.travis.yml`.
-
-To do a release you need to do `./gradlew release` and release the artifact from [staging](https://oss.sonatype.org/#stagingRepositories). More information [here](http://central.sonatype.org/pages/releasing-the-deployment.html).

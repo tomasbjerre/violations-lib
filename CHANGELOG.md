@@ -6,10 +6,19 @@ Changelog of Violations lib.
 ## Unreleased
 ### No issue
 
+**Doc**
+
+
+[574ab91c57e497f](https://github.com/tomasbjerre/violations-lib/commit/574ab91c57e497f) Tomas Bjerre *2017-12-03 19:37:00*
+
+
+## 1.36
+### No issue
+
 **Cleaning up build scripts**
 
 
-[2570599b76d4049](https://github.com/tomasbjerre/violations-lib/commit/2570599b76d4049) Tomas Bjerre *2017-12-02 17:27:03*
+[068312ba927037d](https://github.com/tomasbjerre/violations-lib/commit/068312ba927037d) Tomas Bjerre *2017-12-03 07:09:14*
 
 
 ## 1.35

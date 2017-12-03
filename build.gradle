@@ -7,13 +7,10 @@ description = 'Library for parsing report files from static code analysis'
 
 buildscript {
  repositories {
-  jcenter()
   maven { url "https://jitpack.io" }
  }
  dependencies {
   classpath 'com.github.tomasbjerre:gradle-scripts:master-SNAPSHOT'
-  classpath 'net.researchgate:gradle-release:2.6.0'
-  classpath 'com.jfrog.bintray.gradle:gradle-bintray-plugin:1.7.3'
  }
 }
 apply from: project.buildscript.classLoader.getResource('java.gradle').toURI()
