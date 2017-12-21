@@ -22,29 +22,29 @@ public class SimianParser implements ViolationsParser {
 
   @Override
   public List<Violation> parseReportOutput(String string) throws Exception {
-    List<Violation> violations = new ArrayList<>();
+    final List<Violation> violations = new ArrayList<>();
 
     try (InputStream input = new ByteArrayInputStream(string.getBytes())) {
 
-      XMLInputFactory factory = XMLInputFactory.newInstance();
-      XMLStreamReader xmlr = factory.createXMLStreamReader(input);
+      final XMLInputFactory factory = XMLInputFactory.newInstance();
+      final XMLStreamReader xmlr = factory.createXMLStreamReader(input);
 
       String sourceFile = null;
       Integer lineCount = null;
       Integer startLineNumber = null;
       Integer endLineNumber = null;
       while (xmlr.hasNext()) {
-        int eventType = xmlr.next();
+        final int eventType = xmlr.next();
         if (eventType == START_ELEMENT) {
-          if (xmlr.getLocalName().equals("set")) {
+          if (xmlr.getLocalName().equalsIgnoreCase("set")) {
             lineCount = getIntegerAttribute(xmlr, "lineCount");
           }
-          if (xmlr.getLocalName().equals("block")) {
+          if (xmlr.getLocalName().equalsIgnoreCase("block")) {
             sourceFile = getAttribute(xmlr, "sourceFile");
             startLineNumber = getIntegerAttribute(xmlr, "startLineNumber");
             endLineNumber = getIntegerAttribute(xmlr, "endLineNumber");
 
-            Violation violation =
+            final Violation violation =
                 violationBuilder() //
                     .setParser(SIMIAN) //
                     .setFile(sourceFile) //

@@ -4,12 +4,20 @@
 Changelog of Violations lib.
 
 ## Unreleased
+### Jira JENKINS-48669 
+
+**Ignoring case when checking for equality**
+
+
+[d0dd37fb3e50ddc](https://github.com/tomasbjerre/violations-lib/commit/d0dd37fb3e50ddc) Tomas Bjerre *2017-12-21 10:10:07*
+
+
 ### No issue
 
 **Doc**
 
 
-[574ab91c57e497f](https://github.com/tomasbjerre/violations-lib/commit/574ab91c57e497f) Tomas Bjerre *2017-12-03 19:37:00*
+[8c1de7f777b3c0e](https://github.com/tomasbjerre/violations-lib/commit/8c1de7f777b3c0e) Tomas Bjerre *2017-12-06 18:23:43*
 
 
 ## 1.36
@@ -36,7 +44,7 @@ Changelog of Violations lib.
 
 
 ## 1.34
-### GitHub [#27](https://github.com/tomasbjerre/violations-lib/issues/27) PMD may miss ruleSet
+### GitHub [#27](https://github.com/tomasbjerre/violations-lib/issues/27) PMD may miss ruleSet and externalInfoUrl
 
 **Accepting PMD files without ruleset-tag**
 

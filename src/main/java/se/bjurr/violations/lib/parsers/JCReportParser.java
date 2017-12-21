@@ -22,12 +22,12 @@ public class JCReportParser implements ViolationsParser {
 
   @Override
   public List<Violation> parseReportOutput(String string) throws Exception {
-    List<Violation> violations = new ArrayList<>();
+    final List<Violation> violations = new ArrayList<>();
 
     try (InputStream input = new ByteArrayInputStream(string.getBytes())) {
 
-      XMLInputFactory factory = XMLInputFactory.newInstance();
-      XMLStreamReader xmlr = factory.createXMLStreamReader(input);
+      final XMLInputFactory factory = XMLInputFactory.newInstance();
+      final XMLStreamReader xmlr = factory.createXMLStreamReader(input);
 
       String name = null;
       String findingType = null;
@@ -36,18 +36,18 @@ public class JCReportParser implements ViolationsParser {
       String origin = null;
       String severity = null;
       while (xmlr.hasNext()) {
-        int eventType = xmlr.next();
+        final int eventType = xmlr.next();
         if (eventType == START_ELEMENT) {
-          if (xmlr.getLocalName().equals("file")) {
+          if (xmlr.getLocalName().equalsIgnoreCase("file")) {
             name = getAttribute(xmlr, "name");
           }
-          if (xmlr.getLocalName().equals("item")) {
+          if (xmlr.getLocalName().equalsIgnoreCase("item")) {
             findingType = getAttribute(xmlr, "finding-type");
             line = getIntegerAttribute(xmlr, "line");
             message = getAttribute(xmlr, "message");
             origin = getAttribute(xmlr, "origin");
             severity = getAttribute(xmlr, "severity");
-            Violation violation =
+            final Violation violation =
                 violationBuilder() //
                     .setParser(JCREPORT) //
                     .setFile(name) //
@@ -65,19 +65,19 @@ public class JCReportParser implements ViolationsParser {
   }
 
   private SEVERITY toSeverity(String severity) {
-    if (severity.equals("error")) {
+    if (severity.equalsIgnoreCase("error")) {
       return ERROR;
     }
-    if (severity.equals("cpd")) {
+    if (severity.equalsIgnoreCase("cpd")) {
       return ERROR;
     }
-    if (severity.equals("warning")) {
+    if (severity.equalsIgnoreCase("warning")) {
       return WARN;
     }
-    if (severity.equals("design")) {
+    if (severity.equalsIgnoreCase("design")) {
       return WARN;
     }
-    if (severity.equals("code-style")) {
+    if (severity.equalsIgnoreCase("code-style")) {
       return INFO;
     }
     return INFO;

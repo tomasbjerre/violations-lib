@@ -40,24 +40,25 @@ public class FindbugsParser implements ViolationsParser {
   }
 
   private Map<String, String> getMessagesPerType() {
-    Map<String, String> messagesPerType = new HashMap<>();
+    final Map<String, String> messagesPerType = new HashMap<>();
     try {
       if (isNullOrEmpty(findbugsMessagesXml)) {
-        String messagesResourceFilename = "/findbugs/messages.xml";
-        URL resource = FindbugsParser.class.getResource(messagesResourceFilename);
+        final String messagesResourceFilename = "/findbugs/messages.xml";
+        final URL resource = FindbugsParser.class.getResource(messagesResourceFilename);
         if (resource == null) {
           throw new RuntimeException("Unable to find resource " + messagesResourceFilename);
         }
         findbugsMessagesXml = Utils.toString(resource);
       }
-      List<String> bugPatterns = getChunks(findbugsMessagesXml, "<BugPattern", "</BugPattern>");
-      for (String bugPattern : bugPatterns) {
-        String type = getAttribute(bugPattern, "type");
-        String shortDescription = getContent(bugPattern, "ShortDescription");
-        String details = getContent(bugPattern, "Details");
+      final List<String> bugPatterns =
+          getChunks(findbugsMessagesXml, "<BugPattern", "</BugPattern>");
+      for (final String bugPattern : bugPatterns) {
+        final String type = getAttribute(bugPattern, "type");
+        final String shortDescription = getContent(bugPattern, "ShortDescription");
+        final String details = getContent(bugPattern, "Details");
         messagesPerType.put(type, shortDescription + "\n\n" + details);
       }
-    } catch (IOException e) {
+    } catch (final IOException e) {
       LOG.log(SEVERE, e.getMessage(), e);
     }
     return messagesPerType;
@@ -66,27 +67,27 @@ public class FindbugsParser implements ViolationsParser {
   private void parseBugInstance(
       XMLStreamReader xmlr, List<Violation> violations, Map<String, String> messagesPerType)
       throws XMLStreamException {
-    String type = getAttribute(xmlr, "type");
-    Integer rank = getIntegerAttribute(xmlr, "rank");
+    final String type = getAttribute(xmlr, "type");
+    final Integer rank = getIntegerAttribute(xmlr, "rank");
     String message = messagesPerType.get(type);
     if (message == null) {
       message = type;
     }
-    SEVERITY severity = toSeverity(rank);
+    final SEVERITY severity = toSeverity(rank);
 
-    List<Violation> candidates = new ArrayList<>();
+    final List<Violation> candidates = new ArrayList<>();
 
     while (xmlr.hasNext()) {
-      int eventType = xmlr.next();
+      final int eventType = xmlr.next();
       if (eventType == XMLStreamConstants.START_ELEMENT) {
-        if (xmlr.getLocalName().equals("SourceLine")) {
-          Optional<Integer> startLine = findIntegerAttribute(xmlr, "start");
-          Optional<Integer> endLine = findIntegerAttribute(xmlr, "end");
+        if (xmlr.getLocalName().equalsIgnoreCase("SourceLine")) {
+          final Optional<Integer> startLine = findIntegerAttribute(xmlr, "start");
+          final Optional<Integer> endLine = findIntegerAttribute(xmlr, "end");
           if (!startLine.isPresent() || !endLine.isPresent()) {
             continue;
           }
-          String filename = getAttribute(xmlr, "sourcepath");
-          String classname = getAttribute(xmlr, "classname");
+          final String filename = getAttribute(xmlr, "sourcepath");
+          final String classname = getAttribute(xmlr, "classname");
           candidates.add( //
               violationBuilder() //
                   .setParser(FINDBUGS) //
@@ -103,7 +104,7 @@ public class FindbugsParser implements ViolationsParser {
         }
       }
       if (eventType == XMLStreamConstants.END_ELEMENT) {
-        if (xmlr.getLocalName().equals("BugInstance")) {
+        if (xmlr.getLocalName().equalsIgnoreCase("BugInstance")) {
           // End of the bug instance.
           break;
         }
@@ -121,18 +122,18 @@ public class FindbugsParser implements ViolationsParser {
 
   @Override
   public List<Violation> parseReportOutput(String string) throws Exception {
-    List<Violation> violations = new ArrayList<>();
-    Map<String, String> messagesPerType = getMessagesPerType();
+    final List<Violation> violations = new ArrayList<>();
+    final Map<String, String> messagesPerType = getMessagesPerType();
 
     try (InputStream input = new ByteArrayInputStream(string.getBytes())) {
 
-      XMLInputFactory factory = XMLInputFactory.newInstance();
-      XMLStreamReader xmlr = factory.createXMLStreamReader(input);
+      final XMLInputFactory factory = XMLInputFactory.newInstance();
+      final XMLStreamReader xmlr = factory.createXMLStreamReader(input);
 
       while (xmlr.hasNext()) {
-        int eventType = xmlr.next();
+        final int eventType = xmlr.next();
         if (eventType == XMLStreamConstants.START_ELEMENT) {
-          if (xmlr.getLocalName().equals("BugInstance")) {
+          if (xmlr.getLocalName().equalsIgnoreCase("BugInstance")) {
             parseBugInstance(xmlr, violations, messagesPerType);
           }
         }

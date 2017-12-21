@@ -34,20 +34,20 @@ public class CodeNarcParser implements ViolationsParser {
 
   @Override
   public List<Violation> parseReportOutput(String string) throws Exception {
-    List<Violation> violations = new ArrayList<>();
-    Map<String, String> rules = new HashMap<>();
+    final List<Violation> violations = new ArrayList<>();
+    final Map<String, String> rules = new HashMap<>();
     try (InputStream input = new ByteArrayInputStream(string.getBytes())) {
-      XMLInputFactory factory = XMLInputFactory.newInstance();
-      XMLStreamReader xmlr = factory.createXMLStreamReader(input);
+      final XMLInputFactory factory = XMLInputFactory.newInstance();
+      final XMLStreamReader xmlr = factory.createXMLStreamReader(input);
       String name = null;
       String description = null;
       while (xmlr.hasNext()) {
-        int eventType = xmlr.next();
+        final int eventType = xmlr.next();
         if (eventType == START_ELEMENT) {
-          if (xmlr.getLocalName().equals("Rule")) {
+          if (xmlr.getLocalName().equalsIgnoreCase("Rule")) {
             name = getAttribute(xmlr, "name");
           }
-          if (xmlr.getLocalName().equals("Description")) {
+          if (xmlr.getLocalName().equalsIgnoreCase("Description")) {
             description = xmlr.getElementText().trim();
             rules.put(name, description);
           }
@@ -57,8 +57,8 @@ public class CodeNarcParser implements ViolationsParser {
 
     try (InputStream input = new ByteArrayInputStream(string.getBytes())) {
 
-      XMLInputFactory factory = XMLInputFactory.newInstance();
-      XMLStreamReader xmlr = factory.createXMLStreamReader(input);
+      final XMLInputFactory factory = XMLInputFactory.newInstance();
+      final XMLStreamReader xmlr = factory.createXMLStreamReader(input);
 
       String path = null;
       String name = null;
@@ -66,18 +66,18 @@ public class CodeNarcParser implements ViolationsParser {
       Integer priority = null;
       Integer lineNumber = null;
       while (xmlr.hasNext()) {
-        int eventType = xmlr.next();
+        final int eventType = xmlr.next();
         if (eventType == START_ELEMENT) {
-          if (xmlr.getLocalName().equals("Package")) {
+          if (xmlr.getLocalName().equalsIgnoreCase("Package")) {
             path = getAttribute(xmlr, "path");
           }
-          if (xmlr.getLocalName().equals("File")) {
+          if (xmlr.getLocalName().equalsIgnoreCase("File")) {
             name = getAttribute(xmlr, "name");
           }
-          if (xmlr.getLocalName().equals("Violation")) {
+          if (xmlr.getLocalName().equalsIgnoreCase("Violation")) {
             ruleName = getAttribute(xmlr, "ruleName");
             priority = getIntegerAttribute(xmlr, "priority");
-            String lineNumberString = getAttribute(xmlr, "lineNumber");
+            final String lineNumberString = getAttribute(xmlr, "lineNumber");
             lineNumber = 1;
             if (lineNumberString != null && !lineNumberString.isEmpty()) {
               lineNumber = Integer.parseInt(lineNumberString);
@@ -86,7 +86,7 @@ public class CodeNarcParser implements ViolationsParser {
             if (message == null) {
               message = ruleName;
             }
-            Violation violation =
+            final Violation violation =
                 violationBuilder() //
                     .setParser(CODENARC) //
                     .setFile(path + "/" + name) //

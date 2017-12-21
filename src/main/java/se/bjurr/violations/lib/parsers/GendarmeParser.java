@@ -22,13 +22,13 @@ import se.bjurr.violations.lib.model.Violation;
 public class GendarmeParser implements ViolationsParser {
 
   private SEVERITY getSeverity(String severityString) {
-    if (severityString.equals("Low")) {
+    if (severityString.equalsIgnoreCase("Low")) {
       return INFO;
-    } else if (severityString.equals("Medium")) {
+    } else if (severityString.equalsIgnoreCase("Medium")) {
       return WARN;
-    } else if (severityString.equals("High")) {
+    } else if (severityString.equalsIgnoreCase("High")) {
       return ERROR;
-    } else if (severityString.equals("Critical")) {
+    } else if (severityString.equalsIgnoreCase("Critical")) {
       return ERROR;
     }
     return WARN;
@@ -36,39 +36,39 @@ public class GendarmeParser implements ViolationsParser {
 
   @Override
   public List<Violation> parseReportOutput(String string) throws Exception {
-    List<Violation> violations = new ArrayList<>();
+    final List<Violation> violations = new ArrayList<>();
 
     try (InputStream input = new ByteArrayInputStream(string.getBytes())) {
 
-      XMLInputFactory factory = XMLInputFactory.newInstance();
-      XMLStreamReader xmlr = factory.createXMLStreamReader(input);
+      final XMLInputFactory factory = XMLInputFactory.newInstance();
+      final XMLStreamReader xmlr = factory.createXMLStreamReader(input);
 
       String name = null;
       String problem = null;
       String solution = null;
       while (xmlr.hasNext()) {
-        int eventType = xmlr.next();
+        final int eventType = xmlr.next();
         if (eventType == START_ELEMENT) {
-          if (xmlr.getLocalName().equals("rule")) {
+          if (xmlr.getLocalName().equalsIgnoreCase("rule")) {
             name = getAttribute(xmlr, "Name");
           }
-          if (xmlr.getLocalName().equals("problem")) {
+          if (xmlr.getLocalName().equalsIgnoreCase("problem")) {
             problem = xmlr.getElementText().trim();
           }
-          if (xmlr.getLocalName().equals("solution")) {
+          if (xmlr.getLocalName().equalsIgnoreCase("solution")) {
             solution = xmlr.getElementText().trim();
           }
-          if (xmlr.getLocalName().equals("defect")) {
-            String severityString = getAttribute(xmlr, "Severity");
-            String source = getAttribute(xmlr, "Source");
-            SEVERITY severity = getSeverity(severityString);
-            String message = problem + "\n\n" + solution;
-            Pattern pattern = Pattern.compile("^(.*)\\(.([0-9]*)\\)$");
-            Matcher matcher = pattern.matcher(source);
+          if (xmlr.getLocalName().equalsIgnoreCase("defect")) {
+            final String severityString = getAttribute(xmlr, "Severity");
+            final String source = getAttribute(xmlr, "Source");
+            final SEVERITY severity = getSeverity(severityString);
+            final String message = problem + "\n\n" + solution;
+            final Pattern pattern = Pattern.compile("^(.*)\\(.([0-9]*)\\)$");
+            final Matcher matcher = pattern.matcher(source);
             if (matcher.matches()) {
-              String filepath = matcher.group(1);
-              Integer lineNumber = Integer.parseInt(matcher.group(2));
-              Violation violation =
+              final String filepath = matcher.group(1);
+              final Integer lineNumber = Integer.parseInt(matcher.group(2));
+              final Violation violation =
                   violationBuilder() //
                       .setParser(GENDARME) //
                       .setFile(filepath) //

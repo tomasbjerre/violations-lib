@@ -32,31 +32,31 @@ public class CPDParser implements ViolationsParser {
 
   @Override
   public List<Violation> parseReportOutput(String string) throws Exception {
-    List<Violation> violations = new ArrayList<>();
+    final List<Violation> violations = new ArrayList<>();
     try (InputStream input = new ByteArrayInputStream(string.getBytes())) {
 
-      XMLInputFactory factory = XMLInputFactory.newInstance();
-      XMLStreamReader xmlr = factory.createXMLStreamReader(input);
+      final XMLInputFactory factory = XMLInputFactory.newInstance();
+      final XMLStreamReader xmlr = factory.createXMLStreamReader(input);
 
-      List<String> files = new ArrayList<>();
-      List<Integer> filesLine = new ArrayList<>();
+      final List<String> files = new ArrayList<>();
+      final List<Integer> filesLine = new ArrayList<>();
       Integer tokens = null;
       while (xmlr.hasNext()) {
-        int eventType = xmlr.next();
+        final int eventType = xmlr.next();
         if (eventType == START_ELEMENT) {
-          if (xmlr.getLocalName().equals("duplication")) {
+          if (xmlr.getLocalName().equalsIgnoreCase("duplication")) {
             tokens = getIntegerAttribute(xmlr, "tokens");
           }
-          if (xmlr.getLocalName().equals("file")) {
+          if (xmlr.getLocalName().equalsIgnoreCase("file")) {
             files.add(getAttribute(xmlr, "path"));
             filesLine.add(getIntegerAttribute(xmlr, "line"));
           }
-          if (xmlr.getLocalName().equals("codefragment")) {
-            String codefragment = xmlr.getElementText().trim();
+          if (xmlr.getLocalName().equalsIgnoreCase("codefragment")) {
+            final String codefragment = xmlr.getElementText().trim();
             for (int i = 0; i < filesLine.size(); i++) {
-              String file = files.get(i);
-              Integer line = filesLine.get(i);
-              Violation violation =
+              final String file = files.get(i);
+              final Integer line = filesLine.get(i);
+              final Violation violation =
                   violationBuilder() //
                       .setParser(CODENARC) //
                       .setFile(file) //

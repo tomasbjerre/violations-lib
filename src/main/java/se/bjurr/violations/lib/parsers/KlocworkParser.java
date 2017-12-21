@@ -22,16 +22,16 @@ public class KlocworkParser implements ViolationsParser {
 
   @Override
   public List<Violation> parseReportOutput(String string) throws Exception {
-    List<Violation> violations = new ArrayList<>();
+    final List<Violation> violations = new ArrayList<>();
     try (InputStream input = new ByteArrayInputStream(string.getBytes())) {
 
-      XMLInputFactory factory = XMLInputFactory.newInstance();
-      XMLStreamReader xmlr = factory.createXMLStreamReader(input);
+      final XMLInputFactory factory = XMLInputFactory.newInstance();
+      final XMLStreamReader xmlr = factory.createXMLStreamReader(input);
 
       while (xmlr.hasNext()) {
-        int eventType = xmlr.next();
+        final int eventType = xmlr.next();
         if (eventType == START_ELEMENT) {
-          if (xmlr.getLocalName().equals("problem")) {
+          if (xmlr.getLocalName().equalsIgnoreCase("problem")) {
             violations.add(parseBug(xmlr));
           }
         }
@@ -48,29 +48,29 @@ public class KlocworkParser implements ViolationsParser {
     String method = null;
     String url = null;
     while (xmlr.hasNext()) {
-      int eventType = xmlr.next();
-      if (eventType == END_ELEMENT && xmlr.getLocalName().equals("problem")) {
+      final int eventType = xmlr.next();
+      if (eventType == END_ELEMENT && xmlr.getLocalName().equalsIgnoreCase("problem")) {
         break;
       }
       if (eventType != START_ELEMENT) {
         continue;
       }
-      if (xmlr.getLocalName().equals("file")) {
+      if (xmlr.getLocalName().equalsIgnoreCase("file")) {
         file = xmlr.getElementText();
       }
-      if (xmlr.getLocalName().equals("message")) {
+      if (xmlr.getLocalName().equalsIgnoreCase("message")) {
         message = xmlr.getElementText();
       }
-      if (xmlr.getLocalName().equals("code")) {
+      if (xmlr.getLocalName().equalsIgnoreCase("code")) {
         code = xmlr.getElementText();
       }
-      if (xmlr.getLocalName().equals("severitylevel")) {
+      if (xmlr.getLocalName().equalsIgnoreCase("severitylevel")) {
         severitylevel = Integer.parseInt(xmlr.getElementText());
       }
-      if (xmlr.getLocalName().equals("method")) {
+      if (xmlr.getLocalName().equalsIgnoreCase("method")) {
         method = xmlr.getElementText();
       }
-      if (xmlr.getLocalName().equals("url")) {
+      if (xmlr.getLocalName().equalsIgnoreCase("url")) {
         url = xmlr.getElementText();
       }
     }

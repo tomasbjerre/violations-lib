@@ -20,26 +20,26 @@ public class StyleCopParser implements ViolationsParser {
 
   @Override
   public List<Violation> parseReportOutput(String string) throws Exception {
-    List<Violation> violations = new ArrayList<>();
+    final List<Violation> violations = new ArrayList<>();
 
     try (InputStream input = new ByteArrayInputStream(string.getBytes())) {
 
-      XMLInputFactory factory = XMLInputFactory.newInstance();
-      XMLStreamReader xmlr = factory.createXMLStreamReader(input);
+      final XMLInputFactory factory = XMLInputFactory.newInstance();
+      final XMLStreamReader xmlr = factory.createXMLStreamReader(input);
 
       while (xmlr.hasNext()) {
-        int eventType = xmlr.next();
+        final int eventType = xmlr.next();
         if (eventType == START_ELEMENT) {
-          if (xmlr.getLocalName().equals("Violation")) {
-            String section = getAttribute(xmlr, "Section");
-            String source = getAttribute(xmlr, "Source");
-            String ruleNamespace = getAttribute(xmlr, "RuleNamespace");
-            String rule = getAttribute(xmlr, "Rule");
-            String ruleId = getAttribute(xmlr, "RuleId");
-            Integer lineNumber = getIntegerAttribute(xmlr, "LineNumber");
-            String message = xmlr.getElementText().replaceAll("\\s+", " ");
-            SEVERITY severity = INFO;
-            String filename = source.replaceAll("\\\\", "/");
+          if (xmlr.getLocalName().equalsIgnoreCase("Violation")) {
+            final String section = getAttribute(xmlr, "Section");
+            final String source = getAttribute(xmlr, "Source");
+            final String ruleNamespace = getAttribute(xmlr, "RuleNamespace");
+            final String rule = getAttribute(xmlr, "Rule");
+            final String ruleId = getAttribute(xmlr, "RuleId");
+            final Integer lineNumber = getIntegerAttribute(xmlr, "LineNumber");
+            final String message = xmlr.getElementText().replaceAll("\\s+", " ");
+            final SEVERITY severity = INFO;
+            final String filename = source.replaceAll("\\\\", "/");
             violations.add( //
                 violationBuilder() //
                     .setParser(STYLECOP) //

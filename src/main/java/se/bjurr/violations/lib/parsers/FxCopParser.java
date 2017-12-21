@@ -26,41 +26,41 @@ public class FxCopParser implements ViolationsParser {
 
   @Override
   public List<Violation> parseReportOutput(String string) throws Exception {
-    List<Violation> violations = new ArrayList<>();
+    final List<Violation> violations = new ArrayList<>();
 
     try (InputStream input = new ByteArrayInputStream(string.getBytes())) {
 
-      XMLInputFactory factory = XMLInputFactory.newInstance();
-      XMLStreamReader xmlr = factory.createXMLStreamReader(input);
+      final XMLInputFactory factory = XMLInputFactory.newInstance();
+      final XMLStreamReader xmlr = factory.createXMLStreamReader(input);
 
       String targetName = null;
       String typeName = null;
       String classname = null;
       while (xmlr.hasNext()) {
-        int eventType = xmlr.next();
+        final int eventType = xmlr.next();
         if (eventType == START_ELEMENT) {
-          if (xmlr.getLocalName().equals("Target")) {
+          if (xmlr.getLocalName().equalsIgnoreCase("Target")) {
             targetName = getAttribute(xmlr, "Name").replaceAll("\\\\", "/");
           }
-          if (xmlr.getLocalName().equals("Message")) {
+          if (xmlr.getLocalName().equalsIgnoreCase("Message")) {
             typeName = getAttribute(xmlr, "TypeName");
           }
-          if (xmlr.getLocalName().equals("Type")) {
+          if (xmlr.getLocalName().equalsIgnoreCase("Type")) {
             classname = getAttribute(xmlr, "Name");
           }
-          if (xmlr.getLocalName().equals("Issue")) {
-            String level = getAttribute(xmlr, "Level");
-            Optional<String> path = ViolationParserUtils.findAttribute(xmlr, "Path");
+          if (xmlr.getLocalName().equalsIgnoreCase("Issue")) {
+            final String level = getAttribute(xmlr, "Level");
+            final Optional<String> path = ViolationParserUtils.findAttribute(xmlr, "Path");
             if (!path.isPresent()) {
               LOG.log(FINE, "Ignoring project level issue");
               continue;
             }
-            String fileName = getAttribute(xmlr, "File");
-            Integer line = getIntegerAttribute(xmlr, "Line");
-            String message = xmlr.getElementText().replaceAll("\\s+", " ");
+            final String fileName = getAttribute(xmlr, "File");
+            final Integer line = getIntegerAttribute(xmlr, "Line");
+            final String message = xmlr.getElementText().replaceAll("\\s+", " ");
 
-            String filename = path.get() + "/" + fileName;
-            SEVERITY severity = toSeverity(level);
+            final String filename = path.get() + "/" + fileName;
+            final SEVERITY severity = toSeverity(level);
             violations.add( //
                 violationBuilder() //
                     .setParser(FXCOP) //
