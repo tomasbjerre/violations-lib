@@ -17,6 +17,7 @@ It supports:
  * [_CPPLint_](https://github.com/theandrewdavis/cpplint)
  * [_CPPCheck_](http://cppcheck.sourceforge.net/)
  * [_CSSLint_](https://github.com/CSSLint/csslint)
+ * [_DocFX_](http://dotnet.github.io/docfx/)
  * [_Findbugs_](http://findbugs.sourceforge.net/)
  * [_Flake8_](http://flake8.readthedocs.org/en/latest/)
    * [_AnsibleLint_](https://github.com/willthames/ansible-lint) with `-p`

@@ -1,0 +1,65 @@
+package se.bjurr.violations.lib;
+
+import static org.assertj.core.api.Assertions.assertThat;
+import static se.bjurr.violations.lib.TestUtils.getRootFolder;
+import static se.bjurr.violations.lib.ViolationsReporterApi.violationsReporterApi;
+import static se.bjurr.violations.lib.model.SEVERITY.WARN;
+import static se.bjurr.violations.lib.reports.Parser.DOCFX;
+
+import java.util.List;
+import org.junit.Test;
+import se.bjurr.violations.lib.model.Violation;
+
+public class DocFXTest {
+
+  @Test
+  public void testThatViolationsCanBeParsed() {
+    final String rootFolder = getRootFolder();
+
+    final List<Violation> actual =
+        violationsReporterApi() //
+            .withPattern(".*/docfx/.*\\.json$") //
+            .inFolder(rootFolder) //
+            .findAll(DOCFX) //
+            .violations();
+
+    assertThat(actual) //
+        .hasSize(3);
+
+    final Violation violation0 = actual.get(0);
+    assertThat(violation0.getMessage()) //
+        .isEqualTo("Invalid file link:(~/missing.md#mobiilisovellus).");
+    assertThat(violation0.getFile()) //
+        .isEqualTo("sanasto.md");
+    assertThat(violation0.getSeverity()) //
+        .isEqualTo(WARN);
+    assertThat(violation0.getRule().get()) //
+        .isEqualTo("InvalidFileLink");
+    assertThat(violation0.getStartLine()) //
+        .isEqualTo(63);
+
+    final Violation violation1 = actual.get(1);
+    assertThat(violation1.getMessage()) //
+        .isEqualTo("Invalid file link:(~/mobiilirajapinta/puuttuu.md).");
+    assertThat(violation1.getFile()) //
+        .isEqualTo("mobiilirajapinta/json-dateandtime.md");
+    assertThat(violation1.getSeverity()) //
+        .isEqualTo(WARN);
+    assertThat(violation1.getRule().get()) //
+        .isEqualTo("InvalidFileLink");
+    assertThat(violation1.getStartLine()) //
+        .isEqualTo(18);
+
+    final Violation violation2 = actual.get(2);
+    assertThat(violation2.getMessage()) //
+        .isEqualTo("Invalid file link:(~/mobiilirajapinta/joopajoo.md).");
+    assertThat(violation2.getFile()) //
+        .isEqualTo("mobiilirajapinta/json-nimeämiskäytäntö.md");
+    assertThat(violation2.getSeverity()) //
+        .isEqualTo(WARN);
+    assertThat(violation2.getRule().get()) //
+        .isEqualTo("InvalidFileLink");
+    assertThat(violation2.getStartLine()) //
+        .isEqualTo(7);
+  }
+}

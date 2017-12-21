@@ -16,6 +16,7 @@ import se.bjurr.violations.lib.parsers.CSSLintParser;
 import se.bjurr.violations.lib.parsers.CheckStyleParser;
 import se.bjurr.violations.lib.parsers.CodeNarcParser;
 import se.bjurr.violations.lib.parsers.CppLintParser;
+import se.bjurr.violations.lib.parsers.DocFXParser;
 import se.bjurr.violations.lib.parsers.FindbugsParser;
 import se.bjurr.violations.lib.parsers.Flake8Parser;
 import se.bjurr.violations.lib.parsers.FxCopParser;
@@ -69,7 +70,8 @@ public enum Parser {
   SIMIAN(new SimianParser()), //
   STYLECOP(new StyleCopParser()), //
   XMLLINT(new XMLLintParser()), //
-  ZPTLINT(new ZPTLintParser());
+  ZPTLINT(new ZPTLintParser()), //
+  DOCFX(new DocFXParser());
 
   private static Logger LOG = Logger.getLogger(Parser.class.getSimpleName());
   private ViolationsParser violationsParser;
@@ -79,12 +81,12 @@ public enum Parser {
   }
 
   public List<Violation> findViolations(List<File> includedFiles) {
-    List<Violation> violations = new ArrayList<>();
-    for (File file : includedFiles) {
+    final List<Violation> violations = new ArrayList<>();
+    for (final File file : includedFiles) {
       try {
-        String string = Utils.toString(new FileInputStream(file));
+        final String string = Utils.toString(new FileInputStream(file));
         violations.addAll(violationsParser.parseReportOutput(string));
-      } catch (Exception e) {
+      } catch (final Exception e) {
         LOG.log(SEVERE, "Error when parsing " + file.getAbsolutePath() + " as " + this.name(), e);
       }
     }

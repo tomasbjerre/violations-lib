@@ -9,7 +9,15 @@ Changelog of Violations lib.
 **Ignoring case when checking for equality**
 
 
-[d0dd37fb3e50ddc](https://github.com/tomasbjerre/violations-lib/commit/d0dd37fb3e50ddc) Tomas Bjerre *2017-12-21 10:10:07*
+[4d7069f628813b6](https://github.com/tomasbjerre/violations-lib/commit/4d7069f628813b6) Tomas Bjerre *2017-12-21 10:12:56*
+
+
+### Jira JENKINS-48670 
+
+**DocFX parser**
+
+
+[091877506b6e903](https://github.com/tomasbjerre/violations-lib/commit/091877506b6e903) Tomas Bjerre *2017-12-21 12:30:04*
 
 
 ### No issue
