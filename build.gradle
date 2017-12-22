@@ -3,6 +3,7 @@ apply plugin: 'java'
 project.ext.tags = ['violation', 'static code analysis', 'Checkstyle', 'CPPLint', 'CPPCheck', 'CSSLint', 'Findbugs', 'Flake8', 'PyLint', 'Pep8', 'Mccabe', 'PyFlakes', 'JSHint', 'Lint', 'PerlCritic', 'PMD', 'ReSharper', 'XMLLint']
 group = 'se.bjurr.violations'
 description = 'Library for parsing report files from static code analysis'
+project.ext.useShadowJar = true
 
 
 buildscript {
@@ -16,6 +17,7 @@ buildscript {
 apply from: project.buildscript.classLoader.getResource('java.gradle').toURI()
 apply from: project.buildscript.classLoader.getResource('changelog.gradle').toURI()
 apply from: project.buildscript.classLoader.getResource('release.gradle').toURI()
+
 
 dependencies {
  compile 'com.google.code.gson:gson:2.8.2'
