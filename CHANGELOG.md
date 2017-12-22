@@ -3,6 +3,21 @@
 
 Changelog of Violations lib.
 
+## Unreleased
+### No issue
+
+**Adding project.ext.useShadowJar = true**
+
+ * Updated release.gradle to only optionally create shadow jar. 
+
+[09f13a83635d7ac](https://github.com/tomasbjerre/violations-lib/commit/09f13a83635d7ac) Tomas Bjerre *2017-12-22 15:38:14*
+
+**Doc**
+
+
+[cffd7099ed9ad2d](https://github.com/tomasbjerre/violations-lib/commit/cffd7099ed9ad2d) Tomas Bjerre *2017-12-22 12:31:48*
+
+
 ## 1.40
 ### No issue
 
