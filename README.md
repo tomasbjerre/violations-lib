@@ -58,6 +58,22 @@ Very easy to use with a nice builder pattern
     .violations();
 ```
 
+It can be added as a dependency like this:
+```
+dependencies {
+ compile 'se.bjurr.violations:violations-lib:1.x'
+}
+```
+
+There is also a fat jar including all, relocated, dependencies that can be used like this:
+```
+dependencies {
+ compile 'se.bjurr.violations:violations-lib:1.x:all', {
+  exclude group: 'com.google.code.gson', module: 'gson'
+ }
+}
+```
+
 It is used by:
  * [Violation Comments to GitHub Gradle Plugin](https://github.com/tomasbjerre/violation-comments-to-github-gradle-plugin).
  * [Violation Comments to GitHub Maven Plugin](https://github.com/tomasbjerre/violation-comments-to-github-maven-plugin).
