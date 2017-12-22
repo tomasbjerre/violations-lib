@@ -3,6 +3,7 @@ package se.bjurr.violations.lib.parsers;
 import static se.bjurr.violations.lib.model.Violation.violationBuilder;
 import static se.bjurr.violations.lib.reports.Parser.DOCFX;
 
+import com.google.gson.Gson;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
@@ -11,7 +12,6 @@ import java.util.logging.Logger;
 import se.bjurr.violations.lib.model.SEVERITY;
 import se.bjurr.violations.lib.model.Violation;
 import se.bjurr.violations.lib.util.HTMLUtils;
-import se.bjurr.violations.lib.util.JSON2Java;
 
 public class DocFXParser implements ViolationsParser {
   private static Logger LOG = Logger.getLogger(DocFXParser.class.getName());
@@ -23,8 +23,8 @@ public class DocFXParser implements ViolationsParser {
     final String[] lines = reportContent.split("\\r?\\n");
     for (final String rawLineToParse : lines) {
       @SuppressWarnings("unchecked")
-      final Map<String, Object> parsedMap =
-          (Map<String, Object>) JSON2Java.parseJSON(rawLineToParse);
+      final Map<String, Object> parsedMap = new Gson().fromJson(rawLineToParse, Map.class);
+      ;
       final String message = (String) parsedMap.get("message");
       final String messageSeverity = (String) parsedMap.get("message_severity");
       final String fileEncoded = (String) parsedMap.get("file");
