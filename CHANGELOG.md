@@ -3,8 +3,13 @@
 
 Changelog of Violations lib.
 
-## Unreleased
+## 1.43
 ### No issue
+
+**Bumping version to fix faulty release**
+
+
+[01745f931b7d426](https://github.com/tomasbjerre/violations-lib/commit/01745f931b7d426) Tomas Bjerre *2017-12-22 17:22:00*
 
 **Adding project.ext.useShadowJar = true**
 
