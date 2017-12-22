@@ -16,8 +16,6 @@ buildscript {
 apply from: project.buildscript.classLoader.getResource('java.gradle').toURI()
 apply from: project.buildscript.classLoader.getResource('changelog.gradle').toURI()
 apply from: project.buildscript.classLoader.getResource('release.gradle').toURI()
-apply from: project.buildscript.classLoader.getResource('shadow.gradle').toURI()
-
 
 dependencies {
  compile 'com.google.code.gson:gson:2.8.2'

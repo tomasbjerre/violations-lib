@@ -3,6 +3,26 @@
 
 Changelog of Violations lib.
 
+## Unreleased
+### No issue
+
+**Fixing release script to include shadow jar**
+
+
+[95b547b10678668](https://github.com/tomasbjerre/violations-lib/commit/95b547b10678668) Tomas Bjerre *2017-12-22 10:50:04*
+
+
+## 1.39
+### No issue
+
+**Replacing ScriptEngine with Gson**
+
+ * To avoid the security issue that arise if custom Javascript can be added to the DocFX file being parsed. 
+ * Using a shaddow jar (named all) to relocate Gson and avoid classpath issues. 
+
+[524c39c2ff47d40](https://github.com/tomasbjerre/violations-lib/commit/524c39c2ff47d40) Tomas Bjerre *2017-12-22 10:35:12*
+
+
 ## 1.38
 ### Jira JENKINS-48669 
 
