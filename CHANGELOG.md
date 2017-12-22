@@ -3,13 +3,13 @@
 
 Changelog of Violations lib.
 
-## Unreleased
+## 1.40
 ### No issue
 
 **Fixing release script to include shadow jar**
 
 
-[95b547b10678668](https://github.com/tomasbjerre/violations-lib/commit/95b547b10678668) Tomas Bjerre *2017-12-22 10:50:04*
+[dd4353ebc98226a](https://github.com/tomasbjerre/violations-lib/commit/dd4353ebc98226a) Tomas Bjerre *2017-12-22 10:51:49*
 
 
 ## 1.39
