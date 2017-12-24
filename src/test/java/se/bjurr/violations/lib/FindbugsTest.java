@@ -3,7 +3,7 @@ package se.bjurr.violations.lib;
 import static org.assertj.core.api.Assertions.assertThat;
 import static se.bjurr.violations.lib.TestUtils.filterRule;
 import static se.bjurr.violations.lib.TestUtils.getRootFolder;
-import static se.bjurr.violations.lib.ViolationsReporterApi.violationsReporterApi;
+import static se.bjurr.violations.lib.ViolationsApi.violationsApi;
 import static se.bjurr.violations.lib.model.SEVERITY.ERROR;
 import static se.bjurr.violations.lib.parsers.FindbugsParser.FINDBUGS_SPECIFIC_RANK;
 import static se.bjurr.violations.lib.reports.Parser.FINDBUGS;
@@ -21,7 +21,7 @@ public class FindbugsTest {
   public void before() {
     String rootFolder = getRootFolder();
     actual =
-        violationsReporterApi() //
+        violationsApi() //
             .withPattern(".*/findbugs/main\\.xml$") //
             .inFolder(rootFolder) //
             .findAll(FINDBUGS) //
@@ -35,7 +35,7 @@ public class FindbugsTest {
   public void testMavenGeneratedFindbugs() {
     String rootFolder = getRootFolder();
     List<Violation> maven =
-        violationsReporterApi() //
+        violationsApi() //
             .withPattern(".*/findbugs/fromMaven.xml$") //
             .inFolder(rootFolder) //
             .findAll(FINDBUGS) //

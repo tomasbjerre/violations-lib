@@ -2,7 +2,7 @@ package se.bjurr.violations.lib;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static se.bjurr.violations.lib.TestUtils.getRootFolder;
-import static se.bjurr.violations.lib.ViolationsReporterApi.violationsReporterApi;
+import static se.bjurr.violations.lib.ViolationsApi.violationsApi;
 import static se.bjurr.violations.lib.model.SEVERITY.ERROR;
 import static se.bjurr.violations.lib.model.SEVERITY.INFO;
 import static se.bjurr.violations.lib.model.SEVERITY.WARN;
@@ -20,7 +20,7 @@ public class CheckstyleTest {
     final String rootFolder = getRootFolder();
 
     final List<Violation> actual =
-        violationsReporterApi() //
+        violationsApi() //
             .withPattern(".*/checkstyle/main\\.xml$") //
             .inFolder(rootFolder) //
             .findAll(CHECKSTYLE) //
@@ -82,7 +82,7 @@ public class CheckstyleTest {
     final String rootFolder = getRootFolder();
 
     final List<Violation> actual =
-        violationsReporterApi() //
+        violationsApi() //
             .withPattern(".*/checkstyle/phpcheckstyle\\.xml$") //
             .inFolder(rootFolder) //
             .findAll(CHECKSTYLE) //
@@ -103,7 +103,7 @@ public class CheckstyleTest {
     final String rootFolder = getRootFolder();
 
     final List<Violation> actual =
-        violationsReporterApi() //
+        violationsApi() //
             .withPattern(".*/checkstyle/checkstyle-no-source\\.xml$") //
             .inFolder(rootFolder) //
             .findAll(CHECKSTYLE) //

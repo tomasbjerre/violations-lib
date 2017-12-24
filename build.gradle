@@ -21,10 +21,12 @@ apply from: project.buildscript.classLoader.getResource('release.gradle').toURI(
 
 dependencies {
  compile 'com.google.code.gson:gson:2.8.2'
+ compile 'com.jakewharton.fliptables:fliptables:1.0.2'
  testCompile 'junit:junit:4.12'
  testCompile 'org.assertj:assertj-core:2.3.0'
 }
 
 shadowJar {
- relocate 'com.google', 'se.bjurr.com.google'
+ relocate 'com.google', project.group + '.com.google'
+ relocate 'com.jakewharton', project.group + '.com.jakewharton'
 }

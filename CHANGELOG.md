@@ -3,6 +3,16 @@
 
 Changelog of Violations lib.
 
+## 1.44
+### No issue
+
+**Packaging fat jar as main jar**
+
+ * So that no special classifier is needed to get the relocated gson. 
+
+[764fe8fd94835a4](https://github.com/tomasbjerre/violations-lib/commit/764fe8fd94835a4) Tomas Bjerre *2017-12-22 18:28:23*
+
+
 ## 1.43
 ### No issue
 

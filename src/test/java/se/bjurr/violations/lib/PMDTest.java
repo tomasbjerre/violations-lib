@@ -2,7 +2,7 @@ package se.bjurr.violations.lib;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static se.bjurr.violations.lib.TestUtils.getRootFolder;
-import static se.bjurr.violations.lib.ViolationsReporterApi.violationsReporterApi;
+import static se.bjurr.violations.lib.ViolationsApi.violationsApi;
 import static se.bjurr.violations.lib.model.SEVERITY.ERROR;
 import static se.bjurr.violations.lib.model.SEVERITY.WARN;
 import static se.bjurr.violations.lib.reports.Parser.PMD;
@@ -18,7 +18,7 @@ public class PMDTest {
     final String rootFolder = getRootFolder();
 
     final List<Violation> actual =
-        violationsReporterApi() //
+        violationsApi() //
             .withPattern(".*/pmd/main\\.xml$") //
             .inFolder(rootFolder) //
             .findAll(PMD) //
@@ -48,7 +48,7 @@ public class PMDTest {
     final String rootFolder = getRootFolder();
 
     final List<Violation> actual =
-        violationsReporterApi() //
+        violationsApi() //
             .withPattern(".*/pmd/no-ruleset\\.xml$") //
             .inFolder(rootFolder) //
             .findAll(PMD) //
@@ -79,7 +79,7 @@ public class PMDTest {
     final String rootFolder = getRootFolder();
 
     final List<Violation> actual =
-        violationsReporterApi() //
+        violationsApi() //
             .withPattern(".*/pmd/phpmd\\.xml$") //
             .inFolder(rootFolder) //
             .findAll(PMD) //

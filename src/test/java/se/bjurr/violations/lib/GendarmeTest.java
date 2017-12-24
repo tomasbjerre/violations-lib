@@ -2,7 +2,7 @@ package se.bjurr.violations.lib;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static se.bjurr.violations.lib.TestUtils.getRootFolder;
-import static se.bjurr.violations.lib.ViolationsReporterApi.violationsReporterApi;
+import static se.bjurr.violations.lib.ViolationsApi.violationsApi;
 import static se.bjurr.violations.lib.model.SEVERITY.INFO;
 import static se.bjurr.violations.lib.reports.Parser.GENDARME;
 
@@ -16,7 +16,7 @@ public class GendarmeTest {
     String rootFolder = getRootFolder();
 
     List<Violation> actual =
-        violationsReporterApi() //
+        violationsApi() //
             .withPattern(".*/gendarme/.*\\.xml$") //
             .inFolder(rootFolder) //
             .findAll(GENDARME) //
@@ -47,7 +47,7 @@ public class GendarmeTest {
     String rootFolder = getRootFolder();
 
     List<Violation> actual =
-        violationsReporterApi() //
+        violationsApi() //
             .withPattern(".*/gendarme/Gendarme_unix\\.xml$") //
             .inFolder(rootFolder) //
             .findAll(GENDARME) //

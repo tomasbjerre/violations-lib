@@ -2,7 +2,7 @@ package se.bjurr.violations.lib;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static se.bjurr.violations.lib.TestUtils.getRootFolder;
-import static se.bjurr.violations.lib.ViolationsReporterApi.violationsReporterApi;
+import static se.bjurr.violations.lib.ViolationsApi.violationsApi;
 import static se.bjurr.violations.lib.model.SEVERITY.INFO;
 import static se.bjurr.violations.lib.reports.Parser.PYLINT;
 
@@ -17,7 +17,7 @@ public class PyLintTest {
     final String rootFolder = getRootFolder();
 
     final List<Violation> actual =
-        violationsReporterApi() //
+        violationsApi() //
             .withPattern(".*/pylint/.*\\.txt$") //
             .inFolder(rootFolder) //
             .findAll(PYLINT) //

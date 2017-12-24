@@ -11,7 +11,7 @@ import java.util.Map;
 import se.bjurr.violations.lib.reports.Parser;
 import se.bjurr.violations.lib.util.Optional;
 
-public class Violation implements Serializable {
+public class Violation implements Serializable, Comparable<Violation> {
   public static class ViolationBuilder {
 
     private Integer column;
@@ -164,7 +164,7 @@ public class Violation implements Serializable {
     if (getClass() != obj.getClass()) {
       return false;
     }
-    Violation other = (Violation) obj;
+    final Violation other = (Violation) obj;
     if (column == null) {
       if (other.column != null) {
         return false;
@@ -332,5 +332,14 @@ public class Violation implements Serializable {
         + ", startLine="
         + startLine
         + "]";
+  }
+
+  @Override
+  public int compareTo(Violation o) {
+    return comparingString(this).compareTo(comparingString(o));
+  }
+
+  private String comparingString(Violation o) {
+    return o.file + "_" + o.getStartLine() + "_" + o.getParser() + "_" + o.getMessage();
   }
 }

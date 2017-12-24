@@ -2,7 +2,7 @@ package se.bjurr.violations.lib;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static se.bjurr.violations.lib.TestUtils.getRootFolder;
-import static se.bjurr.violations.lib.ViolationsReporterApi.violationsReporterApi;
+import static se.bjurr.violations.lib.ViolationsApi.violationsApi;
 import static se.bjurr.violations.lib.model.SEVERITY.ERROR;
 import static se.bjurr.violations.lib.model.SEVERITY.INFO;
 import static se.bjurr.violations.lib.model.SEVERITY.WARN;
@@ -20,7 +20,7 @@ public class Flake8Test {
     String rootFolder = getRootFolder();
 
     List<Violation> actual =
-        violationsReporterApi() //
+        violationsApi() //
             .withPattern(".*/flake8/.*\\.txt$") //
             .inFolder(rootFolder) //
             .findAll(FLAKE8) //
