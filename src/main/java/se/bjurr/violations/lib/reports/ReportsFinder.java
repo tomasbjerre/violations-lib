@@ -17,7 +17,7 @@ public class ReportsFinder {
 
   public static List<File> findAllReports(File startFile, final String pattern) {
     final List<File> found = new ArrayList<>();
-    Path startPath = startFile.toPath();
+    final Path startPath = startFile.toPath();
     try {
       walkFileTree(
           startPath,
@@ -25,15 +25,15 @@ public class ReportsFinder {
             @Override
             public FileVisitResult visitFile(Path file, BasicFileAttributes attrs)
                 throws IOException {
-              String absoluteFile = file.toFile().getAbsolutePath();
+              final String absoluteFile = file.toFile().getAbsolutePath();
               if (matches(pattern, absoluteFile)) {
                 found.add(file.toFile());
               }
               return super.visitFile(file, attrs);
             }
           });
-    } catch (IOException e) {
-      new RuntimeException(e);
+    } catch (final IOException e) {
+      throw new RuntimeException(e);
     }
     Collections.sort(found);
     return found;

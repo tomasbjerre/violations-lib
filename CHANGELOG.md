@@ -3,6 +3,24 @@
 
 Changelog of Violations lib.
 
+## Unreleased
+### No issue
+
+**Doc**
+
+
+[51ac5c511058308](https://github.com/tomasbjerre/violations-lib/commit/51ac5c511058308) Tomas Bjerre *2017-12-24 18:40:36*
+
+
+## 1.46
+### No issue
+
+**Implementing reporter output**
+
+
+[e390aaedcb7ec68](https://github.com/tomasbjerre/violations-lib/commit/e390aaedcb7ec68) Tomas Bjerre *2017-12-24 12:00:57*
+
+
 ## 1.44
 ### No issue
 

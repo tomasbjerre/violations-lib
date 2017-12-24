@@ -70,3 +70,5 @@ It is used by:
  * [Violation Comments to GitLab Maven Plugin](https://github.com/tomasbjerre/violation-comments-to-gitlab-maven-plugin).
  * [Violation Comments to GitLab Jenkins Plugin](https://github.com/jenkinsci/violation-comments-to-gitlab-plugin).
  * [Violation Comments Lib](https://github.com/tomasbjerre/violation-comments-lib).
+ * [Violations Gradle Plugin](https://github.com/tomasbjerre/violations-gradle-plugin).
+ * [Violations Maven Plugin](https://github.com/tomasbjerre/violations-maven-plugin).

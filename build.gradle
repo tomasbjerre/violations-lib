@@ -27,6 +27,6 @@ dependencies {
 }
 
 shadowJar {
- relocate 'com.google', project.group + '.com.google'
- relocate 'com.jakewharton', project.group + '.com.jakewharton'
+ relocate 'com.google',      project.group + '.' + project.name + '.com.google'
+ relocate 'com.jakewharton', project.group + '.' + project.name + '.com.jakewharton'
 }
