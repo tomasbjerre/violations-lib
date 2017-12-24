@@ -36,7 +36,7 @@ public class CodeNarcParser implements ViolationsParser {
   public List<Violation> parseReportOutput(String string) throws Exception {
     final List<Violation> violations = new ArrayList<>();
     final Map<String, String> rules = new HashMap<>();
-    try (InputStream input = new ByteArrayInputStream(string.getBytes())) {
+    try (InputStream input = new ByteArrayInputStream(string.getBytes("UTF-8"))) {
       final XMLInputFactory factory = XMLInputFactory.newInstance();
       final XMLStreamReader xmlr = factory.createXMLStreamReader(input);
       String name = null;
@@ -55,7 +55,7 @@ public class CodeNarcParser implements ViolationsParser {
       }
     }
 
-    try (InputStream input = new ByteArrayInputStream(string.getBytes())) {
+    try (InputStream input = new ByteArrayInputStream(string.getBytes("UTF-8"))) {
 
       final XMLInputFactory factory = XMLInputFactory.newInstance();
       final XMLStreamReader xmlr = factory.createXMLStreamReader(input);

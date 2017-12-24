@@ -125,7 +125,7 @@ public class FindbugsParser implements ViolationsParser {
     final List<Violation> violations = new ArrayList<>();
     final Map<String, String> messagesPerType = getMessagesPerType();
 
-    try (InputStream input = new ByteArrayInputStream(string.getBytes())) {
+    try (InputStream input = new ByteArrayInputStream(string.getBytes("UTF-8"))) {
 
       final XMLInputFactory factory = XMLInputFactory.newInstance();
       final XMLStreamReader xmlr = factory.createXMLStreamReader(input);

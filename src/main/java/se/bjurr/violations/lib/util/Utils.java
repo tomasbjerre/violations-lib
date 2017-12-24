@@ -40,8 +40,8 @@ public class Utils {
 
   @SuppressWarnings("resource")
   public static String toString(InputStream inputStream) throws IOException {
-    Scanner scanner = new Scanner(inputStream).useDelimiter("\\A");
-    String result = scanner.hasNext() ? scanner.next() : "";
+    final Scanner scanner = new Scanner(inputStream, "UTF-8").useDelimiter("\\A");
+    final String result = scanner.hasNext() ? scanner.next() : "";
     scanner.close();
     inputStream.close();
 
@@ -51,13 +51,13 @@ public class Utils {
   public static String toString(URL resource) throws IOException {
     try {
       return toString(resource.openStream());
-    } catch (IOException e) {
+    } catch (final IOException e) {
       throw e;
     }
   }
 
   public static List<Violation> setReporter(List<Violation> violations, String reporter) {
-    for (Violation v : violations) {
+    for (final Violation v : violations) {
       v.setReporter(reporter);
     }
     return violations;

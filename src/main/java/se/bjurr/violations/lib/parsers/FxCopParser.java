@@ -28,7 +28,7 @@ public class FxCopParser implements ViolationsParser {
   public List<Violation> parseReportOutput(String string) throws Exception {
     final List<Violation> violations = new ArrayList<>();
 
-    try (InputStream input = new ByteArrayInputStream(string.getBytes())) {
+    try (InputStream input = new ByteArrayInputStream(string.getBytes("UTF-8"))) {
 
       final XMLInputFactory factory = XMLInputFactory.newInstance();
       final XMLStreamReader xmlr = factory.createXMLStreamReader(input);
