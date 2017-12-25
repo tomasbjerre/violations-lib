@@ -15,8 +15,7 @@ public enum ORDERED_BY {
       new Comparator<Violation>() {
         @Override
         public int compare(Violation o1, Violation o2) {
-          return new Integer(o1.getSeverity().ordinal()) //
-              .compareTo(new Integer(o2.getSeverity().ordinal()));
+          return Integer.compare(o1.getSeverity().ordinal(), o2.getSeverity().ordinal());
         }
       });
   private Comparator<Violation> comparator;

@@ -8,6 +8,7 @@ import static se.bjurr.violations.lib.util.Utils.firstNonNull;
 import java.io.Serializable;
 import java.util.HashMap;
 import java.util.Map;
+
 import se.bjurr.violations.lib.reports.Parser;
 import se.bjurr.violations.lib.util.Optional;
 
@@ -340,6 +341,6 @@ public class Violation implements Serializable, Comparable<Violation> {
   }
 
   private String comparingString(Violation o) {
-    return o.file + "_" + o.getStartLine() + "_" + o.getParser() + "_" + o.getMessage();
+    return o.file + "_" + (Integer.MAX_VALUE-o.getStartLine()) + "_" + o.getParser() + "_" + o.getMessage();
   }
 }

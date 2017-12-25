@@ -12,6 +12,7 @@ import com.jakewharton.fliptables.FlipTable;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
+import java.util.Map.Entry;
 import java.util.Set;
 import java.util.TreeMap;
 import java.util.TreeSet;
@@ -49,9 +50,11 @@ public class ViolationsReporterApi {
   private StringBuilder toVerbose(Iterable<Violation> violations) {
     final StringBuilder sb = new StringBuilder();
     final Map<String, Set<Violation>> perFile = getViolationsPerFile(violations);
-    for (final String file : perFile.keySet()) {
+    for (final Entry<String, Set<Violation>> perFileEntry : perFile.entrySet()) {
+      final String file = perFileEntry.getKey();
+      final Set<Violation> fileViolations = perFile.get(file);
       sb.append(file + "\n");
-      sb.append(toDetailed(perFile.get(file), "Summary of " + file));
+      sb.append(toDetailed(fileViolations, "Summary of " + file));
       sb.append("\n");
     }
     return sb;
@@ -60,8 +63,10 @@ public class ViolationsReporterApi {
   private StringBuilder toPerFile(Iterable<Violation> violations) {
     final StringBuilder sb = new StringBuilder();
     final Map<String, Set<Violation>> perFile = getViolationsPerFile(violations);
-    for (final String file : perFile.keySet()) {
-      sb.append(toCompact(perFile.get(file), "Summary of " + file));
+    for (final Entry<String, Set<Violation>> fileEntry : perFile.entrySet()) {
+      final Set<Violation> fileViolations = fileEntry.getValue();
+      final String fileName = fileEntry.getKey();
+      sb.append(toCompact(fileViolations, "Summary of " + fileName));
       sb.append("\n");
     }
     return sb;
@@ -81,7 +86,7 @@ public class ViolationsReporterApi {
         violation.getRule().or(""),
         violation.getSeverity().name(),
         violation.getStartLine().toString(),
-        violation.getMessage()
+        addNewlines(violation.getMessage())
       };
       rows.add(row);
     }
@@ -96,6 +101,29 @@ public class ViolationsReporterApi {
     return sb;
   }
 
+  private String addNewlines(String message) {
+    if (message == null) {
+      return "";
+    }
+    final int maxLineLength = 100;
+    int noLineCounter = 0;
+    final StringBuilder withNewlines = new StringBuilder();
+    for (int i = 0; i < message.length(); i++) {
+      final char charAt = message.charAt(i);
+      withNewlines.append(charAt);
+      if (charAt == '\n') {
+        noLineCounter = 0;
+      } else {
+        noLineCounter++;
+      }
+      if (noLineCounter > 0 && noLineCounter % maxLineLength == 0) {
+        withNewlines.append('\n');
+        noLineCounter = 0;
+      }
+    }
+    return withNewlines.toString().trim();
+  }
+
   private StringBuilder toCompact(Iterable<Violation> violations, String subject) {
     final StringBuilder sb = new StringBuilder();
     final Map<String, Set<Violation>> perReporter = getViolationsPerReporter(violations);
@@ -106,9 +134,11 @@ public class ViolationsReporterApi {
     Integer totNumError = 0;
     Integer totNumTot = 0;
 
-    for (final String reporter : perReporter.keySet()) {
+    for (final Entry<String, Set<Violation>> reporterEntry : perReporter.entrySet()) {
+      final String reporter = reporterEntry.getKey();
+      final Set<Violation> reporterViolations = reporterEntry.getValue();
       final Map<SEVERITY, Set<Violation>> perSeverity =
-          getViolationsPerSeverity(perReporter.get(reporter));
+          getViolationsPerSeverity(reporterViolations);
       final Integer numInfo = perSeverity.get(INFO).size();
       final Integer numWarn = perSeverity.get(WARN).size();
       final Integer numError = perSeverity.get(ERROR).size();

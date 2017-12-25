@@ -79,7 +79,7 @@ public class CodeNarcParser implements ViolationsParser {
             priority = getIntegerAttribute(xmlr, "priority");
             final String lineNumberString = getAttribute(xmlr, "lineNumber");
             lineNumber = 1;
-            if (lineNumberString != null && !lineNumberString.isEmpty()) {
+            if (!lineNumberString.isEmpty()) {
               lineNumber = Integer.parseInt(lineNumberString);
             }
             String message = rules.get(ruleName);

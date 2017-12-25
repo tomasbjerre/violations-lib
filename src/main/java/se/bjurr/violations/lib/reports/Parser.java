@@ -74,7 +74,7 @@ public enum Parser {
   DOCFX(new DocFXParser());
 
   private static Logger LOG = Logger.getLogger(Parser.class.getSimpleName());
-  private ViolationsParser violationsParser;
+  private transient ViolationsParser violationsParser;
 
   private Parser(ViolationsParser violationsParser) {
     this.violationsParser = violationsParser;
@@ -86,7 +86,7 @@ public enum Parser {
       try {
         final String string = Utils.toString(new FileInputStream(file));
         violations.addAll(violationsParser.parseReportOutput(string));
-      } catch (final Exception e) {
+      } catch (final Throwable e) {
         LOG.log(SEVERE, "Error when parsing " + file.getAbsolutePath() + " as " + this.name(), e);
       }
     }

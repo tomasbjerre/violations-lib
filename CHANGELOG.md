@@ -3,13 +3,18 @@
 
 Changelog of Violations lib.
 
-## Unreleased
+## 1.47
 ### No issue
 
-**Doc**
+**Using UTF-8, instead of default**
 
 
-[51ac5c511058308](https://github.com/tomasbjerre/violations-lib/commit/51ac5c511058308) Tomas Bjerre *2017-12-24 18:40:36*
+[b3c21719bdce84c](https://github.com/tomasbjerre/violations-lib/commit/b3c21719bdce84c) Tomas Bjerre *2017-12-24 21:49:53*
+
+**Re-throwing any IOException**
+
+
+[6c5f8f5b9edf1dc](https://github.com/tomasbjerre/violations-lib/commit/6c5f8f5b9edf1dc) Tomas Bjerre *2017-12-24 20:31:13*
 
 
 ## 1.46
