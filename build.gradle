@@ -27,6 +27,6 @@ dependencies {
 }
 
 shadowJar {
- relocate 'com.google',      project.group + '.' + project.name + '.com.google'
- relocate 'com.jakewharton', project.group + '.' + project.name + '.com.jakewharton'
+ relocate 'com.google',      safeJavaIdentidier(project.group + '.' + project.name + '.com.google')
+ relocate 'com.jakewharton', safeJavaIdentidier(project.group + '.' + project.name + '.com.jakewharton')
 }

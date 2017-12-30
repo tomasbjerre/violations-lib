@@ -3,6 +3,15 @@
 
 Changelog of Violations lib.
 
+## Unreleased
+### No issue
+
+**Doc**
+
+
+[ba8ca533c8ada71](https://github.com/tomasbjerre/violations-lib/commit/ba8ca533c8ada71) Tomas Bjerre *2017-12-30 10:27:45*
+
+
 ## 1.48
 ### No issue
 
