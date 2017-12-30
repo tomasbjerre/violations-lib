@@ -3,6 +3,15 @@
 
 Changelog of Violations lib.
 
+## 1.48
+### No issue
+
+**Limiting width of report messages**
+
+
+[0f4c1919ccf1ae3](https://github.com/tomasbjerre/violations-lib/commit/0f4c1919ccf1ae3) Tomas Bjerre *2017-12-25 16:02:22*
+
+
 ## 1.47
 ### No issue
 
