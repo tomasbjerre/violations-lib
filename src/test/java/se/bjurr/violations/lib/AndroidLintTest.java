@@ -39,7 +39,7 @@ public class AndroidLintTest {
                 .setRule("Correctness")
                 .setMessage(
                     "ScrollViewSize: ScrollView size validation\n"
-                        + "This LinearLayout should use `android:layout_height=&quot;wrap_content&quot;`\n"
+                        + "This LinearLayout should use `android:layout_height=\"wrap_content\"`\n"
                         + "ScrollView children must set their `layout_width` or `layout_height` attributes to `wrap_content` rather than `fill_parent` or `match_parent` in the scrolling dimension") //
                 .setSeverity(WARN) //
                 .build(), //

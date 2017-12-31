@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<checkstyle version="5.9">
+  <file name="/src/main/java/se/bjurr/violations/lib/example/MyClass.java">
+    <error line="11" column="10" severity="info" message="&apos;Must have at least one statement.&apos;" source="com.puppycrawl.tools.checkstyle.checks.blocks.EmptyBlockCheck"/>
+    <error line="12" column="10" severity="info" message="Must have at least one &quot;statement&quot;." source="com.puppycrawl.tools.checkstyle.checks.blocks.EmptyBlockCheck"/>
+    <error line="13" column="10" severity="info" message="one is &lt; two" source="one.should.be.greater.than.two" />
+    <error line="14" column="10" severity="info" message="two is &gt; one" source="two.should.be.less.than.one"/>
+    <error line="15" column="10" severity="info" message="one &amp; one is two" source="one.and.one.should.be.three"/>
+  </file>
+</checkstyle>
