@@ -2,11 +2,11 @@ package se.bjurr.violations.lib.parsers;
 
 import static se.bjurr.violations.lib.model.SEVERITY.WARN;
 import static se.bjurr.violations.lib.model.Violation.violationBuilder;
-import static se.bjurr.violations.lib.parsers.ViolationParserUtils.getAttribute;
-import static se.bjurr.violations.lib.parsers.ViolationParserUtils.getChunks;
-import static se.bjurr.violations.lib.parsers.ViolationParserUtils.getContent;
-import static se.bjurr.violations.lib.parsers.ViolationParserUtils.getIntegerContent;
 import static se.bjurr.violations.lib.reports.Parser.PITEST;
+import static se.bjurr.violations.lib.util.ViolationParserUtils.getAttribute;
+import static se.bjurr.violations.lib.util.ViolationParserUtils.getChunks;
+import static se.bjurr.violations.lib.util.ViolationParserUtils.getContent;
+import static se.bjurr.violations.lib.util.ViolationParserUtils.getIntegerContent;
 
 import java.util.ArrayList;
 import java.util.HashMap;

@@ -6,9 +6,9 @@ import static se.bjurr.violations.lib.model.SEVERITY.ERROR;
 import static se.bjurr.violations.lib.model.SEVERITY.INFO;
 import static se.bjurr.violations.lib.model.SEVERITY.WARN;
 import static se.bjurr.violations.lib.model.Violation.violationBuilder;
-import static se.bjurr.violations.lib.parsers.ViolationParserUtils.getAttribute;
-import static se.bjurr.violations.lib.parsers.ViolationParserUtils.getIntegerAttribute;
 import static se.bjurr.violations.lib.reports.Parser.FXCOP;
+import static se.bjurr.violations.lib.util.ViolationParserUtils.getAttribute;
+import static se.bjurr.violations.lib.util.ViolationParserUtils.getIntegerAttribute;
 
 import java.io.ByteArrayInputStream;
 import java.io.InputStream;
@@ -20,6 +20,7 @@ import javax.xml.stream.XMLStreamReader;
 import se.bjurr.violations.lib.model.SEVERITY;
 import se.bjurr.violations.lib.model.Violation;
 import se.bjurr.violations.lib.util.Optional;
+import se.bjurr.violations.lib.util.ViolationParserUtils;
 
 public class FxCopParser implements ViolationsParser {
   private static Logger LOG = Logger.getLogger(FxCopParser.class.getSimpleName());

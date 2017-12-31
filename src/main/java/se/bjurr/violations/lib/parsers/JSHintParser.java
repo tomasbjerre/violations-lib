@@ -4,10 +4,10 @@ import static se.bjurr.violations.lib.model.SEVERITY.ERROR;
 import static se.bjurr.violations.lib.model.SEVERITY.INFO;
 import static se.bjurr.violations.lib.model.SEVERITY.WARN;
 import static se.bjurr.violations.lib.model.Violation.violationBuilder;
-import static se.bjurr.violations.lib.parsers.ViolationParserUtils.getAttribute;
-import static se.bjurr.violations.lib.parsers.ViolationParserUtils.getChunks;
-import static se.bjurr.violations.lib.parsers.ViolationParserUtils.getIntegerAttribute;
 import static se.bjurr.violations.lib.reports.Parser.JSHINT;
+import static se.bjurr.violations.lib.util.ViolationParserUtils.getAttribute;
+import static se.bjurr.violations.lib.util.ViolationParserUtils.getChunks;
+import static se.bjurr.violations.lib.util.ViolationParserUtils.getIntegerAttribute;
 
 import java.util.ArrayList;
 import java.util.List;

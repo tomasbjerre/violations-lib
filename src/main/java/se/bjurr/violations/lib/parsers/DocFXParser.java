@@ -11,7 +11,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import se.bjurr.violations.lib.model.SEVERITY;
 import se.bjurr.violations.lib.model.Violation;
-import se.bjurr.violations.lib.util.HTMLUtils;
+import se.bjurr.violations.lib.util.StringUtils;
 
 public class DocFXParser implements ViolationsParser {
   private static Logger LOG = Logger.getLogger(DocFXParser.class.getName());
@@ -32,7 +32,7 @@ public class DocFXParser implements ViolationsParser {
         LOG.log(Level.FINE, "Ignoring " + rawLineToParse + " because there is not file attribute");
         continue;
       }
-      final String file = HTMLUtils.htmlDecode(fileEncoded);
+      final String file = StringUtils.htmlDecode(fileEncoded);
       final String code = (String) parsedMap.get("code");
       final String lineString = (String) parsedMap.get("line");
       Integer lineInt;

@@ -3,12 +3,13 @@ package se.bjurr.violations.lib.parsers;
 import static java.lang.Integer.parseInt;
 import static se.bjurr.violations.lib.model.SEVERITY.ERROR;
 import static se.bjurr.violations.lib.model.Violation.violationBuilder;
-import static se.bjurr.violations.lib.parsers.ViolationParserUtils.getParts;
 import static se.bjurr.violations.lib.reports.Parser.PYDOCSTYLE;
+import static se.bjurr.violations.lib.util.ViolationParserUtils.getParts;
 
 import java.util.ArrayList;
 import java.util.List;
 import se.bjurr.violations.lib.model.Violation;
+import se.bjurr.violations.lib.util.ViolationParserUtils;
 
 public class PyDocStyleParser implements ViolationsParser {
 

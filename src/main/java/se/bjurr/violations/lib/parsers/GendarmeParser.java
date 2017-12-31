@@ -5,8 +5,8 @@ import static se.bjurr.violations.lib.model.SEVERITY.ERROR;
 import static se.bjurr.violations.lib.model.SEVERITY.INFO;
 import static se.bjurr.violations.lib.model.SEVERITY.WARN;
 import static se.bjurr.violations.lib.model.Violation.violationBuilder;
-import static se.bjurr.violations.lib.parsers.ViolationParserUtils.getAttribute;
 import static se.bjurr.violations.lib.reports.Parser.GENDARME;
+import static se.bjurr.violations.lib.util.ViolationParserUtils.getAttribute;
 
 import java.io.ByteArrayInputStream;
 import java.io.InputStream;

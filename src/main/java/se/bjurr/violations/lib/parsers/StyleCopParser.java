@@ -3,9 +3,9 @@ package se.bjurr.violations.lib.parsers;
 import static javax.xml.stream.XMLStreamConstants.START_ELEMENT;
 import static se.bjurr.violations.lib.model.SEVERITY.INFO;
 import static se.bjurr.violations.lib.model.Violation.violationBuilder;
-import static se.bjurr.violations.lib.parsers.ViolationParserUtils.getAttribute;
-import static se.bjurr.violations.lib.parsers.ViolationParserUtils.getIntegerAttribute;
 import static se.bjurr.violations.lib.reports.Parser.STYLECOP;
+import static se.bjurr.violations.lib.util.ViolationParserUtils.getAttribute;
+import static se.bjurr.violations.lib.util.ViolationParserUtils.getIntegerAttribute;
 
 import java.io.ByteArrayInputStream;
 import java.io.InputStream;

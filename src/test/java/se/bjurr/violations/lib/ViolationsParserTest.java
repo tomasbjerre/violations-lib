@@ -1,8 +1,8 @@
 package se.bjurr.violations.lib;
 
 import static org.assertj.core.api.Assertions.assertThat;
-import static se.bjurr.violations.lib.parsers.ViolationParserUtils.getAttribute;
-import static se.bjurr.violations.lib.parsers.ViolationParserUtils.getChunks;
+import static se.bjurr.violations.lib.util.ViolationParserUtils.getAttribute;
+import static se.bjurr.violations.lib.util.ViolationParserUtils.getChunks;
 
 import java.util.ArrayList;
 import java.util.List;

@@ -2,13 +2,13 @@ package se.bjurr.violations.lib.parsers;
 
 import static java.util.logging.Level.SEVERE;
 import static se.bjurr.violations.lib.model.Violation.violationBuilder;
-import static se.bjurr.violations.lib.parsers.ViolationParserUtils.findIntegerAttribute;
-import static se.bjurr.violations.lib.parsers.ViolationParserUtils.getAttribute;
-import static se.bjurr.violations.lib.parsers.ViolationParserUtils.getChunks;
-import static se.bjurr.violations.lib.parsers.ViolationParserUtils.getContent;
-import static se.bjurr.violations.lib.parsers.ViolationParserUtils.getIntegerAttribute;
 import static se.bjurr.violations.lib.reports.Parser.FINDBUGS;
 import static se.bjurr.violations.lib.util.Utils.isNullOrEmpty;
+import static se.bjurr.violations.lib.util.ViolationParserUtils.findIntegerAttribute;
+import static se.bjurr.violations.lib.util.ViolationParserUtils.getAttribute;
+import static se.bjurr.violations.lib.util.ViolationParserUtils.getChunks;
+import static se.bjurr.violations.lib.util.ViolationParserUtils.getContent;
+import static se.bjurr.violations.lib.util.ViolationParserUtils.getIntegerAttribute;
 
 import java.io.ByteArrayInputStream;
 import java.io.IOException;
