@@ -3,7 +3,7 @@
 
 Changelog of Violations lib.
 
-## Unreleased
+## 1.50
 ### GitHub [#28](https://github.com/tomasbjerre/violations-lib/issues/28) Single quotes in xml are printed as &amp;apos; 
 
 **Un-escape XML when reading attributes.**
@@ -11,6 +11,14 @@ Changelog of Violations lib.
  * Fixes 
 
 [9b10f800c7b7941](https://github.com/tomasbjerre/violations-lib/commit/9b10f800c7b7941) Sam Judd *2017-12-31 03:25:14*
+
+
+### No issue
+
+**Gathering string utils**
+
+
+[6951f1a5039f968](https://github.com/tomasbjerre/violations-lib/commit/6951f1a5039f968) Tomas Bjerre *2017-12-31 05:51:14*
 
 
 ## 1.49
