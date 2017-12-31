@@ -14,11 +14,79 @@ import org.junit.Test;
 import se.bjurr.violations.lib.model.Violation;
 
 public class CheckstyleTest {
+  private final String rootFolder = getRootFolder();
+
+  @Test
+  public void testThatViolationsWithXmlSpecialCharactersCanBeParsed() {
+    final List<Violation> actual =
+        violationsApi() //
+            .withPattern(".*/checkstyle/special_chars\\.xml$") //
+            .inFolder(rootFolder) //
+            .findAll(CHECKSTYLE) //
+            .violations();
+
+    assertThat(actual)
+        .containsExactly(
+            violationBuilder() //
+                .setParser(CHECKSTYLE) //
+                .setFile("/src/main/java/se/bjurr/violations/lib/example/MyClass.java") //
+                .setSource(null) //
+                .setStartLine(11) //
+                .setEndLine(11) //
+                .setColumn(10) //
+                .setMessage("\'Must have at least one statement.\'") //
+                .setRule("com.puppycrawl.tools.checkstyle.checks.blocks.EmptyBlockCheck") //
+                .setSeverity(INFO) //
+                .build(), //
+            violationBuilder() //
+                .setParser(CHECKSTYLE) //
+                .setFile("/src/main/java/se/bjurr/violations/lib/example/MyClass.java") //
+                .setSource(null) //
+                .setStartLine(12) //
+                .setEndLine(12) //
+                .setColumn(10) //
+                .setMessage("Must have at least one \"statement\".") //
+                .setRule("com.puppycrawl.tools.checkstyle.checks.blocks.EmptyBlockCheck") //
+                .setSeverity(INFO) //
+                .build(), //
+            violationBuilder() //
+                .setParser(CHECKSTYLE) //
+                .setFile("/src/main/java/se/bjurr/violations/lib/example/MyClass.java") //
+                .setSource(null) //
+                .setStartLine(13) //
+                .setEndLine(13) //
+                .setColumn(10) //
+                .setMessage("one is < two") //
+                .setRule("one.should.be.greater.than.two") //
+                .setSeverity(INFO) //
+                .build(), //
+            violationBuilder() //
+                .setParser(CHECKSTYLE) //
+                .setFile("/src/main/java/se/bjurr/violations/lib/example/MyClass.java") //
+                .setSource(null) //
+                .setStartLine(14) //
+                .setEndLine(14) //
+                .setColumn(10) //
+                .setMessage("two is > one") //
+                .setRule("two.should.be.less.than.one") //
+                .setSeverity(INFO) //
+                .build(), //
+            violationBuilder() //
+                .setParser(CHECKSTYLE) //
+                .setFile("/src/main/java/se/bjurr/violations/lib/example/MyClass.java") //
+                .setSource(null) //
+                .setStartLine(15) //
+                .setEndLine(15) //
+                .setColumn(10) //
+                .setMessage("one & one is two") //
+                .setRule("one.and.one.should.be.three") //
+                .setSeverity(INFO) //
+                .build() //
+            );
+  }
 
   @Test
   public void testThatViolationsCanBeParsed() {
-    final String rootFolder = getRootFolder();
-
     final List<Violation> actual =
         violationsApi() //
             .withPattern(".*/checkstyle/main\\.xml$") //
@@ -100,8 +168,6 @@ public class CheckstyleTest {
 
   @Test
   public void testThatPHPViolationsCanBeParsedIfNoSource() {
-    final String rootFolder = getRootFolder();
-
     final List<Violation> actual =
         violationsApi() //
             .withPattern(".*/checkstyle/checkstyle-no-source\\.xml$") //

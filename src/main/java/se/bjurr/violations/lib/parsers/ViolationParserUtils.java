@@ -9,7 +9,10 @@ import static se.bjurr.violations.lib.util.Optional.fromNullable;
 import java.io.StringWriter;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Collections;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 import javax.xml.stream.XMLStreamReader;
@@ -20,6 +23,46 @@ import javax.xml.transform.stream.StreamResult;
 import se.bjurr.violations.lib.util.Optional;
 
 public final class ViolationParserUtils {
+  private static final Map<String, Character> XML_ESCAPE_CHARACTER_MAP;
+  private static final String[] XML_ESCAPE_CHARACTERS;
+  private static final char XML_ESCAPE_START = '&';
+
+  static {
+    Map<String, Character> temp = new HashMap<>();
+    temp.put("&apos;", '\'');
+    temp.put("&quot;", '\"');
+    temp.put("&amp;", '&');
+    temp.put("&lt;", '<');
+    temp.put("&gt;", '>');
+    XML_ESCAPE_CHARACTER_MAP = Collections.unmodifiableMap(temp);
+    XML_ESCAPE_CHARACTERS = temp.keySet().toArray(new String[0]);
+  }
+
+  private static String unEscapeXml(String input) {
+    StringBuilder result = new StringBuilder(input.length());
+    for (int i = 0; i < input.length(); ) {
+      char current = input.charAt(i);
+
+      boolean isValidXmlEscape = false;
+      if (current == XML_ESCAPE_START) {
+        for (String escapeCharacter : XML_ESCAPE_CHARACTERS) {
+          if (input.startsWith(escapeCharacter, i)) {
+            result.append(XML_ESCAPE_CHARACTER_MAP.get(escapeCharacter));
+            i += escapeCharacter.length();
+            isValidXmlEscape = true;
+            break;
+          }
+        }
+      }
+
+      if (!isValidXmlEscape) {
+        result.append(current);
+        i++;
+      }
+    }
+    return result.toString();
+  }
+
   public static String asString(XMLStreamReader xmlr) throws Exception {
     final Transformer transformer = TransformerFactory.newInstance().newTransformer();
     final StringWriter stringWriter = new StringWriter();
@@ -31,12 +74,12 @@ public final class ViolationParserUtils {
     Pattern pattern = Pattern.compile(attribute + "='([^']+?)'");
     Matcher matcher = pattern.matcher(in);
     if (matcher.find()) {
-      return fromNullable(matcher.group(1));
+      return fromNullable(unEscapeXml(matcher.group(1)));
     }
     pattern = Pattern.compile(attribute + "=\"([^\"]+?)\"");
     matcher = pattern.matcher(in);
     if (matcher.find()) {
-      return fromNullable(matcher.group(1));
+      return fromNullable(unEscapeXml(matcher.group(1)));
     }
     return absent();
   }
