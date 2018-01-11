@@ -20,8 +20,12 @@ import se.bjurr.violations.lib.model.SEVERITY;
 import se.bjurr.violations.lib.model.Violation;
 
 public class ViolationsReporterApi {
+  private static final int NO_MAX_LINE_LENGTH = -1;
+  /** Allow up to 100 characters for the error message if no max line length is specified. */
+  private static final int DEFAULT_MAX_MESSAGE_LENGTH = 100;
 
   private Iterable<Violation> violations;
+  private int maxLineLength = NO_MAX_LINE_LENGTH;
 
   private ViolationsReporterApi() {}
 
@@ -72,6 +76,25 @@ public class ViolationsReporterApi {
     return sb;
   }
 
+  /**
+   * Adds line breaks to the Message column of the report to ensure the table's lines are less than
+   * or equal to the given limit.
+   *
+   * <p>If the other columns and whitespace are are greater than or equal to the requested maximum
+   * line length, the Message column will always print at least a single character per line, even if
+   * doing so causes the table to exceed the requested length.
+   *
+   * @param maxLineLength The requested maximum line length.
+   * @return This object.
+   */
+  public ViolationsReporterApi withMaxLineLength(int maxLineLength) {
+    if (maxLineLength <= 0) {
+      throw new IllegalArgumentException("maxLineLength must be > 0, but given: " + maxLineLength);
+    }
+    this.maxLineLength = maxLineLength;
+    return this;
+  }
+
   public ViolationsReporterApi withViolations(List<Violation> violations) {
     this.violations = violations;
     return this;
@@ -80,20 +103,39 @@ public class ViolationsReporterApi {
   private StringBuilder toDetailed(Iterable<Violation> violations, String summarySubject) {
     final StringBuilder sb = new StringBuilder();
     final List<String[]> rows = new ArrayList<>();
+
+    int longestMessageLineLengthLength = -1;
     for (final Violation violation : violations) {
       final String[] row = {
         violation.getReporter(),
         violation.getRule().or(""),
         violation.getSeverity().name(),
         violation.getStartLine().toString(),
-        addNewlines(violation.getMessage())
+        violation.getMessage(),
       };
+      for (String substring : violation.getMessage().split("\n")) {
+        longestMessageLineLengthLength =
+            Math.max(longestMessageLineLengthLength, substring.length());
+      }
       rows.add(row);
     }
 
     final String[] headers = {"Reporter", "Rule", "Severity", "Line", "Message"};
-
     final String[][] data = rows.toArray(new String[][] {});
+
+    final int maximumMessageLength;
+    if (maxLineLength == NO_MAX_LINE_LENGTH) {
+      maximumMessageLength = DEFAULT_MAX_MESSAGE_LENGTH;
+    } else {
+      final String infiniteLengthTable = FlipTable.of(headers, data);
+      final int tableLineLength = infiniteLengthTable.indexOf("\n");
+      final int nonMessageLength = tableLineLength - longestMessageLineLengthLength;
+      maximumMessageLength = Math.max(1, maxLineLength - nonMessageLength);
+    }
+    for (String[] row : data) {
+      row[4] = addNewlines(row[4], maximumMessageLength);
+    }
+
     sb.append(FlipTable.of(headers, data));
     sb.append("\n");
     sb.append(toCompact(violations, summarySubject));
@@ -101,11 +143,10 @@ public class ViolationsReporterApi {
     return sb;
   }
 
-  private String addNewlines(String message) {
+  private String addNewlines(String message, int maxLineLength) {
     if (message == null) {
       return "";
     }
-    final int maxLineLength = 100;
     int noLineCounter = 0;
     final StringBuilder withNewlines = new StringBuilder();
     for (int i = 0; i < message.length(); i++) {

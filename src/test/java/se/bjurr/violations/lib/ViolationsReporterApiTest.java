@@ -1,5 +1,6 @@
 package se.bjurr.violations.lib;
 
+import static org.junit.Assert.assertTrue;
 import static se.bjurr.violations.lib.TestUtils.getRootFolder;
 import static se.bjurr.violations.lib.ViolationsApi.violationsApi;
 import static se.bjurr.violations.lib.ViolationsReporterApi.violationsReporterApi;
@@ -126,5 +127,47 @@ public class ViolationsReporterApiTest {
             .getReport(VERBOSE);
 
     LOG.info("\n" + report);
+  }
+
+  @Test
+  public void testCompactWithLineLength() {
+    final String report =
+        violationsReporterApi() //
+            .withViolations(accumulatedViolations) //
+            .withMaxLineLength(100) //
+            .getReport(COMPACT);
+
+    LOG.info("\n" + report);
+    for (String line : report.split("\n")) {
+      assertTrue("Got: " + line.length(), line.length() <= 100);
+    }
+  }
+
+  @Test
+  public void testPerFileCompactWithLineLength() {
+    final String report =
+        violationsReporterApi() //
+            .withViolations(accumulatedViolations) //
+            .withMaxLineLength(100) //
+            .getReport(PER_FILE_COMPACT);
+
+    LOG.info("\n" + report);
+    for (String line : report.split("\n")) {
+      assertTrue("Got: " + line.length(), line.length() <= 100);
+    }
+  }
+
+  @Test
+  public void testVerboseWithLineLength() {
+    final String report =
+        violationsReporterApi() //
+            .withViolations(accumulatedViolations) //
+            .withMaxLineLength(100) //
+            .getReport(VERBOSE);
+
+    LOG.info("\n" + report);
+    for (String line : report.split("\n")) {
+      assertTrue("Got: " + line.length(), line.length() <= 100);
+    }
   }
 }
