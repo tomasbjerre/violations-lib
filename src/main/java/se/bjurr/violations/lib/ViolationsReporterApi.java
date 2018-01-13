@@ -22,6 +22,11 @@ import se.bjurr.violations.lib.model.Violation;
 public class ViolationsReporterApi {
 
   private Iterable<Violation> violations;
+  private int maxReporterColumnWidth;
+  private int maxRuleColumnWidth = 10;
+  private int maxSeverityColumnWidth;
+  private int maxLineColumnWidth;
+  private int maxMessageColumnWidth = 50;
 
   private ViolationsReporterApi() {}
 
@@ -29,7 +34,7 @@ public class ViolationsReporterApi {
     return new ViolationsReporterApi();
   }
 
-  public String getReport(ViolationsReporterDetailLevel level) {
+  public String getReport(final ViolationsReporterDetailLevel level) {
     checkNotNull(violations, "violations");
 
     final StringBuilder sb = new StringBuilder();
@@ -47,7 +52,7 @@ public class ViolationsReporterApi {
     return sb.toString();
   }
 
-  private StringBuilder toVerbose(Iterable<Violation> violations) {
+  private StringBuilder toVerbose(final Iterable<Violation> violations) {
     final StringBuilder sb = new StringBuilder();
     final Map<String, Set<Violation>> perFile = getViolationsPerFile(violations);
     for (final Entry<String, Set<Violation>> perFileEntry : perFile.entrySet()) {
@@ -60,7 +65,7 @@ public class ViolationsReporterApi {
     return sb;
   }
 
-  private StringBuilder toPerFile(Iterable<Violation> violations) {
+  private StringBuilder toPerFile(final Iterable<Violation> violations) {
     final StringBuilder sb = new StringBuilder();
     final Map<String, Set<Violation>> perFile = getViolationsPerFile(violations);
     for (final Entry<String, Set<Violation>> fileEntry : perFile.entrySet()) {
@@ -72,22 +77,60 @@ public class ViolationsReporterApi {
     return sb;
   }
 
-  public ViolationsReporterApi withViolations(List<Violation> violations) {
+  public ViolationsReporterApi withViolations(final List<Violation> violations) {
     this.violations = violations;
     return this;
   }
 
-  private StringBuilder toDetailed(Iterable<Violation> violations, String summarySubject) {
+  /**
+   * Avoid wider column. Will add new lines if wider. A value of 0 or less will disable the feature.
+   */
+  public ViolationsReporterApi withMaxMessageColumnWidth(final int maxMessageColumnWidth) {
+    this.maxMessageColumnWidth = maxMessageColumnWidth;
+    return this;
+  }
+
+  /**
+   * Avoid wider column. Will add new lines if wider. A value of 0 or less will disable the feature.
+   */
+  public ViolationsReporterApi withMaxLineColumnWidth(final int maxLineColumnWidth) {
+    this.maxLineColumnWidth = maxLineColumnWidth;
+    return this;
+  }
+
+  /**
+   * Avoid wider column. Will add new lines if wider. A value of 0 or less will disable the feature.
+   */
+  public ViolationsReporterApi withMaxReporterColumnWidth(final int maxReporterColumnWidth) {
+    this.maxReporterColumnWidth = maxReporterColumnWidth;
+    return this;
+  }
+
+  /**
+   * Avoid wider column. Will add new lines if wider. A value of 0 or less will disable the feature.
+   */
+  public ViolationsReporterApi withMaxRuleColumnWidth(final int maxRuleColumnWidth) {
+    this.maxRuleColumnWidth = maxRuleColumnWidth;
+    return this;
+  }
+
+  /** Avoid wider column. Will add new lines if wider. */
+  public ViolationsReporterApi withMaxSeverityColumnWidth(final int maxSeverityColumnWidth) {
+    this.maxSeverityColumnWidth = maxSeverityColumnWidth;
+    return this;
+  }
+
+  private StringBuilder toDetailed(
+      final Iterable<Violation> violations, final String summarySubject) {
     final StringBuilder sb = new StringBuilder();
     final List<String[]> rows = new ArrayList<>();
     for (final Violation violation : violations) {
-      final String[] row = {
-        violation.getReporter(),
-        violation.getRule().or(""),
-        violation.getSeverity().name(),
-        violation.getStartLine().toString(),
-        addNewlines(violation.getMessage())
-      };
+      final String message = addNewlines(violation.getMessage(), maxMessageColumnWidth);
+      final String line = addNewlines(violation.getStartLine().toString(), maxLineColumnWidth);
+      final String severity = addNewlines(violation.getSeverity().name(), maxSeverityColumnWidth);
+      final String rule = addNewlines(violation.getRule().or(""), maxRuleColumnWidth);
+      final String reporter = addNewlines(violation.getReporter(), maxReporterColumnWidth);
+      final String[] row = {reporter, rule, severity, line, message};
       rows.add(row);
     }
 
@@ -101,11 +144,14 @@ public class ViolationsReporterApi {
     return sb;
   }
 
-  private String addNewlines(String message) {
+  private String addNewlines(final String message, final int maxLineLength) {
     if (message == null) {
       return "";
     }
-    final int maxLineLength = 100;
+    if (maxLineLength <= 0) {
+      return message;
+    }
+
     int noLineCounter = 0;
     final StringBuilder withNewlines = new StringBuilder();
     for (int i = 0; i < message.length(); i++) {
@@ -124,7 +170,7 @@ public class ViolationsReporterApi {
     return withNewlines.toString().trim();
   }
 
-  private StringBuilder toCompact(Iterable<Violation> violations, String subject) {
+  private StringBuilder toCompact(final Iterable<Violation> violations, final String subject) {
     final StringBuilder sb = new StringBuilder();
     final Map<String, Set<Violation>> perReporter = getViolationsPerReporter(violations);
     final List<String[]> rows = new ArrayList<>();
@@ -166,7 +212,7 @@ public class ViolationsReporterApi {
     return sb;
   }
 
-  private Map<SEVERITY, Set<Violation>> getViolationsPerSeverity(Set<Violation> violations) {
+  private Map<SEVERITY, Set<Violation>> getViolationsPerSeverity(final Set<Violation> violations) {
     final Map<SEVERITY, Set<Violation>> violationsPerSeverity = new TreeMap<>();
     for (final SEVERITY severity : SEVERITY.values()) {
       violationsPerSeverity.put(severity, new TreeSet<Violation>());
@@ -180,7 +226,7 @@ public class ViolationsReporterApi {
     return violationsPerSeverity;
   }
 
-  private Map<String, Set<Violation>> getViolationsPerFile(Iterable<Violation> violations) {
+  private Map<String, Set<Violation>> getViolationsPerFile(final Iterable<Violation> violations) {
     final Map<String, Set<Violation>> violationsPerFile = new TreeMap<>();
     for (final Violation violation : violations) {
       final Set<Violation> perReporter = getOrCreate(violationsPerFile, violation.getFile());
@@ -189,7 +235,8 @@ public class ViolationsReporterApi {
     return violationsPerFile;
   }
 
-  private Map<String, Set<Violation>> getViolationsPerReporter(Iterable<Violation> violations) {
+  private Map<String, Set<Violation>> getViolationsPerReporter(
+      final Iterable<Violation> violations) {
     final Map<String, Set<Violation>> violationsPerReporter = new TreeMap<>();
     for (final Violation violation : violations) {
       final Set<Violation> perReporter =
@@ -199,7 +246,7 @@ public class ViolationsReporterApi {
     return violationsPerReporter;
   }
 
-  private <T, K> Set<T> getOrCreate(Map<K, Set<T>> container, K key) {
+  private <T, K> Set<T> getOrCreate(final Map<K, Set<T>> container, final K key) {
     if (container.containsKey(key)) {
       return container.get(key);
     } else {

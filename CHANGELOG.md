@@ -3,6 +3,15 @@
 
 Changelog of Violations lib.
 
+## Unreleased
+### GitHub [#30](https://github.com/tomasbjerre/violations-lib/pull/30) Parameterize the max line length for the report table.
+
+**Parameterize max width of reporter table**
+
+
+[0be6456df10d23b](https://github.com/tomasbjerre/violations-lib/commit/0be6456df10d23b) Tomas Bjerre *2018-01-13 19:03:00*
+
+
 ## 1.50
 ### GitHub [#28](https://github.com/tomasbjerre/violations-lib/issues/28) Single quotes in xml are printed as &amp;apos; 
 

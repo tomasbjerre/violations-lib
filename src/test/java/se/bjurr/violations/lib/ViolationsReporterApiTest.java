@@ -99,6 +99,21 @@ public class ViolationsReporterApiTest {
   }
 
   @Test
+  public void testVerboseLimitations() {
+    final String report =
+        violationsReporterApi() //
+            .withViolations(accumulatedViolations) //
+            .withMaxReporterColumnWidth(20) //
+            .withMaxRuleColumnWidth(10) //
+            .withMaxSeverityColumnWidth(20) //
+            .withMaxLineColumnWidth(10) //
+            .withMaxMessageColumnWidth(20) //
+            .getReport(VERBOSE);
+
+    LOG.info("\n" + report);
+  }
+
+  @Test
   public void testCompactWithZeroViolations() {
     final String report =
         violationsReporterApi() //
