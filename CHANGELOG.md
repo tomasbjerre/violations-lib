@@ -3,13 +3,13 @@
 
 Changelog of Violations lib.
 
-## Unreleased
+## 1.52
 ### GitHub [#10](https://github.com/tomasbjerre/violations-lib/issues/10) Google error-prone
 
 **Google error-prone**
 
 
-[80b0e9e99d20eee](https://github.com/tomasbjerre/violations-lib/commit/80b0e9e99d20eee) Tomas Bjerre *2018-01-14 11:19:04*
+[f2720de0ec7d36c](https://github.com/tomasbjerre/violations-lib/commit/f2720de0ec7d36c) Tomas Bjerre *2018-01-14 11:20:10*
 
 
 ## 1.51

@@ -20,23 +20,17 @@ public class GoogleErrorProneParser implements ViolationsParser {
   @Override
   public List<Violation> parseReportOutput(final String reportContent) throws Exception {
     final List<Violation> found = new ArrayList<>();
-    String currentFilename = null;
-    Integer currentLine = null;
-    SEVERITY currentSeverity = null;
-    String currentRule = null;
-    String currentRuleMessage = null;
-    StringBuilder currentMessage = null;
     final String[] lines = reportContent.split("\n");
     for (int i = 0; i < lines.length; i++) {
       String line = lines[i];
       final Matcher matcher = NEW_VIOLATION.matcher(line);
       if (matcher.find()) {
-        currentFilename = matcher.group(4).trim();
-        currentLine = Integer.parseInt(matcher.group(5));
-        currentSeverity = toSeverity(matcher.group(6));
-        currentRule = matcher.group(7).trim();
-        currentRuleMessage = matcher.group(8).trim();
-        currentMessage = new StringBuilder();
+        final String currentFilename = matcher.group(4).trim();
+        final int currentLine = Integer.parseInt(matcher.group(5));
+        final SEVERITY currentSeverity = toSeverity(matcher.group(6));
+        final String currentRule = matcher.group(7).trim();
+        final String currentRuleMessage = matcher.group(8).trim();
+        final StringBuilder currentMessage = new StringBuilder();
         for (int j = i + 1; j < lines.length; j++) {
           line = lines[j];
           if (!line.startsWith("  ")) {
