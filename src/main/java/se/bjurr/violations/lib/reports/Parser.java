@@ -22,6 +22,7 @@ import se.bjurr.violations.lib.parsers.Flake8Parser;
 import se.bjurr.violations.lib.parsers.FxCopParser;
 import se.bjurr.violations.lib.parsers.GendarmeParser;
 import se.bjurr.violations.lib.parsers.GoLintParser;
+import se.bjurr.violations.lib.parsers.GoogleErrorProneParser;
 import se.bjurr.violations.lib.parsers.JCReportParser;
 import se.bjurr.violations.lib.parsers.JSHintParser;
 import se.bjurr.violations.lib.parsers.KlocworkParser;
@@ -60,6 +61,7 @@ public enum Parser {
   KLOCWORK(new KlocworkParser()), //
   MYPY(new MyPyParser()), //
   GOLINT(new GoLintParser()), //
+  GOOGLEERRORPRONE(new GoogleErrorProneParser()), //
   PERLCRITIC(new PerlCriticParser()), //
   PITEST(new PiTestParser()), //
   PMD(new PMDParser()), //
@@ -76,11 +78,11 @@ public enum Parser {
   private static Logger LOG = Logger.getLogger(Parser.class.getSimpleName());
   private transient ViolationsParser violationsParser;
 
-  private Parser(ViolationsParser violationsParser) {
+  private Parser(final ViolationsParser violationsParser) {
     this.violationsParser = violationsParser;
   }
 
-  public List<Violation> findViolations(List<File> includedFiles) {
+  public List<Violation> findViolations(final List<File> includedFiles) {
     final List<Violation> violations = new ArrayList<>();
     for (final File file : includedFiles) {
       try {

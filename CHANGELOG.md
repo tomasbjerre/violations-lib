@@ -4,12 +4,21 @@
 Changelog of Violations lib.
 
 ## Unreleased
+### GitHub [#10](https://github.com/tomasbjerre/violations-lib/issues/10) Google error-prone
+
+**Google error-prone**
+
+
+[80b0e9e99d20eee](https://github.com/tomasbjerre/violations-lib/commit/80b0e9e99d20eee) Tomas Bjerre *2018-01-14 11:19:04*
+
+
+## 1.51
 ### GitHub [#30](https://github.com/tomasbjerre/violations-lib/pull/30) Parameterize the max line length for the report table.
 
 **Parameterize max width of reporter table**
 
 
-[0be6456df10d23b](https://github.com/tomasbjerre/violations-lib/commit/0be6456df10d23b) Tomas Bjerre *2018-01-13 19:03:00*
+[87c5ab7cb5f4ae7](https://github.com/tomasbjerre/violations-lib/commit/87c5ab7cb5f4ae7) Tomas Bjerre *2018-01-13 19:06:03*
 
 
 ## 1.50

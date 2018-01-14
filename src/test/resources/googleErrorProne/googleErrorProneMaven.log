@@ -1,0 +1,11 @@
+../examples/maven/error_prone_should_flag$ mvn compile
+[INFO] Compiling 1 source file to .../examples/maven/error_prone_should_flag/target/classes
+.../examples/maven/error_prone_should_flag/src/main/java/Main.java:20: error: [DeadException] Exception created but not thrown
+    new Exception();
+    ^
+    (see http://errorprone.info/bugpattern/DeadException)
+  Did you mean 'throw new Exception();'?
+1 error
+[INFO] ------------------------------------------------------------------------
+[INFO] BUILD FAILURE
+[INFO] ------------------------------------------------------------------------
