@@ -28,6 +28,7 @@ import se.bjurr.violations.lib.parsers.JSHintParser;
 import se.bjurr.violations.lib.parsers.KlocworkParser;
 import se.bjurr.violations.lib.parsers.LintParser;
 import se.bjurr.violations.lib.parsers.MyPyParser;
+import se.bjurr.violations.lib.parsers.PCLintParser;
 import se.bjurr.violations.lib.parsers.PMDParser;
 import se.bjurr.violations.lib.parsers.PerlCriticParser;
 import se.bjurr.violations.lib.parsers.PiTestParser;
@@ -73,7 +74,8 @@ public enum Parser {
   STYLECOP(new StyleCopParser()), //
   XMLLINT(new XMLLintParser()), //
   ZPTLINT(new ZPTLintParser()), //
-  DOCFX(new DocFXParser());
+  DOCFX(new DocFXParser()), //
+  PCLINT(new PCLintParser());
 
   private static Logger LOG = Logger.getLogger(Parser.class.getSimpleName());
   private transient ViolationsParser violationsParser;

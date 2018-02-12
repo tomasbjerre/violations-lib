@@ -5,7 +5,7 @@ import static se.bjurr.violations.lib.model.SEVERITY.ERROR;
 import static se.bjurr.violations.lib.model.SEVERITY.INFO;
 import static se.bjurr.violations.lib.model.SEVERITY.WARN;
 import static se.bjurr.violations.lib.model.Violation.violationBuilder;
-import static se.bjurr.violations.lib.reports.Parser.PERLCRITIC;
+import static se.bjurr.violations.lib.reports.Parser.PCLINT;
 import static se.bjurr.violations.lib.util.ViolationParserUtils.getLines;
 import static se.bjurr.violations.lib.util.ViolationParserUtils.getParts;
 
@@ -14,7 +14,8 @@ import java.util.List;
 import se.bjurr.violations.lib.model.SEVERITY;
 import se.bjurr.violations.lib.model.Violation;
 
-public class PerlCriticParser implements ViolationsParser {
+public class PCLintParser implements ViolationsParser {
+
   @Override
   public List<Violation> parseReportOutput(String string) throws Exception {
     List<Violation> violations = new ArrayList<>();
@@ -23,30 +24,26 @@ public class PerlCriticParser implements ViolationsParser {
       List<String> parts =
           getParts(
               line,
-              "\\(Severity: (\\d*)\\)$",
-              "^([^:]*):",
-              "^(.+?) at line ",
-              "^(\\d*), ",
-              "column (\\d*)\\.  ",
-              "(.*)");
+              "^(.+)\\(",
+              "^([\\d]+)\\): ",
+              "^(Error|Warning|Info|Note) ",
+              "^([\\d]+): ",
+              "^(.*)$");
       if (parts.isEmpty()) {
         continue;
       }
-      Integer severity = parseInt(parts.get(0));
-      String filename = parts.get(1);
-      String message = parts.get(2);
-      Integer lineNumber = parseInt(parts.get(3));
-      Integer columnNumber = parseInt(parts.get(4));
-      String rule = parts.get(5);
-
+      String filename = parts.get(0);
+      Integer lineNumber = parseInt(parts.get(1));
+      SEVERITY severity = toSeverity(parts.get(2));
+      String rule = parts.get(3);
+      String message = parts.get(4);
       violations.add( //
           violationBuilder() //
-              .setParser(PERLCRITIC) //
+              .setParser(PCLINT) //
               .setStartLine(lineNumber) //
-              .setColumn(columnNumber) //
               .setFile(filename) //
               .setRule(rule) //
-              .setSeverity(toSeverity(severity)) //
+              .setSeverity(severity) //
               .setMessage(message) //
               .build() //
           );
@@ -54,11 +51,11 @@ public class PerlCriticParser implements ViolationsParser {
     return violations;
   }
 
-  public SEVERITY toSeverity(Integer severity) {
-    if (severity >= 4) {
+  public SEVERITY toSeverity(String severity) {
+    if (severity.equals("Error")) {
       return ERROR;
     }
-    if (severity >= 3) {
+    if (severity.equals("Warning")) {
       return WARN;
     }
     return INFO;
