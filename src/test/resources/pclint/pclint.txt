@@ -1,14 +1,14 @@
 PC-lint for C/C++ (NT) Vers. 9.00L, Copyright Gimpel Software 1985-2014
 
 --- Module:   C:\UST3\qse30\Drivers\drvADC.c (C)
-C:\UST3\qse30\Drivers\drvADC.c(84): Note 9029: Mismatched essential type categories for binary operator [MISRA 2012 Rule 10.4, required] (Note <a href="/userContent/LintMsgRef.html#9029">9029</a>)
+C:\UST3\qse30\Drivers\drvADC.c(84): Note 9029: Mismatched essential type categories for binary operator
 
 --- Module:   C:\UST3\qse30\Drivers\drvCAN.c (C)
-C:\UST3\qse30\Drivers\drvCAN.c(68): Note 9029: Mismatched essential type categories for binary operator [MISRA 2012 Rule 10.4, required] (Note <a href="/userContent/LintMsgRef.html#9029">9029</a>)
-C:\UST3\qse30\Drivers\drvCAN.c(72): Note 931: Both sides have side effects [MISRA 2012 Rule 1.3, required], [MISRA 2012 Rule 13.2, required] (Note <a href="/userContent/LintMsgRef.html#931">931</a>)
-C:\UST3\qse30\Drivers\drvCAN.c(73): Warning 534: Ignoring return value of function 'PIC_CAN_Transmit(can_frame_t *)' (compare with line 68, file C:\UST3\qse30\HAL\hal_ext.h, module C:\UST3\qse30\Drivers\drvADC.c) [MISRA 2012 Directive 4.7, required], [MISRA 2012 Rule 17.7, required] (Warning <a href="/userContent/LintMsgRef.html#534">534</a>)
-C:\UST3\qse30\Drivers\drvCAN.c(128): Warning 534: Ignoring return value of function 'PIC_CAN_Transmit(can_frame_t *)' (compare with line 68, file C:\UST3\qse30\HAL\hal_ext.h, module C:\UST3\qse30\Drivers\drvADC.c) [MISRA 2012 Directive 4.7, required], [MISRA 2012 Rule 17.7, required] (Warning <a href="/userContent/LintMsgRef.html#534">534</a>)
-C:\UST3\qse30\Drivers\drvCAN.c(134): Info 818: Pointer parameter 'txFrame' (line 100) could be declared as pointing to const [MISRA 2012 Rule 8.13, advisory] (Info <a href="/userContent/LintMsgRef.html#818">818</a>)
+C:\UST3\qse30\Drivers\drvCAN.c(68): Note 9029: Mismatched essential type categories for binary operator [MISRA 2012 Rule 10.4, mandatory] (Note <a href="/userContent/LintMsgRef.html#9029">9029</a>)
+C:\UST3\qse30\Drivers\drvCAN.c(72): Note 931: Both sides have side effects [MISRA 2012 Rule 1.3, required]
+C:\UST3\qse30\Drivers\drvCAN.c(73): Warning 534: Ignoring return value of function 'PIC_CAN_Transmit(can_frame_t *)' (compare with line 68, file C:\UST3\qse30\HAL\hal_ext.h, module C:\UST3\qse30\Drivers\drvADC.c)
+C:\UST3\qse30\Drivers\drvCAN.c(128): Warning 534: Ignoring return value of function 'PIC_CAN_Transmit(can_frame_t *)' (compare with line 68, file C:\UST3\qse30\HAL\hal_ext.h, module C:\UST3\qse30\Drivers\drvADC.c)
+C:\UST3\qse30\Drivers\drvCAN.c(134): Info 818: Pointer parameter 'txFrame' (line 100) could be declared as pointing to const
 
 
 --- Module:   C:\UST3\qse30\Drivers\drvNTC.c (C)
@@ -18,4 +18,9 @@ C:\UST3\qse30\Drivers\drvCAN.c(134): Info 818: Pointer parameter 'txFrame' (line
 
 
 --- Module:   C:\UST3\qse30\Modules\COMM\J1939\Broadcast\dm13.c (C)
-C:\UST3\qse30\Modules\COMM\J1939\Broadcast\dm13.c(123): Error 48: Bad type [MISRA 2012 Rule 10.1, required] (Error <a href="/userContent/LintMsgRef.html#48">48</a>)
+C:\UST3\qse30\Modules\COMM\J1939\Broadcast\dm13.c(123): Error 48: Bad type
+C:\UST3\qse30\Modules\COMM\J1939\Broadcast\dm13.c(123): Error 48: Bad type [MISRA 2012 Rule 10.1, advisory] (Error <a href="/userContent/LintMsgRef.html#48">48</a>)
+
+
+
+

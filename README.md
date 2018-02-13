@@ -34,6 +34,7 @@ It supports:
  * [_JCReport_](https://github.com/jCoderZ/fawkez/wiki/JcReport)
  * [_Klocwork_](http://www.klocwork.com/products-services/klocwork/static-code-analysis)
  * [_MyPy_](https://pypi.python.org/pypi/mypy-lang)
+ * [_PCLint_](http://www.gimpel.com/html/pcl.htm) PC-Lint using the same output format as the Jenkins warnings plugin, [_details here_](https://wiki.jenkins.io/display/JENKINS/PcLint+options)
  * [_PerlCritic_](https://github.com/Perl-Critic)
  * [_PiTest_](http://pitest.org/)
  * [_PyDocStyle_](https://pypi.python.org/pypi/pydocstyle)
