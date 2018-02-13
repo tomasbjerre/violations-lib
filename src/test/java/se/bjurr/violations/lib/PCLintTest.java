@@ -18,7 +18,7 @@ public class PCLintTest {
   @Test
   public void testThatViolationsCanBeParsed() {
     String rootFolder = getRootFolder();
-    
+
     List<Violation> actual =
         violationsApi() //
             .withPattern(".*/pclint/.*\\.txt$") //
@@ -36,8 +36,7 @@ public class PCLintTest {
                 .setFile("C:\\UST3\\qse30\\Drivers\\drvADC.c") //
                 .setStartLine(84) //
                 .setRule("9029") //
-                .setMessage(
-                    "Mismatched essential type categories for binary operator") //
+                .setMessage("Mismatched essential type categories for binary operator") //
                 .setSeverity(INFO) //
                 .build() //
             );
@@ -73,44 +72,38 @@ public class PCLintTest {
                 .setFile("C:\\UST3\\qse30\\Modules\\COMM\\J1939\\Broadcast\\dm13.c") //
                 .setStartLine(123) //
                 .setRule("48") //
-                .setMessage(
-                    "Bad type") //
+                .setMessage("Bad type") //
                 .setSeverity(ERROR) //
                 .build() //
             );
   }
 
-	@Test
-	public void testThatSeverityAndRulenumberFromMisraTakesPrecedence() {
-		String rootFolder = getRootFolder();
+  @Test
+  public void testThatSeverityAndRulenumberFromMisraTakesPrecedence() {
+    String rootFolder = getRootFolder();
 
-		List<Violation> actual = violationsApi() //
-				.withPattern(".*/pclint/.*\\.txt$") //
-				.inFolder(rootFolder) //
-				.findAll(PCLINT) //
-				.violations();
-		
-		Violation violation = actual.get(1);
-		
-		assertThat(violation.getRule().get())
-			.isEqualTo("MISRA 2012 Rule 10.4, mandatory");
-		assertThat(violation.getSeverity())
-			.isEqualTo(ERROR);
-		
-		violation = actual.get(2);
-		
-		assertThat(violation.getRule().get())
-			.isEqualTo("MISRA 2012 Rule 1.3, required");
-		assertThat(violation.getSeverity())
-			.isEqualTo(WARN);
-		
-		violation = actual.get(7);
-		
-		assertThat(violation.getRule().get())
-			.isEqualTo("MISRA 2012 Rule 10.1, advisory");
-		assertThat(violation.getSeverity())
-			.isEqualTo(INFO);
-		assertThat(violation.getMessage())
-			.isEqualTo("Bad type (Error <a href=\"/userContent/LintMsgRef.html#48\">48</a>)");
-	}
+    List<Violation> actual =
+        violationsApi() //
+            .withPattern(".*/pclint/.*\\.txt$") //
+            .inFolder(rootFolder) //
+            .findAll(PCLINT) //
+            .violations();
+
+    Violation violation = actual.get(1);
+
+    assertThat(violation.getRule().get()).isEqualTo("MISRA 2012 Rule 10.4, mandatory");
+    assertThat(violation.getSeverity()).isEqualTo(ERROR);
+
+    violation = actual.get(2);
+
+    assertThat(violation.getRule().get()).isEqualTo("MISRA 2012 Rule 1.3, required");
+    assertThat(violation.getSeverity()).isEqualTo(WARN);
+
+    violation = actual.get(7);
+
+    assertThat(violation.getRule().get()).isEqualTo("MISRA 2012 Rule 10.1, advisory");
+    assertThat(violation.getSeverity()).isEqualTo(INFO);
+    assertThat(violation.getMessage())
+        .isEqualTo("Bad type (Error <a href=\"/userContent/LintMsgRef.html#48\">48</a>)");
+  }
 }
