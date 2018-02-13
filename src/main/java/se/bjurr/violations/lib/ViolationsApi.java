@@ -84,8 +84,12 @@ public class ViolationsApi {
     return foundViolations;
   }
 
+  private String makeWindowsFriendly(String regularExpression) {
+    return regularExpression.replace("/", "(?:/|\\\\)");
+  }
+
   public ViolationsApi withPattern(String regularExpression) {
-    pattern = regularExpression;
+    pattern = makeWindowsFriendly(regularExpression);
     return this;
   }
 }

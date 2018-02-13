@@ -5,7 +5,7 @@ import static se.bjurr.violations.lib.model.SEVERITY.ERROR;
 import static se.bjurr.violations.lib.model.SEVERITY.INFO;
 import static se.bjurr.violations.lib.model.SEVERITY.WARN;
 import static se.bjurr.violations.lib.model.Violation.violationBuilder;
-import static se.bjurr.violations.lib.reports.Parser.CPPLINT;
+import static se.bjurr.violations.lib.reports.Parser.PERLCRITIC;
 import static se.bjurr.violations.lib.util.ViolationParserUtils.getLines;
 import static se.bjurr.violations.lib.util.ViolationParserUtils.getParts;
 
@@ -41,7 +41,7 @@ public class PerlCriticParser implements ViolationsParser {
 
       violations.add( //
           violationBuilder() //
-              .setParser(CPPLINT) //
+              .setParser(PERLCRITIC) //
               .setStartLine(lineNumber) //
               .setColumn(columnNumber) //
               .setFile(filename) //
