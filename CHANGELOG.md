@@ -3,6 +3,30 @@
 
 Changelog of Violations lib.
 
+## Unreleased
+### No issue
+
+**Bumping version to fix release**
+
+
+[1cbb6a7a096604b](https://github.com/tomasbjerre/violations-lib/commit/1cbb6a7a096604b) Tomas Bjerre *2018-02-13 18:25:15*
+
+**Autoformatting and removed debug code**
+
+
+[5e3d49f4165798e](https://github.com/tomasbjerre/violations-lib/commit/5e3d49f4165798e) Øyvind Rørtveit *2018-02-13 15:10:07*
+
+**Fixed file parsing under Windows, fixed PC-lint parser, added detection of MISRA errors for PC-lint**
+
+
+[45d308d631a6113](https://github.com/tomasbjerre/violations-lib/commit/45d308d631a6113) Øyvind Rørtveit *2018-02-13 14:51:34*
+
+**Added PC-lint parser**
+
+
+[be94e0831808f2b](https://github.com/tomasbjerre/violations-lib/commit/be94e0831808f2b) Øyvind Rørtveit *2018-02-12 16:36:04*
+
+
 ## 1.52
 ### GitHub [#10](https://github.com/tomasbjerre/violations-lib/issues/10) Google error-prone
 
