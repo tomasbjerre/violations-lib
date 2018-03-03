@@ -45,11 +45,11 @@ public class KlocworkTest {
             "In method getURLConnection. The 'getURLConnection' method throws a generic exception 'java.lang.Exception' http://server:8080/review/insight-review.html#goto:project=TestProject,pid=15");
     assertThat(violation1.getFile()) //
         .isEqualTo("/home/test_build/src/main/java/Main2.java");
-    assertThat(violation0.getSeverity()) //
+    assertThat(violation1.getSeverity()) //
         .isEqualTo(INFO);
-    assertThat(violation0.getRule().get()) //
-        .isEqualTo("JD.VNU.NULL");
-    assertThat(violation0.getStartLine()) //
+    assertThat(violation1.getRule().get()) //
+        .isEqualTo("EXC.BROADTHROWS");
+    assertThat(violation1.getStartLine()) //
         .isEqualTo(1);
   }
 }
