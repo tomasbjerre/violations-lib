@@ -44,6 +44,36 @@ public class PMDTest {
   }
 
   @Test
+  public void testThatViolationsCanBeParsedCsvDelta() {
+    final String rootFolder = getRootFolder();
+
+    final List<Violation> actual =
+        violationsApi() //
+            .withPattern(".*/pmd/csv-delta\\.xml$") //
+            .inFolder(rootFolder) //
+            .findAll(PMD) //
+            .violations();
+
+    assertThat(actual) //
+        .hasSize(5);
+
+    final Violation violationZero = actual.get(0);
+    assertThat(violationZero.getFile()) //
+        .isEqualTo("src/CustomTableClass.java");
+    assertThat(violationZero.getMessage()) //
+        .startsWith("Description") //
+        .doesNotContain("CDATA");
+    assertThat(violationZero.getStartLine()) //
+        .isEqualTo(1);
+    assertThat(violationZero.getEndLine()) //
+        .isEqualTo(1);
+    assertThat(violationZero.getRule().get()) //
+        .isEqualTo("RULE1");
+    assertThat(violationZero.getSeverity()) //
+        .isEqualTo(WARN);
+  }
+
+  @Test
   public void testThatViolationsCanBeParsedIfNoRuleset() {
     final String rootFolder = getRootFolder();
 

@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<pmd xmlns="http://pmd.sourceforge.net/report/2.0.0"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://pmd.sourceforge.net/report/2.0.0 http://pmd.sourceforge.net/report_2_0_0.xsd"
+	version="6.1.0" timestamp="2018-03-07T08:21:41.695">
+	<file name="src/CustomTableClass.java">
+		<violation beginline="1" endline="1" begincolumn="14" endcolumn="29" rule="RULE1" ruleset="Security" externalInfoUrl="https://pmd.github.io/pmd-6.1.0/pmd_rules_java_security.html#RULE1" priority="3">
+			Description 1
+		</violation>
+		<violation beginline="1" endline="242" begincolumn="14" endcolumn="11" rule="RULE2" ruleset="Design" externalInfoUrl="https://pmd.github.io/pmd-6.1.0/pmd_rules_java_design.html#RULE2" priority="3">
+			Description 2
+		</violation>
+		<violation beginline="1" endline="242" begincolumn="14" endcolumn="11" rule="RULE3" ruleset="Design" externalInfoUrl="https://pmd.github.io/pmd-6.1.0/pmd_rules_java_design.html#RULE3" priority="3">
+			Description 3
+		</violation>
+		<violation beginline="1" endline="242" begincolumn="14" endcolumn="11" rule="RULE4" ruleset="Design" externalInfoUrl="https://pmd.github.io/pmd-6.1.0/pmd_rules_java_design.html#RULE4" priority="3">
+			Description 4
+		</violation>
+		<violation beginline="39" endline="39" begincolumn="17" endcolumn="18" rule="RULE5" ruleset="Design" externalInfoUrl="https://pmd.github.io/pmd-6.1.0/pmd_rules_java_design.html#RULE5" priority="3">
+			Description 5
+		</violation>
+	</file>
+</pmd>
