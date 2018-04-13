@@ -4,6 +4,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 import static se.bjurr.violations.lib.TestUtils.getRootFolder;
 import static se.bjurr.violations.lib.ViolationsApi.violationsApi;
 import static se.bjurr.violations.lib.model.SEVERITY.ERROR;
+import static se.bjurr.violations.lib.model.SEVERITY.WARN;
 import static se.bjurr.violations.lib.reports.Parser.CPPLINT;
 
 import java.util.List;
@@ -14,9 +15,9 @@ public class CppLintTest {
 
   @Test
   public void testThatViolationsCanBeParsed() {
-    String rootFolder = getRootFolder();
+    final String rootFolder = getRootFolder();
 
-    List<Violation> actual =
+    final List<Violation> actual =
         violationsApi() //
             .withPattern(".*/cpplint/.*\\.txt$") //
             .inFolder(rootFolder) //
@@ -52,5 +53,34 @@ public class CppLintTest {
         .isEqualTo(11);
     assertThat(actual.get(2).getEndLine()) //
         .isEqualTo(11);
+  }
+
+  @Test
+  public void testThatViolationsCanBeParsed2() {
+    final String rootFolder = getRootFolder();
+
+    final List<Violation> actual =
+        violationsApi() //
+            .withPattern(".*cpplint-result\\.xml$") //
+            .inFolder(rootFolder) //
+            .findAll(CPPLINT) //
+            .violations();
+
+    assertThat(actual) //
+        .hasSize(1);
+
+    final Violation violation = actual.get(0);
+    assertThat(violation.getMessage()) //
+        .isEqualTo("Using C-style cast.  Use reinterpret_cast<uint8_t *>(...) instead");
+    assertThat(violation.getFile()) //
+        .isEqualTo("pump/src/hal/stm32f4xx/devices/spi/spi_unit0_com.c");
+    assertThat(violation.getSeverity()) //
+        .isEqualTo(WARN);
+    assertThat(violation.getRule().get()) //
+        .isEqualTo("readability/casting");
+    assertThat(violation.getStartLine()) //
+        .isEqualTo(737);
+    assertThat(violation.getEndLine()) //
+        .isEqualTo(737);
   }
 }

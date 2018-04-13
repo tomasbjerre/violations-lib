@@ -1,0 +1,2 @@
+Done processing pump/src/gui/controls/TextValueHolder.cpp
+pump/src/hal/stm32f4xx/devices/spi/spi_unit0_com.c:737:  Using C-style cast.  Use reinterpret_cast<uint8_t *>(...) instead  [readability/casting] [4]
