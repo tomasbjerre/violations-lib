@@ -8,7 +8,9 @@ import static se.bjurr.violations.lib.model.SEVERITY.WARN;
 import static se.bjurr.violations.lib.reports.Parser.GOOGLEERRORPRONE;
 
 import java.util.List;
+
 import org.junit.Test;
+
 import se.bjurr.violations.lib.model.Violation;
 
 public class GoogleErrorProneTest {
@@ -79,5 +81,32 @@ public class GoogleErrorProneTest {
         .isEqualTo("DeadException");
     assertThat(violation0.getStartLine()) //
         .isEqualTo(20);
+  }
+
+  @Test
+  public void testThatViolationsCanBeParsedGradleNullAway() {
+    final String rootFolder = getRootFolder();
+
+    final List<Violation> actual =
+        violationsApi() //
+            .withPattern(".*/googleErrorProne/nullAway\\.log$") //
+            .inFolder(rootFolder) //
+            .findAll(GOOGLEERRORPRONE) //
+            .violations();
+
+    assertThat(actual) //
+        .hasSize(2);
+
+    final Violation violation0 = actual.get(0);
+    assertThat(violation0.getMessage()) //
+        .endsWith("nullaway )");
+    assertThat(violation0.getFile()) //
+        .isEqualTo("home/travis/build/leinardi/FloatingActionButtonSpeedDial/library/src/main/java/com/leinardi/android/speeddial/SpeedDialActionItem.java");
+    assertThat(violation0.getSeverity()) //
+        .isEqualTo(ERROR);
+    assertThat(violation0.getRule().get()) //
+        .isEqualTo("NullAway");
+    assertThat(violation0.getStartLine()) //
+        .isEqualTo(162);
   }
 }

@@ -1,0 +1,11 @@
+:sample:compileReleaseNdk NO-SOURCE
+:sample:processReleaseJavaRes NO-SOURCE
+/home/travis/build/leinardi/FloatingActionButtonSpeedDial/library/src/main/java/com/leinardi/android/speeddial/SpeedDialActionItem.java:162: error: [NullAway] initializer method does not guarantee @NonNull field mLabel is initialized along all control-flow paths (remember to check for exceptions or early returns).
+        public Builder(@IdRes int id, @DrawableRes int fabImageResource) {
+               ^
+    (see http://t.uber.com/nullaway )
+/home/travis/build/leinardi/FloatingActionButtonSpeedDial/library/src/main/java/com/leinardi/android/speeddial/SpeedDialActionItem.java:175: error: [NullAway] initializer method does not guarantee @NonNull field mLabel is initialized along all control-flow paths (remember to check for exceptions or early returns).
+        public Builder(@IdRes int id, @Nullable Drawable drawable) {
+               ^
+    (see http://t.uber.com/nullaway )
+2 errors

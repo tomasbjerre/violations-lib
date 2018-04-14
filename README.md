@@ -29,6 +29,7 @@ It supports:
  * [_GoLint_](https://github.com/golang/lint)
    * [_GoVet_](https://golang.org/cmd/vet/) Same format as GoLint.
  * [_GoogleErrorProne_](https://github.com/google/error-prone)
+   * [_NullAway_](https://github.com/uber/NullAway) Same format as Google Error Prone.
  * [_JSHint_](http://jshint.com/)
  * _Lint_ A common XML format, used by different linters.
  * [_JCReport_](https://github.com/jCoderZ/fawkez/wiki/JcReport)
