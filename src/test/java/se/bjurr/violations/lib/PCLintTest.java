@@ -17,9 +17,9 @@ public class PCLintTest {
 
   @Test
   public void testThatViolationsCanBeParsed() {
-    String rootFolder = getRootFolder();
+    final String rootFolder = getRootFolder();
 
-    List<Violation> actual =
+    final List<Violation> actual =
         violationsApi() //
             .withPattern(".*/pclint/.*\\.txt$") //
             .inFolder(rootFolder) //
@@ -80,9 +80,9 @@ public class PCLintTest {
 
   @Test
   public void testThatSeverityAndRulenumberFromMisraTakesPrecedence() {
-    String rootFolder = getRootFolder();
+    final String rootFolder = getRootFolder();
 
-    List<Violation> actual =
+    final List<Violation> actual =
         violationsApi() //
             .withPattern(".*/pclint/.*\\.txt$") //
             .inFolder(rootFolder) //
@@ -91,17 +91,17 @@ public class PCLintTest {
 
     Violation violation = actual.get(1);
 
-    assertThat(violation.getRule().get()).isEqualTo("MISRA 2012 Rule 10.4, mandatory");
+    assertThat(violation.getRule()).isEqualTo("MISRA 2012 Rule 10.4, mandatory");
     assertThat(violation.getSeverity()).isEqualTo(ERROR);
 
     violation = actual.get(2);
 
-    assertThat(violation.getRule().get()).isEqualTo("MISRA 2012 Rule 1.3, required");
+    assertThat(violation.getRule()).isEqualTo("MISRA 2012 Rule 1.3, required");
     assertThat(violation.getSeverity()).isEqualTo(WARN);
 
     violation = actual.get(7);
 
-    assertThat(violation.getRule().get()).isEqualTo("MISRA 2012 Rule 10.1, advisory");
+    assertThat(violation.getRule()).isEqualTo("MISRA 2012 Rule 10.1, advisory");
     assertThat(violation.getSeverity()).isEqualTo(INFO);
     assertThat(violation.getMessage())
         .isEqualTo("Bad type (Error <a href=\"/userContent/LintMsgRef.html#48\">48</a>)");

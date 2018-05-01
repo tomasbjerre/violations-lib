@@ -15,9 +15,9 @@ public class GoLintTest {
 
   @Test
   public void testThatGoLintViolationsCanBeParsed() {
-    String rootFolder = getRootFolder();
+    final String rootFolder = getRootFolder();
 
-    List<Violation> actual =
+    final List<Violation> actual =
         violationsApi() //
             .withPattern(".*/golint/golint\\.txt$") //
             .inFolder(rootFolder) //
@@ -34,8 +34,8 @@ public class GoLintTest {
         .isEqualTo("src/bla/bla/bla/dataSource.go");
     assertThat(actual.get(0).getSeverity()) //
         .isEqualTo(INFO);
-    assertThat(actual.get(0).getRule().orNull()) //
-        .isEqualTo(null);
+    assertThat(actual.get(0).getRule()) //
+        .isEqualTo("");
     assertThat(actual.get(0).getStartLine()) //
         .isEqualTo(28);
     assertThat(actual.get(0).getEndLine()) //
@@ -47,8 +47,8 @@ public class GoLintTest {
         .isEqualTo("journalevent.go");
     assertThat(actual.get(2).getSeverity()) //
         .isEqualTo(WARN);
-    assertThat(actual.get(2).getRule().orNull()) //
-        .isEqualTo(null);
+    assertThat(actual.get(2).getRule()) //
+        .isEqualTo("");
     assertThat(actual.get(2).getStartLine()) //
         .isEqualTo(182);
     assertThat(actual.get(2).getEndLine()) //
@@ -57,9 +57,9 @@ public class GoLintTest {
 
   @Test
   public void testThatGoVetViolationsCanBeParsed() {
-    String rootFolder = getRootFolder();
+    final String rootFolder = getRootFolder();
 
-    List<Violation> actual =
+    final List<Violation> actual =
         violationsApi() //
             .withPattern(".*/golint/govet\\.txt$") //
             .inFolder(rootFolder) //

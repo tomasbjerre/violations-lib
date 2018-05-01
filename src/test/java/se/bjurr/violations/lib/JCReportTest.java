@@ -13,9 +13,9 @@ import se.bjurr.violations.lib.model.Violation;
 public class JCReportTest {
   @Test
   public void testThatViolationsCanBeParsed() {
-    String rootFolder = getRootFolder();
+    final String rootFolder = getRootFolder();
 
-    List<Violation> actual =
+    final List<Violation> actual =
         violationsApi() //
             .withPattern(".*/jcreport/.*\\.xml$") //
             .inFolder(rootFolder) //
@@ -31,7 +31,7 @@ public class JCReportTest {
         .isEqualTo("D:/projects/fawkez/test/java/org/jcoderz/commons/logging/XmlPrinterTest.java");
     assertThat(actual.get(0).getSeverity()) //
         .isEqualTo(INFO);
-    assertThat(actual.get(0).getRule().get()) //
+    assertThat(actual.get(0).getRule()) //
         .isEqualTo("CS_MISSING_TAG(Checkstyle)");
     assertThat(actual.get(0).getStartLine()) //
         .isEqualTo(50);

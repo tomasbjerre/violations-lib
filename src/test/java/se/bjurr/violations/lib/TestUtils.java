@@ -7,10 +7,10 @@ import se.bjurr.violations.lib.model.Violation;
 
 public class TestUtils {
 
-  public static List<Violation> filterRule(List<Violation> all, final String rule) {
-    List<Violation> filtered = new ArrayList<>();
-    for (Violation v : all) {
-      if (v.getRule().or("").equals(rule)) {
+  public static List<Violation> filterRule(final List<Violation> all, final String rule) {
+    final List<Violation> filtered = new ArrayList<>();
+    for (final Violation v : all) {
+      if (v.getRule().equals(rule)) {
         filtered.add(v);
       }
     }

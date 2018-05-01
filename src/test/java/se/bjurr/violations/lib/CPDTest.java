@@ -14,9 +14,9 @@ public class CPDTest {
 
   @Test
   public void testThatViolationsCanBeParsed() {
-    String rootFolder = getRootFolder();
+    final String rootFolder = getRootFolder();
 
-    List<Violation> actual =
+    final List<Violation> actual =
         violationsApi() //
             .withPattern(".*/cpd/.*\\.xml$") //
             .inFolder(rootFolder) //
@@ -33,7 +33,7 @@ public class CPDTest {
             "/home/goetas/gits/webservices/src/goetas/webservices/bindings/soap12/transport/http/Http.php");
     assertThat(actual.get(0).getSeverity()) //
         .isEqualTo(INFO);
-    assertThat(actual.get(0).getRule().get()) //
+    assertThat(actual.get(0).getRule()) //
         .isEqualTo("DUPLICATION");
     assertThat(actual.get(0).getStartLine()) //
         .isEqualTo(36);

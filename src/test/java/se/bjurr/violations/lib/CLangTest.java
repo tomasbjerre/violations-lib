@@ -16,9 +16,9 @@ public class CLangTest {
 
   @Test
   public void testThatViolationsCanBeParsed() {
-    String rootFolder = getRootFolder();
+    final String rootFolder = getRootFolder();
 
-    List<Violation> actual =
+    final List<Violation> actual =
         violationsApi() //
             .withPattern(".*/clang/clang.*\\.txt$") //
             .inFolder(rootFolder) //
@@ -34,8 +34,8 @@ public class CLangTest {
         .isEqualTo("./test.h");
     assertThat(actual.get(0).getSeverity()) //
         .isEqualTo(ERROR);
-    assertThat(actual.get(0).getRule().orNull()) //
-        .isEqualTo(null);
+    assertThat(actual.get(0).getRule()) //
+        .isEqualTo("");
     assertThat(actual.get(0).getStartLine()) //
         .isEqualTo(10);
 
@@ -45,17 +45,17 @@ public class CLangTest {
         .isEqualTo("main.cpp");
     assertThat(actual.get(2).getSeverity()) //
         .isEqualTo(INFO);
-    assertThat(actual.get(2).getRule().orNull()) //
-        .isEqualTo(null);
+    assertThat(actual.get(2).getRule()) //
+        .isEqualTo("");
     assertThat(actual.get(2).getStartLine()) //
         .isEqualTo(4);
   }
 
   @Test
   public void testThatRubycopViolationsCanBeParsed() {
-    String rootFolder = getRootFolder();
+    final String rootFolder = getRootFolder();
 
-    List<Violation> actual =
+    final List<Violation> actual =
         violationsApi() //
             .withPattern(".*/clang/rubycop\\.txt$") //
             .inFolder(rootFolder) //
@@ -71,8 +71,8 @@ public class CLangTest {
         .isEqualTo("test.rb");
     assertThat(actual.get(0).getSeverity()) //
         .isEqualTo(ERROR);
-    assertThat(actual.get(0).getRule().orNull()) //
-        .isEqualTo(null);
+    assertThat(actual.get(0).getRule()) //
+        .isEqualTo("");
     assertThat(actual.get(0).getStartLine()) //
         .isEqualTo(1);
 

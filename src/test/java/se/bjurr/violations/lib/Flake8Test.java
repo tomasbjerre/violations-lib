@@ -17,9 +17,9 @@ public class Flake8Test {
 
   @Test
   public void testThatViolationsCanBeParsed() {
-    String rootFolder = getRootFolder();
+    final String rootFolder = getRootFolder();
 
-    List<Violation> actual =
+    final List<Violation> actual =
         violationsApi() //
             .withPattern(".*/flake8/.*\\.txt$") //
             .inFolder(rootFolder) //
@@ -67,9 +67,9 @@ public class Flake8Test {
         .isEqualTo("python/project/file.py");
     assertThat(actual.get(16).getSeverity()) //
         .isEqualTo(ERROR);
-    assertThat(actual.get(16).getRule().get()) //
+    assertThat(actual.get(16).getRule()) //
         .isEqualTo("302");
-    assertThat(actual.get(16).getColumn().get()) //
+    assertThat(actual.get(16).getColumn()) //
         .isEqualTo(1);
     assertThat(actual.get(16).getStartLine()) //
         .isEqualTo(57);

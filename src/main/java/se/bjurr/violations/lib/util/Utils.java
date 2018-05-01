@@ -8,21 +8,25 @@ import java.util.Scanner;
 import se.bjurr.violations.lib.model.Violation;
 
 public class Utils {
-  public static <T> T checkNotNull(T reference, String errorMessage) {
+  public static <T> T checkNotNull(final T reference, final String errorMessage) {
     if (reference == null) {
       throw new NullPointerException(errorMessage);
     }
     return reference;
   }
 
-  public static String emptyToNull(String str) {
+  public static String emptyToNull(final String str) {
     if (str == null || str.isEmpty()) {
       return null;
     }
     return str;
   }
 
-  public static <T> T firstNonNull(T f, T s) {
+  public static String nullToEmpty(final String nullableReference) {
+    return nullableReference == null ? "" : nullableReference;
+  }
+
+  public static <T> T firstNonNull(final T f, final T s) {
     if (f != null) {
       return f;
     }
@@ -30,16 +34,16 @@ public class Utils {
   }
 
   @SuppressWarnings("static-access")
-  public static InputStream getResource(String filename) {
+  public static InputStream getResource(final String filename) {
     return Thread.currentThread().getContextClassLoader().getSystemResourceAsStream(filename);
   }
 
-  public static boolean isNullOrEmpty(String str) {
+  public static boolean isNullOrEmpty(final String str) {
     return str == null || str.isEmpty();
   }
 
   @SuppressWarnings("resource")
-  public static String toString(InputStream inputStream) throws IOException {
+  public static String toString(final InputStream inputStream) throws IOException {
     final Scanner scanner = new Scanner(inputStream, "UTF-8").useDelimiter("\\A");
     final String result = scanner.hasNext() ? scanner.next() : "";
     scanner.close();
@@ -48,7 +52,7 @@ public class Utils {
     return result;
   }
 
-  public static String toString(URL resource) throws IOException {
+  public static String toString(final URL resource) throws IOException {
     try {
       return toString(resource.openStream());
     } catch (final IOException e) {
@@ -56,7 +60,8 @@ public class Utils {
     }
   }
 
-  public static List<Violation> setReporter(List<Violation> violations, String reporter) {
+  public static List<Violation> setReporter(
+      final List<Violation> violations, final String reporter) {
     for (final Violation v : violations) {
       v.setReporter(reporter);
     }

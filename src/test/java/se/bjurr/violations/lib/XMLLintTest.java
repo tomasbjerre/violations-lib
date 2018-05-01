@@ -14,9 +14,9 @@ public class XMLLintTest {
 
   @Test
   public void testThatViolationsCanBeParsed() {
-    String rootFolder = getRootFolder();
+    final String rootFolder = getRootFolder();
 
-    List<Violation> actual =
+    final List<Violation> actual =
         violationsApi() //
             .withPattern(".*/xmllint/.*\\.txt$") //
             .inFolder(rootFolder) //
@@ -32,7 +32,7 @@ public class XMLLintTest {
         .isEqualTo("xml/other.xml");
     assertThat(actual.get(0).getSeverity()) //
         .isEqualTo(ERROR);
-    assertThat(actual.get(0).getRule().get()) //
+    assertThat(actual.get(0).getRule()) //
         .isEqualTo("parser error");
     assertThat(actual.get(0).getStartLine()) //
         .isEqualTo(5);
@@ -45,7 +45,7 @@ public class XMLLintTest {
         .isEqualTo("xml/other.xml");
     assertThat(actual.get(2).getSeverity()) //
         .isEqualTo(ERROR);
-    assertThat(actual.get(2).getRule().get()) //
+    assertThat(actual.get(2).getRule()) //
         .isEqualTo("parser error");
     assertThat(actual.get(2).getStartLine()) //
         .isEqualTo(7);

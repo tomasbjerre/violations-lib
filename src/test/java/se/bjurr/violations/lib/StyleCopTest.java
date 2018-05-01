@@ -14,9 +14,9 @@ public class StyleCopTest {
 
   @Test
   public void testThatViolationsCanBeParsed() {
-    String rootFolder = getRootFolder();
+    final String rootFolder = getRootFolder();
 
-    List<Violation> actual =
+    final List<Violation> actual =
         violationsApi() //
             .withPattern(".*/stylecop/.*\\.xml$") //
             .inFolder(rootFolder) //
@@ -26,7 +26,7 @@ public class StyleCopTest {
     assertThat(actual) //
         .hasSize(53);
 
-    Violation actualViolationZero = actual.get(0);
+    final Violation actualViolationZero = actual.get(0);
     assertThat(actualViolationZero.getFile()) //
         .isEqualTo("E:/Jenkins/jobs/Tools Development/workspace/Tools/Tools.SSOTester/Form1.cs");
     assertThat(actualViolationZero.getStartLine()) //
@@ -35,14 +35,14 @@ public class StyleCopTest {
         .startsWith("The do");
     assertThat(actualViolationZero.getReporter()) //
         .isEqualTo(STYLECOP.name());
-    assertThat(actualViolationZero.getRule().orNull()) //
+    assertThat(actualViolationZero.getRule()) //
         .isEqualTo("ElementDocumentationMustNotHaveDefaultSummary");
     assertThat(actualViolationZero.getSeverity()) //
         .isEqualTo(INFO);
-    assertThat(actualViolationZero.getSource().orNull()) //
+    assertThat(actualViolationZero.getSource()) //
         .isEqualTo("E:/Jenkins/jobs/Tools Development/workspace/Tools/Tools.SSOTester/Form1.cs");
 
-    Violation actualViolationOne = actual.get(1);
+    final Violation actualViolationOne = actual.get(1);
     assertThat(actualViolationOne.getFile()) //
         .isEqualTo("E:/Jenkins/jobs/Tools Development/workspace/Tools/Tools.SSOTester/Form1.cs");
     assertThat(actualViolationOne.getStartLine()) //
@@ -51,11 +51,11 @@ public class StyleCopTest {
         .startsWith("The field");
     assertThat(actualViolationOne.getReporter()) //
         .isEqualTo(STYLECOP.name());
-    assertThat(actualViolationOne.getRule().orNull()) //
+    assertThat(actualViolationOne.getRule()) //
         .isEqualTo("ElementsMustBeDocumented");
     assertThat(actualViolationOne.getSeverity()) //
         .isEqualTo(INFO);
-    assertThat(actualViolationOne.getSource().orNull()) //
+    assertThat(actualViolationOne.getSource()) //
         .isEqualTo("E:/Jenkins/jobs/Tools Development/workspace/Tools/Tools.SSOTester/Form1.cs");
   }
 }

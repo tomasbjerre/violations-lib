@@ -13,9 +13,9 @@ import se.bjurr.violations.lib.model.Violation;
 public class ZPTLintTest {
   @Test
   public void testThatViolationsCanBeParsed() {
-    String rootFolder = getRootFolder();
+    final String rootFolder = getRootFolder();
 
-    List<Violation> actual =
+    final List<Violation> actual =
         violationsApi() //
             .withPattern(".*/zptlint/.*\\.log$") //
             .inFolder(rootFolder) //
@@ -31,7 +31,7 @@ public class ZPTLintTest {
         .isEqualTo("cpplint.py");
     assertThat(actual.get(0).getSeverity()) //
         .isEqualTo(ERROR);
-    assertThat(actual.get(0).getRule().get()) //
+    assertThat(actual.get(0).getRule()) //
         .isEqualTo("ZPT");
     assertThat(actual.get(0).getStartLine()) //
         .isEqualTo(4796);

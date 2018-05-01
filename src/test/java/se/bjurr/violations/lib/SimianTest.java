@@ -13,9 +13,9 @@ import se.bjurr.violations.lib.model.Violation;
 public class SimianTest {
   @Test
   public void testThatViolationsCanBeParsed() {
-    String rootFolder = getRootFolder();
+    final String rootFolder = getRootFolder();
 
-    List<Violation> actual =
+    final List<Violation> actual =
         violationsApi() //
             .withPattern(".*/simian/.*\\.xml$") //
             .inFolder(rootFolder) //
@@ -31,7 +31,7 @@ public class SimianTest {
         .isEqualTo("c:/java/foo1.java");
     assertThat(actual.get(0).getSeverity()) //
         .isEqualTo(INFO);
-    assertThat(actual.get(0).getRule().get()) //
+    assertThat(actual.get(0).getRule()) //
         .isEqualTo("DUPLICATION");
     assertThat(actual.get(0).getStartLine()) //
         .isEqualTo(11);

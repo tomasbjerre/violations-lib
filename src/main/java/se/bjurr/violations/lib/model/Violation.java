@@ -1,15 +1,14 @@
 package se.bjurr.violations.lib.model;
 
-import static se.bjurr.violations.lib.util.Optional.fromNullable;
 import static se.bjurr.violations.lib.util.Utils.checkNotNull;
 import static se.bjurr.violations.lib.util.Utils.emptyToNull;
 import static se.bjurr.violations.lib.util.Utils.firstNonNull;
+import static se.bjurr.violations.lib.util.Utils.nullToEmpty;
 
 import java.io.Serializable;
 import java.util.HashMap;
 import java.util.Map;
 import se.bjurr.violations.lib.reports.Parser;
-import se.bjurr.violations.lib.util.Optional;
 
 public class Violation implements Serializable, Comparable<Violation> {
   public static class ViolationBuilder {
@@ -32,67 +31,67 @@ public class Violation implements Serializable, Comparable<Violation> {
       return new Violation(this);
     }
 
-    public ViolationBuilder setColumn(Integer column) {
+    public ViolationBuilder setColumn(final Integer column) {
       this.column = column;
       return this;
     }
 
-    public ViolationBuilder setEndLine(Integer endLine) {
+    public ViolationBuilder setEndLine(final Integer endLine) {
       this.endLine = endLine;
       return this;
     }
 
-    public ViolationBuilder setFile(String file) {
+    public ViolationBuilder setFile(final String file) {
       this.file = file;
       return this;
     }
 
-    public ViolationBuilder setMessage(String message) {
+    public ViolationBuilder setMessage(final String message) {
       this.message = message;
       return this;
     }
 
-    public ViolationBuilder setParser(Parser parser) {
+    public ViolationBuilder setParser(final Parser parser) {
       this.parser = parser;
       return this;
     }
 
-    public ViolationBuilder setReporter(String reporter) {
+    public ViolationBuilder setReporter(final String reporter) {
       this.reporter = reporter;
       return this;
     }
 
-    public ViolationBuilder setRule(String rule) {
+    public ViolationBuilder setRule(final String rule) {
       this.rule = rule;
       return this;
     }
 
-    public ViolationBuilder setSeverity(SEVERITY severity) {
+    public ViolationBuilder setSeverity(final SEVERITY severity) {
       this.severity = severity;
       return this;
     }
 
-    public ViolationBuilder setSource(String source) {
+    public ViolationBuilder setSource(final String source) {
       this.source = source;
       return this;
     }
 
-    public ViolationBuilder setSpecific(String specificsKey, Integer specificsValue) {
+    public ViolationBuilder setSpecific(final String specificsKey, final Integer specificsValue) {
       specifics.put(specificsKey, Integer.toString(specificsValue));
       return this;
     }
 
-    public ViolationBuilder setSpecific(String specificsKey, String specificsValue) {
+    public ViolationBuilder setSpecific(final String specificsKey, final String specificsValue) {
       specifics.put(specificsKey, specificsValue);
       return this;
     }
 
-    public ViolationBuilder setSpecifics(Map<String, String> specifics) {
+    public ViolationBuilder setSpecifics(final Map<String, String> specifics) {
       this.specifics = specifics;
       return this;
     }
 
-    public ViolationBuilder setStartLine(Integer startLine) {
+    public ViolationBuilder setStartLine(final Integer startLine) {
       this.startLine = startLine;
       return this;
     }
@@ -135,7 +134,7 @@ public class Violation implements Serializable, Comparable<Violation> {
     parser = null;
   }
 
-  public Violation(ViolationBuilder vb) {
+  public Violation(final ViolationBuilder vb) {
     parser = checkNotNull(vb.parser, "reporter");
     if (vb.reporter != null && !vb.reporter.trim().isEmpty()) {
       reporter = vb.reporter;
@@ -154,7 +153,7 @@ public class Violation implements Serializable, Comparable<Violation> {
   }
 
   @Override
-  public boolean equals(Object obj) {
+  public boolean equals(final Object obj) {
     if (this == obj) {
       return true;
     }
@@ -237,8 +236,8 @@ public class Violation implements Serializable, Comparable<Violation> {
     return true;
   }
 
-  public Optional<Integer> getColumn() {
-    return fromNullable(column);
+  public Integer getColumn() {
+    return firstNonNull(column, -1);
   }
 
   public Integer getEndLine() {
@@ -257,7 +256,7 @@ public class Violation implements Serializable, Comparable<Violation> {
     return parser;
   }
 
-  public void setReporter(String reporter) {
+  public void setReporter(final String reporter) {
     this.reporter = checkNotNull(reporter, "reporter");
   }
 
@@ -266,8 +265,8 @@ public class Violation implements Serializable, Comparable<Violation> {
   }
 
   /** Rule that was matched. All tools don't use rules, so this may be null. */
-  public Optional<String> getRule() {
-    return fromNullable(rule);
+  public String getRule() {
+    return nullToEmpty(rule);
   }
 
   public SEVERITY getSeverity() {
@@ -275,8 +274,8 @@ public class Violation implements Serializable, Comparable<Violation> {
   }
 
   /** The thing that contains the violations. Like a Java/C# class. */
-  public Optional<String> getSource() {
-    return fromNullable(source);
+  public String getSource() {
+    return nullToEmpty(source);
   }
 
   /**
@@ -335,11 +334,11 @@ public class Violation implements Serializable, Comparable<Violation> {
   }
 
   @Override
-  public int compareTo(Violation o) {
+  public int compareTo(final Violation o) {
     return comparingString(this).compareTo(comparingString(o));
   }
 
-  private String comparingString(Violation o) {
+  private String comparingString(final Violation o) {
     return o.file
         + "_"
         + (Integer.MAX_VALUE - o.getStartLine())

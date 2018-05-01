@@ -16,9 +16,9 @@ public class ResharperTest {
 
   @Test
   public void testThatViolationsCanBeParsed() {
-    String rootFolder = getRootFolder();
+    final String rootFolder = getRootFolder();
 
-    List<Violation> actual =
+    final List<Violation> actual =
         violationsApi() //
             .withPattern(".*/resharper/.*\\.xml$") //
             .inFolder(rootFolder) //
@@ -34,7 +34,7 @@ public class ResharperTest {
     assertThat(actual.get(0).getMessage()) //
         .isEqualTo(
             "Using directive is not required by the code and can be safely removed. Redundancies in Code. Redundant using directive. For more info, visit http://confluence.jetbrains.net/display/ReSharper/Redundant+using+directive");
-    assertThat(actual.get(0).getRule().get()) //
+    assertThat(actual.get(0).getRule()) //
         .isEqualTo("RedundantUsingDirective");
     assertThat(actual.get(0).getFile()) //
         .isEqualTo("MyLibrary/Class1.cs");
@@ -44,7 +44,7 @@ public class ResharperTest {
     assertThat(actual.get(1).getMessage()) //
         .isEqualTo(
             "Join declaration and assignment. Common Practices and Code Improvements. Join local variable declaration and assignment");
-    assertThat(actual.get(1).getRule().get()) //
+    assertThat(actual.get(1).getRule()) //
         .isEqualTo("JoinDeclarationAndInitializer");
     assertThat(actual.get(1).getFile()) //
         .isEqualTo("MyLibrary/Class1.cs");
@@ -54,7 +54,7 @@ public class ResharperTest {
     assertThat(actual.get(2).getMessage()) //
         .isEqualTo(
             "Using directive is not required by the code and can be safely removed. Redundancies in Code. Redundant using directive. For more info, visit http://confluence.jetbrains.net/display/ReSharper/Redundant+using+directive");
-    assertThat(actual.get(2).getRule().get()) //
+    assertThat(actual.get(2).getRule()) //
         .isEqualTo("RedundantUsingDirective");
     assertThat(actual.get(2).getFile()) //
         .isEqualTo("MyLibrary/Properties/AssemblyInfo.cs");
@@ -63,7 +63,7 @@ public class ResharperTest {
 
     assertThat(actual.get(3).getMessage()) //
         .isEqualTo("Cannot resolve symbol 'GetError'. C# Compiler Errors. CSharpErrors");
-    assertThat(actual.get(3).getRule().get()) //
+    assertThat(actual.get(3).getRule()) //
         .isEqualTo("CSharpErrors");
     assertThat(actual.get(3).getFile()) //
         .isEqualTo("MyLibrary/Class1.cs");

@@ -13,9 +13,9 @@ import se.bjurr.violations.lib.model.Violation;
 public class GendarmeTest {
   @Test
   public void testThatViolationsCanBeParsed() {
-    String rootFolder = getRootFolder();
+    final String rootFolder = getRootFolder();
 
-    List<Violation> actual =
+    final List<Violation> actual =
         violationsApi() //
             .withPattern(".*/gendarme/.*\\.xml$") //
             .inFolder(rootFolder) //
@@ -31,7 +31,7 @@ public class GendarmeTest {
         .isEqualTo("c:/Dev/src/hudson/Hudson.Domain/Dog.cs");
     assertThat(actual.get(0).getSeverity()) //
         .isEqualTo(INFO);
-    assertThat(actual.get(0).getRule().get()) //
+    assertThat(actual.get(0).getRule()) //
         .isEqualTo("MethodCanBeMadeStaticRule");
     assertThat(actual.get(0).getStartLine()) //
         .isEqualTo(10);
@@ -44,9 +44,9 @@ public class GendarmeTest {
 
   @Test
   public void testThatViolationsCanBeParsedGendarmeUnix() {
-    String rootFolder = getRootFolder();
+    final String rootFolder = getRootFolder();
 
-    List<Violation> actual =
+    final List<Violation> actual =
         violationsApi() //
             .withPattern(".*/gendarme/Gendarme_unix\\.xml$") //
             .inFolder(rootFolder) //

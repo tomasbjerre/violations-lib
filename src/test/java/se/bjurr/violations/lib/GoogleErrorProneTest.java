@@ -8,9 +8,7 @@ import static se.bjurr.violations.lib.model.SEVERITY.WARN;
 import static se.bjurr.violations.lib.reports.Parser.GOOGLEERRORPRONE;
 
 import java.util.List;
-
 import org.junit.Test;
-
 import se.bjurr.violations.lib.model.Violation;
 
 public class GoogleErrorProneTest {
@@ -37,7 +35,7 @@ public class GoogleErrorProneTest {
             "/home/bjerre/workspace/git-changelog/git-changelog-lib/src/main/java/se/bjurr/gitchangelog/internal/integrations/github/GitHubHelper.java");
     assertThat(violation0.getSeverity()) //
         .isEqualTo(WARN);
-    assertThat(violation0.getRule().get()) //
+    assertThat(violation0.getRule()) //
         .isEqualTo("StringSplitter");
     assertThat(violation0.getStartLine()) //
         .isEqualTo(51);
@@ -50,7 +48,7 @@ public class GoogleErrorProneTest {
             "home/bjerre/workspace/git-changelog/git-changelog-lib/src/main/java/se/bjurr/gitchangelog/internal/git/TraversalWork.java");
     assertThat(violation4.getSeverity()) //
         .isEqualTo(WARN);
-    assertThat(violation4.getRule().get()) //
+    assertThat(violation4.getRule()) //
         .isEqualTo("BoxedPrimitiveConstructor");
     assertThat(violation4.getStartLine()) //
         .isEqualTo(73);
@@ -77,7 +75,7 @@ public class GoogleErrorProneTest {
         .isEqualTo("../examples/maven/error_prone_should_flag/src/main/java/Main.java");
     assertThat(violation0.getSeverity()) //
         .isEqualTo(ERROR);
-    assertThat(violation0.getRule().get()) //
+    assertThat(violation0.getRule()) //
         .isEqualTo("DeadException");
     assertThat(violation0.getStartLine()) //
         .isEqualTo(20);
@@ -101,10 +99,11 @@ public class GoogleErrorProneTest {
     assertThat(violation0.getMessage()) //
         .endsWith("nullaway )");
     assertThat(violation0.getFile()) //
-        .isEqualTo("home/travis/build/leinardi/FloatingActionButtonSpeedDial/library/src/main/java/com/leinardi/android/speeddial/SpeedDialActionItem.java");
+        .isEqualTo(
+            "home/travis/build/leinardi/FloatingActionButtonSpeedDial/library/src/main/java/com/leinardi/android/speeddial/SpeedDialActionItem.java");
     assertThat(violation0.getSeverity()) //
         .isEqualTo(ERROR);
-    assertThat(violation0.getRule().get()) //
+    assertThat(violation0.getRule()) //
         .isEqualTo("NullAway");
     assertThat(violation0.getStartLine()) //
         .isEqualTo(162);

@@ -128,7 +128,7 @@ public class ViolationsReporterApi {
       final String message = addNewlines(violation.getMessage(), maxMessageColumnWidth);
       final String line = addNewlines(violation.getStartLine().toString(), maxLineColumnWidth);
       final String severity = addNewlines(violation.getSeverity().name(), maxSeverityColumnWidth);
-      final String rule = addNewlines(violation.getRule().or(""), maxRuleColumnWidth);
+      final String rule = addNewlines(violation.getRule(), maxRuleColumnWidth);
       final String reporter = addNewlines(violation.getReporter(), maxReporterColumnWidth);
       final String[] row = {reporter, rule, severity, line, message};
       rows.add(row);

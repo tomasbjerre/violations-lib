@@ -14,9 +14,9 @@ public class FxCopTest {
 
   @Test
   public void testThatViolationsCanBeParsed() {
-    String rootFolder = getRootFolder();
+    final String rootFolder = getRootFolder();
 
-    List<Violation> actual =
+    final List<Violation> actual =
         violationsApi() //
             .withPattern(".*/fxcop/.*\\.xml$") //
             .inFolder(rootFolder) //
@@ -26,7 +26,7 @@ public class FxCopTest {
     assertThat(actual) //
         .hasSize(25);
 
-    Violation actualViolationZero = actual.get(0);
+    final Violation actualViolationZero = actual.get(0);
     assertThat(actualViolationZero.getFile()) //
         .isEqualTo("C:/git/test-project/Test Solution 1/GenericsSample/Form1.Designer.cs");
     assertThat(actualViolationZero.getStartLine()) //
@@ -35,17 +35,17 @@ public class FxCopTest {
         .startsWith("Method 'Form");
     assertThat(actualViolationZero.getReporter()) //
         .isEqualTo(FXCOP.name());
-    assertThat(actualViolationZero.getRule().orNull()) //
+    assertThat(actualViolationZero.getRule()) //
         .isEqualTo("Do not pass literals as localized parameters");
     assertThat(actualViolationZero.getSeverity()) //
         .isEqualTo(WARN);
-    assertThat(actualViolationZero.getSource().orNull()) //
+    assertThat(actualViolationZero.getSource()) //
         .isEqualTo("Form1");
     assertThat(actualViolationZero.getSpecifics().get("TARGET_NAME")) //
         .isEqualTo(
             "C:/git/test-project/Test Solution 1/GenericsSample/bin/Debug/GenericsSample.exe");
 
-    Violation actualViolationOne = actual.get(1);
+    final Violation actualViolationOne = actual.get(1);
     assertThat(actualViolationOne.getFile()) //
         .isEqualTo("C:/git/test-project/Test Solution 1/GenericsSample/Form1.Designer.cs");
     assertThat(actualViolationOne.getStartLine()) //
@@ -54,11 +54,11 @@ public class FxCopTest {
         .startsWith("Method 'Form");
     assertThat(actualViolationOne.getReporter()) //
         .isEqualTo(FXCOP.name());
-    assertThat(actualViolationOne.getRule().orNull()) //
+    assertThat(actualViolationOne.getRule()) //
         .isEqualTo("Do not pass literals as localized parameters");
     assertThat(actualViolationOne.getSeverity()) //
         .isEqualTo(WARN);
-    assertThat(actualViolationOne.getSource().orNull()) //
+    assertThat(actualViolationOne.getSource()) //
         .isEqualTo("Form1");
     assertThat(actualViolationOne.getSpecifics().get("TARGET_NAME")) //
         .isEqualTo(

@@ -4,7 +4,33 @@
 Changelog of Violations lib.
 
 ## Unreleased
+### GitHub [#33](https://github.com/tomasbjerre/violations-lib/issues/33) Add support for NullAway
+
+**NullAway**
+
+
+[72244241bbd2ead](https://github.com/tomasbjerre/violations-lib/commit/72244241bbd2ead) Tomas Bjerre *2018-04-14 05:08:26*
+
+
+### GitHub [#35](https://github.com/tomasbjerre/violations-lib/issues/35) cpplint parser does not recognize any violations
+
+**Testing cpplint variant**
+
+
+[8455fc596c6a547](https://github.com/tomasbjerre/violations-lib/commit/8455fc596c6a547) Tomas Bjerre *2018-04-13 11:45:16*
+
+
 ### No issue
+
+**Adding another PMD test**
+
+
+[c36c7bd5a99a442](https://github.com/tomasbjerre/violations-lib/commit/c36c7bd5a99a442) Tomas Bjerre *2018-03-07 18:05:26*
+
+**Fixed typo (assertion on wrong issue checked).**
+
+
+[5381b5d9381a6d1](https://github.com/tomasbjerre/violations-lib/commit/5381b5d9381a6d1) Ulli Hafner *2018-03-02 22:56:12*
 
 **Bumping version to fix release**
 

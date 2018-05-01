@@ -19,7 +19,7 @@ public class ViolationsApi {
   private File startFile;
   private String reporter;
 
-  public static String getDetailedReport(List<Violation> violations) {
+  public static String getDetailedReport(final List<Violation> violations) {
     return new DetailedReportCreator(violations) //
         .create();
   }
@@ -30,17 +30,17 @@ public class ViolationsApi {
 
   private ViolationsApi() {}
 
-  public ViolationsApi findAll(Parser parser) {
+  public ViolationsApi findAll(final Parser parser) {
     this.parser = checkNotNull(parser, "parser");
     return this;
   }
 
-  public ViolationsApi withReporter(String reporter) {
+  public ViolationsApi withReporter(final String reporter) {
     this.reporter = checkNotNull(reporter, "reporter");
     return this;
   }
 
-  public ViolationsApi inFolder(String folder) {
+  public ViolationsApi inFolder(final String folder) {
     startFile = new File(checkNotNull(folder, "folder"));
     if (!startFile.exists()) {
       throw new RuntimeException(folder + " not found");
@@ -72,7 +72,7 @@ public class ViolationsApi {
                 + " "
                 + v.getSeverity()
                 + " ("
-                + v.getRule().or("?")
+                + v.getRule()
                 + ") "
                 + v.getFile()
                 + " "
@@ -84,11 +84,11 @@ public class ViolationsApi {
     return foundViolations;
   }
 
-  private String makeWindowsFriendly(String regularExpression) {
+  private String makeWindowsFriendly(final String regularExpression) {
     return regularExpression.replace("/", "(?:/|\\\\)");
   }
 
-  public ViolationsApi withPattern(String regularExpression) {
+  public ViolationsApi withPattern(final String regularExpression) {
     pattern = makeWindowsFriendly(regularExpression);
     return this;
   }

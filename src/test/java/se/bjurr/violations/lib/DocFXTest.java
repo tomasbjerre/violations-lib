@@ -33,7 +33,7 @@ public class DocFXTest {
         .isEqualTo("sanasto.md");
     assertThat(violation0.getSeverity()) //
         .isEqualTo(WARN);
-    assertThat(violation0.getRule().get()) //
+    assertThat(violation0.getRule()) //
         .isEqualTo("InvalidFileLink");
     assertThat(violation0.getStartLine()) //
         .isEqualTo(63);
@@ -45,7 +45,7 @@ public class DocFXTest {
         .isEqualTo("mobiilirajapinta/json-dateandtime.md");
     assertThat(violation1.getSeverity()) //
         .isEqualTo(WARN);
-    assertThat(violation1.getRule().get()) //
+    assertThat(violation1.getRule()) //
         .isEqualTo("InvalidFileLink");
     assertThat(violation1.getStartLine()) //
         .isEqualTo(18);
@@ -57,7 +57,7 @@ public class DocFXTest {
         .isEqualTo("mobiilirajapinta/json-nimeämiskäytäntö.md");
     assertThat(violation2.getSeverity()) //
         .isEqualTo(WARN);
-    assertThat(violation2.getRule().get()) //
+    assertThat(violation2.getRule()) //
         .isEqualTo("InvalidFileLink");
     assertThat(violation2.getStartLine()) //
         .isEqualTo(7);

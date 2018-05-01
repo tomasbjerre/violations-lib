@@ -14,9 +14,9 @@ public class CodeNarcTest {
 
   @Test
   public void testThatViolationsCanBeParsed() {
-    String rootFolder = getRootFolder();
+    final String rootFolder = getRootFolder();
 
-    List<Violation> actual =
+    final List<Violation> actual =
         violationsApi() //
             .withPattern(".*/codenarc/.*\\.xml$") //
             .inFolder(rootFolder) //
@@ -32,7 +32,7 @@ public class CodeNarcTest {
         .isEqualTo("foo/bar/Test.groovy");
     assertThat(actual.get(0).getSeverity()) //
         .isEqualTo(WARN);
-    assertThat(actual.get(0).getRule().get()) //
+    assertThat(actual.get(0).getRule()) //
         .isEqualTo("EmptyCatchBlock");
     assertThat(actual.get(0).getStartLine()) //
         .isEqualTo(192);

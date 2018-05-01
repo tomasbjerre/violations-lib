@@ -37,7 +37,7 @@ public class PMDTest {
         .isEqualTo(9);
     assertThat(violationZero.getEndLine()) //
         .isEqualTo(11);
-    assertThat(violationZero.getRule().get()) //
+    assertThat(violationZero.getRule()) //
         .isEqualTo("EmptyIfStmt");
     assertThat(violationZero.getSeverity()) //
         .isEqualTo(WARN);
@@ -67,7 +67,7 @@ public class PMDTest {
         .isEqualTo(1);
     assertThat(violationZero.getEndLine()) //
         .isEqualTo(1);
-    assertThat(violationZero.getRule().get()) //
+    assertThat(violationZero.getRule()) //
         .isEqualTo("RULE1");
     assertThat(violationZero.getSeverity()) //
         .isEqualTo(WARN);
@@ -98,7 +98,7 @@ public class PMDTest {
         .isEqualTo(1);
     assertThat(violationZero.getEndLine()) //
         .isEqualTo(149);
-    assertThat(violationZero.getRule().get()) //
+    assertThat(violationZero.getRule()) //
         .isEqualTo("ApplicationAccessLimit");
     assertThat(violationZero.getSeverity()) //
         .isEqualTo(ERROR);

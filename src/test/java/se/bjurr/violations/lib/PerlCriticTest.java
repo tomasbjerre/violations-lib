@@ -33,7 +33,7 @@ public class PerlCriticTest {
         .isEqualTo("perl/example.pl");
     assertThat(actual.get(0).getSeverity()) //
         .isEqualTo(INFO);
-    assertThat(actual.get(0).getRule().get()) //
+    assertThat(actual.get(0).getRule()) //
         .isEqualTo("See page 33 of PBP.");
     assertThat(actual.get(0).getStartLine()) //
         .isEqualTo(1);
@@ -46,7 +46,7 @@ public class PerlCriticTest {
         .isEqualTo("perl/example.pl");
     assertThat(actual.get(1).getSeverity()) //
         .isEqualTo(ERROR);
-    assertThat(actual.get(1).getRule().get()) //
+    assertThat(actual.get(1).getRule()) //
         .isEqualTo("Violates encapsulation.");
     assertThat(actual.get(1).getStartLine()) //
         .isEqualTo(1);

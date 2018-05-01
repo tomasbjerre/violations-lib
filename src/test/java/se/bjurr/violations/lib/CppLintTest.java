@@ -34,7 +34,7 @@ public class CppLintTest {
         .isEqualTo("cpp/test.cpp");
     assertThat(actual.get(0).getSeverity()) //
         .isEqualTo(ERROR);
-    assertThat(actual.get(0).getRule().get()) //
+    assertThat(actual.get(0).getRule()) //
         .isEqualTo("legal/copyright");
     assertThat(actual.get(0).getStartLine()) //
         .isEqualTo(0);
@@ -47,7 +47,7 @@ public class CppLintTest {
         .isEqualTo("cpp/test.cpp");
     assertThat(actual.get(2).getSeverity()) //
         .isEqualTo(ERROR);
-    assertThat(actual.get(2).getRule().get()) //
+    assertThat(actual.get(2).getRule()) //
         .isEqualTo("whitespace/parens");
     assertThat(actual.get(2).getStartLine()) //
         .isEqualTo(11);
@@ -76,7 +76,7 @@ public class CppLintTest {
         .isEqualTo("pump/src/hal/stm32f4xx/devices/spi/spi_unit0_com.c");
     assertThat(violation.getSeverity()) //
         .isEqualTo(WARN);
-    assertThat(violation.getRule().get()) //
+    assertThat(violation.getRule()) //
         .isEqualTo("readability/casting");
     assertThat(violation.getStartLine()) //
         .isEqualTo(737);

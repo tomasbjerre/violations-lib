@@ -19,7 +19,7 @@ public class FindbugsTest {
 
   @Before
   public void before() {
-    String rootFolder = getRootFolder();
+    final String rootFolder = getRootFolder();
     actual =
         violationsApi() //
             .withPattern(".*/findbugs/main\\.xml$") //
@@ -33,8 +33,8 @@ public class FindbugsTest {
 
   @Test
   public void testMavenGeneratedFindbugs() {
-    String rootFolder = getRootFolder();
-    List<Violation> maven =
+    final String rootFolder = getRootFolder();
+    final List<Violation> maven =
         violationsApi() //
             .withPattern(".*/findbugs/fromMaven.xml$") //
             .inFolder(rootFolder) //
@@ -47,14 +47,14 @@ public class FindbugsTest {
 
   @Test
   public void testThatEqualsUseHashCodeCanBeParsed() {
-    Iterable<Violation> equalsUseHashCode = filterRule(actual, "HE_EQUALS_USE_HASHCODE");
+    final Iterable<Violation> equalsUseHashCode = filterRule(actual, "HE_EQUALS_USE_HASHCODE");
     assertThat(equalsUseHashCode) //
         .hasSize(1);
   }
 
   @Test
   public void testThatNamingConventionCanBeParsed() {
-    Iterable<Violation> equalsUseHashCode = filterRule(actual, "NM_FIELD_NAMING_CONVENTION");
+    final Iterable<Violation> equalsUseHashCode = filterRule(actual, "NM_FIELD_NAMING_CONVENTION");
     assertThat(equalsUseHashCode) //
         .hasSize(1);
   }
@@ -70,11 +70,11 @@ public class FindbugsTest {
         .isEqualTo(17);
     assertThat(actual.get(0).getEndLine()) //
         .isEqualTo(17);
-    assertThat(actual.get(0).getRule().get()) //
+    assertThat(actual.get(0).getRule()) //
         .isEqualTo("EQ_ALWAYS_TRUE");
     assertThat(actual.get(0).getSeverity()) //
         .isEqualTo(ERROR);
-    assertThat(actual.get(0).getSource().get()) //
+    assertThat(actual.get(0).getSource()) //
         .isEqualTo("se.bjurr.violations.lib.example.MyClass");
     assertThat(actual.get(0).getSpecifics().get(FINDBUGS_SPECIFIC_RANK)) //
         .isEqualTo("7");

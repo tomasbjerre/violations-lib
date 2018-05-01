@@ -10,7 +10,7 @@ public abstract class Optional<T> implements Serializable {
     return Absent.withType();
   }
 
-  public static <T> Optional<T> fromNullable(T nullableReference) {
+  public static <T> Optional<T> fromNullable(final T nullableReference) {
     return nullableReference == null ? Optional.<T>absent() : new Present<>(nullableReference);
   }
 

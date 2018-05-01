@@ -34,7 +34,7 @@ public class PyLintTest {
         .isEqualTo("Wrong continued indentation (add 1 space).");
     assertThat(actual.get(0).getSeverity()) //
         .isEqualTo(INFO);
-    assertThat(actual.get(0).getRule().orNull()) //
+    assertThat(actual.get(0).getRule()) //
         .isEqualTo("C0330(bad-continuation)");
   }
 }
