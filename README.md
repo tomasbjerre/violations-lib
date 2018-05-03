@@ -40,7 +40,7 @@ It supports:
  * [_PerlCritic_](https://github.com/Perl-Critic)
  * [_PiTest_](http://pitest.org/)
  * [_PyDocStyle_](https://pypi.python.org/pypi/pydocstyle)
- * [_PyLint_](https://www.pylint.org/)
+ * [_PyLint_](https://www.pylint.org/) with `pylint --output-format=parseable`.
  * [_PMD_](https://pmd.github.io/)
    * [_Infer_](http://fbinfer.com/) Facebook Infer. With `--pmd-xml`.
    * [_PHPPMD_](https://phpmd.org/) with `phpmd api.php xml ruleset.xml`.
