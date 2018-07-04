@@ -1,5 +1,6 @@
 package se.bjurr.violations.lib.model;
 
+import static se.bjurr.violations.lib.util.StringUtils.escapeHTML;
 import static se.bjurr.violations.lib.util.Utils.checkNotNull;
 import static se.bjurr.violations.lib.util.Utils.emptyToNull;
 import static se.bjurr.violations.lib.util.Utils.firstNonNull;
@@ -107,6 +108,7 @@ public class Violation implements Serializable, Comparable<Violation> {
   private final Integer endLine;
   private final String file;
   private final String message;
+  private final String messageEscaped;
   /** The algorithm, the format, used. */
   private final Parser parser;
   /**
@@ -120,12 +122,14 @@ public class Violation implements Serializable, Comparable<Violation> {
   private final String source;
   private final Map<String, String> specifics;
   private final Integer startLine;
+  private String fileName;
 
   public Violation() {
     startLine = null;
     endLine = null;
     severity = null;
     message = null;
+    messageEscaped = null;
     file = null;
     source = null;
     rule = null;
@@ -146,7 +150,10 @@ public class Violation implements Serializable, Comparable<Violation> {
     column = vb.column;
     severity = checkNotNull(vb.severity, "severity");
     message = checkNotNull(emptyToNull(vb.message), "message");
+    messageEscaped = escapeHTML(message);
     file = checkNotNull(emptyToNull(vb.file), "file").replaceAll("\\\\", "/");
+    final String[] fileParts = file.split("\\/");
+    fileName = fileParts[fileParts.length - 1];
     source = emptyToNull(vb.source);
     rule = emptyToNull(vb.rule);
     specifics = vb.specifics;
@@ -248,8 +255,16 @@ public class Violation implements Serializable, Comparable<Violation> {
     return file;
   }
 
+  public String getFileName() {
+    return fileName;
+  }
+
   public String getMessage() {
     return message;
+  }
+
+  public String getMessageEscaped() {
+    return messageEscaped;
   }
 
   public Parser getParser() {

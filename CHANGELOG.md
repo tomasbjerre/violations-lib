@@ -4,6 +4,20 @@
 Changelog of Violations lib.
 
 ## Unreleased
+### No issue
+
+**Issue template**
+
+
+[990f4d6da1000b6](https://github.com/tomasbjerre/violations-lib/commit/990f4d6da1000b6) Tomas Bjerre *2018-07-03 14:12:54*
+
+**Updating docs on PyLint**
+
+
+[4016805bf281f1f](https://github.com/tomasbjerre/violations-lib/commit/4016805bf281f1f) Tomas Bjerre *2018-05-03 17:08:10*
+
+
+## 1.55
 ### GitHub [#33](https://github.com/tomasbjerre/violations-lib/issues/33) Add support for NullAway
 
 **NullAway**
@@ -21,6 +35,16 @@ Changelog of Violations lib.
 
 
 ### No issue
+
+**Avoiding Optional in model**
+
+
+[a2c03571ee99246](https://github.com/tomasbjerre/violations-lib/commit/a2c03571ee99246) Tomas Bjerre *2018-05-01 04:58:35*
+
+**TSLint**
+
+
+[9df7684f4fba7e8](https://github.com/tomasbjerre/violations-lib/commit/9df7684f4fba7e8) Tomas Bjerre *2018-04-20 10:06:18*
 
 **Adding another PMD test**
 

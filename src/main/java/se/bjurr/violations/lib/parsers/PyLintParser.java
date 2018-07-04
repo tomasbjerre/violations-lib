@@ -10,7 +10,6 @@ import static se.bjurr.violations.lib.util.ViolationParserUtils.getLines;
 
 import java.util.ArrayList;
 import java.util.List;
-
 import se.bjurr.violations.lib.model.SEVERITY;
 import se.bjurr.violations.lib.model.Violation;
 
