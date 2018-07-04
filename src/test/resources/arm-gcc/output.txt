@@ -1,0 +1,4 @@
+../../external/specific/arm/cmsis/arm_math.h:5774:14: warning: comparison between signed and unsigned integer expressions [-Wsign-compare]
+../../external/generic/boost/boost/type_traits/intrinsics.hpp:321:0: warning: "BOOST_HAS_TRIVIAL_DESTRUCTOR" redefined
+../../external/generic/boost/boost/type_traits/intrinsics.hpp:128:0: note: this is the location of the previous definition
+../../source/startup/controller/DebugConsole.c:49:5: error: 'dmax' undeclared (first use in this function)

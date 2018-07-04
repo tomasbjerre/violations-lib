@@ -17,22 +17,25 @@ import se.bjurr.violations.lib.model.Violation;
 public class CLangParser implements ViolationsParser {
 
   @Override
-  public List<Violation> parseReportOutput(String reportContent) throws Exception {
-    List<Violation> violations = new ArrayList<>();
-    List<List<String>> partsPerLine =
-        getLines(reportContent, "^([^:]+?):(\\d*):(\\d*?):([^:]*?)?: (.*)$");
-    for (List<String> parts : partsPerLine) {
-      String fileName = parts.get(1);
+  public List<Violation> parseReportOutput(final String reportContent) throws Exception {
+    final List<Violation> violations = new ArrayList<>();
+    final List<List<String>> partsPerLine =
+        getLines(reportContent, "^([^:]+?):(\\d*):((\\d*?):)?([^:]*?)?: (.*)$");
+    for (final List<String> parts : partsPerLine) {
+      final String fileName = parts.get(1);
       Integer lineNumber = 0;
       if (!parts.get(2).isEmpty()) {
         lineNumber = parseInt(parts.get(2));
       }
       Integer columnNumber = 0;
-      if (!parts.get(3).isEmpty()) {
-        columnNumber = parseInt(parts.get(3));
+      if (parts.get(3) != null
+          && !parts.get(3).isEmpty()
+          && parts.get(4) != null
+          && !parts.get(4).isEmpty()) {
+        columnNumber = parseInt(parts.get(4));
       }
-      String severity = parts.get(4);
-      String message = parts.get(5);
+      final String severity = parts.get(5);
+      final String message = parts.get(6);
       violations.add( //
           violationBuilder() //
               .setParser(CLANG) //
@@ -47,7 +50,7 @@ public class CLangParser implements ViolationsParser {
     return violations;
   }
 
-  public SEVERITY toSeverity(String severity) {
+  public SEVERITY toSeverity(final String severity) {
     if (isNullOrEmpty(severity)) {
       return INFO;
     }

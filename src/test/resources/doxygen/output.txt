@@ -1,0 +1,4 @@
+./pump/external/specific/arm/cmsis_dsp/StatisticsFunctions/arm_min_q7.c:48: warning: argument 'index' of command @param is not found in the argument list of arm_min_q7(q7_t *pSrc, uint32_t blockSize, q7_t *pResult, uint32_t *pIndex)
+./pump/external/specific/arm/stm32f4xx/libinc/stm32f4xx_flash.h:354: warning: The following parameters of FLASH_ITConfig(uint32_t FLASH_IT, FunctionalState NewState) are not documented:
+ parameter 'NewState'
+./pump/external/specific/arm/stm32f4xx/libsrc/stm32f4xx_gpio.c:518: warning: End of list marker found without any preceding list items

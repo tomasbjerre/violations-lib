@@ -28,26 +28,28 @@ public class CLangTest {
     assertThat(actual) //
         .hasSize(4);
 
-    assertThat(actual.get(0).getMessage()) //
+    final Violation violation0 = actual.get(0);
+    assertThat(violation0.getMessage()) //
         .isEqualTo("'test.h' file not found");
-    assertThat(actual.get(0).getFile()) //
+    assertThat(violation0.getFile()) //
         .isEqualTo("./test.h");
-    assertThat(actual.get(0).getSeverity()) //
+    assertThat(violation0.getSeverity()) //
         .isEqualTo(ERROR);
-    assertThat(actual.get(0).getRule()) //
+    assertThat(violation0.getRule()) //
         .isEqualTo("");
-    assertThat(actual.get(0).getStartLine()) //
+    assertThat(violation0.getStartLine()) //
         .isEqualTo(10);
 
-    assertThat(actual.get(2).getMessage()) //
+    final Violation violation2 = actual.get(2);
+    assertThat(violation2.getMessage()) //
         .isEqualTo("Memory is allocated");
-    assertThat(actual.get(2).getFile()) //
+    assertThat(violation2.getFile()) //
         .isEqualTo("main.cpp");
-    assertThat(actual.get(2).getSeverity()) //
+    assertThat(violation2.getSeverity()) //
         .isEqualTo(INFO);
-    assertThat(actual.get(2).getRule()) //
+    assertThat(violation2.getRule()) //
         .isEqualTo("");
-    assertThat(actual.get(2).getStartLine()) //
+    assertThat(violation2.getStartLine()) //
         .isEqualTo(4);
   }
 
@@ -65,15 +67,16 @@ public class CLangTest {
     assertThat(actual) //
         .hasSize(4);
 
-    assertThat(actual.get(0).getMessage()) //
+    final Violation violation0 = actual.get(0);
+    assertThat(violation0.getMessage()) //
         .isEqualTo("Use snake_case for method names.");
-    assertThat(actual.get(0).getFile()) //
+    assertThat(violation0.getFile()) //
         .isEqualTo("test.rb");
-    assertThat(actual.get(0).getSeverity()) //
+    assertThat(violation0.getSeverity()) //
         .isEqualTo(ERROR);
-    assertThat(actual.get(0).getRule()) //
+    assertThat(violation0.getRule()) //
         .isEqualTo("");
-    assertThat(actual.get(0).getStartLine()) //
+    assertThat(violation0.getStartLine()) //
         .isEqualTo(1);
 
     assertThat(actual.get(3).getSeverity()) //

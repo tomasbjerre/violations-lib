@@ -1,0 +1,2 @@
+../../../pump/source/util/FormattedDate.cpp:82:44: warning: comparison between signed and unsigned integer expressions [-Wsign-compare]
+../../../pump/source/util/profile/profile_function_overlay.cpp:112:25: warning: variable 'exceedingDuration' set but not used [-Wunused-but-set-variable]

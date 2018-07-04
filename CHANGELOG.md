@@ -3,6 +3,15 @@
 
 Changelog of Violations lib.
 
+## Unreleased
+### GitHub [#38](https://github.com/tomasbjerre/violations-lib/issues/38) gcc, ARM-Gcc and Doxygen
+
+**GCC, ARM GCC and Doxygen**
+
+
+[af962b40cf5f533](https://github.com/tomasbjerre/violations-lib/commit/af962b40cf5f533) Tomas Bjerre *2018-07-04 17:36:45*
+
+
 ## 1.56
 ### No issue
 
