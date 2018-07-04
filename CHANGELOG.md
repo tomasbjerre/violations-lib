@@ -3,8 +3,13 @@
 
 Changelog of Violations lib.
 
-## Unreleased
+## 1.56
 ### No issue
+
+**Excaped message and filename**
+
+
+[04313947c88e23a](https://github.com/tomasbjerre/violations-lib/commit/04313947c88e23a) Tomas Bjerre *2018-07-04 10:05:38*
 
 **Issue template**
 
