@@ -1,6 +1,5 @@
 package se.bjurr.violations.lib.model;
 
-import static se.bjurr.violations.lib.util.StringUtils.escapeHTML;
 import static se.bjurr.violations.lib.util.Utils.checkNotNull;
 import static se.bjurr.violations.lib.util.Utils.emptyToNull;
 import static se.bjurr.violations.lib.util.Utils.firstNonNull;
@@ -9,6 +8,7 @@ import static se.bjurr.violations.lib.util.Utils.nullToEmpty;
 import java.io.Serializable;
 import java.util.HashMap;
 import java.util.Map;
+
 import se.bjurr.violations.lib.reports.Parser;
 
 public class Violation implements Serializable, Comparable<Violation> {
@@ -108,7 +108,6 @@ public class Violation implements Serializable, Comparable<Violation> {
   private final Integer endLine;
   private final String file;
   private final String message;
-  private final String messageEscaped;
   /** The algorithm, the format, used. */
   private final Parser parser;
   /**
@@ -122,14 +121,12 @@ public class Violation implements Serializable, Comparable<Violation> {
   private final String source;
   private final Map<String, String> specifics;
   private final Integer startLine;
-  private String fileName;
 
   public Violation() {
     startLine = null;
     endLine = null;
     severity = null;
     message = null;
-    messageEscaped = null;
     file = null;
     source = null;
     rule = null;
@@ -150,13 +147,24 @@ public class Violation implements Serializable, Comparable<Violation> {
     column = vb.column;
     severity = checkNotNull(vb.severity, "severity");
     message = checkNotNull(emptyToNull(vb.message), "message");
-    messageEscaped = escapeHTML(message);
     file = checkNotNull(emptyToNull(vb.file), "file").replaceAll("\\\\", "/");
-    final String[] fileParts = file.split("\\/");
-    fileName = fileParts[fileParts.length - 1];
-    source = emptyToNull(vb.source);
-    rule = emptyToNull(vb.rule);
+    source = nullToEmpty(vb.source);
+    rule = nullToEmpty(vb.rule);
     specifics = vb.specifics;
+  }
+
+  public Violation(final Violation v) {
+    parser = v.parser;
+      reporter = v.reporter;
+    startLine = v.startLine;
+    endLine = v.endLine;
+    column = v.column;
+    severity = v.severity;
+    message = v.message;
+    file = v.file;
+    source = v.source;
+    rule = v.rule;
+    specifics = v.specifics;
   }
 
   @Override
@@ -255,16 +263,8 @@ public class Violation implements Serializable, Comparable<Violation> {
     return file;
   }
 
-  public String getFileName() {
-    return fileName;
-  }
-
   public String getMessage() {
     return message;
-  }
-
-  public String getMessageEscaped() {
-    return messageEscaped;
   }
 
   public Parser getParser() {
@@ -279,9 +279,8 @@ public class Violation implements Serializable, Comparable<Violation> {
     return reporter;
   }
 
-  /** Rule that was matched. All tools don't use rules, so this may be null. */
   public String getRule() {
-    return nullToEmpty(rule);
+    return rule;
   }
 
   public SEVERITY getSeverity() {
@@ -290,7 +289,7 @@ public class Violation implements Serializable, Comparable<Violation> {
 
   /** The thing that contains the violations. Like a Java/C# class. */
   public String getSource() {
-    return nullToEmpty(source);
+    return source;
   }
 
   /**

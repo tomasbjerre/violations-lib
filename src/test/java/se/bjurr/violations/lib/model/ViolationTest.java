@@ -7,6 +7,9 @@ import static se.bjurr.violations.lib.reports.Parser.CHECKSTYLE;
 
 import org.junit.Test;
 
+import se.bjurr.violations.lib.model.Violation.ViolationBuilder;
+import uk.co.jemos.podam.api.PodamFactoryImpl;
+
 public class ViolationTest {
 
   @Test
@@ -24,30 +27,11 @@ public class ViolationTest {
   }
 
   @Test
-  public void testThatFileNameCanBeExtracted() {
-    final Violation violation =
-        violationBuilder() //
-            .setParser(CHECKSTYLE) //
-            .setFile("c:\\path\\to\\file1.xml") //
-            .setMessage("message") //
-            .setSeverity(ERROR) //
-            .setStartLine(1) //
-            .build();
-    assertThat(violation.getFileName()) //
-        .isEqualTo("file1.xml");
-  }
-
-  @Test
-  public void testThatFileNameCanBeExtractedWhenNoSlashes() {
-    final Violation violation =
-        violationBuilder() //
-            .setParser(CHECKSTYLE) //
-            .setFile("file2.xml") //
-            .setMessage("message") //
-            .setSeverity(ERROR) //
-            .setStartLine(1) //
-            .build();
-    assertThat(violation.getFileName()) //
-        .isEqualTo("file2.xml");
+  public void testThatCopyConstructorWorks() {
+	  final ViolationBuilder originalBuilder = new PodamFactoryImpl().manufacturePojo(ViolationBuilder.class);
+	  final Violation original = originalBuilder.build();
+	  final Violation copied = new Violation(original);
+	  assertThat(copied)//
+	  .isEqualByComparingTo(original);
   }
 }
