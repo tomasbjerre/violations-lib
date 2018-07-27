@@ -3,13 +3,22 @@
 
 Changelog of Violations lib.
 
-## Unreleased
+## 1.58
+### No issue
+
+**Cleaning Violation class, reducing memory**
+
+
+[efb508a5d73ad23](https://github.com/tomasbjerre/violations-lib/commit/efb508a5d73ad23) Tomas Bjerre *2018-07-27 07:14:16*
+
+
+## 1.57
 ### GitHub [#38](https://github.com/tomasbjerre/violations-lib/issues/38) gcc, ARM-Gcc and Doxygen
 
 **GCC, ARM GCC and Doxygen**
 
 
-[af962b40cf5f533](https://github.com/tomasbjerre/violations-lib/commit/af962b40cf5f533) Tomas Bjerre *2018-07-04 17:36:45*
+[062647397a858f0](https://github.com/tomasbjerre/violations-lib/commit/062647397a858f0) Tomas Bjerre *2018-07-04 17:41:33*
 
 
 ## 1.56

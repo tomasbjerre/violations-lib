@@ -8,7 +8,6 @@ import static se.bjurr.violations.lib.util.Utils.nullToEmpty;
 import java.io.Serializable;
 import java.util.HashMap;
 import java.util.Map;
-
 import se.bjurr.violations.lib.reports.Parser;
 
 public class Violation implements Serializable, Comparable<Violation> {
@@ -155,7 +154,7 @@ public class Violation implements Serializable, Comparable<Violation> {
 
   public Violation(final Violation v) {
     parser = v.parser;
-      reporter = v.reporter;
+    reporter = v.reporter;
     startLine = v.startLine;
     endLine = v.endLine;
     column = v.column;

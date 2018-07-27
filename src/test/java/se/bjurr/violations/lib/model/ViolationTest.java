@@ -28,10 +28,11 @@ public class ViolationTest {
 
   @Test
   public void testThatCopyConstructorWorks() {
-	  final ViolationBuilder originalBuilder = new PodamFactoryImpl().manufacturePojo(ViolationBuilder.class);
-	  final Violation original = originalBuilder.build();
-	  final Violation copied = new Violation(original);
-	  assertThat(copied)//
-	  .isEqualByComparingTo(original);
+    final ViolationBuilder originalBuilder =
+        new PodamFactoryImpl().manufacturePojo(ViolationBuilder.class);
+    final Violation original = originalBuilder.build();
+    final Violation copied = new Violation(original);
+    assertThat(copied) //
+        .isEqualTo(original);
   }
 }
