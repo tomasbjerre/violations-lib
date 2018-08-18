@@ -3,13 +3,13 @@
 
 Changelog of Violations lib.
 
-## Unreleased
+## 1.59
 ### GitHub [#39](https://github.com/tomasbjerre/violations-lib/issues/39) AndroidLintParser doesn&#39;t expose rule correctly
 
 **Adding category to model**
 
 
-[3c6f6acd7646597](https://github.com/tomasbjerre/violations-lib/commit/3c6f6acd7646597) Tomas Bjerre *2018-08-18 13:46:33*
+[9fa7ff29c678148](https://github.com/tomasbjerre/violations-lib/commit/9fa7ff29c678148) Tomas Bjerre *2018-08-18 14:13:38*
 
 
 ## 1.58
