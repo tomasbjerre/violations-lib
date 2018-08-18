@@ -49,6 +49,7 @@ public class PMDParser implements ViolationsParser {
                 .setFile(filename) //
                 .setSeverity(severity) //
                 .setRule(rule) //
+                .setCategory(ruleSetOpt.orNull())
                 .setMessage(message.trim()) //
                 .build() //
             );

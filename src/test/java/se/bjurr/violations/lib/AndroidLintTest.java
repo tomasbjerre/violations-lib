@@ -36,9 +36,10 @@ public class AndroidLintTest {
                 .setStartLine(10) //
                 .setEndLine(10) //
                 .setColumn(9) //
-                .setRule("Correctness")
+                .setRule("ScrollViewSize") //
+                .setCategory("Correctness") //
                 .setMessage(
-                    "ScrollViewSize: ScrollView size validation\n"
+                    "ScrollView size validation\n"
                         + "This LinearLayout should use `android:layout_height=\"wrap_content\"`\n"
                         + "ScrollView children must set their `layout_width` or `layout_height` attributes to `wrap_content` rather than `fill_parent` or `match_parent` in the scrolling dimension") //
                 .setSeverity(WARN) //
@@ -51,9 +52,10 @@ public class AndroidLintTest {
                 .setStartLine(0) //
                 .setEndLine(0) //
                 .setColumn(null) //
-                .setRule("Correctness") //
+                .setRule("InvalidPackage") //
+                .setCategory("Correctness") //
                 .setMessage(
-                    "InvalidPackage: Package not included in Android\n"
+                    "Package not included in Android\n"
                         + "Invalid package reference in library; not included in Android: `java.nio.file`. Referenced from `okio.Okio`.\n"
                         + "This check scans through libraries looking for calls to APIs that are not included in Android.\n"
                         + "        \n"

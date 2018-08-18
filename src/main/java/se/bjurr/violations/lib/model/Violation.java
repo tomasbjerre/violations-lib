@@ -20,6 +20,7 @@ public class Violation implements Serializable, Comparable<Violation> {
     private Parser parser;
     private String reporter;
     private String rule;
+    private String category;
     private SEVERITY severity;
     private String source;
     private Map<String, String> specifics = new HashMap<>();
@@ -63,6 +64,11 @@ public class Violation implements Serializable, Comparable<Violation> {
 
     public ViolationBuilder setRule(final String rule) {
       this.rule = rule;
+      return this;
+    }
+
+    public ViolationBuilder setCategory(String category) {
+      this.category = category;
       return this;
     }
 
@@ -116,6 +122,7 @@ public class Violation implements Serializable, Comparable<Violation> {
   private String reporter;
 
   private final String rule;
+  private final String category;
   private final SEVERITY severity;
   private final String source;
   private final Map<String, String> specifics;
@@ -129,6 +136,7 @@ public class Violation implements Serializable, Comparable<Violation> {
     file = null;
     source = null;
     rule = null;
+    category = null;
     reporter = null;
     specifics = null;
     parser = null;
@@ -149,6 +157,7 @@ public class Violation implements Serializable, Comparable<Violation> {
     file = checkNotNull(emptyToNull(vb.file), "file").replaceAll("\\\\", "/");
     source = nullToEmpty(vb.source);
     rule = nullToEmpty(vb.rule);
+    category = nullToEmpty(vb.category);
     specifics = vb.specifics;
   }
 
@@ -163,6 +172,7 @@ public class Violation implements Serializable, Comparable<Violation> {
     file = v.file;
     source = v.source;
     rule = v.rule;
+    category = v.category;
     specifics = v.specifics;
   }
 
@@ -280,6 +290,10 @@ public class Violation implements Serializable, Comparable<Violation> {
 
   public String getRule() {
     return rule;
+  }
+
+  public String getCategory() {
+    return category;
   }
 
   public SEVERITY getSeverity() {

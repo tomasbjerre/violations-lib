@@ -35,7 +35,7 @@ public class AndroidLintParser implements ViolationsParser {
       String summary = getAttribute(issueChunk, "summary").trim();
       String explanation = getAttribute(issueChunk, "explanation");
 
-      String rule = getAttribute(issueChunk, "category");
+      String category = getAttribute(issueChunk, "category");
 
       violations.add( //
           violationBuilder() //
@@ -44,8 +44,9 @@ public class AndroidLintParser implements ViolationsParser {
               .setColumn(charAttrib.orNull()) //
               .setFile(filename) //
               .setSeverity(toSeverity(severity)) //
-              .setRule(rule) //
-              .setMessage(id + ": " + summary + "\n" + message + "\n" + explanation) //
+              .setRule(id) //
+              .setCategory(category) //
+              .setMessage(summary + "\n" + message + "\n" + explanation) //
               .build() //
           );
     }
