@@ -3,6 +3,15 @@
 
 Changelog of Violations lib.
 
+## 1.61
+### No issue
+
+**Removing Fliptables dependency**
+
+
+[32f55e98cc590cb](https://github.com/tomasbjerre/violations-lib/commit/32f55e98cc590cb) Tomas Bjerre *2018-09-12 20:19:43*
+
+
 ## 1.60
 ### No issue
 
