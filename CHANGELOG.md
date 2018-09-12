@@ -3,6 +3,20 @@
 
 Changelog of Violations lib.
 
+## 1.60
+### No issue
+
+**Fix copy-n-paste in reporting CPD violations**
+
+
+[bcc9aaf0f8bf978](https://github.com/tomasbjerre/violations-lib/commit/bcc9aaf0f8bf978) terje *2018-09-12 18:05:59*
+
+**Testing Spotbugs**
+
+
+[457780347d3fb94](https://github.com/tomasbjerre/violations-lib/commit/457780347d3fb94) Tomas Bjerre *2018-09-12 16:32:10*
+
+
 ## 1.59
 ### GitHub [#39](https://github.com/tomasbjerre/violations-lib/issues/39) AndroidLintParser doesn&#39;t expose rule correctly
 

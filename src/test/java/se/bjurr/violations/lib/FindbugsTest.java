@@ -11,7 +11,6 @@ import static se.bjurr.violations.lib.reports.Parser.FINDBUGS;
 
 import java.util.List;
 import org.junit.Test;
-import se.bjurr.violations.lib.model.SEVERITY;
 import se.bjurr.violations.lib.model.Violation;
 
 public class FindbugsTest {
