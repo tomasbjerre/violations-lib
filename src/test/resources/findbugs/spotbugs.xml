@@ -1,0 +1,185 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<BugCollection version="3.1.6" sequence="0" timestamp="1536769176459" analysisTimestamp="1536769176478" release="">
+  <Project projectName="">
+    <Jar>/home/bjerre/workspace/violations/violations-lib/build/classes/java/main</Jar>
+    <AuxClasspathEntry>/home/bjerre/.m2/repository/com/google/code/gson/gson/2.8.2/gson-2.8.2.jar</AuxClasspathEntry>
+    <AuxClasspathEntry>/home/bjerre/.m2/repository/com/jakewharton/fliptables/fliptables/1.0.2/fliptables-1.0.2.jar</AuxClasspathEntry>
+    <SrcDir>/home/bjerre/workspace/violations/violations-lib/src/main/java/se/bjurr/violations/lib/parsers/CPDParser.java</SrcDir>
+    <SrcDir>/home/bjerre/workspace/violations/violations-lib/src/main/java/se/bjurr/violations/lib/parsers/ViolationsParser.java</SrcDir>
+    <SrcDir>/home/bjerre/workspace/violations/violations-lib/src/main/java/se/bjurr/violations/lib/parsers/MyPyParser.java</SrcDir>
+    <SrcDir>/home/bjerre/workspace/violations/violations-lib/src/main/java/se/bjurr/violations/lib/parsers/PyLintParser.java</SrcDir>
+    <SrcDir>/home/bjerre/workspace/violations/violations-lib/src/main/java/se/bjurr/violations/lib/parsers/LintParser.java</SrcDir>
+    <SrcDir>/home/bjerre/workspace/violations/violations-lib/src/main/java/se/bjurr/violations/lib/parsers/StyleCopParser.java</SrcDir>
+    <SrcDir>/home/bjerre/workspace/violations/violations-lib/src/main/java/se/bjurr/violations/lib/parsers/DocFXParser.java</SrcDir>
+    <SrcDir>/home/bjerre/workspace/violations/violations-lib/src/main/java/se/bjurr/violations/lib/parsers/CppLintParser.java</SrcDir>
+    <SrcDir>/home/bjerre/workspace/violations/violations-lib/src/main/java/se/bjurr/violations/lib/parsers/PerlCriticParser.java</SrcDir>
+    <SrcDir>/home/bjerre/workspace/violations/violations-lib/src/main/java/se/bjurr/violations/lib/parsers/GoogleErrorProneParser.java</SrcDir>
+    <SrcDir>/home/bjerre/workspace/violations/violations-lib/src/main/java/se/bjurr/violations/lib/parsers/CPPCheckParser.java</SrcDir>
+    <SrcDir>/home/bjerre/workspace/violations/violations-lib/src/main/java/se/bjurr/violations/lib/parsers/SimianParser.java</SrcDir>
+    <SrcDir>/home/bjerre/workspace/violations/violations-lib/src/main/java/se/bjurr/violations/lib/parsers/ZPTLintParser.java</SrcDir>
+    <SrcDir>/home/bjerre/workspace/violations/violations-lib/src/main/java/se/bjurr/violations/lib/parsers/GendarmeParser.java</SrcDir>
+    <SrcDir>/home/bjerre/workspace/violations/violations-lib/src/main/java/se/bjurr/violations/lib/parsers/ResharperParser.java</SrcDir>
+    <SrcDir>/home/bjerre/workspace/violations/violations-lib/src/main/java/se/bjurr/violations/lib/parsers/GoLintParser.java</SrcDir>
+    <SrcDir>/home/bjerre/workspace/violations/violations-lib/src/main/java/se/bjurr/violations/lib/parsers/CSSLintParser.java</SrcDir>
+    <SrcDir>/home/bjerre/workspace/violations/violations-lib/src/main/java/se/bjurr/violations/lib/parsers/CodeNarcParser.java</SrcDir>
+    <SrcDir>/home/bjerre/workspace/violations/violations-lib/src/main/java/se/bjurr/violations/lib/parsers/SbtScalacParser.java</SrcDir>
+    <SrcDir>/home/bjerre/workspace/violations/violations-lib/src/main/java/se/bjurr/violations/lib/parsers/JCReportParser.java</SrcDir>
+    <SrcDir>/home/bjerre/workspace/violations/violations-lib/src/main/java/se/bjurr/violations/lib/parsers/FxCopParser.java</SrcDir>
+    <SrcDir>/home/bjerre/workspace/violations/violations-lib/src/main/java/se/bjurr/violations/lib/parsers/Flake8Parser.java</SrcDir>
+    <SrcDir>/home/bjerre/workspace/violations/violations-lib/src/main/java/se/bjurr/violations/lib/parsers/PCLintParser.java</SrcDir>
+    <SrcDir>/home/bjerre/workspace/violations/violations-lib/src/main/java/se/bjurr/violations/lib/parsers/FindbugsParser.java</SrcDir>
+    <SrcDir>/home/bjerre/workspace/violations/violations-lib/src/main/java/se/bjurr/violations/lib/parsers/JSHintParser.java</SrcDir>
+    <SrcDir>/home/bjerre/workspace/violations/violations-lib/src/main/java/se/bjurr/violations/lib/parsers/XMLLintParser.java</SrcDir>
+    <SrcDir>/home/bjerre/workspace/violations/violations-lib/src/main/java/se/bjurr/violations/lib/parsers/PMDParser.java</SrcDir>
+    <SrcDir>/home/bjerre/workspace/violations/violations-lib/src/main/java/se/bjurr/violations/lib/parsers/PyDocStyleParser.java</SrcDir>
+    <SrcDir>/home/bjerre/workspace/violations/violations-lib/src/main/java/se/bjurr/violations/lib/parsers/PiTestParser.java</SrcDir>
+    <SrcDir>/home/bjerre/workspace/violations/violations-lib/src/main/java/se/bjurr/violations/lib/parsers/AndroidLintParser.java</SrcDir>
+    <SrcDir>/home/bjerre/workspace/violations/violations-lib/src/main/java/se/bjurr/violations/lib/parsers/CLangParser.java</SrcDir>
+    <SrcDir>/home/bjerre/workspace/violations/violations-lib/src/main/java/se/bjurr/violations/lib/parsers/KlocworkParser.java</SrcDir>
+    <SrcDir>/home/bjerre/workspace/violations/violations-lib/src/main/java/se/bjurr/violations/lib/parsers/CheckStyleParser.java</SrcDir>
+    <SrcDir>/home/bjerre/workspace/violations/violations-lib/src/main/java/se/bjurr/violations/lib/reports/Parser.java</SrcDir>
+    <SrcDir>/home/bjerre/workspace/violations/violations-lib/src/main/java/se/bjurr/violations/lib/reports/ReportsFinder.java</SrcDir>
+    <SrcDir>/home/bjerre/workspace/violations/violations-lib/src/main/java/se/bjurr/violations/lib/model/SEVERITY.java</SrcDir>
+    <SrcDir>/home/bjerre/workspace/violations/violations-lib/src/main/java/se/bjurr/violations/lib/model/Violation.java</SrcDir>
+    <SrcDir>/home/bjerre/workspace/violations/violations-lib/src/main/java/se/bjurr/violations/lib/util/Absent.java</SrcDir>
+    <SrcDir>/home/bjerre/workspace/violations/violations-lib/src/main/java/se/bjurr/violations/lib/util/ViolationParserUtils.java</SrcDir>
+    <SrcDir>/home/bjerre/workspace/violations/violations-lib/src/main/java/se/bjurr/violations/lib/util/Filtering.java</SrcDir>
+    <SrcDir>/home/bjerre/workspace/violations/violations-lib/src/main/java/se/bjurr/violations/lib/util/StringUtils.java</SrcDir>
+    <SrcDir>/home/bjerre/workspace/violations/violations-lib/src/main/java/se/bjurr/violations/lib/util/Optional.java</SrcDir>
+    <SrcDir>/home/bjerre/workspace/violations/violations-lib/src/main/java/se/bjurr/violations/lib/util/Present.java</SrcDir>
+    <SrcDir>/home/bjerre/workspace/violations/violations-lib/src/main/java/se/bjurr/violations/lib/util/Utils.java</SrcDir>
+    <SrcDir>/home/bjerre/workspace/violations/violations-lib/src/main/java/se/bjurr/violations/lib/ORDERED_BY.java</SrcDir>
+    <SrcDir>/home/bjerre/workspace/violations/violations-lib/src/main/java/se/bjurr/violations/lib/DetailedReportCreator.java</SrcDir>
+    <SrcDir>/home/bjerre/workspace/violations/violations-lib/src/main/java/se/bjurr/violations/lib/ViolationsReporterApi.java</SrcDir>
+    <SrcDir>/home/bjerre/workspace/violations/violations-lib/src/main/java/se/bjurr/violations/lib/ViolationsApi.java</SrcDir>
+    <SrcDir>/home/bjerre/workspace/violations/violations-lib/src/main/java/se/bjurr/violations/lib/ViolationsReporterDetailLevel.java</SrcDir>
+  </Project>
+  <BugInstance type="DM_STRING_TOSTRING" priority="3" rank="20" abbrev="Dm" category="PERFORMANCE">
+    <Class classname="se.bjurr.violations.lib.parsers.FindbugsParser">
+      <SourceLine classname="se.bjurr.violations.lib.parsers.FindbugsParser" start="31" end="157" sourcefile="FindbugsParser.java" sourcepath="se/bjurr/violations/lib/parsers/FindbugsParser.java"/>
+    </Class>
+    <Method classname="se.bjurr.violations.lib.parsers.FindbugsParser" name="parseReportOutput" signature="(Ljava/lang/String;)Ljava/util/List;" isStatic="false">
+      <SourceLine classname="se.bjurr.violations.lib.parsers.FindbugsParser" start="125" end="143" startBytecode="0" endBytecode="545" sourcefile="FindbugsParser.java" sourcepath="se/bjurr/violations/lib/parsers/FindbugsParser.java"/>
+    </Method>
+    <SourceLine classname="se.bjurr.violations.lib.parsers.FindbugsParser" start="125" end="125" startBytecode="5" endBytecode="5" sourcefile="FindbugsParser.java" sourcepath="se/bjurr/violations/lib/parsers/FindbugsParser.java"/>
+  </BugInstance>
+  <BugInstance type="NP_ALWAYS_NULL" priority="1" rank="5" abbrev="NP" category="CORRECTNESS">
+    <Class classname="se.bjurr.violations.lib.parsers.FindbugsParser">
+      <SourceLine classname="se.bjurr.violations.lib.parsers.FindbugsParser" start="31" end="157" sourcefile="FindbugsParser.java" sourcepath="se/bjurr/violations/lib/parsers/FindbugsParser.java"/>
+    </Class>
+    <Method classname="se.bjurr.violations.lib.parsers.FindbugsParser" name="parseReportOutput" signature="(Ljava/lang/String;)Ljava/util/List;" isStatic="false">
+      <SourceLine classname="se.bjurr.violations.lib.parsers.FindbugsParser" start="125" end="143" startBytecode="0" endBytecode="545" sourcefile="FindbugsParser.java" sourcepath="se/bjurr/violations/lib/parsers/FindbugsParser.java"/>
+    </Method>
+    <LocalVariable name="string" register="1" pc="4" role="LOCAL_VARIABLE_VALUE_OF"/>
+    <SourceLine classname="se.bjurr.violations.lib.parsers.FindbugsParser" start="125" end="125" startBytecode="5" endBytecode="5" sourcefile="FindbugsParser.java" sourcepath="se/bjurr/violations/lib/parsers/FindbugsParser.java" role="SOURCE_LINE_DEREF"/>
+  </BugInstance>
+  <BugInstance type="NP_LOAD_OF_KNOWN_NULL_VALUE" priority="2" rank="16" abbrev="NP" category="STYLE">
+    <Class classname="se.bjurr.violations.lib.parsers.FindbugsParser">
+      <SourceLine classname="se.bjurr.violations.lib.parsers.FindbugsParser" start="31" end="157" sourcefile="FindbugsParser.java" sourcepath="se/bjurr/violations/lib/parsers/FindbugsParser.java"/>
+    </Class>
+    <Method classname="se.bjurr.violations.lib.parsers.FindbugsParser" name="parseReportOutput" signature="(Ljava/lang/String;)Ljava/util/List;" isStatic="false">
+      <SourceLine classname="se.bjurr.violations.lib.parsers.FindbugsParser" start="125" end="143" startBytecode="0" endBytecode="85" sourcefile="FindbugsParser.java" sourcepath="se/bjurr/violations/lib/parsers/FindbugsParser.java"/>
+    </Method>
+    <LocalVariable name="string" register="1" pc="1" role="LOCAL_VARIABLE_VALUE_OF"/>
+    <SourceLine classname="se.bjurr.violations.lib.parsers.FindbugsParser" start="125" end="125" startBytecode="4" endBytecode="4" sourcefile="FindbugsParser.java" sourcepath="se/bjurr/violations/lib/parsers/FindbugsParser.java"/>
+  </BugInstance>
+  <Errors errors="0" missingClasses="0"></Errors>
+  <FindBugsSummary timestamp="Wed, 12 Sep 2018 18:19:36 +0200" total_classes="54" referenced_classes="140" total_bugs="3" total_size="2224" num_packages="5" java_version="1.8.0_151" vm_version="25.151-b12" cpu_seconds="13.59" clock_seconds="3.69" peak_mbytes="308.06" alloc_mbytes="3540.00" gc_seconds="0.18" priority_3="1" priority_2="1" priority_1="1">
+    <PackageStats package="se.bjurr.violations.lib" total_bugs="0" total_types="7" total_size="266">
+      <ClassStats class="se.bjurr.violations.lib.DetailedReportCreator" sourceFile="DetailedReportCreator.java" interface="false" size="5" bugs="0"/>
+      <ClassStats class="se.bjurr.violations.lib.ORDERED_BY" sourceFile="ORDERED_BY.java" interface="false" size="17" bugs="0"/>
+      <ClassStats class="se.bjurr.violations.lib.ORDERED_BY$1" sourceFile="ORDERED_BY.java" interface="false" size="6" bugs="0"/>
+      <ClassStats class="se.bjurr.violations.lib.ORDERED_BY$2" sourceFile="ORDERED_BY.java" interface="false" size="6" bugs="0"/>
+      <ClassStats class="se.bjurr.violations.lib.ViolationsApi" sourceFile="ViolationsApi.java" interface="false" size="55" bugs="0"/>
+      <ClassStats class="se.bjurr.violations.lib.ViolationsReporterApi" sourceFile="ViolationsReporterApi.java" interface="false" size="164" bugs="0"/>
+      <ClassStats class="se.bjurr.violations.lib.ViolationsReporterDetailLevel" sourceFile="ViolationsReporterDetailLevel.java" interface="false" size="13" bugs="0"/>
+    </PackageStats>
+    <PackageStats package="se.bjurr.violations.lib.model" total_bugs="0" total_types="4" total_size="261">
+      <ClassStats class="se.bjurr.violations.lib.model.SEVERITY" sourceFile="SEVERITY.java" interface="false" size="13" bugs="0"/>
+      <ClassStats class="se.bjurr.violations.lib.model.Violation" sourceFile="Violation.java" interface="false" size="173" bugs="0"/>
+      <ClassStats class="se.bjurr.violations.lib.model.Violation$1" sourceFile="Violation.java" interface="false" size="1" bugs="0"/>
+      <ClassStats class="se.bjurr.violations.lib.model.Violation$ViolationBuilder" sourceFile="Violation.java" interface="false" size="74" bugs="0"/>
+    </PackageStats>
+    <PackageStats package="se.bjurr.violations.lib.parsers" total_bugs="3" total_types="33" total_size="1318" priority_3="1" priority_2="1" priority_1="1">
+      <ClassStats class="se.bjurr.violations.lib.parsers.AndroidLintParser" sourceFile="AndroidLintParser.java" interface="false" size="36" bugs="0"/>
+      <ClassStats class="se.bjurr.violations.lib.parsers.CLangParser" sourceFile="CLangParser.java" interface="false" size="39" bugs="0"/>
+      <ClassStats class="se.bjurr.violations.lib.parsers.CPDParser" sourceFile="CPDParser.java" interface="false" size="44" bugs="0"/>
+      <ClassStats class="se.bjurr.violations.lib.parsers.CPPCheckParser" sourceFile="CPPCheckParser.java" interface="false" size="33" bugs="0"/>
+      <ClassStats class="se.bjurr.violations.lib.parsers.CSSLintParser" sourceFile="CSSLintParser.java" interface="false" size="33" bugs="0"/>
+      <ClassStats class="se.bjurr.violations.lib.parsers.CheckStyleParser" sourceFile="CheckStyleParser.java" interface="false" size="34" bugs="0"/>
+      <ClassStats class="se.bjurr.violations.lib.parsers.CodeNarcParser" sourceFile="CodeNarcParser.java" interface="false" size="64" bugs="0"/>
+      <ClassStats class="se.bjurr.violations.lib.parsers.CppLintParser" sourceFile="CppLintParser.java" interface="false" size="33" bugs="0"/>
+      <ClassStats class="se.bjurr.violations.lib.parsers.DocFXParser" sourceFile="DocFXParser.java" interface="false" size="42" bugs="0"/>
+      <ClassStats class="se.bjurr.violations.lib.parsers.FindbugsParser" sourceFile="FindbugsParser.java" interface="false" size="89" bugs="3" priority_3="1" priority_2="1" priority_1="1"/>
+      <ClassStats class="se.bjurr.violations.lib.parsers.Flake8Parser" sourceFile="Flake8Parser.java" interface="false" size="34" bugs="0"/>
+      <ClassStats class="se.bjurr.violations.lib.parsers.FxCopParser" sourceFile="FxCopParser.java" interface="false" size="58" bugs="0"/>
+      <ClassStats class="se.bjurr.violations.lib.parsers.GendarmeParser" sourceFile="GendarmeParser.java" interface="false" size="52" bugs="0"/>
+      <ClassStats class="se.bjurr.violations.lib.parsers.GoLintParser" sourceFile="GoLintParser.java" interface="false" size="36" bugs="0"/>
+      <ClassStats class="se.bjurr.violations.lib.parsers.GoogleErrorProneParser" sourceFile="GoogleErrorProneParser.java" interface="false" size="42" bugs="0"/>
+      <ClassStats class="se.bjurr.violations.lib.parsers.JCReportParser" sourceFile="JCReportParser.java" interface="false" size="49" bugs="0"/>
+      <ClassStats class="se.bjurr.violations.lib.parsers.JSHintParser" sourceFile="JSHintParser.java" interface="false" size="34" bugs="0"/>
+      <ClassStats class="se.bjurr.violations.lib.parsers.KlocworkParser" sourceFile="KlocworkParser.java" interface="false" size="56" bugs="0"/>
+      <ClassStats class="se.bjurr.violations.lib.parsers.LintParser" sourceFile="LintParser.java" interface="false" size="33" bugs="0"/>
+      <ClassStats class="se.bjurr.violations.lib.parsers.MyPyParser" sourceFile="MyPyParser.java" interface="false" size="27" bugs="0"/>
+      <ClassStats class="se.bjurr.violations.lib.parsers.PCLintParser" sourceFile="PCLintParser.java" interface="false" size="67" bugs="0"/>
+      <ClassStats class="se.bjurr.violations.lib.parsers.PMDParser" sourceFile="PMDParser.java" interface="false" size="43" bugs="0"/>
+      <ClassStats class="se.bjurr.violations.lib.parsers.PerlCriticParser" sourceFile="PerlCriticParser.java" interface="false" size="35" bugs="0"/>
+      <ClassStats class="se.bjurr.violations.lib.parsers.PiTestParser" sourceFile="PiTestParser.java" interface="false" size="41" bugs="0"/>
+      <ClassStats class="se.bjurr.violations.lib.parsers.PyDocStyleParser" sourceFile="PyDocStyleParser.java" interface="false" size="30" bugs="0"/>
+      <ClassStats class="se.bjurr.violations.lib.parsers.PyLintParser" sourceFile="PyLintParser.java" interface="false" size="33" bugs="0"/>
+      <ClassStats class="se.bjurr.violations.lib.parsers.ResharperParser" sourceFile="ResharperParser.java" interface="false" size="45" bugs="0"/>
+      <ClassStats class="se.bjurr.violations.lib.parsers.SbtScalacParser" sourceFile="SbtScalacParser.java" interface="false" size="28" bugs="0"/>
+      <ClassStats class="se.bjurr.violations.lib.parsers.SimianParser" sourceFile="SimianParser.java" interface="false" size="40" bugs="0"/>
+      <ClassStats class="se.bjurr.violations.lib.parsers.StyleCopParser" sourceFile="StyleCopParser.java" interface="false" size="39" bugs="0"/>
+      <ClassStats class="se.bjurr.violations.lib.parsers.ViolationsParser" sourceFile="ViolationsParser.java" interface="true" size="2" bugs="0"/>
+      <ClassStats class="se.bjurr.violations.lib.parsers.XMLLintParser" sourceFile="XMLLintParser.java" interface="false" size="25" bugs="0"/>
+      <ClassStats class="se.bjurr.violations.lib.parsers.ZPTLintParser" sourceFile="ZPTLintParser.java" interface="false" size="22" bugs="0"/>
+    </PackageStats>
+    <PackageStats package="se.bjurr.violations.lib.reports" total_bugs="0" total_types="3" total_size="112">
+      <ClassStats class="se.bjurr.violations.lib.reports.Parser" sourceFile="Parser.java" interface="false" size="89" bugs="0"/>
+      <ClassStats class="se.bjurr.violations.lib.reports.ReportsFinder" sourceFile="ReportsFinder.java" interface="false" size="12" bugs="0"/>
+      <ClassStats class="se.bjurr.violations.lib.reports.ReportsFinder$1" sourceFile="ReportsFinder.java" interface="false" size="11" bugs="0"/>
+    </PackageStats>
+    <PackageStats package="se.bjurr.violations.lib.util" total_bugs="0" total_types="7" total_size="267">
+      <ClassStats class="se.bjurr.violations.lib.util.Absent" sourceFile="Absent.java" interface="false" size="27" bugs="0"/>
+      <ClassStats class="se.bjurr.violations.lib.util.Filtering" sourceFile="Filtering.java" interface="false" size="12" bugs="0"/>
+      <ClassStats class="se.bjurr.violations.lib.util.Optional" sourceFile="Optional.java" interface="false" size="16" bugs="0"/>
+      <ClassStats class="se.bjurr.violations.lib.util.Present" sourceFile="Present.java" interface="false" size="27" bugs="0"/>
+      <ClassStats class="se.bjurr.violations.lib.util.StringUtils" sourceFile="StringUtils.java" interface="false" size="54" bugs="0"/>
+      <ClassStats class="se.bjurr.violations.lib.util.Utils" sourceFile="Utils.java" interface="false" size="36" bugs="0"/>
+      <ClassStats class="se.bjurr.violations.lib.util.ViolationParserUtils" sourceFile="ViolationParserUtils.java" interface="false" size="95" bugs="0"/>
+    </PackageStats>
+    <FindBugsProfile>
+      <ClassProfile name="edu.umd.cs.findbugs.classfile.engine.bcel.UnconditionalValueDerefDataflowFactory" totalMilliseconds="327" invocations="273" avgMicrosecondsPerInvocation="1200" maxMicrosecondsPerInvocation="137118" standardDeviationMicrosecondsPerInvocation="8376"/>
+      <ClassProfile name="edu.umd.cs.findbugs.classfile.engine.ClassInfoAnalysisEngine" totalMilliseconds="276" invocations="868" avgMicrosecondsPerInvocation="318" maxMicrosecondsPerInvocation="19697" standardDeviationMicrosecondsPerInvocation="959"/>
+      <ClassProfile name="edu.umd.cs.findbugs.classfile.engine.bcel.IsNullValueDataflowFactory" totalMilliseconds="185" invocations="273" avgMicrosecondsPerInvocation="679" maxMicrosecondsPerInvocation="8682" standardDeviationMicrosecondsPerInvocation="1217"/>
+      <ClassProfile name="edu.umd.cs.findbugs.ba.npe.NullDerefAndRedundantComparisonFinder" totalMilliseconds="168" invocations="269" avgMicrosecondsPerInvocation="627" maxMicrosecondsPerInvocation="17769" standardDeviationMicrosecondsPerInvocation="1371"/>
+      <ClassProfile name="edu.umd.cs.findbugs.classfile.engine.bcel.TypeDataflowFactory" totalMilliseconds="168" invocations="275" avgMicrosecondsPerInvocation="610" maxMicrosecondsPerInvocation="10421" standardDeviationMicrosecondsPerInvocation="1182"/>
+      <ClassProfile name="edu.umd.cs.findbugs.classfile.engine.bcel.ValueNumberDataflowFactory" totalMilliseconds="148" invocations="276" avgMicrosecondsPerInvocation="537" maxMicrosecondsPerInvocation="10518" standardDeviationMicrosecondsPerInvocation="1122"/>
+      <ClassProfile name="edu.umd.cs.findbugs.detect.FieldItemSummary" totalMilliseconds="122" invocations="140" avgMicrosecondsPerInvocation="874" maxMicrosecondsPerInvocation="11853" standardDeviationMicrosecondsPerInvocation="1779"/>
+      <ClassProfile name="edu.umd.cs.findbugs.detect.FindRefComparison$SpecialTypeAnalysis" totalMilliseconds="120" invocations="217" avgMicrosecondsPerInvocation="557" maxMicrosecondsPerInvocation="6711" standardDeviationMicrosecondsPerInvocation="923"/>
+      <ClassProfile name="edu.umd.cs.findbugs.OpcodeStack$JumpInfoFactory" totalMilliseconds="113" invocations="630" avgMicrosecondsPerInvocation="179" maxMicrosecondsPerInvocation="3905" standardDeviationMicrosecondsPerInvocation="264"/>
+      <ClassProfile name="edu.umd.cs.findbugs.classfile.engine.ClassDataAnalysisEngine" totalMilliseconds="103" invocations="873" avgMicrosecondsPerInvocation="118" maxMicrosecondsPerInvocation="2827" standardDeviationMicrosecondsPerInvocation="104"/>
+      <ClassProfile name="edu.umd.cs.findbugs.classfile.engine.bcel.CFGFactory" totalMilliseconds="102" invocations="273" avgMicrosecondsPerInvocation="376" maxMicrosecondsPerInvocation="10881" standardDeviationMicrosecondsPerInvocation="788"/>
+      <ClassProfile name="edu.umd.cs.findbugs.detect.FindNoSideEffectMethods" totalMilliseconds="96" invocations="140" avgMicrosecondsPerInvocation="692" maxMicrosecondsPerInvocation="11405" standardDeviationMicrosecondsPerInvocation="1398"/>
+      <ClassProfile name="edu.umd.cs.findbugs.classfile.engine.bcel.MethodGenFactory" totalMilliseconds="61" invocations="282" avgMicrosecondsPerInvocation="216" maxMicrosecondsPerInvocation="27555" standardDeviationMicrosecondsPerInvocation="1638"/>
+      <ClassProfile name="edu.umd.cs.findbugs.detect.BuildStringPassthruGraph" totalMilliseconds="60" invocations="140" avgMicrosecondsPerInvocation="434" maxMicrosecondsPerInvocation="29600" standardDeviationMicrosecondsPerInvocation="2512"/>
+      <ClassProfile name="edu.umd.cs.findbugs.util.TopologicalSort" totalMilliseconds="48" invocations="827" avgMicrosecondsPerInvocation="59" maxMicrosecondsPerInvocation="1665" standardDeviationMicrosecondsPerInvocation="112"/>
+      <ClassProfile name="edu.umd.cs.findbugs.detect.NoteDirectlyRelevantTypeQualifiers" totalMilliseconds="46" invocations="140" avgMicrosecondsPerInvocation="330" maxMicrosecondsPerInvocation="7131" standardDeviationMicrosecondsPerInvocation="786"/>
+      <ClassProfile name="edu.umd.cs.findbugs.classfile.engine.bcel.JavaClassAnalysisEngine" totalMilliseconds="46" invocations="188" avgMicrosecondsPerInvocation="245" maxMicrosecondsPerInvocation="13828" standardDeviationMicrosecondsPerInvocation="1052"/>
+      <ClassProfile name="edu.umd.cs.findbugs.classfile.engine.bcel.ConstantDataflowFactory" totalMilliseconds="45" invocations="273" avgMicrosecondsPerInvocation="166" maxMicrosecondsPerInvocation="1540" standardDeviationMicrosecondsPerInvocation="275"/>
+      <ClassProfile name="edu.umd.cs.findbugs.classfile.engine.bcel.LiveLocalStoreDataflowFactory" totalMilliseconds="36" invocations="256" avgMicrosecondsPerInvocation="141" maxMicrosecondsPerInvocation="1372" standardDeviationMicrosecondsPerInvocation="222"/>
+      <ClassProfile name="edu.umd.cs.findbugs.detect.FindOpenStream" totalMilliseconds="34" invocations="54" avgMicrosecondsPerInvocation="629" maxMicrosecondsPerInvocation="5614" standardDeviationMicrosecondsPerInvocation="1301"/>
+      <ClassProfile name="edu.umd.cs.findbugs.detect.BuildObligationPolicyDatabase" totalMilliseconds="31" invocations="140" avgMicrosecondsPerInvocation="226" maxMicrosecondsPerInvocation="2916" standardDeviationMicrosecondsPerInvocation="393"/>
+      <ClassProfile name="edu.umd.cs.findbugs.ba.obl.ObligationAnalysis" totalMilliseconds="31" invocations="64" avgMicrosecondsPerInvocation="494" maxMicrosecondsPerInvocation="4791" standardDeviationMicrosecondsPerInvocation="758"/>
+      <ClassProfile name="edu.umd.cs.findbugs.detect.FunctionsThatMightBeMistakenForProcedures" totalMilliseconds="29" invocations="140" avgMicrosecondsPerInvocation="207" maxMicrosecondsPerInvocation="3336" standardDeviationMicrosecondsPerInvocation="474"/>
+      <ClassProfile name="edu.umd.cs.findbugs.detect.OverridingEqualsNotSymmetrical" totalMilliseconds="29" invocations="140" avgMicrosecondsPerInvocation="207" maxMicrosecondsPerInvocation="10167" standardDeviationMicrosecondsPerInvocation="899"/>
+      <ClassProfile name="edu.umd.cs.findbugs.detect.CalledMethods" totalMilliseconds="28" invocations="140" avgMicrosecondsPerInvocation="203" maxMicrosecondsPerInvocation="2063" standardDeviationMicrosecondsPerInvocation="360"/>
+      <ClassProfile name="edu.umd.cs.findbugs.detect.LoadOfKnownNullValue" totalMilliseconds="28" invocations="54" avgMicrosecondsPerInvocation="522" maxMicrosecondsPerInvocation="2956" standardDeviationMicrosecondsPerInvocation="609"/>
+      <ClassProfile name="edu.umd.cs.findbugs.ba.npe.TypeQualifierNullnessAnnotationDatabase" totalMilliseconds="25" invocations="10109" avgMicrosecondsPerInvocation="2" maxMicrosecondsPerInvocation="1132" standardDeviationMicrosecondsPerInvocation="16"/>
+    </FindBugsProfile>
+  </FindBugsSummary>
+  <ClassFeatures></ClassFeatures>
+  <History></History>
+</BugCollection>
