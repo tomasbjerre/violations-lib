@@ -5,7 +5,7 @@ import static se.bjurr.violations.lib.model.SEVERITY.ERROR;
 import static se.bjurr.violations.lib.model.SEVERITY.INFO;
 import static se.bjurr.violations.lib.model.SEVERITY.WARN;
 import static se.bjurr.violations.lib.model.Violation.violationBuilder;
-import static se.bjurr.violations.lib.reports.Parser.CODENARC;
+import static se.bjurr.violations.lib.reports.Parser.CPD;
 import static se.bjurr.violations.lib.util.ViolationParserUtils.getAttribute;
 import static se.bjurr.violations.lib.util.ViolationParserUtils.getIntegerAttribute;
 
@@ -58,7 +58,7 @@ public class CPDParser implements ViolationsParser {
               final Integer line = filesLine.get(i);
               final Violation violation =
                   violationBuilder() //
-                      .setParser(CODENARC) //
+                      .setParser(CPD) //
                       .setFile(file) //
                       .setMessage(codefragment) //
                       .setRule("DUPLICATION") //
