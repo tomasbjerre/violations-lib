@@ -1,4 +1,4 @@
-package se.bjurr.violations.lib.util;
+package se.bjurr.violations.lib;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static se.bjurr.violations.lib.TestUtils.getRootFolder;
@@ -25,33 +25,22 @@ public class YAMLlintTest {
                         .violations();
 
         assertThat(actual) //
-                .contains( //
-                        violationBuilder() //
-                                .setParser(YAMLLINT) //
-                                .setFile("my_file.yml") //
-                                .setStartLine(7) //
-                                .setEndLine(7) //
-                                .setMessage("line too long (115 > 88 characters)") //
-                                .setRule("line-length") //
-                                .setSeverity(ERROR) //
-                                .build() //
-                ) //
-                .hasSize(17);
+                .hasSize(3);
 
-        assertThat(actual.get(1).getMessage()) //
+        assertThat(actual.get(0).getMessage()) //
                 .isEqualTo("missing starting space in comment (comments)");
-        assertThat(actual.get(1).getFile()) //
+        assertThat(actual.get(0).getFile()) //
                 .isEqualTo("file.yml");
-        assertThat(actual.get(1).getSeverity()) //
+        assertThat(actual.get(0).getSeverity()) //
                 .isEqualTo(WARN);
-        assertThat(actual.get(1).getRule()) //
+        assertThat(actual.get(0).getRule()) //
                 .isEqualTo("comments");
 
-        assertThat(actual.get(2).getMessage()) //
+        assertThat(actual.get(1).getMessage()) //
                 .isEqualTo("trailing spaces");
-        assertThat(actual.get(2).getFile()) //
+        assertThat(actual.get(1).getFile()) //
                 .isEqualTo("test/file.yml");
-        assertThat(actual.get(2).getSeverity()) //
+        assertThat(actual.get(1ç).getSeverity()) //
                 .isEqualTo(ERROR);
     }
 }

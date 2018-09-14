@@ -6,7 +6,6 @@ import static se.bjurr.violations.lib.model.SEVERITY.INFO;
 import static se.bjurr.violations.lib.model.SEVERITY.WARN;
 import static se.bjurr.violations.lib.model.Violation.violationBuilder;
 import static se.bjurr.violations.lib.reports.Parser.YAMLLINT;
-import static se.bjurr.violations.lib.util.Utils.isNullOrEmpty;
 import static se.bjurr.violations.lib.util.ViolationParserUtils.getLines;
 
 import java.util.ArrayList;
@@ -25,16 +24,14 @@ public class YAMLlintParser implements ViolationsParser {
     public List<Violation> parseReportOutput(final String string) throws Exception {
         List<Violation> violations = new ArrayList<>();
         List<List<String>> partsPerLine =
-                getLines(string, "([^:]*):(\\d+):(\\d+):\\s?\\[(\\w+)\\]\\s?([\\w\\s]+)\\s?\\(([\\w\\s]+)\\)");
+                getLines(string, "([^:]*):(\\d+):(\\d+):\\s?\\[(error|warning)\\]\\s?([\\w\\s]+)\\s?\\(([\\w\\s]+)\\)");
         for (List<String> parts : partsPerLine) {
             String filename = parts.get(1);
             Integer line = parseInt(parts.get(2));
-            Integer column = null;
-            if (!isNullOrEmpty(parts.get(3))) {
-                column = parseInt(parts.get(3));
-            }
+            Integer column = parseInt(parts.get(3));
             String severity = parts.get(4);
             String message = parts.get(5);
+            String rule = parts.get(6);
             violations.add( //
                     violationBuilder() //
                             .setParser(YAMLLINT) //
@@ -43,6 +40,7 @@ public class YAMLlintParser implements ViolationsParser {
                             .setFile(filename) //
                             .setSeverity(toSeverity(severity)) //
                             .setMessage(message) //
+                            .setRule(rule) //
                             .build() //
             );
         }
