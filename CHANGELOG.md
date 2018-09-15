@@ -3,6 +3,38 @@
 
 Changelog of Violations lib.
 
+## 1.62
+### GitHub [#42](https://github.com/tomasbjerre/violations-lib/pull/42) Added yamllint parser
+
+**Correcting YAMLLint**
+
+
+[fd4e6df1b950bd4](https://github.com/tomasbjerre/violations-lib/commit/fd4e6df1b950bd4) Tomas Bjerre *2018-09-15 07:29:13*
+
+
+### No issue
+
+**Gradle Wrapper 4.10.1**
+
+
+[baf59e87c9821da](https://github.com/tomasbjerre/violations-lib/commit/baf59e87c9821da) Tomas Bjerre *2018-09-15 05:56:42*
+
+**updated README**
+
+
+[f66213f734f7b6f](https://github.com/tomasbjerre/violations-lib/commit/f66213f734f7b6f) Alexey Filippov *2018-09-14 22:05:06*
+
+**added rules for parser**
+
+
+[9333395b1ec1dda](https://github.com/tomasbjerre/violations-lib/commit/9333395b1ec1dda) Alexey Filippov *2018-09-14 21:59:27*
+
+**Added YAMLlint parser**
+
+
+[ae03c28f28b005c](https://github.com/tomasbjerre/violations-lib/commit/ae03c28f28b005c) Aleksei_Philippov *2018-09-14 15:18:11*
+
+
 ## 1.61
 ### No issue
 
