@@ -40,7 +40,6 @@ import se.bjurr.violations.lib.parsers.SimianParser;
 import se.bjurr.violations.lib.parsers.StyleCopParser;
 import se.bjurr.violations.lib.parsers.ViolationsParser;
 import se.bjurr.violations.lib.parsers.XMLLintParser;
-import se.bjurr.violations.lib.parsers.YAMLlintParser;
 import se.bjurr.violations.lib.parsers.ZPTLintParser;
 import se.bjurr.violations.lib.util.Utils;
 
@@ -74,7 +73,6 @@ public enum Parser {
   SIMIAN(new SimianParser()), //
   STYLECOP(new StyleCopParser()), //
   XMLLINT(new XMLLintParser()), //
-  YAMLLINT(new YAMLlintParser()), //
   ZPTLINT(new ZPTLintParser()), //
   DOCFX(new DocFXParser()), //
   PCLINT(new PCLintParser());

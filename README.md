@@ -53,7 +53,6 @@ It supports:
  * [_Simian_](http://www.harukizaemon.com/simian/)
  * [_StyleCop_](https://stylecop.codeplex.com/)
  * [_XMLLint_](http://xmlsoft.org/xmllint.html)
- * [_YAMLLint_](https://yamllint.readthedocs.io/en/stable/index.html)
  * [_ZPTLint_](https://pypi.python.org/pypi/zptlint)
 
 Example reports are available [in the test resources](https://github.com/tomasbjerre/violations-lib/tree/master/src/test/resources), examples of how to generate them are available [here](https://github.com/tomasbjerre/violations-test/blob/master/build.sh).
