@@ -5,7 +5,6 @@ import static se.bjurr.violations.lib.TestUtils.getRootFolder;
 import static se.bjurr.violations.lib.ViolationsApi.violationsApi;
 import static se.bjurr.violations.lib.model.SEVERITY.ERROR;
 import static se.bjurr.violations.lib.model.SEVERITY.WARN;
-import static se.bjurr.violations.lib.model.Violation.violationBuilder;
 import static se.bjurr.violations.lib.reports.Parser.YAMLLINT;
 
 import java.util.List;
@@ -13,34 +12,36 @@ import org.junit.Test;
 import se.bjurr.violations.lib.model.Violation;
 
 public class YAMLlintTest {
-    @Test
-    public void testThatViolationsCanBeParsed() {
-        final String rootFolder = getRootFolder();
+  @Test
+  public void testThatViolationsCanBeParsed() {
+    final String rootFolder = getRootFolder();
 
-        final List<Violation> actual =
-                violationsApi() //
-                        .withPattern(".*/yamllint/.*\\.txt$") //
-                        .inFolder(rootFolder) //
-                        .findAll(YAMLLINT) //
-                        .violations();
+    final List<Violation> actual =
+        violationsApi() //
+            .withPattern(".*/yamllint/.*\\.txt$") //
+            .inFolder(rootFolder) //
+            .findAll(YAMLLINT) //
+            .violations();
 
-        assertThat(actual) //
-                .hasSize(3);
+    final Violation violation0 = actual.get(0);
+    assertThat(violation0.getMessage()) //
+        .isEqualTo("missing starting space in comment");
+    assertThat(violation0.getFile()) //
+        .isEqualTo("file.yml");
+    assertThat(violation0.getSeverity()) //
+        .isEqualTo(WARN);
+    assertThat(violation0.getRule()) //
+        .isEqualTo("comments");
 
-        assertThat(actual.get(0).getMessage()) //
-                .isEqualTo("missing starting space in comment (comments)");
-        assertThat(actual.get(0).getFile()) //
-                .isEqualTo("file.yml");
-        assertThat(actual.get(0).getSeverity()) //
-                .isEqualTo(WARN);
-        assertThat(actual.get(0).getRule()) //
-                .isEqualTo("comments");
+    final Violation violation1 = actual.get(1);
+    assertThat(violation1.getMessage()) //
+        .isEqualTo("trailing spaces");
+    assertThat(violation1.getFile()) //
+        .isEqualTo("test/file.yml");
+    assertThat(violation1.getSeverity()) //
+        .isEqualTo(ERROR);
 
-        assertThat(actual.get(1).getMessage()) //
-                .isEqualTo("trailing spaces");
-        assertThat(actual.get(1).getFile()) //
-                .isEqualTo("test/file.yml");
-        assertThat(actual.get(1ç).getSeverity()) //
-                .isEqualTo(ERROR);
-    }
+    assertThat(actual) //
+        .hasSize(3);
+  }
 }

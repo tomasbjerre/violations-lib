@@ -20,49 +20,49 @@ import se.bjurr.violations.lib.model.Violation;
  * </code>
  */
 public class YAMLlintParser implements ViolationsParser {
-    @Override
-    public List<Violation> parseReportOutput(final String string) throws Exception {
-        List<Violation> violations = new ArrayList<>();
-        List<List<String>> partsPerLine =
-                getLines(string, "([^:]*):(\\d+):(\\d+):\\s?\\[(error|warning)\\]\\s?([\\w\\s]+)\\s?\\(([\\w\\s]+)\\)");
-        for (List<String> parts : partsPerLine) {
-            String filename = parts.get(1);
-            Integer line = parseInt(parts.get(2));
-            Integer column = parseInt(parts.get(3));
-            String severity = parts.get(4);
-            String message = parts.get(5);
-            String rule = parts.get(6);
-            violations.add( //
-                    violationBuilder() //
-                            .setParser(YAMLLINT) //
-                            .setStartLine(line) //
-                            .setColumn(column) //
-                            .setFile(filename) //
-                            .setSeverity(toSeverity(severity)) //
-                            .setMessage(message) //
-                            .setRule(rule) //
-                            .build() //
-            );
-        }
-        return violations;
+  @Override
+  public List<Violation> parseReportOutput(final String string) throws Exception {
+    List<Violation> violations = new ArrayList<>();
+    List<List<String>> partsPerLine =
+        getLines(string, "([^:]*):(\\d+):(\\d+):\\s?\\[(error|warning)\\]([^\\(]+)\\(([^\\)]+)\\)");
+    for (List<String> parts : partsPerLine) {
+      String filename = parts.get(1).trim();
+      Integer line = parseInt(parts.get(2));
+      Integer column = parseInt(parts.get(3));
+      String severity = parts.get(4).trim();
+      String message = parts.get(5).trim();
+      String rule = parts.get(6).trim();
+      violations.add( //
+          violationBuilder() //
+              .setParser(YAMLLINT) //
+              .setStartLine(line) //
+              .setColumn(column) //
+              .setFile(filename) //
+              .setSeverity(toSeverity(severity)) //
+              .setMessage(message) //
+              .setRule(rule) //
+              .build() //
+          );
     }
+    return violations;
+  }
 
-    /**
-     *
-     *
-     * <pre>
-     * The different message types are:
-     * warning, for non critical syntax errors
-     * error, for more serious syntax problem
-     * </pre>
-     */
-    public SEVERITY toSeverity(final String severity) {
-        if (severity.equalsIgnoreCase("error")) {
-            return ERROR;
-        }
-        if (severity.equalsIgnoreCase("warning")) {
-            return WARN;
-        }
-        return INFO;
+  /**
+   *
+   *
+   * <pre>
+   * The different message types are:
+   * warning, for non critical syntax errors
+   * error, for more serious syntax problem
+   * </pre>
+   */
+  public SEVERITY toSeverity(final String severity) {
+    if (severity.equalsIgnoreCase("error")) {
+      return ERROR;
     }
+    if (severity.equalsIgnoreCase("warning")) {
+      return WARN;
+    }
+    return INFO;
+  }
 }
