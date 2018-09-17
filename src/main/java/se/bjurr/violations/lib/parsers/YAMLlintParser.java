@@ -25,7 +25,8 @@ public class YAMLlintParser implements ViolationsParser {
   public List<Violation> parseReportOutput(final String string) throws Exception {
     List<Violation> violations = new ArrayList<>();
     List<List<String>> partsPerLine =
-        getLines(string, "([^:]*):(\\d+):(\\d+):\\s?\\[(error|warning)\\]([^\\(]+)(\\(([^\\)]+)\\))?");
+        getLines(
+            string, "([^:]*):(\\d+):(\\d+):\\s?\\[(error|warning)\\]([^\\(]+)(\\(([^\\)]+)\\))?");
     for (List<String> parts : partsPerLine) {
       String filename = parts.get(1).trim();
       Integer line = parseInt(parts.get(2));

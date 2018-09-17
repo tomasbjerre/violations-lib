@@ -3,6 +3,15 @@
 
 Changelog of Violations lib.
 
+## 1.63
+### No issue
+
+**fixed yamllint parser**
+
+
+[8f804cf422e884d](https://github.com/tomasbjerre/violations-lib/commit/8f804cf422e884d) Aleksei_Philippov *2018-09-17 12:59:38*
+
+
 ## 1.62
 ### GitHub [#42](https://github.com/tomasbjerre/violations-lib/pull/42) Added yamllint parser
 

@@ -43,11 +43,11 @@ public class YAMLlintTest {
 
     final Violation violation2 = actual.get(3);
     assertThat(violation2.getMessage()) //
-            .isEqualTo("syntax error: expected '<document start>', but found '<block mapping start>'");
+        .isEqualTo("syntax error: expected '<document start>', but found '<block mapping start>'");
     assertThat(violation2.getFile()) //
-            .isEqualTo("./molecule-default/create.yml");
+        .isEqualTo("./molecule-default/create.yml");
     assertThat(violation2.getSeverity()) //
-            .isEqualTo(ERROR);
+        .isEqualTo(ERROR);
     assertThat(violation2.getRule()).isEmpty();
 
     assertThat(actual) //
