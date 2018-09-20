@@ -3,6 +3,15 @@
 
 Changelog of Violations lib.
 
+## 1.65
+### GitHub [#45](https://github.com/tomasbjerre/violations-lib/issues/45) False positive matches in KotlinGradleParser
+
+**Correcting Kotlin parsers**
+
+
+[fb2ce3dc8149194](https://github.com/tomasbjerre/violations-lib/commit/fb2ce3dc8149194) Tomas Bjerre *2018-09-20 23:01:21*
+
+
 ## 1.64
 ### GitHub [#44](https://github.com/tomasbjerre/violations-lib/issues/44) Support kotlinc warnings
 
