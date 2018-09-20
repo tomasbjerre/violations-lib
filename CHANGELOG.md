@@ -3,6 +3,15 @@
 
 Changelog of Violations lib.
 
+## 1.64
+### GitHub [#44](https://github.com/tomasbjerre/violations-lib/issues/44) Support kotlinc warnings
+
+**Kotlin Maven and Gradle parsers**
+
+
+[59daadfab031933](https://github.com/tomasbjerre/violations-lib/commit/59daadfab031933) Tomas Bjerre *2018-09-20 13:45:35*
+
+
 ## 1.63
 ### No issue
 
