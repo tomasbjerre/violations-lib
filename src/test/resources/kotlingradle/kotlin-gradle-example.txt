@@ -1,3 +1,27 @@
+/opt/projectdir/src/debug/AndroidManifest.xml:20:5-21:31 Warning:
+/opt/projectdir/src/main/AndroidManifest.xml:9:5-11:31 Warning:
+/opt/projectdir/src/main/AndroidManifest.xml:24:5-50:19 Warning:
+/opt/projectdir/src/main/AndroidManifest.xml:24:5-50:19 Warning:
+/opt/projectdir/src/main/AndroidManifest.xml:13:5-15:31 Warning:
+Found android support method: Landroid/support/v4/app/ListFragment$2;.onItemClick:(Landroid/widget/AdapterView;Landroid/view/View;IJ)V. Skipping instrumentation.
+Found android support method: Landroid/support/v7/app/AlertController$AlertParams$3;.onItemClick:(Landroid/widget/AdapterView;Landroid/view/View;IJ)V. Skipping instrumentation.
+Found android support method: Landroid/support/v7/app/AlertController$AlertParams$4;.onItemClick:(Landroid/widget/AdapterView;Landroid/view/View;IJ)V. Skipping instrumentation.
+Found android support method: Landroid/support/v7/widget/AppCompatSpinner$DropdownPopup$1;.onItemClick:(Landroid/widget/AdapterView;Landroid/view/View;IJ)V. Skipping instrumentation.
+Found android support method: Landroid/support/v7/widget/SearchView$8;.onItemClick:(Landroid/widget/AdapterView;Landroid/view/View;IJ)V. Skipping instrumentation.
+Found android support method: Landroid/support/v7/preference/DropDownPreference$1;.onItemSelected:(Landroid/widget/AdapterView;Landroid/view/View;IJ)V. Skipping instrumentation.
+Found android support method: Landroid/support/v7/widget/ListPopupWindow$3;.onItemSelected:(Landroid/widget/AdapterView;Landroid/view/View;IJ)V. Skipping instrumentation.
+Found android support method: Landroid/support/v7/widget/SearchView$9;.onItemSelected:(Landroid/widget/AdapterView;Landroid/view/View;IJ)V. Skipping instrumentation.
+Found android support method: Landroid/support/v14/preference/ListPreferenceDialogFragment$1;.onClick:(Landroid/content/DialogInterface;I)V. Skipping instrumentation.
+Found android support method: Landroid/support/v7/preference/ListPreferenceDialogFragmentCompat$1;.onClick:(Landroid/content/DialogInterface;I)V. Skipping instrumentation.
+Found android support method: Landroid/support/v4/view/PagerTabStrip$1;.onClick:(Landroid/view/View;)V. Skipping instrumentation.
+Found android support method: Landroid/support/v4/view/PagerTabStrip$2;.onClick:(Landroid/view/View;)V. Skipping instrumentation.
+Found android support method: Landroid/support/v7/app/ActionBarDrawerToggle$1;.onClick:(Landroid/view/View;)V. Skipping instrumentation.
+Found android support method: Landroid/support/v7/app/AlertController$1;.onClick:(Landroid/view/View;)V. Skipping instrumentation.
+Found android support method: Landroid/support/v7/preference/Preference$1;.onClick:(Landroid/view/View;)V. Skipping instrumentation.
+Found android support method: Landroid/support/v7/widget/ActionBarContextView$1;.onClick:(Landroid/view/View;)V. Skipping instrumentation.
+Found android support method: Landroid/support/v7/widget/SearchView$5;.onClick:(Landroid/view/View;)V. Skipping instrumentation.
+Found android support method: Landroid/support/v7/widget/Toolbar$3;.onClick:(Landroid/view/View;)V. Skipping instrumentation.
+Found android support method: Landroid/support/v7/widget/ToolbarWidgetWrapper$1;.onClick:(Landroid/view/View;)V. Skipping instrumentation.
 w: /Users/scottkennedy/project/src/main/java/com/example/Test.kt: (13, 87): Elvis operator (?:) always returns the left operand of non-nullable type String
 w: /Users/wolfs/projects/gradle/build-tool-release/buildSrc/subprojects/configuration/src/main/kotlin/org/gradle/gradlebuild/dependencies/DependenciesMetadataRulesPlugin.kt: (75, 54): Unchecked cast: Any? to List<CapabilitySpec>
 w: /home/bjerre/workspace/yet-another-kotlin-vs-java-comparison/src/main/kotlin/basics/controliiiflow/p01assigniiifromiiiif/Example.kt: (17, 9): Variable 'hejsan' is never used
