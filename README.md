@@ -39,6 +39,8 @@ It supports:
  * _Lint_ A common XML format, used by different linters.
  * [_JCReport_](https://github.com/jCoderZ/fawkez/wiki/JcReport)
  * [_Klocwork_](http://www.klocwork.com/products-services/klocwork/static-code-analysis)
+ * [_KotlinMaven_](https://github.com/JetBrains/kotlin) Output from Kotlin Maven Plugin.
+ * [_KotlinGradle_](https://github.com/JetBrains/kotlin) Output from Kotlin Gradle Plugin.
  * [_MyPy_](https://pypi.python.org/pypi/mypy-lang)
  * [_PCLint_](http://www.gimpel.com/html/pcl.htm) PC-Lint using the same output format as the Jenkins warnings plugin, [_details here_](https://wiki.jenkins.io/display/JENKINS/PcLint+options)
  * [_PerlCritic_](https://github.com/Perl-Critic)

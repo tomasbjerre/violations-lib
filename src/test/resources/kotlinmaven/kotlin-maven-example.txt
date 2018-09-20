@@ -1,0 +1,39 @@
+[WARNING] /home/bjerre/workspace/kerub/src/main/kotlin/com/github/kerubistan/kerub/data/hub/AnyAssetDaoImpl.kt: (44, 63) Unchecked cast: AssetDao<*> to DaoOperations.Read<T, UUID>
+[WARNING] /home/bjerre/workspace/kerub/src/main/kotlin/com/github/kerubistan/kerub/data/hub/AnyEntityDaoImpl.kt: (18, 27) Unchecked cast: KClass<out Entity<*>> to KClass<out Asset>
+[WARNING] /home/bjerre/workspace/kerub/src/main/kotlin/com/github/kerubistan/kerub/data/hub/AnyEntityDaoImpl.kt: (25, 30) Unchecked cast: KClass<out Entity<*>> to KClass<out Asset>
+[WARNING] /home/bjerre/workspace/kerub/src/main/kotlin/com/github/kerubistan/kerub/planner/Plan.kt: (14, 12) Parameter 'step' is never used
+[WARNING] /home/bjerre/workspace/kerub/src/main/kotlin/com/github/kerubistan/kerub/planner/Plan.kt: (14, 44) Parameter 'plan' is never used
+[WARNING] /home/bjerre/workspace/kerub/src/main/kotlin/com/github/kerubistan/kerub/planner/PlanComparator.kt: (50, 8) Name shadowed: first
+[WARNING] /home/bjerre/workspace/kerub/src/main/kotlin/com/github/kerubistan/kerub/planner/PlanComparator.kt: (50, 8) Variable 'first' is never used
+[WARNING] /home/bjerre/workspace/kerub/src/main/kotlin/com/github/kerubistan/kerub/planner/PlanComparator.kt: (51, 8) Name shadowed: second
+[WARNING] /home/bjerre/workspace/kerub/src/main/kotlin/com/github/kerubistan/kerub/planner/PlanComparator.kt: (51, 8) Variable 'second' is never used
+[WARNING] /home/bjerre/workspace/kerub/src/main/kotlin/com/github/kerubistan/kerub/planner/execution/PlanExecutorImpl.kt: (152, 14) Unchecked cast: StepExecutor<*>? to StepExecutor<AbstractOperationalStep>
+[WARNING] /home/bjerre/workspace/kerub/src/main/kotlin/com/github/kerubistan/kerub/planner/steps/base/AbstractUnAllocateFactory.kt: (17, 21) Unchecked cast: VirtualStorageAllocation to S
+[WARNING] /home/bjerre/workspace/kerub/src/main/kotlin/com/github/kerubistan/kerub/planner/steps/vstorage/migrate/live/libvirt/LibvirtMigrateVirtualStorageDeviceExecutor.kt: (13, 10) Unreachable code
+[WARNING] /home/bjerre/workspace/kerub/src/main/kotlin/com/github/kerubistan/kerub/services/impl/AbstractAssetService.kt: (92, 50) Unchecked cast: List<Asset> to List<T>
+[WARNING] /home/bjerre/workspace/kerub/src/main/kotlin/com/github/kerubistan/kerub/services/impl/VirtualStorageDeviceServiceImpl.kt: (49, 42) 'allocation: VirtualStorageAllocation' is deprecated. Use allocations
+[WARNING] /home/bjerre/workspace/kerub/src/main/kotlin/com/github/kerubistan/kerub/services/impl/VirtualStorageDeviceServiceImpl.kt: (51, 43) 'allocation: VirtualStorageAllocation' is deprecated. Use allocations
+[WARNING] /home/bjerre/workspace/kerub/src/main/kotlin/com/github/kerubistan/kerub/services/socket/InternalMessageListenerImpl.kt: (41, 36) The corresponding parameter in the supertype 'InternalMessageListener' is named 'sessionId'. This may cause problems when calling this function with named arguments.
+[WARNING] /home/bjerre/workspace/kerub/src/main/kotlin/com/github/kerubistan/kerub/services/socket/SpringSocketClientConnection.kt: (60, 48) Unchecked cast: KClass<Entity<*>> to KClass<out Entity<out Any>>
+[WARNING] /home/bjerre/workspace/kerub/src/main/kotlin/com/github/kerubistan/kerub/utils/AnyUtils.kt: (7, 1) Expected performance impact of inlining 'public inline fun NOP(): Unit defined in com.github.kerubistan.kerub.utils in file AnyUtils.kt' is insignificant. Inlining works best for functions with parameters of functional types
+[WARNING] /home/bjerre/workspace/kerub/src/main/kotlin/com/github/kerubistan/kerub/utils/AnyUtils.kt: (9, 1) Expected performance impact of inlining 'public inline fun NOP(comment: String): Unit defined in com.github.kerubistan.kerub.utils in file AnyUtils.kt' is insignificant. Inlining works best for functions with parameters of functional types
+[WARNING] /home/bjerre/workspace/kerub/src/main/kotlin/com/github/kerubistan/kerub/utils/AnyUtils.kt: (9, 16) Parameter 'comment' is never used
+[WARNING] /home/bjerre/workspace/kerub/src/main/kotlin/com/github/kerubistan/kerub/utils/artemis/MqInit.kt: (20, 10) 'deployQueue(SimpleString!, SimpleString!, SimpleString!, Boolean, Boolean): Queue!' is deprecated. Deprecated in Java
+[WARNING] /home/bjerre/workspace/kerub/src/main/kotlin/com/github/kerubistan/kerub/utils/ipmi/IOUtils.kt: (8, 24) Parameter 'timeout' is never used
+[WARNING] /home/bjerre/workspace/kerub/src/main/kotlin/com/github/kerubistan/kerub/utils/ipmi/IpmiClient.kt: (49, 18) Parameter 'address' is never used
+[WARNING] /home/bjerre/workspace/kerub/src/main/kotlin/com/github/kerubistan/kerub/utils/ipmi/IpmiClient.kt: (49, 35) Parameter 'onSession' is never used
+[WARNING] /home/bjerre/workspace/kerub/src/main/kotlin/com/github/kerubistan/kerub/utils/ispn/InfinispanJsonExternalizer.kt: (19, 33) Unchecked cast: Class<out Any> to Class<out Entity<*>>
+[WARNING] /home/bjerre/workspace/kerub/src/main/kotlin/com/github/kerubistan/kerub/utils/junix/fw/ipfw/Ipfw.kt: (6, 11) Parameter 'session' is never used
+[WARNING] /home/bjerre/workspace/kerub/src/main/kotlin/com/github/kerubistan/kerub/utils/junix/fw/ipfw/Ipfw.kt: (6, 35) Parameter 'port' is never used
+[WARNING] /home/bjerre/workspace/kerub/src/main/kotlin/com/github/kerubistan/kerub/utils/junix/fw/ipfw/Ipfw.kt: (6, 46) Parameter 'proto' is never used
+[WARNING] /home/bjerre/workspace/kerub/src/main/kotlin/com/github/kerubistan/kerub/utils/junix/fw/ipfw/Ipfw.kt: (10, 12) Parameter 'session' is never used
+[WARNING] /home/bjerre/workspace/kerub/src/main/kotlin/com/github/kerubistan/kerub/utils/junix/fw/ipfw/Ipfw.kt: (10, 36) Parameter 'port' is never used
+[WARNING] /home/bjerre/workspace/kerub/src/main/kotlin/com/github/kerubistan/kerub/utils/junix/fw/ipfw/Ipfw.kt: (10, 47) Parameter 'proto' is never used
+[WARNING] /home/bjerre/workspace/kerub/src/main/kotlin/com/github/kerubistan/kerub/utils/junix/mount/FSTab.kt: (10, 11) Parameter 'session' is never used
+[WARNING] /home/bjerre/workspace/kerub/src/main/kotlin/com/github/kerubistan/kerub/utils/junix/storagemanager/lvm/LvmLv.kt: (137, 42) Parameter 'vgName' is never used
+[WARNING] /home/bjerre/workspace/kerub/src/main/kotlin/com/github/kerubistan/kerub/utils/junix/sysctl/BsdSysCtl.kt: (13, 7) Variable 'props' is never used
+[WARNING] /home/bjerre/workspace/kerub/src/main/kotlin/com/github/kerubistan/kerub/utils/junix/virt/vbox/VBoxManage.kt: (50, 9) Variable 'device' is never used
+[WARNING] /home/bjerre/workspace/kerub/src/main/kotlin/com/github/kerubistan/kerub/utils/junix/virt/vbox/VBoxManage.kt: (147, 25) 'allocation: VirtualStorageAllocation' is deprecated. Use allocations
+[WARNING] /home/bjerre/workspace/kerub/src/main/kotlin/com/github/kerubistan/kerub/utils/junix/virt/vbox/VBoxManage.kt: (187, 8) Parameter 'listener' is never used
+[WARNING] /home/bjerre/workspace/kerub/src/main/kotlin/com/github/kerubistan/kerub/utils/junix/virt/vbox/VBoxManage.kt: (190, 57) Parameter 'size' is never used
+[WARNING] /home/bjerre/workspace/kerub/src/main/kotlin/com/github/kerubistan/kerub/utils/junix/zfs/Zfs.kt: (16, 3) Unreachable code

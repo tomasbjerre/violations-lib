@@ -1,0 +1,3 @@
+w: /Users/scottkennedy/project/src/main/java/com/example/Test.kt: (13, 87): Elvis operator (?:) always returns the left operand of non-nullable type String
+w: /Users/wolfs/projects/gradle/build-tool-release/buildSrc/subprojects/configuration/src/main/kotlin/org/gradle/gradlebuild/dependencies/DependenciesMetadataRulesPlugin.kt: (75, 54): Unchecked cast: Any? to List<CapabilitySpec>
+w: /home/bjerre/workspace/yet-another-kotlin-vs-java-comparison/src/main/kotlin/basics/controliiiflow/p01assigniiifromiiiif/Example.kt: (17, 9): Variable 'hejsan' is never used

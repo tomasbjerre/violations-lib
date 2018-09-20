@@ -26,6 +26,8 @@ import se.bjurr.violations.lib.parsers.GoogleErrorProneParser;
 import se.bjurr.violations.lib.parsers.JCReportParser;
 import se.bjurr.violations.lib.parsers.JSHintParser;
 import se.bjurr.violations.lib.parsers.KlocworkParser;
+import se.bjurr.violations.lib.parsers.KotlinGradleParser;
+import se.bjurr.violations.lib.parsers.KotlinMavenParser;
 import se.bjurr.violations.lib.parsers.LintParser;
 import se.bjurr.violations.lib.parsers.MyPyParser;
 import se.bjurr.violations.lib.parsers.PCLintParser;
@@ -61,6 +63,8 @@ public enum Parser {
   JSHINT(new JSHintParser()), //
   LINT(new LintParser()), //
   KLOCWORK(new KlocworkParser()), //
+  KOTLINMAVEN(new KotlinMavenParser()), //
+  KOTLINGRADLE(new KotlinGradleParser()), //
   MYPY(new MyPyParser()), //
   GOLINT(new GoLintParser()), //
   GOOGLEERRORPRONE(new GoogleErrorProneParser()), //

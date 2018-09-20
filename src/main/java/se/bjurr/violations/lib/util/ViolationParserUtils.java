@@ -136,17 +136,24 @@ public final class ViolationParserUtils {
     final List<List<String>> results = new ArrayList<>();
     final Pattern pattern = Pattern.compile(regexpPerLine);
     for (final String line : string.split("\n")) {
-      final Matcher matcher = pattern.matcher(line);
-      if (!matcher.find()) {
-        continue;
+      final List<String> found = getLineParts(pattern, line);
+      if (found != null) {
+        results.add(found);
       }
-      final List<String> lineParts = new ArrayList<>();
-      for (int g = 0; g <= matcher.groupCount(); g++) {
-        lineParts.add(matcher.group(g));
-      }
-      results.add(lineParts);
     }
     return results;
+  }
+
+  public static List<String> getLineParts(final Pattern pattern, final String line) {
+    final Matcher matcher = pattern.matcher(line);
+    if (!matcher.find()) {
+      return null;
+    }
+    final List<String> lineParts = new ArrayList<>();
+    for (int g = 0; g <= matcher.groupCount(); g++) {
+      lineParts.add(matcher.group(g));
+    }
+    return lineParts;
   }
 
   /**
