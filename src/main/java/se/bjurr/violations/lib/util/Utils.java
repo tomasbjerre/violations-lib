@@ -96,7 +96,12 @@ public class Utils {
     final int start = content.indexOf(beginPart);
     if (start == -1) {
       throw new RuntimeException(
-          "Could not find: " + beginPart + " in " + readmeFile.getAbsolutePath());
+          "Could not find:\n\n"
+              + beginPart
+              + "\n"
+              + endPart
+              + "\n\n in "
+              + readmeFile.getAbsolutePath());
     }
     final int end = content.indexOf(endPart);
     final String beforePart = content.substring(0, start + beginPart.length());
