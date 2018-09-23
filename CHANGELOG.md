@@ -3,13 +3,13 @@
 
 Changelog of Violations lib.
 
-## Unreleased
+## 1.66
 ### No issue
 
 **Automating reporters in readme**
 
 
-[be5fbd7add70c58](https://github.com/tomasbjerre/violations-lib/commit/be5fbd7add70c58) Tomas Bjerre *2018-09-23 11:38:18*
+[ef097c18f85e488](https://github.com/tomasbjerre/violations-lib/commit/ef097c18f85e488) Tomas Bjerre *2018-09-23 11:38:55*
 
 **Doc**
 
