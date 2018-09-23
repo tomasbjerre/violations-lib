@@ -1,11 +1,17 @@
 package se.bjurr.violations.lib.util;
 
+import static se.bjurr.violations.lib.util.StringUtils.padRight;
+
+import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
 import java.net.URL;
+import java.nio.charset.Charset;
+import java.nio.file.Files;
 import java.util.List;
 import java.util.Scanner;
 import se.bjurr.violations.lib.model.Violation;
+import se.bjurr.violations.lib.reports.Reporter;
 
 public class Utils {
   public static <T> T checkNotNull(final T reference, final String errorMessage) {
@@ -66,5 +72,48 @@ public class Utils {
       v.setReporter(reporter);
     }
     return violations;
+  }
+
+  public static void updateReadmeWithReporters() throws IOException {
+
+    String reporters = "";
+    for (Reporter reporter : Reporter.values()) {
+      reporters +=
+          "| "
+              + padRight("[_" + reporter.getName() + "_](" + reporter.getUrl() + ") ", 85)
+              + " | "
+              + padRight("`" + reporter.getParser().name() + "`", 20)
+              + " | "
+              + reporter.getNote()
+              + "\n";
+    }
+
+    File readmeFile = findReadmeFile(new File("."));
+    String content = new String(Files.readAllBytes(readmeFile.toPath()), Charset.forName("UTF-8"));
+    final String beginPart = "| Reporter | Parser | Notes\n| --- | --- | ---";
+    final String endPart =
+        "Missing a format? Open an issue [here](https://github.com/tomasbjerre/violations-lib/issues)!";
+    final int start = content.indexOf(beginPart);
+    if (start == -1) {
+      throw new RuntimeException(
+          "Could not find: " + beginPart + " in " + readmeFile.getAbsolutePath());
+    }
+    final int end = content.indexOf(endPart);
+    final String beforePart = content.substring(0, start + beginPart.length());
+    final String afterPart = content.substring(end);
+    final String reportersPart = reporters.trim();
+    String newContent = beforePart + "\n" + reportersPart + "\n\n" + afterPart;
+
+    Files.write(readmeFile.toPath(), newContent.getBytes(Charset.forName("UTF-8")));
+  }
+
+  public static File findReadmeFile(File file) {
+    for (File candidate : file.listFiles()) {
+      if (candidate.getName().equals("README.md")) {
+        return candidate;
+      }
+    }
+
+    return findReadmeFile(file.getParentFile());
   }
 }

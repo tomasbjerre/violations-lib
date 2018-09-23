@@ -3,6 +3,30 @@
 
 Changelog of Violations lib.
 
+## Unreleased
+### No issue
+
+**Automating reporters in readme**
+
+
+[be5fbd7add70c58](https://github.com/tomasbjerre/violations-lib/commit/be5fbd7add70c58) Tomas Bjerre *2018-09-23 11:38:18*
+
+**Doc**
+
+
+[93a2736d0116198](https://github.com/tomasbjerre/violations-lib/commit/93a2736d0116198) Tomas Bjerre *2018-09-22 17:08:39*
+
+**Documenting parsers as a table**
+
+
+[ba0e4e7044e2300](https://github.com/tomasbjerre/violations-lib/commit/ba0e4e7044e2300) Tomas Bjerre *2018-09-22 08:37:03*
+
+**Updating README.md**
+
+
+[cc731ae81a2150e](https://github.com/tomasbjerre/violations-lib/commit/cc731ae81a2150e) Tomas Bjerre *2018-09-22 08:01:27*
+
+
 ## 1.65
 ### GitHub [#45](https://github.com/tomasbjerre/violations-lib/issues/45) False positive matches in KotlinGradleParser
 
