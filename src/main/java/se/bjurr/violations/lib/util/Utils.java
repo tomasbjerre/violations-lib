@@ -8,8 +8,11 @@ import java.io.InputStream;
 import java.net.URL;
 import java.nio.charset.Charset;
 import java.nio.file.Files;
+import java.util.Arrays;
 import java.util.List;
 import java.util.Scanner;
+import java.util.Set;
+import java.util.TreeSet;
 import se.bjurr.violations.lib.model.Violation;
 import se.bjurr.violations.lib.reports.Reporter;
 
@@ -77,7 +80,8 @@ public class Utils {
   public static void updateReadmeWithReporters() throws IOException {
 
     String reporters = "";
-    for (Reporter reporter : Reporter.values()) {
+    Set<Reporter> sorted = new TreeSet<>(Arrays.asList(Reporter.values()));
+    for (Reporter reporter : sorted) {
       reporters +=
           "| "
               + padRight("[_" + reporter.getName() + "_](" + reporter.getUrl() + ") ", 85)
