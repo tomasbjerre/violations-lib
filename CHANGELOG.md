@@ -3,7 +3,15 @@
 
 Changelog of Violations lib.
 
-## Unreleased
+## 1.69
+### GitHub [#46](https://github.com/tomasbjerre/violations-lib/issues/46) Incomplete rule IDs in Flake8 parser    *enhancement*  
+
+**Including entire rule in Flake8**
+
+
+[67c8480c165d673](https://github.com/tomasbjerre/violations-lib/commit/67c8480c165d673) Tomas Bjerre *2018-10-06 06:18:22*
+
+
 ### No issue
 
 **Updating changelog**
