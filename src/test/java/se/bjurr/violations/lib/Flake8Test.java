@@ -34,46 +34,50 @@ public class Flake8Test {
                 .setStartLine(7) //
                 .setEndLine(7) //
                 .setMessage("'db' imported but unused") //
-                .setRule("401") //
+                .setRule("F401") //
                 .setSeverity(ERROR) //
                 .build() //
             ) //
         .hasSize(17);
 
-    assertThat(actual.get(9).getMessage()) //
+    Violation violation9 = actual.get(9);
+    assertThat(violation9.getMessage()) //
         .isEqualTo("test with F");
-    assertThat(actual.get(9).getFile()) //
+    assertThat(violation9.getFile()) //
         .isEqualTo("__fake__.py");
-    assertThat(actual.get(9).getSeverity()) //
+    assertThat(violation9.getSeverity()) //
         .isEqualTo(ERROR);
 
-    assertThat(actual.get(10).getMessage()) //
+    Violation violation10 = actual.get(10);
+    assertThat(violation10.getMessage()) //
         .isEqualTo("test with W");
-    assertThat(actual.get(10).getFile()) //
+    assertThat(violation10.getFile()) //
         .isEqualTo("__fake__.py");
-    assertThat(actual.get(10).getSeverity()) //
+    assertThat(violation10.getSeverity()) //
         .isEqualTo(WARN);
 
-    assertThat(actual.get(11).getMessage()) //
+    Violation violation11 = actual.get(11);
+    assertThat(violation11.getMessage()) //
         .isEqualTo("test with C");
-    assertThat(actual.get(11).getFile()) //
+    assertThat(violation11.getFile()) //
         .isEqualTo("__fake__.py");
-    assertThat(actual.get(11).getSeverity()) //
+    assertThat(violation11.getSeverity()) //
         .isEqualTo(INFO);
 
-    assertThat(actual.get(16).getMessage()) //
+    Violation violation16 = actual.get(16);
+    assertThat(violation16.getMessage()) //
         .isEqualTo("expected 2 blank lines, found 1");
-    assertThat(actual.get(16).getFile()) //
+    assertThat(violation16.getFile()) //
         .isEqualTo("python/project/file.py");
-    assertThat(actual.get(16).getSeverity()) //
+    assertThat(violation16.getSeverity()) //
         .isEqualTo(ERROR);
-    assertThat(actual.get(16).getRule()) //
-        .isEqualTo("302");
-    assertThat(actual.get(16).getColumn()) //
+    assertThat(violation16.getRule()) //
+        .isEqualTo("E302");
+    assertThat(violation16.getColumn()) //
         .isEqualTo(1);
-    assertThat(actual.get(16).getStartLine()) //
+    assertThat(violation16.getStartLine()) //
         .isEqualTo(57);
-    assertThat(actual.get(16).getEndLine()) //
+    assertThat(violation16.getEndLine()) //
         .isEqualTo(57);
   }
 }

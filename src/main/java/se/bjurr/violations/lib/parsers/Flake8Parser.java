@@ -43,7 +43,7 @@ public class Flake8Parser implements ViolationsParser {
               .setStartLine(line) //
               .setColumn(column) //
               .setFile(filename) //
-              .setRule(rule) //
+              .setRule(severity + rule) //
               .setSeverity(toSeverity(severity)) //
               .setMessage(message) //
               .build() //
