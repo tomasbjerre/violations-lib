@@ -14,9 +14,9 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Optional;
 import se.bjurr.violations.lib.model.SEVERITY;
 import se.bjurr.violations.lib.model.Violation;
-import se.bjurr.violations.lib.util.Optional;
 
 public class ResharperParser implements ViolationsParser {
 
@@ -30,9 +30,9 @@ public class ResharperParser implements ViolationsParser {
       String id = getAttribute(issueTypesChunk, "Id");
       issueType.put("category", getAttribute(issueTypesChunk, "Category"));
       Optional<String> description = findAttribute(issueTypesChunk, "Description");
-      issueType.put("description", description.or(id));
+      issueType.put("description", description.orElse(id));
       issueType.put("severity", getAttribute(issueTypesChunk, "Severity"));
-      issueType.put("url", findAttribute(issueTypesChunk, "WikiUrl").orNull());
+      issueType.put("url", findAttribute(issueTypesChunk, "WikiUrl").orElse(null));
       issueTypesPerTypeId.put(id, issueType);
     }
 
@@ -48,7 +48,7 @@ public class ResharperParser implements ViolationsParser {
               + ". "
               + issueTypesPerTypeId.get(typeId).get("description")
               + (url != null ? ". For more info, visit " + url : "");
-      Integer line = findIntegerAttribute(issueChunk, "Line").or(0);
+      Integer line = findIntegerAttribute(issueChunk, "Line").orElse(0);
       String severity = issueTypesPerTypeId.get(typeId).get("severity");
       violations.add( //
           violationBuilder() //

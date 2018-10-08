@@ -13,7 +13,7 @@ Changelog of Violations lib.
 
 
 ## 1.69
-### GitHub #46   
+### GitHub [#46](https://github.com/tomasbjerre/violations-lib/issues/46) Incomplete rule IDs in Flake8 parser    *enhancement*  
 
 **Including entire rule in Flake8**
 
@@ -63,7 +63,7 @@ Changelog of Violations lib.
 
 
 ## 1.65
-### GitHub #45   
+### GitHub [#45](https://github.com/tomasbjerre/violations-lib/issues/45) False positive matches in KotlinGradleParser    *enhancement*  
 
 **Correcting Kotlin parsers**
 
@@ -72,7 +72,7 @@ Changelog of Violations lib.
 
 
 ## 1.64
-### GitHub #44   
+### GitHub [#44](https://github.com/tomasbjerre/violations-lib/issues/44) Support kotlinc warnings    *enhancement*  
 
 **Kotlin Maven and Gradle parsers**
 
@@ -90,7 +90,7 @@ Changelog of Violations lib.
 
 
 ## 1.62
-### GitHub #42   
+### GitHub [#42](https://github.com/tomasbjerre/violations-lib/pull/42) Added yamllint parser  
 
 **Correcting YAMLLint**
 
@@ -145,7 +145,7 @@ Changelog of Violations lib.
 
 
 ## 1.59
-### GitHub #39   
+### GitHub [#39](https://github.com/tomasbjerre/violations-lib/issues/39) AndroidLintParser doesn&#39;t expose rule correctly    *enhancement*  
 
 **Adding category to model**
 
@@ -163,7 +163,7 @@ Changelog of Violations lib.
 
 
 ## 1.57
-### GitHub #38   
+### GitHub [#38](https://github.com/tomasbjerre/violations-lib/issues/38) gcc, ARM-Gcc and Doxygen    *enhancement*  
 
 **GCC, ARM GCC and Doxygen**
 
@@ -191,7 +191,7 @@ Changelog of Violations lib.
 
 
 ## 1.55
-### GitHub #33   
+### GitHub [#33](https://github.com/tomasbjerre/violations-lib/issues/33) Add support for NullAway    *enhancement*  
 
 **NullAway**
 
@@ -199,7 +199,7 @@ Changelog of Violations lib.
 [72244241bbd2ead](https://github.com/tomasbjerre/violations-lib/commit/72244241bbd2ead) Tomas Bjerre *2018-04-14 05:08:26*
 
 
-### GitHub #35   
+### GitHub [#35](https://github.com/tomasbjerre/violations-lib/issues/35) cpplint parser does not recognize any violations    *bug*  
 
 **Testing cpplint variant**
 
@@ -251,7 +251,7 @@ Changelog of Violations lib.
 
 
 ## 1.52
-### GitHub #10   
+### GitHub [#10](https://github.com/tomasbjerre/violations-lib/issues/10) Google error-prone    *enhancement*  
 
 **Google error-prone**
 
@@ -260,7 +260,7 @@ Changelog of Violations lib.
 
 
 ## 1.51
-### GitHub #30   
+### GitHub [#30](https://github.com/tomasbjerre/violations-lib/pull/30) Parameterize the max line length for the report table.  
 
 **Parameterize max width of reporter table**
 
@@ -269,7 +269,7 @@ Changelog of Violations lib.
 
 
 ## 1.50
-### GitHub #28   
+### GitHub [#28](https://github.com/tomasbjerre/violations-lib/issues/28) Single quotes in xml are printed as &amp;apos;   
 
 **Un-escape XML when reading attributes.**
 
@@ -431,7 +431,7 @@ Changelog of Violations lib.
 
 
 ## 1.34
-### GitHub #27   
+### GitHub [#27](https://github.com/tomasbjerre/violations-lib/issues/27) PMD may miss ruleSet and externalInfoUrl    *bug*  
 
 **Accepting PMD files without ruleset-tag**
 
@@ -467,7 +467,7 @@ Changelog of Violations lib.
 
 
 ## 1.32
-### GitHub #24   
+### GitHub [#24](https://github.com/tomasbjerre/violations-lib/pull/24) Added handling for empty IssueType Description attributes for Resharper  
 
 **Cleanup after merge**
 
@@ -489,7 +489,7 @@ Changelog of Violations lib.
 
 
 ## 1.31
-### GitHub #23   
+### GitHub [#23](https://github.com/tomasbjerre/violations-lib/issues/23) Checkstyle: don&#39;t fail if rule attribute is not present  
 
 **Allowing absent source in Checkstyle parser**
 
@@ -522,7 +522,7 @@ Changelog of Violations lib.
 
 
 ## 1.28
-### GitHub #19   
+### GitHub [#19](https://github.com/tomasbjerre/violations-lib/issues/19) Support detekt    *enhancement*  
 
 **Updating doc about Detekt**
 
@@ -530,7 +530,7 @@ Changelog of Violations lib.
 [bf5475d3e59fb3d](https://github.com/tomasbjerre/violations-lib/commit/bf5475d3e59fb3d) Tomas Bjerre *2017-06-13 18:14:41*
 
 
-### GitHub #20   
+### GitHub [#20](https://github.com/tomasbjerre/violations-lib/issues/20) Support Facebook Infer    *enhancement*  
 
 **Updating doc on Infer**
 
@@ -538,7 +538,7 @@ Changelog of Violations lib.
 [22a2eb9add9884c](https://github.com/tomasbjerre/violations-lib/commit/22a2eb9add9884c) Tomas Bjerre *2017-06-23 12:44:57*
 
 
-### GitHub #22   
+### GitHub [#22](https://github.com/tomasbjerre/violations-lib/pull/22) Renaming Reporter to Parser    *enhancement*  
 
 **Renaming Reporter to Parser**
 
@@ -622,7 +622,7 @@ Changelog of Violations lib.
 
 
 ## 1.23
-### GitHub #14   
+### GitHub [#14](https://github.com/tomasbjerre/violations-lib/issues/14) Support php checkers    *enhancement*  
 
 **PHPMD and PHPCS**
 
@@ -630,7 +630,7 @@ Changelog of Violations lib.
 [f7212555f7a986b](https://github.com/tomasbjerre/violations-lib/commit/f7212555f7a986b) Tomas Bjerre *2017-02-18 20:01:36*
 
 
-### GitHub #15   
+### GitHub [#15](https://github.com/tomasbjerre/violations-lib/issues/15) Support Rubycop    *enhancement*  
 
 **Support RubyCop**
 
@@ -638,7 +638,7 @@ Changelog of Violations lib.
 [75ad3b3d415384a](https://github.com/tomasbjerre/violations-lib/commit/75ad3b3d415384a) Tomas Bjerre *2017-02-18 21:36:36*
 
 
-### GitHub #16   
+### GitHub [#16](https://github.com/tomasbjerre/violations-lib/issues/16) Support clang    *enhancement*  
 
 **Support CLang**
 
@@ -646,7 +646,7 @@ Changelog of Violations lib.
 [68ac9c8cf268d17](https://github.com/tomasbjerre/violations-lib/commit/68ac9c8cf268d17) Tomas Bjerre *2017-02-18 21:28:31*
 
 
-### GitHub #17   
+### GitHub [#17](https://github.com/tomasbjerre/violations-lib/issues/17) Support golint    *enhancement*  
 
 **Support GoLint**
 
@@ -671,7 +671,7 @@ Changelog of Violations lib.
 
 
 ## 1.21
-### GitHub #12   
+### GitHub [#12](https://github.com/tomasbjerre/violations-lib/issues/12) Support pydocstyle (old pep257)    *enhancement*  
 
 **Adding MyPy and PyDocStyle parsers**
 
@@ -679,7 +679,7 @@ Changelog of Violations lib.
 [acfe3312656237f](https://github.com/tomasbjerre/violations-lib/commit/acfe3312656237f) Tomas Bjerre *2017-02-06 17:07:33*
 
 
-### GitHub #13   
+### GitHub [#13](https://github.com/tomasbjerre/violations-lib/issues/13) Support mypy    *enhancement*  
 
 **Adding MyPy and PyDocStyle parsers**
 
@@ -790,7 +790,7 @@ Changelog of Violations lib.
 
 
 ## 1.13
-### GitHub #11   
+### GitHub [#11](https://github.com/tomasbjerre/violations-lib/issues/11) CSSLint rollup output causes parsing error    *bug*  
 
 **Handling css-lint reports where there are not line or evidence**
 
@@ -833,7 +833,7 @@ Changelog of Violations lib.
 
 
 ## 1.9
-### GitHub #4   
+### GitHub [#4](https://github.com/tomasbjerre/violations-lib/issues/4) eslint    *enhancement*  
 
 **ESLint**
 
@@ -900,7 +900,7 @@ Changelog of Violations lib.
 
 
 ## 1.6
-### GitHub #5   
+### GitHub [#5](https://github.com/tomasbjerre/violations-lib/issues/5) PiTest    *enhancement*  
 
 **Adding pitest parser**
 
@@ -908,7 +908,7 @@ Changelog of Violations lib.
 [eeb2a624a99a7ff](https://github.com/tomasbjerre/violations-lib/commit/eeb2a624a99a7ff) Tomas Bjerre *2016-03-26 19:22:06*
 
 
-### GitHub #7   
+### GitHub [#7](https://github.com/tomasbjerre/violations-lib/issues/7) Findbugs parser misses bugs    *bug*  
 
 **Correcting exception message thrown if attribute not found**
 
@@ -936,7 +936,7 @@ Changelog of Violations lib.
 
 
 ## 1.5
-### GitHub #3   
+### GitHub [#3](https://github.com/tomasbjerre/violations-lib/issues/3) Support more formats    *enhancement*  
 
 **Support PerlCritic and XMLLint**
 

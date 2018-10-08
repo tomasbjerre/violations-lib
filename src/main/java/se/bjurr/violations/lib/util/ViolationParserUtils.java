@@ -1,16 +1,17 @@
 package se.bjurr.violations.lib.util;
 
 import static java.lang.Integer.parseInt;
+import static java.util.Optional.empty;
+import static java.util.Optional.ofNullable;
 import static java.util.regex.Pattern.DOTALL;
 import static java.util.regex.Pattern.quote;
-import static se.bjurr.violations.lib.util.Optional.absent;
-import static se.bjurr.violations.lib.util.Optional.fromNullable;
 import static se.bjurr.violations.lib.util.StringUtils.xmlDecode;
 
 import java.io.StringWriter;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.Optional;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 import javax.xml.stream.XMLStreamReader;
@@ -32,34 +33,34 @@ public final class ViolationParserUtils {
     Pattern pattern = Pattern.compile(attribute + "='([^']+?)'");
     Matcher matcher = pattern.matcher(in);
     if (matcher.find()) {
-      return fromNullable(xmlDecode(matcher.group(1)));
+      return ofNullable(xmlDecode(matcher.group(1)));
     }
     pattern = Pattern.compile(attribute + "=\"([^\"]+?)\"");
     matcher = pattern.matcher(in);
     if (matcher.find()) {
-      return fromNullable(xmlDecode(matcher.group(1)));
+      return ofNullable(xmlDecode(matcher.group(1)));
     }
-    return absent();
+    return empty();
   }
 
   public static Optional<String> findAttribute(final XMLStreamReader in, final String attribute) {
-    return fromNullable(in.getAttributeValue("", attribute));
+    return ofNullable(in.getAttributeValue("", attribute));
   }
 
   public static Optional<Integer> findIntegerAttribute(final String in, final String attribute) {
     if (findAttribute(in, attribute).isPresent()) {
-      return fromNullable(parseInt(getAttribute(in, attribute)));
+      return ofNullable(parseInt(getAttribute(in, attribute)));
     }
-    return absent();
+    return empty();
   }
 
   public static Optional<Integer> findIntegerAttribute(
       final XMLStreamReader in, final String attribute) {
     final String attr = in.getAttributeValue("", attribute);
     if (attr == null) {
-      return Optional.absent();
+      return empty();
     } else {
-      return fromNullable(Integer.parseInt(attr));
+      return ofNullable(Integer.parseInt(attr));
     }
   }
 

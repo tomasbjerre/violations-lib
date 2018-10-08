@@ -12,9 +12,9 @@ import static se.bjurr.violations.lib.util.ViolationParserUtils.getIntegerAttrib
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 import se.bjurr.violations.lib.model.SEVERITY;
 import se.bjurr.violations.lib.model.Violation;
-import se.bjurr.violations.lib.util.Optional;
 
 public class LintParser implements ViolationsParser {
   @Override
@@ -35,7 +35,7 @@ public class LintParser implements ViolationsParser {
             violationBuilder() //
                 .setParser(LINT) //
                 .setStartLine(line) //
-                .setColumn(charAttrib.orNull()) //
+                .setColumn(charAttrib.orElse(null)) //
                 .setFile(filename) //
                 .setSeverity(toSeverity(severity)) //
                 .setMessage(message + ": " + evidence) //

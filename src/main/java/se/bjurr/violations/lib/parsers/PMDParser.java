@@ -14,9 +14,9 @@ import static se.bjurr.violations.lib.util.ViolationParserUtils.getIntegerAttrib
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 import se.bjurr.violations.lib.model.SEVERITY;
 import se.bjurr.violations.lib.model.Violation;
-import se.bjurr.violations.lib.util.Optional;
 
 public class PMDParser implements ViolationsParser {
 
@@ -39,17 +39,17 @@ public class PMDParser implements ViolationsParser {
         final SEVERITY severity = toSeverity(priority);
         final String content = getContent(violationChunk, "violation");
         final String message =
-            content + "\n\n" + ruleSetOpt.or("") + " " + externalInfoUrlOpt.or("");
+            content + "\n\n" + ruleSetOpt.orElse("") + " " + externalInfoUrlOpt.orElse("");
         violations.add( //
             violationBuilder() //
                 .setParser(PMD) //
                 .setStartLine(beginLine) //
                 .setEndLine(endLine) //
-                .setColumn(beginColumn.orNull()) //
+                .setColumn(beginColumn.orElse(null)) //
                 .setFile(filename) //
                 .setSeverity(severity) //
                 .setRule(rule) //
-                .setCategory(ruleSetOpt.orNull())
+                .setCategory(ruleSetOpt.orElse(null))
                 .setMessage(message.trim()) //
                 .build() //
             );

@@ -12,9 +12,9 @@ import static se.bjurr.violations.lib.util.ViolationParserUtils.getChunks;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 import se.bjurr.violations.lib.model.SEVERITY;
 import se.bjurr.violations.lib.model.Violation;
-import se.bjurr.violations.lib.util.Optional;
 
 public class CSSLintParser implements ViolationsParser {
 
@@ -26,17 +26,17 @@ public class CSSLintParser implements ViolationsParser {
       String filename = getAttribute(fileChunk, "name");
       List<String> issues = getChunks(fileChunk, "<issue", "/>");
       for (String issueChunk : issues) {
-        Integer line = findIntegerAttribute(issueChunk, "line").or(1);
+        Integer line = findIntegerAttribute(issueChunk, "line").orElse(1);
         Optional<Integer> charAttrib = findIntegerAttribute(issueChunk, "char");
         String severity = getAttribute(issueChunk, "severity");
 
         String message = getAttribute(issueChunk, "reason");
-        String evidence = findAttribute(issueChunk, "evidence").or("").trim();
+        String evidence = findAttribute(issueChunk, "evidence").orElse("").trim();
         violations.add( //
             violationBuilder() //
                 .setParser(CSSLINT) //
                 .setStartLine(line) //
-                .setColumn(charAttrib.orNull()) //
+                .setColumn(charAttrib.orElse(null)) //
                 .setFile(filename) //
                 .setSeverity(toSeverity(severity)) //
                 .setMessage(message + ": " + evidence) //

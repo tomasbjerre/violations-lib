@@ -13,9 +13,9 @@ import static se.bjurr.violations.lib.util.ViolationParserUtils.getIntegerAttrib
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 import se.bjurr.violations.lib.model.SEVERITY;
 import se.bjurr.violations.lib.model.Violation;
-import se.bjurr.violations.lib.util.Optional;
 
 public class CheckStyleParser implements ViolationsParser {
 
@@ -31,12 +31,12 @@ public class CheckStyleParser implements ViolationsParser {
         final Optional<Integer> column = findIntegerAttribute(errorChunk, "column");
         final String severity = getAttribute(errorChunk, "severity");
         final String message = getAttribute(errorChunk, "message");
-        final String rule = findAttribute(errorChunk, "source").orNull();
+        final String rule = findAttribute(errorChunk, "source").orElse(null);
         violations.add( //
             violationBuilder() //
                 .setParser(CHECKSTYLE) //
                 .setStartLine(line) //
-                .setColumn(column.orNull()) //
+                .setColumn(column.orElse(null)) //
                 .setFile(filename) //
                 .setSeverity(toSeverity(severity)) //
                 .setMessage(message) //

@@ -11,9 +11,9 @@ import static se.bjurr.violations.lib.util.ViolationParserUtils.getChunks;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 import se.bjurr.violations.lib.model.SEVERITY;
 import se.bjurr.violations.lib.model.Violation;
-import se.bjurr.violations.lib.util.Optional;
 
 public class AndroidLintParser implements ViolationsParser {
 
@@ -40,8 +40,8 @@ public class AndroidLintParser implements ViolationsParser {
       violations.add( //
           violationBuilder() //
               .setParser(ANDROIDLINT) //
-              .setStartLine(line.or(0)) //
-              .setColumn(charAttrib.orNull()) //
+              .setStartLine(line.orElse(0)) //
+              .setColumn(charAttrib.orElse(null)) //
               .setFile(filename) //
               .setSeverity(toSeverity(severity)) //
               .setRule(id) //
