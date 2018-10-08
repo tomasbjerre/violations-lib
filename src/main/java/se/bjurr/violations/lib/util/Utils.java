@@ -94,7 +94,7 @@ public class Utils {
 
     File readmeFile = findReadmeFile(new File("."));
     String content = new String(Files.readAllBytes(readmeFile.toPath()), Charset.forName("UTF-8"));
-    final String beginPart = "| Reporter | Parser | Notes\n| --- | --- | ---";
+    final String beginPart = "| Reporter | Parser | Notes";
     final String endPart =
         "Missing a format? Open an issue [here](https://github.com/tomasbjerre/violations-lib/issues)!";
     final int start = content.indexOf(beginPart);
@@ -111,7 +111,7 @@ public class Utils {
     final String beforePart = content.substring(0, start + beginPart.length());
     final String afterPart = content.substring(end);
     final String reportersPart = reporters.trim();
-    String newContent = beforePart + "\n" + reportersPart + "\n\n" + afterPart;
+    String newContent = beforePart + "\n| --- | --- | ---\n" + reportersPart + "\n\n" + afterPart;
 
     Files.write(readmeFile.toPath(), newContent.getBytes(Charset.forName("UTF-8")));
   }
