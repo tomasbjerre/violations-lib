@@ -3,6 +3,15 @@
 
 Changelog of Violations lib.
 
+## 1.71
+### No issue
+
+**Removing custom Optional**
+
+
+[8e0005f4897a74d](https://github.com/tomasbjerre/violations-lib/commit/8e0005f4897a74d) Tomas Bjerre *2018-10-08 14:10:31*
+
+
 ## 1.70
 ### No issue
 
