@@ -3,6 +3,15 @@
 
 Changelog of Violations lib.
 
+## Unreleased
+### GitHub [#50](https://github.com/tomasbjerre/violations-lib/issues/50) puppet-lint  
+
+**Documenting Puppet-Lint**
+
+
+[bc3954d39b7ba56](https://github.com/tomasbjerre/violations-lib/commit/bc3954d39b7ba56) Tomas Bjerre *2018-11-14 19:09:15*
+
+
 ## 1.71
 ### No issue
 

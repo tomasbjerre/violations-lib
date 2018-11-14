@@ -80,6 +80,11 @@ public enum Reporter {
   PEP8("Pep8", Parser.FLAKE8, "https://github.com/PyCQA/pycodestyle", ""),
   PERLCRITIC("PerlCritic", Parser.PERLCRITIC, "https://github.com/Perl-Critic", ""),
   PITEST("PiTest", Parser.PITEST, "http://pitest.org/", ""),
+  PUPPETLINT(
+      "Puppet-Lint",
+      Parser.CLANG,
+      "http://puppet-lint.com/",
+      "With `-log-format %{fullpath}:%{line}:%{column}: %{kind}: %{message}`"),
   PYDOCSTYLE("PyDocStyle", Parser.PYDOCSTYLE, "https://pypi.python.org/pypi/pydocstyle", ""),
   PYFLAKES("PyFlakes", Parser.FLAKE8, "https://pypi.python.org/pypi/pyflakes", ""),
   PYLINT(
