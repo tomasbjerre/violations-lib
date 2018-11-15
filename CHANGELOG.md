@@ -3,13 +3,13 @@
 
 Changelog of Violations lib.
 
-## Unreleased
+## 1.73
 ### GitHub [#51](https://github.com/tomasbjerre/violations-lib/issues/51) Embedded Ruby Templates    *enhancement*  
 
 **Documenting ERB**
 
 
-[860920237f63975](https://github.com/tomasbjerre/violations-lib/commit/860920237f63975) Tomas Bjerre *2018-11-15 17:15:15*
+[50bcfaaf1afdbdd](https://github.com/tomasbjerre/violations-lib/commit/50bcfaaf1afdbdd) Tomas Bjerre *2018-11-15 17:23:40*
 
 
 ## 1.72
