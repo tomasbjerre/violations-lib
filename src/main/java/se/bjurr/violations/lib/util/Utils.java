@@ -88,7 +88,7 @@ public class Utils {
               + " | "
               + padRight("`" + reporter.getParser().name() + "`", 20)
               + " | "
-              + reporter.getNote()
+              + reporter.getNote().replace("|", "\\|")
               + "\n";
     }
 

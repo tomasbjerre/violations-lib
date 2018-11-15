@@ -3,6 +3,15 @@
 
 Changelog of Violations lib.
 
+## Unreleased
+### GitHub [#51](https://github.com/tomasbjerre/violations-lib/issues/51) Embedded Ruby Templates    *enhancement*  
+
+**Documenting ERB**
+
+
+[860920237f63975](https://github.com/tomasbjerre/violations-lib/commit/860920237f63975) Tomas Bjerre *2018-11-15 17:15:15*
+
+
 ## 1.72
 ### GitHub [#50](https://github.com/tomasbjerre/violations-lib/issues/50) puppet-lint  
 

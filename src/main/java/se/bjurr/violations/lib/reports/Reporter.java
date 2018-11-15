@@ -18,6 +18,11 @@ public enum Reporter {
       Parser.CHECKSTYLE,
       "https://github.com/arturbosch/detekt",
       "With `--output-format xml`."),
+  ERB(
+      "ERB",
+      Parser.CLANG,
+      "https://www.puppetcookbook.com/posts/erb-template-validation.html",
+      "With `erb -P -x -T '-' \"${it}\" | ruby -c 2>&1 >/dev/null | grep '^-' | sed -E 's/^-([a-zA-Z0-9:]+)/${filename}\\1 ERROR:/p' > erbfiles.out`."),
   DOCFX("DocFX", Parser.DOCFX, "http://dotnet.github.io/docfx/", ""),
   DOXYGEN("Doxygen", Parser.CLANG, "https://www.stack.nl/~dimitri/doxygen/", ""),
   ESLINT(

@@ -19,11 +19,6 @@ public class ViolationsApi {
   private File startFile;
   private String reporter;
 
-  public static String getDetailedReport(final List<Violation> violations) {
-    return new DetailedReportCreator(violations) //
-        .create();
-  }
-
   public static ViolationsApi violationsApi() {
     return new ViolationsApi();
   }
