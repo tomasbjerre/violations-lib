@@ -23,7 +23,7 @@ dependencies {
  compile 'com.google.code.gson:gson:2.8.2'
  testCompile 'junit:junit:4.12'
  testCompile 'org.assertj:assertj-core:2.3.0'
- testCompile 'uk.co.jemos.podam:podam:7.1.1.RELEASE'
+ testCompile 'uk.co.jemos.podam:podam:7.2.1.RELEASE'
 }
 
 shadowJar {
