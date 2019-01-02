@@ -45,6 +45,8 @@ public class Flake8Test {
         .isEqualTo("test with F");
     assertThat(violation9.getFile()) //
         .isEqualTo("__fake__.py");
+    assertThat(violation9.getRule()) //
+        .isEqualTo("F265");
     assertThat(violation9.getSeverity()) //
         .isEqualTo(ERROR);
 
@@ -69,6 +71,8 @@ public class Flake8Test {
         .isEqualTo("expected 2 blank lines, found 1");
     assertThat(violation16.getFile()) //
         .isEqualTo("python/project/file.py");
+    assertThat(violation16.getRule()) //
+        .isEqualTo("E302");
     assertThat(violation16.getSeverity()) //
         .isEqualTo(ERROR);
     assertThat(violation16.getRule()) //
@@ -79,5 +83,40 @@ public class Flake8Test {
         .isEqualTo(57);
     assertThat(violation16.getEndLine()) //
         .isEqualTo(57);
+  }
+
+  @Test
+  public void testThatViolationsCanBeParsedWithAnsibleLint() {
+    final String rootFolder = getRootFolder();
+
+    final List<Violation> actual =
+        violationsApi() //
+            .withPattern(".*/ansiblelint/ansiblelint\\.txt$") //
+            .inFolder(rootFolder) //
+            .findAll(FLAKE8) //
+            .violations();
+
+    assertThat(actual) //
+        .hasSize(8);
+
+    Violation violation0 = actual.get(0);
+    assertThat(violation0.getMessage()) //
+        .isEqualTo("Commands should not change things if nothing needs doing");
+    assertThat(violation0.getFile()) //
+        .isEqualTo("Weblogic/playbooks/getDSdetails.yml");
+    assertThat(violation0.getRule()) //
+        .isEqualTo("EANSIBLE0012");
+    assertThat(violation0.getSeverity()) //
+        .isEqualTo(ERROR);
+    assertThat(violation0.getStartLine()) //
+        .isEqualTo(25);
+
+    Violation violation7 = actual.get(7);
+    assertThat(violation7.getMessage()) //
+        .isEqualTo("This line is just added to test W");
+    assertThat(violation7.getRule()) //
+        .isEqualTo("WANSIBLE0012");
+    assertThat(violation7.getSeverity()) //
+        .isEqualTo(WARN);
   }
 }

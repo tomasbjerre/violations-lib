@@ -1,0 +1,8 @@
+Weblogic/playbooks/getDSdetails.yml:25: [EANSIBLE0012] Commands should not change things if nothing needs doing
+Weblogic/playbooks/getDSdetails.yml:25: [EANSIBLE0013] Use shell only when shell functionality is required
+Weblogic/playbooks/getDSdetails.yml:29: [EANSIBLE0012] Commands should not change things if nothing needs doing
+Weblogic/playbooks/testDataSource.yml:24: [EANSIBLE0002] Trailing whitespace
+Weblogic/playbooks/testDataSource.yml:25: [EANSIBLE0012] Commands should not change things if nothing needs doing
+Weblogic/playbooks/testDataSource.yml:25: [EANSIBLE0013] Use shell only when shell functionality is required
+Weblogic/playbooks/testDataSource.yml:28: [EANSIBLE0012] Commands should not change things if nothing needs doing
+Weblogic/playbooks/testDataSource.yml:123: [WANSIBLE0012] This line is just added to test W

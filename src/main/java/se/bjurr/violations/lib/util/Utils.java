@@ -117,12 +117,14 @@ public class Utils {
   }
 
   public static File findReadmeFile(File file) {
-    for (File candidate : file.listFiles()) {
-      if (candidate.getName().equals("README.md")) {
-        return candidate;
+    File[] files = file.listFiles();
+    if (files != null) {
+      for (File candidate : files) {
+        if (candidate.getName().equals("README.md")) {
+          return candidate;
+        }
       }
     }
-
     return findReadmeFile(file.getParentFile());
   }
 }

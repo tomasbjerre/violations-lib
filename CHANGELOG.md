@@ -3,6 +3,23 @@
 
 Changelog of Violations lib.
 
+## Unreleased
+### GitHub [#52](https://github.com/tomasbjerre/violations-lib/issues/52) Ansible Lint issue    *bug*  
+
+**Correctly parsing AnsibleLint**
+
+
+[e83197bc261ecca](https://github.com/tomasbjerre/violations-lib/commit/e83197bc261ecca) Tomas Bjerre *2019-01-02 20:39:46*
+
+
+### No issue
+
+**Podam update**
+
+
+[274b7897621d919](https://github.com/tomasbjerre/violations-lib/commit/274b7897621d919) Tomas Bjerre *2018-12-22 11:38:33*
+
+
 ## 1.73
 ### GitHub [#51](https://github.com/tomasbjerre/violations-lib/issues/51) Embedded Ruby Templates    *enhancement*  
 
