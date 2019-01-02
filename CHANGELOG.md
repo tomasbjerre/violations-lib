@@ -3,13 +3,13 @@
 
 Changelog of Violations lib.
 
-## Unreleased
+## 1.74
 ### GitHub [#52](https://github.com/tomasbjerre/violations-lib/issues/52) Ansible Lint issue    *bug*  
 
 **Correctly parsing AnsibleLint**
 
 
-[e83197bc261ecca](https://github.com/tomasbjerre/violations-lib/commit/e83197bc261ecca) Tomas Bjerre *2019-01-02 20:39:46*
+[6c95cf891f06873](https://github.com/tomasbjerre/violations-lib/commit/6c95cf891f06873) Tomas Bjerre *2019-01-02 21:06:41*
 
 
 ### No issue
