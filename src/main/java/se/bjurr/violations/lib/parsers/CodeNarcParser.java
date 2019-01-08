@@ -10,12 +10,14 @@ import static se.bjurr.violations.lib.util.ViolationParserUtils.getAttribute;
 import static se.bjurr.violations.lib.util.ViolationParserUtils.getIntegerAttribute;
 
 import java.io.ByteArrayInputStream;
+import java.io.IOException;
 import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import javax.xml.stream.XMLInputFactory;
+import javax.xml.stream.XMLStreamException;
 import javax.xml.stream.XMLStreamReader;
 import se.bjurr.violations.lib.model.SEVERITY;
 import se.bjurr.violations.lib.model.Violation;
@@ -35,25 +37,10 @@ public class CodeNarcParser implements ViolationsParser {
   @Override
   public List<Violation> parseReportOutput(String string) throws Exception {
     final List<Violation> violations = new ArrayList<>();
-    final Map<String, String> rules = new HashMap<>();
-    try (InputStream input = new ByteArrayInputStream(string.getBytes("UTF-8"))) {
-      final XMLInputFactory factory = XMLInputFactory.newInstance();
-      final XMLStreamReader xmlr = factory.createXMLStreamReader(input);
-      String name = null;
-      String description = null;
-      while (xmlr.hasNext()) {
-        final int eventType = xmlr.next();
-        if (eventType == START_ELEMENT) {
-          if (xmlr.getLocalName().equalsIgnoreCase("Rule")) {
-            name = getAttribute(xmlr, "name");
-          }
-          if (xmlr.getLocalName().equalsIgnoreCase("Description")) {
-            description = xmlr.getElementText().trim();
-            rules.put(name, description);
-          }
-        }
-      }
-    }
+
+    final Map<String, String> rules = getRules(string);
+
+    final String sourceDirectory = getSourceDirectory(string);
 
     try (InputStream input = new ByteArrayInputStream(string.getBytes("UTF-8"))) {
 
@@ -89,7 +76,7 @@ public class CodeNarcParser implements ViolationsParser {
             final Violation violation =
                 violationBuilder() //
                     .setParser(CODENARC) //
-                    .setFile(path + "/" + name) //
+                    .setFile((sourceDirectory + "/" + path + "/" + name).replace("//", "/")) //
                     .setMessage(message) //
                     .setRule(ruleName) //
                     .setSeverity(getSeverity(priority)) //
@@ -101,5 +88,46 @@ public class CodeNarcParser implements ViolationsParser {
       }
     }
     return violations;
+  }
+
+  private String getSourceDirectory(final String string) throws Exception {
+    try (InputStream input = new ByteArrayInputStream(string.getBytes("UTF-8"))) {
+      final XMLInputFactory factory = XMLInputFactory.newInstance();
+      final XMLStreamReader xmlr = factory.createXMLStreamReader(input);
+      String name = null;
+      String description = null;
+      while (xmlr.hasNext()) {
+        final int eventType = xmlr.next();
+        if (eventType == START_ELEMENT) {
+          if (xmlr.getLocalName().equalsIgnoreCase("SourceDirectory")) {
+            return xmlr.getElementText().trim();
+          }
+        }
+      }
+    }
+    return "";
+  }
+
+  private Map<String, String> getRules(final String string) throws IOException, XMLStreamException {
+    final Map<String, String> rules = new HashMap<>();
+    try (InputStream input = new ByteArrayInputStream(string.getBytes("UTF-8"))) {
+      final XMLInputFactory factory = XMLInputFactory.newInstance();
+      final XMLStreamReader xmlr = factory.createXMLStreamReader(input);
+      String name = null;
+      String description = null;
+      while (xmlr.hasNext()) {
+        final int eventType = xmlr.next();
+        if (eventType == START_ELEMENT) {
+          if (xmlr.getLocalName().equalsIgnoreCase("Rule")) {
+            name = getAttribute(xmlr, "name");
+          }
+          if (xmlr.getLocalName().equalsIgnoreCase("Description")) {
+            description = xmlr.getElementText().trim();
+            rules.put(name, description);
+          }
+        }
+      }
+    }
+    return rules;
   }
 }
