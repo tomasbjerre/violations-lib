@@ -3,6 +3,28 @@
 
 Changelog of Violations lib.
 
+## 1.77
+### GitHub [#53](https://github.com/tomasbjerre/violations-lib/issues/53) Shouldn&#39;t CodeNarc-Parsing respect SourceDirectory-Element    *bug*  
+
+**Respecting source directory in CodeNarc**
+
+
+[2fbb203859a0636](https://github.com/tomasbjerre/violations-lib/commit/2fbb203859a0636) Tomas Bjerre *2019-01-08 20:14:11*
+
+
+### No issue
+
+**Setting version to fix faulty release**
+
+
+[547751028bcc781](https://github.com/tomasbjerre/violations-lib/commit/547751028bcc781) Tomas Bjerre *2019-01-09 16:42:44*
+
+**Setting version to fix faulty release**
+
+
+[5754b1124779614](https://github.com/tomasbjerre/violations-lib/commit/5754b1124779614) Tomas Bjerre *2019-01-09 16:27:05*
+
+
 ## 1.74
 ### GitHub [#52](https://github.com/tomasbjerre/violations-lib/issues/52) Ansible Lint issue    *bug*  
 
