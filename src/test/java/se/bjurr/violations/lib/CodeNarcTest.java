@@ -31,7 +31,7 @@ public class CodeNarcTest {
     assertThat(violation0.getMessage()) //
         .isEqualTo("In most cases, exceptions should not be caught and ignored (swallowed).");
     assertThat(violation0.getFile()) //
-        .isEqualTo("/foo/bar/Test.groovy");
+        .isEqualTo("foo/bar/Test.groovy");
     assertThat(violation0.getSeverity()) //
         .isEqualTo(WARN);
     assertThat(violation0.getRule()) //
@@ -74,5 +74,21 @@ public class CodeNarcTest {
         .isEqualTo(184);
     assertThat(violation0.getEndLine()) //
         .isEqualTo(184);
+  }
+
+  @Test
+  public void testThatViolationsCanBeParsedEmptySourceFolder() {
+    final String rootFolder = getRootFolder();
+
+    final List<Violation> actual =
+        violationsApi() //
+            .withPattern(".*/codenarc/CodeNarcXmlReport\\.xml$") //
+            .inFolder(rootFolder) //
+            .findAll(CODENARC) //
+            .violations();
+
+    final Violation violation0 = actual.get(0);
+    assertThat(violation0.getFile()) //
+        .isEqualTo("grails-app/controllers/LoginController.groovy");
   }
 }

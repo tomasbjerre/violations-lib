@@ -73,10 +73,16 @@ public class CodeNarcParser implements ViolationsParser {
             if (message == null) {
               message = ruleName;
             }
+            String fileString = null;
+            if (sourceDirectory == null || sourceDirectory.isEmpty()) {
+              fileString = path + "/" + name;
+            } else {
+              fileString = sourceDirectory + "/" + path + "/" + name;
+            }
             final Violation violation =
                 violationBuilder() //
                     .setParser(CODENARC) //
-                    .setFile((sourceDirectory + "/" + path + "/" + name).replace("//", "/")) //
+                    .setFile(fileString.replace("//", "/")) //
                     .setMessage(message) //
                     .setRule(ruleName) //
                     .setSeverity(getSeverity(priority)) //
