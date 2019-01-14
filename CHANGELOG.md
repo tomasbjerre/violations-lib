@@ -3,6 +3,15 @@
 
 Changelog of Violations lib.
 
+## 1.78
+### GitHub [#53](https://github.com/tomasbjerre/violations-lib/issues/53) Shouldn&#39;t CodeNarc-Parsing respect SourceDirectory-Element    *bug*  
+
+**Avoiding faulty slash with CodeNarc**
+
+
+[fa97ac81772c01b](https://github.com/tomasbjerre/violations-lib/commit/fa97ac81772c01b) Tomas Bjerre *2019-01-14 17:05:33*
+
+
 ## 1.77
 ### GitHub [#53](https://github.com/tomasbjerre/violations-lib/issues/53) Shouldn&#39;t CodeNarc-Parsing respect SourceDirectory-Element    *bug*  
 
