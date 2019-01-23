@@ -5,12 +5,13 @@ import static se.bjurr.violations.lib.model.SEVERITY.INFO;
 import static se.bjurr.violations.lib.model.SEVERITY.WARN;
 import static se.bjurr.violations.lib.model.Violation.violationBuilder;
 import static se.bjurr.violations.lib.reports.Parser.CPPCHECK;
+import static se.bjurr.violations.lib.util.ViolationParserUtils.*;
 import static se.bjurr.violations.lib.util.ViolationParserUtils.getAttribute;
 import static se.bjurr.violations.lib.util.ViolationParserUtils.getChunks;
-import static se.bjurr.violations.lib.util.ViolationParserUtils.getIntegerAttribute;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 import se.bjurr.violations.lib.model.SEVERITY;
 import se.bjurr.violations.lib.model.Violation;
 
@@ -28,14 +29,24 @@ public class CPPCheckParser implements ViolationsParser {
       List<String> locationChunks = getChunks(errorChunk, "<location", "/>");
       for (String locationChunk : locationChunks) {
         Integer line = getIntegerAttribute(locationChunk, "line");
+        final Optional<String> info = findAttribute(locationChunk, "info");
         String fileString = getAttribute(errorChunk, "file");
+        String message = "";
+        if (verbose.startsWith(msg)) {
+          message = verbose;
+        } else {
+          message = msg + ". " + verbose;
+        }
+        if (info.isPresent() && !message.contains(info.get())) {
+          message = message + ". " + info.get();
+        }
         violations.add( //
             violationBuilder() //
                 .setParser(CPPCHECK) //
                 .setStartLine(line) //
                 .setFile(fileString) //
                 .setSeverity(toSeverity(severity)) //
-                .setMessage(msg + ". " + verbose) //
+                .setMessage(message) //
                 .setRule(id) //
                 .build() //
             );
