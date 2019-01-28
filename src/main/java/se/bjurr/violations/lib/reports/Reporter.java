@@ -44,6 +44,7 @@ public enum Reporter {
   GOOGLEERRORPRONE(
       "GoogleErrorProne", Parser.GOOGLEERRORPRONE, "https://github.com/google/error-prone", ""),
   INFER("Infer", Parser.PMD, "http://fbinfer.com/", "Facebook Infer. With `--pmd-xml`."),
+  IAR("IAR", Parser.IAR, "https://www.iar.com/iar-embedded-workbench/", ""),
   JCREPORT("JCReport", Parser.JCREPORT, "https://github.com/jCoderZ/fawkez/wiki/JcReport", ""),
   JSHINT("JSHint", Parser.JSHINT, "http://jshint.com/", ""),
   KTLINT("KTLint", Parser.CHECKSTYLE, "https://github.com/shyiko/ktlint", ""),
@@ -65,6 +66,7 @@ public enum Reporter {
   LINT("Lint", Parser.LINT, "", "A common XML format, used by different linters."),
   MCCABE("Mccabe", Parser.FLAKE8, "https://pypi.python.org/pypi/mccabe", ""),
   MYPY("MyPy", Parser.MYPY, "https://pypi.python.org/pypi/mypy-lang", ""),
+  MSCPP("MSCpp", Parser.MSCPP, "https://visualstudio.microsoft.com/vs/features/cplusplus/", ""),
   NULLAWAY(
       "NullAway",
       Parser.GOOGLEERRORPRONE,

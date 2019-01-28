@@ -32,6 +32,7 @@ A number of **parsers** have been implemented. Some **parsers** can parse output
 | [_GoVet_](https://golang.org/cmd/vet/)                                                | `GOLINT`             | Same format as GoLint.
 | [_GoogleErrorProne_](https://github.com/google/error-prone)                           | `GOOGLEERRORPRONE`   | 
 | [_Infer_](http://fbinfer.com/)                                                        | `PMD`                | Facebook Infer. With `--pmd-xml`.
+| [_IAR_](https://www.iar.com/iar-embedded-workbench/)                                  | `IAR`                | 
 | [_JCReport_](https://github.com/jCoderZ/fawkez/wiki/JcReport)                         | `JCREPORT`           | 
 | [_JSHint_](http://jshint.com/)                                                        | `JSHINT`             | 
 | [_KTLint_](https://github.com/shyiko/ktlint)                                          | `CHECKSTYLE`         | 
@@ -41,6 +42,7 @@ A number of **parsers** have been implemented. Some **parsers** can parse output
 | [_Lint_]()                                                                            | `LINT`               | A common XML format, used by different linters.
 | [_Mccabe_](https://pypi.python.org/pypi/mccabe)                                       | `FLAKE8`             | 
 | [_MyPy_](https://pypi.python.org/pypi/mypy-lang)                                      | `MYPY`               | 
+| [_MSCpp_](https://visualstudio.microsoft.com/vs/features/cplusplus/)                  | `MSCPP`              | 
 | [_NullAway_](https://github.com/uber/NullAway)                                        | `GOOGLEERRORPRONE`   | Same format as Google Error Prone.
 | [_PCLint_](http://www.gimpel.com/html/pcl.htm)                                        | `PCLINT`             | PC-Lint using the same output format as the Jenkins warnings plugin, [_details here_](https://wiki.jenkins.io/display/JENKINS/PcLint+options)
 | [_PHPCS_](https://github.com/squizlabs/PHP_CodeSniffer)                               | `CHECKSTYLE`         | With `phpcs api.php --report=checkstyle`.

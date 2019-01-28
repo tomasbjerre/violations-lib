@@ -3,6 +3,15 @@
 
 Changelog of Violations lib.
 
+## Unreleased
+### No issue
+
+**Including info in CppCheck**
+
+
+[69e26e53cdcbf77](https://github.com/tomasbjerre/violations-lib/commit/69e26e53cdcbf77) Tomas Bjerre *2019-01-23 07:22:24*
+
+
 ## 1.78
 ### GitHub [#53](https://github.com/tomasbjerre/violations-lib/issues/53) Shouldn&#39;t CodeNarc-Parsing respect SourceDirectory-Element    *bug*  
 
