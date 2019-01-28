@@ -3,6 +3,31 @@
 
 Changelog of Violations lib.
 
+## Unreleased
+### GitHub [#55](https://github.com/tomasbjerre/violations-lib/issues/55) Support for IAR compiler warnings    *enhancement*  
+
+**MSCPP and IAR**
+
+
+[f19c95c8d7ddb89](https://github.com/tomasbjerre/violations-lib/commit/f19c95c8d7ddb89) Tomas Bjerre *2019-01-29 16:56:01*
+
+
+### GitHub [#56](https://github.com/tomasbjerre/violations-lib/issues/56) Support for Microsoft Visual C++ compiler via msys2 makefile    *enhancement*  
+
+**MSCPP and IAR**
+
+
+[f19c95c8d7ddb89](https://github.com/tomasbjerre/violations-lib/commit/f19c95c8d7ddb89) Tomas Bjerre *2019-01-29 16:56:01*
+
+
+### No issue
+
+**Including info in CppCheck**
+
+
+[69e26e53cdcbf77](https://github.com/tomasbjerre/violations-lib/commit/69e26e53cdcbf77) Tomas Bjerre *2019-01-23 07:22:24*
+
+
 ## 1.78
 ### GitHub [#53](https://github.com/tomasbjerre/violations-lib/issues/53) Shouldn&#39;t CodeNarc-Parsing respect SourceDirectory-Element    *bug*  
 

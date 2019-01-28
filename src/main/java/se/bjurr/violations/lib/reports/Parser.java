@@ -23,12 +23,14 @@ import se.bjurr.violations.lib.parsers.FxCopParser;
 import se.bjurr.violations.lib.parsers.GendarmeParser;
 import se.bjurr.violations.lib.parsers.GoLintParser;
 import se.bjurr.violations.lib.parsers.GoogleErrorProneParser;
+import se.bjurr.violations.lib.parsers.IARParser;
 import se.bjurr.violations.lib.parsers.JCReportParser;
 import se.bjurr.violations.lib.parsers.JSHintParser;
 import se.bjurr.violations.lib.parsers.KlocworkParser;
 import se.bjurr.violations.lib.parsers.KotlinGradleParser;
 import se.bjurr.violations.lib.parsers.KotlinMavenParser;
 import se.bjurr.violations.lib.parsers.LintParser;
+import se.bjurr.violations.lib.parsers.MSCPPParser;
 import se.bjurr.violations.lib.parsers.MyPyParser;
 import se.bjurr.violations.lib.parsers.PCLintParser;
 import se.bjurr.violations.lib.parsers.PMDParser;
@@ -59,12 +61,14 @@ public enum Parser {
   FLAKE8(new Flake8Parser()), //
   FXCOP(new FxCopParser()), //
   GENDARME(new GendarmeParser()), //
+  IAR(new IARParser()), //
   JCREPORT(new JCReportParser()), //
   JSHINT(new JSHintParser()), //
   LINT(new LintParser()), //
   KLOCWORK(new KlocworkParser()), //
   KOTLINMAVEN(new KotlinMavenParser()), //
   KOTLINGRADLE(new KotlinGradleParser()), //
+  MSCPP(new MSCPPParser()), //
   MYPY(new MyPyParser()), //
   GOLINT(new GoLintParser()), //
   GOOGLEERRORPRONE(new GoogleErrorProneParser()), //

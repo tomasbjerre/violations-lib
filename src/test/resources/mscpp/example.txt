@@ -1,0 +1,6 @@
+../../source/gui/controls/DebugPrint.cpp(30): warning C4311: "Typumwandlung": Zeigerverkrzung von "void *" zu "long"
+
+../dummies/osal/own_os/threading/Mutex.cpp(14): error C2065: "foobar": nichtdeklarierter Bezeichner
+../dummies/osal/own_os/threading/Mutex.cpp(15): error C2143: Syntaxfehler: Es fehlt ";" vor "}"
+../../source/gui/controls/Keyboard/AlphabetKeyboard.cpp(157): warning C4267: "=": Konvertierung von "size_t" nach "PEGSHORT", Datenverlust m”glich
+C:\Repositories\P2\source\gui/controls/Keyboard/GridKeyboard.h(38): note: Bei der Kompilierung von Klasse Vorlage der pfm::GridKeyboard<3,4>::GridKeyboard(PEGUINT,PEGUINT)-Memberfunktion

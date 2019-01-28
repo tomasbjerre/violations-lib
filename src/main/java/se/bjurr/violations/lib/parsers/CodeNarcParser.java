@@ -74,7 +74,7 @@ public class CodeNarcParser implements ViolationsParser {
               message = ruleName;
             }
             String fileString = null;
-            if (sourceDirectory == null || sourceDirectory.isEmpty()) {
+            if (sourceDirectory.isEmpty()) {
               fileString = path + "/" + name;
             } else {
               fileString = sourceDirectory + "/" + path + "/" + name;
