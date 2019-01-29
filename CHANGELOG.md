@@ -3,13 +3,13 @@
 
 Changelog of Violations lib.
 
-## Unreleased
+## 1.79
 ### GitHub [#55](https://github.com/tomasbjerre/violations-lib/issues/55) Support for IAR compiler warnings    *enhancement*  
 
 **MSCPP and IAR**
 
 
-[f19c95c8d7ddb89](https://github.com/tomasbjerre/violations-lib/commit/f19c95c8d7ddb89) Tomas Bjerre *2019-01-29 16:56:01*
+[91a9b89bc4514f4](https://github.com/tomasbjerre/violations-lib/commit/91a9b89bc4514f4) Tomas Bjerre *2019-01-29 16:59:16*
 
 
 ### GitHub [#56](https://github.com/tomasbjerre/violations-lib/issues/56) Support for Microsoft Visual C++ compiler via msys2 makefile    *enhancement*  
@@ -17,7 +17,7 @@ Changelog of Violations lib.
 **MSCPP and IAR**
 
 
-[f19c95c8d7ddb89](https://github.com/tomasbjerre/violations-lib/commit/f19c95c8d7ddb89) Tomas Bjerre *2019-01-29 16:56:01*
+[91a9b89bc4514f4](https://github.com/tomasbjerre/violations-lib/commit/91a9b89bc4514f4) Tomas Bjerre *2019-01-29 16:59:16*
 
 
 ### No issue
