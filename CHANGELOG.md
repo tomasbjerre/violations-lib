@@ -3,6 +3,15 @@
 
 Changelog of Violations lib.
 
+## Unreleased
+### No issue
+
+**Doc**
+
+
+[e47f904708f498c](https://github.com/tomasbjerre/violations-lib/commit/e47f904708f498c) Tomas Bjerre *2019-01-30 16:59:45*
+
+
 ## 1.79
 ### GitHub [#55](https://github.com/tomasbjerre/violations-lib/issues/55) Support for IAR compiler warnings    *enhancement*  
 

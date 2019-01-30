@@ -32,7 +32,7 @@ A number of **parsers** have been implemented. Some **parsers** can parse output
 | [_GoVet_](https://golang.org/cmd/vet/)                                                | `GOLINT`             | Same format as GoLint.
 | [_GoogleErrorProne_](https://github.com/google/error-prone)                           | `GOOGLEERRORPRONE`   | 
 | [_Infer_](http://fbinfer.com/)                                                        | `PMD`                | Facebook Infer. With `--pmd-xml`.
-| [_IAR_](https://www.iar.com/iar-embedded-workbench/)                                  | `IAR`                | 
+| [_IAR_](https://www.iar.com/iar-embedded-workbench/)                                  | `IAR`                | With `--no_wrap_diagnostics`
 | [_JCReport_](https://github.com/jCoderZ/fawkez/wiki/JcReport)                         | `JCREPORT`           | 
 | [_JSHint_](http://jshint.com/)                                                        | `JSHINT`             | 
 | [_KTLint_](https://github.com/shyiko/ktlint)                                          | `CHECKSTYLE`         | 
