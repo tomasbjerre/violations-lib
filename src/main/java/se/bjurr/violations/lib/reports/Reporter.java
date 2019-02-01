@@ -129,7 +129,8 @@ public enum Reporter {
       Parser.YAMLLINT,
       "https://yamllint.readthedocs.io/en/stable/index.html",
       "With `-f parsable`"),
-  ZPTLINT("ZPTLint", Parser.ZPTLINT, "https://pypi.python.org/pypi/zptlint", "");
+  ZPTLINT("ZPTLint", Parser.ZPTLINT, "https://pypi.python.org/pypi/zptlint", ""),
+  SCALASTYLE("ScalaStyle", Parser.CHECKSTYLE, "http://www.scalastyle.org/", "");
 
   private final String url;
   private final String name;
