@@ -3,8 +3,13 @@
 
 Changelog of Violations lib.
 
-## Unreleased
+## 1.80
 ### No issue
+
+**Sorting reporters in README**
+
+
+[345c4aa528b1bbf](https://github.com/tomasbjerre/violations-lib/commit/345c4aa528b1bbf) Tomas Bjerre *2019-02-02 09:35:10*
 
 **Documentation changed to reflect the support for Scalastyle**
 
