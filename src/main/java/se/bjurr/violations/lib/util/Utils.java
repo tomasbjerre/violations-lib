@@ -12,10 +12,7 @@ import java.util.Arrays;
 import java.util.Comparator;
 import java.util.List;
 import java.util.Scanner;
-import java.util.Set;
-import java.util.TreeSet;
 import java.util.stream.Collectors;
-
 import se.bjurr.violations.lib.model.Violation;
 import se.bjurr.violations.lib.reports.Reporter;
 
@@ -83,7 +80,10 @@ public class Utils {
   public static void updateReadmeWithReporters() throws IOException {
 
     String reporters = "";
-    List<Reporter> sorted = Arrays.stream(Reporter.values()).sorted(Comparator.comparing((r1) -> r1.getName())).collect(Collectors.toList());
+    List<Reporter> sorted =
+        Arrays.stream(Reporter.values())
+            .sorted(Comparator.comparing((r1) -> r1.getName()))
+            .collect(Collectors.toList());
     for (Reporter reporter : sorted) {
       reporters +=
           "| "
