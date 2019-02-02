@@ -6,10 +6,20 @@ Changelog of Violations lib.
 ## Unreleased
 ### No issue
 
+**Documentation changed to reflect the support for Scalastyle**
+
+
+[edd14d12d04c619](https://github.com/tomasbjerre/violations-lib/commit/edd14d12d04c619) Andre Carmo *2019-02-01 23:50:25*
+
+**Added ScalaStyle reporter with CheckStyle parser**
+
+
+[bcf7092fa4f321d](https://github.com/tomasbjerre/violations-lib/commit/bcf7092fa4f321d) Andre Carmo *2019-02-01 23:30:12*
+
 **Doc**
 
 
-[e47f904708f498c](https://github.com/tomasbjerre/violations-lib/commit/e47f904708f498c) Tomas Bjerre *2019-01-30 16:59:45*
+[2c6a31e642acd8e](https://github.com/tomasbjerre/violations-lib/commit/2c6a31e642acd8e) Tomas Bjerre *2019-01-30 17:00:29*
 
 
 ## 1.79
