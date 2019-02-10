@@ -26,7 +26,7 @@ public class Flake8Parser implements ViolationsParser {
   public List<Violation> parseReportOutput(String string) throws Exception {
     List<Violation> violations = new ArrayList<>();
     List<List<String>> partsPerLine =
-        getLines(string, "([^:]*):(\\d+)?:?(\\d)?:? \\[?(\\D+)(\\d*)\\]? (.*)");
+        getLines(string, "([^:]*):(\\d+)?:?(\\d+)?:? \\[?(\\D+)(\\d*)\\]? (.*)");
     for (List<String> parts : partsPerLine) {
       String filename = parts.get(1);
       Integer line = parseInt(parts.get(2));

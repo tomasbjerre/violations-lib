@@ -1,0 +1,2 @@
+./src/init.py:66:121: E501 line too long (143 > 120 characters)
+./src/init.py:254:58: W292 no newline at end of file

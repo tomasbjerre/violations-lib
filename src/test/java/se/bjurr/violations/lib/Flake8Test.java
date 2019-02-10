@@ -21,7 +21,7 @@ public class Flake8Test {
 
     final List<Violation> actual =
         violationsApi() //
-            .withPattern(".*/flake8/.*\\.txt$") //
+            .withPattern(".*/flake8/flake.*\\.txt$") //
             .inFolder(rootFolder) //
             .findAll(FLAKE8) //
             .violations();
@@ -83,6 +83,45 @@ public class Flake8Test {
         .isEqualTo(57);
     assertThat(violation16.getEndLine()) //
         .isEqualTo(57);
+  }
+
+  @Test
+  public void testThatViolationsCanBeParsedWithStartingDots() {
+    final String rootFolder = getRootFolder();
+
+    final List<Violation> actual =
+        violationsApi() //
+            .withPattern(".*/flake8/dots\\.txt$") //
+            .inFolder(rootFolder) //
+            .findAll(FLAKE8) //
+            .violations();
+
+    assertThat(actual) //
+        .hasSize(2);
+
+    Violation violation0 = actual.get(0);
+    assertThat(violation0.getMessage()) //
+        .isEqualTo("line too long (143 > 120 characters)");
+    assertThat(violation0.getFile()) //
+        .isEqualTo("./src/init.py");
+    assertThat(violation0.getRule()) //
+        .isEqualTo("E501");
+    assertThat(violation0.getStartLine()) //
+        .isEqualTo(66);
+    assertThat(violation0.getSeverity()) //
+        .isEqualTo(ERROR);
+
+    Violation violation1 = actual.get(1);
+    assertThat(violation1.getMessage()) //
+        .isEqualTo("no newline at end of file");
+    assertThat(violation1.getFile()) //
+        .isEqualTo("./src/init.py");
+    assertThat(violation1.getRule()) //
+        .isEqualTo("W292");
+    assertThat(violation1.getStartLine()) //
+        .isEqualTo(254);
+    assertThat(violation1.getSeverity()) //
+        .isEqualTo(WARN);
   }
 
   @Test
