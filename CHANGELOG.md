@@ -3,6 +3,15 @@
 
 Changelog of Violations lib.
 
+## 1.81
+### GitHub [#58](https://github.com/tomasbjerre/violations-lib/issues/58) [flake8] file names with prefix `./` are not detected  
+
+**Correcting Flake8 parser**
+
+
+[14d611e4bbf390b](https://github.com/tomasbjerre/violations-lib/commit/14d611e4bbf390b) Tomas Bjerre *2019-02-10 15:35:41*
+
+
 ## 1.80
 ### No issue
 
