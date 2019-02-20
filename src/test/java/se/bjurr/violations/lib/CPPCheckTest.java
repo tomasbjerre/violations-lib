@@ -9,8 +9,11 @@ import static se.bjurr.violations.lib.model.Violation.violationBuilder;
 import static se.bjurr.violations.lib.reports.Parser.CPPCHECK;
 
 import java.util.List;
+import java.util.Map;
+import java.util.stream.Collectors;
 import org.junit.Test;
 import se.bjurr.violations.lib.model.Violation;
+import se.bjurr.violations.lib.reports.Parser;
 
 public class CPPCheckTest {
 
@@ -21,9 +24,9 @@ public class CPPCheckTest {
 
   @Test
   public void testThatViolationsCanBeParsed() {
-    String rootFolder = getRootFolder();
+    final String rootFolder = getRootFolder();
 
-    List<Violation> actual =
+    final List<Violation> actual =
         violationsApi() //
             .withPattern(".*/cppcheck/main\\.xml$") //
             .inFolder(rootFolder) //
@@ -56,29 +59,59 @@ public class CPPCheckTest {
 
   @Test
   public void testThatViolationsCanBeParsedExample1() {
-    String rootFolder = getRootFolder();
+    final String rootFolder = getRootFolder();
 
-    List<Violation> actual =
+    final List<Violation> actual =
         violationsApi() //
             .withPattern(".*/cppcheck/example1\\.xml$") //
             .inFolder(rootFolder) //
             .findAll(CPPCHECK) //
             .violations();
 
-    Violation violation0 = actual.get(0);
+    final Violation violation0 = actual.get(0);
     assertThat(violation0.getMessage()) //
         .isEqualTo("Variable 'it' is reassigned a value before the old one has been used.");
 
-    Violation violation1 = actual.get(1);
+    final Violation violation1 = actual.get(1);
     assertThat(violation1.getMessage()) //
         .isEqualTo("Variable 'it' is reassigned a value before the old one has been used.");
 
-    Violation violation2 = actual.get(2);
+    final Violation violation2 = actual.get(2);
     assertThat(violation2.getMessage()) //
         .isEqualTo("Condition 'rc' is always true");
 
-    Violation violation3 = actual.get(3);
+    final Violation violation3 = actual.get(3);
     assertThat(violation3.getMessage()) //
         .isEqualTo("Condition 'rc' is always true. Assignment 'rc=true', assigned value is 1");
+  }
+
+  @Test
+  public void testThatViolationsCanBeParsedByRule() {
+    final String rootFolder = getRootFolder();
+
+    final List<Violation> violationsList =
+        violationsApi() //
+            .withPattern(".*/cppcheck/example1\\.xml$") //
+            .inFolder(rootFolder) //
+            .findAll(CPPCHECK) //
+            .violations();
+
+    final Map<String, List<Violation>> violationsPerRule =
+        violationsList
+            .stream() //
+            .collect(Collectors.groupingBy(Violation::getRule));
+    assertThat(violationsPerRule) //
+        .hasSize(2);
+    assertThat(violationsPerRule.get("redundantAssignment")) //
+        .hasSize(2);
+
+    final Map<Parser, List<Violation>> violationsPerParser =
+        violationsList
+            .stream() //
+            .collect(Collectors.groupingBy(Violation::getParser));
+    assertThat(violationsPerParser) //
+        .hasSize(1);
+    assertThat(violationsPerParser.get(CPPCHECK)) //
+        .hasSize(4);
   }
 }
