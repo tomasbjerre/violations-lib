@@ -19,19 +19,20 @@ import se.bjurr.violations.lib.model.Violation;
 public class CPPCheckParser implements ViolationsParser {
 
   @Override
-  public List<Violation> parseReportOutput(String string) throws Exception {
-    List<Violation> violations = new ArrayList<>();
-    List<String> errorChunks = getChunks(string, "<error", "</error>");
-    for (String errorChunk : errorChunks) {
-      String severity = getAttribute(errorChunk, "severity");
-      String msg = getAttribute(errorChunk, "msg");
-      String verbose = getAttribute(errorChunk, "verbose");
-      String id = getAttribute(errorChunk, "id");
-      List<String> locationChunks = getChunks(errorChunk, "<location", "/>");
-      for (String locationChunk : locationChunks) {
-        Integer line = getIntegerAttribute(locationChunk, "line");
+  public List<Violation> parseReportOutput(final String string) throws Exception {
+    final List<Violation> violations = new ArrayList<>();
+    final List<String> errorChunks = getChunks(string, "<error", "</error>");
+    for (int errorIndex = 0; errorIndex < errorChunks.size(); errorIndex++) {
+      final String errorChunk = errorChunks.get(errorIndex);
+      final String severity = getAttribute(errorChunk, "severity");
+      final String msg = getAttribute(errorChunk, "msg");
+      final String verbose = getAttribute(errorChunk, "verbose");
+      final String id = getAttribute(errorChunk, "id");
+      final List<String> locationChunks = getChunks(errorChunk, "<location", "/>");
+      for (final String locationChunk : locationChunks) {
+        final Integer line = getIntegerAttribute(locationChunk, "line");
         final Optional<String> info = findAttribute(locationChunk, "info");
-        String fileString = getAttribute(errorChunk, "file");
+        final String fileString = getAttribute(errorChunk, "file");
         String message = "";
         if (verbose.startsWith(msg)) {
           message = verbose;
@@ -49,6 +50,7 @@ public class CPPCheckParser implements ViolationsParser {
                 .setSeverity(toSeverity(severity)) //
                 .setMessage(message) //
                 .setRule(id) //
+                .setGroup(Integer.toString(errorIndex)) //
                 .build() //
             );
       }
@@ -56,7 +58,7 @@ public class CPPCheckParser implements ViolationsParser {
     return violations;
   }
 
-  public SEVERITY toSeverity(String severity) {
+  public SEVERITY toSeverity(final String severity) {
     if (severity.equalsIgnoreCase("error")) {
       return ERROR;
     }

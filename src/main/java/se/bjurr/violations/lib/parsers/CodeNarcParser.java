@@ -24,7 +24,7 @@ import se.bjurr.violations.lib.model.Violation;
 
 public class CodeNarcParser implements ViolationsParser {
 
-  private SEVERITY getSeverity(Integer from) {
+  private SEVERITY getSeverity(final Integer from) {
     if (from == 1) {
       return ERROR;
     }
@@ -35,7 +35,7 @@ public class CodeNarcParser implements ViolationsParser {
   }
 
   @Override
-  public List<Violation> parseReportOutput(String string) throws Exception {
+  public List<Violation> parseReportOutput(final String string) throws Exception {
     final List<Violation> violations = new ArrayList<>();
 
     final Map<String, String> rules = getRules(string);
@@ -100,8 +100,6 @@ public class CodeNarcParser implements ViolationsParser {
     try (InputStream input = new ByteArrayInputStream(string.getBytes("UTF-8"))) {
       final XMLInputFactory factory = XMLInputFactory.newInstance();
       final XMLStreamReader xmlr = factory.createXMLStreamReader(input);
-      String name = null;
-      String description = null;
       while (xmlr.hasNext()) {
         final int eventType = xmlr.next();
         if (eventType == START_ELEMENT) {

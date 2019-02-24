@@ -43,6 +43,7 @@ public class CPPCheckTest {
                 .setRule("variableScope") //
                 .setMessage(MSG_1) //
                 .setSeverity(INFO) //
+                .setGroup("1") //
                 .build()) //
         .contains( //
             violationBuilder() //
@@ -53,6 +54,7 @@ public class CPPCheckTest {
                 .setRule("variableScope") //
                 .setMessage(MSG_2) //
                 .setSeverity(ERROR) //
+                .setGroup("2") //
                 .build()) //
         .hasSize(3);
   }
@@ -113,5 +115,25 @@ public class CPPCheckTest {
         .hasSize(1);
     assertThat(violationsPerParser.get(CPPCHECK)) //
         .hasSize(4);
+
+    final Map<String, List<Violation>> violationsPerGroupMap =
+        violationsList
+            .stream() //
+            .collect(Collectors.groupingBy(Violation::getGroup));
+    assertThat(violationsPerGroupMap) //
+        .as("There are 2 error tags and there should be 2 groups identified.") //
+        .hasSize(2);
+
+    final List<Violation> firstErrorTag = violationsPerGroupMap.get("0");
+    assertThat(firstErrorTag) //
+        .hasSize(2);
+    assertThat(firstErrorTag.get(0).getMessage()) //
+        .isEqualTo("Variable 'it' is reassigned a value before the old one has been used.");
+
+    final List<Violation> secondErrorTag = violationsPerGroupMap.get("1");
+    assertThat(secondErrorTag) //
+        .hasSize(2);
+    assertThat(secondErrorTag.get(0).getMessage()) //
+        .isEqualTo("Condition 'rc' is always true");
   }
 }

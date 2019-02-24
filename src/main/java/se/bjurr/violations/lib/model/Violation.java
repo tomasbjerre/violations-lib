@@ -8,6 +8,7 @@ import static se.bjurr.violations.lib.util.Utils.nullToEmpty;
 import java.io.Serializable;
 import java.util.HashMap;
 import java.util.Map;
+import se.bjurr.violations.lib.parsers.CPPCheckParser;
 import se.bjurr.violations.lib.reports.Parser;
 
 public class Violation implements Serializable, Comparable<Violation> {
@@ -25,6 +26,7 @@ public class Violation implements Serializable, Comparable<Violation> {
     private String source;
     private Map<String, String> specifics = new HashMap<>();
     private Integer startLine;
+    private String group;
 
     private ViolationBuilder() {}
 
@@ -67,7 +69,7 @@ public class Violation implements Serializable, Comparable<Violation> {
       return this;
     }
 
-    public ViolationBuilder setCategory(String category) {
+    public ViolationBuilder setCategory(final String category) {
       this.category = category;
       return this;
     }
@@ -101,6 +103,11 @@ public class Violation implements Serializable, Comparable<Violation> {
       this.startLine = startLine;
       return this;
     }
+
+    public ViolationBuilder setGroup(final String group) {
+      this.group = group;
+      return this;
+    }
   }
 
   private static final long serialVersionUID = -6052921679385466168L;
@@ -123,6 +130,12 @@ public class Violation implements Serializable, Comparable<Violation> {
 
   private final String rule;
   private final String category;
+  /**
+   * Something that identifies a group that this violation belongs to. First introduced with {@link
+   * CPPCheckParser} to record what error tag each violation belongs to.
+   */
+  private final String group;
+
   private final SEVERITY severity;
   private final String source;
   private final Map<String, String> specifics;
@@ -140,6 +153,7 @@ public class Violation implements Serializable, Comparable<Violation> {
     reporter = null;
     specifics = null;
     parser = null;
+    group = null;
   }
 
   public Violation(final ViolationBuilder vb) {
@@ -158,6 +172,7 @@ public class Violation implements Serializable, Comparable<Violation> {
     source = nullToEmpty(vb.source);
     rule = nullToEmpty(vb.rule);
     category = nullToEmpty(vb.category);
+    group = nullToEmpty(vb.group);
     specifics = vb.specifics;
   }
 
@@ -173,6 +188,7 @@ public class Violation implements Serializable, Comparable<Violation> {
     source = v.source;
     rule = v.rule;
     category = v.category;
+    group = v.group;
     specifics = v.specifics;
   }
 
@@ -188,6 +204,13 @@ public class Violation implements Serializable, Comparable<Violation> {
       return false;
     }
     final Violation other = (Violation) obj;
+    if (category == null) {
+      if (other.category != null) {
+        return false;
+      }
+    } else if (!category.equals(other.category)) {
+      return false;
+    }
     if (column == null) {
       if (other.column != null) {
         return false;
@@ -207,6 +230,13 @@ public class Violation implements Serializable, Comparable<Violation> {
         return false;
       }
     } else if (!file.equals(other.file)) {
+      return false;
+    }
+    if (group == null) {
+      if (other.group != null) {
+        return false;
+      }
+    } else if (!group.equals(other.group)) {
       return false;
     }
     if (message == null) {
@@ -317,13 +347,19 @@ public class Violation implements Serializable, Comparable<Violation> {
     return startLine;
   }
 
+  public String getGroup() {
+    return group;
+  }
+
   @Override
   public int hashCode() {
     final int prime = 31;
     int result = 1;
+    result = prime * result + (category == null ? 0 : category.hashCode());
     result = prime * result + (column == null ? 0 : column.hashCode());
     result = prime * result + (endLine == null ? 0 : endLine.hashCode());
     result = prime * result + (file == null ? 0 : file.hashCode());
+    result = prime * result + (group == null ? 0 : group.hashCode());
     result = prime * result + (message == null ? 0 : message.hashCode());
     result = prime * result + (parser == null ? 0 : parser.hashCode());
     result = prime * result + (reporter == null ? 0 : reporter.hashCode());
@@ -345,10 +381,14 @@ public class Violation implements Serializable, Comparable<Violation> {
         + file
         + ", message="
         + message
-        + ", reporter="
+        + ", parser="
         + parser
+        + ", reporter="
+        + reporter
         + ", rule="
         + rule
+        + ", category="
+        + category
         + ", severity="
         + severity
         + ", source="
@@ -357,6 +397,8 @@ public class Violation implements Serializable, Comparable<Violation> {
         + specifics
         + ", startLine="
         + startLine
+        + ", group="
+        + group
         + "]";
   }
 
