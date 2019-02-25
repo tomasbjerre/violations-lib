@@ -3,6 +3,23 @@
 
 Changelog of Violations lib.
 
+## 1.82
+### GitHub [#54](https://github.com/tomasbjerre/violations-lib/issues/54) locationChunks in CppCheck are reported as individual violations  
+
+**Adding group attribute**
+
+
+[df1c897e8d473a3](https://github.com/tomasbjerre/violations-lib/commit/df1c897e8d473a3) Tomas Bjerre *2019-02-24 15:28:55*
+
+
+### No issue
+
+**Example streaming**
+
+
+[f9fb95039e88d97](https://github.com/tomasbjerre/violations-lib/commit/f9fb95039e88d97) Tomas Bjerre *2019-02-20 17:19:25*
+
+
 ## 1.81
 ### GitHub [#58](https://github.com/tomasbjerre/violations-lib/issues/58) [flake8] file names with prefix `./` are not detected  
 
