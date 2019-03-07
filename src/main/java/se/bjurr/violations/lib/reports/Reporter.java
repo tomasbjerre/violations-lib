@@ -40,6 +40,11 @@ public enum Reporter {
       "http://www.mono-project.com/docs/tools+libraries/tools/gendarme/",
       ""),
   GOLINT("GoLint", Parser.GOLINT, "https://github.com/golang/lint", ""),
+  GOLANGLINT(
+      "GolangCI-Lint",
+      Parser.CHECKSTYLE,
+      "https://github.com/golangci/golangci-lint/",
+      "With `--out-format=checkstyle`."),
   GOVET("GoVet", Parser.GOLINT, "https://golang.org/cmd/vet/", "Same format as GoLint."),
   GOOGLEERRORPRONE(
       "GoogleErrorProne", Parser.GOOGLEERRORPRONE, "https://github.com/google/error-prone", ""),
@@ -137,7 +142,7 @@ public enum Reporter {
   private final Parser parser;
   private final String note;
 
-  Reporter(final String name, final Parser parser, String url, final String note) {
+  Reporter(final String name, final Parser parser, final String url, final String note) {
     this.name = name;
     this.parser = parser;
     this.url = url;
