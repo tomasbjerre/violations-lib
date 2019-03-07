@@ -3,6 +3,15 @@
 
 Changelog of Violations lib.
 
+## 1.84
+### No issue
+
+**golangci-lint**
+
+
+[fb3dd6173a2dc80](https://github.com/tomasbjerre/violations-lib/commit/fb3dd6173a2dc80) Tomas Bjerre *2019-03-07 17:08:38*
+
+
 ## 1.83
 ### No issue
 
