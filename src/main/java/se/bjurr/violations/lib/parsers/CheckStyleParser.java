@@ -26,6 +26,8 @@ public class CheckStyleParser implements ViolationsParser {
     for (final String fileChunk : files) {
       final String filename = getAttribute(fileChunk, "name");
       final List<String> errors = getChunks(fileChunk, "<error", "/>");
+      final List<String> longFormErrors = getChunks(fileChunk, "<error", "</error>");
+      errors.addAll(longFormErrors);
       for (final String errorChunk : errors) {
         final Integer line = getIntegerAttribute(errorChunk, "line");
         final Optional<Integer> column = findIntegerAttribute(errorChunk, "column");

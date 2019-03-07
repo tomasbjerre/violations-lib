@@ -28,6 +28,7 @@ A number of **parsers** have been implemented. Some **parsers** can parse output
 | [_FxCop_](https://en.wikipedia.org/wiki/FxCop)                                        | `FXCOP`              | 
 | [_GCC_](https://gcc.gnu.org/)                                                         | `CLANG`              | 
 | [_Gendarme_](http://www.mono-project.com/docs/tools+libraries/tools/gendarme/)        | `GENDARME`           | 
+| [_GolangCI-Lint_](https://github.com/golangci/golangci-lint/)                         | `CHECKSTYLE`         | With `--out-format=checkstyle`.
 | [_GoLint_](https://github.com/golang/lint)                                            | `GOLINT`             | 
 | [_GoVet_](https://golang.org/cmd/vet/)                                                | `GOLINT`             | Same format as GoLint.
 | [_GoogleErrorProne_](https://github.com/google/error-prone)                           | `GOOGLEERRORPRONE`   | 

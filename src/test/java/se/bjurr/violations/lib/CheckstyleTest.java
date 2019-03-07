@@ -184,4 +184,41 @@ public class CheckstyleTest {
     assertThat(actual.get(0).getReporter()) //
         .isEqualTo("PHP");
   }
+
+  @Test
+  public void testThatGolangCILintViolationsCanBeParsed() {
+    final List<Violation> actual = violationsApi() //
+        .withPattern(".*/checkstyle/golangci-lint\\.xml$") //
+        .inFolder(rootFolder) //
+        .findAll(CHECKSTYLE) //
+        .violations();
+
+    assertThat(actual) //
+        .containsExactly( //
+            violationBuilder() //
+                .setParser(CHECKSTYLE) //
+                .setReporter(CHECKSTYLE.name()) //
+                .setFile("pkg/clients/azure/redis/redis.go") //
+                .setSource("") //
+                .setStartLine(28) //
+                .setEndLine(28) //
+                .setColumn(0) //
+                .setMessage("File is not `goimports`-ed") //
+                .setRule("goimports") //
+                .setSeverity(ERROR) //
+                .build(), //
+            violationBuilder() //
+                .setParser(CHECKSTYLE) //
+                .setReporter(CHECKSTYLE.name()) //
+                .setFile("pkg/clients/azure/redis/redis.go") //
+                .setSource("") //
+                .setStartLine(41) //
+                .setEndLine(41) //
+                .setColumn(1) //
+                .setMessage("exported function `NewClient` should have comment or be unexported") //
+                .setRule("golint") //
+                .setSeverity(ERROR) //
+                .build() //
+        );
+    }
 }

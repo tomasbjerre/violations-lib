@@ -1,0 +1,2 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<checkstyle version="5.0"><file name="pkg/clients/azure/redis/redis.go"><error column="0" line="28" message="File is not `goimports`-ed" severity="error" source="goimports"></error><error column="1" line="41" message="exported function `NewClient` should have comment or be unexported" severity="error" source="golint"></error></file></checkstyle>
