@@ -187,11 +187,12 @@ public class CheckstyleTest {
 
   @Test
   public void testThatGolangCILintViolationsCanBeParsed() {
-    final List<Violation> actual = violationsApi() //
-        .withPattern(".*/checkstyle/golangci-lint\\.xml$") //
-        .inFolder(rootFolder) //
-        .findAll(CHECKSTYLE) //
-        .violations();
+    final List<Violation> actual =
+        violationsApi() //
+            .withPattern(".*/checkstyle/golangci-lint\\.xml$") //
+            .inFolder(rootFolder) //
+            .findAll(CHECKSTYLE) //
+            .violations();
 
     assertThat(actual) //
         .containsExactly( //
@@ -215,10 +216,11 @@ public class CheckstyleTest {
                 .setStartLine(41) //
                 .setEndLine(41) //
                 .setColumn(1) //
-                .setMessage("exported function `NewClient` should have comment or be unexported") //
+                .setMessage(
+                    "exported function `NewClient` should have comment or be unexported") //
                 .setRule("golint") //
                 .setSeverity(ERROR) //
                 .build() //
-        );
-    }
+            );
+  }
 }
