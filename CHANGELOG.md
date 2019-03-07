@@ -3,6 +3,23 @@
 
 Changelog of Violations lib.
 
+## 1.83
+### No issue
+
+**Add support for golangci-lint flavoured Checkstyle**
+
+ * aka Checkstyle 5.0, apparently. 
+ * Signed-off-by: Nic Cope &lt;negz@rk0n.org&gt; 
+
+[1bf2826f6b26e4a](https://github.com/tomasbjerre/violations-lib/commit/1bf2826f6b26e4a) Nic Cope *2019-03-07 10:25:12*
+
+**Add a test demonstrating that golangci-lint Checkstyle does not parse**
+
+ * Signed-off-by: Nic Cope &lt;negz@rk0n.org&gt; 
+
+[82712daea397daf](https://github.com/tomasbjerre/violations-lib/commit/82712daea397daf) Nic Cope *2019-03-07 10:22:37*
+
+
 ## 1.82
 ### GitHub [#54](https://github.com/tomasbjerre/violations-lib/issues/54) locationChunks in CppCheck are reported as individual violations  
 
