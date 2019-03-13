@@ -3,6 +3,21 @@
 
 Changelog of Violations lib.
 
+## Unreleased
+### No issue
+
+**Add line attribute to one of the issues reported**
+
+ * Add line attribute to one of the issues reported to test optional line number plotting in klocwork report 
+
+[7899d43347d69e3](https://github.com/tomasbjerre/violations-lib/commit/7899d43347d69e3) deepuj *2019-03-13 18:43:05*
+
+**Support line number optionally in klocwork reports**
+
+
+[b74f84862211f55](https://github.com/tomasbjerre/violations-lib/commit/b74f84862211f55) deepuj *2019-03-13 18:38:16*
+
+
 ## 1.84
 ### No issue
 

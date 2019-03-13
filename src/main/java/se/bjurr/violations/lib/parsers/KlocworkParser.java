@@ -21,7 +21,7 @@ import se.bjurr.violations.lib.model.Violation;
 public class KlocworkParser implements ViolationsParser {
 
   @Override
-  public List<Violation> parseReportOutput(String string) throws Exception {
+  public List<Violation> parseReportOutput(final String string) throws Exception {
     final List<Violation> violations = new ArrayList<>();
     try (InputStream input = new ByteArrayInputStream(string.getBytes("UTF-8"))) {
 
@@ -40,7 +40,7 @@ public class KlocworkParser implements ViolationsParser {
     return violations;
   }
 
-  private Violation parseBug(XMLStreamReader xmlr) throws XMLStreamException {
+  private Violation parseBug(final XMLStreamReader xmlr) throws XMLStreamException {
     String file = null;
     String message = null;
     String code = null;
@@ -88,7 +88,7 @@ public class KlocworkParser implements ViolationsParser {
         .build();
   }
 
-  private SEVERITY getSeverity(Integer from) {
+  private SEVERITY getSeverity(final Integer from) {
     if (from <= 2) {
       return ERROR;
     }

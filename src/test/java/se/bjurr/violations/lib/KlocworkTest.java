@@ -50,6 +50,6 @@ public class KlocworkTest {
     assertThat(violation1.getRule()) //
         .isEqualTo("EXC.BROADTHROWS");
     assertThat(violation1.getStartLine()) //
-        .isEqualTo(1);
+        .isEqualTo(4);
   }
 }
