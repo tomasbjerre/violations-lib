@@ -21,6 +21,7 @@
     <problemID>11</problemID>
     <file>/home/test_build/src/main/java/Main2.java</file>
     <method>getURLConnection</method>
+    <line>4</line>
     <code>EXC.BROADTHROWS</code>
     <message>The 'getURLConnection' method throws a generic exception 'java.lang.Exception'</message>
     <citingStatus>Analyze</citingStatus>
