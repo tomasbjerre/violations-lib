@@ -47,6 +47,7 @@ public class KlocworkParser implements ViolationsParser {
     Integer severitylevel = null;
     String method = null;
     String url = null;
+    Integer linenumber = 1;
     while (xmlr.hasNext()) {
       final int eventType = xmlr.next();
       if (eventType == END_ELEMENT && xmlr.getLocalName().equalsIgnoreCase("problem")) {
@@ -73,6 +74,9 @@ public class KlocworkParser implements ViolationsParser {
       if (xmlr.getLocalName().equalsIgnoreCase("url")) {
         url = xmlr.getElementText();
       }
+      if (xmlr.getLocalName().equalsIgnoreCase("line")) {
+        linenumber = Integer.parseInt(xmlr.getElementText());
+      }
     }
     return violationBuilder() //
         .setParser(KLOCWORK) //
@@ -80,7 +84,7 @@ public class KlocworkParser implements ViolationsParser {
         .setMessage("In method " + method + ". " + message + " " + url) //
         .setRule(code) //
         .setSeverity(getSeverity(severitylevel)) //
-        .setStartLine(1) //
+        .setStartLine(linenumber) //
         .build();
   }
 
