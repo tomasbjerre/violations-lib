@@ -3,7 +3,15 @@
 
 Changelog of Violations lib.
 
-## Unreleased
+## 1.85
+### GitHub [#65](https://github.com/tomasbjerre/violations-lib/pull/65) Add line attribute to one of the issues reported  
+
+**Correcting test case after merge of**
+
+
+[c2f538660c3f1a5](https://github.com/tomasbjerre/violations-lib/commit/c2f538660c3f1a5) Tomas Bjerre *2019-03-13 18:57:38*
+
+
 ### No issue
 
 **Add line attribute to one of the issues reported**
