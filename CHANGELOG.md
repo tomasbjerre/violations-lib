@@ -3,6 +3,15 @@
 
 Changelog of Violations lib.
 
+## Unreleased
+### GitHub [#66](https://github.com/tomasbjerre/violations-lib/issues/66) Add support for SonarQube preview report    *enhancement*  
+
+**Sonar Report**
+
+
+[1c06b130acfd6b9](https://github.com/tomasbjerre/violations-lib/commit/1c06b130acfd6b9) Tomas Bjerre *2019-03-23 14:25:26*
+
+
 ## 1.85
 ### GitHub [#65](https://github.com/tomasbjerre/violations-lib/pull/65) Add line attribute to one of the issues reported  
 

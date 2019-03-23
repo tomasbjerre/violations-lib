@@ -123,6 +123,11 @@ public enum Reporter {
       Parser.CHECKSTYLE,
       "https://github.com/realm/SwiftLint",
       "With `--reporter checkstyle`."),
+  SONAR(
+      "Sonar",
+      Parser.SONAR,
+      "https://www.sonarqube.org/",
+      "With `mvn sonar:sonar -Dsonar.analysis.mode=preview -Dsonar.report.export.path=sonar-report.json`."),
   TSLINT(
       "TSLint",
       Parser.CHECKSTYLE,
