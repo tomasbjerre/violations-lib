@@ -38,11 +38,13 @@ public class SonarParser implements ViolationsParser {
     }
 
     public SEVERITY getSeverity() {
-      try {
-        return SEVERITY.valueOf(severity);
-      } catch (final Throwable t) {
-        return SEVERITY.INFO;
+      if (severity.equalsIgnoreCase("blocker")) {
+        return SEVERITY.ERROR;
       }
+      if (severity.equalsIgnoreCase("critical") || severity.equalsIgnoreCase("major")) {
+        return SEVERITY.WARN;
+      }
+      return SEVERITY.INFO;
     }
   }
 
