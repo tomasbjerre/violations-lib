@@ -3,7 +3,7 @@
 
 Changelog of Violations lib.
 
-## Unreleased
+## 1.89
 ### GitHub [#67](https://github.com/tomasbjerre/violations-lib/issues/67) Sonar Parser : Wrong Severity level -&gt; when unknow then by default set to INFO  
 
 **Correcting Sonar severity mapping**
@@ -13,6 +13,11 @@ Changelog of Violations lib.
 
 
 ### No issue
+
+**Note on Sonar**
+
+
+[7656a723dea9410](https://github.com/tomasbjerre/violations-lib/commit/7656a723dea9410) Tomas Bjerre *2019-04-03 14:17:03*
 
 **Bumping version**
 
