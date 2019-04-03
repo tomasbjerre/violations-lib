@@ -3,6 +3,28 @@
 
 Changelog of Violations lib.
 
+## Unreleased
+### GitHub [#67](https://github.com/tomasbjerre/violations-lib/issues/67) Sonar Parser : Wrong Severity level -&gt; when unknow then by default set to INFO  
+
+**Correcting Sonar severity mapping**
+
+
+[1eeafaff359c01b](https://github.com/tomasbjerre/violations-lib/commit/1eeafaff359c01b) Tomas Bjerre *2019-03-29 14:40:51*
+
+
+### No issue
+
+**Bumping version**
+
+
+[227760877d0df93](https://github.com/tomasbjerre/violations-lib/commit/227760877d0df93) Tomas Bjerre *2019-03-29 15:03:56*
+
+**Bumping version**
+
+
+[2aa01b76eaf839d](https://github.com/tomasbjerre/violations-lib/commit/2aa01b76eaf839d) Tomas Bjerre *2019-03-29 14:56:12*
+
+
 ## 1.86
 ### GitHub [#66](https://github.com/tomasbjerre/violations-lib/issues/66) Add support for SonarQube preview report    *enhancement*  
 

@@ -127,7 +127,7 @@ public enum Reporter {
       "Sonar",
       Parser.SONAR,
       "https://www.sonarqube.org/",
-      "With `mvn sonar:sonar -Dsonar.analysis.mode=preview -Dsonar.report.export.path=sonar-report.json`."),
+      "With `mvn sonar:sonar -Dsonar.analysis.mode=preview -Dsonar.report.export.path=sonar-report.json`. Removed in 7.7, see [SONAR-11670](https://jira.sonarsource.com/browse/SONAR-11670)."),
   TSLINT(
       "TSLint",
       Parser.CHECKSTYLE,
