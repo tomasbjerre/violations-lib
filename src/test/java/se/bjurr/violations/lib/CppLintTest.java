@@ -19,7 +19,7 @@ public class CppLintTest {
 
     final List<Violation> actual =
         violationsApi() //
-            .withPattern(".*/cpplint/.*\\.txt$") //
+            .withPattern(".*/cpplint/cpplint\\.txt$") //
             .inFolder(rootFolder) //
             .findAll(CPPLINT) //
             .violations();
@@ -82,5 +82,41 @@ public class CppLintTest {
         .isEqualTo(737);
     assertThat(violation.getEndLine()) //
         .isEqualTo(737);
+  }
+
+  @Test
+  public void testThatViolationsCanBeParsedMulti() {
+    final String rootFolder = getRootFolder();
+
+    final List<Violation> actual =
+        violationsApi() //
+            .withPattern(".*cpplint-multi\\.txt$") //
+            .inFolder(rootFolder) //
+            .findAll(CPPLINT) //
+            .violations();
+
+    assertThat(actual) //
+        .hasSize(3);
+
+    final Violation violation = actual.get(0);
+    assertThat(violation.getMessage()) //
+        .isEqualTo(
+            "No copyright message found.  You should have a line: \"Copyright [year] <Copyright Owner>\"");
+    assertThat(violation.getFile()) //
+        .isEqualTo("cpp/test.cpp");
+    assertThat(violation.getSeverity()) //
+        .isEqualTo(ERROR);
+    assertThat(violation.getRule()) //
+        .isEqualTo("legal/copyright");
+    assertThat(violation.getStartLine()) //
+        .isEqualTo(0);
+    assertThat(violation.getEndLine()) //
+        .isEqualTo(0);
+
+    final Violation violation1 = actual.get(1);
+    assertThat(violation1.getStartLine()) //
+        .isEqualTo(5);
+    assertThat(violation1.getEndLine()) //
+        .isEqualTo(5);
   }
 }

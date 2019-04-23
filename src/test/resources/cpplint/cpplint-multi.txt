@@ -1,0 +1,23 @@
+Ignoring build/flake8_2.txt; not a valid file name (cpp, h)
+Done processing build/flake8_2.txt
+Ignoring build/googleErrorProne.log; not a valid file name (cpp, h)
+Done processing build/googleErrorProne.log
+cpp/test.cpp:0:  No copyright message found.  You should have a line: "Copyright [year] <Copyright Owner>"  [legal/copyright] [5]
+cpp/test.cpp:5:  Do not use namespace using-directives.  Use using-declarations instead.  [build/namespaces] [5]
+cpp/test.cpp:11:  Missing space before ( in while(  [whitespace/parens] [5]
+Done processing cpp/test.cpp
+Ignoring perl/example.pl; not a valid file name (cpp, h)
+Done processing perl/example.pl
+Ignoring web/css-file2.css; not a valid file name (cpp, h)
+Done processing web/css-file2.css
+Ignoring web/css-file.css; not a valid file name (cpp, h)
+Done processing web/css-file.css
+Ignoring web/js-file2.js; not a valid file name (cpp, h)
+Done processing web/js-file2.js
+Ignoring web/js-file.js; not a valid file name (cpp, h)
+Done processing web/js-file.js
+Ignoring xml/myxml.xml; not a valid file name (cpp, h)
+Done processing xml/myxml.xml
+Ignoring xml/other.xml; not a valid file name (cpp, h)
+Done processing xml/other.xml
+Total errors found: 3

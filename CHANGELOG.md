@@ -3,6 +3,15 @@
 
 Changelog of Violations lib.
 
+## Unreleased
+### GitHub [#68](https://github.com/tomasbjerre/violations-lib/issues/68) cpplint parser does not recognize any violations from cpplint report  
+
+**Testing**
+
+
+[5e4a022bbfed587](https://github.com/tomasbjerre/violations-lib/commit/5e4a022bbfed587) Tomas Bjerre *2019-04-23 17:51:54*
+
+
 ## 1.89
 ### GitHub [#67](https://github.com/tomasbjerre/violations-lib/issues/67) Sonar Parser : Wrong Severity level -&gt; when unknow then by default set to INFO  
 
