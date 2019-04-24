@@ -3,7 +3,7 @@
 
 Changelog of Violations lib.
 
-## Unreleased
+## 1.92
 ### GitHub [#68](https://github.com/tomasbjerre/violations-lib/issues/68) cpplint parser does not recognize any violations from cpplint report  
 
 **Handling line "None" in cpplint**
@@ -22,7 +22,7 @@ Changelog of Violations lib.
 **Bumping version**
 
 
-[9bf5d9b1e3e189d](https://github.com/tomasbjerre/violations-lib/commit/9bf5d9b1e3e189d) Tomas Bjerre *2019-04-24 15:23:25*
+[2e3458328cff557](https://github.com/tomasbjerre/violations-lib/commit/2e3458328cff557) Tomas Bjerre *2019-04-24 15:24:42*
 
 **Bumping version**
 
