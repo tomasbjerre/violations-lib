@@ -119,4 +119,19 @@ public class CppLintTest {
     assertThat(violation1.getEndLine()) //
         .isEqualTo(5);
   }
+
+  @Test
+  public void testThat() {
+    final String rootFolder = getRootFolder();
+
+    final List<Violation> actual =
+        violationsApi() //
+            .withPattern(".*cpplint\\.xml$") //
+            .inFolder(rootFolder) //
+            .findAll(CPPLINT) //
+            .violations();
+
+    assertThat(actual) //
+        .hasSize(34711);
+  }
 }

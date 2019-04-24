@@ -9,7 +9,7 @@ Changelog of Violations lib.
 **Testing**
 
 
-[5e4a022bbfed587](https://github.com/tomasbjerre/violations-lib/commit/5e4a022bbfed587) Tomas Bjerre *2019-04-23 17:51:54*
+[ae13633f9e953aa](https://github.com/tomasbjerre/violations-lib/commit/ae13633f9e953aa) Tomas Bjerre *2019-04-23 17:52:56*
 
 
 ## 1.89
