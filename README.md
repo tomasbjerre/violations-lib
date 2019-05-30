@@ -85,6 +85,9 @@ Very easy to use with a nice builder pattern
 
 The library is used in a bunch of other projects, these are some of them.
 
+Command line:
+ * [Violations Command Line](https://github.com/tomasbjerre/violations-command-line)
+
 Gradle:
  * [Violation Comments to GitHub Gradle Plugin](https://github.com/tomasbjerre/violation-comments-to-github-gradle-plugin).
  * [Violation Comments to GitLab Gradle Plugin](https://github.com/tomasbjerre/violation-comments-to-gitlab-gradle-plugin).
