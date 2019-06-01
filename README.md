@@ -87,6 +87,7 @@ The library is used in a bunch of other projects, these are some of them.
 
 Command line:
  * [Violations Command Line](https://github.com/tomasbjerre/violations-command-line)
+ * [Violation Comments to GitLab Command Line](https://github.com/tomasbjerre/violation-comments-to-gitlab-command-line)
 
 Gradle:
  * [Violation Comments to GitHub Gradle Plugin](https://github.com/tomasbjerre/violation-comments-to-github-gradle-plugin).
