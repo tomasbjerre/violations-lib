@@ -23,20 +23,25 @@ import se.bjurr.violations.lib.model.Violation;
 public class Flake8Parser implements ViolationsParser {
 
   @Override
-  public List<Violation> parseReportOutput(String string) throws Exception {
-    List<Violation> violations = new ArrayList<>();
-    List<List<String>> partsPerLine =
+  public List<Violation> parseReportOutput(final String string) throws Exception {
+    final List<Violation> violations = new ArrayList<>();
+    final List<List<String>> partsPerLine =
         getLines(string, "([^:]*):(\\d+)?:?(\\d+)?:? \\[?(\\D+)(\\d*)\\]? (.*)");
-    for (List<String> parts : partsPerLine) {
-      String filename = parts.get(1);
-      Integer line = parseInt(parts.get(2));
+    for (final List<String> parts : partsPerLine) {
+      final String filename = parts.get(1);
+      Integer line = null;
+      try {
+        line = parseInt(parts.get(2));
+      } catch (final Exception e) {
+        continue;
+      }
       Integer column = null;
       if (!isNullOrEmpty(parts.get(3))) {
         column = parseInt(parts.get(3));
       }
-      String severity = parts.get(4);
-      String rule = parts.get(5);
-      String message = parts.get(6);
+      final String severity = parts.get(4);
+      final String rule = parts.get(5);
+      final String message = parts.get(6);
       violations.add( //
           violationBuilder() //
               .setParser(FLAKE8) //
@@ -65,7 +70,7 @@ public class Flake8Parser implements ViolationsParser {
    *     further processing.
    * </pre>
    */
-  public SEVERITY toSeverity(String severity) {
+  public SEVERITY toSeverity(final String severity) {
     if (severity.equalsIgnoreCase("E") || severity.equalsIgnoreCase("F")) {
       return ERROR;
     }

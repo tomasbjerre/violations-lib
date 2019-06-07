@@ -3,6 +3,30 @@
 
 Changelog of Violations lib.
 
+## Unreleased
+### No issue
+
+**doc**
+
+
+[8d9a2d5c16852f2](https://github.com/tomasbjerre/violations-lib/commit/8d9a2d5c16852f2) Tomas Bjerre *2019-06-01 13:41:05*
+
+**doc**
+
+
+[b9720430d4db962](https://github.com/tomasbjerre/violations-lib/commit/b9720430d4db962) Tomas Bjerre *2019-06-01 13:16:48*
+
+**doc**
+
+
+[09670621f7e77fe](https://github.com/tomasbjerre/violations-lib/commit/09670621f7e77fe) Tomas Bjerre *2019-06-01 10:30:52*
+
+**doc**
+
+
+[9697bfaefe75836](https://github.com/tomasbjerre/violations-lib/commit/9697bfaefe75836) Tomas Bjerre *2019-05-30 20:28:12*
+
+
 ## 1.92
 ### GitHub [#68](https://github.com/tomasbjerre/violations-lib/issues/68) cpplint parser does not recognize any violations from cpplint report  
 

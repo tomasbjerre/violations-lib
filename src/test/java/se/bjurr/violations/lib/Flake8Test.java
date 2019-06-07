@@ -40,7 +40,7 @@ public class Flake8Test {
             ) //
         .hasSize(17);
 
-    Violation violation9 = actual.get(9);
+    final Violation violation9 = actual.get(9);
     assertThat(violation9.getMessage()) //
         .isEqualTo("test with F");
     assertThat(violation9.getFile()) //
@@ -50,7 +50,7 @@ public class Flake8Test {
     assertThat(violation9.getSeverity()) //
         .isEqualTo(ERROR);
 
-    Violation violation10 = actual.get(10);
+    final Violation violation10 = actual.get(10);
     assertThat(violation10.getMessage()) //
         .isEqualTo("test with W");
     assertThat(violation10.getFile()) //
@@ -58,7 +58,7 @@ public class Flake8Test {
     assertThat(violation10.getSeverity()) //
         .isEqualTo(WARN);
 
-    Violation violation11 = actual.get(11);
+    final Violation violation11 = actual.get(11);
     assertThat(violation11.getMessage()) //
         .isEqualTo("test with C");
     assertThat(violation11.getFile()) //
@@ -66,7 +66,7 @@ public class Flake8Test {
     assertThat(violation11.getSeverity()) //
         .isEqualTo(INFO);
 
-    Violation violation16 = actual.get(16);
+    final Violation violation16 = actual.get(16);
     assertThat(violation16.getMessage()) //
         .isEqualTo("expected 2 blank lines, found 1");
     assertThat(violation16.getFile()) //
@@ -99,7 +99,7 @@ public class Flake8Test {
     assertThat(actual) //
         .hasSize(2);
 
-    Violation violation0 = actual.get(0);
+    final Violation violation0 = actual.get(0);
     assertThat(violation0.getMessage()) //
         .isEqualTo("line too long (143 > 120 characters)");
     assertThat(violation0.getFile()) //
@@ -111,7 +111,7 @@ public class Flake8Test {
     assertThat(violation0.getSeverity()) //
         .isEqualTo(ERROR);
 
-    Violation violation1 = actual.get(1);
+    final Violation violation1 = actual.get(1);
     assertThat(violation1.getMessage()) //
         .isEqualTo("no newline at end of file");
     assertThat(violation1.getFile()) //
@@ -138,7 +138,7 @@ public class Flake8Test {
     assertThat(actual) //
         .hasSize(8);
 
-    Violation violation0 = actual.get(0);
+    final Violation violation0 = actual.get(0);
     assertThat(violation0.getMessage()) //
         .isEqualTo("Commands should not change things if nothing needs doing");
     assertThat(violation0.getFile()) //
@@ -150,12 +150,31 @@ public class Flake8Test {
     assertThat(violation0.getStartLine()) //
         .isEqualTo(25);
 
-    Violation violation7 = actual.get(7);
+    final Violation violation7 = actual.get(7);
     assertThat(violation7.getMessage()) //
         .isEqualTo("This line is just added to test W");
     assertThat(violation7.getRule()) //
         .isEqualTo("WANSIBLE0012");
     assertThat(violation7.getSeverity()) //
         .isEqualTo(WARN);
+  }
+
+  @Test
+  public void testThatViolationsCanBeParsedFromFileContainingNoise() {
+    final String rootFolder = getRootFolder();
+
+    final List<Violation> actual =
+        violationsApi() //
+            .withPattern(".*/flake8/flake8-failure\\.log$") //
+            .inFolder(rootFolder) //
+            .findAll(FLAKE8) //
+            .violations();
+
+    assertThat(actual) //
+        .hasSize(6);
+
+    final Violation violation0 = actual.get(0);
+    assertThat(violation0.getMessage()) //
+        .startsWith("HOME=/var/jenkins_home/workspace/");
   }
 }
