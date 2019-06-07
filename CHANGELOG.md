@@ -3,7 +3,15 @@
 
 Changelog of Violations lib.
 
-## Unreleased
+## 1.93
+### GitHub [#69](https://github.com/tomasbjerre/violations-lib/issues/69) NumberFormatException at Flake8 parser  
+
+**Allowing noise in Flake8 parser**
+
+
+[1ab666f7d16afdd](https://github.com/tomasbjerre/violations-lib/commit/1ab666f7d16afdd) Tomas Bjerre *2019-06-07 05:38:45*
+
+
 ### No issue
 
 **doc**
