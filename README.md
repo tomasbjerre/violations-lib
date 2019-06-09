@@ -90,6 +90,7 @@ Command line:
  * [Violation Comments to GitLab Command Line](https://github.com/tomasbjerre/violation-comments-to-gitlab-command-line)
  * [Violation Comments to GitHub Command Line](https://github.com/tomasbjerre/violation-comments-to-github-command-line)
  * [Violation Comments to Bitbucket Server Command Line](https://github.com/tomasbjerre/violation-comments-to-bitbucket-server-command-line)
+ * [Violation Comments to Bitbucket Cloud Command Line](https://github.com/tomasbjerre/violation-comments-to-bitbucket-cloud-command-line)
 
 Gradle:
  * [Violation Comments to GitHub Gradle Plugin](https://github.com/tomasbjerre/violation-comments-to-github-gradle-plugin).
@@ -109,6 +110,7 @@ Jenkins:
 And these supporting libraries:
  * [Violation Comments to GitHub Lib](https://github.com/tomasbjerre/violation-comments-to-github-lib).
  * [Violation Comments to GitLab Lib](https://github.com/tomasbjerre/violation-comments-to-gitlab-lib).
+ * [Violation Comments to Bitbucket Cloud Lib](https://github.com/tomasbjerre/violation-comments-to-bitbucket-cloud-lib).
  * [Violation Comments to Bitbucket Server Lib](https://github.com/tomasbjerre/violation-comments-to-bitbucket-server-lib).
  * [Violation Comments Lib](https://github.com/tomasbjerre/violation-comments-lib).
  * [Violations Git Lib](https://github.com/tomasbjerre/violations-git-lib).
