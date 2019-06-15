@@ -3,7 +3,15 @@
 
 Changelog of Violations lib.
 
-## Unreleased
+## 1.94
+### GitHub [#70](https://github.com/tomasbjerre/violations-lib/pull/70) Added JUnit parser    *enhancement*  
+
+**Testing with Mavens Surefire Report**
+
+
+[cd486448a7c4b65](https://github.com/tomasbjerre/violations-lib/commit/cd486448a7c4b65) Tomas Bjerre *2019-06-15 05:40:39*
+
+
 ### No issue
 
 **OpenJDK 11 in Travis**
