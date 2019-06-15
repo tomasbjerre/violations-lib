@@ -12,12 +12,12 @@ import se.bjurr.violations.lib.model.Violation;
 
 public class JUnitTest {
   @Test
-  public void testThatViolationsCanBeParsed() {
-    String rootFolder = getRootFolder();
+  public void testThatViolationsCanBeParsedFromJunit1() {
+    final String rootFolder = getRootFolder();
 
-    List<Violation> actual =
+    final List<Violation> actual =
         violationsApi() //
-            .withPattern(".*/junit/.*\\.xml$") //
+            .withPattern(".*/junit/junit\\.xml$") //
             .inFolder(rootFolder) //
             .findAll(JUNIT) //
             .violations();
@@ -43,6 +43,32 @@ public class JUnitTest {
         .startsWith("failTest5") //
         .contains("java.lang.AssertionError");
     assertThat(actual.get(1).getSeverity()) //
+        .isEqualTo(ERROR);
+  }
+
+  @Test
+  public void testThatViolationsCanBeParsedFromJunit2() {
+    final String rootFolder = getRootFolder();
+
+    final List<Violation> actual =
+        violationsApi() //
+            .withPattern(
+                ".*/junit/TEST-org.jenkinsci.plugins.jvctb.perform.JvctbPerformerTest\\.xml$") //
+            .inFolder(rootFolder) //
+            .findAll(JUNIT) //
+            .violations();
+
+    assertThat(actual) //
+        .hasSize(1);
+
+    assertThat(actual.get(0).getSource()) //
+        .isEqualTo("org.jenkinsci.plugins.jvctb.perform.JvctbPerformerTest");
+    assertThat(actual.get(0).getFile()) //
+        .isEqualTo("org/jenkinsci/plugins/jvctb/perform/JvctbPerformerTest.java");
+    assertThat(actual.get(0).getMessage()) //
+        .startsWith("testThatAll") //
+        .contains("nondada");
+    assertThat(actual.get(0).getSeverity()) //
         .isEqualTo(ERROR);
   }
 }

@@ -3,6 +3,25 @@
 
 Changelog of Violations lib.
 
+## Unreleased
+### No issue
+
+**OpenJDK 11 in Travis**
+
+
+[d5e57cf07a068bb](https://github.com/tomasbjerre/violations-lib/commit/d5e57cf07a068bb) Tomas Bjerre *2019-06-11 17:10:38*
+
+**doc**
+
+
+[7ec4f26bf7b94a4](https://github.com/tomasbjerre/violations-lib/commit/7ec4f26bf7b94a4) Tomas Bjerre *2019-06-09 18:09:59*
+
+**Added JUnit parser**
+
+
+[131000779822531](https://github.com/tomasbjerre/violations-lib/commit/131000779822531) Antti Keistinen *2019-06-04 02:46:29*
+
+
 ## 1.93
 ### GitHub [#69](https://github.com/tomasbjerre/violations-lib/issues/69) NumberFormatException at Flake8 parser  
 

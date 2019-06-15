@@ -1,6 +1,6 @@
 # Violations Lib [![Build Status](https://travis-ci.org/tomasbjerre/violations-lib.svg?branch=master)](https://travis-ci.org/tomasbjerre/violations-lib) [![Maven Central](https://maven-badges.herokuapp.com/maven-central/se.bjurr.violations/violations-lib/badge.svg)](https://maven-badges.herokuapp.com/maven-central/se.bjurr.violations/violations-lib) [ ![Bintray](https://api.bintray.com/packages/tomasbjerre/tomasbjerre/se.bjurr.violations%3Aviolations-lib/images/download.svg) ](https://bintray.com/tomasbjerre/tomasbjerre/se.bjurr.violations%3Aviolations-lib/_latestVersion)
 
-This is a Java library for parsing report files from static code analysis.
+This is a Java library for parsing report files like static code analysis.
 
 Example of supported reports are available [here](https://github.com/tomasbjerre/violations-lib/tree/master/src/test/resources).
 
