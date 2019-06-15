@@ -56,6 +56,7 @@ public enum Reporter {
       "With `--no_wrap_diagnostics`"),
   JCREPORT("JCReport", Parser.JCREPORT, "https://github.com/jCoderZ/fawkez/wiki/JcReport", ""),
   JSHINT("JSHint", Parser.JSHINT, "http://jshint.com/", ""),
+  JUNIT("JUnit", Parser.JUNIT, "https://junit.org/junit4/", ""),
   KTLINT("KTLint", Parser.CHECKSTYLE, "https://github.com/shyiko/ktlint", ""),
   KLOCWORK(
       "Klocwork",

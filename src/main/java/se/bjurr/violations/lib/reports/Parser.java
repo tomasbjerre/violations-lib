@@ -26,6 +26,7 @@ import se.bjurr.violations.lib.parsers.GoogleErrorProneParser;
 import se.bjurr.violations.lib.parsers.IARParser;
 import se.bjurr.violations.lib.parsers.JCReportParser;
 import se.bjurr.violations.lib.parsers.JSHintParser;
+import se.bjurr.violations.lib.parsers.JUnitParser;
 import se.bjurr.violations.lib.parsers.KlocworkParser;
 import se.bjurr.violations.lib.parsers.KotlinGradleParser;
 import se.bjurr.violations.lib.parsers.KotlinMavenParser;
@@ -65,6 +66,7 @@ public enum Parser {
   IAR(new IARParser()), //
   JCREPORT(new JCReportParser()), //
   JSHINT(new JSHintParser()), //
+  JUNIT(new JUnitParser()), //
   LINT(new LintParser()), //
   KLOCWORK(new KlocworkParser()), //
   KOTLINMAVEN(new KotlinMavenParser()), //
