@@ -15,14 +15,19 @@ public class JUnitParser implements ViolationsParser {
   private static Logger LOG = Logger.getLogger(JUnitParser.class.getSimpleName());
 
   @Override
-  public List<Violation> parseReportOutput(String reportContent) throws Exception {
+  public List<Violation> parseReportOutput(final String reportContent) throws Exception {
     final List<Violation> violations = new ArrayList<>();
 
     final List<String> errors = getChunks(reportContent, "<testcase", "(/>|</testcase>)");
 
     for (final String errorChunk : errors) {
-      final List<String> failures = getChunks(errorChunk, "<failure", "</failure>");
-      for (final String failure : failures) {
+      final List<String> failureChunks = getChunks(errorChunk, "<failure", "</failure>");
+      final List<String> errorChunks = getChunks(errorChunk, "<error", "</error>");
+      final ArrayList<String> chunks = new ArrayList<>();
+      chunks.addAll(failureChunks);
+      chunks.addAll(errorChunks);
+
+      for (final String failure : chunks) {
         final String message = getAttribute(failure, "message");
         final String className = getAttribute(errorChunk, "classname");
         final String name = getAttribute(errorChunk, "name");
@@ -54,7 +59,7 @@ public class JUnitParser implements ViolationsParser {
 
         try {
           lineOfFailure = Integer.parseInt(split[2]);
-        } catch (NumberFormatException e) {
+        } catch (final NumberFormatException e) {
           LOG.log(Level.WARNING, "Failed to parse line number from: " + split[2]);
           continue;
         }

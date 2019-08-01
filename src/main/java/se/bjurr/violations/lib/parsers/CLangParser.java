@@ -54,10 +54,14 @@ public class CLangParser implements ViolationsParser {
     if (isNullOrEmpty(severity)) {
       return INFO;
     }
-    if (severity.contains("error") || severity.contains("C")) {
+    final String lowerCase = severity.toLowerCase();
+    if (lowerCase.contains("low")) {
+      return INFO;
+    }
+    if (lowerCase.contains("error") || lowerCase.contains("c") || lowerCase.contains("high")) {
       return ERROR;
     }
-    if (severity.contains("warning") || severity.contains("W")) {
+    if (lowerCase.contains("warning") || lowerCase.contains("w") || lowerCase.contains("medium")) {
       return WARN;
     }
     return INFO;

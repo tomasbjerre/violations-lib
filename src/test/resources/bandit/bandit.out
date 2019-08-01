@@ -1,0 +1,3 @@
+/home/bjerre/workspace/bandit/examples/assert.py:1: LOW: B101: Use of assert detected. The enclosed code will be removed when compiling to optimised byte code.
+/home/bjerre/workspace/bandit/examples/binding.py:4: MEDIUM: B104: Possible binding to all interfaces.
+/home/bjerre/workspace/bandit/examples/cipher-modes.py:6: MEDIUM: B305: Use of insecure cipher mode cryptography.hazmat.primitives.ciphers.modes.ECB.

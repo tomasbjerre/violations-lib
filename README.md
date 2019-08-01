@@ -11,6 +11,7 @@ A number of **parsers** have been implemented. Some **parsers** can parse output
 | [_ARM-GCC_](https://developer.arm.com/open-source/gnu-toolchain/gnu-rm)               | `CLANG`              | 
 | [_AndroidLint_](http://developer.android.com/tools/help/lint.html)                    | `ANDROIDLINT`        | 
 | [_AnsibleLint_](https://github.com/willthames/ansible-lint)                           | `FLAKE8`             | With `-p`
+| [_Bandit_](https://github.com/PyCQA/bandit)                                           | `CLANG`              | With `bandit -r examples/ -f custom -o bandit.out --msg-template "{abspath}:{line}: {severity}: {test_id}: {msg}"`
 | [_CLang_](https://clang-analyzer.llvm.org/)                                           | `CLANG`              | 
 | [_CPD_](http://pmd.sourceforge.net/pmd-4.3.0/cpd.html)                                | `CPD`                | 
 | [_CPPCheck_](http://cppcheck.sourceforge.net/)                                        | `CPPCHECK`           | 

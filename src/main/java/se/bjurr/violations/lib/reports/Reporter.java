@@ -6,6 +6,11 @@ public enum Reporter {
       "AndroidLint", Parser.ANDROIDLINT, "http://developer.android.com/tools/help/lint.html", ""),
   ANSIBLELINT(
       "AnsibleLint", Parser.FLAKE8, "https://github.com/willthames/ansible-lint", "With `-p`"),
+  BANDIT(
+      "Bandit",
+      Parser.CLANG,
+      "https://github.com/PyCQA/bandit",
+      "With `bandit -r examples/ -f custom -o bandit.out --msg-template \"{abspath}:{line}: {severity}: {test_id}: {msg}\"`"),
   CLANG("CLang", Parser.CLANG, "https://clang-analyzer.llvm.org/", ""),
   CPD("CPD", Parser.CPD, "http://pmd.sourceforge.net/pmd-4.3.0/cpd.html", ""),
   CPPCHECK("CPPCheck", Parser.CPPCHECK, "http://cppcheck.sourceforge.net/", ""),

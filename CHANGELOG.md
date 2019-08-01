@@ -3,6 +3,15 @@
 
 Changelog of Violations lib.
 
+## Unreleased
+### GitHub [#73](https://github.com/tomasbjerre/violations-lib/issues/73) New format: Bandit for Python    *enhancement*  
+
+**Bandit XML report**
+
+
+[623c2e5668dbdf7](https://github.com/tomasbjerre/violations-lib/commit/623c2e5668dbdf7) Tomas Bjerre *2019-08-01 17:42:18*
+
+
 ## 1.94
 ### GitHub [#70](https://github.com/tomasbjerre/violations-lib/pull/70) Added JUnit parser    *enhancement*  
 
