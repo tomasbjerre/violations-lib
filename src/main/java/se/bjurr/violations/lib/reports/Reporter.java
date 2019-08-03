@@ -60,7 +60,11 @@ public enum Reporter {
       "https://www.iar.com/iar-embedded-workbench/",
       "With `--no_wrap_diagnostics`"),
   JCREPORT("JCReport", Parser.JCREPORT, "https://github.com/jCoderZ/fawkez/wiki/JcReport", ""),
-  JSHINT("JSHint", Parser.JSHINT, "http://jshint.com/", ""),
+  JSHINT(
+      "JSHint",
+      Parser.JSLINT,
+      "http://jshint.com/",
+      "With `--reporter=jslint` or the CHECKSTYLE parser with `--reporter=checkstyle`"),
   JUNIT("JUnit", Parser.JUNIT, "https://junit.org/junit4/", ""),
   KTLINT("KTLint", Parser.CHECKSTYLE, "https://github.com/shyiko/ktlint", ""),
   KLOCWORK(

@@ -25,7 +25,7 @@ import se.bjurr.violations.lib.parsers.GoLintParser;
 import se.bjurr.violations.lib.parsers.GoogleErrorProneParser;
 import se.bjurr.violations.lib.parsers.IARParser;
 import se.bjurr.violations.lib.parsers.JCReportParser;
-import se.bjurr.violations.lib.parsers.JSHintParser;
+import se.bjurr.violations.lib.parsers.JSLintParser;
 import se.bjurr.violations.lib.parsers.JUnitParser;
 import se.bjurr.violations.lib.parsers.KlocworkParser;
 import se.bjurr.violations.lib.parsers.KotlinGradleParser;
@@ -65,7 +65,7 @@ public enum Parser {
   GENDARME(new GendarmeParser()), //
   IAR(new IARParser()), //
   JCREPORT(new JCReportParser()), //
-  JSHINT(new JSHintParser()), //
+  JSLINT(new JSLintParser()), //
   JUNIT(new JUnitParser()), //
   LINT(new LintParser()), //
   KLOCWORK(new KlocworkParser()), //

@@ -4,7 +4,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 import static se.bjurr.violations.lib.TestUtils.getRootFolder;
 import static se.bjurr.violations.lib.ViolationsApi.violationsApi;
 import static se.bjurr.violations.lib.model.SEVERITY.WARN;
-import static se.bjurr.violations.lib.reports.Parser.JSHINT;
+import static se.bjurr.violations.lib.reports.Parser.JSLINT;
 
 import java.util.List;
 import org.junit.Test;
@@ -20,7 +20,7 @@ public class JSHintTest {
         violationsApi() //
             .withPattern(".*/jshint/.*\\.xml$") //
             .inFolder(rootFolder) //
-            .findAll(JSHINT) //
+            .findAll(JSLINT) //
             .violations();
 
     assertThat(actual) //

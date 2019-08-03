@@ -4,7 +4,7 @@ import static se.bjurr.violations.lib.model.SEVERITY.ERROR;
 import static se.bjurr.violations.lib.model.SEVERITY.INFO;
 import static se.bjurr.violations.lib.model.SEVERITY.WARN;
 import static se.bjurr.violations.lib.model.Violation.violationBuilder;
-import static se.bjurr.violations.lib.reports.Parser.JSHINT;
+import static se.bjurr.violations.lib.reports.Parser.JSLINT;
 import static se.bjurr.violations.lib.util.ViolationParserUtils.getAttribute;
 import static se.bjurr.violations.lib.util.ViolationParserUtils.getChunks;
 import static se.bjurr.violations.lib.util.ViolationParserUtils.getIntegerAttribute;
@@ -14,7 +14,7 @@ import java.util.List;
 import se.bjurr.violations.lib.model.SEVERITY;
 import se.bjurr.violations.lib.model.Violation;
 
-public class JSHintParser implements ViolationsParser {
+public class JSLintParser implements ViolationsParser {
   @Override
   public List<Violation> parseReportOutput(String string) throws Exception {
     List<Violation> violations = new ArrayList<>();
@@ -32,7 +32,7 @@ public class JSHintParser implements ViolationsParser {
 
         violations.add( //
             violationBuilder() //
-                .setParser(JSHINT) //
+                .setParser(JSLINT) //
                 .setStartLine(line) //
                 .setColumn(charAttrib) //
                 .setFile(filename) //
