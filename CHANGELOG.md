@@ -3,6 +3,16 @@
 
 Changelog of Violations lib.
 
+## 1.96
+### GitHub [#74](https://github.com/tomasbjerre/violations-lib/issues/74) JSHint parser uses JSLint format    *bug*  
+
+**Renaming JSHINT parser to JSLINT**
+
+ * Because the format parsed by the parser is actually JSLint. This breaks compatibility! 
+
+[d34e2a36d3523a0](https://github.com/tomasbjerre/violations-lib/commit/d34e2a36d3523a0) Tomas Bjerre *2019-08-03 10:36:59*
+
+
 ## 1.95
 ### GitHub [#73](https://github.com/tomasbjerre/violations-lib/issues/73) New format: Bandit for Python    *enhancement*  
 
