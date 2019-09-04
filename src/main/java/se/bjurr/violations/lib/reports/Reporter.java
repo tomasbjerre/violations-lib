@@ -137,7 +137,9 @@ public enum Reporter {
       "Sonar",
       Parser.SONAR,
       "https://www.sonarqube.org/",
-      "With `mvn sonar:sonar -Dsonar.analysis.mode=preview -Dsonar.report.export.path=sonar-report.json`. Removed in 7.7, see [SONAR-11670](https://jira.sonarsource.com/browse/SONAR-11670)."),
+      "With `mvn sonar:sonar -Dsonar.analysis.mode=preview -Dsonar.report.export.path=sonar-report.json`."
+          + " Removed in 7.7, see [SONAR-11670](https://jira.sonarsource.com/browse/SONAR-11670) but can be retrieved with:"
+          + " `curl --silent 'http://sonar-server/api/issues/search?componentKeys=unique-key&resolved=false' | jq -f sonar-report-builder.jq > sonar-report.json`."),
   TSLINT(
       "TSLint",
       Parser.CHECKSTYLE,
