@@ -3,6 +3,15 @@
 
 Changelog of Violations lib.
 
+## 1.98
+### No issue
+
+**Documenting Sonar**
+
+
+[f6f7f7d209fa74d](https://github.com/tomasbjerre/violations-lib/commit/f6f7f7d209fa74d) Tomas Bjerre *2019-09-04 19:52:52*
+
+
 ## 1.97
 ### GitHub [#75](https://github.com/tomasbjerre/violations-lib/issues/75) Sonar parser doesn&#39;t work  
 
