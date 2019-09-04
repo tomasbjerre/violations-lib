@@ -18,7 +18,7 @@ public class SonarTest {
 
     final List<Violation> actual =
         violationsApi() //
-            .withPattern(".*/sonar/.*\\.json$") //
+            .withPattern(".*/sonar/sonar-report\\.json$") //
             .inFolder(rootFolder) //
             .findAll(SONAR) //
             .violations();
@@ -41,5 +41,20 @@ public class SonarTest {
         .isEqualTo(INFO);
     assertThat(actualViolationZero.getSource()) //
         .isEqualTo("com.example:myapp:src/main/java/com/example/myapp/App.java");
+  }
+
+  @Test
+  public void testThatViolationsCanBeParsed2() {
+    final String rootFolder = getRootFolder();
+
+    final List<Violation> actual =
+        violationsApi() //
+            .withPattern(".*/sonar/sonar-report-2\\.json$") //
+            .inFolder(rootFolder) //
+            .findAll(SONAR) //
+            .violations();
+
+    assertThat(actual) //
+        .hasSize(88);
   }
 }
