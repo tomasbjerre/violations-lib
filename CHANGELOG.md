@@ -3,6 +3,15 @@
 
 Changelog of Violations lib.
 
+## 1.97
+### GitHub [#75](https://github.com/tomasbjerre/violations-lib/issues/75) Sonar parser doesn&#39;t work  
+
+**Handling Sonar reports without severity**
+
+
+[b7fff16b27cb2a4](https://github.com/tomasbjerre/violations-lib/commit/b7fff16b27cb2a4) Tomas Bjerre *2019-09-04 19:23:23*
+
+
 ## 1.96
 ### GitHub [#74](https://github.com/tomasbjerre/violations-lib/issues/74) JSHint parser uses JSLint format    *bug*  
 
