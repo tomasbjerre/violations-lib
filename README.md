@@ -78,12 +78,21 @@ Missing a format? Open an issue [here](https://github.com/tomasbjerre/violations
 ## Usage
 
 Very easy to use with a nice builder pattern
-```
+```java
   List<Violation> violations = violationsReporterApi() //
     .withPattern(".*/findbugs/.*\\.xml$") //
     .inFolder(rootFolder) //
     .findAll(FINDBUGS) //
     .violations();
+```
+
+It can also export the violations to the [_CodeClimate_](https://codeclimate.com/) format with:
+```java
+  List<CodeClimate> violations = violationsReporterApi() //
+    .withPattern(".*/findbugs/.*\\.xml$") //
+    .inFolder(rootFolder) //
+    .findAll(FINDBUGS) //
+    .codeClimate();
 ```
 
 The library is used in a bunch of other projects, these are some of them.

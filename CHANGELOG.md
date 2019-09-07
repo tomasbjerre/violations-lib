@@ -3,6 +3,15 @@
 
 Changelog of Violations lib.
 
+## Unreleased
+### GitHub [#76](https://github.com/tomasbjerre/violations-lib/issues/76) Support CodeClimate as output format for GitLab integration    *enhancement*  
+
+**Validating attributes in CodeClimate Parser**
+
+
+[e07038ba58e9c62](https://github.com/tomasbjerre/violations-lib/commit/e07038ba58e9c62) Tomas Bjerre *2019-09-07 12:17:03*
+
+
 ## 1.100
 ### GitHub [#76](https://github.com/tomasbjerre/violations-lib/issues/76) Support CodeClimate as output format for GitLab integration    *enhancement*  
 
