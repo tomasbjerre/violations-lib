@@ -1,10 +1,12 @@
 package se.bjurr.violations.lib.model.codeclimate;
 
+import static se.bjurr.violations.lib.util.Utils.checkNotNull;
+
 public class CodeClimateLines {
   private final Integer begin;
 
   public CodeClimateLines(final Integer begin) {
-    this.begin = begin;
+    this.begin = checkNotNull(begin, "begin");
   }
 
   public Integer getBegin() {

@@ -1,5 +1,8 @@
 package se.bjurr.violations.lib.model.codeclimate;
 
+import static se.bjurr.violations.lib.util.Utils.checkNotNull;
+import static se.bjurr.violations.lib.util.Utils.emptyToNull;
+
 public class CodeClimateLocation {
   private final String path;
   private final CodeClimateLines lines;
@@ -7,8 +10,8 @@ public class CodeClimateLocation {
 
   public CodeClimateLocation(
       final String path, final CodeClimateLines lines, final CodeClimatePositions positions) {
-    this.path = path;
-    this.lines = lines;
+    this.path = checkNotNull(emptyToNull(path), "path");
+    this.lines = checkNotNull(lines, "lines");
     this.positions = positions;
   }
 
