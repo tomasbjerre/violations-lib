@@ -1,0 +1,55 @@
+[
+  {
+    "categories": [
+      "Complexity"
+    ],
+    "check_name": "argument_count",
+    "content": {
+      "body": ""
+    },
+    "description": "Method `destroy` has 6 arguments (exceeds 4 allowed). Consider refactoring.",
+    "fingerprint": "f778445eae9245ad3a9e5a61bc380d31",
+    "location": {
+      "path": "argument_count.rb",
+      "lines": {
+        "begin": 2,
+        "end": 2
+      }
+    },
+    "other_locations": [
+      
+    ],
+    "remediation_points": 450000,
+    "severity": "minor",
+    "type": "issue",
+    "engine_name": "structure"
+  },
+  {
+    "type": "Issue",
+    "check_name": "Rubocop\/Metrics\/ParameterLists",
+    "description": "Avoid parameter lists longer than 5 parameters. [6\/5]",
+    "categories": [
+      "Complexity"
+    ],
+    "remediation_points": 250000,
+    "location": {
+      "path": "argument_count.rb",
+      "positions": {
+        "begin": {
+          "column": 14,
+          "line": 2
+        },
+        "end": {
+          "column": 27,
+          "line": 2
+        }
+      }
+    },
+    "content": {
+      "body": "This cop checks for methods with too many parameters.\nThe maximum number of parameters is configurable.\nKeyword arguments can optionally be excluded from the total count."
+    },
+    "engine_name": "rubocop",
+    "fingerprint": "5182fe949b37d86b6a434d96c19ca44f",
+    "severity": "minor"
+  }
+]

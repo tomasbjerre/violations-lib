@@ -14,6 +14,7 @@ import se.bjurr.violations.lib.parsers.CPDParser;
 import se.bjurr.violations.lib.parsers.CPPCheckParser;
 import se.bjurr.violations.lib.parsers.CSSLintParser;
 import se.bjurr.violations.lib.parsers.CheckStyleParser;
+import se.bjurr.violations.lib.parsers.CodeClimateParser;
 import se.bjurr.violations.lib.parsers.CodeNarcParser;
 import se.bjurr.violations.lib.parsers.CppLintParser;
 import se.bjurr.violations.lib.parsers.DocFXParser;
@@ -89,7 +90,8 @@ public enum Parser {
   YAMLLINT(new YAMLlintParser()), //
   ZPTLINT(new ZPTLintParser()), //
   DOCFX(new DocFXParser()), //
-  PCLINT(new PCLintParser());
+  PCLINT(new PCLintParser()),
+  CODECLIMATE(new CodeClimateParser());
 
   private static Logger LOG = Logger.getLogger(Parser.class.getSimpleName());
   private transient ViolationsParser violationsParser;

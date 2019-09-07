@@ -18,6 +18,7 @@ public enum Reporter {
   CSSLINT("CSSLint", Parser.CSSLINT, "https://github.com/CSSLint/csslint", ""),
   CHECKSTYLE("Checkstyle", Parser.CHECKSTYLE, "http://checkstyle.sourceforge.net/", ""),
   CODENARC("CodeNarc", Parser.CODENARC, "http://codenarc.sourceforge.net/", ""),
+  CODECLIMATE("CodeClimate", Parser.CODECLIMATE, "https://codeclimate.com/", ""),
   DETEKT(
       "Detekt",
       Parser.CHECKSTYLE,

@@ -18,6 +18,7 @@ A number of **parsers** have been implemented. Some **parsers** can parse output
 | [_CPPLint_](https://github.com/theandrewdavis/cpplint)                                | `CPPLINT`            | 
 | [_CSSLint_](https://github.com/CSSLint/csslint)                                       | `CSSLINT`            | 
 | [_Checkstyle_](http://checkstyle.sourceforge.net/)                                    | `CHECKSTYLE`         | 
+| [_CodeClimate_](https://codeclimate.com/)                                             | `CODECLIMATE`        | 
 | [_CodeNarc_](http://codenarc.sourceforge.net/)                                        | `CODENARC`           | 
 | [_Detekt_](https://github.com/arturbosch/detekt)                                      | `CHECKSTYLE`         | With `--output-format xml`.
 | [_DocFX_](http://dotnet.github.io/docfx/)                                             | `DOCFX`              | 

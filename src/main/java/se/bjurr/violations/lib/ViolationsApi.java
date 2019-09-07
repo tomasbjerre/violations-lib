@@ -9,6 +9,8 @@ import java.io.File;
 import java.util.List;
 import java.util.logging.Logger;
 import se.bjurr.violations.lib.model.Violation;
+import se.bjurr.violations.lib.model.codeclimate.CodeClimate;
+import se.bjurr.violations.lib.model.codeclimate.CodeClimateTransformer;
 import se.bjurr.violations.lib.reports.Parser;
 
 public class ViolationsApi {
@@ -77,6 +79,10 @@ public class ViolationsApi {
       }
     }
     return foundViolations;
+  }
+
+  public List<CodeClimate> codeClimate() {
+    return CodeClimateTransformer.fromViolations(this.violations());
   }
 
   private String makeWindowsFriendly(final String regularExpression) {
