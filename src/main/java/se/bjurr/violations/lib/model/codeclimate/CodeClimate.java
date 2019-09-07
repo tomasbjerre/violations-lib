@@ -1,5 +1,8 @@
 package se.bjurr.violations.lib.model.codeclimate;
 
+import static se.bjurr.violations.lib.util.Utils.checkNotNull;
+import static se.bjurr.violations.lib.util.Utils.emptyToNull;
+
 import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -21,9 +24,9 @@ public class CodeClimate {
       final CodeClimateSeverity severity,
       final String check_name,
       final List<CodeClimateCategory> categories) {
-    this.description = description;
-    this.fingerprint = fingerprint;
-    this.location = location;
+    this.description = checkNotNull(emptyToNull(description), "description");
+    this.fingerprint = checkNotNull(emptyToNull(fingerprint), "fingerprint");
+    this.location = checkNotNull(location, "location");
     this.severity = severity;
     this.type = "issue";
     this.check_name = check_name;
