@@ -12,6 +12,14 @@ Changelog of Violations lib.
 [e07038ba58e9c62](https://github.com/tomasbjerre/violations-lib/commit/e07038ba58e9c62) Tomas Bjerre *2019-09-07 12:17:03*
 
 
+### GitHub [#77](https://github.com/tomasbjerre/violations-lib/issues/77) Add hadolint support  
+
+**Documenting HadoLint**
+
+
+[612e68476c144b6](https://github.com/tomasbjerre/violations-lib/commit/612e68476c144b6) Tomas Bjerre *2019-09-09 14:23:24*
+
+
 ## 1.100
 ### GitHub [#76](https://github.com/tomasbjerre/violations-lib/issues/76) Support CodeClimate as output format for GitLab integration    *enhancement*  
 

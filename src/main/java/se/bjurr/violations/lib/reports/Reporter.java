@@ -54,6 +54,11 @@ public enum Reporter {
   GOVET("GoVet", Parser.GOLINT, "https://golang.org/cmd/vet/", "Same format as GoLint."),
   GOOGLEERRORPRONE(
       "GoogleErrorProne", Parser.GOOGLEERRORPRONE, "https://github.com/google/error-prone", ""),
+  HADOLINT(
+      "HadoLint",
+      Parser.CHECKSTYLE,
+      "https://github.com/hadolint/hadolint/",
+      "With `-f checkstyle`"),
   INFER("Infer", Parser.PMD, "http://fbinfer.com/", "Facebook Infer. With `--pmd-xml`."),
   IAR(
       "IAR",
