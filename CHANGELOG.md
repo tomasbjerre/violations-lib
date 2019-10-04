@@ -17,7 +17,21 @@ Changelog of Violations lib.
 **Documenting HadoLint**
 
 
-[612e68476c144b6](https://github.com/tomasbjerre/violations-lib/commit/612e68476c144b6) Tomas Bjerre *2019-09-09 14:23:24*
+[d516f1a69b84b72](https://github.com/tomasbjerre/violations-lib/commit/d516f1a69b84b72) Tomas Bjerre *2019-09-09 14:24:15*
+
+
+### No issue
+
+**Always front slashes when searching FS**
+
+ * Also adding logging the help determining why some files is not getting picked up. 
+
+[2f58fe76d962fab](https://github.com/tomasbjerre/violations-lib/commit/2f58fe76d962fab) Tomas Bjerre *2019-10-04 14:40:14*
+
+**Create FUNDING.yml**
+
+
+[429014771ec2c64](https://github.com/tomasbjerre/violations-lib/commit/429014771ec2c64) Tomas Bjerre *2019-09-28 06:58:05*
 
 
 ## 1.100

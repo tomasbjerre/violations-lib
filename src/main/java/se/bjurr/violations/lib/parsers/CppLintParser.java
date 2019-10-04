@@ -49,7 +49,7 @@ public class CppLintParser implements ViolationsParser {
                 .setMessage(message) //
                 .build() //
             );
-      } catch (final Exception e) {
+      } catch (final IndexOutOfBoundsException | NullPointerException e) {
         LOG.info("Was unable to parse: \"" + line + "\" found parts: " + parts);
       }
     }

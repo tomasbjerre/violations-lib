@@ -17,10 +17,10 @@ import se.bjurr.violations.lib.model.codeclimate.CodeClimateSeverity;
 
 public class CodeClimateParser implements ViolationsParser {
   private static final Logger LOG = Logger.getLogger(CodeClimateParser.class.getSimpleName());
+  private static final Type listType = new TypeToken<List<CodeClimate>>() {}.getType();
 
   @Override
   public List<Violation> parseReportOutput(final String string) throws Exception {
-    final Type listType = new TypeToken<List<CodeClimate>>() {}.getType();
     final List<CodeClimate> codeClimate = new Gson().fromJson(string, listType);
 
     final List<Violation> violations = new ArrayList<>();
@@ -38,7 +38,7 @@ public class CodeClimateParser implements ViolationsParser {
           && issue.getLocation().getPositions().getBegin() != null) {
         begin = issue.getLocation().getPositions().getBegin().getLine();
       }
-      if (begin == -1 || begin == null) {
+      if (begin == -1) {
         LOG.log(Level.FINE, "Ignoring issue: " + issue);
         continue;
       }

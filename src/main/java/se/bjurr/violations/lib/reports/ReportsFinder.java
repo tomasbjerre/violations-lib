@@ -12,10 +12,14 @@ import java.nio.file.attribute.BasicFileAttributes;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 public class ReportsFinder {
 
-  public static List<File> findAllReports(File startFile, final String pattern) {
+  private static Logger LOG = Logger.getLogger(ReportsFinder.class.getSimpleName());
+
+  public static List<File> findAllReports(final File startFile, final String pattern) {
     final List<File> found = new ArrayList<>();
     final Path startPath = startFile.toPath();
     try {
@@ -23,11 +27,19 @@ public class ReportsFinder {
           startPath,
           new SimpleFileVisitor<Path>() {
             @Override
-            public FileVisitResult visitFile(Path file, BasicFileAttributes attrs)
+            public FileVisitResult visitFile(final Path file, final BasicFileAttributes attrs)
                 throws IOException {
-              final String absoluteFile = file.toFile().getAbsolutePath();
-              if (matches(pattern, absoluteFile)) {
+              final String absolutePath = file.toFile().getAbsolutePath();
+              if (matches(pattern, absolutePath)
+                  || matches(pattern, withFrontSlashes(absolutePath))) {
+                if (LOG.isLoggable(Level.FINE)) {
+                  LOG.log(Level.FINE, pattern + " matches " + absolutePath);
+                }
                 found.add(file.toFile());
+              } else {
+                if (LOG.isLoggable(Level.FINE)) {
+                  LOG.log(Level.FINE, pattern + " does not match " + absolutePath);
+                }
               }
               return super.visitFile(file, attrs);
             }
@@ -37,5 +49,9 @@ public class ReportsFinder {
     }
     Collections.sort(found);
     return found;
+  }
+
+  static String withFrontSlashes(final String file) {
+    return file.replace('\\', '/');
   }
 }

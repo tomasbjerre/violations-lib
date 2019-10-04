@@ -11,6 +11,7 @@ import static se.bjurr.violations.lib.util.ViolationParserUtils.getLines;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Locale;
 import se.bjurr.violations.lib.model.SEVERITY;
 import se.bjurr.violations.lib.model.Violation;
 
@@ -54,7 +55,7 @@ public class CLangParser implements ViolationsParser {
     if (isNullOrEmpty(severity)) {
       return INFO;
     }
-    final String lowerCase = severity.toLowerCase();
+    final String lowerCase = severity.toLowerCase(Locale.ENGLISH);
     if (lowerCase.contains("low")) {
       return INFO;
     }
