@@ -3,7 +3,7 @@
 
 Changelog of Violations lib.
 
-## Unreleased
+## 1.102
 ### GitHub [#76](https://github.com/tomasbjerre/violations-lib/issues/76) Support CodeClimate as output format for GitLab integration    *enhancement*  
 
 **Validating attributes in CodeClimate Parser**
@@ -26,7 +26,7 @@ Changelog of Violations lib.
 
  * Also adding logging the help determining why some files is not getting picked up. 
 
-[2f58fe76d962fab](https://github.com/tomasbjerre/violations-lib/commit/2f58fe76d962fab) Tomas Bjerre *2019-10-04 14:40:14*
+[7e237cc5f23517a](https://github.com/tomasbjerre/violations-lib/commit/7e237cc5f23517a) Tomas Bjerre *2019-10-04 14:44:12*
 
 **Create FUNDING.yml**
 
