@@ -3,6 +3,15 @@
 
 Changelog of Violations lib.
 
+## Unreleased
+### No issue
+
+**Testing reportsfinder traversal**
+
+
+[eab93f7c2c4562d](https://github.com/tomasbjerre/violations-lib/commit/eab93f7c2c4562d) Tomas Bjerre *2019-10-04 17:22:15*
+
+
 ## 1.102
 ### GitHub [#76](https://github.com/tomasbjerre/violations-lib/issues/76) Support CodeClimate as output format for GitLab integration    *enhancement*  
 
