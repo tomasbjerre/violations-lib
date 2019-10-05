@@ -3,13 +3,18 @@
 
 Changelog of Violations lib.
 
-## Unreleased
+## 1.103
 ### No issue
+
+**More logging**
+
+
+[266e22ad8778fa5](https://github.com/tomasbjerre/violations-lib/commit/266e22ad8778fa5) Tomas Bjerre *2019-10-05 06:21:10*
 
 **Testing reportsfinder traversal**
 
 
-[eab93f7c2c4562d](https://github.com/tomasbjerre/violations-lib/commit/eab93f7c2c4562d) Tomas Bjerre *2019-10-04 17:22:15*
+[019eade65d41af1](https://github.com/tomasbjerre/violations-lib/commit/019eade65d41af1) Tomas Bjerre *2019-10-05 05:24:28*
 
 
 ## 1.102
