@@ -100,4 +100,21 @@ public class FindbugsTest {
     assertThat(violation0.getSpecifics().get(FINDBUGS_SPECIFIC_RANK)) //
         .isEqualTo("20");
   }
+
+  @Test
+  public void testThatViolationsCanBeParsedFromSpotbugs2() {
+    final String rootFolder = getRootFolder();
+    final List<Violation> actual =
+        violationsApi() //
+            .withPattern(".*/findbugs/spotbugs-main\\.xml$") //
+            .inFolder(rootFolder) //
+            .findAll(FINDBUGS) //
+            .violations();
+
+    assertThat(actual) //
+        .hasSize(3);
+    final Violation violation0 = actual.get(0);
+    assertThat(violation0.getFile()) //
+        .isEqualTo("se/bjurr/violations/lib/reports/ReportsFinder.java");
+  }
 }

@@ -1,5 +1,6 @@
 package se.bjurr.violations.lib.reports;
 
+import static java.util.logging.Level.FINE;
 import static java.util.logging.Level.SEVERE;
 
 import java.io.File;
@@ -7,6 +8,7 @@ import java.io.FileInputStream;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Logger;
+
 import se.bjurr.violations.lib.model.Violation;
 import se.bjurr.violations.lib.parsers.AndroidLintParser;
 import se.bjurr.violations.lib.parsers.CLangParser;
@@ -105,6 +107,9 @@ public enum Parser {
     for (final File file : includedFiles) {
       try {
         final String string = Utils.toString(new FileInputStream(file));
+        if (LOG.isLoggable(FINE)) {
+			LOG.log(FINE,"Using "+violationsParser.getClass().getName()+" to parse "+string);
+		}
         violations.addAll(violationsParser.parseReportOutput(string));
       } catch (final Throwable e) {
         LOG.log(SEVERE, "Error when parsing " + file.getAbsolutePath() + " as " + this.name(), e);
