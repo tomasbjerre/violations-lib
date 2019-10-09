@@ -3,6 +3,20 @@
 
 Changelog of Violations lib.
 
+## Unreleased
+### No issue
+
+**doc**
+
+
+[ff1afd7f34348d6](https://github.com/tomasbjerre/violations-lib/commit/ff1afd7f34348d6) Tomas Bjerre *2019-10-09 16:57:30*
+
+**Spotbugs**
+
+
+[2cec50ee48b3f2c](https://github.com/tomasbjerre/violations-lib/commit/2cec50ee48b3f2c) Tomas Bjerre *2019-10-07 18:30:04*
+
+
 ## 1.103
 ### No issue
 

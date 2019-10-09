@@ -21,35 +21,35 @@ import se.bjurr.violations.lib.model.Violation;
 public class ResharperParser implements ViolationsParser {
 
   @Override
-  public List<Violation> parseReportOutput(String string) throws Exception {
-    List<Violation> violations = new ArrayList<>();
-    List<String> issueTypeChunks = getChunks(string, "<IssueType ", "/>");
-    Map<String, Map<String, String>> issueTypesPerTypeId = new HashMap<>();
-    for (String issueTypesChunk : issueTypeChunks) {
-      Map<String, String> issueType = new HashMap<>();
-      String id = getAttribute(issueTypesChunk, "Id");
+  public List<Violation> parseReportOutput(final String string) throws Exception {
+    final List<Violation> violations = new ArrayList<>();
+    final List<String> issueTypeChunks = getChunks(string, "<IssueType ", "/>");
+    final Map<String, Map<String, String>> issueTypesPerTypeId = new HashMap<>();
+    for (final String issueTypesChunk : issueTypeChunks) {
+      final Map<String, String> issueType = new HashMap<>();
+      final String id = getAttribute(issueTypesChunk, "Id");
       issueType.put("category", getAttribute(issueTypesChunk, "Category"));
-      Optional<String> description = findAttribute(issueTypesChunk, "Description");
+      final Optional<String> description = findAttribute(issueTypesChunk, "Description");
       issueType.put("description", description.orElse(id));
       issueType.put("severity", getAttribute(issueTypesChunk, "Severity"));
       issueType.put("url", findAttribute(issueTypesChunk, "WikiUrl").orElse(null));
       issueTypesPerTypeId.put(id, issueType);
     }
 
-    List<String> issueChunks = getChunks(string, "<Issue ", "/>");
-    for (String issueChunk : issueChunks) {
-      String typeId = getAttribute(issueChunk, "TypeId");
-      String filename = getAttribute(issueChunk, "File");
-      String url = issueTypesPerTypeId.get(typeId).get("url");
-      String message =
-          getAttribute(issueChunk, "Message")
+    final List<String> issueChunks = getChunks(string, "<Issue ", "/>");
+    for (final String issueChunk : issueChunks) {
+      final String typeId = getAttribute(issueChunk, "TypeId");
+      final String filename = getAttribute(issueChunk, "File");
+      final String url = issueTypesPerTypeId.get(typeId).get("url");
+      final String message =
+          findAttribute(issueChunk, "Message").orElse("")
               + ". "
               + issueTypesPerTypeId.get(typeId).get("category")
               + ". "
               + issueTypesPerTypeId.get(typeId).get("description")
               + (url != null ? ". For more info, visit " + url : "");
-      Integer line = findIntegerAttribute(issueChunk, "Line").orElse(0);
-      String severity = issueTypesPerTypeId.get(typeId).get("severity");
+      final Integer line = findIntegerAttribute(issueChunk, "Line").orElse(0);
+      final String severity = issueTypesPerTypeId.get(typeId).get("severity");
       violations.add( //
           violationBuilder() //
               .setParser(RESHARPER) //
@@ -64,7 +64,7 @@ public class ResharperParser implements ViolationsParser {
     return violations;
   }
 
-  public SEVERITY toSeverity(String severity) {
+  public SEVERITY toSeverity(final String severity) {
     if (severity.equalsIgnoreCase("ERROR")) {
       return ERROR;
     }
