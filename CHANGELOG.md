@@ -3,13 +3,13 @@
 
 Changelog of Violations lib.
 
-## Unreleased
+## 1.106
 ### GitHub [#71](https://github.com/tomasbjerre/violations-lib/issues/71) PyDocStyleParser fails with IndexOutOfBoundsException  
 
 **Parsing PyDocStyle generated with `-s`**
 
 
-[69a298502babb1f](https://github.com/tomasbjerre/violations-lib/commit/69a298502babb1f) Tomas Bjerre *2019-10-10 15:13:48*
+[2de776d9f8c8bbc](https://github.com/tomasbjerre/violations-lib/commit/2de776d9f8c8bbc) Tomas Bjerre *2019-10-10 15:22:54*
 
 
 ### GitHub [#78](https://github.com/tomasbjerre/violations-lib/issues/78) ResharperParser throws exception if message is empty    *bug*  
