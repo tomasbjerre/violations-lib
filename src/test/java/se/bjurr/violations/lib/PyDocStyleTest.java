@@ -17,11 +17,11 @@ public class PyDocStyleTest {
   @Test
   public void testThatViolationsCanBeParsed() {
 
-    String rootFolder = getRootFolder();
+    final String rootFolder = getRootFolder();
 
-    List<Violation> actual =
+    final List<Violation> actual =
         violationsApi() //
-            .withPattern(".*/pydocstyle/.*\\.txt$") //
+            .withPattern(".*/pydocstyle/pydocstyle\\.txt$") //
             .inFolder(rootFolder) //
             .findAll(PYDOCSTYLE) //
             .violations();
@@ -64,5 +64,77 @@ public class PyDocStyleTest {
                 .setSeverity(ERROR) //
                 .build() //
             );
+  }
+
+  @Test
+  public void testThatViolationsCanBeParsedWithoutS() {
+    final String rootFolder = getRootFolder();
+
+    final List<Violation> actual =
+        violationsApi() //
+            .withPattern(".*/pydocstyle/pydocstyle-without-s\\.txt$") //
+            .inFolder(rootFolder) //
+            .findAll(PYDOCSTYLE) //
+            .violations();
+
+    assertThat(actual) //
+        .hasSize(2);
+
+    assertThat(actual.get(0).getMessage()) //
+        .isEqualTo("Missing docstring in public module");
+    assertThat(actual.get(0).getFile()) //
+        .isEqualTo("test.py");
+    assertThat(actual.get(0).getSeverity()) //
+        .isEqualTo(ERROR);
+    assertThat(actual.get(0).getRule()) //
+        .isEqualTo("D100");
+    assertThat(actual.get(0).getStartLine()) //
+        .isEqualTo(1);
+    assertThat(actual.get(0).getEndLine()) //
+        .isEqualTo(1);
+
+    assertThat(actual.get(1).getMessage()) //
+        .isEqualTo("Missing docstring in public function");
+  }
+
+  @Test
+  public void testThatViolationsCanBeParsedWithS() {
+    final String rootFolder = getRootFolder();
+
+    final List<Violation> actual =
+        violationsApi() //
+            .withPattern(".*/pydocstyle/pydocstyle-with-s\\.txt$") //
+            .inFolder(rootFolder) //
+            .findAll(PYDOCSTYLE) //
+            .violations();
+
+    assertThat(actual) //
+        .hasSize(2);
+
+    assertThat(actual.get(0).getMessage()) //
+        .isEqualTo("Missing docstring in public module");
+    assertThat(actual.get(0).getFile()) //
+        .isEqualTo("test.py");
+    assertThat(actual.get(0).getSeverity()) //
+        .isEqualTo(ERROR);
+    assertThat(actual.get(0).getRule()) //
+        .isEqualTo("D100");
+    assertThat(actual.get(0).getStartLine()) //
+        .isEqualTo(1);
+    assertThat(actual.get(0).getEndLine()) //
+        .isEqualTo(1);
+
+    assertThat(actual.get(1).getMessage()) //
+        .isEqualTo("Missing docstring in public function");
+    assertThat(actual.get(1).getFile()) //
+        .isEqualTo("test.py");
+    assertThat(actual.get(1).getSeverity()) //
+        .isEqualTo(ERROR);
+    assertThat(actual.get(1).getRule()) //
+        .isEqualTo("D103");
+    assertThat(actual.get(1).getStartLine()) //
+        .isEqualTo(1);
+    assertThat(actual.get(1).getEndLine()) //
+        .isEqualTo(1);
   }
 }

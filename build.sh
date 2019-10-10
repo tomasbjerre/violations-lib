@@ -1,2 +1,2 @@
 #!/bin/bash
-./gradlew clean gitChangelogTask build -i -Dhttp.socketTimeout=60000 -Dhttp.connectionTimeout=60000
+./gradlew cE eclipse clean gitChangelogTask build -Dhttp.socketTimeout=60000 -Dhttp.connectionTimeout=60000

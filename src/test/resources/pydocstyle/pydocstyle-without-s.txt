@@ -1,0 +1,4 @@
+test.py:1 at module level:
+        D100: Missing docstring in public module
+test.py:1 in public function `my_test_function`:
+        D103: Missing docstring in public function

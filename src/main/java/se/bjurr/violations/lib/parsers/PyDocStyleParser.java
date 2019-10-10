@@ -14,32 +14,42 @@ import se.bjurr.violations.lib.util.ViolationParserUtils;
 public class PyDocStyleParser implements ViolationsParser {
 
   @Override
-  public List<Violation> parseReportOutput(String string) throws Exception {
-    List<Violation> violations = new ArrayList<>();
+  public List<Violation> parseReportOutput(final String string) throws Exception {
+    final List<Violation> violations = new ArrayList<>();
     boolean fileLine = true;
-    List<String> lines = ViolationParserUtils.getLines(string);
+    final List<String> lines = ViolationParserUtils.getLines(string);
     String filename = null;
     Integer line = null;
-    for (String inputLine : lines) {
-      if (fileLine) {
-        List<String> parts = getParts(inputLine, "([^:]*)", "(\\d+)");
-        filename = parts.get(0);
-        line = parseInt(parts.get(1));
-      } else {
-        List<String> parts = getParts(inputLine, "([^:]*)", ":(.*)");
-        String rule = parts.get(0);
-        String message = parts.get(1);
+    for (final String inputLine : lines) {
+      try {
+        if (fileLine) {
+          final List<String> parts = getParts(inputLine, "([^:]*)", "(\\d+)");
+          filename = parts.get(0);
+          if (!filename.endsWith(".py")) {
+            continue;
+          }
+          line = parseInt(parts.get(1));
+        } else {
+          final List<String> parts = getParts(inputLine, "([^:]*)", ":(.*)");
+          if (parts.size() != 2) {
+            continue;
+          }
+          final String rule = parts.get(0);
+          final String message = parts.get(1);
 
-        violations.add( //
-            violationBuilder() //
-                .setParser(PYDOCSTYLE) //
-                .setStartLine(line) //
-                .setFile(filename) //
-                .setRule(rule) //
-                .setSeverity(ERROR) //
-                .setMessage(message) //
-                .build() //
-            );
+          violations.add( //
+              violationBuilder() //
+                  .setParser(PYDOCSTYLE) //
+                  .setStartLine(line) //
+                  .setFile(filename) //
+                  .setRule(rule) //
+                  .setSeverity(ERROR) //
+                  .setMessage(message) //
+                  .build() //
+              );
+        }
+      } catch (IndexOutOfBoundsException | NumberFormatException e) {
+        continue;
       }
       fileLine = !fileLine;
     }
