@@ -112,6 +112,7 @@ public enum Reporter {
   PEP8("Pep8", Parser.FLAKE8, "https://github.com/PyCQA/pycodestyle", ""),
   PERLCRITIC("PerlCritic", Parser.PERLCRITIC, "https://github.com/Perl-Critic", ""),
   PITEST("PiTest", Parser.PITEST, "http://pitest.org/", ""),
+  PROTOLINT("ProtoLint", Parser.PROTOLINT, "https://github.com/yoheimuta/protolint", ""),
   PUPPETLINT(
       "Puppet-Lint",
       Parser.CLANG,
