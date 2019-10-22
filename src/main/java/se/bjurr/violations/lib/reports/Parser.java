@@ -39,6 +39,7 @@ import se.bjurr.violations.lib.parsers.PCLintParser;
 import se.bjurr.violations.lib.parsers.PMDParser;
 import se.bjurr.violations.lib.parsers.PerlCriticParser;
 import se.bjurr.violations.lib.parsers.PiTestParser;
+import se.bjurr.violations.lib.parsers.ProtoLintParser;
 import se.bjurr.violations.lib.parsers.PyDocStyleParser;
 import se.bjurr.violations.lib.parsers.PyLintParser;
 import se.bjurr.violations.lib.parsers.ResharperParser;
@@ -80,6 +81,7 @@ public enum Parser {
   PERLCRITIC(new PerlCriticParser()), //
   PITEST(new PiTestParser()), //
   PMD(new PMDParser()), //
+  PROTOLINT(new ProtoLintParser()), //
   PYDOCSTYLE(new PyDocStyleParser()), //
   PYLINT(new PyLintParser()), //
   RESHARPER(new ResharperParser()), //
