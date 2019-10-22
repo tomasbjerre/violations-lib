@@ -3,6 +3,15 @@
 
 Changelog of Violations lib.
 
+## 1.107
+### No issue
+
+**Add parser for protolint**
+
+
+[80e3c8dd7fb95ea](https://github.com/tomasbjerre/violations-lib/commit/80e3c8dd7fb95ea) David *2019-10-21 20:25:12*
+
+
 ## 1.106
 ### GitHub [#71](https://github.com/tomasbjerre/violations-lib/issues/71) PyDocStyleParser fails with IndexOutOfBoundsException    *bug*  
 
@@ -731,7 +740,7 @@ Changelog of Violations lib.
 
  * Fixes 
 
-[9b10f800c7b7941](https://github.com/tomasbjerre/violations-lib/commit/9b10f800c7b7941) Sam Judd *2018-12-31 03:25:14*
+[9b10f800c7b7941](https://github.com/tomasbjerre/violations-lib/commit/9b10f800c7b7941) Sam Judd *2017-12-31 03:25:14*
 
 
 ### No issue
@@ -739,7 +748,7 @@ Changelog of Violations lib.
 **Gathering string utils**
 
 
-[6951f1a5039f968](https://github.com/tomasbjerre/violations-lib/commit/6951f1a5039f968) Tomas Bjerre *2018-12-31 05:51:14*
+[6951f1a5039f968](https://github.com/tomasbjerre/violations-lib/commit/6951f1a5039f968) Tomas Bjerre *2017-12-31 05:51:14*
 
 
 ## 1.49
