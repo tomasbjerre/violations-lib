@@ -57,4 +57,32 @@ public class SonarTest {
     assertThat(actual) //
         .hasSize(88);
   }
+
+  @Test
+  public void testThatViolationsCanBeParsedWithIssuesReportVersion7_5() {
+    final String rootFolder = getRootFolder();
+
+    final List<Violation> actual =
+        violationsApi() //
+            .withPattern(".*/sonar/sonar-report-3\\.json$") //
+            .inFolder(rootFolder) //
+            .findAll(SONAR) //
+            .violations();
+
+    assertThat(actual) //
+        .hasSize(5);
+
+    final Violation actualViolationZero = actual.get(0);
+    assertThat(actualViolationZero.getFile()) //
+            .isEqualTo("src/main/java/com/example/component/application/providers/WebProvider.java");
+    assertThat(actualViolationZero.getStartLine()) //
+            .isEqualTo(56);
+    assertThat(actualViolationZero.getMessage()) //
+            .isEqualTo("Complete the task associated to this TODO comment.");
+
+    final Violation actualViolationFour = actual.get(4);
+    assertThat(actualViolationFour.getMessage()) //
+            .isEqualTo("N/A");
+
+  }
 }
