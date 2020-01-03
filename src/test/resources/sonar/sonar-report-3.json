@@ -1,0 +1,202 @@
+{
+  "version": "7.5",
+  "total": 324,
+  "p": 1,
+  "ps": 100,
+  "paging": {
+    "pageIndex": 1,
+    "pageSize": 100,
+    "total": 324
+  },
+  "effortTotal": 10545,
+  "debtTotal": 10545,
+  "issues": [
+    {
+      "key": "AW9ZELWqZbXQApVMssTY",
+      "rule": "squid:S1135",
+      "severity": "INFO",
+      "component": "com.example.example:exampleapplication:microservices:component:src/main/java/com/example/component/application/providers/WebProvider.java",
+      "project": "com.example.example:exampleapplication",
+      "subProject": "com.example.example:exampleapplication:microservices:component",
+      "line": 56,
+      "hash": "32d0b2527b9a7178c1c08532020e1630",
+      "textRange": {
+        "startLine": 56,
+        "endLine": 56,
+        "startOffset": 0,
+        "endOffset": 83
+      },
+      "flows": [],
+      "status": "OPEN",
+      "message": "Complete the task associated to this TODO comment.",
+      "author": "",
+      "tags": [
+        "cwe"
+      ],
+      "creationDate": "2019-12-30T18:06:54-0500",
+      "updateDate": "2019-12-30T18:06:54-0500",
+      "type": "CODE_SMELL",
+      "organization": "default-organization",
+      "fromHotspot": false
+    },
+    {
+      "key": "AW9ZELWqZbXQApVMssTX",
+      "rule": "squid:S106",
+      "severity": "MAJOR",
+      "component": "com.example.example:exampleapplication:microservices:component:src/main/java/com/example/component/application/providers/WebProvider.java",
+      "project": "com.example.example:exampleapplication",
+      "subProject": "com.example.example:exampleapplication:microservices:component",
+      "line": 57,
+      "hash": "9f33d47a150e7dca46f2b5cbd37c0c7f",
+      "textRange": {
+        "startLine": 57,
+        "endLine": 57,
+        "startOffset": 8,
+        "endOffset": 18
+      },
+      "flows": [],
+      "status": "OPEN",
+      "message": "Replace this use of System.out or System.err by a logger.",
+      "effort": "10min",
+      "debt": "10min",
+      "author": "",
+      "tags": [
+        "bad-practice",
+        "cert"
+      ],
+      "creationDate": "2019-12-30T18:06:54-0500",
+      "updateDate": "2019-12-30T18:06:54-0500",
+      "type": "CODE_SMELL",
+      "organization": "default-organization",
+      "fromHotspot": false
+    },
+    {
+      "key": "AW9Y1CHKZbXQApVMsrp0",
+      "rule": "squid:S2068",
+      "severity": "BLOCKER",
+      "component": "com.example.example:exampleapplication:microservices:app:src/main/java/com/example/app/application/controllers/api/ApiUrlConstants.java",
+      "project": "com.example.example:exampleapplication",
+      "subProject": "com.example.example:exampleapplication:microservices:app",
+      "line": 10,
+      "hash": "448e6d1ff0af5f6a7d923d2363926d69",
+      "textRange": {
+        "startLine": 10,
+        "endLine": 10,
+        "startOffset": 31,
+        "endOffset": 54
+      },
+      "flows": [],
+      "status": "OPEN",
+      "message": "'PASSWORD' detected in this expression, review this potentially hard-coded credential.",
+      "effort": "30min",
+      "debt": "30min",
+      "author": "",
+      "tags": [
+        "cert",
+        "cwe",
+        "owasp-a2",
+        "sans-top25-porous"
+      ],
+      "creationDate": "2019-12-30T17:00:40-0500",
+      "updateDate": "2019-12-30T17:00:40-0500",
+      "type": "VULNERABILITY",
+      "organization": "default-organization",
+      "fromHotspot": false
+    },
+    {
+      "key": "AW9Y1CFWZbXQApVMsrpx",
+      "rule": "squid:S2259",
+      "severity": "MAJOR",
+      "component": "com.example.example:exampleapplication:microservices:app:src/main/java/com/example/app/application/controllers/api/registration/Delegate.java",
+      "project": "com.example.example:exampleapplication",
+      "subProject": "com.example.example:exampleapplication:microservices:app",
+      "line": 280,
+      "hash": "3d4091d7f0220b9bf66d784f0c5eed57",
+      "textRange": {
+        "startLine": 280,
+        "endLine": 280,
+        "startOffset": 50,
+        "endOffset": 71
+      },
+      "flows": [
+        {
+          "locations": [
+            {
+              "component": "com.example.example:exampleapplication:microservices:app:src/main/java/com/example/app/application/controllers/api/registration/Delegate.java",
+              "textRange": {
+                "startLine": 280,
+                "endLine": 280,
+                "startOffset": 50,
+                "endOffset": 71
+              },
+              "msg": "'apiContext' is dereferenced."
+            },
+            {
+              "component": "com.example.example:exampleapplication:microservices:app:src/main/java/com/example/app/application/controllers/api/registration/Delegate.java",
+              "textRange": {
+                "startLine": 258,
+                "endLine": 258,
+                "startOffset": 8,
+                "endOffset": 37
+              },
+              "msg": "Implies 'apiContext' is null."
+            }
+          ]
+        }
+      ],
+      "status": "OPEN",
+      "message": "A \"NullPointerException\" could be thrown; \"apiContext\" is nullable here.",
+      "effort": "10min",
+      "debt": "10min",
+      "author": "",
+      "tags": [
+        "cert",
+        "cwe"
+      ],
+      "creationDate": "2019-12-30T17:00:40-0500",
+      "updateDate": "2019-12-30T17:00:40-0500",
+      "type": "BUG",
+      "organization": "default-organization",
+      "fromHotspot": false
+    },
+    {
+      "key": "AW9Y1CGXZbXQApVMsrpy",
+      "rule": "common-java:DuplicatedBlocks",
+      "severity": "MAJOR",
+      "component": "com.example.example:exampleapplication:microservices:app:src/main/java/com/example/app/application/controllers/api/registration/requests/Request.java",
+      "project": "com.example.example:exampleapplication",
+      "subProject": "com.example.example:exampleapplication:microservices:app",
+      "flows": [],
+      "status": "OPEN",
+      "message": "1 duplicated blocks of code must be removed.",
+      "effort": "20min",
+      "debt": "20min",
+      "author": "",
+      "tags": [
+        "pitfall"
+      ],
+      "creationDate": "2019-12-30T17:00:40-0500",
+      "updateDate": "2019-12-30T17:00:40-0500",
+      "type": "CODE_SMELL",
+      "organization": "default-organization",
+      "fromHotspot": false
+    },
+    {
+      "key": "AW9Y1CHfZbXQApVMsrp1",
+      "rule": "squid:UselessImportCheck",
+      "severity": "MINOR",
+      "component": "com.example.example:exampleapplication:microservices:app:src/main/java/com/example/app/application/controllers/api/updatepassword/Controller.java",
+      "project": "com.example.example:exampleapplication",
+      "subProject": "com.example.example:exampleapplication:microservices:app",
+      "line": 14,
+      "hash": "91de8c40a73977c152e46e55f5c37c13",
+      "textRange": {
+        "startLine": 14,
+        "endLine": 14,
+        "startOffset": 0,
+        "endOffset": 43
+      }
+    }
+  ],
+  "facets": []
+}

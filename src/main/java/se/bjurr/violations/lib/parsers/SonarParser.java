@@ -17,6 +17,7 @@ public class SonarParser implements ViolationsParser {
   static class SonarReportIssue {
     String component;
     int line;
+    SonarIssueTextRange textRange;
     Integer startLine;
     Integer endLine;
     String message;
@@ -73,6 +74,13 @@ public class SonarParser implements ViolationsParser {
     }
   }
 
+  static class SonarIssueTextRange {
+    int startLine;
+    int endLine;
+    int startOffset;
+    int endOffset;
+  }
+
   static class SonarReport {
     String version;
     private List<SonarReportIssue> issues;
@@ -94,11 +102,24 @@ public class SonarParser implements ViolationsParser {
     final SonarReport sonarReport = new Gson().fromJson(string, SonarReport.class);
 
     final List<Violation> violations = new ArrayList<>();
+
     for (final SonarReportIssue issue : sonarReport.getIssues()) {
+
+      if (issue.textRange != null) {
+        // Issue reports from the SonarQube API versions >= 7.5 use a textRange field for the startLine/endLine fields.
+        issue.startLine = issue.textRange.startLine;
+        issue.endLine = issue.textRange.endLine;
+      }
+
       if (issue.startLine == null || issue.getSeverity() == null) {
         LOG.log(Level.FINE, "Ignoring issue: " + issue);
         continue;
       }
+
+      if (issue.message == null) {
+        issue.message= "N/A";
+      }
+
       violations.add(
           violationBuilder() //
               .setFile(issue.getFile()) //
