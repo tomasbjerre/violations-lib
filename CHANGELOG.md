@@ -3,6 +3,15 @@
 
 Changelog of Violations lib.
 
+## 1.108
+### No issue
+
+**Add support for newer sonar report format**
+
+
+[432e5ab3f1efceb](https://github.com/tomasbjerre/violations-lib/commit/432e5ab3f1efceb) Zakey Faieq *2020-01-02 22:18:04*
+
+
 ## 1.107
 ### No issue
 
