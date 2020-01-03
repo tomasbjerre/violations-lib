@@ -4,6 +4,7 @@ import static se.bjurr.violations.lib.model.Violation.violationBuilder;
 import static se.bjurr.violations.lib.reports.Parser.SONAR;
 
 import com.google.gson.Gson;
+import edu.umd.cs.findbugs.annotations.SuppressFBWarnings;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Level;
@@ -77,8 +78,6 @@ public class SonarParser implements ViolationsParser {
   static class SonarIssueTextRange {
     int startLine;
     int endLine;
-    int startOffset;
-    int endOffset;
   }
 
   static class SonarReport {
@@ -98,6 +97,7 @@ public class SonarParser implements ViolationsParser {
   }
 
   @Override
+  @SuppressFBWarnings("UWF_UNWRITTEN_FIELD")
   public List<Violation> parseReportOutput(final String string) throws Exception {
     final SonarReport sonarReport = new Gson().fromJson(string, SonarReport.class);
 
@@ -106,7 +106,8 @@ public class SonarParser implements ViolationsParser {
     for (final SonarReportIssue issue : sonarReport.getIssues()) {
 
       if (issue.textRange != null) {
-        // Issue reports from the SonarQube API versions >= 7.5 use a textRange field for the
+        // Issue reports from the SonarQube API versions >= 7.5 use a
+        // textRange field for the
         // startLine/endLine fields.
         issue.startLine = issue.textRange.startLine;
         issue.endLine = issue.textRange.endLine;
