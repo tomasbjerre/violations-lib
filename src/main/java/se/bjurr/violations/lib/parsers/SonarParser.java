@@ -106,7 +106,8 @@ public class SonarParser implements ViolationsParser {
     for (final SonarReportIssue issue : sonarReport.getIssues()) {
 
       if (issue.textRange != null) {
-        // Issue reports from the SonarQube API versions >= 7.5 use a textRange field for the startLine/endLine fields.
+        // Issue reports from the SonarQube API versions >= 7.5 use a textRange field for the
+        // startLine/endLine fields.
         issue.startLine = issue.textRange.startLine;
         issue.endLine = issue.textRange.endLine;
       }
@@ -117,7 +118,7 @@ public class SonarParser implements ViolationsParser {
       }
 
       if (issue.message == null) {
-        issue.message= "N/A";
+        issue.message = "N/A";
       }
 
       violations.add(

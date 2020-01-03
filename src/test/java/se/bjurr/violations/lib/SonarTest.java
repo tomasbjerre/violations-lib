@@ -74,15 +74,14 @@ public class SonarTest {
 
     final Violation actualViolationZero = actual.get(0);
     assertThat(actualViolationZero.getFile()) //
-            .isEqualTo("src/main/java/com/example/component/application/providers/WebProvider.java");
+        .isEqualTo("src/main/java/com/example/component/application/providers/WebProvider.java");
     assertThat(actualViolationZero.getStartLine()) //
-            .isEqualTo(56);
+        .isEqualTo(56);
     assertThat(actualViolationZero.getMessage()) //
-            .isEqualTo("Complete the task associated to this TODO comment.");
+        .isEqualTo("Complete the task associated to this TODO comment.");
 
     final Violation actualViolationFour = actual.get(4);
     assertThat(actualViolationFour.getMessage()) //
-            .isEqualTo("N/A");
-
+        .isEqualTo("N/A");
   }
 }
