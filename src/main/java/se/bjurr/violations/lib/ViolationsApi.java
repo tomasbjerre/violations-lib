@@ -6,7 +6,9 @@ import static se.bjurr.violations.lib.util.Utils.checkNotNull;
 import static se.bjurr.violations.lib.util.Utils.setReporter;
 
 import java.io.File;
+import java.util.ArrayList;
 import java.util.List;
+import java.util.Set;
 import java.util.logging.Logger;
 import se.bjurr.violations.lib.model.Violation;
 import se.bjurr.violations.lib.model.codeclimate.CodeClimate;
@@ -53,7 +55,7 @@ public class ViolationsApi {
         LOG.log(FINE, f.getAbsolutePath());
       }
     }
-    final List<Violation> foundViolations = parser.findViolations(includedFiles);
+    final Set<Violation> foundViolations = parser.findViolations(includedFiles);
     final boolean reporterWasSupplied =
         reporter != null && !reporter.trim().isEmpty() && !reporter.equals(parser.name());
     if (reporterWasSupplied) {
@@ -78,7 +80,7 @@ public class ViolationsApi {
                 + v.getEndLine());
       }
     }
-    return foundViolations;
+    return new ArrayList<Violation>(foundViolations);
   }
 
   public List<CodeClimate> codeClimate() {

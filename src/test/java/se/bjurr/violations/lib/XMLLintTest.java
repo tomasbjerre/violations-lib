@@ -27,7 +27,7 @@ public class XMLLintTest {
         .hasSize(3);
 
     assertThat(actual.get(0).getMessage()) //
-        .isEqualTo("Opening and ending tag mismatch: font line 4 and body");
+        .isEqualTo("Premature end of data in tag html line 1");
     assertThat(actual.get(0).getFile()) //
         .isEqualTo("xml/other.xml");
     assertThat(actual.get(0).getSeverity()) //
@@ -35,12 +35,12 @@ public class XMLLintTest {
     assertThat(actual.get(0).getRule()) //
         .isEqualTo("parser error");
     assertThat(actual.get(0).getStartLine()) //
-        .isEqualTo(5);
+        .isEqualTo(7);
     assertThat(actual.get(0).getEndLine()) //
-        .isEqualTo(5);
+        .isEqualTo(7);
 
     assertThat(actual.get(2).getMessage()) //
-        .isEqualTo("Premature end of data in tag html line 1");
+        .isEqualTo("Opening and ending tag mismatch: font line 4 and body");
     assertThat(actual.get(2).getFile()) //
         .isEqualTo("xml/other.xml");
     assertThat(actual.get(2).getSeverity()) //
@@ -48,8 +48,8 @@ public class XMLLintTest {
     assertThat(actual.get(2).getRule()) //
         .isEqualTo("parser error");
     assertThat(actual.get(2).getStartLine()) //
-        .isEqualTo(7);
+        .isEqualTo(5);
     assertThat(actual.get(2).getEndLine()) //
-        .isEqualTo(7);
+        .isEqualTo(5);
   }
 }

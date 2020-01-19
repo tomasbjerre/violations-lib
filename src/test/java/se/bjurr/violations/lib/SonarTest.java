@@ -72,7 +72,7 @@ public class SonarTest {
     assertThat(actual) //
         .hasSize(5);
 
-    final Violation actualViolationZero = actual.get(0);
+    final Violation actualViolationZero = actual.get(4);
     assertThat(actualViolationZero.getFile()) //
         .isEqualTo("src/main/java/com/example/component/application/providers/WebProvider.java");
     assertThat(actualViolationZero.getStartLine()) //
@@ -80,8 +80,9 @@ public class SonarTest {
     assertThat(actualViolationZero.getMessage()) //
         .isEqualTo("Complete the task associated to this TODO comment.");
 
-    final Violation actualViolationFour = actual.get(4);
+    final Violation actualViolationFour = actual.get(0);
     assertThat(actualViolationFour.getMessage()) //
-        .isEqualTo("N/A");
+        .isEqualTo(
+            "'PASSWORD' detected in this expression, review this potentially hard-coded credential.");
   }
 }

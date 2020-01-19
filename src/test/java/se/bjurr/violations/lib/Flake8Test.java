@@ -4,7 +4,6 @@ import static org.assertj.core.api.Assertions.assertThat;
 import static se.bjurr.violations.lib.TestUtils.getRootFolder;
 import static se.bjurr.violations.lib.ViolationsApi.violationsApi;
 import static se.bjurr.violations.lib.model.SEVERITY.ERROR;
-import static se.bjurr.violations.lib.model.SEVERITY.INFO;
 import static se.bjurr.violations.lib.model.SEVERITY.WARN;
 import static se.bjurr.violations.lib.model.Violation.violationBuilder;
 import static se.bjurr.violations.lib.reports.Parser.FLAKE8;
@@ -42,47 +41,47 @@ public class Flake8Test {
 
     final Violation violation9 = actual.get(9);
     assertThat(violation9.getMessage()) //
-        .isEqualTo("test with F");
+        .isEqualTo("'ggrc' imported but unused");
     assertThat(violation9.getFile()) //
-        .isEqualTo("__fake__.py");
+        .isEqualTo("myproject/__main__.py");
     assertThat(violation9.getRule()) //
-        .isEqualTo("F265");
+        .isEqualTo("F401");
     assertThat(violation9.getSeverity()) //
         .isEqualTo(ERROR);
 
     final Violation violation10 = actual.get(10);
     assertThat(violation10.getMessage()) //
-        .isEqualTo("test with W");
+        .isEqualTo("multiple imports on one line");
     assertThat(violation10.getFile()) //
-        .isEqualTo("__fake__.py");
+        .isEqualTo("myproject/__main__.py");
     assertThat(violation10.getSeverity()) //
-        .isEqualTo(WARN);
+        .isEqualTo(ERROR);
 
     final Violation violation11 = actual.get(11);
     assertThat(violation11.getMessage()) //
-        .isEqualTo("test with C");
+        .isEqualTo("'sys' imported but unused");
     assertThat(violation11.getFile()) //
-        .isEqualTo("__fake__.py");
+        .isEqualTo("myproject/app.py");
     assertThat(violation11.getSeverity()) //
-        .isEqualTo(INFO);
+        .isEqualTo(ERROR);
 
     final Violation violation16 = actual.get(16);
     assertThat(violation16.getMessage()) //
-        .isEqualTo("expected 2 blank lines, found 1");
+        .isEqualTo("trailing whitespace");
     assertThat(violation16.getFile()) //
         .isEqualTo("python/project/file.py");
     assertThat(violation16.getRule()) //
-        .isEqualTo("E302");
+        .isEqualTo("W291");
     assertThat(violation16.getSeverity()) //
-        .isEqualTo(ERROR);
+        .isEqualTo(WARN);
     assertThat(violation16.getRule()) //
-        .isEqualTo("E302");
+        .isEqualTo("W291");
     assertThat(violation16.getColumn()) //
-        .isEqualTo(1);
+        .isEqualTo(18);
     assertThat(violation16.getStartLine()) //
-        .isEqualTo(57);
+        .isEqualTo(4);
     assertThat(violation16.getEndLine()) //
-        .isEqualTo(57);
+        .isEqualTo(4);
   }
 
   @Test
@@ -99,7 +98,7 @@ public class Flake8Test {
     assertThat(actual) //
         .hasSize(2);
 
-    final Violation violation0 = actual.get(0);
+    final Violation violation0 = actual.get(1);
     assertThat(violation0.getMessage()) //
         .isEqualTo("line too long (143 > 120 characters)");
     assertThat(violation0.getFile()) //
@@ -111,7 +110,7 @@ public class Flake8Test {
     assertThat(violation0.getSeverity()) //
         .isEqualTo(ERROR);
 
-    final Violation violation1 = actual.get(1);
+    final Violation violation1 = actual.get(0);
     assertThat(violation1.getMessage()) //
         .isEqualTo("no newline at end of file");
     assertThat(violation1.getFile()) //
@@ -138,7 +137,7 @@ public class Flake8Test {
     assertThat(actual) //
         .hasSize(8);
 
-    final Violation violation0 = actual.get(0);
+    final Violation violation0 = actual.get(1);
     assertThat(violation0.getMessage()) //
         .isEqualTo("Commands should not change things if nothing needs doing");
     assertThat(violation0.getFile()) //
@@ -150,7 +149,7 @@ public class Flake8Test {
     assertThat(violation0.getStartLine()) //
         .isEqualTo(25);
 
-    final Violation violation7 = actual.get(7);
+    final Violation violation7 = actual.get(3);
     assertThat(violation7.getMessage()) //
         .isEqualTo("This line is just added to test W");
     assertThat(violation7.getRule()) //

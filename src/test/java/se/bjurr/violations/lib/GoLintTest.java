@@ -27,31 +27,33 @@ public class GoLintTest {
     assertThat(actual) //
         .hasSize(7);
 
-    assertThat(actual.get(0).getMessage()) //
+    Violation violation = actual.get(6);
+    assertThat(violation.getMessage()) //
         .isEqualTo(
             "comment on exported type RestDataSource should be of the form \"RestDataSource ...\" (with optional leading article)");
-    assertThat(actual.get(0).getFile()) //
+    assertThat(violation.getFile()) //
         .isEqualTo("src/bla/bla/bla/dataSource.go");
-    assertThat(actual.get(0).getSeverity()) //
+    assertThat(violation.getSeverity()) //
         .isEqualTo(INFO);
-    assertThat(actual.get(0).getRule()) //
+    assertThat(violation.getRule()) //
         .isEqualTo("");
-    assertThat(actual.get(0).getStartLine()) //
+    assertThat(violation.getStartLine()) //
         .isEqualTo(28);
-    assertThat(actual.get(0).getEndLine()) //
+    assertThat(violation.getEndLine()) //
         .isEqualTo(28);
 
-    assertThat(actual.get(2).getMessage()) //
+    Violation violation2 = actual.get(1);
+    assertThat(violation2.getMessage()) //
         .isEqualTo("declaration of err shadows declaration at journalevent.go:165: (vet shadow)  ");
-    assertThat(actual.get(2).getFile()) //
+    assertThat(violation2.getFile()) //
         .isEqualTo("journalevent.go");
-    assertThat(actual.get(2).getSeverity()) //
+    assertThat(violation2.getSeverity()) //
         .isEqualTo(WARN);
-    assertThat(actual.get(2).getRule()) //
+    assertThat(violation2.getRule()) //
         .isEqualTo("");
-    assertThat(actual.get(2).getStartLine()) //
+    assertThat(violation2.getStartLine()) //
         .isEqualTo(182);
-    assertThat(actual.get(2).getEndLine()) //
+    assertThat(violation2.getEndLine()) //
         .isEqualTo(182);
   }
 

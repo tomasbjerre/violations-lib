@@ -26,7 +26,7 @@ public class ArmGccTest {
     assertThat(actual) //
         .hasSize(4);
 
-    final Violation violation0 = actual.get(0);
+    final Violation violation0 = actual.get(2);
     assertThat(violation0.getMessage()) //
         .isEqualTo("comparison between signed and unsigned integer expressions [-Wsign-compare]");
     assertThat(violation0.getFile()) //

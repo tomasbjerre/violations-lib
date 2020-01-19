@@ -29,7 +29,7 @@ public class MyPyTest {
     assertThat(actual) //
         .hasSize(5);
 
-    assertThat(actual.get(0)) //
+    assertThat(actual.get(3)) //
         .isEqualTo( //
             violationBuilder() //
                 .setParser(MYPY) //
@@ -40,7 +40,7 @@ public class MyPyTest {
                 .build() //
             );
 
-    assertThat(actual.get(1)) //
+    assertThat(actual.get(2)) //
         .isEqualTo( //
             violationBuilder() //
                 .setParser(MYPY) //

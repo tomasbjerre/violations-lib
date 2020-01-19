@@ -3,6 +3,15 @@
 
 Changelog of Violations lib.
 
+## Unreleased
+### No issue
+
+**Correcting Spotbugs warnings**
+
+
+[97ed66ad9a70c31](https://github.com/tomasbjerre/violations-lib/commit/97ed66ad9a70c31) Tomas Bjerre *2020-01-03 06:41:18*
+
+
 ## 1.108
 ### No issue
 

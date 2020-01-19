@@ -30,15 +30,15 @@ public class CPDTest {
         .startsWith("$request->setBo");
     assertThat(actual.get(0).getFile()) //
         .isEqualTo(
-            "/home/goetas/gits/webservices/src/goetas/webservices/bindings/soap12/transport/http/Http.php");
+            "/home/goetas/gits/webservices/src/goetas/webservices/bindings/soap/transport/http/Http.php");
     assertThat(actual.get(0).getSeverity()) //
         .isEqualTo(INFO);
     assertThat(actual.get(0).getRule()) //
         .isEqualTo("DUPLICATION");
     assertThat(actual.get(0).getStartLine()) //
-        .isEqualTo(36);
+        .isEqualTo(41);
     assertThat(actual.get(0).getEndLine()) //
-        .isEqualTo(36);
+        .isEqualTo(41);
 
     assertThat(actual.get(1).getMessage()) //
         .startsWith("$request->setBo");

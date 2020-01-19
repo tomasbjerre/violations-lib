@@ -26,7 +26,7 @@ public class IARTest {
     assertThat(actual) //
         .hasSize(7);
 
-    final Violation violation0 = actual.get(0);
+    final Violation violation0 = actual.get(3);
     assertThat(violation0.getFile()) //
         .isEqualTo(
             "c:/jenkins/workspace/24-Test-Jenkins-WinTen-Extension/external/specific/cpp/iar_cxxabi.cpp");
@@ -39,7 +39,7 @@ public class IARTest {
     assertThat(violation0.getRule()) //
         .isEqualTo("Pe852");
 
-    final Violation violation3 = actual.get(3);
+    final Violation violation3 = actual.get(2);
     assertThat(violation3.getFile()) //
         .isEqualTo("C:/Repositories/source/dal/InterMcu/InterMcuTransport.cpp");
     assertThat(violation3.getMessage()) //

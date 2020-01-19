@@ -33,10 +33,10 @@ public class PyDocStyleTest {
         .isEqualTo( //
             violationBuilder() //
                 .setParser(PYDOCSTYLE) //
-                .setFile("fs/csm/admin_api/ui_api.py") //
+                .setFile("fs/csm/admin_api/__init__.py") //
                 .setStartLine(1) //
-                .setRule("D100") //
-                .setMessage("Missing docstring in public module") //
+                .setRule("D104") //
+                .setMessage("Missing docstring in public package") //
                 .setSeverity(ERROR) //
                 .build() //
             );
@@ -45,10 +45,10 @@ public class PyDocStyleTest {
         .isEqualTo( //
             violationBuilder() //
                 .setParser(PYDOCSTYLE) //
-                .setFile("fs/csm/admin_api/main.py") //
-                .setStartLine(1) //
-                .setRule("D100") //
-                .setMessage("Missing docstring in public module") //
+                .setFile("fs/csm/admin_api/admin_api.py") //
+                .setStartLine(614) //
+                .setRule("D101") //
+                .setMessage("Missing docstring in public class") //
                 .setSeverity(ERROR) //
                 .build() //
             );
@@ -57,10 +57,10 @@ public class PyDocStyleTest {
         .isEqualTo( //
             violationBuilder() //
                 .setParser(PYDOCSTYLE) //
-                .setFile("fs/csm/admin_api/auth.py") //
-                .setStartLine(73) //
-                .setRule("D101") //
-                .setMessage("Missing docstring in public class") //
+                .setFile("fs/csm/admin_api/dao.py") //
+                .setStartLine(1) //
+                .setRule("D100") //
+                .setMessage("Missing docstring in public module") //
                 .setSeverity(ERROR) //
                 .build() //
             );
@@ -80,20 +80,21 @@ public class PyDocStyleTest {
     assertThat(actual) //
         .hasSize(2);
 
-    assertThat(actual.get(0).getMessage()) //
+    Violation violation = actual.get(1);
+    assertThat(violation.getMessage()) //
         .isEqualTo("Missing docstring in public module");
-    assertThat(actual.get(0).getFile()) //
+    assertThat(violation.getFile()) //
         .isEqualTo("test.py");
-    assertThat(actual.get(0).getSeverity()) //
+    assertThat(violation.getSeverity()) //
         .isEqualTo(ERROR);
-    assertThat(actual.get(0).getRule()) //
+    assertThat(violation.getRule()) //
         .isEqualTo("D100");
-    assertThat(actual.get(0).getStartLine()) //
+    assertThat(violation.getStartLine()) //
         .isEqualTo(1);
-    assertThat(actual.get(0).getEndLine()) //
+    assertThat(violation.getEndLine()) //
         .isEqualTo(1);
 
-    assertThat(actual.get(1).getMessage()) //
+    assertThat(actual.get(0).getMessage()) //
         .isEqualTo("Missing docstring in public function");
   }
 
@@ -111,30 +112,32 @@ public class PyDocStyleTest {
     assertThat(actual) //
         .hasSize(2);
 
-    assertThat(actual.get(0).getMessage()) //
+    Violation violation1 = actual.get(1);
+    assertThat(violation1.getMessage()) //
         .isEqualTo("Missing docstring in public module");
-    assertThat(actual.get(0).getFile()) //
+    assertThat(violation1.getFile()) //
         .isEqualTo("test.py");
-    assertThat(actual.get(0).getSeverity()) //
+    assertThat(violation1.getSeverity()) //
         .isEqualTo(ERROR);
-    assertThat(actual.get(0).getRule()) //
+    assertThat(violation1.getRule()) //
         .isEqualTo("D100");
-    assertThat(actual.get(0).getStartLine()) //
+    assertThat(violation1.getStartLine()) //
         .isEqualTo(1);
-    assertThat(actual.get(0).getEndLine()) //
+    assertThat(violation1.getEndLine()) //
         .isEqualTo(1);
 
-    assertThat(actual.get(1).getMessage()) //
+    Violation violation0 = actual.get(0);
+    assertThat(violation0.getMessage()) //
         .isEqualTo("Missing docstring in public function");
-    assertThat(actual.get(1).getFile()) //
+    assertThat(violation0.getFile()) //
         .isEqualTo("test.py");
-    assertThat(actual.get(1).getSeverity()) //
+    assertThat(violation0.getSeverity()) //
         .isEqualTo(ERROR);
-    assertThat(actual.get(1).getRule()) //
+    assertThat(violation0.getRule()) //
         .isEqualTo("D103");
-    assertThat(actual.get(1).getStartLine()) //
+    assertThat(violation0.getStartLine()) //
         .isEqualTo(1);
-    assertThat(actual.get(1).getEndLine()) //
+    assertThat(violation0.getEndLine()) //
         .isEqualTo(1);
   }
 }

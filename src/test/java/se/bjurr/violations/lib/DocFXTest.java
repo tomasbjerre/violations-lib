@@ -28,21 +28,21 @@ public class DocFXTest {
 
     final Violation violation0 = actual.get(0);
     assertThat(violation0.getMessage()) //
-        .isEqualTo("Invalid file link:(~/missing.md#mobiilisovellus).");
+        .isEqualTo("Invalid file link:(~/mobiilirajapinta/puuttuu.md).");
     assertThat(violation0.getFile()) //
-        .isEqualTo("sanasto.md");
+        .isEqualTo("mobiilirajapinta/json-dateandtime.md");
     assertThat(violation0.getSeverity()) //
         .isEqualTo(WARN);
     assertThat(violation0.getRule()) //
         .isEqualTo("InvalidFileLink");
     assertThat(violation0.getStartLine()) //
-        .isEqualTo(63);
+        .isEqualTo(18);
 
-    final Violation violation1 = actual.get(1);
-    assertThat(violation1.getMessage()) //
-        .isEqualTo("Invalid file link:(~/mobiilirajapinta/puuttuu.md).");
+    final Violation violation1 = actual.get(0);
     assertThat(violation1.getFile()) //
         .isEqualTo("mobiilirajapinta/json-dateandtime.md");
+    assertThat(violation1.getMessage()) //
+        .isEqualTo("Invalid file link:(~/mobiilirajapinta/puuttuu.md).");
     assertThat(violation1.getSeverity()) //
         .isEqualTo(WARN);
     assertThat(violation1.getRule()) //
@@ -52,14 +52,14 @@ public class DocFXTest {
 
     final Violation violation2 = actual.get(2);
     assertThat(violation2.getMessage()) //
-        .isEqualTo("Invalid file link:(~/mobiilirajapinta/joopajoo.md).");
+        .isEqualTo("Invalid file link:(~/missing.md#mobiilisovellus).");
     assertThat(violation2.getFile()) //
-        .isEqualTo("mobiilirajapinta/json-nimeämiskäytäntö.md");
+        .isEqualTo("sanasto.md");
     assertThat(violation2.getSeverity()) //
         .isEqualTo(WARN);
     assertThat(violation2.getRule()) //
         .isEqualTo("InvalidFileLink");
     assertThat(violation2.getStartLine()) //
-        .isEqualTo(7);
+        .isEqualTo(63);
   }
 }

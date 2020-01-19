@@ -3,7 +3,7 @@ package se.bjurr.violations.lib;
 import static org.assertj.core.api.Assertions.assertThat;
 import static se.bjurr.violations.lib.TestUtils.getRootFolder;
 import static se.bjurr.violations.lib.ViolationsApi.violationsApi;
-import static se.bjurr.violations.lib.model.SEVERITY.INFO;
+import static se.bjurr.violations.lib.model.SEVERITY.WARN;
 import static se.bjurr.violations.lib.reports.Parser.JCREPORT;
 
 import java.util.List;
@@ -26,19 +26,22 @@ public class JCReportTest {
         .hasSize(54);
 
     assertThat(actual.get(0).getMessage()) //
-        .isEqualTo("Type Javadoc comment is missing an @author tag.");
+        .isEqualTo(
+            "Comparator method org.jcoderz.guidelines.snippets.SampleSnippets$IndentionSample.compareTo(Object) doesn't seem to return all ordering values");
     assertThat(actual.get(0).getFile()) //
-        .isEqualTo("D:/projects/fawkez/test/java/org/jcoderz/commons/logging/XmlPrinterTest.java");
+        .isEqualTo(
+            "D:/projects/fawkez/src/java/org/jcoderz/guidelines/snippets/SampleSnippets.java");
     assertThat(actual.get(0).getSeverity()) //
-        .isEqualTo(INFO);
+        .isEqualTo(WARN);
     assertThat(actual.get(0).getRule()) //
-        .isEqualTo("CS_MISSING_TAG(Checkstyle)");
+        .isEqualTo("SC_SUSPICIOUS_COMPARATOR_RETURN_VALUES(Findbugs)");
     assertThat(actual.get(0).getStartLine()) //
-        .isEqualTo(50);
+        .isEqualTo(333);
     assertThat(actual.get(0).getEndLine()) //
-        .isEqualTo(50);
+        .isEqualTo(333);
 
     assertThat(actual.get(1).getMessage()) //
-        .isEqualTo("Class LogElementHandler should be declared as final.");
+        .isEqualTo(
+            "org.jcoderz.guidelines.snippets.SampleSnippets$IndentionSample defines compareTo(Object) and uses Object.equals()");
   }
 }

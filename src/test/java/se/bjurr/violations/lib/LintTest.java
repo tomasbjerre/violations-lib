@@ -25,7 +25,7 @@ public class LintTest {
             .violations();
 
     assertThat(actual) //
-        .containsExactly( //
+        .containsOnly( //
             violationBuilder() //
                 .setParser(LINT) //
                 .setFile("/web/css-file2.css") //

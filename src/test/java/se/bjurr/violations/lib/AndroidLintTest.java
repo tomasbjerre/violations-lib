@@ -28,7 +28,7 @@ public class AndroidLintTest {
             .violations();
 
     assertThat(actual) //
-        .containsExactly( //
+        .containsOnly( //
             violationBuilder() //
                 .setParser(ANDROIDLINT) //
                 .setFile("app/src/main/res/layout/fragment_main.xml") //

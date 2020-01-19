@@ -23,7 +23,7 @@ public class SimianTest {
             .violations();
 
     assertThat(actual) //
-        .hasSize(12);
+        .hasSize(8);
 
     assertThat(actual.get(0).getMessage()) //
         .startsWith("Duplication");

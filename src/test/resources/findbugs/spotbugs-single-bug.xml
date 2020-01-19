@@ -1,0 +1,221 @@
+<BugCollection sequence='0' release='' analysisTimestamp='1579429661864' version='3.1.12' timestamp='1579429658000'>
+ <Project projectName='openapi-generator (executable)'>
+  <Jar>/home/bjerre/workspace/openapi-generator-repo/modules/openapi-generator-cli/target/classes</Jar>
+  <AuxClasspathEntry>/home/bjerre/workspace/openapi-generator-repo/modules/openapi-generator/target/openapi-generator-4.2.3-SNAPSHOT.jar</AuxClasspathEntry>
+  <AuxClasspathEntry>/home/bjerre/.m2/repository/io/swagger/core/v3/swagger-core/2.1.1/swagger-core-2.1.1.jar</AuxClasspathEntry>
+  <AuxClasspathEntry>/home/bjerre/.m2/repository/javax/xml/bind/jaxb-api/2.3.0/jaxb-api-2.3.0.jar</AuxClasspathEntry>
+  <AuxClasspathEntry>/home/bjerre/.m2/repository/com/fasterxml/jackson/core/jackson-annotations/2.10.1/jackson-annotations-2.10.1.jar</AuxClasspathEntry>
+  <AuxClasspathEntry>/home/bjerre/.m2/repository/com/fasterxml/jackson/core/jackson-databind/2.10.1/jackson-databind-2.10.1.jar</AuxClasspathEntry>
+  <AuxClasspathEntry>/home/bjerre/.m2/repository/com/fasterxml/jackson/dataformat/jackson-dataformat-yaml/2.10.1/jackson-dataformat-yaml-2.10.1.jar</AuxClasspathEntry>
+  <AuxClasspathEntry>/home/bjerre/.m2/repository/org/yaml/snakeyaml/1.24/snakeyaml-1.24.jar</AuxClasspathEntry>
+  <AuxClasspathEntry>/home/bjerre/.m2/repository/io/swagger/core/v3/swagger-annotations/2.1.1/swagger-annotations-2.1.1.jar</AuxClasspathEntry>
+  <AuxClasspathEntry>/home/bjerre/.m2/repository/io/swagger/core/v3/swagger-models/2.1.1/swagger-models-2.1.1.jar</AuxClasspathEntry>
+  <AuxClasspathEntry>/home/bjerre/.m2/repository/javax/validation/validation-api/1.1.0.Final/validation-api-1.1.0.Final.jar</AuxClasspathEntry>
+  <AuxClasspathEntry>/home/bjerre/.m2/repository/io/swagger/parser/v3/swagger-parser/2.0.17/swagger-parser-2.0.17.jar</AuxClasspathEntry>
+  <AuxClasspathEntry>/home/bjerre/.m2/repository/io/swagger/parser/v3/swagger-parser-v2-converter/2.0.17/swagger-parser-v2-converter-2.0.17.jar</AuxClasspathEntry>
+  <AuxClasspathEntry>/home/bjerre/.m2/repository/io/swagger/swagger-parser/1.0.49/swagger-parser-1.0.49.jar</AuxClasspathEntry>
+  <AuxClasspathEntry>/home/bjerre/.m2/repository/io/swagger/swagger-core/1.6.0/swagger-core-1.6.0.jar</AuxClasspathEntry>
+  <AuxClasspathEntry>/home/bjerre/.m2/repository/io/swagger/swagger-models/1.6.0/swagger-models-1.6.0.jar</AuxClasspathEntry>
+  <AuxClasspathEntry>/home/bjerre/.m2/repository/io/swagger/swagger-annotations/1.6.0/swagger-annotations-1.6.0.jar</AuxClasspathEntry>
+  <AuxClasspathEntry>/home/bjerre/.m2/repository/io/swagger/swagger-compat-spec-parser/1.0.49/swagger-compat-spec-parser-1.0.49.jar</AuxClasspathEntry>
+  <AuxClasspathEntry>/home/bjerre/.m2/repository/com/github/java-json-tools/json-schema-validator/2.2.8/json-schema-validator-2.2.8.jar</AuxClasspathEntry>
+  <AuxClasspathEntry>/home/bjerre/.m2/repository/com/github/java-json-tools/json-schema-core/1.2.8/json-schema-core-1.2.8.jar</AuxClasspathEntry>
+  <AuxClasspathEntry>/home/bjerre/.m2/repository/org/mozilla/rhino/1.7R4/rhino-1.7R4.jar</AuxClasspathEntry>
+  <AuxClasspathEntry>/home/bjerre/.m2/repository/com/github/fge/uri-template/0.9/uri-template-0.9.jar</AuxClasspathEntry>
+  <AuxClasspathEntry>/home/bjerre/.m2/repository/javax/mail/mailapi/1.4.3/mailapi-1.4.3.jar</AuxClasspathEntry>
+  <AuxClasspathEntry>/home/bjerre/.m2/repository/javax/activation/activation/1.1/activation-1.1.jar</AuxClasspathEntry>
+  <AuxClasspathEntry>/home/bjerre/.m2/repository/com/googlecode/libphonenumber/libphonenumber/8.0.0/libphonenumber-8.0.0.jar</AuxClasspathEntry>
+  <AuxClasspathEntry>/home/bjerre/.m2/repository/net/sf/jopt-simple/jopt-simple/5.0.3/jopt-simple-5.0.3.jar</AuxClasspathEntry>
+  <AuxClasspathEntry>/home/bjerre/.m2/repository/com/github/fge/json-patch/1.6/json-patch-1.6.jar</AuxClasspathEntry>
+  <AuxClasspathEntry>/home/bjerre/.m2/repository/com/github/fge/jackson-coreutils/1.6/jackson-coreutils-1.6.jar</AuxClasspathEntry>
+  <AuxClasspathEntry>/home/bjerre/.m2/repository/com/github/fge/msg-simple/1.1/msg-simple-1.1.jar</AuxClasspathEntry>
+  <AuxClasspathEntry>/home/bjerre/.m2/repository/com/github/fge/btf/1.2/btf-1.2.jar</AuxClasspathEntry>
+  <AuxClasspathEntry>/home/bjerre/.m2/repository/org/apache/httpcomponents/httpclient/4.5.2/httpclient-4.5.2.jar</AuxClasspathEntry>
+  <AuxClasspathEntry>/home/bjerre/.m2/repository/org/apache/httpcomponents/httpcore/4.4.4/httpcore-4.4.4.jar</AuxClasspathEntry>
+  <AuxClasspathEntry>/home/bjerre/.m2/repository/commons-logging/commons-logging/1.2/commons-logging-1.2.jar</AuxClasspathEntry>
+  <AuxClasspathEntry>/home/bjerre/.m2/repository/commons-codec/commons-codec/1.9/commons-codec-1.9.jar</AuxClasspathEntry>
+  <AuxClasspathEntry>/home/bjerre/.m2/repository/io/swagger/parser/v3/swagger-parser-core/2.0.17/swagger-parser-core-2.0.17.jar</AuxClasspathEntry>
+  <AuxClasspathEntry>/home/bjerre/.m2/repository/io/swagger/parser/v3/swagger-parser-v3/2.0.17/swagger-parser-v3-2.0.17.jar</AuxClasspathEntry>
+  <AuxClasspathEntry>/home/bjerre/.m2/repository/com/samskivert/jmustache/1.14/jmustache-1.14.jar</AuxClasspathEntry>
+  <AuxClasspathEntry>/home/bjerre/.m2/repository/com/github/jknack/handlebars/4.1.2/handlebars-4.1.2.jar</AuxClasspathEntry>
+  <AuxClasspathEntry>/home/bjerre/.m2/repository/com/github/jknack/handlebars-jackson2/4.1.2/handlebars-jackson2-4.1.2.jar</AuxClasspathEntry>
+  <AuxClasspathEntry>/home/bjerre/.m2/repository/commons-io/commons-io/2.4/commons-io-2.4.jar</AuxClasspathEntry>
+  <AuxClasspathEntry>/home/bjerre/.m2/repository/org/slf4j/slf4j-ext/1.7.12/slf4j-ext-1.7.12.jar</AuxClasspathEntry>
+  <AuxClasspathEntry>/home/bjerre/.m2/repository/ch/qos/cal10n/cal10n-api/0.8.1/cal10n-api-0.8.1.jar</AuxClasspathEntry>
+  <AuxClasspathEntry>/home/bjerre/.m2/repository/org/slf4j/slf4j-api/1.7.12/slf4j-api-1.7.12.jar</AuxClasspathEntry>
+  <AuxClasspathEntry>/home/bjerre/.m2/repository/org/apache/commons/commons-lang3/3.4/commons-lang3-3.4.jar</AuxClasspathEntry>
+  <AuxClasspathEntry>/home/bjerre/.m2/repository/commons-cli/commons-cli/1.2/commons-cli-1.2.jar</AuxClasspathEntry>
+  <AuxClasspathEntry>/home/bjerre/.m2/repository/com/google/guava/guava/26.0-jre/guava-26.0-jre.jar</AuxClasspathEntry>
+  <AuxClasspathEntry>/home/bjerre/.m2/repository/org/checkerframework/checker-qual/2.5.2/checker-qual-2.5.2.jar</AuxClasspathEntry>
+  <AuxClasspathEntry>/home/bjerre/.m2/repository/com/google/errorprone/error_prone_annotations/2.1.3/error_prone_annotations-2.1.3.jar</AuxClasspathEntry>
+  <AuxClasspathEntry>/home/bjerre/.m2/repository/com/google/j2objc/j2objc-annotations/1.1/j2objc-annotations-1.1.jar</AuxClasspathEntry>
+  <AuxClasspathEntry>/home/bjerre/.m2/repository/org/codehaus/mojo/animal-sniffer-annotations/1.14/animal-sniffer-annotations-1.14.jar</AuxClasspathEntry>
+  <AuxClasspathEntry>/home/bjerre/.m2/repository/com/fasterxml/jackson/datatype/jackson-datatype-guava/2.10.1/jackson-datatype-guava-2.10.1.jar</AuxClasspathEntry>
+  <AuxClasspathEntry>/home/bjerre/.m2/repository/com/fasterxml/jackson/core/jackson-core/2.10.1/jackson-core-2.10.1.jar</AuxClasspathEntry>
+  <AuxClasspathEntry>/home/bjerre/.m2/repository/com/atlassian/commonmark/commonmark/0.11.0/commonmark-0.11.0.jar</AuxClasspathEntry>
+  <AuxClasspathEntry>/home/bjerre/.m2/repository/com/github/mifmif/generex/1.0.2/generex-1.0.2.jar</AuxClasspathEntry>
+  <AuxClasspathEntry>/home/bjerre/.m2/repository/dk/brics/automaton/automaton/1.11-8/automaton-1.11-8.jar</AuxClasspathEntry>
+  <AuxClasspathEntry>/home/bjerre/.m2/repository/com/fasterxml/jackson/datatype/jackson-datatype-jsr310/2.10.1/jackson-datatype-jsr310-2.10.1.jar</AuxClasspathEntry>
+  <AuxClasspathEntry>/home/bjerre/.m2/repository/com/fasterxml/jackson/datatype/jackson-datatype-joda/2.10.1/jackson-datatype-joda-2.10.1.jar</AuxClasspathEntry>
+  <AuxClasspathEntry>/home/bjerre/.m2/repository/joda-time/joda-time/2.9.9/joda-time-2.9.9.jar</AuxClasspathEntry>
+  <AuxClasspathEntry>/home/bjerre/.m2/repository/com/github/joschi/jackson/jackson-datatype-threetenbp/2.10.0/jackson-datatype-threetenbp-2.10.0.jar</AuxClasspathEntry>
+  <AuxClasspathEntry>/home/bjerre/.m2/repository/org/threeten/threetenbp/1.4.0/threetenbp-1.4.0.jar</AuxClasspathEntry>
+  <AuxClasspathEntry>/home/bjerre/workspace/openapi-generator-repo/modules/openapi-generator-core/target/openapi-generator-core-4.2.3-SNAPSHOT.jar</AuxClasspathEntry>
+  <AuxClasspathEntry>/home/bjerre/.m2/repository/net/java/dev/jna/jna/5.5.0/jna-5.5.0.jar</AuxClasspathEntry>
+  <AuxClasspathEntry>/home/bjerre/.m2/repository/io/airlift/airline/0.8/airline-0.8.jar</AuxClasspathEntry>
+  <AuxClasspathEntry>/home/bjerre/.m2/repository/javax/inject/javax.inject/1/javax.inject-1.jar</AuxClasspathEntry>
+  <AuxClasspathEntry>/home/bjerre/.m2/repository/com/google/code/findbugs/jsr305/3.0.2/jsr305-3.0.2.jar</AuxClasspathEntry>
+  <AuxClasspathEntry>/home/bjerre/.m2/repository/com/googlecode/lambdaj/lambdaj/2.3.3/lambdaj-2.3.3.jar</AuxClasspathEntry>
+  <AuxClasspathEntry>/home/bjerre/.m2/repository/org/hamcrest/hamcrest-all/1.1/hamcrest-all-1.1.jar</AuxClasspathEntry>
+  <AuxClasspathEntry>/home/bjerre/.m2/repository/org/objenesis/objenesis/1.2/objenesis-1.2.jar</AuxClasspathEntry>
+  <AuxClasspathEntry>/home/bjerre/.m2/repository/cglib/cglib-nodep/2.2/cglib-nodep-2.2.jar</AuxClasspathEntry>
+  <AuxClasspathEntry>/home/bjerre/.m2/repository/ch/qos/logback/logback-classic/1.2.3/logback-classic-1.2.3.jar</AuxClasspathEntry>
+  <AuxClasspathEntry>/home/bjerre/.m2/repository/ch/qos/logback/logback-core/1.2.3/logback-core-1.2.3.jar</AuxClasspathEntry>
+  <SrcDir>/home/bjerre/workspace/openapi-generator-repo/modules/openapi-generator-cli/src/main/java</SrcDir>
+  <SrcDir>/home/bjerre/workspace/openapi-generator-repo/modules/openapi-generator-cli/target/generated-sources/annotations</SrcDir>
+  <WrkDir>/home/bjerre/workspace/openapi-generator-repo/modules/openapi-generator-cli/target</WrkDir>
+ </Project>
+ <BugInstance instanceOccurrenceNum='0' instanceHash='1f2bdfa7b03c570ef4ec28cee335feda' cweid='382' rank='16' abbrev='Dm' category='BAD_PRACTICE' priority='2' type='DM_EXIT' instanceOccurrenceMax='0'>
+  <ShortMessage>Method invokes System.exit(...)</ShortMessage>
+  <LongMessage>org.openapitools.codegen.cmd.ConfigHelp.run() invokes System.exit(...), which shuts down the entire virtual machine</LongMessage>
+  <Class classname='org.openapitools.codegen.cmd.ConfigHelp' primary='true'>
+   <SourceLine classname='org.openapitools.codegen.cmd.ConfigHelp' start='41' end='399' sourcepath='org/openapitools/codegen/cmd/ConfigHelp.java' sourcefile='ConfigHelp.java'>
+    <Message>At ConfigHelp.java:[lines 41-399]</Message>
+   </SourceLine>
+   <Message>In class org.openapitools.codegen.cmd.ConfigHelp</Message>
+  </Class>
+  <Method isStatic='false' classname='org.openapitools.codegen.cmd.ConfigHelp' signature='()V' name='run' primary='true'>
+   <SourceLine endBytecode='986' classname='org.openapitools.codegen.cmd.ConfigHelp' start='89' end='145' sourcepath='org/openapitools/codegen/cmd/ConfigHelp.java' sourcefile='ConfigHelp.java' startBytecode='0'></SourceLine>
+   <Message>In method org.openapitools.codegen.cmd.ConfigHelp.run()</Message>
+  </Method>
+  <SourceLine endBytecode='21' classname='org.openapitools.codegen.cmd.ConfigHelp' start='91' end='91' sourcepath='org/openapitools/codegen/cmd/ConfigHelp.java' sourcefile='ConfigHelp.java' startBytecode='21' primary='true'>
+   <Message>At ConfigHelp.java:[line 91]</Message>
+  </SourceLine>
+  <SourceLine role='SOURCE_LINE_ANOTHER_INSTANCE' endBytecode='474' classname='org.openapitools.codegen.cmd.ConfigHelp' start='141' end='141' sourcepath='org/openapitools/codegen/cmd/ConfigHelp.java' sourcefile='ConfigHelp.java' startBytecode='474'>
+   <Message>Another occurrence at ConfigHelp.java:[line 141]</Message>
+  </SourceLine>
+ </BugInstance>
+ <BugCategory category='BAD_PRACTICE'>
+  <Description>Bad practice</Description>
+ </BugCategory>
+ <BugCategory category='STYLE'>
+  <Description>Dodgy code</Description>
+ </BugCategory>
+ <BugPattern abbrev='FS' category='BAD_PRACTICE' type='VA_FORMAT_STRING_USES_NEWLINE'>
+  <ShortDescription>Format string should use %n rather than \n</ShortDescription>
+  <Details>
+
+&lt;p&gt;
+This format string includes a newline character (\n). In format strings, it is generally
+ preferable to use %n, which will produce the platform-specific line separator.
+&lt;/p&gt;
+
+     </Details>
+ </BugPattern>
+ <BugPattern abbrev='DLS' category='STYLE' type='DLS_DEAD_LOCAL_STORE'>
+  <ShortDescription>Dead store to local variable</ShortDescription>
+  <Details>
+
+&lt;p&gt;
+This instruction assigns a value to a local variable,
+but the value is not read or used in any subsequent instruction.
+Often, this indicates an error, because the value computed is never
+used.
+&lt;/p&gt;
+&lt;p&gt;
+Note that Sun's javac compiler often generates dead stores for
+final local variables.  Because SpotBugs is a bytecode-based tool,
+there is no easy way to eliminate these false positives.
+&lt;/p&gt;
+
+    </Details>
+ </BugPattern>
+ <BugPattern abbrev='NP' category='STYLE' type='NP_NULL_ON_SOME_PATH_FROM_RETURN_VALUE'>
+  <ShortDescription>Possible null pointer dereference due to return value of called method</ShortDescription>
+  <Details>
+      
+&lt;p&gt; The return value from a method is dereferenced without a null check,
+and the return value of that method is one that should generally be checked
+for null.  This may lead to a &lt;code&gt;NullPointerException&lt;/code&gt; when the code is executed.
+&lt;/p&gt;
+      
+   </Details>
+ </BugPattern>
+ <BugPattern cweid='382' abbrev='Dm' category='BAD_PRACTICE' type='DM_EXIT'>
+  <ShortDescription>Method invokes System.exit(...)</ShortDescription>
+  <Details>
+
+  &lt;p&gt; Invoking System.exit shuts down the entire Java virtual machine. This
+   should only been done when it is appropriate. Such calls make it
+   hard or impossible for your code to be invoked by other code.
+   Consider throwing a RuntimeException instead.&lt;/p&gt;
+
+    </Details>
+ </BugPattern>
+ <BugCode cweid='476' abbrev='NP'>
+  <Description>Null pointer dereference</Description>
+ </BugCode>
+ <BugCode abbrev='Dm'>
+  <Description>Dubious method used</Description>
+ </BugCode>
+ <BugCode cweid='563' abbrev='DLS'>
+  <Description>Dead local store</Description>
+ </BugCode>
+ <BugCode abbrev='FS'>
+  <Description>Format string problem</Description>
+ </BugCode>
+ <Errors missingClasses='0' errors='0'></Errors>
+ <FindBugsSummary num_packages='2' total_classes='14' priority_2='8' total_size='816' clock_seconds='3.60' referenced_classes='244' vm_version='25.171-b11' total_bugs='8' java_version='1.8.0_171' gc_seconds='0.11' alloc_mbytes='455.50' cpu_seconds='16.29' peak_mbytes='220.55' timestamp='Sun, 19 Jan 2020 11:27:38 +0100'>
+  <FileStats path='org/openapitools/codegen/OpenAPIGenerator.java' size='22' bugCount='0'></FileStats>
+  <FileStats path='org/openapitools/codegen/cmd/CompletionCommand.java' size='41' bugCount='0'></FileStats>
+  <FileStats path='org/openapitools/codegen/cmd/ConfigHelp.java' size='242' bugHash='c4e449697e5f6f7bba7eea2b28759558' bugCount='1'></FileStats>
+  <FileStats path='org/openapitools/codegen/cmd/Generate.java' size='154' bugHash='21d7e50a4051144c2f8934217a94e610' bugCount='1'></FileStats>
+  <FileStats path='org/openapitools/codegen/cmd/GenerateBatch.java' size='124' bugHash='6e6c8b7ba1f40eb598d35205e9d9b46f' bugCount='5'></FileStats>
+  <FileStats path='org/openapitools/codegen/cmd/ListGenerators.java' size='73' bugCount='0'></FileStats>
+  <FileStats path='org/openapitools/codegen/cmd/Meta.java' size='85' bugCount='0'></FileStats>
+  <FileStats path='org/openapitools/codegen/cmd/Validate.java' size='49' bugHash='3ac2ff1379c0f4564bdde14a7a2a1e6a' bugCount='1'></FileStats>
+  <FileStats path='org/openapitools/codegen/cmd/Version.java' size='26' bugCount='0'></FileStats>
+  <PackageStats package='org.openapitools.codegen' total_bugs='0' total_size='22' total_types='1'>
+   <ClassStats bugs='0' size='22' interface='false' sourceFile='OpenAPIGenerator.java' class='org.openapitools.codegen.OpenAPIGenerator'></ClassStats>
+  </PackageStats>
+  <PackageStats package='org.openapitools.codegen.cmd' total_bugs='8' priority_2='8' total_size='794' total_types='13'>
+   <ClassStats bugs='0' size='41' interface='false' sourceFile='CompletionCommand.java' class='org.openapitools.codegen.cmd.CompletionCommand'></ClassStats>
+   <ClassStats bugs='1' size='242' priority_2='1' interface='false' sourceFile='ConfigHelp.java' class='org.openapitools.codegen.cmd.ConfigHelp'></ClassStats>
+   <ClassStats bugs='1' size='154' priority_2='1' interface='false' sourceFile='Generate.java' class='org.openapitools.codegen.cmd.Generate'></ClassStats>
+   <ClassStats bugs='3' size='52' priority_2='3' interface='false' sourceFile='GenerateBatch.java' class='org.openapitools.codegen.cmd.GenerateBatch'></ClassStats>
+   <ClassStats bugs='0' size='10' interface='false' sourceFile='GenerateBatch.java' class='org.openapitools.codegen.cmd.GenerateBatch$1'></ClassStats>
+   <ClassStats bugs='1' size='29' priority_2='1' interface='false' sourceFile='GenerateBatch.java' class='org.openapitools.codegen.cmd.GenerateBatch$DynamicSettingsRefSupport'></ClassStats>
+   <ClassStats bugs='1' size='33' priority_2='1' interface='false' sourceFile='GenerateBatch.java' class='org.openapitools.codegen.cmd.GenerateBatch$GenerationRunner'></ClassStats>
+   <ClassStats bugs='0' size='73' interface='false' sourceFile='ListGenerators.java' class='org.openapitools.codegen.cmd.ListGenerators'></ClassStats>
+   <ClassStats bugs='0' size='53' interface='false' sourceFile='Meta.java' class='org.openapitools.codegen.cmd.Meta'></ClassStats>
+   <ClassStats bugs='0' size='25' interface='false' sourceFile='Meta.java' class='org.openapitools.codegen.cmd.Meta$1'></ClassStats>
+   <ClassStats bugs='0' size='7' interface='false' sourceFile='Meta.java' class='org.openapitools.codegen.cmd.Meta$2'></ClassStats>
+   <ClassStats bugs='1' size='49' priority_2='1' interface='false' sourceFile='Validate.java' class='org.openapitools.codegen.cmd.Validate'></ClassStats>
+   <ClassStats bugs='0' size='26' interface='false' sourceFile='Version.java' class='org.openapitools.codegen.cmd.Version'></ClassStats>
+  </PackageStats>
+  <FindBugsProfile>
+   <ClassProfile avgMicrosecondsPerInvocation='315' totalMilliseconds='441' name='edu.umd.cs.findbugs.classfile.engine.ClassInfoAnalysisEngine' maxMicrosecondsPerInvocation='17926' standardDeviationMicrosecondsPerInvocation='884' invocations='1399'></ClassProfile>
+   <ClassProfile avgMicrosecondsPerInvocation='181' totalMilliseconds='255' name='edu.umd.cs.findbugs.classfile.engine.ClassDataAnalysisEngine' maxMicrosecondsPerInvocation='627' standardDeviationMicrosecondsPerInvocation='71' invocations='1405'></ClassProfile>
+   <ClassProfile avgMicrosecondsPerInvocation='940' totalMilliseconds='229' name='edu.umd.cs.findbugs.detect.FieldItemSummary' maxMicrosecondsPerInvocation='15243' standardDeviationMicrosecondsPerInvocation='1960' invocations='244'></ClassProfile>
+   <ClassProfile avgMicrosecondsPerInvocation='881' totalMilliseconds='215' name='edu.umd.cs.findbugs.detect.FindNoSideEffectMethods' maxMicrosecondsPerInvocation='10907' standardDeviationMicrosecondsPerInvocation='1608' invocations='244'></ClassProfile>
+   <ClassProfile avgMicrosecondsPerInvocation='222' totalMilliseconds='122' name='edu.umd.cs.findbugs.OpcodeStack$JumpInfoFactory' maxMicrosecondsPerInvocation='3506' standardDeviationMicrosecondsPerInvocation='302' invocations='552'></ClassProfile>
+   <ClassProfile avgMicrosecondsPerInvocation='411' totalMilliseconds='100' name='edu.umd.cs.findbugs.detect.NoteDirectlyRelevantTypeQualifiers' maxMicrosecondsPerInvocation='36155' standardDeviationMicrosecondsPerInvocation='2384' invocations='244'></ClassProfile>
+   <ClassProfile avgMicrosecondsPerInvocation='1284' totalMilliseconds='97' name='edu.umd.cs.findbugs.classfile.engine.bcel.ValueNumberDataflowFactory' maxMicrosecondsPerInvocation='20019' standardDeviationMicrosecondsPerInvocation='2765' invocations='76'></ClassProfile>
+   <ClassProfile avgMicrosecondsPerInvocation='1391' totalMilliseconds='94' name='edu.umd.cs.findbugs.ba.npe.NullDerefAndRedundantComparisonFinder' maxMicrosecondsPerInvocation='15369' standardDeviationMicrosecondsPerInvocation='2549' invocations='68'></ClassProfile>
+   <ClassProfile avgMicrosecondsPerInvocation='1346' totalMilliseconds='94' name='edu.umd.cs.findbugs.classfile.engine.bcel.IsNullValueDataflowFactory' maxMicrosecondsPerInvocation='14616' standardDeviationMicrosecondsPerInvocation='2418' invocations='70'></ClassProfile>
+   <ClassProfile avgMicrosecondsPerInvocation='1317' totalMilliseconds='90' name='edu.umd.cs.findbugs.classfile.engine.bcel.UnconditionalValueDerefDataflowFactory' maxMicrosecondsPerInvocation='14925' standardDeviationMicrosecondsPerInvocation='2646' invocations='69'></ClassProfile>
+   <ClassProfile avgMicrosecondsPerInvocation='1107' totalMilliseconds='83' name='edu.umd.cs.findbugs.classfile.engine.bcel.TypeDataflowFactory' maxMicrosecondsPerInvocation='8926' standardDeviationMicrosecondsPerInvocation='1818' invocations='75'></ClassProfile>
+   <ClassProfile avgMicrosecondsPerInvocation='1148' totalMilliseconds='80' name='edu.umd.cs.findbugs.classfile.engine.bcel.MethodGenFactory' maxMicrosecondsPerInvocation='66575' standardDeviationMicrosecondsPerInvocation='7880' invocations='70'></ClassProfile>
+   <ClassProfile avgMicrosecondsPerInvocation='55' totalMilliseconds='75' name='edu.umd.cs.findbugs.util.TopologicalSort' maxMicrosecondsPerInvocation='2051' standardDeviationMicrosecondsPerInvocation='111' invocations='1348'></ClassProfile>
+   <ClassProfile avgMicrosecondsPerInvocation='201' totalMilliseconds='72' name='edu.umd.cs.findbugs.classfile.engine.bcel.JavaClassAnalysisEngine' maxMicrosecondsPerInvocation='14524' standardDeviationMicrosecondsPerInvocation='821' invocations='360'></ClassProfile>
+   <ClassProfile avgMicrosecondsPerInvocation='286' totalMilliseconds='69' name='edu.umd.cs.findbugs.detect.BuildObligationPolicyDatabase' maxMicrosecondsPerInvocation='4542' standardDeviationMicrosecondsPerInvocation='579' invocations='244'></ClassProfile>
+   <ClassProfile avgMicrosecondsPerInvocation='246' totalMilliseconds='60' name='edu.umd.cs.findbugs.detect.FunctionsThatMightBeMistakenForProcedures' maxMicrosecondsPerInvocation='5730' standardDeviationMicrosecondsPerInvocation='562' invocations='244'></ClassProfile>
+   <ClassProfile avgMicrosecondsPerInvocation='891' totalMilliseconds='59' name='edu.umd.cs.findbugs.detect.FindRefComparison$SpecialTypeAnalysis' maxMicrosecondsPerInvocation='18328' standardDeviationMicrosecondsPerInvocation='2369' invocations='67'></ClassProfile>
+   <ClassProfile avgMicrosecondsPerInvocation='238' totalMilliseconds='58' name='edu.umd.cs.findbugs.detect.BuildStringPassthruGraph' maxMicrosecondsPerInvocation='12149' standardDeviationMicrosecondsPerInvocation='905' invocations='244'></ClassProfile>
+   <ClassProfile avgMicrosecondsPerInvocation='742' totalMilliseconds='51' name='edu.umd.cs.findbugs.classfile.engine.bcel.CFGFactory' maxMicrosecondsPerInvocation='9132' standardDeviationMicrosecondsPerInvocation='1331' invocations='70'></ClassProfile>
+   <ClassProfile avgMicrosecondsPerInvocation='192' totalMilliseconds='47' name='edu.umd.cs.findbugs.detect.OverridingEqualsNotSymmetrical' maxMicrosecondsPerInvocation='11104' standardDeviationMicrosecondsPerInvocation='747' invocations='244'></ClassProfile>
+  </FindBugsProfile>
+ </FindBugsSummary>
+ <ClassFeatures></ClassFeatures>
+ <History></History>
+</BugCollection>

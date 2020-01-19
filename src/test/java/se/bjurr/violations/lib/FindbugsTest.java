@@ -30,6 +30,21 @@ public class FindbugsTest {
   }
 
   @Test
+  public void testMavenGeneratedSpotbugs() {
+    final String rootFolder = getRootFolder();
+    final List<Violation> maven =
+        violationsApi() //
+            .findAll(FINDBUGS) //
+            .inFolder(rootFolder) //
+            .withPattern(".*/findbugs/spotbugs-single-bug.xml$") //
+            .withReporter("Spotbugs")
+            .violations();
+
+    assertThat(maven) //
+        .hasSize(1);
+  }
+
+  @Test
   public void testThatViolationsCanBeParsed() {
     final String rootFolder = getRootFolder();
     final List<Violation> actual =
@@ -49,7 +64,7 @@ public class FindbugsTest {
 
     assertThat(actual) //
         .hasSize(5);
-    final Violation violation0 = actual.get(0);
+    final Violation violation0 = actual.get(1);
     assertThat(violation0.getFile()) //
         .isEqualTo("se/bjurr/violations/lib/example/MyClass.java");
     assertThat(violation0.getMessage()) //
@@ -81,7 +96,7 @@ public class FindbugsTest {
 
     assertThat(actual) //
         .hasSize(3);
-    final Violation violation0 = actual.get(0);
+    final Violation violation0 = actual.get(1);
     assertThat(violation0.getFile()) //
         .isEqualTo("se/bjurr/violations/lib/parsers/FindbugsParser.java");
     assertThat(violation0.getMessage()) //

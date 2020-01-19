@@ -53,7 +53,7 @@ public class PCLintTest {
                 .setSeverity(WARN) //
                 .build() //
             );
-    assertThat(actual.get(5)) //
+    assertThat(actual.get(1)) //
         .isEqualTo( //
             violationBuilder() //
                 .setParser(PCLINT) //
@@ -89,12 +89,12 @@ public class PCLintTest {
             .findAll(PCLINT) //
             .violations();
 
-    Violation violation = actual.get(1);
+    Violation violation = actual.get(5);
 
     assertThat(violation.getRule()).isEqualTo("MISRA 2012 Rule 10.4, mandatory");
     assertThat(violation.getSeverity()).isEqualTo(ERROR);
 
-    violation = actual.get(2);
+    violation = actual.get(4);
 
     assertThat(violation.getRule()).isEqualTo("MISRA 2012 Rule 1.3, required");
     assertThat(violation.getSeverity()).isEqualTo(WARN);

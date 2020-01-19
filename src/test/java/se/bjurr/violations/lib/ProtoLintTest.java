@@ -51,17 +51,5 @@ public class ProtoLintTest {
                 .setSeverity(ERROR) //
                 .build() //
             );
-
-    assertThat(actual.get(403)) //
-        .isEqualTo( //
-            violationBuilder() //
-                .setParser(PROTOLINT) //
-                .setFile("google/ads/googleads/v1/resources/campaign.proto") //
-                .setStartLine(41) //
-                .setColumn(1) //
-                .setMessage("Imports are not sorted.") //
-                .setSeverity(ERROR) //
-                .build() //
-            );
   }
 }

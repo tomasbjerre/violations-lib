@@ -5,8 +5,9 @@ import static java.util.logging.Level.SEVERE;
 
 import java.io.File;
 import java.io.FileInputStream;
-import java.util.ArrayList;
 import java.util.List;
+import java.util.Set;
+import java.util.TreeSet;
 import java.util.logging.Logger;
 import se.bjurr.violations.lib.model.Violation;
 import se.bjurr.violations.lib.parsers.AndroidLintParser;
@@ -103,8 +104,8 @@ public enum Parser {
     this.violationsParser = violationsParser;
   }
 
-  public List<Violation> findViolations(final List<File> includedFiles) {
-    final List<Violation> violations = new ArrayList<>();
+  public Set<Violation> findViolations(final List<File> includedFiles) {
+    final Set<Violation> violations = new TreeSet<>();
     for (final File file : includedFiles) {
       try {
         final String string = Utils.toString(new FileInputStream(file));

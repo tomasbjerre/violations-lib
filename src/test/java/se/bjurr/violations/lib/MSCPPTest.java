@@ -38,7 +38,7 @@ public class MSCPPTest {
     assertThat(violation0.getRule()) //
         .isEqualTo("C4311");
 
-    final Violation violation1 = actual.get(1);
+    final Violation violation1 = actual.get(3);
     assertThat(violation1.getFile()) //
         .isEqualTo("../dummies/osal/own_os/threading/Mutex.cpp");
     assertThat(violation1.getMessage()) //

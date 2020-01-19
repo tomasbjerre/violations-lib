@@ -30,7 +30,7 @@ public class FxCopTest {
     assertThat(actualViolationZero.getFile()) //
         .isEqualTo("C:/git/test-project/Test Solution 1/GenericsSample/Form1.Designer.cs");
     assertThat(actualViolationZero.getStartLine()) //
-        .isEqualTo(212);
+        .isEqualTo(288);
     assertThat(actualViolationZero.getMessage()) //
         .startsWith("Method 'Form");
     assertThat(actualViolationZero.getReporter()) //
@@ -49,13 +49,13 @@ public class FxCopTest {
     assertThat(actualViolationOne.getFile()) //
         .isEqualTo("C:/git/test-project/Test Solution 1/GenericsSample/Form1.Designer.cs");
     assertThat(actualViolationOne.getStartLine()) //
-        .isEqualTo(203);
+        .isEqualTo(275);
     assertThat(actualViolationOne.getMessage()) //
-        .startsWith("Method 'Form");
+        .startsWith("Correct the spell");
     assertThat(actualViolationOne.getReporter()) //
         .isEqualTo(FXCOP.name());
     assertThat(actualViolationOne.getRule()) //
-        .isEqualTo("Do not pass literals as localized parameters");
+        .isEqualTo("Literals should be spelled correctly");
     assertThat(actualViolationOne.getSeverity()) //
         .isEqualTo(WARN);
     assertThat(actualViolationOne.getSource()) //

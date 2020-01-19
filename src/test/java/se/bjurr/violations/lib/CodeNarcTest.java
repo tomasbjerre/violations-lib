@@ -31,7 +31,7 @@ public class CodeNarcTest {
     assertThat(violation0.getMessage()) //
         .isEqualTo("In most cases, exceptions should not be caught and ignored (swallowed).");
     assertThat(violation0.getFile()) //
-        .isEqualTo("foo/bar/Test.groovy");
+        .isEqualTo("/Test.groovy");
     assertThat(violation0.getSeverity()) //
         .isEqualTo(WARN);
     assertThat(violation0.getRule()) //
@@ -42,8 +42,7 @@ public class CodeNarcTest {
         .isEqualTo(192);
 
     assertThat(actual.get(2).getMessage()) //
-        .isEqualTo(
-            "Catching Exception is often too broad or general. It should usually be restricted to framework or infrastructure code, rather than application code.");
+        .isEqualTo("Checks for throwing an instance of java.lang.Exception.");
   }
 
   @Test
@@ -58,7 +57,7 @@ public class CodeNarcTest {
             .violations();
 
     assertThat(actual) //
-        .hasSize(79);
+        .hasSize(76);
 
     final Violation violation0 = actual.get(0);
     assertThat(violation0.getMessage()) //
@@ -71,9 +70,9 @@ public class CodeNarcTest {
     assertThat(violation0.getRule()) //
         .isEqualTo("UnnecessaryObjectReferences");
     assertThat(violation0.getStartLine()) //
-        .isEqualTo(184);
+        .isEqualTo(188);
     assertThat(violation0.getEndLine()) //
-        .isEqualTo(184);
+        .isEqualTo(188);
   }
 
   @Test

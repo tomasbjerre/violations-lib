@@ -26,7 +26,7 @@ public class CheckstyleTest {
             .violations();
 
     assertThat(actual)
-        .containsExactly(
+        .containsOnly(
             violationBuilder() //
                 .setParser(CHECKSTYLE) //
                 .setFile("/src/main/java/se/bjurr/violations/lib/example/MyClass.java") //
@@ -95,7 +95,7 @@ public class CheckstyleTest {
             .violations();
 
     assertThat(actual) //
-        .containsExactly( //
+        .containsOnly( //
             violationBuilder() //
                 .setParser(CHECKSTYLE) //
                 .setReporter(CHECKSTYLE.name()) //
@@ -161,7 +161,7 @@ public class CheckstyleTest {
         .hasSize(6);
 
     assertThat(actual.get(0).getMessage()) //
-        .isEqualTo("Missing file doc comment");
+        .isEqualTo("Missing function doc comment");
     assertThat(actual.get(0).getReporter()) //
         .isEqualTo("PHP");
   }
@@ -186,6 +186,25 @@ public class CheckstyleTest {
   }
 
   @Test
+  public void testThatDuplicatesAreIgnored() {
+    final List<Violation> actual =
+        violationsApi() //
+            .withPattern(".*/checkstyle/duplicates\\.xml$") //
+            .inFolder(rootFolder) //
+            .findAll(CHECKSTYLE) //
+            .withReporter("Checkstyle") //
+            .violations();
+
+    assertThat(actual) //
+        .hasSize(3);
+
+    assertThat(actual.get(0).getMessage()) //
+        .isEqualTo("Line is longer than 100 characters (found 312).");
+    assertThat(actual.get(0).getReporter()) //
+        .isEqualTo("Checkstyle");
+  }
+
+  @Test
   public void testThatGolangCILintViolationsCanBeParsed() {
     final List<Violation> actual =
         violationsApi() //
@@ -201,11 +220,12 @@ public class CheckstyleTest {
                 .setReporter(CHECKSTYLE.name()) //
                 .setFile("pkg/clients/azure/redis/redis.go") //
                 .setSource("") //
-                .setStartLine(28) //
-                .setEndLine(28) //
-                .setColumn(0) //
-                .setMessage("File is not `goimports`-ed") //
-                .setRule("goimports") //
+                .setStartLine(41) //
+                .setEndLine(41) //
+                .setColumn(1) //
+                .setMessage(
+                    "exported function `NewClient` should have comment or be unexported") //
+                .setRule("golint") //
                 .setSeverity(ERROR) //
                 .build(), //
             violationBuilder() //
@@ -213,12 +233,11 @@ public class CheckstyleTest {
                 .setReporter(CHECKSTYLE.name()) //
                 .setFile("pkg/clients/azure/redis/redis.go") //
                 .setSource("") //
-                .setStartLine(41) //
-                .setEndLine(41) //
-                .setColumn(1) //
-                .setMessage(
-                    "exported function `NewClient` should have comment or be unexported") //
-                .setRule("golint") //
+                .setStartLine(28) //
+                .setEndLine(28) //
+                .setColumn(0) //
+                .setMessage("File is not `goimports`-ed") //
+                .setRule("goimports") //
                 .setSeverity(ERROR) //
                 .build() //
             );

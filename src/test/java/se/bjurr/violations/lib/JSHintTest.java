@@ -26,16 +26,17 @@ public class JSHintTest {
     assertThat(actual) //
         .hasSize(6);
 
-    assertThat(actual.get(0).getFile()) //
+    Violation violation = actual.get(2);
+    assertThat(violation.getFile()) //
         .isEqualTo("../../../web/js-file.js");
-    assertThat(actual.get(0).getMessage()) //
+    assertThat(violation.getMessage()) //
         .startsWith("Use") //
         .doesNotContain("CDATA");
-    assertThat(actual.get(0).getStartLine()) //
+    assertThat(violation.getStartLine()) //
         .isEqualTo(4);
-    assertThat(actual.get(0).getEndLine()) //
+    assertThat(violation.getEndLine()) //
         .isEqualTo(4);
-    assertThat(actual.get(0).getSeverity()) //
+    assertThat(violation.getSeverity()) //
         .isEqualTo(WARN);
   }
 }

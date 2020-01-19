@@ -12,6 +12,7 @@ import java.util.Arrays;
 import java.util.Comparator;
 import java.util.List;
 import java.util.Scanner;
+import java.util.Set;
 import java.util.stream.Collectors;
 import se.bjurr.violations.lib.model.Violation;
 import se.bjurr.violations.lib.reports.Reporter;
@@ -69,8 +70,7 @@ public class Utils {
     }
   }
 
-  public static List<Violation> setReporter(
-      final List<Violation> violations, final String reporter) {
+  public static Set<Violation> setReporter(final Set<Violation> violations, final String reporter) {
     for (final Violation v : violations) {
       v.setReporter(reporter);
     }

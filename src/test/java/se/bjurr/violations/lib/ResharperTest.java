@@ -28,46 +28,50 @@ public class ResharperTest {
     assertThat(actual) //
         .hasSize(4);
 
-    assertThat(actual.get(0).getReporter()) //
+    Violation violation = actual.get(2);
+    assertThat(violation.getReporter()) //
         .isEqualTo(RESHARPER.name());
 
-    assertThat(actual.get(0).getMessage()) //
+    assertThat(violation.getMessage()) //
         .isEqualTo(
             "Using directive is not required by the code and can be safely removed. Redundancies in Code. Redundant using directive. For more info, visit http://confluence.jetbrains.net/display/ReSharper/Redundant+using+directive");
-    assertThat(actual.get(0).getRule()) //
+    assertThat(violation.getRule()) //
         .isEqualTo("RedundantUsingDirective");
-    assertThat(actual.get(0).getFile()) //
+    assertThat(violation.getFile()) //
         .isEqualTo("MyLibrary/Class1.cs");
-    assertThat(actual.get(0).getSeverity()) //
+    assertThat(violation.getSeverity()) //
         .isEqualTo(WARN);
 
-    assertThat(actual.get(1).getMessage()) //
+    Violation violation2 = actual.get(1);
+    assertThat(violation2.getMessage()) //
         .isEqualTo(
             "Join declaration and assignment. Common Practices and Code Improvements. Join local variable declaration and assignment");
-    assertThat(actual.get(1).getRule()) //
+    assertThat(violation2.getRule()) //
         .isEqualTo("JoinDeclarationAndInitializer");
-    assertThat(actual.get(1).getFile()) //
+    assertThat(violation2.getFile()) //
         .isEqualTo("MyLibrary/Class1.cs");
-    assertThat(actual.get(1).getSeverity()) //
+    assertThat(violation2.getSeverity()) //
         .isEqualTo(INFO);
 
-    assertThat(actual.get(2).getMessage()) //
+    Violation violation3 = actual.get(3);
+    assertThat(violation3.getMessage()) //
         .isEqualTo(
             "Using directive is not required by the code and can be safely removed. Redundancies in Code. Redundant using directive. For more info, visit http://confluence.jetbrains.net/display/ReSharper/Redundant+using+directive");
-    assertThat(actual.get(2).getRule()) //
+    assertThat(violation3.getRule()) //
         .isEqualTo("RedundantUsingDirective");
-    assertThat(actual.get(2).getFile()) //
+    assertThat(violation3.getFile()) //
         .isEqualTo("MyLibrary/Properties/AssemblyInfo.cs");
-    assertThat(actual.get(2).getSeverity()) //
+    assertThat(violation3.getSeverity()) //
         .isEqualTo(WARN);
 
-    assertThat(actual.get(3).getMessage()) //
+    Violation violation4 = actual.get(0);
+    assertThat(violation4.getMessage()) //
         .isEqualTo("Cannot resolve symbol 'GetError'. C# Compiler Errors. CSharpErrors");
-    assertThat(actual.get(3).getRule()) //
+    assertThat(violation4.getRule()) //
         .isEqualTo("CSharpErrors");
-    assertThat(actual.get(3).getFile()) //
+    assertThat(violation4.getFile()) //
         .isEqualTo("MyLibrary/Class1.cs");
-    assertThat(actual.get(3).getSeverity()) //
+    assertThat(violation4.getSeverity()) //
         .isEqualTo(ERROR);
   }
 }

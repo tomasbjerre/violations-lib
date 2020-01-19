@@ -26,7 +26,7 @@ public class CLangTest {
             .violations();
 
     assertThat(actual) //
-        .hasSize(4);
+        .hasSize(3);
 
     final Violation violation0 = actual.get(0);
     assertThat(violation0.getMessage()) //
@@ -67,7 +67,7 @@ public class CLangTest {
     assertThat(actual) //
         .hasSize(4);
 
-    final Violation violation0 = actual.get(0);
+    final Violation violation0 = actual.get(3);
     assertThat(violation0.getMessage()) //
         .isEqualTo("Use snake_case for method names.");
     assertThat(violation0.getFile()) //
@@ -79,7 +79,7 @@ public class CLangTest {
     assertThat(violation0.getStartLine()) //
         .isEqualTo(1);
 
-    assertThat(actual.get(3).getSeverity()) //
+    assertThat(actual.get(0).getSeverity()) //
         .isEqualTo(WARN);
   }
 }

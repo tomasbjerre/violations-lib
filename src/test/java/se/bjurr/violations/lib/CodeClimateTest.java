@@ -26,7 +26,7 @@ public class CodeClimateTest {
     assertThat(actual) //
         .hasSize(2);
 
-    final Violation violation0 = actual.get(0);
+    final Violation violation0 = actual.get(1);
     assertThat(violation0.getMessage()) //
         .isEqualTo("Method `destroy` has 6 arguments (exceeds 4 allowed). Consider refactoring.");
     assertThat(violation0.getFile()) //

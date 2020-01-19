@@ -27,31 +27,32 @@ public class CppLintTest {
     assertThat(actual) //
         .hasSize(3);
 
-    assertThat(actual.get(0).getMessage()) //
+    Violation violation = actual.get(2);
+    assertThat(violation.getMessage()) //
         .isEqualTo(
             "No copyright message found.  You should have a line: \"Copyright [year] <Copyright Owner>\"");
+    assertThat(violation.getFile()) //
+        .isEqualTo("cpp/test.cpp");
+    assertThat(violation.getSeverity()) //
+        .isEqualTo(ERROR);
+    assertThat(violation.getRule()) //
+        .isEqualTo("legal/copyright");
+    assertThat(violation.getStartLine()) //
+        .isEqualTo(0);
+    assertThat(violation.getEndLine()) //
+        .isEqualTo(0);
+
+    assertThat(actual.get(0).getMessage()) //
+        .isEqualTo("Missing space before ( in while(");
     assertThat(actual.get(0).getFile()) //
         .isEqualTo("cpp/test.cpp");
     assertThat(actual.get(0).getSeverity()) //
         .isEqualTo(ERROR);
     assertThat(actual.get(0).getRule()) //
-        .isEqualTo("legal/copyright");
-    assertThat(actual.get(0).getStartLine()) //
-        .isEqualTo(0);
-    assertThat(actual.get(0).getEndLine()) //
-        .isEqualTo(0);
-
-    assertThat(actual.get(2).getMessage()) //
-        .isEqualTo("Missing space before ( in while(");
-    assertThat(actual.get(2).getFile()) //
-        .isEqualTo("cpp/test.cpp");
-    assertThat(actual.get(2).getSeverity()) //
-        .isEqualTo(ERROR);
-    assertThat(actual.get(2).getRule()) //
         .isEqualTo("whitespace/parens");
-    assertThat(actual.get(2).getStartLine()) //
+    assertThat(actual.get(0).getStartLine()) //
         .isEqualTo(11);
-    assertThat(actual.get(2).getEndLine()) //
+    assertThat(actual.get(0).getEndLine()) //
         .isEqualTo(11);
   }
 
@@ -98,7 +99,7 @@ public class CppLintTest {
     assertThat(actual) //
         .hasSize(3);
 
-    final Violation violation = actual.get(0);
+    final Violation violation = actual.get(2);
     assertThat(violation.getMessage()) //
         .isEqualTo(
             "No copyright message found.  You should have a line: \"Copyright [year] <Copyright Owner>\"");

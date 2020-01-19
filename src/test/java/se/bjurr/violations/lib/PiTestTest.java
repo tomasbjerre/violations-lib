@@ -24,7 +24,7 @@ public class PiTestTest {
             .violations();
 
     assertThat(actual) //
-        .hasSize(25);
+        .hasSize(16);
 
     assertThat(actual.get(0).getFile()) //
         .isEqualTo("se/bjurr/violations/lib/example/CopyOfMyClass.java");

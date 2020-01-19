@@ -31,14 +31,14 @@ public class PMDTest {
     assertThat(violationZero.getFile()) //
         .isEqualTo("/src/main/java/se/bjurr/violations/lib/example/MyClass.java");
     assertThat(violationZero.getMessage()) //
-        .startsWith("Avoid empt") //
+        .startsWith("Ensure") //
         .doesNotContain("CDATA");
     assertThat(violationZero.getStartLine()) //
-        .isEqualTo(9);
+        .isEqualTo(16);
     assertThat(violationZero.getEndLine()) //
-        .isEqualTo(11);
+        .isEqualTo(16);
     assertThat(violationZero.getRule()) //
-        .isEqualTo("EmptyIfStmt");
+        .isEqualTo("OverrideBothEqualsAndHashcode");
     assertThat(violationZero.getSeverity()) //
         .isEqualTo(WARN);
   }
@@ -64,11 +64,11 @@ public class PMDTest {
         .startsWith("Description") //
         .doesNotContain("CDATA");
     assertThat(violationZero.getStartLine()) //
-        .isEqualTo(1);
+        .isEqualTo(39);
     assertThat(violationZero.getEndLine()) //
-        .isEqualTo(1);
+        .isEqualTo(39);
     assertThat(violationZero.getRule()) //
-        .isEqualTo("RULE1");
+        .isEqualTo("RULE5");
     assertThat(violationZero.getSeverity()) //
         .isEqualTo(WARN);
   }

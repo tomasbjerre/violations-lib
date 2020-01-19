@@ -23,23 +23,23 @@ public class GendarmeTest {
             .violations();
 
     assertThat(actual) //
-        .hasSize(28);
+        .hasSize(13);
 
     assertThat(actual.get(0).getMessage()) //
         .startsWith("This me");
     assertThat(actual.get(0).getFile()) //
-        .isEqualTo("c:/Dev/src/hudson/Hudson.Domain/Dog.cs");
+        .isEqualTo("/Dev/src/hudson/Hudson.Domain/Dog.cs");
     assertThat(actual.get(0).getSeverity()) //
         .isEqualTo(INFO);
     assertThat(actual.get(0).getRule()) //
         .isEqualTo("MethodCanBeMadeStaticRule");
     assertThat(actual.get(0).getStartLine()) //
-        .isEqualTo(10);
+        .isEqualTo(22);
     assertThat(actual.get(0).getEndLine()) //
-        .isEqualTo(10);
+        .isEqualTo(22);
 
     assertThat(actual.get(5).getMessage()) //
-        .startsWith("A constructor ca");
+        .startsWith("This type");
   }
 
   @Test

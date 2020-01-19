@@ -24,15 +24,15 @@ public class PyLintTest {
             .violations();
 
     assertThat(actual) //
-        .hasSize(136);
+        .hasSize(135);
 
     Violation violation = actual.get(0);
     assertThat(violation.getFile()) //
-        .isEqualTo("marshmallow/schema.py");
+        .isEqualTo("marshmallow/class_registry.py");
     assertThat(violation.getStartLine()) //
-        .isEqualTo(190);
+        .isEqualTo(73);
     assertThat(violation.getMessage()) //
-        .isEqualTo("Wrong continued indentation (add 1 space).");
+        .isEqualTo("Wrong continued indentation (add 16 spaces).");
     assertThat(violation.getSeverity()) //
         .isEqualTo(INFO);
     assertThat(violation.getRule()) //

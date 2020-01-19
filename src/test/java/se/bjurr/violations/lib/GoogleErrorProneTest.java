@@ -40,7 +40,7 @@ public class GoogleErrorProneTest {
     assertThat(violation0.getStartLine()) //
         .isEqualTo(51);
 
-    final Violation violation4 = actual.get(4);
+    final Violation violation4 = actual.get(3);
     assertThat(violation4.getMessage()) //
         .endsWith(", otherCommitTime);'?");
     assertThat(violation4.getFile()) //
@@ -106,6 +106,6 @@ public class GoogleErrorProneTest {
     assertThat(violation0.getRule()) //
         .isEqualTo("NullAway");
     assertThat(violation0.getStartLine()) //
-        .isEqualTo(162);
+        .isEqualTo(175);
   }
 }

@@ -25,20 +25,20 @@ public class ZPTLintTest {
     assertThat(actual) //
         .hasSize(2);
 
-    assertThat(actual.get(0).getMessage()) //
+    assertThat(actual.get(1).getMessage()) //
         .isEqualTo("abc def ghe '\" 123");
-    assertThat(actual.get(0).getFile()) //
+    assertThat(actual.get(1).getFile()) //
         .isEqualTo("cpplint.py");
-    assertThat(actual.get(0).getSeverity()) //
+    assertThat(actual.get(1).getSeverity()) //
         .isEqualTo(ERROR);
-    assertThat(actual.get(0).getRule()) //
+    assertThat(actual.get(1).getRule()) //
         .isEqualTo("ZPT");
-    assertThat(actual.get(0).getStartLine()) //
+    assertThat(actual.get(1).getStartLine()) //
         .isEqualTo(4796);
-    assertThat(actual.get(0).getEndLine()) //
+    assertThat(actual.get(1).getEndLine()) //
         .isEqualTo(4796);
 
-    assertThat(actual.get(1).getMessage()) //
+    assertThat(actual.get(0).getMessage()) //
         .isEqualTo("abc '\" 123 def ghe");
   }
 }

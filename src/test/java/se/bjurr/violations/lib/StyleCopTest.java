@@ -30,13 +30,13 @@ public class StyleCopTest {
     assertThat(actualViolationZero.getFile()) //
         .isEqualTo("E:/Jenkins/jobs/Tools Development/workspace/Tools/Tools.SSOTester/Form1.cs");
     assertThat(actualViolationZero.getStartLine()) //
-        .isEqualTo(17);
+        .isEqualTo(353);
     assertThat(actualViolationZero.getMessage()) //
-        .startsWith("The do");
+        .startsWith("A closing");
     assertThat(actualViolationZero.getReporter()) //
         .isEqualTo(STYLECOP.name());
     assertThat(actualViolationZero.getRule()) //
-        .isEqualTo("ElementDocumentationMustNotHaveDefaultSummary");
+        .isEqualTo("ClosingCurlyBracketsMustNotBePrecededByBlankLine");
     assertThat(actualViolationZero.getSeverity()) //
         .isEqualTo(INFO);
     assertThat(actualViolationZero.getSource()) //
@@ -46,13 +46,13 @@ public class StyleCopTest {
     assertThat(actualViolationOne.getFile()) //
         .isEqualTo("E:/Jenkins/jobs/Tools Development/workspace/Tools/Tools.SSOTester/Form1.cs");
     assertThat(actualViolationOne.getStartLine()) //
-        .isEqualTo(19);
+        .isEqualTo(348);
     assertThat(actualViolationOne.getMessage()) //
-        .startsWith("The field");
+        .startsWith("The body");
     assertThat(actualViolationOne.getReporter()) //
         .isEqualTo(STYLECOP.name());
     assertThat(actualViolationOne.getRule()) //
-        .isEqualTo("ElementsMustBeDocumented");
+        .isEqualTo("CurlyBracketsMustNotBeOmitted");
     assertThat(actualViolationOne.getSeverity()) //
         .isEqualTo(INFO);
     assertThat(actualViolationOne.getSource()) //
