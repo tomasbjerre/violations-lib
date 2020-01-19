@@ -3,8 +3,13 @@
 
 Changelog of Violations lib.
 
-## Unreleased
+## 1.109
 ### No issue
+
+**Filtering out duplicated violations**
+
+
+[487cfbbad3f0692](https://github.com/tomasbjerre/violations-lib/commit/487cfbbad3f0692) Tomas Bjerre *2020-01-19 15:50:54*
 
 **Correcting Spotbugs warnings**
 
