@@ -3,6 +3,15 @@
 
 Changelog of Violations lib.
 
+## 1.110
+### GitHub [#82](https://github.com/tomasbjerre/violations-lib/issues/82) CPPCheckParser does not parse auto closed &lt;error/&gt; tags  
+
+**CPPCheckParser with auto closed <error/> tags**
+
+
+[64781db68be28d7](https://github.com/tomasbjerre/violations-lib/commit/64781db68be28d7) Tomas Bjerre *2020-02-03 15:57:04*
+
+
 ## 1.109
 ### No issue
 
