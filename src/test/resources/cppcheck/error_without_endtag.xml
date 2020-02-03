@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<results>
+    <error file="filename.cpp" line="49" id="variableScope" severity="style" msg="The scope of the variable &apos;softwareComponentsAreOk&apos; can be reduced. Warning: Be careful when fixing this message, especially when there are inner loops. Here is an example where cppcheck will write that the scope for &apos;i&apos; can be reduced:
+void f(int x)
+{
+    int i = 0;
+    if (x) {
+        // it&apos;s safe to move &apos;int i = 0;&apos; here
+        for (int n = 0; n &lt; 10; ++n) {
+            // it is possible but not safe to move &apos;int i = 0;&apos; here
+            do_something(&amp;i);
+        }
+    }
+}
+When you see this message it is always safe to reduce the variable scope 1 level."/>
+</results>

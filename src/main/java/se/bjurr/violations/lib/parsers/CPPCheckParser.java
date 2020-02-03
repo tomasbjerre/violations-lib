@@ -3,9 +3,9 @@ package se.bjurr.violations.lib.parsers;
 import static se.bjurr.violations.lib.model.SEVERITY.ERROR;
 import static se.bjurr.violations.lib.model.SEVERITY.INFO;
 import static se.bjurr.violations.lib.model.SEVERITY.WARN;
-import static se.bjurr.violations.lib.model.Violation.violationBuilder;
 import static se.bjurr.violations.lib.reports.Parser.CPPCHECK;
 import static se.bjurr.violations.lib.util.ViolationParserUtils.findAttribute;
+import static se.bjurr.violations.lib.util.ViolationParserUtils.findIntegerAttribute;
 import static se.bjurr.violations.lib.util.ViolationParserUtils.getAttribute;
 import static se.bjurr.violations.lib.util.ViolationParserUtils.getChunks;
 import static se.bjurr.violations.lib.util.ViolationParserUtils.getIntegerAttribute;
@@ -26,28 +26,21 @@ public class CPPCheckParser implements ViolationsParser {
       final String errorChunk = errorChunks.get(errorIndex);
       final String severity = getAttribute(errorChunk, "severity");
       final String msg = getAttribute(errorChunk, "msg");
-      final String verbose = getAttribute(errorChunk, "verbose");
+      final Optional<String> verbose = findAttribute(errorChunk, "verbose");
       final String id = getAttribute(errorChunk, "id");
       final List<String> locationChunks = getChunks(errorChunk, "<location", "/>");
+
       for (final String locationChunk : locationChunks) {
         final Integer line = getIntegerAttribute(locationChunk, "line");
         final Optional<String> info = findAttribute(locationChunk, "info");
         final String fileString = getAttribute(errorChunk, "file");
-        String message = "";
-        if (verbose.startsWith(msg)) {
-          message = verbose;
-        } else {
-          message = msg + ". " + verbose;
-        }
-        if (info.isPresent() && !message.contains(info.get())) {
-          message = message + ". " + info.get();
-        }
+        final String message = this.constructMessage(msg, verbose, info);
         violations.add( //
-            violationBuilder() //
+            Violation.violationBuilder() //
                 .setParser(CPPCHECK) //
                 .setStartLine(line) //
                 .setFile(fileString) //
-                .setSeverity(toSeverity(severity)) //
+                .setSeverity(this.toSeverity(severity)) //
                 .setMessage(message) //
                 .setRule(id) //
                 .setGroup(Integer.toString(errorIndex)) //
@@ -55,7 +48,49 @@ public class CPPCheckParser implements ViolationsParser {
             );
       }
     }
+
+    final List<String> errorChunksNoEndtag = getChunks(string, "<error", "\\/>");
+    for (int errorIndex = 0; errorIndex < errorChunksNoEndtag.size(); errorIndex++) {
+      final String errorChunk = errorChunksNoEndtag.get(errorIndex);
+      final String severity = getAttribute(errorChunk, "severity");
+      final String msg = getAttribute(errorChunk, "msg");
+      final Optional<String> verbose = findAttribute(errorChunk, "verbose");
+      final String id = getAttribute(errorChunk, "id");
+      final Optional<Integer> resultLine = findIntegerAttribute(errorChunk, "line");
+      final Optional<String> resultFile = findAttribute(errorChunk, "file");
+      final Optional<String> resultInfo = findAttribute(errorChunk, "info");
+
+      if (resultLine.isPresent() && resultFile.isPresent()) {
+        final String message = this.constructMessage(msg, verbose, resultInfo);
+        violations.add( //
+            Violation.violationBuilder() //
+                .setParser(CPPCHECK) //
+                .setStartLine(resultLine.get()) //
+                .setFile(resultFile.get()) //
+                .setSeverity(this.toSeverity(severity)) //
+                .setMessage(message) //
+                .setRule(id) //
+                .setGroup(Integer.toString(errorIndex)) //
+                .build() //
+            );
+      }
+    }
+
     return violations;
+  }
+
+  private String constructMessage(
+      final String msg, final Optional<String> verbose, final Optional<String> info) {
+    String message = "";
+    if (verbose.orElse("").startsWith(msg)) {
+      message = verbose.get();
+    } else {
+      message = msg + ". " + verbose.orElse("");
+    }
+    if (info.isPresent() && !message.contains(info.get())) {
+      message = message + ". " + info.get();
+    }
+    return message;
   }
 
   public SEVERITY toSeverity(final String severity) {

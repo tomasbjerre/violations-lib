@@ -136,4 +136,20 @@ public class CPPCheckTest {
     assertThat(secondErrorTag.get(0).getMessage()) //
         .isEqualTo("Condition 'rc' is always true");
   }
+
+  @Test
+  public void testThatViolationsCanBeParsedWhenErrorTagHasNoEndtag() {
+    final String rootFolder = getRootFolder();
+
+    final List<Violation> actual =
+        violationsApi() //
+            .withPattern(".*/cppcheck/error_without_endtag\\.xml$") //
+            .inFolder(rootFolder) //
+            .findAll(CPPCHECK) //
+            .violations();
+
+    final Violation violation0 = actual.get(0);
+    assertThat(violation0.getMessage()) //
+        .startsWith("The scope of the variable");
+  }
 }
