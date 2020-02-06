@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<results version="2">
+	<cppcheck version="1.52" />
+	<error id="redundantAssignment" severity="style"
+		msg="Variable &apos;it&apos; is reassigned a value before the old one has been used."
+		verbose="Variable &apos;it&apos; is reassigned a value before the old one has been used."
+		cwe="563">
+		<location
+			file0="apps\cloud_composer\src\point_selectors\rectangular_frustum_selector.cpp"
+			file="apps\cloud_composer\src\point_selectors\rectangular_frustum_selector.cpp"
+			line="53" />
+		<location
+			file0="apps\cloud_composer\src\point_selectors\rectangular_frustum_selector.cpp"
+			file="apps\cloud_composer\src\point_selectors\rectangular_frustum_selector.cpp"
+			line="51" />
+		<symbol>it</symbol>
+	</error>
+	<error id="redundantAssignment" severity="style"
+		msg="Variable &apos;that&apos; is reassigned a value before the old one has been used."
+		verbose="Variable &apos;that&apos; is reassigned a value before the old one has been used."
+		cwe="563">
+		<location
+			file0="apps\cloud_composer\src\point_selectors\rectangular_frustum_selector.cpp"
+			file="that\cloud_composer\src\point_selectors\rectangular_frustum_selector.cpp"
+			line="51" />
+		<location
+			file0="apps\cloud_composer\src\point_selectors\rectangular_frustum_selector.cpp"
+			file="that\cloud_composer\src\point_selectors\rectangular_frustum_selector.cpp"
+			line="53" />
+		<symbol>that</symbol>
+	</error>
+</results>
