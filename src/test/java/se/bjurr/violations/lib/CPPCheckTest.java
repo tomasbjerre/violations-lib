@@ -8,6 +8,8 @@ import static se.bjurr.violations.lib.model.SEVERITY.INFO;
 import static se.bjurr.violations.lib.model.Violation.violationBuilder;
 import static se.bjurr.violations.lib.reports.Parser.CPPCHECK;
 
+import java.io.*;
+import java.nio.file.Files;
 import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
@@ -15,6 +17,7 @@ import java.util.stream.Collectors;
 import org.junit.Test;
 
 import se.bjurr.violations.lib.model.Violation;
+import se.bjurr.violations.lib.parsers.CPPCheckParser;
 import se.bjurr.violations.lib.reports.Parser;
 
 public class CPPCheckTest {
@@ -155,6 +158,24 @@ public class CPPCheckTest {
         .startsWith("The scope of the variable");
   }
 
+  @Test
+  public void testThatViolationsCanBeParse() throws Exception {
+    List<Violation> violations = new CPPCheckParser().parseReportOutput(
+            getResourceFileAsString("results-version-2.xml"));
+
+    assertThat(violations).hasSize(4);
+  }
+
+  static String getResourceFileAsString(String fileName) throws IOException {
+    ClassLoader classLoader = ClassLoader.getSystemClassLoader();
+    try (InputStream is = classLoader.getResourceAsStream(fileName)) {
+      if (is == null) return null;
+      try (InputStreamReader isr = new InputStreamReader(is);
+           BufferedReader reader = new BufferedReader(isr)) {
+        return reader.lines().collect(Collectors.joining(System.lineSeparator()));
+      }
+    }
+  }
   @Test
   public void testThatViolationsCanBeParsedWithVersion2() {
     final String rootFolder = getRootFolder();
