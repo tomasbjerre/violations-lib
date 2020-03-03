@@ -3,13 +3,21 @@
 
 Changelog of Violations lib.
 
-## Unreleased
+## 1.111
 ### GitHub [#82](https://github.com/tomasbjerre/violations-lib/issues/82) CPPCheckParser does not parse auto closed &lt;error/&gt; tags  
 
 **CPPCheckParser results version 2**
 
 
 [2b96ad75cee880a](https://github.com/tomasbjerre/violations-lib/commit/2b96ad75cee880a) Tomas Bjerre *2020-02-06 18:27:04*
+
+
+### GitHub [#84](https://github.com/tomasbjerre/violations-lib/issues/84) XUnit parser    *enhancement*  
+
+**XUnit tomasbjerre/violations-lib**
+
+
+[04762515e66b859](https://github.com/tomasbjerre/violations-lib/commit/04762515e66b859) Tomas Bjerre *2020-03-03 16:42:09*
 
 
 ## 1.110
