@@ -71,7 +71,7 @@ public enum Reporter {
       Parser.JSLINT,
       "http://jshint.com/",
       "With `--reporter=jslint` or the CHECKSTYLE parser with `--reporter=checkstyle`"),
-  JUNIT("JUnit", Parser.JUNIT, "https://junit.org/junit4/", ""),
+  JUNIT("JUnit", Parser.JUNIT, "https://junit.org/junit4/", "It only contains the failures."),
   KTLINT("KTLint", Parser.CHECKSTYLE, "https://github.com/shyiko/ktlint", ""),
   KLOCWORK(
       "Klocwork",
@@ -152,7 +152,7 @@ public enum Reporter {
       Parser.CHECKSTYLE,
       "https://palantir.github.io/tslint/usage/cli/",
       "With `-t checkstyle`"),
-  XUNIT("XUnit", Parser.XUNIT, "https://xunit.net/", ""),
+  XUNIT("XUnit", Parser.XUNIT, "https://xunit.net/", "It only contains the failures."),
   XMLLINT("XMLLint", Parser.XMLLINT, "http://xmlsoft.org/xmllint.html", ""),
   YAMLLINT(
       "YAMLLint",
