@@ -39,7 +39,7 @@ A number of **parsers** have been implemented. Some **parsers** can parse output
 | [_Infer_](http://fbinfer.com/)                                                        | `PMD`                | Facebook Infer. With `--pmd-xml`.
 | [_JCReport_](https://github.com/jCoderZ/fawkez/wiki/JcReport)                         | `JCREPORT`           | 
 | [_JSHint_](http://jshint.com/)                                                        | `JSLINT`             | With `--reporter=jslint` or the CHECKSTYLE parser with `--reporter=checkstyle`
-| [_JUnit_](https://junit.org/junit4/)                                                  | `JUNIT`              | 
+| [_JUnit_](https://junit.org/junit4/)                                                  | `JUNIT`              | It only contains the failures.
 | [_KTLint_](https://github.com/shyiko/ktlint)                                          | `CHECKSTYLE`         | 
 | [_Klocwork_](http://www.klocwork.com/products-services/klocwork/static-code-analysis)  | `KLOCWORK`           | 
 | [_KotlinGradle_](https://github.com/JetBrains/kotlin)                                 | `KOTLINGRADLE`       | Output from Kotlin Gradle Plugin.
@@ -72,7 +72,7 @@ A number of **parsers** have been implemented. Some **parsers** can parse output
 | [_SwiftLint_](https://github.com/realm/SwiftLint)                                     | `CHECKSTYLE`         | With `--reporter checkstyle`.
 | [_TSLint_](https://palantir.github.io/tslint/usage/cli/)                              | `CHECKSTYLE`         | With `-t checkstyle`
 | [_XMLLint_](http://xmlsoft.org/xmllint.html)                                          | `XMLLINT`            | 
-| [_XUnit_](https://xunit.net/)                                                         | `XUNIT`              | 
+| [_XUnit_](https://xunit.net/)                                                         | `XUNIT`              | It only contains the failures.
 | [_YAMLLint_](https://yamllint.readthedocs.io/en/stable/index.html)                    | `YAMLLINT`           | With `-f parsable`
 | [_ZPTLint_](https://pypi.python.org/pypi/zptlint)                                     | `ZPTLINT`            |
 
