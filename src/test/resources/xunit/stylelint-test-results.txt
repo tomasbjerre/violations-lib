@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="utf-8"?>
+<testsuites package="stylelint.rules">
+  <testsuite name="C:\Github\jenkins_test\org_newbalance\cartridges\org_newbalance\cartridge\client\default\scss\cart.scss" failures="0" errors="0" tests="1">
+    <testcase name="stylelint.passed"/>
+  </testsuite>
+  <testsuite name="C:\Github\jenkins_test\org_newbalance\cartridges\org_newbalance\cartridge\client\default\scss\global.scss" failures="0" errors="0" tests="1">
+    <testcase name="stylelint.passed"/>
+  </testsuite>
+  <testsuite name="C:\Github\jenkins_test\org_newbalance\cartridges\org_newbalance\cartridge\client\default\scss\homePage.scss" failures="1" errors="1" tests="1">
+    <testcase name="max-empty-lines">
+      <failure type="error" message="Expected no more than 1 empty line (max-empty-lines)">On line 3, column 1 in C:\Github\jenkins_test\org_newbalance\cartridges\org_newbalance\cartridge\client\default\scss\homePage.scss</failure>
+    </testcase>
+  </testsuite>
+  <testsuite name="C:\Github\jenkins_test\org_newbalance\cartridges\org_newbalance\cartridge\client\default\scss\login.scss" failures="0" errors="0" tests="1">
+    <testcase name="stylelint.passed"/>
+  </testsuite>
+  <testsuite name="C:\Github\jenkins_test\org_newbalance\cartridges\org_newbalance\cartridge\client\default\scss\search.scss" failures="0" errors="0" tests="1">
+    <testcase name="stylelint.passed"/>
+  </testsuite>
+  <testsuite name="C:\Github\jenkins_test\org_newbalance\cartridges\org_newbalance\cartridge\client\default\scss\wishlist.scss" failures="0" errors="0" tests="1">
+    <testcase name="stylelint.passed"/>
+  </testsuite>
+  <testsuite name="C:\Github\jenkins_test\org_newbalance\cartridges\org_newbalance\cartridge\client\default\scss\_bootstrap-custom-import.scss" failures="0" errors="0" tests="1">
+    <testcase name="stylelint.passed"/>
+  </testsuite>
+  <testsuite name="C:\Github\jenkins_test\org_newbalance\cartridges\org_newbalance\cartridge\client\default\scss\_variables.scss" failures="0" errors="0" tests="1">
+    <testcase name="stylelint.passed"/>
+  </testsuite>
+  <testsuite name="C:\Github\jenkins_test\org_newbalance\cartridges\org_newbalance\cartridge\client\default\scss\bootstrapOverrides\_alert.scss" failures="0" errors="0" tests="1">
+    <testcase name="stylelint.passed"/>
+  </testsuite>
+  <testsuite name="C:\Github\jenkins_test\org_newbalance\cartridges\org_newbalance\cartridge\client\default\scss\bootstrapOverrides\_breadcrumb.scss" failures="0" errors="0" tests="1">
+    <testcase name="stylelint.passed"/>
+  </testsuite>
+  <testsuite name="C:\Github\jenkins_test\org_newbalance\cartridges\org_newbalance\cartridge\client\default\scss\bootstrapOverrides\_buttons.scss" failures="0" errors="0" tests="1">
+    <testcase name="stylelint.passed"/>
+  </testsuite>
+  <testsuite name="C:\Github\jenkins_test\org_newbalance\cartridges\org_newbalance\cartridge\client\default\scss\bootstrapOverrides\_forms.scss" failures="0" errors="0" tests="1">
+    <testcase name="stylelint.passed"/>
+  </testsuite>
+  <testsuite name="C:\Github\jenkins_test\org_newbalance\cartridges\org_newbalance\cartridge\client\default\scss\bootstrapOverrides\_modal.scss" failures="0" errors="0" tests="1">
+    <testcase name="stylelint.passed"/>
+  </testsuite>
+  <testsuite name="C:\Github\jenkins_test\org_newbalance\cartridges\org_newbalance\cartridge\client\default\scss\bootstrapOverrides\_nav.scss" failures="0" errors="0" tests="1">
+    <testcase name="stylelint.passed"/>
+  </testsuite>
+  <testsuite name="C:\Github\jenkins_test\org_newbalance\cartridges\org_newbalance\cartridge\client\default\scss\checkout\checkout.scss" failures="0" errors="0" tests="1">
+    <testcase name="stylelint.passed"/>
+  </testsuite>
+  <testsuite name="C:\Github\jenkins_test\org_newbalance\cartridges\org_newbalance\cartridge\client\default\scss\checkout\giftCard.scss" failures="0" errors="0" tests="1">
+    <testcase name="stylelint.passed"/>
+  </testsuite>
+  <testsuite name="C:\Github\jenkins_test\org_newbalance\cartridges\org_newbalance\cartridge\client\default\scss\components\_breadcrumb.scss" failures="0" errors="0" tests="1">
+    <testcase name="stylelint.passed"/>
+  </testsuite>
+  <testsuite name="C:\Github\jenkins_test\org_newbalance\cartridges\org_newbalance\cartridge\client\default\scss\components\_common.scss" failures="0" errors="0" tests="1">
+    <testcase name="stylelint.passed"/>
+  </testsuite>
+  <testsuite name="C:\Github\jenkins_test\org_newbalance\cartridges\org_newbalance\cartridge\client\default\scss\components\_custom-selectbox.scss" failures="0" errors="0" tests="1">
+    <testcase name="stylelint.passed"/>
+  </testsuite>
+  <testsuite name="C:\Github\jenkins_test\org_newbalance\cartridges\org_newbalance\cartridge\client\default\scss\components\_footer.scss" failures="0" errors="0" tests="1">
+    <testcase name="stylelint.passed"/>
+  </testsuite>
+  <testsuite name="C:\Github\jenkins_test\org_newbalance\cartridges\org_newbalance\cartridge\client\default\scss\components\_formFields.scss" failures="0" errors="0" tests="1">
+    <testcase name="stylelint.passed"/>
+  </testsuite>
+  <testsuite name="C:\Github\jenkins_test\org_newbalance\cartridges\org_newbalance\cartridge\client\default\scss\components\_globalfooter.scss" failures="0" errors="0" tests="1">
+    <testcase name="stylelint.passed"/>
+  </testsuite>
+  <testsuite name="C:\Github\jenkins_test\org_newbalance\cartridges\org_newbalance\cartridge\client\default\scss\components\_header.scss" failures="0" errors="0" tests="1">
+    <testcase name="stylelint.passed"/>
+  </testsuite>
+  <testsuite name="C:\Github\jenkins_test\org_newbalance\cartridges\org_newbalance\cartridge\client\default\scss\components\_headers.scss" failures="0" errors="0" tests="1">
+    <testcase name="stylelint.passed"/>
+  </testsuite>
+  <testsuite name="C:\Github\jenkins_test\org_newbalance\cartridges\org_newbalance\cartridge\client\default\scss\components\_headerSearch.scss" failures="0" errors="0" tests="1">
+    <testcase name="stylelint.passed"/>
+  </testsuite>
+  <testsuite name="C:\Github\jenkins_test\org_newbalance\cartridges\org_newbalance\cartridge\client\default\scss\components\_hero.scss" failures="0" errors="0" tests="1">
+    <testcase name="stylelint.passed"/>
+  </testsuite>
+  <testsuite name="C:\Github\jenkins_test\org_newbalance\cartridges\org_newbalance\cartridge\client\default\scss\components\_menu.scss" failures="0" errors="0" tests="1">
+    <testcase name="stylelint.passed"/>
+  </testsuite>
+  <testsuite name="C:\Github\jenkins_test\org_newbalance\cartridges\org_newbalance\cartridge\client\default\scss\components\_miniCart.scss" failures="0" errors="0" tests="1">
+    <testcase name="stylelint.passed"/>
+  </testsuite>
+  <testsuite name="C:\Github\jenkins_test\org_newbalance\cartridges\org_newbalance\cartridge\client\default\scss\components\_modal.scss" failures="0" errors="0" tests="1">
+    <testcase name="stylelint.passed"/>
+  </testsuite>
+  <testsuite name="C:\Github\jenkins_test\org_newbalance\cartridges\org_newbalance\cartridge\client\default\scss\components\_pricing.scss" failures="0" errors="0" tests="1">
+    <testcase name="stylelint.passed"/>
+  </testsuite>
+  <testsuite name="C:\Github\jenkins_test\org_newbalance\cartridges\org_newbalance\cartridge\client\default\scss\components\_productTiles.scss" failures="0" errors="0" tests="1">
+    <testcase name="stylelint.passed"/>
+  </testsuite>
+  <testsuite name="C:\Github\jenkins_test\org_newbalance\cartridges\org_newbalance\cartridge\client\default\scss\components\_quickView.scss" failures="0" errors="0" tests="1">
+    <testcase name="stylelint.passed"/>
+  </testsuite>
+  <testsuite name="C:\Github\jenkins_test\org_newbalance\cartridges\org_newbalance\cartridge\client\default\scss\components\_reuse.scss" failures="0" errors="0" tests="1">
+    <testcase name="stylelint.passed"/>
+  </testsuite>
+  <testsuite name="C:\Github\jenkins_test\org_newbalance\cartridges\org_newbalance\cartridge\client\default\scss\components\_subscribemodal.scss" failures="0" errors="0" tests="1">
+    <testcase name="stylelint.passed"/>
+  </testsuite>
+  <testsuite name="C:\Github\jenkins_test\org_newbalance\cartridges\org_newbalance\cartridge\client\default\scss\components\_tabs.scss" failures="0" errors="0" tests="1">
+    <testcase name="stylelint.passed"/>
+  </testsuite>
+  <testsuite name="C:\Github\jenkins_test\org_newbalance\cartridges\org_newbalance\cartridge\client\default\scss\components\_tooltip.scss" failures="0" errors="0" tests="1">
+    <testcase name="stylelint.passed"/>
+  </testsuite>
+  <testsuite name="C:\Github\jenkins_test\org_newbalance\cartridges\org_newbalance\cartridge\client\default\scss\components\_zoom.scss" failures="0" errors="0" tests="1">
+    <testcase name="stylelint.passed"/>
+  </testsuite>
+  <testsuite name="C:\Github\jenkins_test\org_newbalance\cartridges\org_newbalance\cartridge\client\default\scss\product\detail.scss" failures="1" errors="1" tests="1">
+    <testcase name="no-eol-whitespace">
+      <failure type="error" message="Unexpected whitespace at end of line (no-eol-whitespace)">On line 399, column 38 in C:\Github\jenkins_test\org_newbalance\cartridges\org_newbalance\cartridge\client\default\scss\product\detail.scss</failure>
+    </testcase>
+  </testsuite>
+  <testsuite name="C:\Github\jenkins_test\org_newbalance\cartridges\org_newbalance\cartridge\client\default\scss\wishlist\_wishlist.scss" failures="0" errors="0" tests="1">
+    <testcase name="stylelint.passed"/>
+  </testsuite>
+</testsuites>

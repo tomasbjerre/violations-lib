@@ -50,6 +50,7 @@ import se.bjurr.violations.lib.parsers.SonarParser;
 import se.bjurr.violations.lib.parsers.StyleCopParser;
 import se.bjurr.violations.lib.parsers.ViolationsParser;
 import se.bjurr.violations.lib.parsers.XMLLintParser;
+import se.bjurr.violations.lib.parsers.XUnitParser;
 import se.bjurr.violations.lib.parsers.YAMLlintParser;
 import se.bjurr.violations.lib.parsers.ZPTLintParser;
 import se.bjurr.violations.lib.util.Utils;
@@ -94,8 +95,9 @@ public enum Parser {
   YAMLLINT(new YAMLlintParser()), //
   ZPTLINT(new ZPTLintParser()), //
   DOCFX(new DocFXParser()), //
-  PCLINT(new PCLintParser()),
-  CODECLIMATE(new CodeClimateParser());
+  PCLINT(new PCLintParser()), //
+  CODECLIMATE(new CodeClimateParser()), //
+  XUNIT(new XUnitParser());
 
   private static Logger LOG = Logger.getLogger(Parser.class.getSimpleName());
   private transient ViolationsParser violationsParser;

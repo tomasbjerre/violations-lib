@@ -1,0 +1,268 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuites name="Mocha Tests" time="0.1560" tests="115" failures="1">
+  <testsuite name="Root Suite" timestamp="2020-02-27T14:46:18" tests="0" time="0.0000" failures="0">
+  </testsuite>
+  <testsuite name="product availability decorator" timestamp="2020-02-27T14:46:18" tests="9" file="C:\Github\jenkins_test\org_newbalance\test\unit\org_newbalance\models\product\decorators\availability.js" time="0.0020" failures="0">
+    <testcase name="product availability decorator should receive product in stock availability message" time="0.0010" classname="should receive product in stock availability message">
+    </testcase>
+    <testcase name="product availability decorator should receive product pre order stock availability message" time="0.0000" classname="should receive product pre order stock availability message">
+    </testcase>
+    <testcase name="product availability decorator should receive product back order stock availability message" time="0.0000" classname="should receive product back order stock availability message">
+    </testcase>
+    <testcase name="product availability decorator should receive product not available message" time="0.0000" classname="should receive product not available message">
+    </testcase>
+    <testcase name="product availability decorator should receive in stock and not available messages" time="0.0000" classname="should receive in stock and not available messages">
+    </testcase>
+    <testcase name="product availability decorator should receive in stock and pre order messages" time="0.0000" classname="should receive in stock and pre order messages">
+    </testcase>
+    <testcase name="product availability decorator should receive in stock and back order messages" time="0.0010" classname="should receive in stock and back order messages">
+    </testcase>
+    <testcase name="product availability decorator should receive in stock date null" time="0.0000" classname="should receive in stock date null">
+    </testcase>
+    <testcase name="product availability decorator should receive in available true" time="0.0000" classname="should receive in available true">
+    </testcase>
+  </testsuite>
+  <testsuite name="custom display decorator" timestamp="2020-02-27T14:46:18" tests="6" file="C:\Github\jenkins_test\org_newbalance\test\unit\org_newbalance\models\product\decorators\custom.js" time="0.0020" failures="0">
+    <testcase name="custom display decorator should create gender property for passed in object" time="0.0010" classname="should create gender property for passed in object">
+    </testcase>
+    <testcase name="custom display decorator should create weight property for passed in object" time="0.0010" classname="should create weight property for passed in object">
+    </testcase>
+    <testcase name="custom display decorator should create designed property for passed in object" time="0.0000" classname="should create designed property for passed in object">
+    </testcase>
+    <testcase name="custom display decorator should set bisnEnabled to false" time="0.0000" classname="should set bisnEnabled to false">
+    </testcase>
+    <testcase name="custom display decorator should set bisnEnabled to true even if rest are false" time="0.0000" classname="should set bisnEnabled to true even if rest are false">
+    </testcase>
+    <testcase name="custom display decorator should create eCommBullets property for passed in object" time="0.0000" classname="should create eCommBullets property for passed in object">
+    </testcase>
+  </testsuite>
+  <testsuite name="product images decorator" timestamp="2020-02-27T14:46:18" tests="1" file="C:\Github\jenkins_test\org_newbalance\test\unit\org_newbalance\models\product\decorators\images.js" time="0.0000" failures="0">
+    <testcase name="product images decorator should create a property on the passed in object called images" time="0.0000" classname="should create a property on the passed in object called images">
+    </testcase>
+  </testsuite>
+  <testsuite name="Full Product Model" timestamp="2020-02-27T14:46:18" tests="22" file="C:\Github\jenkins_test\org_newbalance\test\unit\org_newbalance\models\product\fullProduct.js" time="0.1210" failures="0">
+    <testcase name="Full Product Model should call base for full product" time="0.0410" classname="should call base for full product">
+    </testcase>
+    <testcase name="Full Product Model should call price for full product" time="0.0120" classname="should call price for full product">
+    </testcase>
+    <testcase name="Full Product Model should call images for full product" time="0.0070" classname="should call images for full product">
+    </testcase>
+    <testcase name="Full Product Model should call images for full product when there is no variation model" time="0.0050" classname="should call images for full product when there is no variation model">
+    </testcase>
+    <testcase name="Full Product Model should call quantity for full product" time="0.0060" classname="should call quantity for full product">
+    </testcase>
+    <testcase name="Full Product Model should call variationAttributes for full product" time="0.0040" classname="should call variationAttributes for full product">
+    </testcase>
+    <testcase name="Full Product Model should call description for full product" time="0.0030" classname="should call description for full product">
+    </testcase>
+    <testcase name="Full Product Model should call genderDisplay for full product" time="0.0030" classname="should call genderDisplay for full product">
+    </testcase>
+    <testcase name="Full Product Model should call ratings for full product" time="0.0030" classname="should call ratings for full product">
+    </testcase>
+    <testcase name="Full Product Model should call promotion for full product" time="0.0020" classname="should call promotion for full product">
+    </testcase>
+    <testcase name="Full Product Model should call attributes for full product" time="0.0030" classname="should call attributes for full product">
+    </testcase>
+    <testcase name="Full Product Model should call availability for full product" time="0.0030" classname="should call availability for full product">
+    </testcase>
+    <testcase name="Full Product Model should call options for full product" time="0.0030" classname="should call options for full product">
+    </testcase>
+    <testcase name="Full Product Model should call quantitySelector for full product" time="0.0020" classname="should call quantitySelector for full product">
+    </testcase>
+    <testcase name="Full Product Model should call sizeChart for full product" time="0.0030" classname="should call sizeChart for full product">
+    </testcase>
+    <testcase name="Full Product Model should call currentUrl for full product" time="0.0030" classname="should call currentUrl for full product">
+    </testcase>
+    <testcase name="Full Product Model should not call sizeChart for full product when no primary category for api product" time="0.0020" classname="should not call sizeChart for full product when no primary category for api product">
+    </testcase>
+    <testcase name="Full Product Model should call sizeChart for full product when no primary category for api product" time="0.0030" classname="should call sizeChart for full product when no primary category for api product">
+    </testcase>
+    <testcase name="Full Product Model should call readyToOrder for full product" time="0.0050" classname="should call readyToOrder for full product">
+    </testcase>
+    <testcase name="Full Product Model should call online for full product" time="0.0030" classname="should call online for full product">
+    </testcase>
+    <testcase name="Full Product Model should call pageMetaData for full product" time="0.0030" classname="should call pageMetaData for full product">
+    </testcase>
+    <testcase name="Full Product Model should call template for full product" time="0.0020" classname="should call template for full product">
+    </testcase>
+  </testsuite>
+  <testsuite name="productImages" timestamp="2020-02-27T14:46:19" tests="6" file="C:\Github\jenkins_test\org_newbalance\test\unit\org_newbalance\models\product\productImages.js" time="0.0000" failures="0">
+    <testcase name="productImages should get all small images" time="0.0000" classname="should get all small images">
+    </testcase>
+    <testcase name="productImages should get only first small image" time="0.0000" classname="should get only first small image">
+    </testcase>
+    <testcase name="productImages should get a mapping type first image" time="0.0000" classname="should get a mapping type first image">
+    </testcase>
+    <testcase name="productImages should get a PLP type image" time="0.0000" classname="should get a PLP type image">
+    </testcase>
+    <testcase name="productImages should get a PLP type image with no default variant" time="0.0000" classname="should get a PLP type image with no default variant">
+    </testcase>
+    <testcase name="productImages should get a PLP type image with color" time="0.0000" classname="should get a PLP type image with color">
+    </testcase>
+  </testsuite>
+  <testsuite name="Product Tile Model" timestamp="2020-02-27T14:46:19" tests="7" file="C:\Github\jenkins_test\org_newbalance\test\unit\org_newbalance\models\product\productTile.js" time="0.0070" failures="0">
+    <testcase name="Product Tile Model should call base for product tile" time="0.0010" classname="should call base for product tile">
+    </testcase>
+    <testcase name="Product Tile Model should call searchPrice for product tile" time="0.0010" classname="should call searchPrice for product tile">
+    </testcase>
+    <testcase name="Product Tile Model should call images for product tile" time="0.0010" classname="should call images for product tile">
+    </testcase>
+    <testcase name="Product Tile Model should call ratings for product tile" time="0.0010" classname="should call ratings for product tile">
+    </testcase>
+    <testcase name="Product Tile Model should call searchVariationAttributes for product tile" time="0.0010" classname="should call searchVariationAttributes for product tile">
+    </testcase>
+    <testcase name="Product Tile Model should call searchVariationAttributes for product tile" time="0.0010" classname="should call searchVariationAttributes for product tile">
+    </testcase>
+    <testcase name="Product Tile Model should call searchVariationAttributes for product tile" time="0.0010" classname="should call searchVariationAttributes for product tile">
+    </testcase>
+  </testsuite>
+  <testsuite name="productList Model" timestamp="2020-02-27T14:46:19" tests="5" file="C:\Github\jenkins_test\org_newbalance\test\unit\org_newbalance\models\productList.js" time="0.0020" failures="0">
+    <testcase name="productList Model should return a productList model&apos;s first page" time="0.0010" classname="should return a productList model&apos;s first page">
+    </testcase>
+    <testcase name="productList Model should return a productList model with the last page of the list" time="0.0010" classname="should return a productList model with the last page of the list">
+    </testcase>
+    <testcase name="productList Model should not return private items if the view is public" time="0.0000" classname="should not return private items if the view is public">
+    </testcase>
+    <testcase name="productList Model should return productList when no firstName, no lastName, empty config and empty productListItem specified" time="0.0000" classname="should return productList when no firstName, no lastName, empty config and empty productListItem specified">
+    </testcase>
+    <testcase name="productList Model should return null when NO productList" time="0.0000" classname="should return null when NO productList">
+    </testcase>
+  </testsuite>
+  <testsuite name="productListItem Model" timestamp="2020-02-27T14:46:19" tests="7" file="C:\Github\jenkins_test\org_newbalance\test\unit\org_newbalance\models\productListItem.js" time="0.0010" failures="0">
+    <testcase name="productListItem Model should return a productListItem model with master product: for input productListItem with master product" time="0.0010" classname="should return a productListItem model with master product: for input productListItem with master product">
+    </testcase>
+    <testcase name="productListItem Model getMaxOrderQty: Should return in stock qty if in stock qty is less than default max qty" time="0.0000" classname="getMaxOrderQty: Should return in stock qty if in stock qty is less than default max qty">
+    </testcase>
+    <testcase name="productListItem Model getMaxOrderQty: Should return default max qty if in stock is greater than default max qty" time="0.0000" classname="getMaxOrderQty: Should return default max qty if in stock is greater than default max qty">
+    </testcase>
+    <testcase name="productListItem Model should return a productListItem model with NO master product: for input productListItem with NO master product" time="0.0000" classname="should return a productListItem model with NO master product: for input productListItem with NO master product">
+    </testcase>
+    <testcase name="productListItem Model should return a productListItem model with bundle product" time="0.0000" classname="should return a productListItem model with bundle product">
+    </testcase>
+    <testcase name="productListItem Model should return a productListItem model with option product:" time="0.0000" classname="should return a productListItem model with option product:">
+    </testcase>
+    <testcase name="productListItem Model should return null when NO productListItem" time="0.0000" classname="should return null when NO productListItem">
+    </testcase>
+  </testsuite>
+  <testsuite name="assets" timestamp="2020-02-27T14:46:19" tests="12" file="C:\Github\jenkins_test\org_newbalance\test\unit\org_newbalance\scripts\assets.js" time="0.0030" failures="0">
+    <testcase name="assets should add a new JavaScript file" time="0.0010" classname="should add a new JavaScript file">
+    </testcase>
+    <testcase name="assets should add a new JavaScript file with integrity hash" time="0.0000" classname="should add a new JavaScript file with integrity hash">
+    </testcase>
+    <testcase name="assets should not add a duplicate JavaScript file" time="0.0000" classname="should not add a duplicate JavaScript file">
+    </testcase>
+    <testcase name="assets should add a new external JavaScript file" time="0.0000" classname="should add a new external JavaScript file">
+    </testcase>
+    <testcase name="assets should add a new external JavaScript file with integrity hash" time="0.0000" classname="should add a new external JavaScript file with integrity hash">
+    </testcase>
+    <testcase name="assets should not add a duplicate external JavaScript file" time="0.0000" classname="should not add a duplicate external JavaScript file">
+    </testcase>
+    <testcase name="assets should add a new CSS file" time="0.0010" classname="should add a new CSS file">
+    </testcase>
+    <testcase name="assets should add a new CSS file with integrity hash" time="0.0000" classname="should add a new CSS file with integrity hash">
+    </testcase>
+    <testcase name="assets should not add a duplicate CSS file" time="0.0000" classname="should not add a duplicate CSS file">
+    </testcase>
+    <testcase name="assets should add a new external CSS file" time="0.0010" classname="should add a new external CSS file">
+    </testcase>
+    <testcase name="assets should add a new external CSS file with integrity hash" time="0.0000" classname="should add a new external CSS file with integrity hash">
+    </testcase>
+    <testcase name="assets should not add a duplicate external CSS file" time="0.0000" classname="should not add a duplicate external CSS file">
+    </testcase>
+  </testsuite>
+  <testsuite name="Product Factory" timestamp="2020-02-27T14:46:19" tests="22" file="C:\Github\jenkins_test\org_newbalance\test\unit\org_newbalance\scripts\factories\product.js" time="0.0070" failures="0">
+    <testcase name="Product Factory should return full product model for product type master" time="0.0010" classname="should return full product model for product type master">
+    </testcase>
+    <testcase name="Product Factory should return full product model for product type variant" time="0.0000" classname="should return full product model for product type variant">
+    </testcase>
+    <testcase name="Product Factory should return full product model for product type variationGroup" time="0.0000" classname="should return full product model for product type variationGroup">
+    </testcase>
+    <testcase name="Product Factory should return full product model for product type optionProduct" time="0.0000" classname="should return full product model for product type optionProduct">
+    </testcase>
+    <testcase name="Product Factory should return full product model for product type standard" time="0.0010" classname="should return full product model for product type standard">
+    </testcase>
+    <testcase name="Product Factory should return set product model for product type productSet" time="0.0000" classname="should return set product model for product type productSet">
+    </testcase>
+    <testcase name="Product Factory should return bundle product model for product type bundle" time="0.0000" classname="should return bundle product model for product type bundle">
+    </testcase>
+    <testcase name="Product Factory should return empty product model for invalid productid" time="0.0000" classname="should return empty product model for invalid productid">
+    </testcase>
+    <testcase name="Product Factory should return full product model for product type master with variables and variation model type master" time="0.0000" classname="should return full product model for product type master with variables and variation model type master">
+    </testcase>
+    <testcase name="Product Factory should return full product model for product type master with variables" time="0.0010" classname="should return full product model for product type master with variables">
+    </testcase>
+    <testcase name="Product Factory should return full product model for product type master without variables" time="0.0000" classname="should return full product model for product type master without variables">
+    </testcase>
+    <testcase name="Product Factory should return product tile model" time="0.0010" classname="should return product tile model">
+    </testcase>
+    <testcase name="Product Factory should return product line item model" time="0.0000" classname="should return product line item model">
+    </testcase>
+    <testcase name="Product Factory should return product line item model for a line item that has options with multiple values" time="0.0000" classname="should return product line item model for a line item that has options with multiple values">
+    </testcase>
+    <testcase name="Product Factory should return product line item model for a line item that has options" time="0.0010" classname="should return product line item model for a line item that has options">
+    </testcase>
+    <testcase name="Product Factory should return product line item model for a line item that has options" time="0.0000" classname="should return product line item model for a line item that has options">
+    </testcase>
+    <testcase name="Product Factory should return product line item model when variables are present and lineItem has no options " time="0.0000" classname="should return product line item model when variables are present and lineItem has no options ">
+    </testcase>
+    <testcase name="Product Factory should return bundle line item model" time="0.0000" classname="should return bundle line item model">
+    </testcase>
+    <testcase name="Product Factory should return bonus product line item model" time="0.0000" classname="should return bonus product line item model">
+    </testcase>
+    <testcase name="Product Factory should return bonus product line item model for a bonus line item that has options" time="0.0010" classname="should return bonus product line item model for a bonus line item that has options">
+    </testcase>
+    <testcase name="Product Factory should return bonus product line item model when variables are present and bonus line item has no options " time="0.0000" classname="should return bonus product line item model when variables are present and bonus line item has no options ">
+    </testcase>
+    <testcase name="Product Factory should return bonus product model for product type master" time="0.0010" classname="should return bonus product model for product type master">
+    </testcase>
+  </testsuite>
+  <testsuite name="Call hook" timestamp="2020-02-27T14:46:19" tests="5" file="C:\Github\jenkins_test\org_newbalance\test\unit\org_newbalance\scripts\helpers\hooks.js" time="0.0060" failures="0">
+    <testcase name="Call hook should call hook fallback with single argument" time="0.0000" classname="should call hook fallback with single argument">
+    </testcase>
+    <testcase name="Call hook should call hook fallback with array argument" time="0.0010" classname="should call hook fallback with array argument">
+    </testcase>
+    <testcase name="Call hook should call hook fallback with multiple arguments" time="0.0000" classname="should call hook fallback with multiple arguments">
+    </testcase>
+    <testcase name="Call hook should call hook without parameter" time="0.0030" classname="should call hook without parameter">
+    </testcase>
+    <testcase name="Call hook should call hook with parameters" time="0.0020" classname="should call hook with parameters">
+    </testcase>
+  </testsuite>
+  <testsuite name="Helpers - URL" timestamp="2020-02-27T14:46:19" tests="0" file="C:\Github\jenkins_test\org_newbalance\test\unit\org_newbalance\scripts\helpers\urlHelpers.js" time="0.0000" failures="0">
+  </testsuite>
+  <testsuite name="appendQueryParams() function" timestamp="2020-02-27T14:46:19" tests="3" file="C:\Github\jenkins_test\org_newbalance\test\unit\org_newbalance\scripts\helpers\urlHelpers.js" time="0.0020" failures="0">
+    <testcase name="Helpers - URL appendQueryParams() function should append an object&apos;s key/value pairs to a provided url" time="0.0010" classname="should append an object&apos;s key/value pairs to a provided url">
+    </testcase>
+    <testcase name="Helpers - URL appendQueryParams() function should append a list of query strings to a provided url" time="0.0010" classname="should append a list of query strings to a provided url">
+    </testcase>
+    <testcase name="Helpers - URL appendQueryParams() function should assign a query param to blank if value falsy to a provided url" time="0.0000" classname="should assign a query param to blank if value falsy to a provided url">
+    </testcase>
+  </testsuite>
+  <testsuite name="fraud detection hook" timestamp="2020-02-27T14:46:19" tests="1" file="C:\Github\jenkins_test\org_newbalance\test\unit\org_newbalance\scripts\hooks\fraudDetection.js" time="0.0020" failures="1">
+    <testcase name="fraud detection hook should return a success object" time="0.0020" classname="should return a success object">
+      <failure message="expected &apos;success&apos; to equal &apos;succes&apos;" type="AssertionError"><![CDATA[AssertionError: expected 'success' to equal 'succes'
+    at Context.<anonymous> (test\unit\org_newbalance\scripts\hooks\fraudDetection.js:11:16)
+    at processImmediate (internal/timers.js:439:21)]]></failure>
+    </testcase>
+  </testsuite>
+  <testsuite name="validate order" timestamp="2020-02-27T14:46:19" tests="9" file="C:\Github\jenkins_test\org_newbalance\test\unit\org_newbalance\scripts\hooks\validateOrder.js" time="0.0010" failures="0">
+    <testcase name="validate order should validate a valid basket" time="0.0010" classname="should validate a valid basket">
+    </testcase>
+    <testcase name="validate order should invalidate a null basket" time="0.0000" classname="should invalidate a null basket">
+    </testcase>
+    <testcase name="validate order should invalidate a basket without total tax" time="0.0000" classname="should invalidate a basket without total tax">
+    </testcase>
+    <testcase name="validate order should invalidate a basket with merchandize Total Price not available" time="0.0000" classname="should invalidate a basket with merchandize Total Price not available">
+    </testcase>
+    <testcase name="validate order should invalidate a basket when product not online" time="0.0000" classname="should invalidate a basket when product not online">
+    </testcase>
+    <testcase name="validate order should validate a basket when product has inStore inventory" time="0.0000" classname="should validate a basket when product has inStore inventory">
+    </testcase>
+    <testcase name="validate order should invalidate a basket with invalid coupons" time="0.0000" classname="should invalidate a basket with invalid coupons">
+    </testcase>
+    <testcase name="validate order should invalidate a basket with no productLineItems" time="0.0000" classname="should invalidate a basket with no productLineItems">
+    </testcase>
+    <testcase name="validate order should invalidate a basket with incomplete shipping address" time="0.0000" classname="should invalidate a basket with incomplete shipping address">
+    </testcase>
+  </testsuite>
+</testsuites>
