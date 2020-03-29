@@ -14,7 +14,7 @@ public class CodeClimateTransformerTest {
   @Test
   public void testThatViolationsCanBeTransformed() {
     final String description = "asdasd";
-    final String fingerprint = "cbff4965bd806607e1d6c861a530c52ef51dbc268d0e79291df3bdf4fd66847c";
+    final String fingerprint = "bd32817c5f595be914cf1d765fe0c3ac53cb6ec4648fc27e9d2529fbb9fa8af5";
     final Integer begin = 123;
     final String path = "/whatever/path.c";
     final List<CodeClimate> transformed =

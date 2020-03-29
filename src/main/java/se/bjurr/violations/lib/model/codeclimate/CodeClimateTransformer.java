@@ -48,7 +48,18 @@ public class CodeClimateTransformer {
     } catch (final NoSuchAlgorithmException e) {
       return "No Hash: " + e.getMessage();
     }
-    final byte[] encodedhash = digest.digest(v.toString().getBytes(StandardCharsets.UTF_8));
+    String fingerprintString =
+        v.getColumn()
+            + v.getFile()
+            + v.getMessage()
+            + v.getParser()
+            + v.getReporter()
+            + v.getRule()
+            + v.getCategory()
+            + v.getSeverity()
+            + v.getSource()
+            + v.getGroup();
+    final byte[] encodedhash = digest.digest(fingerprintString.getBytes(StandardCharsets.UTF_8));
     final StringBuffer hexString = new StringBuffer();
     for (final byte element : encodedhash) {
       final String hex = Integer.toHexString(0xff & element);

@@ -3,6 +3,15 @@
 
 Changelog of Violations lib.
 
+## Unreleased
+### GitHub [#1](https://github.com/tomasbjerre/violations-lib/pull/1) This is just a test...  
+
+**Not including lines in codeclimate fingerprint tomasbjerre/violations-maven-plugin**
+
+
+[3c3dd0ccb1d23e9](https://github.com/tomasbjerre/violations-lib/commit/3c3dd0ccb1d23e9) Tomas Bjerre *2020-03-29 14:07:28*
+
+
 ## 1.112
 ### No issue
 
