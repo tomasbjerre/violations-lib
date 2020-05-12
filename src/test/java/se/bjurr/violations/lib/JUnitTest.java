@@ -78,8 +78,7 @@ public class JUnitTest {
 
     final List<Violation> actual =
         violationsApi() //
-            .withPattern(
-                ".*/junit/TESTS-TestSuites\\.xml$") //
+            .withPattern(".*/junit/TESTS-TestSuites\\.xml$") //
             .inFolder(rootFolder) //
             .findAll(JUNIT) //
             .violations();
@@ -92,7 +91,7 @@ public class JUnitTest {
     assertThat(actual.get(0).getFile()) //
         .isEqualTo("ch/bdna/tsm/service/PollingServiceTest.java");
     assertThat(actual.get(0).getMessage()) //
-    .isEqualTo("testServices : Missing CPU value");
+        .isEqualTo("testServices : Missing CPU value");
     assertThat(actual.get(0).getSeverity()) //
         .isEqualTo(ERROR);
   }
