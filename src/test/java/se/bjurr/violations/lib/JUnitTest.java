@@ -71,4 +71,29 @@ public class JUnitTest {
     assertThat(actual.get(0).getSeverity()) //
         .isEqualTo(ERROR);
   }
+
+  @Test
+  public void testThatViolationsCanBeParsedFromJunit3() {
+    final String rootFolder = getRootFolder();
+
+    final List<Violation> actual =
+        violationsApi() //
+            .withPattern(
+                ".*/junit/TESTS-TestSuites\\.xml$") //
+            .inFolder(rootFolder) //
+            .findAll(JUNIT) //
+            .violations();
+
+    assertThat(actual) //
+        .hasSize(2);
+
+    assertThat(actual.get(0).getSource()) //
+        .isEqualTo("ch.bdna.tsm.service.PollingServiceTest");
+    assertThat(actual.get(0).getFile()) //
+        .isEqualTo("ch/bdna/tsm/service/PollingServiceTest.java");
+    assertThat(actual.get(0).getMessage()) //
+    .isEqualTo("testServices : Missing CPU value");
+    assertThat(actual.get(0).getSeverity()) //
+        .isEqualTo(ERROR);
+  }
 }

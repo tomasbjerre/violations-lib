@@ -30,12 +30,12 @@ public final class ViolationParserUtils {
   }
 
   public static Optional<String> findAttribute(final String in, final String attribute) {
-    Pattern pattern = Pattern.compile(attribute + "='([^']+?)'");
+    Pattern pattern = Pattern.compile("[\\s<^]"+attribute + "='([^']+?)'");
     Matcher matcher = pattern.matcher(in);
     if (matcher.find()) {
       return ofNullable(xmlDecode(matcher.group(1)));
     }
-    pattern = Pattern.compile(attribute + "=\"([^\"]+?)\"");
+    pattern = Pattern.compile("[\\s<^]"+attribute + "=\"([^\"]+?)\"");
     matcher = pattern.matcher(in);
     if (matcher.find()) {
       return ofNullable(xmlDecode(matcher.group(1)));

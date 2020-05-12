@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<testsuites>
+  <testsuite errors="0" failures="1" hostname="CH-BDNA-003" id="1" name="PollingServiceTest" package="ch.bdna.tsm.service" skipped="0" tests="1" time="0.197" timestamp="2020-05-12T13:49:43">
+      <properties>
+<!-- properties removed since they are not relevant -->
+      </properties>
+      <testcase classname="ch.bdna.tsm.service.PollingServiceTest" name="testServices" time="0.094">
+          <failure message="Missing CPU value" type="junit.framework.AssertionFailedError">junit.framework.AssertionFailedError: Missing CPU value
+	at ch.bdna.tsm.service.PollingServiceTest.testServices(PollingServiceTest.java:22)
+</failure>
+
+      </testcase>
+
+      <system-out><![CDATA[]]></system-out>
+
+      <system-err><![CDATA[]]></system-err>
+
+  </testsuite>
+  <testsuite errors="0" failures="1" hostname="CH-BDNA-003" id="2" name="ResourceServiceTest" package="ch.bdna.tsm.service" skipped="0" tests="1" time="0.994" timestamp="2020-05-12T13:49:44">
+      <properties>
+<!-- properties removed since they are not relevant -->
+      </properties>
+
+      <testcase classname="ch.bdna.tsm.service.ResourceServiceTest" name="testService" time="0.889">
+          <failure message="expected:&lt;1&gt; but was:&lt;7&gt;" type="junit.framework.AssertionFailedError">junit.framework.AssertionFailedError: expected:&lt;1&gt; but was:&lt;7&gt;
+	at ch.bdna.tsm.service.ResourceServiceTest.testService(ResourceServiceTest.java:40)
+</failure>
+
+      </testcase>
+
+      <system-out><![CDATA[Hibernate: insert into StaticSystemInformationDO (cpuBaseSpeed, cpuCores, cpuName, cpuThreads, cpuType, domainName, hostName, javaVersion, osVersion, ramMaxSpeed, ramTotal, ramVmMax, ramVmTotal, systemType, TS) values (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+Hibernate: insert into StaticSystemInformationDO (cpuBaseSpeed, cpuCores, cpuName, cpuThreads, cpuType, domainName, hostName, javaVersion, osVersion, ramMaxSpeed, ramTotal, ramVmMax, ramVmTotal, systemType, TS) values (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+Hibernate: select this_.TS as TS1_3_0_, this_.cpuBaseSpeed as cpuBaseS2_3_0_, this_.cpuCores as cpuCores3_3_0_, this_.cpuName as cpuName4_3_0_, this_.cpuThreads as cpuThrea5_3_0_, this_.cpuType as cpuType6_3_0_, this_.domainName as domainNa7_3_0_, this_.hostName as hostName8_3_0_, this_.javaVersion as javaVers9_3_0_, this_.osVersion as osVersi10_3_0_, this_.ramMaxSpeed as ramMaxS11_3_0_, this_.ramTotal as ramTota12_3_0_, this_.ramVmMax as ramVmMa13_3_0_, this_.ramVmTotal as ramVmTo14_3_0_, this_.systemType as systemT15_3_0_ from StaticSystemInformationDO this_
+Hibernate: select staticsyst_.TS, staticsyst_.cpuBaseSpeed as cpuBaseS2_3_, staticsyst_.cpuCores as cpuCores3_3_, staticsyst_.cpuName as cpuName4_3_, staticsyst_.cpuThreads as cpuThrea5_3_, staticsyst_.cpuType as cpuType6_3_, staticsyst_.domainName as domainNa7_3_, staticsyst_.hostName as hostName8_3_, staticsyst_.javaVersion as javaVers9_3_, staticsyst_.osVersion as osVersi10_3_, staticsyst_.ramMaxSpeed as ramMaxS11_3_, staticsyst_.ramTotal as ramTota12_3_, staticsyst_.ramVmMax as ramVmMa13_3_, staticsyst_.ramVmTotal as ramVmTo14_3_, staticsyst_.systemType as systemT15_3_ from StaticSystemInformationDO staticsyst_ where staticsyst_.TS=?
+Hibernate: delete from StaticSystemInformationDO where TS=?
+Hibernate: select this_.TS as TS1_3_0_, this_.cpuBaseSpeed as cpuBaseS2_3_0_, this_.cpuCores as cpuCores3_3_0_, this_.cpuName as cpuName4_3_0_, this_.cpuThreads as cpuThrea5_3_0_, this_.cpuType as cpuType6_3_0_, this_.domainName as domainNa7_3_0_, this_.hostName as hostName8_3_0_, this_.javaVersion as javaVers9_3_0_, this_.osVersion as osVersi10_3_0_, this_.ramMaxSpeed as ramMaxS11_3_0_, this_.ramTotal as ramTota12_3_0_, this_.ramVmMax as ramVmMa13_3_0_, this_.ramVmTotal as ramVmTo14_3_0_, this_.systemType as systemT15_3_0_ from StaticSystemInformationDO this_
+Hibernate: insert into CPUUtilizationDO (utilization, TS) values (?, ?)
+Hibernate: select this_.TS as TS1_0_0_, this_.utilization as utilizat2_0_0_ from CPUUtilizationDO this_
+]]></system-out>
+
+      <system-err><![CDATA[log4j:WARN No appenders could be found for logger (org.jboss.logging).
+log4j:WARN Please initialize the log4j system properly.
+log4j:WARN See http://logging.apache.org/log4j/1.2/faq.html#noconfig for more info.
+Mai 12, 2020 3:49:44 PM Log
+SEVERE: could not execute statement
+]]></system-err>
+
+  </testsuite>
+</testsuites>
