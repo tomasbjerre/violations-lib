@@ -191,4 +191,19 @@ public class CPPCheckTest {
     assertThat(violation3.getMessage()) //
         .isEqualTo("Variable 'that' is reassigned a value before the old one has been used.");
   }
+
+  @Test
+  public void testThatEmptyReportCanBeParsed() {
+    final String rootFolder = getRootFolder();
+
+    final List<Violation> actual =
+        violationsApi() //
+            .withPattern(".*/cppcheck/empty\\.xml$") //
+            .inFolder(rootFolder) //
+            .findAll(CPPCHECK) //
+            .violations();
+
+    assertThat(actual) //
+        .hasSize(0);
+  }
 }
