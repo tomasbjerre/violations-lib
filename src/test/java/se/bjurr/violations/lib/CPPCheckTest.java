@@ -8,6 +8,11 @@ import static se.bjurr.violations.lib.model.SEVERITY.INFO;
 import static se.bjurr.violations.lib.model.Violation.violationBuilder;
 import static se.bjurr.violations.lib.reports.Parser.CPPCHECK;
 
+import java.util.logging.Handler;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import java.util.logging.LogRecord;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
@@ -193,17 +198,39 @@ public class CPPCheckTest {
   }
 
   @Test
-  public void testThatEmptyReportCanBeParsed() {
+  public void testSelfClosingErrorTagScoping() {
+
+    List<LogRecord> severeLogEvents = new ArrayList<LogRecord>();
+    Handler logHandler = new Handler() {
+      @Override
+      public void publish(final LogRecord record) {
+        if (Level.SEVERE == record.getLevel()) {
+          severeLogEvents.add(record);
+        }
+      }
+
+      @Override
+      public void flush() {}
+
+      @Override
+      public void close() throws SecurityException {}
+    };
+    Logger.getLogger("").setLevel(Level.SEVERE);
+    Logger.getLogger("").addHandler(logHandler);
     final String rootFolder = getRootFolder();
 
     final List<Violation> actual =
         violationsApi() //
-            .withPattern(".*/cppcheck/empty\\.xml$") //
+            .withPattern(".*/cppcheck/self_closing_scope_limited\\.xml$") //
             .inFolder(rootFolder) //
             .findAll(CPPCHECK) //
             .violations();
 
-    assertThat(actual) //
+    assertThat(severeLogEvents) //
         .hasSize(0);
+    assertThat(actual) //
+        .hasSize(1);
+
+    Logger.getLogger("").removeHandler(logHandler);
   }
 }
