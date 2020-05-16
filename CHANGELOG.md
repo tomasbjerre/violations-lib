@@ -3,7 +3,7 @@
 
 Changelog of Violations lib.
 
-## Unreleased
+## 1.115
 ### GitHub [#86](https://github.com/tomasbjerre/violations-lib/issues/86) CppCheck parser errors out on translation unit with no warnings followed by self-closing XML tag  
 
 **Add better test for**
@@ -18,6 +18,11 @@ Changelog of Violations lib.
 
 
 ### No issue
+
+**Reformatting after merge**
+
+
+[c1bbc0ce5d874c0](https://github.com/tomasbjerre/violations-lib/commit/c1bbc0ce5d874c0) Tomas Bjerre *2020-05-16 16:58:22*
 
 **Make CPPCheck opening regex more specific**
 
