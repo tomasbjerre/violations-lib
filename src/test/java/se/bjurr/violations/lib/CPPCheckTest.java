@@ -8,13 +8,13 @@ import static se.bjurr.violations.lib.model.SEVERITY.INFO;
 import static se.bjurr.violations.lib.model.Violation.violationBuilder;
 import static se.bjurr.violations.lib.reports.Parser.CPPCHECK;
 
-import java.util.logging.Handler;
-import java.util.logging.Level;
-import java.util.logging.Logger;
-import java.util.logging.LogRecord;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
+import java.util.logging.Handler;
+import java.util.logging.Level;
+import java.util.logging.LogRecord;
+import java.util.logging.Logger;
 import java.util.stream.Collectors;
 import org.junit.Test;
 import se.bjurr.violations.lib.model.Violation;
@@ -201,20 +201,21 @@ public class CPPCheckTest {
   public void testSelfClosingErrorTagScoping() {
 
     List<LogRecord> severeLogEvents = new ArrayList<LogRecord>();
-    Handler logHandler = new Handler() {
-      @Override
-      public void publish(final LogRecord record) {
-        if (Level.SEVERE == record.getLevel()) {
-          severeLogEvents.add(record);
-        }
-      }
+    Handler logHandler =
+        new Handler() {
+          @Override
+          public void publish(final LogRecord record) {
+            if (Level.SEVERE == record.getLevel()) {
+              severeLogEvents.add(record);
+            }
+          }
 
-      @Override
-      public void flush() {}
+          @Override
+          public void flush() {}
 
-      @Override
-      public void close() throws SecurityException {}
-    };
+          @Override
+          public void close() throws SecurityException {}
+        };
     Logger.getLogger("").setLevel(Level.SEVERE);
     Logger.getLogger("").addHandler(logHandler);
     final String rootFolder = getRootFolder();
