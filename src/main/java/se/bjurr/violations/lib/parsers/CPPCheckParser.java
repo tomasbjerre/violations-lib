@@ -21,7 +21,7 @@ public class CPPCheckParser implements ViolationsParser {
   @Override
   public List<Violation> parseReportOutput(final String string) throws Exception {
     final List<Violation> violations = new ArrayList<>();
-    final List<String> errorChunks = getChunks(string, "<error", "</error>");
+    final List<String> errorChunks = getChunks(string, "<error ", "</error>");
     for (int errorIndex = 0; errorIndex < errorChunks.size(); errorIndex++) {
       final String errorChunk = errorChunks.get(errorIndex);
       final String severity = getAttribute(errorChunk, "severity");
@@ -49,7 +49,7 @@ public class CPPCheckParser implements ViolationsParser {
       }
     }
 
-    final List<String> errorChunksNoEndtag = getChunks(string, "<error", "\\/>");
+    final List<String> errorChunksNoEndtag = getChunks(string, "<error ", "\\/>");
     for (int errorIndex = 0; errorIndex < errorChunksNoEndtag.size(); errorIndex++) {
       final String errorChunk = errorChunksNoEndtag.get(errorIndex);
       final String severity = getAttribute(errorChunk, "severity");
