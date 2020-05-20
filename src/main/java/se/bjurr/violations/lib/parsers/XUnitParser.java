@@ -13,10 +13,10 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import javax.xml.stream.XMLInputFactory;
 import javax.xml.stream.XMLStreamConstants;
 import javax.xml.stream.XMLStreamReader;
 import se.bjurr.violations.lib.model.Violation;
+import se.bjurr.violations.lib.util.ViolationParserUtils;
 
 public class XUnitParser implements ViolationsParser {
 
@@ -24,8 +24,7 @@ public class XUnitParser implements ViolationsParser {
   public List<Violation> parseReportOutput(String string) throws Exception {
     final List<Violation> violations = new ArrayList<>();
     try (InputStream input = new ByteArrayInputStream(string.getBytes(UTF_8))) {
-      final XMLInputFactory factory = XMLInputFactory.newInstance();
-      final XMLStreamReader xmlr = factory.createXMLStreamReader(input);
+      final XMLStreamReader xmlr = ViolationParserUtils.createXmlReader(input);
       Map<String, String> specifics = new HashMap<>();
       String testSuiteName = null;
       String file = null;
@@ -36,18 +35,16 @@ public class XUnitParser implements ViolationsParser {
       while (xmlr.hasNext()) {
         final int eventType = xmlr.next();
         if (eventType == XMLStreamConstants.START_ELEMENT) {
-          if (eventType == XMLStreamConstants.START_ELEMENT) {
-            if (xmlr.getLocalName().equalsIgnoreCase("testsuite")) {
-              prevLocalName = xmlr.getLocalName();
-              Integer failures = findIntegerAttribute(xmlr, "failures").orElse(-1);
-              Integer errors = findIntegerAttribute(xmlr, "errors").orElse(-1);
-              Integer tests = findIntegerAttribute(xmlr, "tests").orElse(-1);
-              testSuiteName = findAttribute(xmlr, "name").orElse("");
-              file = findAttribute(xmlr, "file").orElse("");
-              specifics.put("tests", tests.toString());
-              specifics.put("errors", errors.toString());
-              specifics.put("failures", failures.toString());
-            }
+          if (xmlr.getLocalName().equalsIgnoreCase("testsuite")) {
+            prevLocalName = xmlr.getLocalName();
+            Integer failures = findIntegerAttribute(xmlr, "failures").orElse(-1);
+            Integer errors = findIntegerAttribute(xmlr, "errors").orElse(-1);
+            Integer tests = findIntegerAttribute(xmlr, "tests").orElse(-1);
+            testSuiteName = findAttribute(xmlr, "name").orElse("");
+            file = findAttribute(xmlr, "file").orElse("");
+            specifics.put("tests", tests.toString());
+            specifics.put("errors", errors.toString());
+            specifics.put("failures", failures.toString());
           }
         }
 

@@ -6,7 +6,7 @@ import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
 import java.net.URL;
-import java.nio.charset.Charset;
+import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.util.Arrays;
 import java.util.Comparator;
@@ -54,7 +54,8 @@ public class Utils {
 
   @SuppressWarnings("resource")
   public static String toString(final InputStream inputStream) throws IOException {
-    final Scanner scanner = new Scanner(inputStream, "UTF-8").useDelimiter("\\A");
+    final Scanner scanner =
+        new Scanner(inputStream, StandardCharsets.UTF_8.displayName()).useDelimiter("\\A");
     final String result = scanner.hasNext() ? scanner.next() : "";
     scanner.close();
     inputStream.close();
@@ -96,7 +97,7 @@ public class Utils {
     }
 
     File readmeFile = findReadmeFile(new File("."));
-    String content = new String(Files.readAllBytes(readmeFile.toPath()), Charset.forName("UTF-8"));
+    String content = new String(Files.readAllBytes(readmeFile.toPath()), StandardCharsets.UTF_8);
     final String beginPart = "| Reporter | Parser | Notes";
     final String endPart =
         "Missing a format? Open an issue [here](https://github.com/tomasbjerre/violations-lib/issues)!";
@@ -116,7 +117,7 @@ public class Utils {
     final String reportersPart = reporters.trim();
     String newContent = beforePart + "\n| --- | --- | ---\n" + reportersPart + "\n\n" + afterPart;
 
-    Files.write(readmeFile.toPath(), newContent.getBytes(Charset.forName("UTF-8")));
+    Files.write(readmeFile.toPath(), newContent.getBytes(StandardCharsets.UTF_8));
   }
 
   public static File findReadmeFile(File file) {

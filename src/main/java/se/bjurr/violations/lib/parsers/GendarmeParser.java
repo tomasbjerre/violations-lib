@@ -10,14 +10,15 @@ import static se.bjurr.violations.lib.util.ViolationParserUtils.getAttribute;
 
 import java.io.ByteArrayInputStream;
 import java.io.InputStream;
+import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
-import javax.xml.stream.XMLInputFactory;
 import javax.xml.stream.XMLStreamReader;
 import se.bjurr.violations.lib.model.SEVERITY;
 import se.bjurr.violations.lib.model.Violation;
+import se.bjurr.violations.lib.util.ViolationParserUtils;
 
 public class GendarmeParser implements ViolationsParser {
 
@@ -38,10 +39,9 @@ public class GendarmeParser implements ViolationsParser {
   public List<Violation> parseReportOutput(String string) throws Exception {
     final List<Violation> violations = new ArrayList<>();
 
-    try (InputStream input = new ByteArrayInputStream(string.getBytes("UTF-8"))) {
+    try (InputStream input = new ByteArrayInputStream(string.getBytes(StandardCharsets.UTF_8))) {
 
-      final XMLInputFactory factory = XMLInputFactory.newInstance();
-      final XMLStreamReader xmlr = factory.createXMLStreamReader(input);
+      final XMLStreamReader xmlr = ViolationParserUtils.createXmlReader(input);
 
       String name = null;
       String problem = null;

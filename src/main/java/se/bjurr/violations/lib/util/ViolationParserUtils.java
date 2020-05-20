@@ -7,6 +7,7 @@ import static java.util.regex.Pattern.DOTALL;
 import static java.util.regex.Pattern.quote;
 import static se.bjurr.violations.lib.util.StringUtils.xmlDecode;
 
+import java.io.InputStream;
 import java.io.StringWriter;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -14,16 +15,24 @@ import java.util.List;
 import java.util.Optional;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
+import javax.xml.XMLConstants;
+import javax.xml.stream.XMLInputFactory;
+import javax.xml.stream.XMLStreamException;
 import javax.xml.stream.XMLStreamReader;
+import javax.xml.transform.OutputKeys;
 import javax.xml.transform.Transformer;
+import javax.xml.transform.TransformerConfigurationException;
 import javax.xml.transform.TransformerFactory;
+import javax.xml.transform.TransformerFactoryConfigurationError;
 import javax.xml.transform.stax.StAXSource;
 import javax.xml.transform.stream.StreamResult;
 
 public final class ViolationParserUtils {
 
+  private ViolationParserUtils() {}
+
   public static String asString(final XMLStreamReader xmlr) throws Exception {
-    final Transformer transformer = TransformerFactory.newInstance().newTransformer();
+    final Transformer transformer = createTranformer();
     final StringWriter stringWriter = new StringWriter();
     transformer.transform(new StAXSource(xmlr), new StreamResult(stringWriter));
     return stringWriter.toString();
@@ -177,5 +186,20 @@ public final class ViolationParserUtils {
     return parts;
   }
 
-  private ViolationParserUtils() {}
+  private static Transformer createTranformer()
+      throws TransformerFactoryConfigurationError, TransformerConfigurationException {
+    TransformerFactory factory = TransformerFactory.newInstance();
+    factory.setAttribute(XMLConstants.ACCESS_EXTERNAL_DTD, "");
+    factory.setAttribute(XMLConstants.ACCESS_EXTERNAL_STYLESHEET, "");
+    final Transformer transformer = factory.newTransformer();
+    transformer.setOutputProperty(OutputKeys.INDENT, "yes");
+    return transformer;
+  }
+
+  public static XMLStreamReader createXmlReader(InputStream input) throws XMLStreamException {
+    final XMLInputFactory factory = XMLInputFactory.newInstance();
+    factory.setProperty(XMLInputFactory.SUPPORT_DTD, false);
+    final XMLStreamReader xmlr = factory.createXMLStreamReader(input);
+    return xmlr;
+  }
 }

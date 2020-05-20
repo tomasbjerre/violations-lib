@@ -14,19 +14,20 @@ import java.io.ByteArrayInputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.net.URL;
+import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Optional;
 import java.util.logging.Logger;
-import javax.xml.stream.XMLInputFactory;
 import javax.xml.stream.XMLStreamConstants;
 import javax.xml.stream.XMLStreamException;
 import javax.xml.stream.XMLStreamReader;
 import se.bjurr.violations.lib.model.SEVERITY;
 import se.bjurr.violations.lib.model.Violation;
 import se.bjurr.violations.lib.util.Utils;
+import se.bjurr.violations.lib.util.ViolationParserUtils;
 
 public class FindbugsParser implements ViolationsParser {
   private static Logger LOG = Logger.getLogger(FindbugsParser.class.getSimpleName());
@@ -125,11 +126,9 @@ public class FindbugsParser implements ViolationsParser {
     final List<Violation> violations = new ArrayList<>();
     final Map<String, String> messagesPerType = getMessagesPerType();
 
-    try (InputStream input = new ByteArrayInputStream(string.getBytes("UTF-8"))) {
+    try (InputStream input = new ByteArrayInputStream(string.getBytes(StandardCharsets.UTF_8))) {
 
-      final XMLInputFactory factory = XMLInputFactory.newInstance();
-      final XMLStreamReader xmlr = factory.createXMLStreamReader(input);
-
+      XMLStreamReader xmlr = ViolationParserUtils.createXmlReader(input);
       while (xmlr.hasNext()) {
         final int eventType = xmlr.next();
         if (eventType == XMLStreamConstants.START_ELEMENT) {

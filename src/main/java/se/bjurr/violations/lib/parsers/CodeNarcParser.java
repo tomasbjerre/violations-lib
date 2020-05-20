@@ -12,15 +12,16 @@ import static se.bjurr.violations.lib.util.ViolationParserUtils.getIntegerAttrib
 import java.io.ByteArrayInputStream;
 import java.io.IOException;
 import java.io.InputStream;
+import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import javax.xml.stream.XMLInputFactory;
 import javax.xml.stream.XMLStreamException;
 import javax.xml.stream.XMLStreamReader;
 import se.bjurr.violations.lib.model.SEVERITY;
 import se.bjurr.violations.lib.model.Violation;
+import se.bjurr.violations.lib.util.ViolationParserUtils;
 
 public class CodeNarcParser implements ViolationsParser {
 
@@ -42,10 +43,9 @@ public class CodeNarcParser implements ViolationsParser {
 
     final String sourceDirectory = getSourceDirectory(string);
 
-    try (InputStream input = new ByteArrayInputStream(string.getBytes("UTF-8"))) {
+    try (InputStream input = new ByteArrayInputStream(string.getBytes(StandardCharsets.UTF_8))) {
 
-      final XMLInputFactory factory = XMLInputFactory.newInstance();
-      final XMLStreamReader xmlr = factory.createXMLStreamReader(input);
+      final XMLStreamReader xmlr = ViolationParserUtils.createXmlReader(input);
 
       String path = null;
       String name = null;
@@ -97,9 +97,8 @@ public class CodeNarcParser implements ViolationsParser {
   }
 
   private String getSourceDirectory(final String string) throws Exception {
-    try (InputStream input = new ByteArrayInputStream(string.getBytes("UTF-8"))) {
-      final XMLInputFactory factory = XMLInputFactory.newInstance();
-      final XMLStreamReader xmlr = factory.createXMLStreamReader(input);
+    try (InputStream input = new ByteArrayInputStream(string.getBytes(StandardCharsets.UTF_8))) {
+      final XMLStreamReader xmlr = ViolationParserUtils.createXmlReader(input);
       while (xmlr.hasNext()) {
         final int eventType = xmlr.next();
         if (eventType == START_ELEMENT) {
@@ -114,9 +113,8 @@ public class CodeNarcParser implements ViolationsParser {
 
   private Map<String, String> getRules(final String string) throws IOException, XMLStreamException {
     final Map<String, String> rules = new HashMap<>();
-    try (InputStream input = new ByteArrayInputStream(string.getBytes("UTF-8"))) {
-      final XMLInputFactory factory = XMLInputFactory.newInstance();
-      final XMLStreamReader xmlr = factory.createXMLStreamReader(input);
+    try (InputStream input = new ByteArrayInputStream(string.getBytes(StandardCharsets.UTF_8))) {
+      final XMLStreamReader xmlr = ViolationParserUtils.createXmlReader(input);
       String name = null;
       String description = null;
       while (xmlr.hasNext()) {

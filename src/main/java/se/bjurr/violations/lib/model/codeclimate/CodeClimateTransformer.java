@@ -62,12 +62,12 @@ public class CodeClimateTransformer {
     final byte[] encodedhash = digest.digest(fingerprintString.getBytes(StandardCharsets.UTF_8));
     final StringBuffer hexString = new StringBuffer();
     for (final byte element : encodedhash) {
-      final String hex = Integer.toHexString(0xff & element);
+      final String hex = String.format("%02X", element);
       if (hex.length() == 1) {
         hexString.append('0');
       }
       hexString.append(hex);
     }
-    return hexString.toString();
+    return hexString.toString().toLowerCase();
   }
 }
