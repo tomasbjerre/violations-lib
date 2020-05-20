@@ -3,6 +3,15 @@
 
 Changelog of Violations lib.
 
+## 1.116
+### No issue
+
+**Fixing SECURITY-1854**
+
+
+[b100cdb54e18cae](https://github.com/tomasbjerre/violations-lib/commit/b100cdb54e18cae) Tomas Bjerre *2020-05-20 14:42:04*
+
+
 ## 1.115
 ### GitHub [#86](https://github.com/tomasbjerre/violations-lib/issues/86) CppCheck parser errors out on translation unit with no warnings followed by self-closing XML tag  
 
