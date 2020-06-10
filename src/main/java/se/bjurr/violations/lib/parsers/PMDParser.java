@@ -31,6 +31,7 @@ public class PMDParser implements ViolationsParser {
         final Integer beginLine = getIntegerAttribute(violationChunk, "beginline");
         final Integer endLine = getIntegerAttribute(violationChunk, "endline");
         final Optional<Integer> beginColumn = findIntegerAttribute(violationChunk, "begincolumn");
+        final Optional<Integer> endColumn = findIntegerAttribute(violationChunk, "endcolumn");
         final String rule = getAttribute(violationChunk, "rule").trim();
         final Optional<String> ruleSetOpt = findAttribute(violationChunk, "ruleset");
         final Optional<String> externalInfoUrlOpt =
@@ -46,6 +47,7 @@ public class PMDParser implements ViolationsParser {
                 .setStartLine(beginLine) //
                 .setEndLine(endLine) //
                 .setColumn(beginColumn.orElse(null)) //
+                .setEndColumn(endColumn.orElse(null)) //
                 .setFile(filename) //
                 .setSeverity(severity) //
                 .setRule(rule) //
