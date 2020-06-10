@@ -16,6 +16,7 @@ public class Violation implements Serializable, Comparable<Violation> {
 
     private Integer column;
     private Integer endLine;
+    private Integer endColumn;
     private String file;
     private String message;
     private Parser parser;
@@ -41,6 +42,11 @@ public class Violation implements Serializable, Comparable<Violation> {
 
     public ViolationBuilder setEndLine(final Integer endLine) {
       this.endLine = endLine;
+      return this;
+    }
+
+    public ViolationBuilder setEndColumn(final Integer endColumn) {
+      this.endColumn = endColumn;
       return this;
     }
 
@@ -118,6 +124,7 @@ public class Violation implements Serializable, Comparable<Violation> {
 
   private Integer column;
   private final Integer endLine;
+  private final Integer endColumn;
   private final String file;
   private final String message;
   /** The algorithm, the format, used. */
@@ -144,6 +151,7 @@ public class Violation implements Serializable, Comparable<Violation> {
   public Violation() {
     startLine = null;
     endLine = null;
+    endColumn = null;
     severity = null;
     message = null;
     file = null;
@@ -166,6 +174,7 @@ public class Violation implements Serializable, Comparable<Violation> {
     startLine = checkNotNull(vb.startLine, "startline");
     endLine = firstNonNull(vb.endLine, vb.startLine);
     column = vb.column;
+    endColumn = vb.endColumn;
     severity = checkNotNull(vb.severity, "severity");
     message = checkNotNull(emptyToNull(vb.message), "message");
     file = checkNotNull(emptyToNull(vb.file), "file").replaceAll("\\\\", "/");
@@ -181,6 +190,7 @@ public class Violation implements Serializable, Comparable<Violation> {
     reporter = v.reporter;
     startLine = v.startLine;
     endLine = v.endLine;
+    endColumn = v.endColumn;
     column = v.column;
     severity = v.severity;
     message = v.message;
@@ -223,6 +233,13 @@ public class Violation implements Serializable, Comparable<Violation> {
         return false;
       }
     } else if (!endLine.equals(other.endLine)) {
+      return false;
+    }
+    if (endColumn == null) {
+      if (other.endColumn != null) {
+        return false;
+      }
+    } else if (!endColumn.equals(other.endColumn)) {
       return false;
     }
     if (file == null) {
@@ -298,6 +315,10 @@ public class Violation implements Serializable, Comparable<Violation> {
     return endLine;
   }
 
+  public Integer getEndColumn() {
+    return endColumn;
+  }
+
   public String getFile() {
     return file;
   }
@@ -358,6 +379,7 @@ public class Violation implements Serializable, Comparable<Violation> {
     result = prime * result + (category == null ? 0 : category.hashCode());
     result = prime * result + (column == null ? 0 : column.hashCode());
     result = prime * result + (endLine == null ? 0 : endLine.hashCode());
+    result = prime * result + (endColumn == null ? 0 : endColumn.hashCode());
     result = prime * result + (file == null ? 0 : file.hashCode());
     result = prime * result + (group == null ? 0 : group.hashCode());
     result = prime * result + (message == null ? 0 : message.hashCode());
@@ -377,6 +399,8 @@ public class Violation implements Serializable, Comparable<Violation> {
         + column
         + ", endLine="
         + endLine
+        + ", endColumn="
+        + endColumn
         + ", file="
         + file
         + ", message="
