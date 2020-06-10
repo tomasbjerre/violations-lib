@@ -3,6 +3,7 @@ package se.bjurr.violations.lib;
 import static org.assertj.core.api.Assertions.assertThat;
 import static se.bjurr.violations.lib.TestUtils.getRootFolder;
 import static se.bjurr.violations.lib.ViolationsApi.violationsApi;
+import static se.bjurr.violations.lib.model.SEVERITY.ERROR;
 import static se.bjurr.violations.lib.model.SEVERITY.INFO;
 import static se.bjurr.violations.lib.reports.Parser.SONAR;
 
@@ -56,6 +57,28 @@ public class SonarTest {
 
     assertThat(actual) //
         .hasSize(88);
+
+    final Violation actualViolationZero = actual.get(0);
+    assertThat(actualViolationZero.getFile()) //
+        .isEqualTo("app/controllers/API.java");
+    assertThat(actualViolationZero.getStartLine()) //
+        .isEqualTo(340);
+    assertThat(actualViolationZero.getColumn()) //
+        .isEqualTo(26);
+    assertThat(actualViolationZero.getEndLine()) //
+        .isEqualTo(340);
+    assertThat(actualViolationZero.getEndColumn()) //
+        .isEqualTo(51);
+    assertThat(actualViolationZero.getMessage()) //
+        .startsWith("Use try-with-resources or close this");
+    assertThat(actualViolationZero.getReporter()) //
+        .isEqualTo(SONAR.name());
+    assertThat(actualViolationZero.getRule()) //
+        .isEqualTo("squid:S2095");
+    assertThat(actualViolationZero.getSeverity()) //
+        .isEqualTo(ERROR);
+    assertThat(actualViolationZero.getSource()) //
+        .isEqualTo("pki-middleware-sonar:app/controllers/API.java");
   }
 
   @Test
