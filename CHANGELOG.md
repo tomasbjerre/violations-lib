@@ -3,6 +3,28 @@
 
 Changelog of Violations lib.
 
+## 1.117
+### No issue
+
+**Sonar: parse endColumn**
+
+ * Signed-off-by: Semyon Levin &lt;levin.semen@gmail.com&gt; 
+
+[2fc844d71ffe6d5](https://github.com/tomasbjerre/violations-lib/commit/2fc844d71ffe6d5) Semyon Levin *2020-06-10 20:32:03*
+
+**PMD: parse endColumn**
+
+ * Signed-off-by: Semyon Levin &lt;levin.semen@gmail.com&gt; 
+
+[596e76a21cafd51](https://github.com/tomasbjerre/violations-lib/commit/596e76a21cafd51) Semyon Levin *2020-06-10 20:31:55*
+
+**Add Violation.endColumn property**
+
+ * Signed-off-by: Semyon Levin &lt;levin.semen@gmail.com&gt; 
+
+[e513933d7505021](https://github.com/tomasbjerre/violations-lib/commit/e513933d7505021) Semyon Levin *2020-06-10 20:31:38*
+
+
 ## 1.116
 ### No issue
 
