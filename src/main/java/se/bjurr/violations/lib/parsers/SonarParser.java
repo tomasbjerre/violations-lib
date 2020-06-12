@@ -20,7 +20,9 @@ public class SonarParser implements ViolationsParser {
     int line;
     SonarIssueTextRange textRange;
     Integer startLine;
+    Integer startOffset;
     Integer endLine;
+    Integer endOffset;
     String message;
     String severity;
     String rule;
@@ -77,7 +79,9 @@ public class SonarParser implements ViolationsParser {
 
   static class SonarIssueTextRange {
     int startLine;
+    int startOffset;
     int endLine;
+    int endOffset;
   }
 
   static class SonarReport {
@@ -110,7 +114,18 @@ public class SonarParser implements ViolationsParser {
         // textRange field for the
         // startLine/endLine fields.
         issue.startLine = issue.textRange.startLine;
+        issue.startOffset = issue.textRange.startOffset;
         issue.endLine = issue.textRange.endLine;
+        issue.endOffset = issue.textRange.endOffset;
+      }
+
+      Integer startColumn = null;
+      if (issue.startOffset != null) {
+        startColumn = issue.startOffset + 1;
+      }
+      Integer endColumn = null;
+      if (issue.endOffset != null) {
+        endColumn = issue.endOffset + 1;
       }
 
       if (issue.startLine == null || issue.getSeverity() == null) {
@@ -127,12 +142,14 @@ public class SonarParser implements ViolationsParser {
               .setFile(issue.getFile()) //
               .setCategory(issue.getCategory()) //
               .setEndLine(issue.endLine) //
+              .setEndColumn(endColumn) //
               .setMessage(issue.message) //
               .setParser(SONAR) //
               .setReporter(SONAR.name()) //
               .setRule(issue.rule) //
               .setSeverity(issue.getSeverity()) //
               .setStartLine(issue.startLine) //
+              .setColumn(startColumn) //
               .setSource(issue.component) //
               .build());
     }

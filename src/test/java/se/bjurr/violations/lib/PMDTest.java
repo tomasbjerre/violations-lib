@@ -35,8 +35,12 @@ public class PMDTest {
         .doesNotContain("CDATA");
     assertThat(violationZero.getStartLine()) //
         .isEqualTo(16);
+    assertThat(violationZero.getColumn()) //
+        .isEqualTo(17);
     assertThat(violationZero.getEndLine()) //
         .isEqualTo(16);
+    assertThat(violationZero.getEndColumn()) //
+        .isEqualTo(34);
     assertThat(violationZero.getRule()) //
         .isEqualTo("OverrideBothEqualsAndHashcode");
     assertThat(violationZero.getSeverity()) //
@@ -65,8 +69,12 @@ public class PMDTest {
         .doesNotContain("CDATA");
     assertThat(violationZero.getStartLine()) //
         .isEqualTo(39);
+    assertThat(violationZero.getColumn()) //
+        .isEqualTo(17);
     assertThat(violationZero.getEndLine()) //
         .isEqualTo(39);
+    assertThat(violationZero.getEndColumn()) //
+        .isEqualTo(18);
     assertThat(violationZero.getRule()) //
         .isEqualTo("RULE5");
     assertThat(violationZero.getSeverity()) //
@@ -96,8 +104,12 @@ public class PMDTest {
         .doesNotContain("CDATA");
     assertThat(violationZero.getStartLine()) //
         .isEqualTo(1);
+    assertThat(violationZero.getColumn()) //
+        .isEqualTo(1);
     assertThat(violationZero.getEndLine()) //
         .isEqualTo(149);
+    assertThat(violationZero.getEndColumn()) //
+        .isEqualTo(3);
     assertThat(violationZero.getRule()) //
         .isEqualTo("ApplicationAccessLimit");
     assertThat(violationZero.getSeverity()) //
