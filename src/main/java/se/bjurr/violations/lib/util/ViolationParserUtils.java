@@ -15,6 +15,7 @@ import java.util.List;
 import java.util.Optional;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
+
 import javax.xml.XMLConstants;
 import javax.xml.stream.XMLInputFactory;
 import javax.xml.stream.XMLStreamException;
@@ -188,7 +189,7 @@ public final class ViolationParserUtils {
 
   private static Transformer createTranformer()
       throws TransformerFactoryConfigurationError, TransformerConfigurationException {
-    TransformerFactory factory = TransformerFactory.newInstance();
+    final TransformerFactory factory = TransformerFactory.newInstance();
     factory.setAttribute(XMLConstants.ACCESS_EXTERNAL_DTD, "");
     factory.setAttribute(XMLConstants.ACCESS_EXTERNAL_STYLESHEET, "");
     final Transformer transformer = factory.newTransformer();
@@ -196,7 +197,7 @@ public final class ViolationParserUtils {
     return transformer;
   }
 
-  public static XMLStreamReader createXmlReader(InputStream input) throws XMLStreamException {
+  public static XMLStreamReader createXmlReader(final InputStream input) throws XMLStreamException {
     final XMLInputFactory factory = XMLInputFactory.newInstance();
     factory.setProperty(XMLInputFactory.SUPPORT_DTD, false);
     final XMLStreamReader xmlr = factory.createXMLStreamReader(input);
