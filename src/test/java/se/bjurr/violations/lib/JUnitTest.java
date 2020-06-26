@@ -95,4 +95,28 @@ public class JUnitTest {
     assertThat(actual.get(0).getSeverity()) //
         .isEqualTo(ERROR);
   }
+
+  @Test
+  public void testThatViolationsCanBeParsedFromJunitWithoutMessage() {
+    final String rootFolder = getRootFolder();
+
+    final List<Violation> actual =
+        violationsApi() //
+            .withPattern(".*/junit/without-message-with-type\\.xml$") //
+            .inFolder(rootFolder) //
+            .findAll(JUNIT) //
+            .violations();
+
+    assertThat(actual) //
+        .hasSize(1);
+
+    assertThat(actual.get(0).getSource()) //
+        .isEqualTo("de.tobiasmichael.me.MyTest");
+    assertThat(actual.get(0).getFile()) //
+        .isEqualTo("de/tobiasmichael/me/MyTest.java");
+    assertThat(actual.get(0).getMessage()) //
+        .isEqualTo("testConcatenate4 : org.opentest4j.AssertionFailedError");
+    assertThat(actual.get(0).getSeverity()) //
+        .isEqualTo(ERROR);
+  }
 }

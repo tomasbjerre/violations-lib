@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://maven.apache.org/surefire/maven-surefire-plugin/xsd/surefire-test-report-3.0.xsd" version="3.0" name="de.tobiasmichael.me.MyTest" time="0.091" tests="4" errors="0" skipped="0" failures="1">
+  <properties>
+    <property name="awt.toolkit" value="sun.awt.X11.XToolkit"/>
+    <property name="java.specification.version" value="1.8"/>
+    <property name="file.encoding.pkg" value="sun.io"/>
+    <property name="sun.cpu.isalist" value=""/>
+    <property name="sun.jnu.encoding" value="UTF-8"/>
+    <property name="java.class.path" value="/home/tobias/IdeaProjects/github-actions-autograding/target/test-classes:/home/tobias/IdeaProjects/github-actions-autograding/target/classes:/home/tobias/.m2/repository/edu/hm/hafner/autograding-model/0.2.0/autograding-model-0.2.0.jar:/home/tobias/.m2/repository/edu/hm/hafner/codingstyle/1.1.0/codingstyle-1.1.0.jar:/home/tobias/.m2/repository/org/apache/commons/commons-lang3/3.10/commons-lang3-3.10.jar:/home/tobias/.m2/repository/com/fasterxml/jackson/core/jackson-databind/2.10.3/jackson-databind-2.10.3.jar:/home/tobias/.m2/repository/com/fasterxml/jackson/core/jackson-annotations/2.10.3/jackson-annotations-2.10.3.jar:/home/tobias/.m2/repository/com/fasterxml/jackson/core/jackson-core/2.10.3/jackson-core-2.10.3.jar:/home/tobias/.m2/repository/edu/hm/hafner/analysis-model/8.1.3/analysis-model-8.1.3.jar:/home/tobias/.m2/repository/commons-io/commons-io/2.6/commons-io-2.6.jar:/home/tobias/.m2/repository/org/apache/commons/commons-digester3/3.2/commons-digester3-3.2.jar:/home/tobias/.m2/repository/cglib/cglib/2.2.2/cglib-2.2.2.jar:/home/tobias/.m2/repository/asm/asm/3.3.1/asm-3.3.1.jar:/home/tobias/.m2/repository/commons-beanutils/commons-beanutils/1.8.3/commons-beanutils-1.8.3.jar:/home/tobias/.m2/repository/commons-logging/commons-logging/1.1.1/commons-logging-1.1.1.jar:/home/tobias/.m2/repository/org/apache/commons/commons-text/1.8/commons-text-1.8.jar:/home/tobias/.m2/repository/org/eclipse/collections/eclipse-collections-api/9.2.0/eclipse-collections-api-9.2.0.jar:/home/tobias/.m2/repository/org/eclipse/collections/eclipse-collections/9.2.0/eclipse-collections-9.2.0.jar:/home/tobias/.m2/repository/se/bjurr/violations/violations-lib/1.116/violations-lib-1.116.jar:/home/tobias/.m2/repository/com/j2html/j2html/1.4.0/j2html-1.4.0.jar:/home/tobias/.m2/repository/org/jvnet/hudson/plugins/findbugs/library/6.0.4/library-6.0.4.jar:/home/tobias/.m2/repository/org/json/json/20190722/json-20190722.jar:/home/tobias/.m2/repository/org/slf4j/slf4j-api/1.7.30/slf4j-api-1.7.30.jar:/home/tobias/.m2/repository/org/eclipse/mylyn/github/org.eclipse.egit.github.core/2.1.5/org.eclipse.egit.github.core-2.1.5.jar:/home/tobias/.m2/repository/com/google/code/gson/gson/2.2.2/gson-2.2.2.jar:/home/tobias/.m2/repository/com/github/spotbugs/spotbugs-annotations/4.0.2/spotbugs-annotations-4.0.2.jar:/home/tobias/.m2/repository/com/google/code/findbugs/jsr305/3.0.2/jsr305-3.0.2.jar:/home/tobias/.m2/repository/com/google/errorprone/error_prone_annotations/2.3.4/error_prone_annotations-2.3.4.jar:/home/tobias/.m2/repository/org/junit/jupiter/junit-jupiter-api/5.6.2/junit-jupiter-api-5.6.2.jar:/home/tobias/.m2/repository/org/apiguardian/apiguardian-api/1.1.0/apiguardian-api-1.1.0.jar:/home/tobias/.m2/repository/org/opentest4j/opentest4j/1.2.0/opentest4j-1.2.0.jar:/home/tobias/.m2/repository/org/junit/platform/junit-platform-commons/1.6.2/junit-platform-commons-1.6.2.jar:/home/tobias/.m2/repository/org/junit/jupiter/junit-jupiter-engine/5.6.2/junit-jupiter-engine-5.6.2.jar:/home/tobias/.m2/repository/org/junit/platform/junit-platform-engine/1.6.2/junit-platform-engine-1.6.2.jar:/home/tobias/.m2/repository/org/junit/platform/junit-platform-launcher/1.6.2/junit-platform-launcher-1.6.2.jar:/home/tobias/.m2/repository/org/junit/jupiter/junit-jupiter-params/5.6.2/junit-jupiter-params-5.6.2.jar:/home/tobias/.m2/repository/org/mockito/mockito-core/3.3.3/mockito-core-3.3.3.jar:/home/tobias/.m2/repository/net/bytebuddy/byte-buddy/1.10.5/byte-buddy-1.10.5.jar:/home/tobias/.m2/repository/net/bytebuddy/byte-buddy-agent/1.10.5/byte-buddy-agent-1.10.5.jar:/home/tobias/.m2/repository/org/objenesis/objenesis/2.6/objenesis-2.6.jar:/home/tobias/.m2/repository/org/assertj/assertj-core/3.15.0/assertj-core-3.15.0.jar:/home/tobias/.m2/repository/com/tngtech/archunit/archunit-junit5-api/0.13.1/archunit-junit5-api-0.13.1.jar:/home/tobias/.m2/repository/com/tngtech/archunit/archunit/0.13.1/archunit-0.13.1.jar:/home/tobias/.m2/repository/com/tngtech/archunit/archunit-junit5-engine/0.13.1/archunit-junit5-engine-0.13.1.jar:/home/tobias/.m2/repository/com/tngtech/archunit/archunit-junit5-engine-api/0.13.1/archunit-junit5-engine-api-0.13.1.jar:"/>
+    <property name="java.vm.vendor" value="Oracle Corporation"/>
+    <property name="sun.arch.data.model" value="64"/>
+    <property name="java.vendor.url" value="http://java.oracle.com/"/>
+    <property name="user.timezone" value=""/>
+    <property name="java.vm.specification.version" value="1.8"/>
+    <property name="os.name" value="Linux"/>
+    <property name="gpg.skip" value="true"/>
+    <property name="user.country" value="US"/>
+    <property name="sun.java.launcher" value="SUN_STANDARD"/>
+    <property name="sun.boot.library.path" value="/usr/lib/jvm/java-8-openjdk/jre/lib/amd64"/>
+    <property name="sun.java.command" value="/home/tobias/IdeaProjects/github-actions-autograding/target/surefire/surefirebooter8220798414558513673.jar /home/tobias/IdeaProjects/github-actions-autograding/target/surefire 2020-06-26T00-33-17_106-jvmRun1 surefire2439073020471382683tmp surefire_04452425219793117845tmp"/>
+    <property name="surefire.test.class.path" value="/home/tobias/IdeaProjects/github-actions-autograding/target/test-classes:/home/tobias/IdeaProjects/github-actions-autograding/target/classes:/home/tobias/.m2/repository/edu/hm/hafner/autograding-model/0.2.0/autograding-model-0.2.0.jar:/home/tobias/.m2/repository/edu/hm/hafner/codingstyle/1.1.0/codingstyle-1.1.0.jar:/home/tobias/.m2/repository/org/apache/commons/commons-lang3/3.10/commons-lang3-3.10.jar:/home/tobias/.m2/repository/com/fasterxml/jackson/core/jackson-databind/2.10.3/jackson-databind-2.10.3.jar:/home/tobias/.m2/repository/com/fasterxml/jackson/core/jackson-annotations/2.10.3/jackson-annotations-2.10.3.jar:/home/tobias/.m2/repository/com/fasterxml/jackson/core/jackson-core/2.10.3/jackson-core-2.10.3.jar:/home/tobias/.m2/repository/edu/hm/hafner/analysis-model/8.1.3/analysis-model-8.1.3.jar:/home/tobias/.m2/repository/commons-io/commons-io/2.6/commons-io-2.6.jar:/home/tobias/.m2/repository/org/apache/commons/commons-digester3/3.2/commons-digester3-3.2.jar:/home/tobias/.m2/repository/cglib/cglib/2.2.2/cglib-2.2.2.jar:/home/tobias/.m2/repository/asm/asm/3.3.1/asm-3.3.1.jar:/home/tobias/.m2/repository/commons-beanutils/commons-beanutils/1.8.3/commons-beanutils-1.8.3.jar:/home/tobias/.m2/repository/commons-logging/commons-logging/1.1.1/commons-logging-1.1.1.jar:/home/tobias/.m2/repository/org/apache/commons/commons-text/1.8/commons-text-1.8.jar:/home/tobias/.m2/repository/org/eclipse/collections/eclipse-collections-api/9.2.0/eclipse-collections-api-9.2.0.jar:/home/tobias/.m2/repository/org/eclipse/collections/eclipse-collections/9.2.0/eclipse-collections-9.2.0.jar:/home/tobias/.m2/repository/se/bjurr/violations/violations-lib/1.116/violations-lib-1.116.jar:/home/tobias/.m2/repository/com/j2html/j2html/1.4.0/j2html-1.4.0.jar:/home/tobias/.m2/repository/org/jvnet/hudson/plugins/findbugs/library/6.0.4/library-6.0.4.jar:/home/tobias/.m2/repository/org/json/json/20190722/json-20190722.jar:/home/tobias/.m2/repository/org/slf4j/slf4j-api/1.7.30/slf4j-api-1.7.30.jar:/home/tobias/.m2/repository/org/eclipse/mylyn/github/org.eclipse.egit.github.core/2.1.5/org.eclipse.egit.github.core-2.1.5.jar:/home/tobias/.m2/repository/com/google/code/gson/gson/2.2.2/gson-2.2.2.jar:/home/tobias/.m2/repository/com/github/spotbugs/spotbugs-annotations/4.0.2/spotbugs-annotations-4.0.2.jar:/home/tobias/.m2/repository/com/google/code/findbugs/jsr305/3.0.2/jsr305-3.0.2.jar:/home/tobias/.m2/repository/com/google/errorprone/error_prone_annotations/2.3.4/error_prone_annotations-2.3.4.jar:/home/tobias/.m2/repository/org/junit/jupiter/junit-jupiter-api/5.6.2/junit-jupiter-api-5.6.2.jar:/home/tobias/.m2/repository/org/apiguardian/apiguardian-api/1.1.0/apiguardian-api-1.1.0.jar:/home/tobias/.m2/repository/org/opentest4j/opentest4j/1.2.0/opentest4j-1.2.0.jar:/home/tobias/.m2/repository/org/junit/platform/junit-platform-commons/1.6.2/junit-platform-commons-1.6.2.jar:/home/tobias/.m2/repository/org/junit/jupiter/junit-jupiter-engine/5.6.2/junit-jupiter-engine-5.6.2.jar:/home/tobias/.m2/repository/org/junit/platform/junit-platform-engine/1.6.2/junit-platform-engine-1.6.2.jar:/home/tobias/.m2/repository/org/junit/platform/junit-platform-launcher/1.6.2/junit-platform-launcher-1.6.2.jar:/home/tobias/.m2/repository/org/junit/jupiter/junit-jupiter-params/5.6.2/junit-jupiter-params-5.6.2.jar:/home/tobias/.m2/repository/org/mockito/mockito-core/3.3.3/mockito-core-3.3.3.jar:/home/tobias/.m2/repository/net/bytebuddy/byte-buddy/1.10.5/byte-buddy-1.10.5.jar:/home/tobias/.m2/repository/net/bytebuddy/byte-buddy-agent/1.10.5/byte-buddy-agent-1.10.5.jar:/home/tobias/.m2/repository/org/objenesis/objenesis/2.6/objenesis-2.6.jar:/home/tobias/.m2/repository/org/assertj/assertj-core/3.15.0/assertj-core-3.15.0.jar:/home/tobias/.m2/repository/com/tngtech/archunit/archunit-junit5-api/0.13.1/archunit-junit5-api-0.13.1.jar:/home/tobias/.m2/repository/com/tngtech/archunit/archunit/0.13.1/archunit-0.13.1.jar:/home/tobias/.m2/repository/com/tngtech/archunit/archunit-junit5-engine/0.13.1/archunit-junit5-engine-0.13.1.jar:/home/tobias/.m2/repository/com/tngtech/archunit/archunit-junit5-engine-api/0.13.1/archunit-junit5-engine-api-0.13.1.jar:"/>
+    <property name="sun.cpu.endian" value="little"/>
+    <property name="user.home" value="/home/tobias"/>
+    <property name="user.language" value="en"/>
+    <property name="java.specification.vendor" value="Oracle Corporation"/>
+    <property name="java.home" value="/usr/lib/jvm/java-8-openjdk/jre"/>
+    <property name="basedir" value="/home/tobias/IdeaProjects/github-actions-autograding"/>
+    <property name="file.separator" value="/"/>
+    <property name="line.separator" value="&#10;"/>
+    <property name="java.vm.specification.vendor" value="Oracle Corporation"/>
+    <property name="java.specification.name" value="Java Platform API Specification"/>
+    <property name="java.awt.graphicsenv" value="sun.awt.X11GraphicsEnvironment"/>
+    <property name="idea.version2020.1.2" value="true"/>
+    <property name="surefire.real.class.path" value="/home/tobias/IdeaProjects/github-actions-autograding/target/surefire/surefirebooter8220798414558513673.jar"/>
+    <property name="sun.boot.class.path" value="/usr/lib/jvm/java-8-openjdk/jre/lib/resources.jar:/usr/lib/jvm/java-8-openjdk/jre/lib/rt.jar:/usr/lib/jvm/java-8-openjdk/jre/lib/sunrsasign.jar:/usr/lib/jvm/java-8-openjdk/jre/lib/jsse.jar:/usr/lib/jvm/java-8-openjdk/jre/lib/jce.jar:/usr/lib/jvm/java-8-openjdk/jre/lib/charsets.jar:/usr/lib/jvm/java-8-openjdk/jre/lib/jfr.jar:/usr/lib/jvm/java-8-openjdk/jre/classes"/>
+    <property name="java.util.logging.config.file" value="logging.properties"/>
+    <property name="sun.management.compiler" value="HotSpot 64-Bit Tiered Compilers"/>
+    <property name="java.runtime.version" value="1.8.0_252-b09"/>
+    <property name="user.name" value="tobias"/>
+    <property name="path.separator" value=":"/>
+    <property name="os.version" value="5.7.4-arch1-1"/>
+    <property name="java.endorsed.dirs" value="/usr/lib/jvm/java-8-openjdk/jre/lib/endorsed"/>
+    <property name="java.runtime.name" value="OpenJDK Runtime Environment"/>
+    <property name="file.encoding" value="UTF-8"/>
+    <property name="java.vm.name" value="OpenJDK 64-Bit Server VM"/>
+    <property name="localRepository" value="/home/tobias/.m2/repository"/>
+    <property name="java.vendor.url.bug" value="http://bugreport.sun.com/bugreport/"/>
+    <property name="java.io.tmpdir" value="/tmp"/>
+    <property name="java.version" value="1.8.0_252"/>
+    <property name="user.dir" value="/home/tobias/IdeaProjects/github-actions-autograding"/>
+    <property name="os.arch" value="amd64"/>
+    <property name="java.vm.specification.name" value="Java Virtual Machine Specification"/>
+    <property name="java.awt.printerjob" value="sun.print.PSPrinterJob"/>
+    <property name="sun.os.patch.level" value="unknown"/>
+    <property name="java.library.path" value="/usr/java/packages/lib/amd64:/usr/lib64:/lib64:/lib:/usr/lib"/>
+    <property name="java.vm.info" value="mixed mode"/>
+    <property name="java.vendor" value="Oracle Corporation"/>
+    <property name="java.vm.version" value="25.252-b09"/>
+    <property name="java.ext.dirs" value="/usr/lib/jvm/java-8-openjdk/jre/lib/ext:/usr/java/packages/lib/ext"/>
+    <property name="sun.io.unicode.encoding" value="UnicodeLittle"/>
+    <property name="java.class.version" value="52.0"/>
+    <property name="maven.test.failure.ignore" value="true"/>
+  </properties>
+  <testcase name="testConcatenate1" classname="de.tobiasmichael.me.MyTest" time="0.04"/>
+  <testcase name="testConcatenate2" classname="de.tobiasmichael.me.MyTest" time="0.001"/>
+  <testcase name="testConcatenate3" classname="de.tobiasmichael.me.MyTest" time="0.002"/>
+  <testcase name="testConcatenate4" classname="de.tobiasmichael.me.MyTest" time="0.006">
+    <failure type="org.opentest4j.AssertionFailedError"><![CDATA[org.opentest4j.AssertionFailedError: expected: <onefive> but was: <onetwo>
+	at de.tobiasmichael.me.MyTest.testConcatenate4(MyTest.java:35)
+]]></failure>
+  </testcase>
+</testsuite>

@@ -1,10 +1,10 @@
 package se.bjurr.violations.lib.parsers;
 
-import static se.bjurr.violations.lib.util.ViolationParserUtils.getAttribute;
-import static se.bjurr.violations.lib.util.ViolationParserUtils.getChunks;
+import static se.bjurr.violations.lib.util.ViolationParserUtils.*;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import se.bjurr.violations.lib.model.SEVERITY;
@@ -28,7 +28,8 @@ public class JUnitParser implements ViolationsParser {
       chunks.addAll(errorChunks);
 
       for (final String failure : chunks) {
-        final String message = getAttribute(failure, "message");
+        final Optional<String> messageOpt = findAttribute(failure, "message");
+        String message = messageOpt.orElse(findAttribute(failure, "type").get());
         final String className = getAttribute(errorChunk, "classname");
         final String name = getAttribute(errorChunk, "name");
         final String type = getAttribute(errorChunk, "type");

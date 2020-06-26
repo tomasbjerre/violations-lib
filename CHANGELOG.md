@@ -3,6 +3,15 @@
 
 Changelog of Violations lib.
 
+## Unreleased
+### GitHub [#91](https://github.com/tomasbjerre/violations-lib/issues/91) Can&#39;t parse Junit5 (Jupiter) report  
+
+**Allow missing message in JUnit report**
+
+
+[746d146a17fbb80](https://github.com/tomasbjerre/violations-lib/commit/746d146a17fbb80) Tomas Bjerre *2020-06-26 16:57:33*
+
+
 ## 1.117
 ### No issue
 
