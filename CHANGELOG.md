@@ -3,6 +3,15 @@
 
 Changelog of Violations lib.
 
+## 1.120
+### No issue
+
+**New: using Set for violations everywhere, to avoid transforming with List**
+
+
+[d8c2e0c0851f8cc](https://github.com/tomasbjerre/violations-lib/commit/d8c2e0c0851f8cc) Tomas Bjerre *2020-07-05 10:32:22*
+
+
 ## 1.119
 ### No issue
 
