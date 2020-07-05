@@ -10,8 +10,8 @@ import static se.bjurr.violations.lib.util.ViolationParserUtils.getIntegerAttrib
 import java.io.ByteArrayInputStream;
 import java.io.InputStream;
 import java.nio.charset.StandardCharsets;
-import java.util.ArrayList;
-import java.util.List;
+import java.util.Set;
+import java.util.TreeSet;
 import javax.xml.stream.XMLStreamReader;
 import se.bjurr.violations.lib.ViolationsLogger;
 import se.bjurr.violations.lib.model.SEVERITY;
@@ -21,9 +21,9 @@ import se.bjurr.violations.lib.util.ViolationParserUtils;
 public class StyleCopParser implements ViolationsParser {
 
   @Override
-  public List<Violation> parseReportOutput(
+  public Set<Violation> parseReportOutput(
       final String string, final ViolationsLogger violationsLogger) throws Exception {
-    final List<Violation> violations = new ArrayList<>();
+    final Set<Violation> violations = new TreeSet<>();
 
     try (InputStream input = new ByteArrayInputStream(string.getBytes(StandardCharsets.UTF_8))) {
 

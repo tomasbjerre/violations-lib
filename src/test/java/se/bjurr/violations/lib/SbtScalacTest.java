@@ -3,11 +3,11 @@ package se.bjurr.violations.lib;
 import static org.assertj.core.api.Assertions.assertThat;
 import static se.bjurr.violations.lib.TestUtils.getRootFolder;
 import static se.bjurr.violations.lib.ViolationsApi.violationsApi;
-import static se.bjurr.violations.lib.model.SEVERITY.*;
+import static se.bjurr.violations.lib.model.SEVERITY.ERROR;
 import static se.bjurr.violations.lib.model.Violation.violationBuilder;
 import static se.bjurr.violations.lib.reports.Parser.SBTSCALAC;
 
-import java.util.List;
+import java.util.Set;
 import org.junit.Test;
 import se.bjurr.violations.lib.model.Violation;
 
@@ -17,7 +17,7 @@ public class SbtScalacTest {
   public void testThatViolationsCanBeParsed() {
     String rootFolder = getRootFolder();
 
-    List<Violation> actual =
+    Set<Violation> actual =
         violationsApi() //
             .withPattern(".*/sbtscalac/sbtscalac\\.txt$") //
             .inFolder(rootFolder) //

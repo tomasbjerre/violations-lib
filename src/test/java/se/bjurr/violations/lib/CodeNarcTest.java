@@ -7,7 +7,8 @@ import static se.bjurr.violations.lib.model.SEVERITY.INFO;
 import static se.bjurr.violations.lib.model.SEVERITY.WARN;
 import static se.bjurr.violations.lib.reports.Parser.CODENARC;
 
-import java.util.List;
+import java.util.ArrayList;
+import java.util.Set;
 import org.junit.Test;
 import se.bjurr.violations.lib.model.Violation;
 
@@ -17,7 +18,7 @@ public class CodeNarcTest {
   public void testThatViolationsCanBeParsed() {
     final String rootFolder = getRootFolder();
 
-    final List<Violation> actual =
+    final Set<Violation> actual =
         violationsApi() //
             .withPattern(".*/codenarc/CodeNarc.*\\.xml$") //
             .inFolder(rootFolder) //
@@ -27,7 +28,7 @@ public class CodeNarcTest {
     assertThat(actual) //
         .hasSize(32);
 
-    final Violation violation0 = actual.get(0);
+    final Violation violation0 = new ArrayList<>(actual).get(0);
     assertThat(violation0.getMessage()) //
         .isEqualTo("In most cases, exceptions should not be caught and ignored (swallowed).");
     assertThat(violation0.getFile()) //
@@ -41,7 +42,7 @@ public class CodeNarcTest {
     assertThat(violation0.getEndLine()) //
         .isEqualTo(192);
 
-    assertThat(actual.get(2).getMessage()) //
+    assertThat(new ArrayList<>(actual).get(2).getMessage()) //
         .isEqualTo("Checks for throwing an instance of java.lang.Exception.");
   }
 
@@ -49,7 +50,7 @@ public class CodeNarcTest {
   public void testThatViolationsCanBeParsed2() {
     final String rootFolder = getRootFolder();
 
-    final List<Violation> actual =
+    final Set<Violation> actual =
         violationsApi() //
             .withPattern(".*/codenarc/SampleCodeNarc.*\\.xml$") //
             .inFolder(rootFolder) //
@@ -59,7 +60,7 @@ public class CodeNarcTest {
     assertThat(actual) //
         .hasSize(76);
 
-    final Violation violation0 = actual.get(0);
+    final Violation violation0 = new ArrayList<>(actual).get(0);
     assertThat(violation0.getMessage()) //
         .isEqualTo(
             "Violations are triggered when an excessive set of consecutive statements all reference the same variable. This can be made more readable by using a with or identity block.");
@@ -79,14 +80,14 @@ public class CodeNarcTest {
   public void testThatViolationsCanBeParsedEmptySourceFolder() {
     final String rootFolder = getRootFolder();
 
-    final List<Violation> actual =
+    final Set<Violation> actual =
         violationsApi() //
             .withPattern(".*/codenarc/CodeNarcXmlReport\\.xml$") //
             .inFolder(rootFolder) //
             .findAll(CODENARC) //
             .violations();
 
-    final Violation violation0 = actual.get(0);
+    final Violation violation0 = new ArrayList<>(actual).get(0);
     assertThat(violation0.getFile()) //
         .isEqualTo("grails-app/controllers/LoginController.groovy");
   }

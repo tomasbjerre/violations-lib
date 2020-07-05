@@ -6,7 +6,8 @@ import static se.bjurr.violations.lib.ViolationsApi.violationsApi;
 import static se.bjurr.violations.lib.model.SEVERITY.INFO;
 import static se.bjurr.violations.lib.reports.Parser.GENDARME;
 
-import java.util.List;
+import java.util.ArrayList;
+import java.util.Set;
 import org.junit.Test;
 import se.bjurr.violations.lib.model.Violation;
 
@@ -15,7 +16,7 @@ public class GendarmeTest {
   public void testThatViolationsCanBeParsed() {
     final String rootFolder = getRootFolder();
 
-    final List<Violation> actual =
+    final Set<Violation> actual =
         violationsApi() //
             .withPattern(".*/gendarme/.*\\.xml$") //
             .inFolder(rootFolder) //
@@ -25,20 +26,20 @@ public class GendarmeTest {
     assertThat(actual) //
         .hasSize(13);
 
-    assertThat(actual.get(0).getMessage()) //
+    assertThat(new ArrayList<>(actual).get(0).getMessage()) //
         .startsWith("This me");
-    assertThat(actual.get(0).getFile()) //
+    assertThat(new ArrayList<>(actual).get(0).getFile()) //
         .isEqualTo("/Dev/src/hudson/Hudson.Domain/Dog.cs");
-    assertThat(actual.get(0).getSeverity()) //
+    assertThat(new ArrayList<>(actual).get(0).getSeverity()) //
         .isEqualTo(INFO);
-    assertThat(actual.get(0).getRule()) //
+    assertThat(new ArrayList<>(actual).get(0).getRule()) //
         .isEqualTo("MethodCanBeMadeStaticRule");
-    assertThat(actual.get(0).getStartLine()) //
+    assertThat(new ArrayList<>(actual).get(0).getStartLine()) //
         .isEqualTo(22);
-    assertThat(actual.get(0).getEndLine()) //
+    assertThat(new ArrayList<>(actual).get(0).getEndLine()) //
         .isEqualTo(22);
 
-    assertThat(actual.get(5).getMessage()) //
+    assertThat(new ArrayList<>(actual).get(5).getMessage()) //
         .startsWith("This type");
   }
 
@@ -46,7 +47,7 @@ public class GendarmeTest {
   public void testThatViolationsCanBeParsedGendarmeUnix() {
     final String rootFolder = getRootFolder();
 
-    final List<Violation> actual =
+    final Set<Violation> actual =
         violationsApi() //
             .withPattern(".*/gendarme/Gendarme_unix\\.xml$") //
             .inFolder(rootFolder) //

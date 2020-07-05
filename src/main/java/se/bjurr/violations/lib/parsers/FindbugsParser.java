@@ -20,6 +20,8 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Optional;
+import java.util.Set;
+import java.util.TreeSet;
 import javax.xml.stream.XMLStreamConstants;
 import javax.xml.stream.XMLStreamException;
 import javax.xml.stream.XMLStreamReader;
@@ -66,7 +68,7 @@ public class FindbugsParser implements ViolationsParser {
 
   private void parseBugInstance(
       final XMLStreamReader xmlr,
-      final List<Violation> violations,
+      final Set<Violation> violations,
       final Map<String, String> messagesPerType)
       throws XMLStreamException {
     final String type = getAttribute(xmlr, "type");
@@ -123,9 +125,9 @@ public class FindbugsParser implements ViolationsParser {
   }
 
   @Override
-  public List<Violation> parseReportOutput(
+  public Set<Violation> parseReportOutput(
       final String string, final ViolationsLogger violationsLogger) throws Exception {
-    final List<Violation> violations = new ArrayList<>();
+    final Set<Violation> violations = new TreeSet<>();
     final Map<String, String> messagesPerType = this.getMessagesPerType(violationsLogger);
 
     try (InputStream input = new ByteArrayInputStream(string.getBytes(StandardCharsets.UTF_8))) {

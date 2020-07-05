@@ -5,8 +5,11 @@ import static se.bjurr.violations.lib.model.Violation.violationBuilder;
 
 import java.util.Arrays;
 import java.util.List;
+import java.util.Set;
+import java.util.TreeSet;
 import org.junit.Test;
 import se.bjurr.violations.lib.model.SEVERITY;
+import se.bjurr.violations.lib.model.Violation;
 import se.bjurr.violations.lib.reports.Parser;
 
 public class CodeClimateTransformerTest {
@@ -17,16 +20,17 @@ public class CodeClimateTransformerTest {
     final String fingerprint = "bd32817c5f595be914cf1d765fe0c3ac53cb6ec4648fc27e9d2529fbb9fa8af5";
     final Integer begin = 123;
     final String path = "/whatever/path.c";
-    final List<CodeClimate> transformed =
-        CodeClimateTransformer.fromViolations(
-            Arrays.asList(
-                violationBuilder() //
-                    .setFile(path) //
-                    .setMessage(description) //
-                    .setParser(Parser.CHECKSTYLE) //
-                    .setSeverity(SEVERITY.ERROR) //
-                    .setStartLine(begin) //
-                    .build()));
+    final Violation violation =
+        violationBuilder() //
+            .setFile(path) //
+            .setMessage(description) //
+            .setParser(Parser.CHECKSTYLE) //
+            .setSeverity(SEVERITY.ERROR) //
+            .setStartLine(begin) //
+            .build();
+    final Set<Violation> violationSet = new TreeSet<Violation>();
+    violationSet.add(violation);
+    final List<CodeClimate> transformed = CodeClimateTransformer.fromViolations(violationSet);
     final CodeClimateLines lines = new CodeClimateLines(begin);
     final CodeClimateLocation location = new CodeClimateLocation(path, lines, null);
     final CodeClimateSeverity severity = CodeClimateSeverity.critical;

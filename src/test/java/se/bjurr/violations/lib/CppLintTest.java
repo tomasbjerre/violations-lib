@@ -7,7 +7,8 @@ import static se.bjurr.violations.lib.model.SEVERITY.ERROR;
 import static se.bjurr.violations.lib.model.SEVERITY.WARN;
 import static se.bjurr.violations.lib.reports.Parser.CPPLINT;
 
-import java.util.List;
+import java.util.ArrayList;
+import java.util.Set;
 import org.junit.Test;
 import se.bjurr.violations.lib.model.Violation;
 
@@ -17,7 +18,7 @@ public class CppLintTest {
   public void testThatViolationsCanBeParsed() {
     final String rootFolder = getRootFolder();
 
-    final List<Violation> actual =
+    final Set<Violation> actual =
         violationsApi() //
             .withPattern(".*/cpplint/cpplint\\.txt$") //
             .inFolder(rootFolder) //
@@ -27,7 +28,7 @@ public class CppLintTest {
     assertThat(actual) //
         .hasSize(3);
 
-    Violation violation = actual.get(2);
+    Violation violation = new ArrayList<>(actual).get(2);
     assertThat(violation.getMessage()) //
         .isEqualTo(
             "No copyright message found.  You should have a line: \"Copyright [year] <Copyright Owner>\"");
@@ -42,17 +43,17 @@ public class CppLintTest {
     assertThat(violation.getEndLine()) //
         .isEqualTo(0);
 
-    assertThat(actual.get(0).getMessage()) //
+    assertThat(new ArrayList<>(actual).get(0).getMessage()) //
         .isEqualTo("Missing space before ( in while(");
-    assertThat(actual.get(0).getFile()) //
+    assertThat(new ArrayList<>(actual).get(0).getFile()) //
         .isEqualTo("cpp/test.cpp");
-    assertThat(actual.get(0).getSeverity()) //
+    assertThat(new ArrayList<>(actual).get(0).getSeverity()) //
         .isEqualTo(ERROR);
-    assertThat(actual.get(0).getRule()) //
+    assertThat(new ArrayList<>(actual).get(0).getRule()) //
         .isEqualTo("whitespace/parens");
-    assertThat(actual.get(0).getStartLine()) //
+    assertThat(new ArrayList<>(actual).get(0).getStartLine()) //
         .isEqualTo(11);
-    assertThat(actual.get(0).getEndLine()) //
+    assertThat(new ArrayList<>(actual).get(0).getEndLine()) //
         .isEqualTo(11);
   }
 
@@ -60,7 +61,7 @@ public class CppLintTest {
   public void testThatViolationsCanBeParsed2() {
     final String rootFolder = getRootFolder();
 
-    final List<Violation> actual =
+    final Set<Violation> actual =
         violationsApi() //
             .withPattern(".*cpplint-result\\.xml$") //
             .inFolder(rootFolder) //
@@ -70,7 +71,7 @@ public class CppLintTest {
     assertThat(actual) //
         .hasSize(1);
 
-    final Violation violation = actual.get(0);
+    final Violation violation = new ArrayList<>(actual).get(0);
     assertThat(violation.getMessage()) //
         .isEqualTo("Using C-style cast.  Use reinterpret_cast<uint8_t *>(...) instead");
     assertThat(violation.getFile()) //
@@ -89,7 +90,7 @@ public class CppLintTest {
   public void testThatViolationsCanBeParsedMulti() {
     final String rootFolder = getRootFolder();
 
-    final List<Violation> actual =
+    final Set<Violation> actual =
         violationsApi() //
             .withPattern(".*cpplint-multi\\.txt$") //
             .inFolder(rootFolder) //
@@ -99,7 +100,7 @@ public class CppLintTest {
     assertThat(actual) //
         .hasSize(3);
 
-    final Violation violation = actual.get(2);
+    final Violation violation = new ArrayList<>(actual).get(2);
     assertThat(violation.getMessage()) //
         .isEqualTo(
             "No copyright message found.  You should have a line: \"Copyright [year] <Copyright Owner>\"");
@@ -114,7 +115,7 @@ public class CppLintTest {
     assertThat(violation.getEndLine()) //
         .isEqualTo(0);
 
-    final Violation violation1 = actual.get(1);
+    final Violation violation1 = new ArrayList<>(actual).get(1);
     assertThat(violation1.getStartLine()) //
         .isEqualTo(5);
     assertThat(violation1.getEndLine()) //
@@ -125,7 +126,7 @@ public class CppLintTest {
   public void testThat() {
     final String rootFolder = getRootFolder();
 
-    final List<Violation> actual =
+    final Set<Violation> actual =
         violationsApi() //
             .withPattern(".*cpplint\\.xml$") //
             .inFolder(rootFolder) //

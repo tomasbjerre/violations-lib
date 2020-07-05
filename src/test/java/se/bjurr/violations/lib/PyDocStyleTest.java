@@ -7,7 +7,8 @@ import static se.bjurr.violations.lib.model.SEVERITY.ERROR;
 import static se.bjurr.violations.lib.model.Violation.violationBuilder;
 import static se.bjurr.violations.lib.reports.Parser.PYDOCSTYLE;
 
-import java.util.List;
+import java.util.ArrayList;
+import java.util.Set;
 import org.junit.Test;
 import se.bjurr.violations.lib.model.Violation;
 
@@ -19,7 +20,7 @@ public class PyDocStyleTest {
 
     final String rootFolder = getRootFolder();
 
-    final List<Violation> actual =
+    final Set<Violation> actual =
         violationsApi() //
             .withPattern(".*/pydocstyle/pydocstyle\\.txt$") //
             .inFolder(rootFolder) //
@@ -29,7 +30,7 @@ public class PyDocStyleTest {
     assertThat(actual) //
         .hasSize(33);
 
-    assertThat(actual.get(0)) //
+    assertThat(new ArrayList<>(actual).get(0)) //
         .isEqualTo( //
             violationBuilder() //
                 .setParser(PYDOCSTYLE) //
@@ -41,7 +42,7 @@ public class PyDocStyleTest {
                 .build() //
             );
 
-    assertThat(actual.get(1)) //
+    assertThat(new ArrayList<>(actual).get(1)) //
         .isEqualTo( //
             violationBuilder() //
                 .setParser(PYDOCSTYLE) //
@@ -53,7 +54,7 @@ public class PyDocStyleTest {
                 .build() //
             );
 
-    assertThat(actual.get(20)) //
+    assertThat(new ArrayList<>(actual).get(20)) //
         .isEqualTo( //
             violationBuilder() //
                 .setParser(PYDOCSTYLE) //
@@ -70,7 +71,7 @@ public class PyDocStyleTest {
   public void testThatViolationsCanBeParsedWithoutS() {
     final String rootFolder = getRootFolder();
 
-    final List<Violation> actual =
+    final Set<Violation> actual =
         violationsApi() //
             .withPattern(".*/pydocstyle/pydocstyle-without-s\\.txt$") //
             .inFolder(rootFolder) //
@@ -80,7 +81,7 @@ public class PyDocStyleTest {
     assertThat(actual) //
         .hasSize(2);
 
-    Violation violation = actual.get(1);
+    Violation violation = new ArrayList<>(actual).get(1);
     assertThat(violation.getMessage()) //
         .isEqualTo("Missing docstring in public module");
     assertThat(violation.getFile()) //
@@ -94,7 +95,7 @@ public class PyDocStyleTest {
     assertThat(violation.getEndLine()) //
         .isEqualTo(1);
 
-    assertThat(actual.get(0).getMessage()) //
+    assertThat(new ArrayList<>(actual).get(0).getMessage()) //
         .isEqualTo("Missing docstring in public function");
   }
 
@@ -102,7 +103,7 @@ public class PyDocStyleTest {
   public void testThatViolationsCanBeParsedWithS() {
     final String rootFolder = getRootFolder();
 
-    final List<Violation> actual =
+    final Set<Violation> actual =
         violationsApi() //
             .withPattern(".*/pydocstyle/pydocstyle-with-s\\.txt$") //
             .inFolder(rootFolder) //
@@ -112,7 +113,7 @@ public class PyDocStyleTest {
     assertThat(actual) //
         .hasSize(2);
 
-    Violation violation1 = actual.get(1);
+    Violation violation1 = new ArrayList<>(actual).get(1);
     assertThat(violation1.getMessage()) //
         .isEqualTo("Missing docstring in public module");
     assertThat(violation1.getFile()) //
@@ -126,7 +127,7 @@ public class PyDocStyleTest {
     assertThat(violation1.getEndLine()) //
         .isEqualTo(1);
 
-    Violation violation0 = actual.get(0);
+    Violation violation0 = new ArrayList<>(actual).get(0);
     assertThat(violation0.getMessage()) //
         .isEqualTo("Missing docstring in public function");
     assertThat(violation0.getFile()) //

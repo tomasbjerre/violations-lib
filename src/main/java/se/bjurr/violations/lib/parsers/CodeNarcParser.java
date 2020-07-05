@@ -14,10 +14,10 @@ import java.io.ByteArrayInputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.nio.charset.StandardCharsets;
-import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
+import java.util.Set;
+import java.util.TreeSet;
 import javax.xml.stream.XMLStreamException;
 import javax.xml.stream.XMLStreamReader;
 import se.bjurr.violations.lib.ViolationsLogger;
@@ -38,9 +38,9 @@ public class CodeNarcParser implements ViolationsParser {
   }
 
   @Override
-  public List<Violation> parseReportOutput(
+  public Set<Violation> parseReportOutput(
       final String string, final ViolationsLogger violationsLogger) throws Exception {
-    final List<Violation> violations = new ArrayList<>();
+    final Set<Violation> violations = new TreeSet<>();
 
     final Map<String, String> rules = this.getRules(string);
 

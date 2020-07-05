@@ -9,9 +9,10 @@ import static se.bjurr.violations.lib.util.ViolationParserUtils.findIntegerAttri
 import static se.bjurr.violations.lib.util.ViolationParserUtils.getAttribute;
 import static se.bjurr.violations.lib.util.ViolationParserUtils.getChunks;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
+import java.util.Set;
+import java.util.TreeSet;
 import se.bjurr.violations.lib.ViolationsLogger;
 import se.bjurr.violations.lib.model.SEVERITY;
 import se.bjurr.violations.lib.model.Violation;
@@ -19,9 +20,9 @@ import se.bjurr.violations.lib.model.Violation;
 public class AndroidLintParser implements ViolationsParser {
 
   @Override
-  public List<Violation> parseReportOutput(
+  public Set<Violation> parseReportOutput(
       final String string, final ViolationsLogger violationsLogger) throws Exception {
-    final List<Violation> violations = new ArrayList<>();
+    final Set<Violation> violations = new TreeSet<>();
     final List<String> issues = getChunks(string, "<issue", "</issue>");
     for (final String issueChunk : issues) {
       /** Only ever going to be one location. */

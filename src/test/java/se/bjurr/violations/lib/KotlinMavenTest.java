@@ -6,7 +6,8 @@ import static se.bjurr.violations.lib.ViolationsApi.violationsApi;
 import static se.bjurr.violations.lib.model.SEVERITY.WARN;
 import static se.bjurr.violations.lib.reports.Parser.KOTLINMAVEN;
 
-import java.util.List;
+import java.util.ArrayList;
+import java.util.Set;
 import org.junit.Test;
 import se.bjurr.violations.lib.model.Violation;
 
@@ -16,7 +17,7 @@ public class KotlinMavenTest {
   public void testThatViolationsCanBeParsed() {
     final String rootFolder = getRootFolder();
 
-    final List<Violation> actual =
+    final Set<Violation> actual =
         violationsApi() //
             .withPattern(".*/kotlinmaven/.*\\.txt") //
             .inFolder(rootFolder) //
@@ -26,7 +27,7 @@ public class KotlinMavenTest {
     assertThat(actual) //
         .hasSize(29);
 
-    final Violation violation0 = actual.get(0);
+    final Violation violation0 = new ArrayList<>(actual).get(0);
     assertThat(violation0.getMessage()) //
         .isEqualTo("Unchecked cast: AssetDao<*> to DaoOperations.Read<T, UUID>");
     assertThat(violation0.getFile()) //

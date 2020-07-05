@@ -8,7 +8,8 @@ import static se.bjurr.violations.lib.model.SEVERITY.WARN;
 import static se.bjurr.violations.lib.model.Violation.violationBuilder;
 import static se.bjurr.violations.lib.reports.Parser.FLAKE8;
 
-import java.util.List;
+import java.util.ArrayList;
+import java.util.Set;
 import org.junit.Test;
 import se.bjurr.violations.lib.model.Violation;
 
@@ -18,7 +19,7 @@ public class Flake8Test {
   public void testThatViolationsCanBeParsed() {
     final String rootFolder = getRootFolder();
 
-    final List<Violation> actual =
+    final Set<Violation> actual =
         violationsApi() //
             .withPattern(".*/flake8/flake.*\\.txt$") //
             .inFolder(rootFolder) //
@@ -39,7 +40,7 @@ public class Flake8Test {
             ) //
         .hasSize(17);
 
-    final Violation violation9 = actual.get(9);
+    final Violation violation9 = new ArrayList<>(actual).get(9);
     assertThat(violation9.getMessage()) //
         .isEqualTo("'ggrc' imported but unused");
     assertThat(violation9.getFile()) //
@@ -49,7 +50,7 @@ public class Flake8Test {
     assertThat(violation9.getSeverity()) //
         .isEqualTo(ERROR);
 
-    final Violation violation10 = actual.get(10);
+    final Violation violation10 = new ArrayList<>(actual).get(10);
     assertThat(violation10.getMessage()) //
         .isEqualTo("multiple imports on one line");
     assertThat(violation10.getFile()) //
@@ -57,7 +58,7 @@ public class Flake8Test {
     assertThat(violation10.getSeverity()) //
         .isEqualTo(ERROR);
 
-    final Violation violation11 = actual.get(11);
+    final Violation violation11 = new ArrayList<>(actual).get(11);
     assertThat(violation11.getMessage()) //
         .isEqualTo("'sys' imported but unused");
     assertThat(violation11.getFile()) //
@@ -65,7 +66,7 @@ public class Flake8Test {
     assertThat(violation11.getSeverity()) //
         .isEqualTo(ERROR);
 
-    final Violation violation16 = actual.get(16);
+    final Violation violation16 = new ArrayList<>(actual).get(16);
     assertThat(violation16.getMessage()) //
         .isEqualTo("trailing whitespace");
     assertThat(violation16.getFile()) //
@@ -88,7 +89,7 @@ public class Flake8Test {
   public void testThatViolationsCanBeParsedWithStartingDots() {
     final String rootFolder = getRootFolder();
 
-    final List<Violation> actual =
+    final Set<Violation> actual =
         violationsApi() //
             .withPattern(".*/flake8/dots\\.txt$") //
             .inFolder(rootFolder) //
@@ -98,7 +99,7 @@ public class Flake8Test {
     assertThat(actual) //
         .hasSize(2);
 
-    final Violation violation0 = actual.get(1);
+    final Violation violation0 = new ArrayList<>(actual).get(1);
     assertThat(violation0.getMessage()) //
         .isEqualTo("line too long (143 > 120 characters)");
     assertThat(violation0.getFile()) //
@@ -110,7 +111,7 @@ public class Flake8Test {
     assertThat(violation0.getSeverity()) //
         .isEqualTo(ERROR);
 
-    final Violation violation1 = actual.get(0);
+    final Violation violation1 = new ArrayList<>(actual).get(0);
     assertThat(violation1.getMessage()) //
         .isEqualTo("no newline at end of file");
     assertThat(violation1.getFile()) //
@@ -127,7 +128,7 @@ public class Flake8Test {
   public void testThatViolationsCanBeParsedWithAnsibleLint() {
     final String rootFolder = getRootFolder();
 
-    final List<Violation> actual =
+    final Set<Violation> actual =
         violationsApi() //
             .withPattern(".*/ansiblelint/ansiblelint\\.txt$") //
             .inFolder(rootFolder) //
@@ -137,7 +138,7 @@ public class Flake8Test {
     assertThat(actual) //
         .hasSize(8);
 
-    final Violation violation0 = actual.get(1);
+    final Violation violation0 = new ArrayList<>(actual).get(1);
     assertThat(violation0.getMessage()) //
         .isEqualTo("Commands should not change things if nothing needs doing");
     assertThat(violation0.getFile()) //
@@ -149,7 +150,7 @@ public class Flake8Test {
     assertThat(violation0.getStartLine()) //
         .isEqualTo(25);
 
-    final Violation violation7 = actual.get(3);
+    final Violation violation7 = new ArrayList<>(actual).get(3);
     assertThat(violation7.getMessage()) //
         .isEqualTo("This line is just added to test W");
     assertThat(violation7.getRule()) //
@@ -162,7 +163,7 @@ public class Flake8Test {
   public void testThatViolationsCanBeParsedFromFileContainingNoise() {
     final String rootFolder = getRootFolder();
 
-    final List<Violation> actual =
+    final Set<Violation> actual =
         violationsApi() //
             .withPattern(".*/flake8/flake8-failure\\.log$") //
             .inFolder(rootFolder) //
@@ -172,7 +173,7 @@ public class Flake8Test {
     assertThat(actual) //
         .hasSize(6);
 
-    final Violation violation0 = actual.get(0);
+    final Violation violation0 = new ArrayList<>(actual).get(0);
     assertThat(violation0.getMessage()) //
         .startsWith("HOME=/var/jenkins_home/workspace/");
   }

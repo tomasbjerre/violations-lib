@@ -6,7 +6,8 @@ import static se.bjurr.violations.lib.ViolationsApi.violationsApi;
 import static se.bjurr.violations.lib.model.SEVERITY.INFO;
 import static se.bjurr.violations.lib.reports.Parser.CPD;
 
-import java.util.List;
+import java.util.ArrayList;
+import java.util.Set;
 import org.junit.Test;
 import se.bjurr.violations.lib.model.Violation;
 
@@ -16,7 +17,7 @@ public class CPDTest {
   public void testThatViolationsCanBeParsed() {
     final String rootFolder = getRootFolder();
 
-    final List<Violation> actual =
+    final Set<Violation> actual =
         violationsApi() //
             .withPattern(".*/cpd/.*\\.xml$") //
             .inFolder(rootFolder) //
@@ -26,21 +27,21 @@ public class CPDTest {
     assertThat(actual) //
         .hasSize(2);
 
-    assertThat(actual.get(0).getMessage()) //
+    assertThat(new ArrayList<>(actual).get(0).getMessage()) //
         .startsWith("$request->setBo");
-    assertThat(actual.get(0).getFile()) //
+    assertThat(new ArrayList<>(actual).get(0).getFile()) //
         .isEqualTo(
             "/home/goetas/gits/webservices/src/goetas/webservices/bindings/soap/transport/http/Http.php");
-    assertThat(actual.get(0).getSeverity()) //
+    assertThat(new ArrayList<>(actual).get(0).getSeverity()) //
         .isEqualTo(INFO);
-    assertThat(actual.get(0).getRule()) //
+    assertThat(new ArrayList<>(actual).get(0).getRule()) //
         .isEqualTo("DUPLICATION");
-    assertThat(actual.get(0).getStartLine()) //
+    assertThat(new ArrayList<>(actual).get(0).getStartLine()) //
         .isEqualTo(41);
-    assertThat(actual.get(0).getEndLine()) //
+    assertThat(new ArrayList<>(actual).get(0).getEndLine()) //
         .isEqualTo(41);
 
-    assertThat(actual.get(1).getMessage()) //
+    assertThat(new ArrayList<>(actual).get(1).getMessage()) //
         .startsWith("$request->setBo");
   }
 }

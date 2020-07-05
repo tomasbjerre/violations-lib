@@ -9,10 +9,10 @@ import static se.bjurr.violations.lib.util.ViolationParserUtils.findIntegerAttri
 
 import java.io.ByteArrayInputStream;
 import java.io.InputStream;
-import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
+import java.util.Set;
+import java.util.TreeSet;
 import javax.xml.stream.XMLStreamConstants;
 import javax.xml.stream.XMLStreamReader;
 import se.bjurr.violations.lib.ViolationsLogger;
@@ -22,9 +22,9 @@ import se.bjurr.violations.lib.util.ViolationParserUtils;
 public class XUnitParser implements ViolationsParser {
 
   @Override
-  public List<Violation> parseReportOutput(
+  public Set<Violation> parseReportOutput(
       final String string, final ViolationsLogger violationsLogger) throws Exception {
-    final List<Violation> violations = new ArrayList<>();
+    final Set<Violation> violations = new TreeSet<>();
     try (InputStream input = new ByteArrayInputStream(string.getBytes(UTF_8))) {
       final XMLStreamReader xmlr = ViolationParserUtils.createXmlReader(input);
       final Map<String, String> specifics = new HashMap<>();

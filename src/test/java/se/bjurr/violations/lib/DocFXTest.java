@@ -6,7 +6,8 @@ import static se.bjurr.violations.lib.ViolationsApi.violationsApi;
 import static se.bjurr.violations.lib.model.SEVERITY.WARN;
 import static se.bjurr.violations.lib.reports.Parser.DOCFX;
 
-import java.util.List;
+import java.util.ArrayList;
+import java.util.Set;
 import org.junit.Test;
 import se.bjurr.violations.lib.model.Violation;
 
@@ -16,7 +17,7 @@ public class DocFXTest {
   public void testThatViolationsCanBeParsed() {
     final String rootFolder = getRootFolder();
 
-    final List<Violation> actual =
+    final Set<Violation> actual =
         violationsApi() //
             .withPattern(".*/docfx/.*\\.json$") //
             .inFolder(rootFolder) //
@@ -26,7 +27,7 @@ public class DocFXTest {
     assertThat(actual) //
         .hasSize(3);
 
-    final Violation violation0 = actual.get(0);
+    final Violation violation0 = new ArrayList<>(actual).get(0);
     assertThat(violation0.getMessage()) //
         .isEqualTo("Invalid file link:(~/mobiilirajapinta/puuttuu.md).");
     assertThat(violation0.getFile()) //
@@ -38,7 +39,7 @@ public class DocFXTest {
     assertThat(violation0.getStartLine()) //
         .isEqualTo(18);
 
-    final Violation violation1 = actual.get(0);
+    final Violation violation1 = new ArrayList<>(actual).get(0);
     assertThat(violation1.getFile()) //
         .isEqualTo("mobiilirajapinta/json-dateandtime.md");
     assertThat(violation1.getMessage()) //
@@ -50,7 +51,7 @@ public class DocFXTest {
     assertThat(violation1.getStartLine()) //
         .isEqualTo(18);
 
-    final Violation violation2 = actual.get(2);
+    final Violation violation2 = new ArrayList<>(actual).get(2);
     assertThat(violation2.getMessage()) //
         .isEqualTo("Invalid file link:(~/missing.md#mobiilisovellus).");
     assertThat(violation2.getFile()) //

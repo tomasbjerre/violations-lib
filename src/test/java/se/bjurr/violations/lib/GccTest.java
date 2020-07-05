@@ -6,7 +6,8 @@ import static se.bjurr.violations.lib.ViolationsApi.violationsApi;
 import static se.bjurr.violations.lib.model.SEVERITY.WARN;
 import static se.bjurr.violations.lib.reports.Parser.CLANG;
 
-import java.util.List;
+import java.util.ArrayList;
+import java.util.Set;
 import org.junit.Test;
 import se.bjurr.violations.lib.model.Violation;
 
@@ -16,7 +17,7 @@ public class GccTest {
   public void testThatViolationsCanBeParsed() {
     final String rootFolder = getRootFolder();
 
-    final List<Violation> actual =
+    final Set<Violation> actual =
         violationsApi() //
             .withPattern(".*/gcc/output.*\\.txt$") //
             .inFolder(rootFolder) //
@@ -26,7 +27,7 @@ public class GccTest {
     assertThat(actual) //
         .hasSize(2);
 
-    final Violation violation0 = actual.get(0);
+    final Violation violation0 = new ArrayList<>(actual).get(0);
     assertThat(violation0.getMessage()) //
         .isEqualTo("comparison between signed and unsigned integer expressions [-Wsign-compare]");
     assertThat(violation0.getFile()) //
@@ -38,7 +39,7 @@ public class GccTest {
     assertThat(violation0.getStartLine()) //
         .isEqualTo(82);
 
-    final Violation violation1 = actual.get(1);
+    final Violation violation1 = new ArrayList<>(actual).get(1);
     assertThat(violation1.getMessage()) //
         .isEqualTo("variable 'exceedingDuration' set but not used [-Wunused-but-set-variable]");
     assertThat(violation1.getFile()) //

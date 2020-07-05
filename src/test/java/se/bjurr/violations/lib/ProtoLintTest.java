@@ -7,7 +7,8 @@ import static se.bjurr.violations.lib.model.SEVERITY.ERROR;
 import static se.bjurr.violations.lib.model.Violation.violationBuilder;
 import static se.bjurr.violations.lib.reports.Parser.PROTOLINT;
 
-import java.util.List;
+import java.util.ArrayList;
+import java.util.Set;
 import org.junit.Test;
 import se.bjurr.violations.lib.model.Violation;
 
@@ -18,7 +19,7 @@ public class ProtoLintTest {
 
     final String rootFolder = getRootFolder();
 
-    final List<Violation> actual =
+    final Set<Violation> actual =
         violationsApi() //
             .withPattern(".*/protolint/protolint\\.txt$") //
             .inFolder(rootFolder) //
@@ -28,7 +29,7 @@ public class ProtoLintTest {
     assertThat(actual) //
         .hasSize(2591);
 
-    assertThat(actual.get(0)) //
+    assertThat(new ArrayList<>(actual).get(0)) //
         .isEqualTo( //
             violationBuilder() //
                 .setParser(PROTOLINT) //
@@ -40,7 +41,7 @@ public class ProtoLintTest {
                 .build() //
             );
 
-    assertThat(actual.get(1)) //
+    assertThat(new ArrayList<>(actual).get(1)) //
         .isEqualTo( //
             violationBuilder() //
                 .setParser(PROTOLINT) //

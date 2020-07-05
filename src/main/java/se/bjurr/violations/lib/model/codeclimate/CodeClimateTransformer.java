@@ -5,12 +5,13 @@ import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Set;
 import java.util.stream.Collectors;
 import se.bjurr.violations.lib.model.SEVERITY;
 import se.bjurr.violations.lib.model.Violation;
 
 public class CodeClimateTransformer {
-  public static List<CodeClimate> fromViolations(final List<Violation> from) {
+  public static List<CodeClimate> fromViolations(final Set<Violation> from) {
     return from.stream()
         .map(
             violation -> {
@@ -48,7 +49,7 @@ public class CodeClimateTransformer {
     } catch (final NoSuchAlgorithmException e) {
       return "No Hash: " + e.getMessage();
     }
-    String fingerprintString =
+    final String fingerprintString =
         v.getColumn()
             + v.getFile()
             + v.getMessage()

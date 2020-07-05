@@ -8,7 +8,8 @@ import static se.bjurr.violations.lib.model.SEVERITY.INFO;
 import static se.bjurr.violations.lib.model.SEVERITY.WARN;
 import static se.bjurr.violations.lib.reports.Parser.CLANG;
 
-import java.util.List;
+import java.util.ArrayList;
+import java.util.Set;
 import org.junit.Test;
 import se.bjurr.violations.lib.model.Violation;
 
@@ -18,7 +19,7 @@ public class CLangTest {
   public void testThatViolationsCanBeParsed() {
     final String rootFolder = getRootFolder();
 
-    final List<Violation> actual =
+    final Set<Violation> actual =
         violationsApi() //
             .withPattern(".*/clang/clang.*\\.txt$") //
             .inFolder(rootFolder) //
@@ -28,7 +29,7 @@ public class CLangTest {
     assertThat(actual) //
         .hasSize(3);
 
-    final Violation violation0 = actual.get(0);
+    final Violation violation0 = new ArrayList<>(actual).get(0);
     assertThat(violation0.getMessage()) //
         .isEqualTo("'test.h' file not found");
     assertThat(violation0.getFile()) //
@@ -40,7 +41,7 @@ public class CLangTest {
     assertThat(violation0.getStartLine()) //
         .isEqualTo(10);
 
-    final Violation violation2 = actual.get(2);
+    final Violation violation2 = new ArrayList<>(actual).get(2);
     assertThat(violation2.getMessage()) //
         .isEqualTo("Memory is allocated");
     assertThat(violation2.getFile()) //
@@ -57,7 +58,7 @@ public class CLangTest {
   public void testThatRubycopViolationsCanBeParsed() {
     final String rootFolder = getRootFolder();
 
-    final List<Violation> actual =
+    final Set<Violation> actual =
         violationsApi() //
             .withPattern(".*/clang/rubycop\\.txt$") //
             .inFolder(rootFolder) //
@@ -67,7 +68,7 @@ public class CLangTest {
     assertThat(actual) //
         .hasSize(4);
 
-    final Violation violation0 = actual.get(3);
+    final Violation violation0 = new ArrayList<>(actual).get(3);
     assertThat(violation0.getMessage()) //
         .isEqualTo("Use snake_case for method names.");
     assertThat(violation0.getFile()) //
@@ -79,7 +80,7 @@ public class CLangTest {
     assertThat(violation0.getStartLine()) //
         .isEqualTo(1);
 
-    assertThat(actual.get(0).getSeverity()) //
+    assertThat(new ArrayList<>(actual).get(0).getSeverity()) //
         .isEqualTo(WARN);
   }
 }

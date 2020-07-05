@@ -9,7 +9,8 @@ import static se.bjurr.violations.lib.model.SEVERITY.WARN;
 import static se.bjurr.violations.lib.model.Violation.violationBuilder;
 import static se.bjurr.violations.lib.reports.Parser.CHECKSTYLE;
 
-import java.util.List;
+import java.util.ArrayList;
+import java.util.Set;
 import org.junit.Test;
 import se.bjurr.violations.lib.model.Violation;
 
@@ -18,17 +19,19 @@ public class CheckstyleTest {
 
   @Test
   public void testThatViolationsWithXmlSpecialCharactersCanBeParsed() {
-    final List<Violation> actual =
+    final Set<Violation> actual =
         violationsApi() //
             .withPattern(".*/checkstyle/special_chars\\.xml$") //
-            .inFolder(rootFolder) //
+            .inFolder(this.rootFolder) //
             .findAll(CHECKSTYLE) //
             .violations();
 
     assertThat(actual)
         .containsOnly(
-            violationBuilder() //
-                .setParser(CHECKSTYLE) //
+            violationBuilder()
+                //
+                .setParser(CHECKSTYLE)
+                //
                 .setFile("/src/main/java/se/bjurr/violations/lib/example/MyClass.java") //
                 .setSource(null) //
                 .setStartLine(11) //
@@ -38,8 +41,10 @@ public class CheckstyleTest {
                 .setRule("com.puppycrawl.tools.checkstyle.checks.blocks.EmptyBlockCheck") //
                 .setSeverity(INFO) //
                 .build(), //
-            violationBuilder() //
-                .setParser(CHECKSTYLE) //
+            violationBuilder()
+                //
+                .setParser(CHECKSTYLE)
+                //
                 .setFile("/src/main/java/se/bjurr/violations/lib/example/MyClass.java") //
                 .setSource(null) //
                 .setStartLine(12) //
@@ -49,8 +54,10 @@ public class CheckstyleTest {
                 .setRule("com.puppycrawl.tools.checkstyle.checks.blocks.EmptyBlockCheck") //
                 .setSeverity(INFO) //
                 .build(), //
-            violationBuilder() //
-                .setParser(CHECKSTYLE) //
+            violationBuilder()
+                //
+                .setParser(CHECKSTYLE)
+                //
                 .setFile("/src/main/java/se/bjurr/violations/lib/example/MyClass.java") //
                 .setSource(null) //
                 .setStartLine(13) //
@@ -60,8 +67,10 @@ public class CheckstyleTest {
                 .setRule("one.should.be.greater.than.two") //
                 .setSeverity(INFO) //
                 .build(), //
-            violationBuilder() //
-                .setParser(CHECKSTYLE) //
+            violationBuilder()
+                //
+                .setParser(CHECKSTYLE)
+                //
                 .setFile("/src/main/java/se/bjurr/violations/lib/example/MyClass.java") //
                 .setSource(null) //
                 .setStartLine(14) //
@@ -71,8 +80,10 @@ public class CheckstyleTest {
                 .setRule("two.should.be.less.than.one") //
                 .setSeverity(INFO) //
                 .build(), //
-            violationBuilder() //
-                .setParser(CHECKSTYLE) //
+            violationBuilder()
+                //
+                .setParser(CHECKSTYLE)
+                //
                 .setFile("/src/main/java/se/bjurr/violations/lib/example/MyClass.java") //
                 .setSource(null) //
                 .setStartLine(15) //
@@ -87,18 +98,22 @@ public class CheckstyleTest {
 
   @Test
   public void testThatViolationsCanBeParsed() {
-    final List<Violation> actual =
+    final Set<Violation> actual =
         violationsApi() //
             .withPattern(".*/checkstyle/main\\.xml$") //
-            .inFolder(rootFolder) //
+            .inFolder(this.rootFolder) //
             .findAll(CHECKSTYLE) //
             .violations();
 
     assertThat(actual) //
-        .containsOnly( //
-            violationBuilder() //
-                .setParser(CHECKSTYLE) //
-                .setReporter(CHECKSTYLE.name()) //
+        .containsOnly(
+            //
+            violationBuilder()
+                //
+                .setParser(CHECKSTYLE)
+                //
+                .setReporter(CHECKSTYLE.name())
+                //
                 .setFile("/src/main/java/se/bjurr/violations/lib/example/MyClass.java") //
                 .setSource(null) //
                 .setStartLine(0) //
@@ -108,8 +123,10 @@ public class CheckstyleTest {
                 .setRule("com.puppycrawl.tools.checkstyle.checks.javadoc.JavadocPackageCheck") //
                 .setSeverity(ERROR) //
                 .build(), //
-            violationBuilder() //
-                .setParser(CHECKSTYLE) //
+            violationBuilder()
+                //
+                .setParser(CHECKSTYLE)
+                //
                 .setFile("/src/main/java/se/bjurr/violations/lib/example/MyClass.java") //
                 .setSource(null) //
                 .setStartLine(9) //
@@ -119,8 +136,10 @@ public class CheckstyleTest {
                 .setRule("com.puppycrawl.tools.checkstyle.checks.blocks.EmptyBlockCheck") //
                 .setSeverity(INFO) //
                 .build(), //
-            violationBuilder() //
-                .setParser(CHECKSTYLE) //
+            violationBuilder()
+                //
+                .setParser(CHECKSTYLE)
+                //
                 .setFile("/src/main/java/se/bjurr/violations/lib/example/OtherClass.java") //
                 .setSource(null) //
                 .setStartLine(10) //
@@ -130,8 +149,10 @@ public class CheckstyleTest {
                 .setRule("com.puppycrawl.tools.checkstyle.checks.blocks.EmptyBlockCheck") //
                 .setSeverity(INFO) //
                 .build(), //
-            violationBuilder() //
-                .setParser(CHECKSTYLE) //
+            violationBuilder()
+                //
+                .setParser(CHECKSTYLE)
+                //
                 .setFile("/src/main/java/se/bjurr/violations/lib/example/OtherClass.java") //
                 .setSource(null) //
                 .setStartLine(26) //
@@ -149,7 +170,7 @@ public class CheckstyleTest {
   public void testThatPHPViolationsCanBeParsed() {
     final String rootFolder = getRootFolder();
 
-    final List<Violation> actual =
+    final Set<Violation> actual =
         violationsApi() //
             .withPattern(".*/checkstyle/phpcheckstyle\\.xml$") //
             .inFolder(rootFolder) //
@@ -160,18 +181,18 @@ public class CheckstyleTest {
     assertThat(actual) //
         .hasSize(6);
 
-    assertThat(actual.get(0).getMessage()) //
+    assertThat(new ArrayList<>(actual).get(0).getMessage()) //
         .isEqualTo("Missing function doc comment");
-    assertThat(actual.get(0).getReporter()) //
+    assertThat(new ArrayList<>(actual).get(0).getReporter()) //
         .isEqualTo("PHP");
   }
 
   @Test
   public void testThatPHPViolationsCanBeParsedIfNoSource() {
-    final List<Violation> actual =
+    final Set<Violation> actual =
         violationsApi() //
             .withPattern(".*/checkstyle/checkstyle-no-source\\.xml$") //
-            .inFolder(rootFolder) //
+            .inFolder(this.rootFolder) //
             .findAll(CHECKSTYLE) //
             .withReporter("PHP") //
             .violations();
@@ -179,18 +200,18 @@ public class CheckstyleTest {
     assertThat(actual) //
         .hasSize(1);
 
-    assertThat(actual.get(0).getMessage()) //
+    assertThat(new ArrayList<>(actual).get(0).getMessage()) //
         .isEqualTo("Must have at least one statement.");
-    assertThat(actual.get(0).getReporter()) //
+    assertThat(new ArrayList<>(actual).get(0).getReporter()) //
         .isEqualTo("PHP");
   }
 
   @Test
   public void testThatDuplicatesAreIgnored() {
-    final List<Violation> actual =
+    final Set<Violation> actual =
         violationsApi() //
             .withPattern(".*/checkstyle/duplicates\\.xml$") //
-            .inFolder(rootFolder) //
+            .inFolder(this.rootFolder) //
             .findAll(CHECKSTYLE) //
             .withReporter("Checkstyle") //
             .violations();
@@ -198,31 +219,39 @@ public class CheckstyleTest {
     assertThat(actual) //
         .hasSize(3);
 
-    assertThat(actual.get(0).getMessage()) //
+    assertThat(new ArrayList<>(actual).get(0).getMessage()) //
         .isEqualTo("Line is longer than 100 characters (found 312).");
-    assertThat(actual.get(0).getReporter()) //
+    assertThat(new ArrayList<>(actual).get(0).getReporter()) //
         .isEqualTo("Checkstyle");
   }
 
   @Test
   public void testThatGolangCILintViolationsCanBeParsed() {
-    final List<Violation> actual =
+    final Set<Violation> actual =
         violationsApi() //
             .withPattern(".*/checkstyle/golangci-lint\\.xml$") //
-            .inFolder(rootFolder) //
+            .inFolder(this.rootFolder) //
             .findAll(CHECKSTYLE) //
             .violations();
 
     assertThat(actual) //
         .containsExactly( //
-            violationBuilder() //
-                .setParser(CHECKSTYLE) //
-                .setReporter(CHECKSTYLE.name()) //
-                .setFile("pkg/clients/azure/redis/redis.go") //
-                .setSource("") //
-                .setStartLine(41) //
-                .setEndLine(41) //
-                .setColumn(1) //
+            violationBuilder()
+                //
+                .setParser(CHECKSTYLE)
+                //
+                .setReporter(CHECKSTYLE.name())
+                //
+                .setFile("pkg/clients/azure/redis/redis.go")
+                //
+                .setSource("")
+                //
+                .setStartLine(41)
+                //
+                .setEndLine(41)
+                //
+                .setColumn(1)
+                //
                 .setMessage(
                     "exported function `NewClient` should have comment or be unexported") //
                 .setRule("golint") //

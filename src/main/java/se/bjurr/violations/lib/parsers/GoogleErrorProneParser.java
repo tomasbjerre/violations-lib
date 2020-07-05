@@ -6,8 +6,8 @@ import static se.bjurr.violations.lib.model.SEVERITY.WARN;
 import static se.bjurr.violations.lib.model.Violation.violationBuilder;
 import static se.bjurr.violations.lib.reports.Parser.GOOGLEERRORPRONE;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.Set;
+import java.util.TreeSet;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 import se.bjurr.violations.lib.ViolationsLogger;
@@ -19,9 +19,9 @@ public class GoogleErrorProneParser implements ViolationsParser {
       Pattern.compile("^((:[^/]*)|([^:]))([^:]+?):([^:]+?):([^:]+?):[^\\[]*\\[([^\\]]+?)](.*)");
 
   @Override
-  public List<Violation> parseReportOutput(
+  public Set<Violation> parseReportOutput(
       final String reportContent, final ViolationsLogger violationsLogger) throws Exception {
-    final List<Violation> found = new ArrayList<>();
+    final Set<Violation> found = new TreeSet<>();
     final String[] lines = reportContent.split("\n");
     for (int i = 0; i < lines.length; i++) {
       String line = lines[i];

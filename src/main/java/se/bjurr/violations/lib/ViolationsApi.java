@@ -8,7 +8,6 @@ import static se.bjurr.violations.lib.util.Utils.checkNotNull;
 import static se.bjurr.violations.lib.util.Utils.setReporter;
 
 import java.io.File;
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Set;
 import java.util.logging.Level;
@@ -68,7 +67,7 @@ public class ViolationsApi {
     return this;
   }
 
-  public List<Violation> violations() {
+  public Set<Violation> violations() {
     final List<File> includedFiles =
         findAllReports(this.violationsLogger, this.startFile, this.pattern);
     this.violationsLogger.log(
@@ -110,7 +109,7 @@ public class ViolationsApi {
                 + v.getEndLine());
       }
     }
-    return new ArrayList<Violation>(foundViolations);
+    return foundViolations;
   }
 
   public List<CodeClimate> codeClimate() {

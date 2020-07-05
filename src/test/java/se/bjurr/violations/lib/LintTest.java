@@ -7,7 +7,7 @@ import static se.bjurr.violations.lib.model.SEVERITY.WARN;
 import static se.bjurr.violations.lib.model.Violation.violationBuilder;
 import static se.bjurr.violations.lib.reports.Parser.LINT;
 
-import java.util.List;
+import java.util.Set;
 import org.junit.Test;
 import se.bjurr.violations.lib.model.Violation;
 
@@ -17,7 +17,7 @@ public class LintTest {
   public void testThatViolationsCanBeParsed() {
     String rootFolder = getRootFolder();
 
-    List<Violation> actual =
+    Set<Violation> actual =
         violationsApi() //
             .withPattern(".*/lint/.*\\.xml$") //
             .inFolder(rootFolder) //

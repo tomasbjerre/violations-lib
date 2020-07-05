@@ -9,7 +9,8 @@ import static se.bjurr.violations.lib.model.SEVERITY.INFO;
 import static se.bjurr.violations.lib.parsers.FindbugsParser.FINDBUGS_SPECIFIC_RANK;
 import static se.bjurr.violations.lib.reports.Parser.FINDBUGS;
 
-import java.util.List;
+import java.util.ArrayList;
+import java.util.Set;
 import org.junit.Test;
 import se.bjurr.violations.lib.model.Violation;
 
@@ -18,7 +19,7 @@ public class FindbugsTest {
   @Test
   public void testMavenGeneratedFindbugs() {
     final String rootFolder = getRootFolder();
-    final List<Violation> maven =
+    final Set<Violation> maven =
         violationsApi() //
             .withPattern(".*/findbugs/fromMaven.xml$") //
             .inFolder(rootFolder) //
@@ -32,7 +33,7 @@ public class FindbugsTest {
   @Test
   public void testMavenGeneratedSpotbugs() {
     final String rootFolder = getRootFolder();
-    final List<Violation> maven =
+    final Set<Violation> maven =
         violationsApi() //
             .findAll(FINDBUGS) //
             .inFolder(rootFolder) //
@@ -47,7 +48,7 @@ public class FindbugsTest {
   @Test
   public void testThatViolationsCanBeParsed() {
     final String rootFolder = getRootFolder();
-    final List<Violation> actual =
+    final Set<Violation> actual =
         violationsApi() //
             .withPattern(".*/findbugs/main\\.xml$") //
             .inFolder(rootFolder) //
@@ -64,7 +65,7 @@ public class FindbugsTest {
 
     assertThat(actual) //
         .hasSize(5);
-    final Violation violation0 = actual.get(1);
+    final Violation violation0 = new ArrayList<>(actual).get(1);
     assertThat(violation0.getFile()) //
         .isEqualTo("se/bjurr/violations/lib/example/MyClass.java");
     assertThat(violation0.getMessage()) //
@@ -87,7 +88,7 @@ public class FindbugsTest {
   @Test
   public void testThatViolationsCanBeParsedFromSpotbugs() {
     final String rootFolder = getRootFolder();
-    final List<Violation> actual =
+    final Set<Violation> actual =
         violationsApi() //
             .withPattern(".*/findbugs/spotbugs\\.xml$") //
             .inFolder(rootFolder) //
@@ -96,7 +97,7 @@ public class FindbugsTest {
 
     assertThat(actual) //
         .hasSize(3);
-    final Violation violation0 = actual.get(1);
+    final Violation violation0 = new ArrayList<>(actual).get(1);
     assertThat(violation0.getFile()) //
         .isEqualTo("se/bjurr/violations/lib/parsers/FindbugsParser.java");
     assertThat(violation0.getMessage()) //
@@ -119,7 +120,7 @@ public class FindbugsTest {
   @Test
   public void testThatViolationsCanBeParsedFromSpotbugs2() {
     final String rootFolder = getRootFolder();
-    final List<Violation> actual =
+    final Set<Violation> actual =
         violationsApi() //
             .withPattern(".*/findbugs/spotbugs-main\\.xml$") //
             .inFolder(rootFolder) //
@@ -128,7 +129,7 @@ public class FindbugsTest {
 
     assertThat(actual) //
         .hasSize(3);
-    final Violation violation0 = actual.get(0);
+    final Violation violation0 = new ArrayList<>(actual).get(0);
     assertThat(violation0.getFile()) //
         .isEqualTo("se/bjurr/violations/lib/reports/ReportsFinder.java");
   }

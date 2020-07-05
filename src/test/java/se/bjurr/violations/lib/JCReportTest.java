@@ -6,7 +6,8 @@ import static se.bjurr.violations.lib.ViolationsApi.violationsApi;
 import static se.bjurr.violations.lib.model.SEVERITY.WARN;
 import static se.bjurr.violations.lib.reports.Parser.JCREPORT;
 
-import java.util.List;
+import java.util.ArrayList;
+import java.util.Set;
 import org.junit.Test;
 import se.bjurr.violations.lib.model.Violation;
 
@@ -15,7 +16,7 @@ public class JCReportTest {
   public void testThatViolationsCanBeParsed() {
     final String rootFolder = getRootFolder();
 
-    final List<Violation> actual =
+    final Set<Violation> actual =
         violationsApi() //
             .withPattern(".*/jcreport/.*\\.xml$") //
             .inFolder(rootFolder) //
@@ -25,22 +26,22 @@ public class JCReportTest {
     assertThat(actual) //
         .hasSize(54);
 
-    assertThat(actual.get(0).getMessage()) //
+    assertThat(new ArrayList<>(actual).get(0).getMessage()) //
         .isEqualTo(
             "Comparator method org.jcoderz.guidelines.snippets.SampleSnippets$IndentionSample.compareTo(Object) doesn't seem to return all ordering values");
-    assertThat(actual.get(0).getFile()) //
+    assertThat(new ArrayList<>(actual).get(0).getFile()) //
         .isEqualTo(
             "D:/projects/fawkez/src/java/org/jcoderz/guidelines/snippets/SampleSnippets.java");
-    assertThat(actual.get(0).getSeverity()) //
+    assertThat(new ArrayList<>(actual).get(0).getSeverity()) //
         .isEqualTo(WARN);
-    assertThat(actual.get(0).getRule()) //
+    assertThat(new ArrayList<>(actual).get(0).getRule()) //
         .isEqualTo("SC_SUSPICIOUS_COMPARATOR_RETURN_VALUES(Findbugs)");
-    assertThat(actual.get(0).getStartLine()) //
+    assertThat(new ArrayList<>(actual).get(0).getStartLine()) //
         .isEqualTo(333);
-    assertThat(actual.get(0).getEndLine()) //
+    assertThat(new ArrayList<>(actual).get(0).getEndLine()) //
         .isEqualTo(333);
 
-    assertThat(actual.get(1).getMessage()) //
+    assertThat(new ArrayList<>(actual).get(1).getMessage()) //
         .isEqualTo(
             "org.jcoderz.guidelines.snippets.SampleSnippets$IndentionSample defines compareTo(Object) and uses Object.equals()");
   }

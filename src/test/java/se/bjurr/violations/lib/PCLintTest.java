@@ -9,7 +9,8 @@ import static se.bjurr.violations.lib.model.SEVERITY.WARN;
 import static se.bjurr.violations.lib.model.Violation.violationBuilder;
 import static se.bjurr.violations.lib.reports.Parser.PCLINT;
 
-import java.util.List;
+import java.util.ArrayList;
+import java.util.Set;
 import org.junit.Test;
 import se.bjurr.violations.lib.model.Violation;
 
@@ -19,7 +20,7 @@ public class PCLintTest {
   public void testThatViolationsCanBeParsed() {
     final String rootFolder = getRootFolder();
 
-    final List<Violation> actual =
+    final Set<Violation> actual =
         violationsApi() //
             .withPattern(".*/pclint/.*\\.txt$") //
             .inFolder(rootFolder) //
@@ -29,7 +30,7 @@ public class PCLintTest {
     assertThat(actual) //
         .hasSize(8);
 
-    assertThat(actual.get(0)) //
+    assertThat(new ArrayList<>(actual).get(0)) //
         .isEqualTo( //
             violationBuilder() //
                 .setParser(PCLINT) //
@@ -41,7 +42,7 @@ public class PCLintTest {
                 .build() //
             );
 
-    assertThat(actual.get(3)) //
+    assertThat(new ArrayList<>(actual).get(3)) //
         .isEqualTo( //
             violationBuilder() //
                 .setParser(PCLINT) //
@@ -53,7 +54,7 @@ public class PCLintTest {
                 .setSeverity(WARN) //
                 .build() //
             );
-    assertThat(actual.get(1)) //
+    assertThat(new ArrayList<>(actual).get(1)) //
         .isEqualTo( //
             violationBuilder() //
                 .setParser(PCLINT) //
@@ -65,7 +66,7 @@ public class PCLintTest {
                 .setSeverity(INFO) //
                 .build() //
             );
-    assertThat(actual.get(6)) //
+    assertThat(new ArrayList<>(actual).get(6)) //
         .isEqualTo( //
             violationBuilder() //
                 .setParser(PCLINT) //
@@ -82,24 +83,24 @@ public class PCLintTest {
   public void testThatSeverityAndRulenumberFromMisraTakesPrecedence() {
     final String rootFolder = getRootFolder();
 
-    final List<Violation> actual =
+    final Set<Violation> actual =
         violationsApi() //
             .withPattern(".*/pclint/.*\\.txt$") //
             .inFolder(rootFolder) //
             .findAll(PCLINT) //
             .violations();
 
-    Violation violation = actual.get(5);
+    Violation violation = new ArrayList<>(actual).get(5);
 
     assertThat(violation.getRule()).isEqualTo("MISRA 2012 Rule 10.4, mandatory");
     assertThat(violation.getSeverity()).isEqualTo(ERROR);
 
-    violation = actual.get(4);
+    violation = new ArrayList<>(actual).get(4);
 
     assertThat(violation.getRule()).isEqualTo("MISRA 2012 Rule 1.3, required");
     assertThat(violation.getSeverity()).isEqualTo(WARN);
 
-    violation = actual.get(7);
+    violation = new ArrayList<>(actual).get(7);
 
     assertThat(violation.getRule()).isEqualTo("MISRA 2012 Rule 10.1, advisory");
     assertThat(violation.getSeverity()).isEqualTo(INFO);

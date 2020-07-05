@@ -6,7 +6,8 @@ import static se.bjurr.violations.lib.ViolationsApi.violationsApi;
 import static se.bjurr.violations.lib.model.SEVERITY.INFO;
 import static se.bjurr.violations.lib.reports.Parser.STYLECOP;
 
-import java.util.List;
+import java.util.ArrayList;
+import java.util.Set;
 import org.junit.Test;
 import se.bjurr.violations.lib.model.Violation;
 
@@ -16,7 +17,7 @@ public class StyleCopTest {
   public void testThatViolationsCanBeParsed() {
     final String rootFolder = getRootFolder();
 
-    final List<Violation> actual =
+    final Set<Violation> actual =
         violationsApi() //
             .withPattern(".*/stylecop/.*\\.xml$") //
             .inFolder(rootFolder) //
@@ -26,7 +27,7 @@ public class StyleCopTest {
     assertThat(actual) //
         .hasSize(53);
 
-    final Violation actualViolationZero = actual.get(0);
+    final Violation actualViolationZero = new ArrayList<>(actual).get(0);
     assertThat(actualViolationZero.getFile()) //
         .isEqualTo("E:/Jenkins/jobs/Tools Development/workspace/Tools/Tools.SSOTester/Form1.cs");
     assertThat(actualViolationZero.getStartLine()) //
@@ -42,7 +43,7 @@ public class StyleCopTest {
     assertThat(actualViolationZero.getSource()) //
         .isEqualTo("E:/Jenkins/jobs/Tools Development/workspace/Tools/Tools.SSOTester/Form1.cs");
 
-    final Violation actualViolationOne = actual.get(1);
+    final Violation actualViolationOne = new ArrayList<>(actual).get(1);
     assertThat(actualViolationOne.getFile()) //
         .isEqualTo("E:/Jenkins/jobs/Tools Development/workspace/Tools/Tools.SSOTester/Form1.cs");
     assertThat(actualViolationOne.getStartLine()) //

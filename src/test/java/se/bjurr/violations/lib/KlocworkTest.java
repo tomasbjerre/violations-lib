@@ -6,7 +6,8 @@ import static se.bjurr.violations.lib.ViolationsApi.violationsApi;
 import static se.bjurr.violations.lib.model.SEVERITY.INFO;
 import static se.bjurr.violations.lib.reports.Parser.KLOCWORK;
 
-import java.util.List;
+import java.util.ArrayList;
+import java.util.Set;
 import org.junit.Test;
 import se.bjurr.violations.lib.model.Violation;
 
@@ -16,7 +17,7 @@ public class KlocworkTest {
   public void testThatViolationsCanBeParsed() {
     final String rootFolder = getRootFolder();
 
-    final List<Violation> actual =
+    final Set<Violation> actual =
         violationsApi() //
             .withPattern(".*/klocwork/.*\\.xml$") //
             .inFolder(rootFolder) //
@@ -26,7 +27,7 @@ public class KlocworkTest {
     assertThat(actual) //
         .hasSize(2);
 
-    final Violation violation0 = actual.get(0);
+    final Violation violation0 = new ArrayList<>(actual).get(0);
     assertThat(violation0.getMessage()) //
         .isEqualTo(
             "In method main. Variable 'bzz' was never read after null being assigned. http://server:8080/review/insight-review.html#goto:project=TestProject,pid=10");
@@ -39,7 +40,7 @@ public class KlocworkTest {
     assertThat(violation0.getStartLine()) //
         .isEqualTo(1);
 
-    final Violation violation1 = actual.get(1);
+    final Violation violation1 = new ArrayList<>(actual).get(1);
     assertThat(violation1.getMessage()) //
         .isEqualTo(
             "In method getURLConnection. The 'getURLConnection' method throws a generic exception 'java.lang.Exception' http://server:8080/review/insight-review.html#goto:project=TestProject,pid=15");

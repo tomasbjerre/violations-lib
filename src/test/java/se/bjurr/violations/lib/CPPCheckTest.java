@@ -11,6 +11,7 @@ import static se.bjurr.violations.lib.reports.Parser.CPPCHECK;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
+import java.util.Set;
 import java.util.logging.Handler;
 import java.util.logging.Level;
 import java.util.logging.LogRecord;
@@ -31,7 +32,7 @@ public class CPPCheckTest {
   public void testThatViolationsCanBeParsed() {
     final String rootFolder = getRootFolder();
 
-    final List<Violation> actual =
+    final Set<Violation> actual =
         violationsApi() //
             .withPattern(".*/cppcheck/main\\.xml$") //
             .inFolder(rootFolder) //
@@ -68,26 +69,26 @@ public class CPPCheckTest {
   public void testThatViolationsCanBeParsedExample1() {
     final String rootFolder = getRootFolder();
 
-    final List<Violation> actual =
+    final Set<Violation> actual =
         violationsApi() //
             .withPattern(".*/cppcheck/example1\\.xml$") //
             .inFolder(rootFolder) //
             .findAll(CPPCHECK) //
             .violations();
 
-    final Violation violation0 = actual.get(0);
+    final Violation violation0 = new ArrayList<>(actual).get(0);
     assertThat(violation0.getMessage()) //
         .isEqualTo("Variable 'it' is reassigned a value before the old one has been used.");
 
-    final Violation violation1 = actual.get(1);
+    final Violation violation1 = new ArrayList<>(actual).get(1);
     assertThat(violation1.getMessage()) //
         .isEqualTo("Variable 'it' is reassigned a value before the old one has been used.");
 
-    final Violation violation2 = actual.get(2);
+    final Violation violation2 = new ArrayList<>(actual).get(2);
     assertThat(violation2.getMessage()) //
         .isEqualTo("Condition 'rc' is always true");
 
-    final Violation violation3 = actual.get(3);
+    final Violation violation3 = new ArrayList<>(actual).get(3);
     assertThat(violation3.getMessage()) //
         .isEqualTo("Condition 'rc' is always true. Assignment 'rc=true', assigned value is 1");
   }
@@ -96,7 +97,7 @@ public class CPPCheckTest {
   public void testThatViolationsCanBeParsedByRule() {
     final String rootFolder = getRootFolder();
 
-    final List<Violation> violationsList =
+    final Set<Violation> violationsList =
         violationsApi() //
             .withPattern(".*/cppcheck/example1\\.xml$") //
             .inFolder(rootFolder) //
@@ -146,14 +147,14 @@ public class CPPCheckTest {
   public void testThatViolationsCanBeParsedWhenErrorTagHasNoEndtag() {
     final String rootFolder = getRootFolder();
 
-    final List<Violation> actual =
+    final Set<Violation> actual =
         violationsApi() //
             .withPattern(".*/cppcheck/error_without_endtag\\.xml$") //
             .inFolder(rootFolder) //
             .findAll(CPPCHECK) //
             .violations();
 
-    final Violation violation0 = actual.get(0);
+    final Violation violation0 = new ArrayList<>(actual).get(0);
     assertThat(violation0.getMessage()) //
         .startsWith("The scope of the variable");
   }
@@ -162,7 +163,7 @@ public class CPPCheckTest {
   public void testThatViolationsCanBeParsedWithVersion2() {
     final String rootFolder = getRootFolder();
 
-    final List<Violation> actual =
+    final Set<Violation> actual =
         violationsApi() //
             .withPattern(".*/cppcheck/results-version-2\\.xml$") //
             .inFolder(rootFolder) //
@@ -172,25 +173,25 @@ public class CPPCheckTest {
     assertThat(actual) //
         .hasSize(4);
 
-    final Violation violation0 = actual.get(0);
+    final Violation violation0 = new ArrayList<>(actual).get(0);
     assertThat(violation0.getStartLine()) //
         .isEqualTo(53);
     assertThat(violation0.getMessage()) //
         .isEqualTo("Variable 'it' is reassigned a value before the old one has been used.");
 
-    final Violation violation1 = actual.get(1);
+    final Violation violation1 = new ArrayList<>(actual).get(1);
     assertThat(violation1.getStartLine()) //
         .isEqualTo(51);
     assertThat(violation1.getMessage()) //
         .isEqualTo("Variable 'it' is reassigned a value before the old one has been used.");
 
-    final Violation violation2 = actual.get(2);
+    final Violation violation2 = new ArrayList<>(actual).get(2);
     assertThat(violation2.getStartLine()) //
         .isEqualTo(53);
     assertThat(violation2.getMessage()) //
         .isEqualTo("Variable 'that' is reassigned a value before the old one has been used.");
 
-    final Violation violation3 = actual.get(3);
+    final Violation violation3 = new ArrayList<>(actual).get(3);
     assertThat(violation3.getStartLine()) //
         .isEqualTo(51);
     assertThat(violation3.getMessage()) //
@@ -200,8 +201,8 @@ public class CPPCheckTest {
   @Test
   public void testSelfClosingErrorTagScoping() {
 
-    List<LogRecord> severeLogEvents = new ArrayList<LogRecord>();
-    Handler logHandler =
+    final List<LogRecord> severeLogEvents = new ArrayList<LogRecord>();
+    final Handler logHandler =
         new Handler() {
           @Override
           public void publish(final LogRecord record) {
@@ -220,7 +221,7 @@ public class CPPCheckTest {
     Logger.getLogger("").addHandler(logHandler);
     final String rootFolder = getRootFolder();
 
-    final List<Violation> actual =
+    final Set<Violation> actual =
         violationsApi() //
             .withPattern(".*/cppcheck/self_closing_scope_limited\\.xml$") //
             .inFolder(rootFolder) //

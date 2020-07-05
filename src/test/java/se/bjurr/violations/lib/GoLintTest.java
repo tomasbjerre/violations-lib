@@ -7,7 +7,8 @@ import static se.bjurr.violations.lib.model.SEVERITY.INFO;
 import static se.bjurr.violations.lib.model.SEVERITY.WARN;
 import static se.bjurr.violations.lib.reports.Parser.GOLINT;
 
-import java.util.List;
+import java.util.ArrayList;
+import java.util.Set;
 import org.junit.Test;
 import se.bjurr.violations.lib.model.Violation;
 
@@ -17,7 +18,7 @@ public class GoLintTest {
   public void testThatGoLintViolationsCanBeParsed() {
     final String rootFolder = getRootFolder();
 
-    final List<Violation> actual =
+    final Set<Violation> actual =
         violationsApi() //
             .withPattern(".*/golint/golint\\.txt$") //
             .inFolder(rootFolder) //
@@ -27,7 +28,7 @@ public class GoLintTest {
     assertThat(actual) //
         .hasSize(7);
 
-    Violation violation = actual.get(6);
+    Violation violation = new ArrayList<>(actual).get(6);
     assertThat(violation.getMessage()) //
         .isEqualTo(
             "comment on exported type RestDataSource should be of the form \"RestDataSource ...\" (with optional leading article)");
@@ -42,7 +43,7 @@ public class GoLintTest {
     assertThat(violation.getEndLine()) //
         .isEqualTo(28);
 
-    Violation violation2 = actual.get(1);
+    Violation violation2 = new ArrayList<>(actual).get(1);
     assertThat(violation2.getMessage()) //
         .isEqualTo("declaration of err shadows declaration at journalevent.go:165: (vet shadow)  ");
     assertThat(violation2.getFile()) //
@@ -61,7 +62,7 @@ public class GoLintTest {
   public void testThatGoVetViolationsCanBeParsed() {
     final String rootFolder = getRootFolder();
 
-    final List<Violation> actual =
+    final Set<Violation> actual =
         violationsApi() //
             .withPattern(".*/golint/govet\\.txt$") //
             .inFolder(rootFolder) //
@@ -71,13 +72,13 @@ public class GoLintTest {
     assertThat(actual) //
         .hasSize(1);
 
-    assertThat(actual.get(0).getMessage()) //
+    assertThat(new ArrayList<>(actual).get(0).getMessage()) //
         .isEqualTo("this is a message");
-    assertThat(actual.get(0).getFile()) //
+    assertThat(new ArrayList<>(actual).get(0).getFile()) //
         .isEqualTo("my_file.go");
-    assertThat(actual.get(0).getSeverity()) //
+    assertThat(new ArrayList<>(actual).get(0).getSeverity()) //
         .isEqualTo(INFO);
-    assertThat(actual.get(0).getStartLine()) //
+    assertThat(new ArrayList<>(actual).get(0).getStartLine()) //
         .isEqualTo(46);
   }
 }

@@ -7,8 +7,9 @@ import static se.bjurr.violations.lib.reports.Parser.CODECLIMATE;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 import java.lang.reflect.Type;
-import java.util.ArrayList;
 import java.util.List;
+import java.util.Set;
+import java.util.TreeSet;
 import se.bjurr.violations.lib.ViolationsLogger;
 import se.bjurr.violations.lib.model.SEVERITY;
 import se.bjurr.violations.lib.model.Violation;
@@ -19,11 +20,11 @@ public class CodeClimateParser implements ViolationsParser {
   private static final Type listType = new TypeToken<List<CodeClimate>>() {}.getType();
 
   @Override
-  public List<Violation> parseReportOutput(
+  public Set<Violation> parseReportOutput(
       final String string, final ViolationsLogger violationsLogger) throws Exception {
     final List<CodeClimate> codeClimate = new Gson().fromJson(string, listType);
 
-    final List<Violation> violations = new ArrayList<>();
+    final Set<Violation> violations = new TreeSet<>();
     for (final CodeClimate issue : codeClimate) {
       if (issue.getSeverity() == null || issue.getCategories().size() == 0) {
         violationsLogger.log(FINE, "Ignoring issue: " + issue);

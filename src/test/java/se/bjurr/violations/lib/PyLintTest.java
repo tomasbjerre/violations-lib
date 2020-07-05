@@ -6,7 +6,8 @@ import static se.bjurr.violations.lib.ViolationsApi.violationsApi;
 import static se.bjurr.violations.lib.model.SEVERITY.INFO;
 import static se.bjurr.violations.lib.reports.Parser.PYLINT;
 
-import java.util.List;
+import java.util.ArrayList;
+import java.util.Set;
 import org.junit.Test;
 import se.bjurr.violations.lib.model.Violation;
 
@@ -16,7 +17,7 @@ public class PyLintTest {
   public void testThatViolationsCanBeParsed() {
     final String rootFolder = getRootFolder();
 
-    final List<Violation> actual =
+    final Set<Violation> actual =
         violationsApi() //
             .withPattern(".*/pylint/.*\\.txt$") //
             .inFolder(rootFolder) //
@@ -26,7 +27,7 @@ public class PyLintTest {
     assertThat(actual) //
         .hasSize(135);
 
-    Violation violation = actual.get(0);
+    Violation violation = new ArrayList<>(actual).get(0);
     assertThat(violation.getFile()) //
         .isEqualTo("marshmallow/class_registry.py");
     assertThat(violation.getStartLine()) //

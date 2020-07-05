@@ -6,7 +6,8 @@ import static se.bjurr.violations.lib.ViolationsApi.violationsApi;
 import static se.bjurr.violations.lib.model.SEVERITY.ERROR;
 import static se.bjurr.violations.lib.reports.Parser.ZPTLINT;
 
-import java.util.List;
+import java.util.ArrayList;
+import java.util.Set;
 import org.junit.Test;
 import se.bjurr.violations.lib.model.Violation;
 
@@ -15,7 +16,7 @@ public class ZPTLintTest {
   public void testThatViolationsCanBeParsed() {
     final String rootFolder = getRootFolder();
 
-    final List<Violation> actual =
+    final Set<Violation> actual =
         violationsApi() //
             .withPattern(".*/zptlint/.*\\.log$") //
             .inFolder(rootFolder) //
@@ -25,20 +26,20 @@ public class ZPTLintTest {
     assertThat(actual) //
         .hasSize(2);
 
-    assertThat(actual.get(1).getMessage()) //
+    assertThat(new ArrayList<>(actual).get(1).getMessage()) //
         .isEqualTo("abc def ghe '\" 123");
-    assertThat(actual.get(1).getFile()) //
+    assertThat(new ArrayList<>(actual).get(1).getFile()) //
         .isEqualTo("cpplint.py");
-    assertThat(actual.get(1).getSeverity()) //
+    assertThat(new ArrayList<>(actual).get(1).getSeverity()) //
         .isEqualTo(ERROR);
-    assertThat(actual.get(1).getRule()) //
+    assertThat(new ArrayList<>(actual).get(1).getRule()) //
         .isEqualTo("ZPT");
-    assertThat(actual.get(1).getStartLine()) //
+    assertThat(new ArrayList<>(actual).get(1).getStartLine()) //
         .isEqualTo(4796);
-    assertThat(actual.get(1).getEndLine()) //
+    assertThat(new ArrayList<>(actual).get(1).getEndLine()) //
         .isEqualTo(4796);
 
-    assertThat(actual.get(0).getMessage()) //
+    assertThat(new ArrayList<>(actual).get(0).getMessage()) //
         .isEqualTo("abc '\" 123 def ghe");
   }
 }

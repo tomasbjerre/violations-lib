@@ -7,7 +7,8 @@ import static se.bjurr.violations.lib.model.SEVERITY.ERROR;
 import static se.bjurr.violations.lib.model.SEVERITY.WARN;
 import static se.bjurr.violations.lib.reports.Parser.GOOGLEERRORPRONE;
 
-import java.util.List;
+import java.util.ArrayList;
+import java.util.Set;
 import org.junit.Test;
 import se.bjurr.violations.lib.model.Violation;
 
@@ -17,7 +18,7 @@ public class GoogleErrorProneTest {
   public void testThatViolationsCanBeParsedGradle() {
     final String rootFolder = getRootFolder();
 
-    final List<Violation> actual =
+    final Set<Violation> actual =
         violationsApi() //
             .withPattern(".*/googleErrorProne/googleErrorProne\\.log$") //
             .inFolder(rootFolder) //
@@ -27,7 +28,7 @@ public class GoogleErrorProneTest {
     assertThat(actual) //
         .hasSize(5);
 
-    final Violation violation0 = actual.get(0);
+    final Violation violation0 = new ArrayList<>(actual).get(0);
     assertThat(violation0.getMessage()) //
         .endsWith("Splitter.on(\",\").split(link)) {'?");
     assertThat(violation0.getFile()) //
@@ -40,7 +41,7 @@ public class GoogleErrorProneTest {
     assertThat(violation0.getStartLine()) //
         .isEqualTo(51);
 
-    final Violation violation4 = actual.get(3);
+    final Violation violation4 = new ArrayList<>(actual).get(3);
     assertThat(violation4.getMessage()) //
         .endsWith(", otherCommitTime);'?");
     assertThat(violation4.getFile()) //
@@ -58,7 +59,7 @@ public class GoogleErrorProneTest {
   public void testThatViolationsCanBeParsedMaven() {
     final String rootFolder = getRootFolder();
 
-    final List<Violation> actual =
+    final Set<Violation> actual =
         violationsApi() //
             .withPattern(".*/googleErrorProne/googleErrorProneMaven\\.log$") //
             .inFolder(rootFolder) //
@@ -68,7 +69,7 @@ public class GoogleErrorProneTest {
     assertThat(actual) //
         .hasSize(1);
 
-    final Violation violation0 = actual.get(0);
+    final Violation violation0 = new ArrayList<>(actual).get(0);
     assertThat(violation0.getMessage()) //
         .endsWith("row new Exception();'?");
     assertThat(violation0.getFile()) //
@@ -85,7 +86,7 @@ public class GoogleErrorProneTest {
   public void testThatViolationsCanBeParsedGradleNullAway() {
     final String rootFolder = getRootFolder();
 
-    final List<Violation> actual =
+    final Set<Violation> actual =
         violationsApi() //
             .withPattern(".*/googleErrorProne/nullAway\\.log$") //
             .inFolder(rootFolder) //
@@ -95,7 +96,7 @@ public class GoogleErrorProneTest {
     assertThat(actual) //
         .hasSize(2);
 
-    final Violation violation0 = actual.get(0);
+    final Violation violation0 = new ArrayList<>(actual).get(0);
     assertThat(violation0.getMessage()) //
         .endsWith("nullaway )");
     assertThat(violation0.getFile()) //

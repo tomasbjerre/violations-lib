@@ -10,15 +10,17 @@ import static se.bjurr.violations.lib.util.ViolationParserUtils.getChunks;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
+import java.util.Set;
+import java.util.TreeSet;
 import se.bjurr.violations.lib.ViolationsLogger;
 import se.bjurr.violations.lib.model.Violation;
 
 public class JUnitParser implements ViolationsParser {
 
   @Override
-  public List<Violation> parseReportOutput(
+  public Set<Violation> parseReportOutput(
       final String reportContent, final ViolationsLogger violationsLogger) throws Exception {
-    final List<Violation> violations = new ArrayList<>();
+    final Set<Violation> violations = new TreeSet<>();
 
     final List<String> errors = getChunks(reportContent, "<testcase", "(/>|</testcase>)");
 

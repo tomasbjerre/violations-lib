@@ -7,7 +7,8 @@ import static se.bjurr.violations.lib.model.SEVERITY.ERROR;
 import static se.bjurr.violations.lib.model.Violation.violationBuilder;
 import static se.bjurr.violations.lib.reports.Parser.MYPY;
 
-import java.util.List;
+import java.util.ArrayList;
+import java.util.Set;
 import org.junit.Test;
 import se.bjurr.violations.lib.model.Violation;
 
@@ -19,7 +20,7 @@ public class MyPyTest {
 
     String rootFolder = getRootFolder();
 
-    List<Violation> actual =
+    Set<Violation> actual =
         violationsApi() //
             .withPattern(".*/mypy/.*\\.txt$") //
             .inFolder(rootFolder) //
@@ -29,7 +30,7 @@ public class MyPyTest {
     assertThat(actual) //
         .hasSize(5);
 
-    assertThat(actual.get(3)) //
+    assertThat(new ArrayList<>(actual).get(3)) //
         .isEqualTo( //
             violationBuilder() //
                 .setParser(MYPY) //
@@ -40,7 +41,7 @@ public class MyPyTest {
                 .build() //
             );
 
-    assertThat(actual.get(2)) //
+    assertThat(new ArrayList<>(actual).get(2)) //
         .isEqualTo( //
             violationBuilder() //
                 .setParser(MYPY) //

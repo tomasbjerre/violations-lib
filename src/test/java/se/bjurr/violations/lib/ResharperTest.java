@@ -8,7 +8,8 @@ import static se.bjurr.violations.lib.model.SEVERITY.INFO;
 import static se.bjurr.violations.lib.model.SEVERITY.WARN;
 import static se.bjurr.violations.lib.reports.Parser.RESHARPER;
 
-import java.util.List;
+import java.util.ArrayList;
+import java.util.Set;
 import org.junit.Test;
 import se.bjurr.violations.lib.model.Violation;
 
@@ -18,7 +19,7 @@ public class ResharperTest {
   public void testThatViolationsCanBeParsed() {
     final String rootFolder = getRootFolder();
 
-    final List<Violation> actual =
+    final Set<Violation> actual =
         violationsApi() //
             .withPattern(".*/resharper/.*\\.xml$") //
             .inFolder(rootFolder) //
@@ -28,7 +29,7 @@ public class ResharperTest {
     assertThat(actual) //
         .hasSize(4);
 
-    Violation violation = actual.get(2);
+    Violation violation = new ArrayList<>(actual).get(2);
     assertThat(violation.getReporter()) //
         .isEqualTo(RESHARPER.name());
 
@@ -42,7 +43,7 @@ public class ResharperTest {
     assertThat(violation.getSeverity()) //
         .isEqualTo(WARN);
 
-    Violation violation2 = actual.get(1);
+    Violation violation2 = new ArrayList<>(actual).get(1);
     assertThat(violation2.getMessage()) //
         .isEqualTo(
             "Join declaration and assignment. Common Practices and Code Improvements. Join local variable declaration and assignment");
@@ -53,7 +54,7 @@ public class ResharperTest {
     assertThat(violation2.getSeverity()) //
         .isEqualTo(INFO);
 
-    Violation violation3 = actual.get(3);
+    Violation violation3 = new ArrayList<>(actual).get(3);
     assertThat(violation3.getMessage()) //
         .isEqualTo(
             "Using directive is not required by the code and can be safely removed. Redundancies in Code. Redundant using directive. For more info, visit http://confluence.jetbrains.net/display/ReSharper/Redundant+using+directive");
@@ -64,7 +65,7 @@ public class ResharperTest {
     assertThat(violation3.getSeverity()) //
         .isEqualTo(WARN);
 
-    Violation violation4 = actual.get(0);
+    Violation violation4 = new ArrayList<>(actual).get(0);
     assertThat(violation4.getMessage()) //
         .isEqualTo("Cannot resolve symbol 'GetError'. C# Compiler Errors. CSharpErrors");
     assertThat(violation4.getRule()) //

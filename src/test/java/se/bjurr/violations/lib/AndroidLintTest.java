@@ -8,7 +8,7 @@ import static se.bjurr.violations.lib.model.SEVERITY.WARN;
 import static se.bjurr.violations.lib.model.Violation.violationBuilder;
 import static se.bjurr.violations.lib.reports.Parser.ANDROIDLINT;
 
-import java.util.List;
+import java.util.Set;
 import org.junit.Test;
 import se.bjurr.violations.lib.model.Violation;
 
@@ -20,7 +20,7 @@ public class AndroidLintTest {
 
     String rootFolder = getRootFolder();
 
-    List<Violation> actual =
+    Set<Violation> actual =
         violationsApi() //
             .withPattern(".*/androidlint/.*\\.xml$") //
             .inFolder(rootFolder) //

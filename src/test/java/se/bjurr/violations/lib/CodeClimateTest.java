@@ -4,7 +4,8 @@ import static org.assertj.core.api.Assertions.assertThat;
 import static se.bjurr.violations.lib.TestUtils.getRootFolder;
 import static se.bjurr.violations.lib.ViolationsApi.violationsApi;
 
-import java.util.List;
+import java.util.ArrayList;
+import java.util.Set;
 import org.junit.Test;
 import se.bjurr.violations.lib.model.SEVERITY;
 import se.bjurr.violations.lib.model.Violation;
@@ -16,7 +17,7 @@ public class CodeClimateTest {
   public void testThatViolationsCanBeParsed() {
     final String rootFolder = getRootFolder();
 
-    final List<Violation> actual =
+    final Set<Violation> actual =
         violationsApi() //
             .withPattern(".*/codeclimate/example\\.json$") //
             .inFolder(rootFolder) //
@@ -26,7 +27,7 @@ public class CodeClimateTest {
     assertThat(actual) //
         .hasSize(2);
 
-    final Violation violation0 = actual.get(1);
+    final Violation violation0 = new ArrayList<>(actual).get(1);
     assertThat(violation0.getMessage()) //
         .isEqualTo("Method `destroy` has 6 arguments (exceeds 4 allowed). Consider refactoring.");
     assertThat(violation0.getFile()) //

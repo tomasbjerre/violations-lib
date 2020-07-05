@@ -9,8 +9,9 @@ import static se.bjurr.violations.lib.reports.Parser.PCLINT;
 import static se.bjurr.violations.lib.util.ViolationParserUtils.getLines;
 import static se.bjurr.violations.lib.util.ViolationParserUtils.getParts;
 
-import java.util.ArrayList;
 import java.util.List;
+import java.util.Set;
+import java.util.TreeSet;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 import se.bjurr.violations.lib.ViolationsLogger;
@@ -20,9 +21,9 @@ import se.bjurr.violations.lib.model.Violation;
 public class PCLintParser implements ViolationsParser {
 
   @Override
-  public List<Violation> parseReportOutput(
+  public Set<Violation> parseReportOutput(
       final String string, final ViolationsLogger violationsLogger) throws Exception {
-    final List<Violation> violations = new ArrayList<>();
+    final Set<Violation> violations = new TreeSet<>();
     final List<String> lines = getLines(string);
     final Pattern misraPattern = Pattern.compile("\\[MISRA.*\\]");
     for (final String line : lines) {
@@ -36,7 +37,7 @@ public class PCLintParser implements ViolationsParser {
     return violations;
   }
 
-  private void parseMisraViolation(final String line, final List<Violation> violations) {
+  private void parseMisraViolation(final String line, final Set<Violation> violations) {
     final List<String> parts =
         getParts(
             line,
@@ -68,7 +69,7 @@ public class PCLintParser implements ViolationsParser {
         );
   }
 
-  private void parseGeneralViolation(final String line, final List<Violation> violations) {
+  private void parseGeneralViolation(final String line, final Set<Violation> violations) {
     final List<String> parts =
         getParts(
             line,

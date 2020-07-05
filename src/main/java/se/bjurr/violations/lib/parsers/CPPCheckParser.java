@@ -10,9 +10,10 @@ import static se.bjurr.violations.lib.util.ViolationParserUtils.getAttribute;
 import static se.bjurr.violations.lib.util.ViolationParserUtils.getChunks;
 import static se.bjurr.violations.lib.util.ViolationParserUtils.getIntegerAttribute;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
+import java.util.Set;
+import java.util.TreeSet;
 import se.bjurr.violations.lib.ViolationsLogger;
 import se.bjurr.violations.lib.model.SEVERITY;
 import se.bjurr.violations.lib.model.Violation;
@@ -20,9 +21,9 @@ import se.bjurr.violations.lib.model.Violation;
 public class CPPCheckParser implements ViolationsParser {
 
   @Override
-  public List<Violation> parseReportOutput(
+  public Set<Violation> parseReportOutput(
       final String string, final ViolationsLogger violationsLogger) throws Exception {
-    final List<Violation> violations = new ArrayList<>();
+    final Set<Violation> violations = new TreeSet<>();
     final List<String> errorChunks = getChunks(string, "<error ", "</error>");
     for (int errorIndex = 0; errorIndex < errorChunks.size(); errorIndex++) {
       final String errorChunk = errorChunks.get(errorIndex);

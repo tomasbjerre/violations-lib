@@ -6,8 +6,9 @@ import static se.bjurr.violations.lib.model.Violation.violationBuilder;
 import static se.bjurr.violations.lib.reports.Parser.PYDOCSTYLE;
 import static se.bjurr.violations.lib.util.ViolationParserUtils.getParts;
 
-import java.util.ArrayList;
 import java.util.List;
+import java.util.Set;
+import java.util.TreeSet;
 import se.bjurr.violations.lib.ViolationsLogger;
 import se.bjurr.violations.lib.model.Violation;
 import se.bjurr.violations.lib.util.ViolationParserUtils;
@@ -15,9 +16,9 @@ import se.bjurr.violations.lib.util.ViolationParserUtils;
 public class PyDocStyleParser implements ViolationsParser {
 
   @Override
-  public List<Violation> parseReportOutput(final String string, ViolationsLogger violationsLogger)
+  public Set<Violation> parseReportOutput(final String string, ViolationsLogger violationsLogger)
       throws Exception {
-    final List<Violation> violations = new ArrayList<>();
+    final Set<Violation> violations = new TreeSet<>();
     boolean fileLine = true;
     final List<String> lines = ViolationParserUtils.getLines(string);
     String filename = null;

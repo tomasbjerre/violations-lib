@@ -6,7 +6,8 @@ import static se.bjurr.violations.lib.ViolationsApi.violationsApi;
 import static se.bjurr.violations.lib.model.SEVERITY.WARN;
 import static se.bjurr.violations.lib.reports.Parser.FXCOP;
 
-import java.util.List;
+import java.util.ArrayList;
+import java.util.Set;
 import org.junit.Test;
 import se.bjurr.violations.lib.model.Violation;
 
@@ -16,7 +17,7 @@ public class FxCopTest {
   public void testThatViolationsCanBeParsed() {
     final String rootFolder = getRootFolder();
 
-    final List<Violation> actual =
+    final Set<Violation> actual =
         violationsApi() //
             .withPattern(".*/fxcop/.*\\.xml$") //
             .inFolder(rootFolder) //
@@ -26,7 +27,7 @@ public class FxCopTest {
     assertThat(actual) //
         .hasSize(25);
 
-    final Violation actualViolationZero = actual.get(0);
+    final Violation actualViolationZero = new ArrayList<>(actual).get(0);
     assertThat(actualViolationZero.getFile()) //
         .isEqualTo("C:/git/test-project/Test Solution 1/GenericsSample/Form1.Designer.cs");
     assertThat(actualViolationZero.getStartLine()) //
@@ -45,7 +46,7 @@ public class FxCopTest {
         .isEqualTo(
             "C:/git/test-project/Test Solution 1/GenericsSample/bin/Debug/GenericsSample.exe");
 
-    final Violation actualViolationOne = actual.get(1);
+    final Violation actualViolationOne = new ArrayList<>(actual).get(1);
     assertThat(actualViolationOne.getFile()) //
         .isEqualTo("C:/git/test-project/Test Solution 1/GenericsSample/Form1.Designer.cs");
     assertThat(actualViolationOne.getStartLine()) //

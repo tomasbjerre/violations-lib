@@ -6,7 +6,8 @@ import static se.bjurr.violations.lib.ViolationsApi.violationsApi;
 import static se.bjurr.violations.lib.model.SEVERITY.ERROR;
 import static se.bjurr.violations.lib.reports.Parser.XUNIT;
 
-import java.util.List;
+import java.util.ArrayList;
+import java.util.Set;
 import org.junit.Test;
 import se.bjurr.violations.lib.model.Violation;
 
@@ -15,7 +16,7 @@ public class XUnitTest {
   public void testThatViolationsCanBeParsedFromStylelint() {
     final String rootFolder = getRootFolder();
 
-    final List<Violation> actual =
+    final Set<Violation> actual =
         violationsApi() //
             .withPattern(".*/xunit/stylelint-test-results.txt$") //
             .inFolder(rootFolder) //
@@ -25,21 +26,21 @@ public class XUnitTest {
     assertThat(actual) //
         .hasSize(2);
 
-    assertThat(actual.get(0).getMessage()) //
+    assertThat(new ArrayList<>(actual).get(0).getMessage()) //
         .startsWith("Expected no more than 1 empty line");
 
-    assertThat(actual.get(1).getMessage()) //
+    assertThat(new ArrayList<>(actual).get(1).getMessage()) //
         .startsWith("Unexpected whitespace at end of line (no-eol-whitespace)");
-    assertThat(actual.get(1).getFile()) //
+    assertThat(new ArrayList<>(actual).get(1).getFile()) //
         .isEqualTo(
             "C:/Github/jenkins_test/org_newbalance/cartridges/org_newbalance/cartridge/client/default/scss/product/detail.scss");
-    assertThat(actual.get(1).getSeverity()) //
+    assertThat(new ArrayList<>(actual).get(1).getSeverity()) //
         .isEqualTo(ERROR);
-    assertThat(actual.get(1).getRule()) //
+    assertThat(new ArrayList<>(actual).get(1).getRule()) //
         .isEqualTo("no-eol-whitespace");
-    assertThat(actual.get(1).getStartLine()) //
+    assertThat(new ArrayList<>(actual).get(1).getStartLine()) //
         .isEqualTo(0);
-    assertThat(actual.get(1).getEndLine()) //
+    assertThat(new ArrayList<>(actual).get(1).getEndLine()) //
         .isEqualTo(0);
   }
 
@@ -47,7 +48,7 @@ public class XUnitTest {
   public void testThatViolationsCanBeParsedFromMocha() {
     final String rootFolder = getRootFolder();
 
-    final List<Violation> actual =
+    final Set<Violation> actual =
         violationsApi() //
             .withPattern(".*/xunit/mocha-test-results.txt$") //
             .inFolder(rootFolder) //
@@ -57,7 +58,7 @@ public class XUnitTest {
     assertThat(actual) //
         .hasSize(1);
 
-    Violation violation = actual.get(0);
+    Violation violation = new ArrayList<>(actual).get(0);
     assertThat(violation.getMessage()) //
         .startsWith("expected 'success' to equal 'succes'");
     assertThat(violation.getFile()) //

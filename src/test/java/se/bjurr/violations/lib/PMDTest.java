@@ -7,7 +7,8 @@ import static se.bjurr.violations.lib.model.SEVERITY.ERROR;
 import static se.bjurr.violations.lib.model.SEVERITY.WARN;
 import static se.bjurr.violations.lib.reports.Parser.PMD;
 
-import java.util.List;
+import java.util.ArrayList;
+import java.util.Set;
 import org.junit.Test;
 import se.bjurr.violations.lib.model.Violation;
 
@@ -17,7 +18,7 @@ public class PMDTest {
   public void testThatViolationsCanBeParsed() {
     final String rootFolder = getRootFolder();
 
-    final List<Violation> actual =
+    final Set<Violation> actual =
         violationsApi() //
             .withPattern(".*/pmd/main\\.xml$") //
             .inFolder(rootFolder) //
@@ -27,7 +28,7 @@ public class PMDTest {
     assertThat(actual) //
         .hasSize(4);
 
-    final Violation violationZero = actual.get(0);
+    final Violation violationZero = new ArrayList<>(actual).get(0);
     assertThat(violationZero.getFile()) //
         .isEqualTo("/src/main/java/se/bjurr/violations/lib/example/MyClass.java");
     assertThat(violationZero.getMessage()) //
@@ -51,7 +52,7 @@ public class PMDTest {
   public void testThatViolationsCanBeParsedCsvDelta() {
     final String rootFolder = getRootFolder();
 
-    final List<Violation> actual =
+    final Set<Violation> actual =
         violationsApi() //
             .withPattern(".*/pmd/csv-delta\\.xml$") //
             .inFolder(rootFolder) //
@@ -61,7 +62,7 @@ public class PMDTest {
     assertThat(actual) //
         .hasSize(5);
 
-    final Violation violationZero = actual.get(0);
+    final Violation violationZero = new ArrayList<>(actual).get(0);
     assertThat(violationZero.getFile()) //
         .isEqualTo("src/CustomTableClass.java");
     assertThat(violationZero.getMessage()) //
@@ -85,7 +86,7 @@ public class PMDTest {
   public void testThatViolationsCanBeParsedIfNoRuleset() {
     final String rootFolder = getRootFolder();
 
-    final List<Violation> actual =
+    final Set<Violation> actual =
         violationsApi() //
             .withPattern(".*/pmd/no-ruleset\\.xml$") //
             .inFolder(rootFolder) //
@@ -95,7 +96,7 @@ public class PMDTest {
     assertThat(actual) //
         .hasSize(3);
 
-    final Violation violationZero = actual.get(0);
+    final Violation violationZero = new ArrayList<>(actual).get(0);
     assertThat(violationZero.getFile()) //
         .isEqualTo(
             "/home/cm/prod/workspace/applikation-mr-pipeline@3/applikation-web/src/main/java/pkg/applikation/application/Some.java");
@@ -120,7 +121,7 @@ public class PMDTest {
   public void testThatPHPMDViolationsCanBeParsed() {
     final String rootFolder = getRootFolder();
 
-    final List<Violation> actual =
+    final Set<Violation> actual =
         violationsApi() //
             .withPattern(".*/pmd/phpmd\\.xml$") //
             .inFolder(rootFolder) //
@@ -130,7 +131,7 @@ public class PMDTest {
     assertThat(actual) //
         .hasSize(2);
 
-    final Violation violationZero = actual.get(0);
+    final Violation violationZero = new ArrayList<>(actual).get(0);
     assertThat(violationZero.getFile()) //
         .isEqualTo("/home/bjerre/workspace/pull-request-notifier-for-stash/api.php");
     assertThat(violationZero.getMessage()) //

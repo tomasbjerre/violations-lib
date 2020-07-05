@@ -5,7 +5,8 @@ import static se.bjurr.violations.lib.TestUtils.getRootFolder;
 import static se.bjurr.violations.lib.ViolationsApi.violationsApi;
 import static se.bjurr.violations.lib.reports.Parser.MSCPP;
 
-import java.util.List;
+import java.util.ArrayList;
+import java.util.Set;
 import org.junit.Test;
 import se.bjurr.violations.lib.model.SEVERITY;
 import se.bjurr.violations.lib.model.Violation;
@@ -16,7 +17,7 @@ public class MSCPPTest {
   public void testThatViolationsCanBeParsed() {
     final String rootFolder = getRootFolder();
 
-    final List<Violation> actual =
+    final Set<Violation> actual =
         violationsApi() //
             .withPattern(".*/mscpp/example\\.txt$") //
             .inFolder(rootFolder) //
@@ -26,7 +27,7 @@ public class MSCPPTest {
     assertThat(actual) //
         .hasSize(5);
 
-    final Violation violation0 = actual.get(0);
+    final Violation violation0 = new ArrayList<>(actual).get(0);
     assertThat(violation0.getFile()) //
         .isEqualTo("../../source/gui/controls/DebugPrint.cpp");
     assertThat(violation0.getMessage()) //
@@ -38,7 +39,7 @@ public class MSCPPTest {
     assertThat(violation0.getRule()) //
         .isEqualTo("C4311");
 
-    final Violation violation1 = actual.get(3);
+    final Violation violation1 = new ArrayList<>(actual).get(3);
     assertThat(violation1.getFile()) //
         .isEqualTo("../dummies/osal/own_os/threading/Mutex.cpp");
     assertThat(violation1.getMessage()) //
@@ -50,7 +51,7 @@ public class MSCPPTest {
     assertThat(violation1.getRule()) //
         .isEqualTo("C2065");
 
-    final Violation violation4 = actual.get(4);
+    final Violation violation4 = new ArrayList<>(actual).get(4);
     assertThat(violation4.getFile()) //
         .isEqualTo("C:/Repositories/P2/source/gui/controls/Keyboard/GridKeyboard.h");
     assertThat(violation4.getMessage()) //
