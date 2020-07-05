@@ -3,6 +3,15 @@
 
 Changelog of Violations lib.
 
+## 1.119
+### No issue
+
+**New: allow custom logger**
+
+
+[84e42361237a9fa](https://github.com/tomasbjerre/violations-lib/commit/84e42361237a9fa) Tomas Bjerre *2020-07-05 09:13:11*
+
+
 ## 1.118
 ### GitHub [#91](https://github.com/tomasbjerre/violations-lib/issues/91) Can&#39;t parse Junit5 (Jupiter) report  
 
