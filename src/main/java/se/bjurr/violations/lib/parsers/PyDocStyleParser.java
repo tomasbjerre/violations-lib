@@ -8,13 +8,15 @@ import static se.bjurr.violations.lib.util.ViolationParserUtils.getParts;
 
 import java.util.ArrayList;
 import java.util.List;
+import se.bjurr.violations.lib.ViolationsLogger;
 import se.bjurr.violations.lib.model.Violation;
 import se.bjurr.violations.lib.util.ViolationParserUtils;
 
 public class PyDocStyleParser implements ViolationsParser {
 
   @Override
-  public List<Violation> parseReportOutput(final String string) throws Exception {
+  public List<Violation> parseReportOutput(final String string, ViolationsLogger violationsLogger)
+      throws Exception {
     final List<Violation> violations = new ArrayList<>();
     boolean fileLine = true;
     final List<String> lines = ViolationParserUtils.getLines(string);

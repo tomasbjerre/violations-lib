@@ -15,13 +15,15 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Optional;
+import se.bjurr.violations.lib.ViolationsLogger;
 import se.bjurr.violations.lib.model.SEVERITY;
 import se.bjurr.violations.lib.model.Violation;
 
 public class ResharperParser implements ViolationsParser {
 
   @Override
-  public List<Violation> parseReportOutput(final String string) throws Exception {
+  public List<Violation> parseReportOutput(final String string, ViolationsLogger violationsLogger)
+      throws Exception {
     final List<Violation> violations = new ArrayList<>();
     final List<String> issueTypeChunks = getChunks(string, "<IssueType ", "/>");
     final Map<String, Map<String, String>> issueTypesPerTypeId = new HashMap<>();
@@ -55,7 +57,7 @@ public class ResharperParser implements ViolationsParser {
               .setParser(RESHARPER) //
               .setStartLine(line) //
               .setFile(filename) //
-              .setSeverity(toSeverity(severity)) //
+              .setSeverity(this.toSeverity(severity)) //
               .setMessage(message) //
               .setRule(typeId) //
               .build() //

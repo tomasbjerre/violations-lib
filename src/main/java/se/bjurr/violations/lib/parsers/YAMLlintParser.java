@@ -11,6 +11,7 @@ import static se.bjurr.violations.lib.util.ViolationParserUtils.getLines;
 
 import java.util.ArrayList;
 import java.util.List;
+import se.bjurr.violations.lib.ViolationsLogger;
 import se.bjurr.violations.lib.model.SEVERITY;
 import se.bjurr.violations.lib.model.Violation;
 
@@ -22,17 +23,18 @@ import se.bjurr.violations.lib.model.Violation;
  */
 public class YAMLlintParser implements ViolationsParser {
   @Override
-  public List<Violation> parseReportOutput(final String string) throws Exception {
-    List<Violation> violations = new ArrayList<>();
-    List<List<String>> partsPerLine =
+  public List<Violation> parseReportOutput(final String string, ViolationsLogger violationsLogger)
+      throws Exception {
+    final List<Violation> violations = new ArrayList<>();
+    final List<List<String>> partsPerLine =
         getLines(
             string, "([^:]*):(\\d+):(\\d+):\\s?\\[(error|warning)\\]([^\\(]+)(\\(([^\\)]+)\\))?");
-    for (List<String> parts : partsPerLine) {
-      String filename = parts.get(1).trim();
-      Integer line = parseInt(parts.get(2));
-      Integer column = parseInt(parts.get(3));
-      String severity = parts.get(4).trim();
-      String message = parts.get(5).trim();
+    for (final List<String> parts : partsPerLine) {
+      final String filename = parts.get(1).trim();
+      final Integer line = parseInt(parts.get(2));
+      final Integer column = parseInt(parts.get(3));
+      final String severity = parts.get(4).trim();
+      final String message = parts.get(5).trim();
       String rule = null;
       if (!isNullOrEmpty(parts.get(7))) {
         rule = parts.get(7).trim();
@@ -43,7 +45,7 @@ public class YAMLlintParser implements ViolationsParser {
               .setStartLine(line) //
               .setColumn(column) //
               .setFile(filename) //
-              .setSeverity(toSeverity(severity)) //
+              .setSeverity(this.toSeverity(severity)) //
               .setMessage(message) //
               .setRule(rule) //
               .build() //

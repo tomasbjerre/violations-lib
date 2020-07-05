@@ -12,48 +12,49 @@ import static se.bjurr.violations.lib.util.ViolationParserUtils.getChunks;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
+import se.bjurr.violations.lib.ViolationsLogger;
 import se.bjurr.violations.lib.model.SEVERITY;
 import se.bjurr.violations.lib.model.Violation;
 
 public class AndroidLintParser implements ViolationsParser {
 
   @Override
-  public List<Violation> parseReportOutput(String string) throws Exception {
-    List<Violation> violations = new ArrayList<>();
-    List<String> issues = getChunks(string, "<issue", "</issue>");
-    for (String issueChunk : issues) {
+  public List<Violation> parseReportOutput(
+      final String string, final ViolationsLogger violationsLogger) throws Exception {
+    final List<Violation> violations = new ArrayList<>();
+    final List<String> issues = getChunks(string, "<issue", "</issue>");
+    for (final String issueChunk : issues) {
       /** Only ever going to be one location. */
-      String location = getChunks(issueChunk, "<location", "/>").get(0);
+      final String location = getChunks(issueChunk, "<location", "/>").get(0);
 
-      String filename = getAttribute(location, "file");
-      Optional<Integer> line = findIntegerAttribute(location, "line");
-      Optional<Integer> charAttrib = findIntegerAttribute(location, "column");
-      String severity = getAttribute(issueChunk, "severity");
+      final String filename = getAttribute(location, "file");
+      final Optional<Integer> line = findIntegerAttribute(location, "line");
+      final Optional<Integer> charAttrib = findIntegerAttribute(location, "column");
+      final String severity = getAttribute(issueChunk, "severity");
 
-      String id = getAttribute(issueChunk, "id");
-      String message = getAttribute(issueChunk, "message");
-      String summary = getAttribute(issueChunk, "summary").trim();
-      String explanation = getAttribute(issueChunk, "explanation");
+      final String id = getAttribute(issueChunk, "id");
+      final String message = getAttribute(issueChunk, "message");
+      final String summary = getAttribute(issueChunk, "summary").trim();
+      final String explanation = getAttribute(issueChunk, "explanation");
 
-      String category = getAttribute(issueChunk, "category");
+      final String category = getAttribute(issueChunk, "category");
 
       violations.add( //
-          violationBuilder() //
-              .setParser(ANDROIDLINT) //
-              .setStartLine(line.orElse(0)) //
-              .setColumn(charAttrib.orElse(null)) //
-              .setFile(filename) //
-              .setSeverity(toSeverity(severity)) //
-              .setRule(id) //
-              .setCategory(category) //
+          violationBuilder()
+              .setParser(ANDROIDLINT)
+              .setStartLine(line.orElse(0))
+              .setColumn(charAttrib.orElse(null))
+              .setFile(filename)
+              .setSeverity(this.toSeverity(severity))
+              .setRule(id)
+              .setCategory(category)
               .setMessage(summary + "\n" + message + "\n" + explanation) //
-              .build() //
-          );
+              .build());
     }
     return violations;
   }
 
-  public SEVERITY toSeverity(String severity) {
+  public SEVERITY toSeverity(final String severity) {
     if (severity.equalsIgnoreCase("ERROR")) {
       return ERROR;
     }

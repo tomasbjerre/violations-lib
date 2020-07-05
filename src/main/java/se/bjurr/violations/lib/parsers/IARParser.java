@@ -12,13 +12,15 @@ import static se.bjurr.violations.lib.util.ViolationParserUtils.getLines;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Locale;
+import se.bjurr.violations.lib.ViolationsLogger;
 import se.bjurr.violations.lib.model.SEVERITY;
 import se.bjurr.violations.lib.model.Violation;
 
 public class IARParser implements ViolationsParser {
 
   @Override
-  public List<Violation> parseReportOutput(final String reportContent) throws Exception {
+  public List<Violation> parseReportOutput(
+      final String reportContent, final ViolationsLogger violationsLogger) throws Exception {
     final List<Violation> violations = new ArrayList<>();
     final List<List<String>> partsPerLine =
         getLines(reportContent, "\"([^\"]+)\",(\\d+)([^\\[]*)\\[([^\\]]*)\\]:(.*)");
@@ -35,7 +37,7 @@ public class IARParser implements ViolationsParser {
               .setStartLine(lineNumber) //
               .setColumn(columnNumber) //
               .setFile(fileName) //
-              .setSeverity(toSeverity(severity)) //
+              .setSeverity(this.toSeverity(severity)) //
               .setRule(rule) //
               .setMessage(message) //
               .build() //

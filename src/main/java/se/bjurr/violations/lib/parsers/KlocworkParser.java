@@ -15,6 +15,7 @@ import java.util.ArrayList;
 import java.util.List;
 import javax.xml.stream.XMLStreamException;
 import javax.xml.stream.XMLStreamReader;
+import se.bjurr.violations.lib.ViolationsLogger;
 import se.bjurr.violations.lib.model.SEVERITY;
 import se.bjurr.violations.lib.model.Violation;
 import se.bjurr.violations.lib.util.ViolationParserUtils;
@@ -22,7 +23,8 @@ import se.bjurr.violations.lib.util.ViolationParserUtils;
 public class KlocworkParser implements ViolationsParser {
 
   @Override
-  public List<Violation> parseReportOutput(final String string) throws Exception {
+  public List<Violation> parseReportOutput(final String string, ViolationsLogger violationsLogger)
+      throws Exception {
     final List<Violation> violations = new ArrayList<>();
     try (InputStream input = new ByteArrayInputStream(string.getBytes(StandardCharsets.UTF_8))) {
 
@@ -32,7 +34,7 @@ public class KlocworkParser implements ViolationsParser {
         final int eventType = xmlr.next();
         if (eventType == START_ELEMENT) {
           if (xmlr.getLocalName().equalsIgnoreCase("problem")) {
-            violations.add(parseBug(xmlr));
+            violations.add(this.parseBug(xmlr));
           }
         }
       }
@@ -83,7 +85,7 @@ public class KlocworkParser implements ViolationsParser {
         .setFile(file) //
         .setMessage("In method " + method + ". " + message + " " + url) //
         .setRule(code) //
-        .setSeverity(getSeverity(severitylevel)) //
+        .setSeverity(this.getSeverity(severitylevel)) //
         .setStartLine(linenumber) //
         .build();
   }

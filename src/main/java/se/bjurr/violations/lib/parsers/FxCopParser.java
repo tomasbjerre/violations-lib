@@ -16,17 +16,17 @@ import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
-import java.util.logging.Logger;
 import javax.xml.stream.XMLStreamReader;
+import se.bjurr.violations.lib.ViolationsLogger;
 import se.bjurr.violations.lib.model.SEVERITY;
 import se.bjurr.violations.lib.model.Violation;
 import se.bjurr.violations.lib.util.ViolationParserUtils;
 
 public class FxCopParser implements ViolationsParser {
-  private static Logger LOG = Logger.getLogger(FxCopParser.class.getSimpleName());
 
   @Override
-  public List<Violation> parseReportOutput(String string) throws Exception {
+  public List<Violation> parseReportOutput(
+      final String string, final ViolationsLogger violationsLogger) throws Exception {
     final List<Violation> violations = new ArrayList<>();
 
     try (InputStream input = new ByteArrayInputStream(string.getBytes(StandardCharsets.UTF_8))) {
@@ -52,7 +52,7 @@ public class FxCopParser implements ViolationsParser {
             final String level = getAttribute(xmlr, "Level");
             final Optional<String> path = ViolationParserUtils.findAttribute(xmlr, "Path");
             if (!path.isPresent()) {
-              LOG.log(FINE, "Ignoring project level issue");
+              violationsLogger.log(FINE, "Ignoring project level issue");
               continue;
             }
             final String fileName = getAttribute(xmlr, "File");
@@ -60,7 +60,7 @@ public class FxCopParser implements ViolationsParser {
             final String message = xmlr.getElementText().replaceAll("\\s+", " ");
 
             final String filename = path.get() + "/" + fileName;
-            final SEVERITY severity = toSeverity(level);
+            final SEVERITY severity = this.toSeverity(level);
             violations.add( //
                 violationBuilder() //
                     .setParser(FXCOP) //
@@ -80,7 +80,7 @@ public class FxCopParser implements ViolationsParser {
     return violations;
   }
 
-  private SEVERITY toSeverity(String issueLevel) {
+  private SEVERITY toSeverity(final String issueLevel) {
     if (issueLevel.contains("CriticalError")) {
       return ERROR;
     } else if (issueLevel.contains("Error")) {

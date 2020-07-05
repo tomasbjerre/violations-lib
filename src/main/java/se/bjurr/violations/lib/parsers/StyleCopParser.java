@@ -13,6 +13,7 @@ import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
 import java.util.List;
 import javax.xml.stream.XMLStreamReader;
+import se.bjurr.violations.lib.ViolationsLogger;
 import se.bjurr.violations.lib.model.SEVERITY;
 import se.bjurr.violations.lib.model.Violation;
 import se.bjurr.violations.lib.util.ViolationParserUtils;
@@ -20,7 +21,8 @@ import se.bjurr.violations.lib.util.ViolationParserUtils;
 public class StyleCopParser implements ViolationsParser {
 
   @Override
-  public List<Violation> parseReportOutput(String string) throws Exception {
+  public List<Violation> parseReportOutput(
+      final String string, final ViolationsLogger violationsLogger) throws Exception {
     final List<Violation> violations = new ArrayList<>();
 
     try (InputStream input = new ByteArrayInputStream(string.getBytes(StandardCharsets.UTF_8))) {
@@ -41,21 +43,20 @@ public class StyleCopParser implements ViolationsParser {
             final SEVERITY severity = INFO;
             final String filename = source.replaceAll("\\\\", "/");
             violations.add( //
-                violationBuilder() //
-                    .setParser(STYLECOP) //
-                    .setMessage(message) //
-                    .setFile(filename) //
-                    .setStartLine(lineNumber) //
-                    .setRule(rule) //
-                    .setSeverity(severity) //
-                    .setSource(filename) //
-                    .setSpecific("section", section) //
-                    .setSpecific("source", source) //
-                    .setSpecific("ruleNamespace", ruleNamespace) //
-                    .setSpecific("rule", rule) //
+                violationBuilder()
+                    .setParser(STYLECOP)
+                    .setMessage(message)
+                    .setFile(filename)
+                    .setStartLine(lineNumber)
+                    .setRule(rule)
+                    .setSeverity(severity)
+                    .setSource(filename)
+                    .setSpecific("section", section)
+                    .setSpecific("source", source)
+                    .setSpecific("ruleNamespace", ruleNamespace)
+                    .setSpecific("rule", rule)
                     .setSpecific("ruleId", ruleId) //
-                    .build() //
-                );
+                    .build());
           }
         }
       }

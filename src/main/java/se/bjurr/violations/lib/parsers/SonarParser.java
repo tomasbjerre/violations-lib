@@ -1,5 +1,6 @@
 package se.bjurr.violations.lib.parsers;
 
+import static java.util.logging.Level.FINE;
 import static se.bjurr.violations.lib.model.Violation.violationBuilder;
 import static se.bjurr.violations.lib.reports.Parser.SONAR;
 
@@ -7,13 +8,11 @@ import com.google.gson.Gson;
 import edu.umd.cs.findbugs.annotations.SuppressFBWarnings;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.logging.Level;
-import java.util.logging.Logger;
+import se.bjurr.violations.lib.ViolationsLogger;
 import se.bjurr.violations.lib.model.SEVERITY;
 import se.bjurr.violations.lib.model.Violation;
 
 public class SonarParser implements ViolationsParser {
-  private static final Logger LOG = Logger.getLogger(SonarParser.class.getSimpleName());
 
   static class SonarReportIssue {
     String component;
@@ -29,29 +28,29 @@ public class SonarParser implements ViolationsParser {
 
     public String getFile() {
       try {
-        final String[] parts = component.split(":");
+        final String[] parts = this.component.split(":");
         return parts[parts.length - 1];
       } catch (final Throwable t) {
-        throw new RuntimeException("Cannot understand file " + component);
+        throw new RuntimeException("Cannot understand file " + this.component);
       }
     }
 
     public String getCategory() {
       try {
-        return rule.split(":")[0];
+        return this.rule.split(":")[0];
       } catch (final Throwable t) {
-        throw new RuntimeException("Cannot understand category " + rule);
+        throw new RuntimeException("Cannot understand category " + this.rule);
       }
     }
 
     public SEVERITY getSeverity() {
-      if (severity == null) {
+      if (this.severity == null) {
         return null;
       }
-      if (severity.equalsIgnoreCase("blocker")) {
+      if (this.severity.equalsIgnoreCase("blocker")) {
         return SEVERITY.ERROR;
       }
-      if (severity.equalsIgnoreCase("critical") || severity.equalsIgnoreCase("major")) {
+      if (this.severity.equalsIgnoreCase("critical") || this.severity.equalsIgnoreCase("major")) {
         return SEVERITY.WARN;
       }
       return SEVERITY.INFO;
@@ -60,19 +59,19 @@ public class SonarParser implements ViolationsParser {
     @Override
     public String toString() {
       return "SonarReportIssue [component="
-          + component
+          + this.component
           + ", line="
-          + line
+          + this.line
           + ", startLine="
-          + startLine
+          + this.startLine
           + ", endLine="
-          + endLine
+          + this.endLine
           + ", message="
-          + message
+          + this.message
           + ", severity="
-          + severity
+          + this.severity
           + ", rule="
-          + rule
+          + this.rule
           + "]";
     }
   }
@@ -93,16 +92,17 @@ public class SonarParser implements ViolationsParser {
     }
 
     public List<SonarReportIssue> getIssues() {
-      if (issues == null) {
+      if (this.issues == null) {
         return new ArrayList<>();
       }
-      return issues;
+      return this.issues;
     }
   }
 
   @Override
   @SuppressFBWarnings("UWF_UNWRITTEN_FIELD")
-  public List<Violation> parseReportOutput(final String string) throws Exception {
+  public List<Violation> parseReportOutput(
+      final String string, final ViolationsLogger violationsLogger) throws Exception {
     final SonarReport sonarReport = new Gson().fromJson(string, SonarReport.class);
 
     final List<Violation> violations = new ArrayList<>();
@@ -129,7 +129,7 @@ public class SonarParser implements ViolationsParser {
       }
 
       if (issue.startLine == null || issue.getSeverity() == null) {
-        LOG.log(Level.FINE, "Ignoring issue: " + issue);
+        violationsLogger.log(FINE, "Ignoring issue: " + issue);
         continue;
       }
 

@@ -16,13 +16,14 @@ import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 import javax.xml.stream.XMLStreamReader;
+import se.bjurr.violations.lib.ViolationsLogger;
 import se.bjurr.violations.lib.model.SEVERITY;
 import se.bjurr.violations.lib.model.Violation;
 import se.bjurr.violations.lib.util.ViolationParserUtils;
 
 public class GendarmeParser implements ViolationsParser {
 
-  private SEVERITY getSeverity(String severityString) {
+  private SEVERITY getSeverity(final String severityString) {
     if (severityString.equalsIgnoreCase("Low")) {
       return INFO;
     } else if (severityString.equalsIgnoreCase("Medium")) {
@@ -36,7 +37,8 @@ public class GendarmeParser implements ViolationsParser {
   }
 
   @Override
-  public List<Violation> parseReportOutput(String string) throws Exception {
+  public List<Violation> parseReportOutput(
+      final String string, final ViolationsLogger violationsLogger) throws Exception {
     final List<Violation> violations = new ArrayList<>();
 
     try (InputStream input = new ByteArrayInputStream(string.getBytes(StandardCharsets.UTF_8))) {
@@ -61,7 +63,7 @@ public class GendarmeParser implements ViolationsParser {
           if (xmlr.getLocalName().equalsIgnoreCase("defect")) {
             final String severityString = getAttribute(xmlr, "Severity");
             final String source = getAttribute(xmlr, "Source");
-            final SEVERITY severity = getSeverity(severityString);
+            final SEVERITY severity = this.getSeverity(severityString);
             final String message = problem + "\n\n" + solution;
             final Pattern pattern = Pattern.compile("^(.*)\\(.([0-9]*)\\)$");
             final Matcher matcher = pattern.matcher(source);

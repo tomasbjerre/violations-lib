@@ -11,18 +11,20 @@ import static se.bjurr.violations.lib.util.ViolationParserUtils.getLines;
 
 import java.util.ArrayList;
 import java.util.List;
+import se.bjurr.violations.lib.ViolationsLogger;
 import se.bjurr.violations.lib.model.SEVERITY;
 import se.bjurr.violations.lib.model.Violation;
 
 public class GoLintParser implements ViolationsParser {
 
   @Override
-  public List<Violation> parseReportOutput(String reportContent) throws Exception {
-    List<Violation> violations = new ArrayList<>();
-    List<List<String>> partsPerLine =
+  public List<Violation> parseReportOutput(
+      final String reportContent, final ViolationsLogger violationsLogger) throws Exception {
+    final List<Violation> violations = new ArrayList<>();
+    final List<List<String>> partsPerLine =
         getLines(reportContent, "^([^:]+?):(\\d*):?(\\d*?):?([^:]*?)?:? (.*)$");
-    for (List<String> parts : partsPerLine) {
-      String fileName = parts.get(1);
+    for (final List<String> parts : partsPerLine) {
+      final String fileName = parts.get(1);
       Integer lineNumber = 0;
       if (!parts.get(2).isEmpty()) {
         lineNumber = parseInt(parts.get(2));
@@ -31,15 +33,15 @@ public class GoLintParser implements ViolationsParser {
       if (!parts.get(3).isEmpty()) {
         columnNumber = parseInt(parts.get(3));
       }
-      String severity = parts.get(4);
-      String message = parts.get(5);
+      final String severity = parts.get(4);
+      final String message = parts.get(5);
       violations.add( //
           violationBuilder() //
               .setParser(GOLINT) //
               .setStartLine(lineNumber) //
               .setColumn(columnNumber) //
               .setFile(fileName) //
-              .setSeverity(toSeverity(severity)) //
+              .setSeverity(this.toSeverity(severity)) //
               .setMessage(message) //
               .build() //
           );
@@ -47,7 +49,7 @@ public class GoLintParser implements ViolationsParser {
     return violations;
   }
 
-  public SEVERITY toSeverity(String severity) {
+  public SEVERITY toSeverity(final String severity) {
     if (isNullOrEmpty(severity)) {
       return INFO;
     }

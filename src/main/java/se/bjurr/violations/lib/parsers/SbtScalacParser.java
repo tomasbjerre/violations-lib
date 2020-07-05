@@ -10,13 +10,15 @@ import static se.bjurr.violations.lib.util.ViolationParserUtils.getLines;
 
 import java.util.ArrayList;
 import java.util.List;
+import se.bjurr.violations.lib.ViolationsLogger;
 import se.bjurr.violations.lib.model.SEVERITY;
 import se.bjurr.violations.lib.model.Violation;
 
 public class SbtScalacParser implements ViolationsParser {
 
   @Override
-  public List<Violation> parseReportOutput(String reportContent) throws Exception {
+  public List<Violation> parseReportOutput(
+      final String reportContent, final ViolationsLogger violationsLogger) throws Exception {
     final List<Violation> violations = new ArrayList<>();
     final List<List<String>> partsPerLine =
         getLines(reportContent, "^\\[(warn|error)\\] (.*):(\\d+): (.*)$");
@@ -30,7 +32,7 @@ public class SbtScalacParser implements ViolationsParser {
               .setParser(SBTSCALAC) //
               .setStartLine(lineNumber) //
               .setFile(fileName) //
-              .setSeverity(toSeverity(severity)) //
+              .setSeverity(this.toSeverity(severity)) //
               .setMessage(message) //
               .build() //
           );
@@ -38,7 +40,7 @@ public class SbtScalacParser implements ViolationsParser {
     return violations;
   }
 
-  public SEVERITY toSeverity(String severity) {
+  public SEVERITY toSeverity(final String severity) {
     if ("error".equalsIgnoreCase(severity)) {
       return ERROR;
     }

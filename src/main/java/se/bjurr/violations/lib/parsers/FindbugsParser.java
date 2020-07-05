@@ -20,27 +20,26 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Optional;
-import java.util.logging.Logger;
 import javax.xml.stream.XMLStreamConstants;
 import javax.xml.stream.XMLStreamException;
 import javax.xml.stream.XMLStreamReader;
+import se.bjurr.violations.lib.ViolationsLogger;
 import se.bjurr.violations.lib.model.SEVERITY;
 import se.bjurr.violations.lib.model.Violation;
 import se.bjurr.violations.lib.util.Utils;
 import se.bjurr.violations.lib.util.ViolationParserUtils;
 
 public class FindbugsParser implements ViolationsParser {
-  private static Logger LOG = Logger.getLogger(FindbugsParser.class.getSimpleName());
   /** Severity rank. */
   public static final String FINDBUGS_SPECIFIC_RANK = "RANK";
 
   private static String findbugsMessagesXml;
 
-  public static void setFindbugsMessagesXml(String findbugsMessagesXml) {
+  public static void setFindbugsMessagesXml(final String findbugsMessagesXml) {
     FindbugsParser.findbugsMessagesXml = findbugsMessagesXml;
   }
 
-  private Map<String, String> getMessagesPerType() {
+  private Map<String, String> getMessagesPerType(final ViolationsLogger violationsLogger) {
     final Map<String, String> messagesPerType = new HashMap<>();
     try {
       if (isNullOrEmpty(findbugsMessagesXml)) {
@@ -60,13 +59,15 @@ public class FindbugsParser implements ViolationsParser {
         messagesPerType.put(type, shortDescription + "\n\n" + details);
       }
     } catch (final IOException e) {
-      LOG.log(SEVERE, e.getMessage(), e);
+      violationsLogger.log(SEVERE, e.getMessage(), e);
     }
     return messagesPerType;
   }
 
   private void parseBugInstance(
-      XMLStreamReader xmlr, List<Violation> violations, Map<String, String> messagesPerType)
+      final XMLStreamReader xmlr,
+      final List<Violation> violations,
+      final Map<String, String> messagesPerType)
       throws XMLStreamException {
     final String type = getAttribute(xmlr, "type");
     final Integer rank = getIntegerAttribute(xmlr, "rank");
@@ -74,7 +75,7 @@ public class FindbugsParser implements ViolationsParser {
     if (message == null) {
       message = type;
     }
-    final SEVERITY severity = toSeverity(rank);
+    final SEVERITY severity = this.toSeverity(rank);
 
     final List<Violation> candidates = new ArrayList<>();
 
@@ -122,18 +123,19 @@ public class FindbugsParser implements ViolationsParser {
   }
 
   @Override
-  public List<Violation> parseReportOutput(String string) throws Exception {
+  public List<Violation> parseReportOutput(
+      final String string, final ViolationsLogger violationsLogger) throws Exception {
     final List<Violation> violations = new ArrayList<>();
-    final Map<String, String> messagesPerType = getMessagesPerType();
+    final Map<String, String> messagesPerType = this.getMessagesPerType(violationsLogger);
 
     try (InputStream input = new ByteArrayInputStream(string.getBytes(StandardCharsets.UTF_8))) {
 
-      XMLStreamReader xmlr = ViolationParserUtils.createXmlReader(input);
+      final XMLStreamReader xmlr = ViolationParserUtils.createXmlReader(input);
       while (xmlr.hasNext()) {
         final int eventType = xmlr.next();
         if (eventType == XMLStreamConstants.START_ELEMENT) {
           if (xmlr.getLocalName().equalsIgnoreCase("BugInstance")) {
-            parseBugInstance(xmlr, violations, messagesPerType);
+            this.parseBugInstance(xmlr, violations, messagesPerType);
           }
         }
       }
@@ -145,7 +147,7 @@ public class FindbugsParser implements ViolationsParser {
    * Bugs are given a rank 1-20, and grouped into the categories scariest (rank 1-4), scary (rank
    * 5-9), troubling (rank 10-14), and of concern (rank 15-20).
    */
-  private SEVERITY toSeverity(Integer rank) {
+  private SEVERITY toSeverity(final Integer rank) {
     if (rank <= 9) {
       return SEVERITY.ERROR;
     }

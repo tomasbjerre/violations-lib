@@ -11,30 +11,33 @@ import static se.bjurr.violations.lib.util.ViolationParserUtils.getParts;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.regex.*;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+import se.bjurr.violations.lib.ViolationsLogger;
 import se.bjurr.violations.lib.model.SEVERITY;
 import se.bjurr.violations.lib.model.Violation;
 
 public class PCLintParser implements ViolationsParser {
 
   @Override
-  public List<Violation> parseReportOutput(String string) throws Exception {
-    List<Violation> violations = new ArrayList<>();
-    List<String> lines = getLines(string);
-    Pattern misraPattern = Pattern.compile("\\[MISRA.*\\]");
-    for (String line : lines) {
-      Matcher misraMatcher = misraPattern.matcher(line);
+  public List<Violation> parseReportOutput(
+      final String string, final ViolationsLogger violationsLogger) throws Exception {
+    final List<Violation> violations = new ArrayList<>();
+    final List<String> lines = getLines(string);
+    final Pattern misraPattern = Pattern.compile("\\[MISRA.*\\]");
+    for (final String line : lines) {
+      final Matcher misraMatcher = misraPattern.matcher(line);
       if (misraMatcher.find()) {
-        parseMisraViolation(line, violations);
+        this.parseMisraViolation(line, violations);
       } else {
-        parseGeneralViolation(line, violations);
+        this.parseGeneralViolation(line, violations);
       }
     }
     return violations;
   }
 
-  private void parseMisraViolation(String line, List<Violation> violations) {
-    List<String> parts =
+  private void parseMisraViolation(final String line, final List<Violation> violations) {
+    final List<String> parts =
         getParts(
             line,
             "^([^\\(]+)\\(",
@@ -46,13 +49,13 @@ public class PCLintParser implements ViolationsParser {
     if (parts.isEmpty()) {
       return;
     }
-    String filename = parts.get(0);
-    Integer lineNumber = parseInt(parts.get(1));
+    final String filename = parts.get(0);
+    final Integer lineNumber = parseInt(parts.get(1));
 
-    String severityString = parts.get(4);
-    SEVERITY severity = toMisraSeverity(severityString);
-    String rule = parts.get(3) + ", " + severityString;
-    String message = parts.get(2) + " " + parts.get(5);
+    final String severityString = parts.get(4);
+    final SEVERITY severity = this.toMisraSeverity(severityString);
+    final String rule = parts.get(3) + ", " + severityString;
+    final String message = parts.get(2) + " " + parts.get(5);
     violations.add( //
         violationBuilder() //
             .setParser(PCLINT) //
@@ -65,8 +68,8 @@ public class PCLintParser implements ViolationsParser {
         );
   }
 
-  private void parseGeneralViolation(String line, List<Violation> violations) {
-    List<String> parts =
+  private void parseGeneralViolation(final String line, final List<Violation> violations) {
+    final List<String> parts =
         getParts(
             line,
             "^([^\\(]+)\\(",
@@ -77,11 +80,11 @@ public class PCLintParser implements ViolationsParser {
     if (parts.isEmpty()) {
       return;
     }
-    String filename = parts.get(0);
-    Integer lineNumber = parseInt(parts.get(1));
-    SEVERITY severity = toSeverity(parts.get(2));
-    String rule = parts.get(3);
-    String message = parts.get(4);
+    final String filename = parts.get(0);
+    final Integer lineNumber = parseInt(parts.get(1));
+    final SEVERITY severity = this.toSeverity(parts.get(2));
+    final String rule = parts.get(3);
+    final String message = parts.get(4);
     violations.add( //
         violationBuilder() //
             .setParser(PCLINT) //
@@ -94,7 +97,7 @@ public class PCLintParser implements ViolationsParser {
         );
   }
 
-  private SEVERITY toSeverity(String severity) {
+  private SEVERITY toSeverity(final String severity) {
     if (severity.equals("Error")) {
       return ERROR;
     }
@@ -104,7 +107,7 @@ public class PCLintParser implements ViolationsParser {
     return INFO;
   }
 
-  private SEVERITY toMisraSeverity(String severity) {
+  private SEVERITY toMisraSeverity(final String severity) {
     if (severity.equals("mandatory")) {
       return ERROR;
     }

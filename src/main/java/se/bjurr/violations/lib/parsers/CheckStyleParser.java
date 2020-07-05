@@ -14,13 +14,15 @@ import static se.bjurr.violations.lib.util.ViolationParserUtils.getIntegerAttrib
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
+import se.bjurr.violations.lib.ViolationsLogger;
 import se.bjurr.violations.lib.model.SEVERITY;
 import se.bjurr.violations.lib.model.Violation;
 
 public class CheckStyleParser implements ViolationsParser {
 
   @Override
-  public List<Violation> parseReportOutput(String string) throws Exception {
+  public List<Violation> parseReportOutput(
+      final String string, final ViolationsLogger violationsLogger) throws Exception {
     final List<Violation> violations = new ArrayList<>();
     final List<String> files = getChunks(string, "<file", "</file>");
     for (final String fileChunk : files) {
@@ -40,7 +42,7 @@ public class CheckStyleParser implements ViolationsParser {
                 .setStartLine(line) //
                 .setColumn(column.orElse(null)) //
                 .setFile(filename) //
-                .setSeverity(toSeverity(severity)) //
+                .setSeverity(this.toSeverity(severity)) //
                 .setMessage(message) //
                 .setRule(rule) //
                 .build() //
@@ -50,7 +52,7 @@ public class CheckStyleParser implements ViolationsParser {
     return violations;
   }
 
-  public SEVERITY toSeverity(String severity) {
+  public SEVERITY toSeverity(final String severity) {
     if (severity.equalsIgnoreCase("ERROR")) {
       return ERROR;
     }

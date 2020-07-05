@@ -9,6 +9,7 @@ import java.util.List;
 import java.util.Set;
 import java.util.TreeSet;
 import java.util.logging.Logger;
+import se.bjurr.violations.lib.ViolationsLogger;
 import se.bjurr.violations.lib.model.Violation;
 import se.bjurr.violations.lib.parsers.AndroidLintParser;
 import se.bjurr.violations.lib.parsers.CLangParser;
@@ -99,30 +100,36 @@ public enum Parser {
   CODECLIMATE(new CodeClimateParser()), //
   XUNIT(new XUnitParser());
 
-  private static Logger LOG = Logger.getLogger(Parser.class.getSimpleName());
   private transient ViolationsParser violationsParser;
 
   private Parser(final ViolationsParser violationsParser) {
     this.violationsParser = violationsParser;
   }
 
-  public Set<Violation> findViolations(final List<File> includedFiles) {
+  public Set<Violation> findViolations(
+      final ViolationsLogger violationsLogger, final List<File> includedFiles) {
     final Set<Violation> violations = new TreeSet<>();
     for (final File file : includedFiles) {
+      String content = null;
       try {
-        final String string = Utils.toString(new FileInputStream(file));
-        if (LOG.isLoggable(FINE)) {
-          LOG.log(FINE, "Using " + violationsParser.getClass().getName() + " to parse " + string);
+        content = Utils.toString(new FileInputStream(file));
+        if (Logger.getLogger(Parser.class.getSimpleName()).isLoggable(FINE)) {
+          violationsLogger.log(
+              FINE, "Using " + this.violationsParser.getClass().getName() + " to parse " + content);
         }
-        violations.addAll(violationsParser.parseReportOutput(string));
+        violations.addAll(this.violationsParser.parseReportOutput(content, violationsLogger));
       } catch (final Throwable e) {
-        LOG.log(SEVERE, "Error when parsing " + file.getAbsolutePath() + " as " + this.name(), e);
+        final String withContent = content == null ? "" : " content:\n\n" + content;
+        violationsLogger.log(
+            SEVERE,
+            "Error when parsing " + file.getAbsolutePath() + " as " + this.name() + withContent,
+            e);
       }
     }
     return violations;
   }
 
   public ViolationsParser getViolationsParser() {
-    return violationsParser;
+    return this.violationsParser;
   }
 }

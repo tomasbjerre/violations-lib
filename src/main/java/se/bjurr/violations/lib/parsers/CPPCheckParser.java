@@ -13,13 +13,15 @@ import static se.bjurr.violations.lib.util.ViolationParserUtils.getIntegerAttrib
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
+import se.bjurr.violations.lib.ViolationsLogger;
 import se.bjurr.violations.lib.model.SEVERITY;
 import se.bjurr.violations.lib.model.Violation;
 
 public class CPPCheckParser implements ViolationsParser {
 
   @Override
-  public List<Violation> parseReportOutput(final String string) throws Exception {
+  public List<Violation> parseReportOutput(
+      final String string, final ViolationsLogger violationsLogger) throws Exception {
     final List<Violation> violations = new ArrayList<>();
     final List<String> errorChunks = getChunks(string, "<error ", "</error>");
     for (int errorIndex = 0; errorIndex < errorChunks.size(); errorIndex++) {

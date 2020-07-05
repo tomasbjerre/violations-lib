@@ -15,13 +15,14 @@ import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
 import java.util.List;
 import javax.xml.stream.XMLStreamReader;
+import se.bjurr.violations.lib.ViolationsLogger;
 import se.bjurr.violations.lib.model.SEVERITY;
 import se.bjurr.violations.lib.model.Violation;
 import se.bjurr.violations.lib.util.ViolationParserUtils;
 
 public class CPDParser implements ViolationsParser {
 
-  private SEVERITY getSeverity(Integer from) {
+  private SEVERITY getSeverity(final Integer from) {
     if (from < 100) {
       return INFO;
     }
@@ -32,7 +33,8 @@ public class CPDParser implements ViolationsParser {
   }
 
   @Override
-  public List<Violation> parseReportOutput(String string) throws Exception {
+  public List<Violation> parseReportOutput(
+      final String string, final ViolationsLogger violationsLogger) throws Exception {
     final List<Violation> violations = new ArrayList<>();
     try (InputStream input = new ByteArrayInputStream(string.getBytes(StandardCharsets.UTF_8))) {
 
@@ -62,7 +64,7 @@ public class CPDParser implements ViolationsParser {
                       .setFile(file) //
                       .setMessage(codefragment) //
                       .setRule("DUPLICATION") //
-                      .setSeverity(getSeverity(tokens)) //
+                      .setSeverity(this.getSeverity(tokens)) //
                       .setStartLine(line) //
                       .build();
               violations.add(violation);

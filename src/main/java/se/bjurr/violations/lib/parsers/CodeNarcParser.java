@@ -1,5 +1,6 @@
 package se.bjurr.violations.lib.parsers;
 
+import static java.nio.charset.StandardCharsets.UTF_8;
 import static javax.xml.stream.XMLStreamConstants.START_ELEMENT;
 import static se.bjurr.violations.lib.model.SEVERITY.ERROR;
 import static se.bjurr.violations.lib.model.SEVERITY.INFO;
@@ -19,6 +20,7 @@ import java.util.List;
 import java.util.Map;
 import javax.xml.stream.XMLStreamException;
 import javax.xml.stream.XMLStreamReader;
+import se.bjurr.violations.lib.ViolationsLogger;
 import se.bjurr.violations.lib.model.SEVERITY;
 import se.bjurr.violations.lib.model.Violation;
 import se.bjurr.violations.lib.util.ViolationParserUtils;
@@ -36,12 +38,13 @@ public class CodeNarcParser implements ViolationsParser {
   }
 
   @Override
-  public List<Violation> parseReportOutput(final String string) throws Exception {
+  public List<Violation> parseReportOutput(
+      final String string, final ViolationsLogger violationsLogger) throws Exception {
     final List<Violation> violations = new ArrayList<>();
 
-    final Map<String, String> rules = getRules(string);
+    final Map<String, String> rules = this.getRules(string);
 
-    final String sourceDirectory = getSourceDirectory(string);
+    final String sourceDirectory = this.getSourceDirectory(string);
 
     try (InputStream input = new ByteArrayInputStream(string.getBytes(StandardCharsets.UTF_8))) {
 
@@ -85,7 +88,7 @@ public class CodeNarcParser implements ViolationsParser {
                     .setFile(fileString.replace("//", "/")) //
                     .setMessage(message) //
                     .setRule(ruleName) //
-                    .setSeverity(getSeverity(priority)) //
+                    .setSeverity(this.getSeverity(priority)) //
                     .setStartLine(lineNumber) //
                     .build();
             violations.add(violation);
@@ -97,7 +100,7 @@ public class CodeNarcParser implements ViolationsParser {
   }
 
   private String getSourceDirectory(final String string) throws Exception {
-    try (InputStream input = new ByteArrayInputStream(string.getBytes(StandardCharsets.UTF_8))) {
+    try (InputStream input = new ByteArrayInputStream(string.getBytes(UTF_8))) {
       final XMLStreamReader xmlr = ViolationParserUtils.createXmlReader(input);
       while (xmlr.hasNext()) {
         final int eventType = xmlr.next();

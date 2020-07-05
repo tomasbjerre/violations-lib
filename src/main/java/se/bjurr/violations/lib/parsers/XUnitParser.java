@@ -15,17 +15,19 @@ import java.util.List;
 import java.util.Map;
 import javax.xml.stream.XMLStreamConstants;
 import javax.xml.stream.XMLStreamReader;
+import se.bjurr.violations.lib.ViolationsLogger;
 import se.bjurr.violations.lib.model.Violation;
 import se.bjurr.violations.lib.util.ViolationParserUtils;
 
 public class XUnitParser implements ViolationsParser {
 
   @Override
-  public List<Violation> parseReportOutput(String string) throws Exception {
+  public List<Violation> parseReportOutput(
+      final String string, final ViolationsLogger violationsLogger) throws Exception {
     final List<Violation> violations = new ArrayList<>();
     try (InputStream input = new ByteArrayInputStream(string.getBytes(UTF_8))) {
       final XMLStreamReader xmlr = ViolationParserUtils.createXmlReader(input);
-      Map<String, String> specifics = new HashMap<>();
+      final Map<String, String> specifics = new HashMap<>();
       String testSuiteName = null;
       String file = null;
       String message = null;
@@ -37,9 +39,9 @@ public class XUnitParser implements ViolationsParser {
         if (eventType == XMLStreamConstants.START_ELEMENT) {
           if (xmlr.getLocalName().equalsIgnoreCase("testsuite")) {
             prevLocalName = xmlr.getLocalName();
-            Integer failures = findIntegerAttribute(xmlr, "failures").orElse(-1);
-            Integer errors = findIntegerAttribute(xmlr, "errors").orElse(-1);
-            Integer tests = findIntegerAttribute(xmlr, "tests").orElse(-1);
+            final Integer failures = findIntegerAttribute(xmlr, "failures").orElse(-1);
+            final Integer errors = findIntegerAttribute(xmlr, "errors").orElse(-1);
+            final Integer tests = findIntegerAttribute(xmlr, "tests").orElse(-1);
             testSuiteName = findAttribute(xmlr, "name").orElse("");
             file = findAttribute(xmlr, "file").orElse("");
             specifics.put("tests", tests.toString());
@@ -66,7 +68,7 @@ public class XUnitParser implements ViolationsParser {
         if (prevLocalName.equalsIgnoreCase("failure")
             && eventType == XMLStreamConstants.CHARACTERS) {
           prevLocalName = "";
-          String content = xmlr.getText();
+          final String content = xmlr.getText();
           String violationFile = testSuiteName;
           if (!file.isEmpty()) {
             violationFile = file;

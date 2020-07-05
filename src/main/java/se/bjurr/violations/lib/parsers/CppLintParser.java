@@ -1,6 +1,7 @@
 package se.bjurr.violations.lib.parsers;
 
 import static java.lang.Integer.parseInt;
+import static java.util.logging.Level.SEVERE;
 import static se.bjurr.violations.lib.model.SEVERITY.ERROR;
 import static se.bjurr.violations.lib.model.SEVERITY.INFO;
 import static se.bjurr.violations.lib.model.SEVERITY.WARN;
@@ -11,15 +12,15 @@ import static se.bjurr.violations.lib.util.ViolationParserUtils.getParts;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.logging.Logger;
+import se.bjurr.violations.lib.ViolationsLogger;
 import se.bjurr.violations.lib.model.SEVERITY;
 import se.bjurr.violations.lib.model.Violation;
 
 public class CppLintParser implements ViolationsParser {
-  private static final Logger LOG = Logger.getLogger(CppLintParser.class.getSimpleName());
 
   @Override
-  public List<Violation> parseReportOutput(final String string) throws Exception {
+  public List<Violation> parseReportOutput(
+      final String string, final ViolationsLogger violationsLogger) throws Exception {
     final List<Violation> violations = new ArrayList<>();
     final List<String> lines = getLines(string);
     for (final String line : lines) {
@@ -45,12 +46,20 @@ public class CppLintParser implements ViolationsParser {
                 .setStartLine(lineNumber) //
                 .setFile(filename) //
                 .setRule(rule) //
-                .setSeverity(toSeverity(severity)) //
+                .setSeverity(this.toSeverity(severity)) //
                 .setMessage(message) //
                 .build() //
             );
       } catch (final IndexOutOfBoundsException | NullPointerException e) {
-        LOG.info("Was unable to parse: \"" + line + "\" found parts: " + parts);
+        violationsLogger.log(
+            SEVERE,
+            "Was unable to parse: \""
+                + line
+                + "\" found parts: "
+                + parts
+                + " content:\n\n"
+                + string,
+            e);
       }
     }
     return violations;

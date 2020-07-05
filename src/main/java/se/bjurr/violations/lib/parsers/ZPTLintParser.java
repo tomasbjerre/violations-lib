@@ -7,21 +7,24 @@ import static se.bjurr.violations.lib.util.ViolationParserUtils.getLines;
 
 import java.util.ArrayList;
 import java.util.List;
+import se.bjurr.violations.lib.ViolationsLogger;
 import se.bjurr.violations.lib.model.Violation;
 
 public class ZPTLintParser implements ViolationsParser {
 
   @Override
-  public List<Violation> parseReportOutput(String string) throws Exception {
-    List<Violation> violations = new ArrayList<>();
-    for (List<String> parts : getLines(string, "[ ]+Error in: (.*)  (.*)  , at line (\\d+).*")) {
+  public List<Violation> parseReportOutput(
+      final String string, final ViolationsLogger violationsLogger) throws Exception {
+    final List<Violation> violations = new ArrayList<>();
+    for (final List<String> parts :
+        getLines(string, "[ ]+Error in: (.*)  (.*)  , at line (\\d+).*")) {
       if (parts.size() < 3) {
         continue;
       }
-      Integer lineInFile = Integer.parseInt(parts.get(3));
-      String message = parts.get(2);
-      String fileName = parts.get(1);
-      Violation violation =
+      final Integer lineInFile = Integer.parseInt(parts.get(3));
+      final String message = parts.get(2);
+      final String fileName = parts.get(1);
+      final Violation violation =
           violationBuilder() //
               .setParser(ZPTLINT) //
               .setFile(fileName) //

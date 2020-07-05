@@ -15,6 +15,7 @@ import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
 import java.util.List;
 import javax.xml.stream.XMLStreamReader;
+import se.bjurr.violations.lib.ViolationsLogger;
 import se.bjurr.violations.lib.model.SEVERITY;
 import se.bjurr.violations.lib.model.Violation;
 import se.bjurr.violations.lib.util.ViolationParserUtils;
@@ -22,7 +23,8 @@ import se.bjurr.violations.lib.util.ViolationParserUtils;
 public class JCReportParser implements ViolationsParser {
 
   @Override
-  public List<Violation> parseReportOutput(String string) throws Exception {
+  public List<Violation> parseReportOutput(
+      final String string, final ViolationsLogger violationsLogger) throws Exception {
     final List<Violation> violations = new ArrayList<>();
 
     try (InputStream input = new ByteArrayInputStream(string.getBytes(StandardCharsets.UTF_8))) {
@@ -53,7 +55,7 @@ public class JCReportParser implements ViolationsParser {
                     .setFile(name) //
                     .setMessage(message) //
                     .setRule(findingType + "(" + origin + ")") //
-                    .setSeverity(toSeverity(severity)) //
+                    .setSeverity(this.toSeverity(severity)) //
                     .setStartLine(line) //
                     .build();
             violations.add(violation);
@@ -64,7 +66,7 @@ public class JCReportParser implements ViolationsParser {
     return violations;
   }
 
-  private SEVERITY toSeverity(String severity) {
+  private SEVERITY toSeverity(final String severity) {
     if (severity.equalsIgnoreCase("error")) {
       return ERROR;
     }

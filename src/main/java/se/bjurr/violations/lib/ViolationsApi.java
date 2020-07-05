@@ -1,6 +1,8 @@
 package se.bjurr.violations.lib;
 
 import static java.util.logging.Level.FINE;
+import static java.util.logging.Level.INFO;
+import static se.bjurr.violations.lib.FilteringViolationsLogger.filterLevel;
 import static se.bjurr.violations.lib.reports.ReportsFinder.findAllReports;
 import static se.bjurr.violations.lib.util.Utils.checkNotNull;
 import static se.bjurr.violations.lib.util.Utils.setReporter;
@@ -9,6 +11,7 @@ import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Set;
+import java.util.logging.Level;
 import java.util.logging.Logger;
 import se.bjurr.violations.lib.model.Violation;
 import se.bjurr.violations.lib.model.codeclimate.CodeClimate;
@@ -16,12 +19,25 @@ import se.bjurr.violations.lib.model.codeclimate.CodeClimateTransformer;
 import se.bjurr.violations.lib.reports.Parser;
 
 public class ViolationsApi {
-  private static Logger LOG = Logger.getLogger(ViolationsApi.class.getSimpleName());
-
+  private final Logger LOGGER = Logger.getLogger(ViolationsApi.class.getSimpleName());
   private String pattern;
   private Parser parser;
   private File startFile;
   private String reporter;
+  private ViolationsLogger violationsLogger =
+      filterLevel(
+          new ViolationsLogger() {
+
+            @Override
+            public void log(final Level level, final String string, final Throwable t) {
+              ViolationsApi.this.LOGGER.log(level, string, t);
+            }
+
+            @Override
+            public void log(final Level level, final String string) {
+              ViolationsApi.this.LOGGER.log(level, string);
+            }
+          });
 
   public static ViolationsApi violationsApi() {
     return new ViolationsApi();
@@ -34,38 +50,52 @@ public class ViolationsApi {
     return this;
   }
 
+  public ViolationsApi withViolationsLogger(final ViolationsLogger violationsLogger) {
+    this.violationsLogger = checkNotNull(violationsLogger, "violationsLogger");
+    return this;
+  }
+
   public ViolationsApi withReporter(final String reporter) {
     this.reporter = checkNotNull(reporter, "reporter");
     return this;
   }
 
   public ViolationsApi inFolder(final String folder) {
-    startFile = new File(checkNotNull(folder, "folder"));
-    if (!startFile.exists()) {
+    this.startFile = new File(checkNotNull(folder, "folder"));
+    if (!this.startFile.exists()) {
       throw new RuntimeException(folder + " not found");
     }
     return this;
   }
 
   public List<Violation> violations() {
-    final List<File> includedFiles = findAllReports(startFile, pattern);
-    if (LOG.isLoggable(FINE)) {
-      LOG.log(FINE, "Found " + includedFiles.size() + " reports:");
-      for (final File f : includedFiles) {
-        LOG.log(FINE, f.getAbsolutePath());
-      }
+    final List<File> includedFiles =
+        findAllReports(this.violationsLogger, this.startFile, this.pattern);
+    this.violationsLogger.log(
+        INFO,
+        "Found "
+            + includedFiles.size()
+            + " reports in "
+            + this.startFile
+            + " with pattern "
+            + this.pattern);
+    for (final File f : includedFiles) {
+      this.violationsLogger.log(INFO, "    - " + f.getAbsolutePath());
     }
-    final Set<Violation> foundViolations = parser.findViolations(includedFiles);
+    final Set<Violation> foundViolations =
+        this.parser.findViolations(this.violationsLogger, includedFiles);
     final boolean reporterWasSupplied =
-        reporter != null && !reporter.trim().isEmpty() && !reporter.equals(parser.name());
+        this.reporter != null
+            && !this.reporter.trim().isEmpty()
+            && !this.reporter.equals(this.parser.name());
     if (reporterWasSupplied) {
-      setReporter(foundViolations, reporter);
+      setReporter(foundViolations, this.reporter);
     }
 
-    if (LOG.isLoggable(FINE)) {
-      LOG.log(FINE, "Found " + foundViolations.size() + " violations:");
+    if (this.LOGGER.isLoggable(FINE)) {
+      this.violationsLogger.log(FINE, "Found " + foundViolations.size() + " violations:");
       for (final Violation v : foundViolations) {
-        LOG.log(
+        this.violationsLogger.log(
             FINE,
             v.getReporter()
                 + " "
@@ -92,7 +122,7 @@ public class ViolationsApi {
   }
 
   public ViolationsApi withPattern(final String regularExpression) {
-    pattern = makeWindowsFriendly(regularExpression);
+    this.pattern = this.makeWindowsFriendly(regularExpression);
     return this;
   }
 }

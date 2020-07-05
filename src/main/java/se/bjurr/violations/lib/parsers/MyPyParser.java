@@ -9,29 +9,31 @@ import static se.bjurr.violations.lib.util.ViolationParserUtils.getLines;
 
 import java.util.ArrayList;
 import java.util.List;
+import se.bjurr.violations.lib.ViolationsLogger;
 import se.bjurr.violations.lib.model.SEVERITY;
 import se.bjurr.violations.lib.model.Violation;
 
 public class MyPyParser implements ViolationsParser {
 
   @Override
-  public List<Violation> parseReportOutput(String reportContent) throws Exception {
-    List<Violation> violations = new ArrayList<>();
-    List<List<String>> partsPerLine = getLines(reportContent, "^(.*):(\\d+): (.*): (.*)$");
-    for (List<String> parts : partsPerLine) {
-      String fileName = parts.get(1);
+  public List<Violation> parseReportOutput(
+      final String reportContent, final ViolationsLogger violationsLogger) throws Exception {
+    final List<Violation> violations = new ArrayList<>();
+    final List<List<String>> partsPerLine = getLines(reportContent, "^(.*):(\\d+): (.*): (.*)$");
+    for (final List<String> parts : partsPerLine) {
+      final String fileName = parts.get(1);
       Integer lineNumber = 0;
       if (!parts.get(2).isEmpty()) {
         lineNumber = parseInt(parts.get(2));
       }
-      String severity = parts.get(3);
-      String message = parts.get(4);
+      final String severity = parts.get(3);
+      final String message = parts.get(4);
       violations.add( //
           violationBuilder() //
               .setParser(MYPY) //
               .setStartLine(lineNumber) //
               .setFile(fileName) //
-              .setSeverity(toSeverity(severity)) //
+              .setSeverity(this.toSeverity(severity)) //
               .setMessage(message) //
               .build() //
           );
@@ -39,7 +41,7 @@ public class MyPyParser implements ViolationsParser {
     return violations;
   }
 
-  public SEVERITY toSeverity(String severity) {
+  public SEVERITY toSeverity(final String severity) {
     if (severity.equalsIgnoreCase("error")) {
       return ERROR;
     }

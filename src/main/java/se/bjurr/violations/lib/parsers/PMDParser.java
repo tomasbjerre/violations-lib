@@ -15,13 +15,15 @@ import static se.bjurr.violations.lib.util.ViolationParserUtils.getIntegerAttrib
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
+import se.bjurr.violations.lib.ViolationsLogger;
 import se.bjurr.violations.lib.model.SEVERITY;
 import se.bjurr.violations.lib.model.Violation;
 
 public class PMDParser implements ViolationsParser {
 
   @Override
-  public List<Violation> parseReportOutput(String string) throws Exception {
+  public List<Violation> parseReportOutput(
+      final String string, final ViolationsLogger violationsLogger) throws Exception {
     final List<Violation> violations = new ArrayList<>();
     final List<String> files = getChunks(string, "<file", "</file>");
     for (final String fileChunk : files) {
@@ -37,20 +39,20 @@ public class PMDParser implements ViolationsParser {
         final Optional<String> externalInfoUrlOpt =
             findAttribute(violationChunk, "externalInfoUrl");
         final Integer priority = getIntegerAttribute(violationChunk, "priority");
-        final SEVERITY severity = toSeverity(priority);
+        final SEVERITY severity = this.toSeverity(priority);
         final String content = getContent(violationChunk, "violation");
         final String message =
             content + "\n\n" + ruleSetOpt.orElse("") + " " + externalInfoUrlOpt.orElse("");
         violations.add( //
-            violationBuilder() //
-                .setParser(PMD) //
-                .setStartLine(beginLine) //
-                .setEndLine(endLine) //
-                .setColumn(beginColumn.orElse(null)) //
-                .setEndColumn(endColumn.orElse(null)) //
-                .setFile(filename) //
-                .setSeverity(severity) //
-                .setRule(rule) //
+            violationBuilder()
+                .setParser(PMD)
+                .setStartLine(beginLine)
+                .setEndLine(endLine)
+                .setColumn(beginColumn.orElse(null))
+                .setEndColumn(endColumn.orElse(null))
+                .setFile(filename)
+                .setSeverity(severity)
+                .setRule(rule)
                 .setCategory(ruleSetOpt.orElse(null))
                 .setMessage(message.trim()) //
                 .build() //
@@ -60,7 +62,7 @@ public class PMDParser implements ViolationsParser {
     return violations;
   }
 
-  public SEVERITY toSeverity(Integer priority) {
+  public SEVERITY toSeverity(final Integer priority) {
     if (priority < 3) {
       return ERROR;
     }

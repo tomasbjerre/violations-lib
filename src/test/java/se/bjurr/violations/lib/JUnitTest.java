@@ -7,9 +7,7 @@ import static se.bjurr.violations.lib.model.SEVERITY.ERROR;
 import static se.bjurr.violations.lib.reports.Parser.JUNIT;
 
 import java.util.List;
-
 import org.junit.Test;
-
 import se.bjurr.violations.lib.model.Violation;
 
 public class JUnitTest {

@@ -15,6 +15,7 @@ import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
 import java.util.List;
 import javax.xml.stream.XMLStreamReader;
+import se.bjurr.violations.lib.ViolationsLogger;
 import se.bjurr.violations.lib.model.SEVERITY;
 import se.bjurr.violations.lib.model.Violation;
 import se.bjurr.violations.lib.util.ViolationParserUtils;
@@ -22,7 +23,8 @@ import se.bjurr.violations.lib.util.ViolationParserUtils;
 public class SimianParser implements ViolationsParser {
 
   @Override
-  public List<Violation> parseReportOutput(String string) throws Exception {
+  public List<Violation> parseReportOutput(
+      final String string, final ViolationsLogger violationsLogger) throws Exception {
     final List<Violation> violations = new ArrayList<>();
 
     try (InputStream input = new ByteArrayInputStream(string.getBytes(StandardCharsets.UTF_8))) {
@@ -50,7 +52,7 @@ public class SimianParser implements ViolationsParser {
                     .setFile(sourceFile) //
                     .setMessage("Duplication") //
                     .setRule("DUPLICATION") //
-                    .setSeverity(toSeverity(lineCount)) //
+                    .setSeverity(this.toSeverity(lineCount)) //
                     .setStartLine(startLineNumber) //
                     .setEndLine(endLineNumber) //
                     .build();
@@ -62,7 +64,7 @@ public class SimianParser implements ViolationsParser {
     return violations;
   }
 
-  private SEVERITY toSeverity(Integer lineCount) {
+  private SEVERITY toSeverity(final Integer lineCount) {
     if (lineCount < 10) {
       return INFO;
     }

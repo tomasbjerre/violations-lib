@@ -12,6 +12,7 @@ import java.util.logging.Level;
 import java.util.logging.LogRecord;
 import java.util.logging.Logger;
 import org.junit.Test;
+import se.bjurr.violations.lib.ViolationsLogger;
 
 public class ReportsFinderTest {
 
@@ -49,8 +50,21 @@ public class ReportsFinderTest {
     final File path =
         Paths.get(ReportsFinderTest.class.getResource("/root.txt").toURI()).getParent().toFile();
 
+    final ViolationsLogger violationsLogger =
+        new ViolationsLogger() {
+
+          @Override
+          public void log(final Level level, final String string, final Throwable t) {
+            Logger.getLogger(ReportsFinderTest.class.getSimpleName()).log(level, string, t);
+          }
+
+          @Override
+          public void log(final Level level, final String string) {
+            Logger.getLogger(ReportsFinderTest.class.getSimpleName()).log(level, string);
+          }
+        };
     assertThat(
-            findAllReports(path, ".*test-traversal.*txt$")
+            findAllReports(violationsLogger, path, ".*test-traversal.*txt$")
                 .stream()
                 .map(
                     it -> {
@@ -60,7 +74,7 @@ public class ReportsFinderTest {
         .containsOnly("file-in-subdir.txt", "file-in-subdir2.txt", "file-in-subdir3.txt");
 
     assertThat(
-            findAllReports(path, ".*subdir3\\.txt")
+            findAllReports(violationsLogger, path, ".*subdir3\\.txt")
                 .stream()
                 .map(
                     it -> {

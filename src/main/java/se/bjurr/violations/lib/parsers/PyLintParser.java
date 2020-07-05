@@ -10,6 +10,7 @@ import static se.bjurr.violations.lib.util.ViolationParserUtils.getLines;
 
 import java.util.ArrayList;
 import java.util.List;
+import se.bjurr.violations.lib.ViolationsLogger;
 import se.bjurr.violations.lib.model.SEVERITY;
 import se.bjurr.violations.lib.model.Violation;
 
@@ -22,7 +23,8 @@ import se.bjurr.violations.lib.model.Violation;
 public class PyLintParser implements ViolationsParser {
 
   @Override
-  public List<Violation> parseReportOutput(final String string) throws Exception {
+  public List<Violation> parseReportOutput(final String string, ViolationsLogger violationsLogger)
+      throws Exception {
     final List<Violation> violations = new ArrayList<>();
     final List<List<String>> partsPerLine =
         getLines(string, "([^:]*):(\\d+): \\[(\\D)(\\d*)\\(([^\\]]*)\\), ([^\\]]*)] (.*)");
@@ -40,7 +42,7 @@ public class PyLintParser implements ViolationsParser {
               .setStartLine(line) //
               .setFile(filename) //
               .setRule(severity + ruleCode + "(" + rule + ")") //
-              .setSeverity(toSeverity(severity)) //
+              .setSeverity(this.toSeverity(severity)) //
               .setMessage(message) //
               .setSpecific("method", method) //
               .build() //

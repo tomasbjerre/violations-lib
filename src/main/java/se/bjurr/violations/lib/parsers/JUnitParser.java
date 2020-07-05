@@ -1,5 +1,8 @@
 package se.bjurr.violations.lib.parsers;
 
+import static java.util.logging.Level.WARNING;
+import static se.bjurr.violations.lib.model.SEVERITY.ERROR;
+import static se.bjurr.violations.lib.reports.Parser.JUNIT;
 import static se.bjurr.violations.lib.util.ViolationParserUtils.findAttribute;
 import static se.bjurr.violations.lib.util.ViolationParserUtils.getAttribute;
 import static se.bjurr.violations.lib.util.ViolationParserUtils.getChunks;
@@ -7,18 +10,14 @@ import static se.bjurr.violations.lib.util.ViolationParserUtils.getChunks;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
-import java.util.logging.Level;
-import java.util.logging.Logger;
-
-import se.bjurr.violations.lib.model.SEVERITY;
+import se.bjurr.violations.lib.ViolationsLogger;
 import se.bjurr.violations.lib.model.Violation;
-import se.bjurr.violations.lib.reports.Parser;
 
 public class JUnitParser implements ViolationsParser {
-  private static Logger LOG = Logger.getLogger(JUnitParser.class.getSimpleName());
 
   @Override
-  public List<Violation> parseReportOutput(final String reportContent) throws Exception {
+  public List<Violation> parseReportOutput(
+      final String reportContent, final ViolationsLogger violationsLogger) throws Exception {
     final List<Violation> violations = new ArrayList<>();
 
     final List<String> errors = getChunks(reportContent, "<testcase", "(/>|</testcase>)");
@@ -40,14 +39,15 @@ public class JUnitParser implements ViolationsParser {
         final List<String> failLine = getChunks(failure, className + "." + name, "\\)");
 
         if (failLine.isEmpty()) {
-          LOG.log(Level.WARNING, "Found failure, but failed to find fail line from stacktrace");
+          violationsLogger.log(
+              WARNING, "Found failure, but failed to find fail line from stacktrace");
           continue;
         }
         final List<String> fileNameAndLine = getChunks(failLine.get(0), "\\(", "\\)");
 
         if (fileNameAndLine.isEmpty()) {
-          LOG.log(
-              Level.WARNING,
+          violationsLogger.log(
+              WARNING,
               "Found failure line from stacktrace. But failed to get File name and line number from it.");
           continue;
         }
@@ -55,7 +55,7 @@ public class JUnitParser implements ViolationsParser {
         final String[] split = fileNameAndLine.get(0).split("[.\\:\\)]");
 
         if (split.length < 3) {
-          LOG.log(Level.WARNING, "Failed to split Filename to its ending and line number");
+          violationsLogger.log(WARNING, "Failed to split Filename to its ending and line number");
           continue;
         }
 
@@ -64,19 +64,19 @@ public class JUnitParser implements ViolationsParser {
         try {
           lineOfFailure = Integer.parseInt(split[2]);
         } catch (final NumberFormatException e) {
-          LOG.log(Level.WARNING, "Failed to parse line number from: " + split[2]);
+          violationsLogger.log(WARNING, "Failed to parse line number from: " + split[2]);
           continue;
         }
 
         violations.add(
             Violation.violationBuilder()
-                .setParser(Parser.JUNIT)
+                .setParser(JUNIT)
                 .setMessage(name + " : " + message)
                 .setStartLine(lineOfFailure)
                 .setFile(className.replaceAll("\\.", "/") + "." + split[1])
                 .setSource(className)
                 .setRule(type)
-                .setSeverity(SEVERITY.ERROR)
+                .setSeverity(ERROR) //
                 .build());
       }
     }

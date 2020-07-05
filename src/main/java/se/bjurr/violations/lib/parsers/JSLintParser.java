@@ -11,24 +11,26 @@ import static se.bjurr.violations.lib.util.ViolationParserUtils.getIntegerAttrib
 
 import java.util.ArrayList;
 import java.util.List;
+import se.bjurr.violations.lib.ViolationsLogger;
 import se.bjurr.violations.lib.model.SEVERITY;
 import se.bjurr.violations.lib.model.Violation;
 
 public class JSLintParser implements ViolationsParser {
   @Override
-  public List<Violation> parseReportOutput(String string) throws Exception {
-    List<Violation> violations = new ArrayList<>();
-    List<String> files = getChunks(string, "<file", "</file>");
-    for (String fileChunk : files) {
-      String filename = getAttribute(fileChunk, "name");
-      List<String> issues = getChunks(fileChunk, "<issue", "/>");
-      for (String issueChunk : issues) {
-        Integer line = getIntegerAttribute(issueChunk, "line");
-        Integer charAttrib = getIntegerAttribute(issueChunk, "char");
-        String severity = getAttribute(issueChunk, "severity");
-        String reason = getAttribute(issueChunk, "reason").trim();
-        String evidence = getAttribute(issueChunk, "evidence").trim();
-        String message = reason + ": " + evidence;
+  public List<Violation> parseReportOutput(
+      final String string, final ViolationsLogger violationsLogger) throws Exception {
+    final List<Violation> violations = new ArrayList<>();
+    final List<String> files = getChunks(string, "<file", "</file>");
+    for (final String fileChunk : files) {
+      final String filename = getAttribute(fileChunk, "name");
+      final List<String> issues = getChunks(fileChunk, "<issue", "/>");
+      for (final String issueChunk : issues) {
+        final Integer line = getIntegerAttribute(issueChunk, "line");
+        final Integer charAttrib = getIntegerAttribute(issueChunk, "char");
+        final String severity = getAttribute(issueChunk, "severity");
+        final String reason = getAttribute(issueChunk, "reason").trim();
+        final String evidence = getAttribute(issueChunk, "evidence").trim();
+        final String message = reason + ": " + evidence;
 
         violations.add( //
             violationBuilder() //
@@ -36,7 +38,7 @@ public class JSLintParser implements ViolationsParser {
                 .setStartLine(line) //
                 .setColumn(charAttrib) //
                 .setFile(filename) //
-                .setSeverity(toSeverity(severity)) //
+                .setSeverity(this.toSeverity(severity)) //
                 .setMessage(message) //
                 .build() //
             );
@@ -45,7 +47,7 @@ public class JSLintParser implements ViolationsParser {
     return violations;
   }
 
-  public SEVERITY toSeverity(String severity) {
+  public SEVERITY toSeverity(final String severity) {
     if (severity.equalsIgnoreCase("E")) {
       return ERROR;
     }

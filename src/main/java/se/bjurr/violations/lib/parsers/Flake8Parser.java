@@ -11,6 +11,7 @@ import static se.bjurr.violations.lib.util.ViolationParserUtils.getLines;
 
 import java.util.ArrayList;
 import java.util.List;
+import se.bjurr.violations.lib.ViolationsLogger;
 import se.bjurr.violations.lib.model.SEVERITY;
 import se.bjurr.violations.lib.model.Violation;
 
@@ -23,7 +24,8 @@ import se.bjurr.violations.lib.model.Violation;
 public class Flake8Parser implements ViolationsParser {
 
   @Override
-  public List<Violation> parseReportOutput(final String string) throws Exception {
+  public List<Violation> parseReportOutput(
+      final String string, final ViolationsLogger violationsLogger) throws Exception {
     final List<Violation> violations = new ArrayList<>();
     final List<List<String>> partsPerLine =
         getLines(string, "([^:]*):(\\d+)?:?(\\d+)?:? \\[?(\\D+)(\\d*)\\]? (.*)");
@@ -43,13 +45,13 @@ public class Flake8Parser implements ViolationsParser {
       final String rule = parts.get(5);
       final String message = parts.get(6);
       violations.add( //
-          violationBuilder() //
-              .setParser(FLAKE8) //
-              .setStartLine(line) //
-              .setColumn(column) //
-              .setFile(filename) //
-              .setRule(severity + rule) //
-              .setSeverity(toSeverity(severity.substring(0, 1))) //
+          violationBuilder()
+              .setParser(FLAKE8)
+              .setStartLine(line)
+              .setColumn(column)
+              .setFile(filename)
+              .setRule(severity + rule)
+              .setSeverity(this.toSeverity(severity.substring(0, 1))) //
               .setMessage(message) //
               .build() //
           );

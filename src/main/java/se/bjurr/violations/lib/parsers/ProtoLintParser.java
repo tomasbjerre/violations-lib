@@ -8,12 +8,14 @@ import static se.bjurr.violations.lib.util.ViolationParserUtils.getLines;
 
 import java.util.ArrayList;
 import java.util.List;
+import se.bjurr.violations.lib.ViolationsLogger;
 import se.bjurr.violations.lib.model.Violation;
 
 public class ProtoLintParser implements ViolationsParser {
 
   @Override
-  public List<Violation> parseReportOutput(String reportContent) throws Exception {
+  public List<Violation> parseReportOutput(
+      final String reportContent, final ViolationsLogger violationsLogger) throws Exception {
     final List<Violation> violations = new ArrayList<>();
     final List<List<String>> partsPerLine =
         getLines(reportContent, "\\[([^:]+):(\\d+):(\\d+)\\] (.+)");

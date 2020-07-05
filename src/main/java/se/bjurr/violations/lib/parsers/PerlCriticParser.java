@@ -11,16 +11,18 @@ import static se.bjurr.violations.lib.util.ViolationParserUtils.getParts;
 
 import java.util.ArrayList;
 import java.util.List;
+import se.bjurr.violations.lib.ViolationsLogger;
 import se.bjurr.violations.lib.model.SEVERITY;
 import se.bjurr.violations.lib.model.Violation;
 
 public class PerlCriticParser implements ViolationsParser {
   @Override
-  public List<Violation> parseReportOutput(String string) throws Exception {
-    List<Violation> violations = new ArrayList<>();
-    List<String> lines = getLines(string);
-    for (String line : lines) {
-      List<String> parts =
+  public List<Violation> parseReportOutput(
+      final String string, final ViolationsLogger violationsLogger) throws Exception {
+    final List<Violation> violations = new ArrayList<>();
+    final List<String> lines = getLines(string);
+    for (final String line : lines) {
+      final List<String> parts =
           getParts(
               line,
               "\\(Severity: (\\d*)\\)$",
@@ -32,12 +34,12 @@ public class PerlCriticParser implements ViolationsParser {
       if (parts.isEmpty()) {
         continue;
       }
-      Integer severity = parseInt(parts.get(0));
-      String filename = parts.get(1);
-      String message = parts.get(2);
-      Integer lineNumber = parseInt(parts.get(3));
-      Integer columnNumber = parseInt(parts.get(4));
-      String rule = parts.get(5);
+      final Integer severity = parseInt(parts.get(0));
+      final String filename = parts.get(1);
+      final String message = parts.get(2);
+      final Integer lineNumber = parseInt(parts.get(3));
+      final Integer columnNumber = parseInt(parts.get(4));
+      final String rule = parts.get(5);
 
       violations.add( //
           violationBuilder() //
@@ -46,7 +48,7 @@ public class PerlCriticParser implements ViolationsParser {
               .setColumn(columnNumber) //
               .setFile(filename) //
               .setRule(rule) //
-              .setSeverity(toSeverity(severity)) //
+              .setSeverity(this.toSeverity(severity)) //
               .setMessage(message) //
               .build() //
           );
@@ -54,7 +56,7 @@ public class PerlCriticParser implements ViolationsParser {
     return violations;
   }
 
-  public SEVERITY toSeverity(Integer severity) {
+  public SEVERITY toSeverity(final Integer severity) {
     if (severity >= 4) {
       return ERROR;
     }

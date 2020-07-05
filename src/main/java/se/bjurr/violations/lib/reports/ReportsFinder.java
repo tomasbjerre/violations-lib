@@ -1,6 +1,7 @@
 package se.bjurr.violations.lib.reports;
 
 import static java.nio.file.Files.walkFileTree;
+import static java.util.logging.Level.FINE;
 import static java.util.regex.Pattern.matches;
 
 import java.io.File;
@@ -12,14 +13,12 @@ import java.nio.file.attribute.BasicFileAttributes;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
-import java.util.logging.Level;
-import java.util.logging.Logger;
+import se.bjurr.violations.lib.ViolationsLogger;
 
 public class ReportsFinder {
 
-  private static Logger LOG = Logger.getLogger(ReportsFinder.class.getSimpleName());
-
-  public static List<File> findAllReports(final File startFile, final String pattern) {
+  public static List<File> findAllReports(
+      final ViolationsLogger violationsLogger, final File startFile, final String pattern) {
     final List<File> found = new ArrayList<>();
     final Path startPath = startFile.toPath();
     try {
@@ -32,14 +31,10 @@ public class ReportsFinder {
               final String absolutePath = file.toFile().getAbsolutePath();
               if (matches(pattern, absolutePath)
                   || matches(pattern, withFrontSlashes(absolutePath))) {
-                if (LOG.isLoggable(Level.FINE)) {
-                  LOG.log(Level.FINE, pattern + " matches " + absolutePath);
-                }
+                violationsLogger.log(FINE, pattern + " matches " + absolutePath);
                 found.add(file.toFile());
               } else {
-                if (LOG.isLoggable(Level.FINE)) {
-                  LOG.log(Level.FINE, pattern + " does not match " + absolutePath);
-                }
+                violationsLogger.log(FINE, pattern + " does not match " + absolutePath);
               }
               return super.visitFile(file, attrs);
             }

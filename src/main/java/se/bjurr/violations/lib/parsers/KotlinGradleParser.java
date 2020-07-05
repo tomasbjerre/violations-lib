@@ -10,28 +10,30 @@ import static se.bjurr.violations.lib.util.ViolationParserUtils.getLines;
 
 import java.util.ArrayList;
 import java.util.List;
+import se.bjurr.violations.lib.ViolationsLogger;
 import se.bjurr.violations.lib.model.SEVERITY;
 import se.bjurr.violations.lib.model.Violation;
 
 public class KotlinGradleParser implements ViolationsParser {
   @Override
-  public List<Violation> parseReportOutput(final String string) throws Exception {
-    List<Violation> violations = new ArrayList<>();
-    List<List<String>> partsPerLine =
+  public List<Violation> parseReportOutput(final String string, ViolationsLogger violationsLogger)
+      throws Exception {
+    final List<Violation> violations = new ArrayList<>();
+    final List<List<String>> partsPerLine =
         getLines(string, "(w|e):([^:]*)[^\\d]+?(\\d+?)[^\\d]+?(\\d+?)[^:]+?:(.*)");
-    for (List<String> parts : partsPerLine) {
-      String severity = parts.get(1).trim();
-      String filename = parts.get(2).trim();
-      Integer line = parseInt(parts.get(3));
-      Integer column = parseInt(parts.get(4));
-      String message = parts.get(5).trim();
+    for (final List<String> parts : partsPerLine) {
+      final String severity = parts.get(1).trim();
+      final String filename = parts.get(2).trim();
+      final Integer line = parseInt(parts.get(3));
+      final Integer column = parseInt(parts.get(4));
+      final String message = parts.get(5).trim();
       violations.add( //
           violationBuilder() //
               .setParser(KOTLINGRADLE) //
               .setStartLine(line) //
               .setColumn(column) //
               .setFile(filename) //
-              .setSeverity(toSeverity(severity)) //
+              .setSeverity(this.toSeverity(severity)) //
               .setMessage(message) //
               .build() //
           );
