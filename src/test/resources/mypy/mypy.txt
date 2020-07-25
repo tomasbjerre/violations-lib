@@ -6,3 +6,4 @@ fs/cs/backend/errorhandler.py:16: error: The return type of "__init__" must be N
 fs/cs/backend/api.py: note: At top level:
 fs/cs/backend/api.py:23: error: ContextManager[Any] not callable
 tests/test_schema.py:864: error: Name 'test_nested_only_and_exclude' already defined
+tests/test_xyz.py:123: error: Need type annotation for 'a' (hint: "a: List[<type>] = ...")

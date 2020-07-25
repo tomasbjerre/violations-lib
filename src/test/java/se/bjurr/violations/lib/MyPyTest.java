@@ -28,7 +28,7 @@ public class MyPyTest {
             .violations();
 
     assertThat(actual) //
-        .hasSize(5);
+        .hasSize(6);
 
     assertThat(new ArrayList<>(actual).get(3)) //
         .isEqualTo( //
@@ -48,6 +48,17 @@ public class MyPyTest {
                 .setFile("fs/cs/backend/log.py") //
                 .setStartLine(17) //
                 .setMessage("\"LogRecord\" has no attribute \"tenant_id\"") //
+                .setSeverity(ERROR) //
+                .build() //
+            );
+
+    assertThat(new ArrayList<>(actual).get(5)) //
+        .isEqualTo( //
+            violationBuilder() //
+                .setParser(MYPY) //
+                .setFile("tests/test_xyz.py") //
+                .setStartLine(123) //
+                .setMessage("Need type annotation for 'a' (hint: \"a: List[<type>] = ...\")") //
                 .setSeverity(ERROR) //
                 .build() //
             );
