@@ -3,6 +3,28 @@
 
 Changelog of Violations lib.
 
+## 1.121
+### No issue
+
+**ignore codeclimate json**
+
+
+[c04ae1f28ea2dda](https://github.com/tomasbjerre/violations-lib/commit/c04ae1f28ea2dda) Tomas Bjerre *2020-07-26 06:30:38*
+
+**Add test for MyPy error messages containing colons**
+
+
+[01cb5aa61ef7557](https://github.com/tomasbjerre/violations-lib/commit/01cb5aa61ef7557) David Kolossa *2020-07-25 09:18:59*
+
+**Non-greedy match in MyPy Parser**
+
+ * This avoids cutting of error messages containing colons &quot;:&quot; 
+ * e.g.: 
+ * error: Need type annotation for &#39;a&#39; (hint: &quot;a: List[&lt;type&gt;] = ...&quot;) 
+
+[3d40d5ec9564d35](https://github.com/tomasbjerre/violations-lib/commit/3d40d5ec9564d35) David Kolossa *2020-07-25 08:37:08*
+
+
 ## 1.120
 ### No issue
 
