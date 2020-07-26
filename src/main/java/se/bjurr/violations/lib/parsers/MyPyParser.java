@@ -20,7 +20,7 @@ public class MyPyParser implements ViolationsParser {
   public Set<Violation> parseReportOutput(
       final String reportContent, final ViolationsLogger violationsLogger) throws Exception {
     final Set<Violation> violations = new TreeSet<>();
-    final List<List<String>> partsPerLine = getLines(reportContent, "^(.*):(\\d+): (.*): (.*)$");
+    final List<List<String>> partsPerLine = getLines(reportContent, "^(.*):(\\d+): ([^:]*): (.*)$");
     for (final List<String> parts : partsPerLine) {
       final String fileName = parts.get(1);
       Integer lineNumber = 0;
