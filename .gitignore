@@ -12,3 +12,4 @@ temp
 .gradle
 node_modules
 src/test/resources/tests
+codeclimate.json
