@@ -1,0 +1,172 @@
+diff --git a/CHANGELOG.md b/CHANGELOG.md
+index 0b13734..2056780 100644
+--- a/CHANGELOG.md
++++ b/CHANGELOG.md
+@@ -3,6 +3,28 @@
+ 
+ Changelog of Violations lib.
+ 
++## 1.121
++### No issue
++
++**ignore codeclimate json**
++
++
++[c04ae1f28ea2dda](https://github.com/tomasbjerre/violations-lib/commit/c04ae1f28ea2dda) Tomas Bjerre *2020-07-26 06:30:38*
++
++**Add test for MyPy error messages containing colons**
++
++
++[01cb5aa61ef7557](https://github.com/tomasbjerre/violations-lib/commit/01cb5aa61ef7557) David Kolossa *2020-07-25 09:18:59*
++
++**Non-greedy match in MyPy Parser**
++
++ * This avoids cutting of error messages containing colons &quot;:&quot; 
++ * e.g.: 
++ * error: Need type annotation for &#39;a&#39; (hint: &quot;a: List[&lt;type&gt;] = ...&quot;) 
++
++[3d40d5ec9564d35](https://github.com/tomasbjerre/violations-lib/commit/3d40d5ec9564d35) David Kolossa *2020-07-25 08:37:08*
++
++
+ ## 1.120
+ ### No issue
+ 
+diff --git a/gradle.properties b/gradle.properties
+index 0d73949..e0d5909 100644
+--- a/gradle.properties
++++ b/gradle.properties
+@@ -1 +1 @@
+-version = 1.121
++version = 1.122-SNAPSHOT
+diff --git a/src/main/java/se/bjurr/violations/lib/model/codeclimate/CodeClimateTransformer.java b/src/main/java/se/bjurr/violations/lib/model/codeclimate/CodeClimateTransformer.java
+index 096cbd2..5d88240 100644
+--- a/src/main/java/se/bjurr/violations/lib/model/codeclimate/CodeClimateTransformer.java
++++ b/src/main/java/se/bjurr/violations/lib/model/codeclimate/CodeClimateTransformer.java
+@@ -1,5 +1,7 @@
+ package se.bjurr.violations.lib.model.codeclimate;
+ 
++import static java.util.Locale.ENGLISH;
++
+ import java.nio.charset.StandardCharsets;
+ import java.security.MessageDigest;
+ import java.security.NoSuchAlgorithmException;
+@@ -7,68 +9,62 @@ import java.util.ArrayList;
+ import java.util.List;
+ import java.util.Set;
+ import java.util.stream.Collectors;
++
+ import se.bjurr.violations.lib.model.SEVERITY;
+ import se.bjurr.violations.lib.model.Violation;
+ 
+ public class CodeClimateTransformer {
+-  public static List<CodeClimate> fromViolations(final Set<Violation> from) {
+-    return from.stream()
+-        .map(
+-            violation -> {
+-              return toCodeClimate(violation);
+-            })
+-        .collect(Collectors.toList());
+-  }
++	public static List<CodeClimate> fromViolations(final Set<Violation> from) {
++		return from.stream().map(violation -> {
++			return toCodeClimate(violation);
++		}).collect(Collectors.toList());
++	}
+ 
+-  private static CodeClimate toCodeClimate(final Violation v) {
+-    final String description = v.getMessage();
+-    final String fingerprint = toHash(v);
+-    final CodeClimateLines lines = new CodeClimateLines(v.getStartLine());
+-    final CodeClimateLocation location = new CodeClimateLocation(v.getFile(), lines, null);
+-    final CodeClimateSeverity severity = toSeverity(v.getSeverity());
+-    final String check_name = v.getReporter();
+-    final List<CodeClimateCategory> categories = new ArrayList<CodeClimateCategory>();
+-    categories.add(CodeClimateCategory.BUGRISK);
+-    return new CodeClimate(description, fingerprint, location, severity, check_name, categories);
+-  }
++	private static CodeClimate toCodeClimate(final Violation v) {
++		final String description = v.getMessage();
++		final String fingerprint = toHash(v);
++		final CodeClimateLines lines = new CodeClimateLines(v.getStartLine());
++		final CodeClimateLocation location = new CodeClimateLocation(
++				v.getFile(), lines, null);
++		final CodeClimateSeverity severity = toSeverity(v.getSeverity());
++		final String check_name = v.getReporter();
++		final List<CodeClimateCategory> categories = new ArrayList<CodeClimateCategory>();
++		categories.add(CodeClimateCategory.BUGRISK);
++		return new CodeClimate(description, fingerprint, location, severity,
++				check_name, categories);
++	}
+ 
+-  private static CodeClimateSeverity toSeverity(final SEVERITY severity) {
+-    if (severity == SEVERITY.ERROR) {
+-      return CodeClimateSeverity.critical;
+-    }
+-    if (severity == SEVERITY.WARN) {
+-      return CodeClimateSeverity.minor;
+-    }
+-    return CodeClimateSeverity.info;
+-  }
++	private static CodeClimateSeverity toSeverity(final SEVERITY severity) {
++		if (severity == SEVERITY.ERROR) {
++			return CodeClimateSeverity.critical;
++		}
++		if (severity == SEVERITY.WARN) {
++			return CodeClimateSeverity.minor;
++		}
++		return CodeClimateSeverity.info;
++	}
+ 
+-  private static String toHash(final Violation v) {
+-    MessageDigest digest;
+-    try {
+-      digest = MessageDigest.getInstance("SHA-256");
+-    } catch (final NoSuchAlgorithmException e) {
+-      return "No Hash: " + e.getMessage();
+-    }
+-    final String fingerprintString =
+-        v.getColumn()
+-            + v.getFile()
+-            + v.getMessage()
+-            + v.getParser()
+-            + v.getReporter()
+-            + v.getRule()
+-            + v.getCategory()
+-            + v.getSeverity()
+-            + v.getSource()
+-            + v.getGroup();
+-    final byte[] encodedhash = digest.digest(fingerprintString.getBytes(StandardCharsets.UTF_8));
+-    final StringBuffer hexString = new StringBuffer();
+-    for (final byte element : encodedhash) {
+-      final String hex = String.format("%02X", element);
+-      if (hex.length() == 1) {
+-        hexString.append('0');
+-      }
+-      hexString.append(hex);
+-    }
+-    return hexString.toString().toLowerCase();
+-  }
++	private static String toHash(final Violation v) {
++		MessageDigest digest;
++		try {
++			digest = MessageDigest.getInstance("SHA-256");
++		} catch (final NoSuchAlgorithmException e) {
++			return "No Hash: " + e.getMessage();
++		}
++		final String fingerprintString = v.getColumn() + v.getFile()
++				+ v.getMessage() + v.getParser() + v.getReporter()
++				+ v.getRule() + v.getCategory() + v.getSeverity()
++				+ v.getSource() + v.getGroup();
++		final byte[] encodedhash = digest.digest(fingerprintString
++				.getBytes(StandardCharsets.UTF_8));
++		final StringBuffer hexString = new StringBuffer();
++		for (final byte element : encodedhash) {
++			final String hex = String.format("%02X", element);
++			if (hex.length() == 1) {
++				hexString.append('0');
++			}
++			hexString.append(hex);
++		}
++		return hexString.toString().toLowerCase(ENGLISH);
++	}
+ }
