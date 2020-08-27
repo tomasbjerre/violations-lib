@@ -217,7 +217,7 @@ public class CheckstyleTest {
             .violations();
 
     assertThat(actual) //
-        .hasSize(3);
+        .hasSize(5);
 
     assertThat(new ArrayList<>(actual).get(0).getMessage()) //
         .isEqualTo("Line is longer than 100 characters (found 312).");

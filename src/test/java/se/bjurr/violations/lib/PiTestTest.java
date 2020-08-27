@@ -15,9 +15,9 @@ public class PiTestTest {
 
   @Test
   public void testThatViolationsCanBeParsed() {
-    String rootFolder = getRootFolder();
+    final String rootFolder = getRootFolder();
 
-    Set<Violation> actual =
+    final Set<Violation> actual =
         violationsApi() //
             .withPattern(".*/pitest/.*\\.xml$") //
             .inFolder(rootFolder) //
@@ -25,7 +25,7 @@ public class PiTestTest {
             .violations();
 
     assertThat(actual) //
-        .hasSize(16);
+        .hasSize(25);
 
     assertThat(new ArrayList<>(actual).get(0).getFile()) //
         .isEqualTo("se/bjurr/violations/lib/example/CopyOfMyClass.java");

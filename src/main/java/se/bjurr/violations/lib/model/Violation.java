@@ -91,12 +91,12 @@ public class Violation implements Serializable, Comparable<Violation> {
     }
 
     public ViolationBuilder setSpecific(final String specificsKey, final Integer specificsValue) {
-      specifics.put(specificsKey, Integer.toString(specificsValue));
+      this.specifics.put(specificsKey, Integer.toString(specificsValue));
       return this;
     }
 
     public ViolationBuilder setSpecific(final String specificsKey, final String specificsValue) {
-      specifics.put(specificsKey, specificsValue);
+      this.specifics.put(specificsKey, specificsValue);
       return this;
     }
 
@@ -149,57 +149,57 @@ public class Violation implements Serializable, Comparable<Violation> {
   private final Integer startLine;
 
   public Violation() {
-    startLine = null;
-    endLine = null;
-    endColumn = null;
-    severity = null;
-    message = null;
-    file = null;
-    source = null;
-    rule = null;
-    category = null;
-    reporter = null;
-    specifics = null;
-    parser = null;
-    group = null;
+    this.startLine = null;
+    this.endLine = null;
+    this.endColumn = null;
+    this.severity = null;
+    this.message = null;
+    this.file = null;
+    this.source = null;
+    this.rule = null;
+    this.category = null;
+    this.reporter = null;
+    this.specifics = null;
+    this.parser = null;
+    this.group = null;
   }
 
   public Violation(final ViolationBuilder vb) {
-    parser = checkNotNull(vb.parser, "reporter");
+    this.parser = checkNotNull(vb.parser, "reporter");
     if (vb.reporter != null && !vb.reporter.trim().isEmpty()) {
-      reporter = vb.reporter;
+      this.reporter = vb.reporter;
     } else {
-      reporter = parser.name();
+      this.reporter = this.parser.name();
     }
-    startLine = checkNotNull(vb.startLine, "startline");
-    endLine = firstNonNull(vb.endLine, vb.startLine);
-    column = vb.column;
-    endColumn = vb.endColumn;
-    severity = checkNotNull(vb.severity, "severity");
-    message = checkNotNull(emptyToNull(vb.message), "message");
-    file = checkNotNull(emptyToNull(vb.file), "file").replaceAll("\\\\", "/");
-    source = nullToEmpty(vb.source);
-    rule = nullToEmpty(vb.rule);
-    category = nullToEmpty(vb.category);
-    group = nullToEmpty(vb.group);
-    specifics = vb.specifics;
+    this.startLine = checkNotNull(vb.startLine, "startline");
+    this.endLine = firstNonNull(vb.endLine, vb.startLine);
+    this.column = vb.column;
+    this.endColumn = vb.endColumn;
+    this.severity = checkNotNull(vb.severity, "severity");
+    this.message = checkNotNull(emptyToNull(vb.message), "message");
+    this.file = checkNotNull(emptyToNull(vb.file), "file").replaceAll("\\\\", "/");
+    this.source = nullToEmpty(vb.source);
+    this.rule = nullToEmpty(vb.rule);
+    this.category = nullToEmpty(vb.category);
+    this.group = nullToEmpty(vb.group);
+    this.specifics = vb.specifics;
   }
 
   public Violation(final Violation v) {
-    parser = v.parser;
-    reporter = v.reporter;
-    startLine = v.startLine;
-    endLine = v.endLine;
-    endColumn = v.endColumn;
-    column = v.column;
-    severity = v.severity;
-    message = v.message;
-    file = v.file;
-    source = v.source;
-    rule = v.rule;
-    category = v.category;
-    group = v.group;
-    specifics = v.specifics;
+    this.parser = v.parser;
+    this.reporter = v.reporter;
+    this.startLine = v.startLine;
+    this.endLine = v.endLine;
+    this.endColumn = v.endColumn;
+    this.column = v.column;
+    this.severity = v.severity;
+    this.message = v.message;
+    this.file = v.file;
+    this.source = v.source;
+    this.rule = v.rule;
+    this.category = v.category;
+    this.group = v.group;
+    this.specifics = v.specifics;
   }
 
   @Override
@@ -210,125 +210,125 @@ public class Violation implements Serializable, Comparable<Violation> {
     if (obj == null) {
       return false;
     }
-    if (getClass() != obj.getClass()) {
+    if (this.getClass() != obj.getClass()) {
       return false;
     }
     final Violation other = (Violation) obj;
-    if (category == null) {
+    if (this.category == null) {
       if (other.category != null) {
         return false;
       }
-    } else if (!category.equals(other.category)) {
+    } else if (!this.category.equals(other.category)) {
       return false;
     }
-    if (column == null) {
+    if (this.column == null) {
       if (other.column != null) {
         return false;
       }
-    } else if (!column.equals(other.column)) {
+    } else if (!this.column.equals(other.column)) {
       return false;
     }
-    if (endLine == null) {
+    if (this.endLine == null) {
       if (other.endLine != null) {
         return false;
       }
-    } else if (!endLine.equals(other.endLine)) {
+    } else if (!this.endLine.equals(other.endLine)) {
       return false;
     }
-    if (endColumn == null) {
+    if (this.endColumn == null) {
       if (other.endColumn != null) {
         return false;
       }
-    } else if (!endColumn.equals(other.endColumn)) {
+    } else if (!this.endColumn.equals(other.endColumn)) {
       return false;
     }
-    if (file == null) {
+    if (this.file == null) {
       if (other.file != null) {
         return false;
       }
-    } else if (!file.equals(other.file)) {
+    } else if (!this.file.equals(other.file)) {
       return false;
     }
-    if (group == null) {
+    if (this.group == null) {
       if (other.group != null) {
         return false;
       }
-    } else if (!group.equals(other.group)) {
+    } else if (!this.group.equals(other.group)) {
       return false;
     }
-    if (message == null) {
+    if (this.message == null) {
       if (other.message != null) {
         return false;
       }
-    } else if (!message.equals(other.message)) {
+    } else if (!this.message.equals(other.message)) {
       return false;
     }
-    if (parser != other.parser) {
+    if (this.parser != other.parser) {
       return false;
     }
-    if (reporter == null) {
+    if (this.reporter == null) {
       if (other.reporter != null) {
         return false;
       }
-    } else if (!reporter.equals(other.reporter)) {
+    } else if (!this.reporter.equals(other.reporter)) {
       return false;
     }
-    if (rule == null) {
+    if (this.rule == null) {
       if (other.rule != null) {
         return false;
       }
-    } else if (!rule.equals(other.rule)) {
+    } else if (!this.rule.equals(other.rule)) {
       return false;
     }
-    if (severity != other.severity) {
+    if (this.severity != other.severity) {
       return false;
     }
-    if (source == null) {
+    if (this.source == null) {
       if (other.source != null) {
         return false;
       }
-    } else if (!source.equals(other.source)) {
+    } else if (!this.source.equals(other.source)) {
       return false;
     }
-    if (specifics == null) {
+    if (this.specifics == null) {
       if (other.specifics != null) {
         return false;
       }
-    } else if (!specifics.equals(other.specifics)) {
+    } else if (!this.specifics.equals(other.specifics)) {
       return false;
     }
-    if (startLine == null) {
+    if (this.startLine == null) {
       if (other.startLine != null) {
         return false;
       }
-    } else if (!startLine.equals(other.startLine)) {
+    } else if (!this.startLine.equals(other.startLine)) {
       return false;
     }
     return true;
   }
 
   public Integer getColumn() {
-    return firstNonNull(column, -1);
+    return firstNonNull(this.column, -1);
   }
 
   public Integer getEndLine() {
-    return endLine;
+    return this.endLine;
   }
 
   public Integer getEndColumn() {
-    return endColumn;
+    return this.endColumn;
   }
 
   public String getFile() {
-    return file;
+    return this.file;
   }
 
   public String getMessage() {
-    return message;
+    return this.message;
   }
 
   public Parser getParser() {
-    return parser;
+    return this.parser;
   }
 
   public void setReporter(final String reporter) {
@@ -336,24 +336,24 @@ public class Violation implements Serializable, Comparable<Violation> {
   }
 
   public String getReporter() {
-    return reporter;
+    return this.reporter;
   }
 
   public String getRule() {
-    return rule;
+    return this.rule;
   }
 
   public String getCategory() {
-    return category;
+    return this.category;
   }
 
   public SEVERITY getSeverity() {
-    return severity;
+    return this.severity;
   }
 
   /** The thing that contains the violations. Like a Java/C# class. */
   public String getSource() {
-    return source;
+    return this.source;
   }
 
   /**
@@ -361,74 +361,74 @@ public class Violation implements Serializable, Comparable<Violation> {
    * available through this map.
    */
   public Map<String, String> getSpecifics() {
-    return specifics;
+    return this.specifics;
   }
 
   public Integer getStartLine() {
-    return startLine;
+    return this.startLine;
   }
 
   public String getGroup() {
-    return group;
+    return this.group;
   }
 
   @Override
   public int hashCode() {
     final int prime = 31;
     int result = 1;
-    result = prime * result + (category == null ? 0 : category.hashCode());
-    result = prime * result + (column == null ? 0 : column.hashCode());
-    result = prime * result + (endLine == null ? 0 : endLine.hashCode());
-    result = prime * result + (endColumn == null ? 0 : endColumn.hashCode());
-    result = prime * result + (file == null ? 0 : file.hashCode());
-    result = prime * result + (group == null ? 0 : group.hashCode());
-    result = prime * result + (message == null ? 0 : message.hashCode());
-    result = prime * result + (parser == null ? 0 : parser.hashCode());
-    result = prime * result + (reporter == null ? 0 : reporter.hashCode());
-    result = prime * result + (rule == null ? 0 : rule.hashCode());
-    result = prime * result + (severity == null ? 0 : severity.hashCode());
-    result = prime * result + (source == null ? 0 : source.hashCode());
-    result = prime * result + (specifics == null ? 0 : specifics.hashCode());
-    result = prime * result + (startLine == null ? 0 : startLine.hashCode());
+    result = prime * result + (this.category == null ? 0 : this.category.hashCode());
+    result = prime * result + (this.column == null ? 0 : this.column.hashCode());
+    result = prime * result + (this.endLine == null ? 0 : this.endLine.hashCode());
+    result = prime * result + (this.endColumn == null ? 0 : this.endColumn.hashCode());
+    result = prime * result + (this.file == null ? 0 : this.file.hashCode());
+    result = prime * result + (this.group == null ? 0 : this.group.hashCode());
+    result = prime * result + (this.message == null ? 0 : this.message.hashCode());
+    result = prime * result + (this.parser == null ? 0 : this.parser.hashCode());
+    result = prime * result + (this.reporter == null ? 0 : this.reporter.hashCode());
+    result = prime * result + (this.rule == null ? 0 : this.rule.hashCode());
+    result = prime * result + (this.severity == null ? 0 : this.severity.hashCode());
+    result = prime * result + (this.source == null ? 0 : this.source.hashCode());
+    result = prime * result + (this.specifics == null ? 0 : this.specifics.hashCode());
+    result = prime * result + (this.startLine == null ? 0 : this.startLine.hashCode());
     return result;
   }
 
   @Override
   public String toString() {
     return "Violation [column="
-        + column
+        + this.column
         + ", endLine="
-        + endLine
+        + this.endLine
         + ", endColumn="
-        + endColumn
+        + this.endColumn
         + ", file="
-        + file
+        + this.file
         + ", message="
-        + message
+        + this.message
         + ", parser="
-        + parser
+        + this.parser
         + ", reporter="
-        + reporter
+        + this.reporter
         + ", rule="
-        + rule
+        + this.rule
         + ", category="
-        + category
+        + this.category
         + ", severity="
-        + severity
+        + this.severity
         + ", source="
-        + source
+        + this.source
         + ", specifics="
-        + specifics
+        + this.specifics
         + ", startLine="
-        + startLine
+        + this.startLine
         + ", group="
-        + group
+        + this.group
         + "]";
   }
 
   @Override
   public int compareTo(final Violation o) {
-    return comparingString(this).compareTo(comparingString(o));
+    return this.comparingString(this).compareTo(this.comparingString(o));
   }
 
   private String comparingString(final Violation o) {
@@ -438,6 +438,24 @@ public class Violation implements Serializable, Comparable<Violation> {
         + "_"
         + o.getParser()
         + "_"
-        + o.getMessage();
+        + o.getMessage()
+        + "_"
+        + o.getReporter()
+        + "_"
+        + o.getEndLine()
+        + "_"
+        + o.getEndColumn()
+        + "_"
+        + o.getColumn()
+        + "_"
+        + o.getSeverity()
+        + "_"
+        + o.getSource()
+        + "_"
+        + o.getRule()
+        + "_"
+        + o.getCategory()
+        + "_"
+        + o.getGroup();
   }
 }

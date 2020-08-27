@@ -32,11 +32,16 @@ public class PCLintTest {
 
     assertThat(new ArrayList<>(actual).get(0)) //
         .isEqualTo( //
-            violationBuilder() //
-                .setParser(PCLINT) //
-                .setFile("C:\\UST3\\qse30\\Drivers\\drvADC.c") //
-                .setStartLine(84) //
-                .setRule("9029") //
+            violationBuilder()
+                //
+                .setParser(PCLINT)
+                //
+                .setFile("C:\\UST3\\qse30\\Drivers\\drvADC.c")
+                //
+                .setStartLine(84)
+                //
+                .setRule("9029")
+                //
                 .setMessage("Mismatched essential type categories for binary operator") //
                 .setSeverity(INFO) //
                 .build() //
@@ -44,11 +49,16 @@ public class PCLintTest {
 
     assertThat(new ArrayList<>(actual).get(3)) //
         .isEqualTo( //
-            violationBuilder() //
-                .setParser(PCLINT) //
-                .setFile("C:\\UST3\\qse30\\Drivers\\drvCAN.c") //
-                .setStartLine(73) //
-                .setRule("534") //
+            violationBuilder()
+                //
+                .setParser(PCLINT)
+                //
+                .setFile("C:\\UST3\\qse30\\Drivers\\drvCAN.c")
+                //
+                .setStartLine(73)
+                //
+                .setRule("534")
+                //
                 .setMessage(
                     "Ignoring return value of function 'PIC_CAN_Transmit(can_frame_t *)' (compare with line 68, file C:\\UST3\\qse30\\HAL\\hal_ext.h, module C:\\UST3\\qse30\\Drivers\\drvADC.c)") //
                 .setSeverity(WARN) //
@@ -56,20 +66,27 @@ public class PCLintTest {
             );
     assertThat(new ArrayList<>(actual).get(1)) //
         .isEqualTo( //
-            violationBuilder() //
-                .setParser(PCLINT) //
-                .setFile("C:\\UST3\\qse30\\Drivers\\drvCAN.c") //
-                .setStartLine(134) //
-                .setRule("818") //
+            violationBuilder()
+                //
+                .setParser(PCLINT)
+                //
+                .setFile("C:\\UST3\\qse30\\Drivers\\drvCAN.c")
+                //
+                .setStartLine(134)
+                //
+                .setRule("818")
+                //
                 .setMessage(
                     "Pointer parameter 'txFrame' (line 100) could be declared as pointing to const") //
                 .setSeverity(INFO) //
                 .build() //
             );
-    assertThat(new ArrayList<>(actual).get(6)) //
+    assertThat(new ArrayList<>(actual).get(7)) //
         .isEqualTo( //
-            violationBuilder() //
-                .setParser(PCLINT) //
+            violationBuilder()
+                //
+                .setParser(PCLINT)
+                //
                 .setFile("C:\\UST3\\qse30\\Modules\\COMM\\J1939\\Broadcast\\dm13.c") //
                 .setStartLine(123) //
                 .setRule("48") //
@@ -100,7 +117,7 @@ public class PCLintTest {
     assertThat(violation.getRule()).isEqualTo("MISRA 2012 Rule 1.3, required");
     assertThat(violation.getSeverity()).isEqualTo(WARN);
 
-    violation = new ArrayList<>(actual).get(7);
+    violation = new ArrayList<>(actual).get(6);
 
     assertThat(violation.getRule()).isEqualTo("MISRA 2012 Rule 10.1, advisory");
     assertThat(violation.getSeverity()).isEqualTo(INFO);

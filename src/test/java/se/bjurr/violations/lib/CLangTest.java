@@ -27,7 +27,7 @@ public class CLangTest {
             .violations();
 
     assertThat(actual) //
-        .hasSize(3);
+        .hasSize(4);
 
     final Violation violation0 = new ArrayList<>(actual).get(0);
     assertThat(violation0.getMessage()) //
@@ -41,16 +41,16 @@ public class CLangTest {
     assertThat(violation0.getStartLine()) //
         .isEqualTo(10);
 
-    final Violation violation2 = new ArrayList<>(actual).get(2);
-    assertThat(violation2.getMessage()) //
+    final Violation violation3 = new ArrayList<>(actual).get(3);
+    assertThat(violation3.getMessage()) //
         .isEqualTo("Memory is allocated");
-    assertThat(violation2.getFile()) //
+    assertThat(violation3.getFile()) //
         .isEqualTo("main.cpp");
-    assertThat(violation2.getSeverity()) //
+    assertThat(violation3.getSeverity()) //
         .isEqualTo(INFO);
-    assertThat(violation2.getRule()) //
+    assertThat(violation3.getRule()) //
         .isEqualTo("");
-    assertThat(violation2.getStartLine()) //
+    assertThat(violation3.getStartLine()) //
         .isEqualTo(4);
   }
 
