@@ -3,6 +3,15 @@
 
 Changelog of Violations lib.
 
+## 1.123
+### GitHub [#98](https://github.com/tomasbjerre/violations-lib/issues/98) compareTo method of Violation is broken and filters too many unique warnings  
+
+**Avoid removing violations that are not duplicates**
+
+
+[0b81ef8c7fcdd95](https://github.com/tomasbjerre/violations-lib/commit/0b81ef8c7fcdd95) Tomas Bjerre *2020-08-27 17:43:08*
+
+
 ## 1.122
 ### GitHub [#97](https://github.com/tomasbjerre/violations-lib/issues/97) NoSuchElementException when parsing JUnit report without type  
 
