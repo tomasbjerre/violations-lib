@@ -1,0 +1,10 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<testsuites name='timrCoreTests.xctest' tests='573' failures='1'>
+  <testsuite name='timrAPITests.UtilTests' tests='3' failures='1'>
+    <testcase classname='timrAPITests.UtilTests' name='testJoinStringsWithCustomSeparator'>
+      <failure message='XCTAssertEqual failed: (&quot;&quot;) is not equal to (&quot;TESTFAIL&quot;)'>timrAPITests/Tests/Utils/UtilTests.swift:23</failure>
+    </testcase>
+    <testcase classname='timrAPITests.UtilTests' name='testJoinStringsWithEmtpyString' time='0.000'/>
+    <testcase classname='timrAPITests.UtilTests' name='testJoinStringsWithSeparator' time='0.000'/>
+  </testsuite>
+</testsuites>

@@ -120,4 +120,29 @@ public class JUnitTest {
     assertThat(new ArrayList<>(actual).get(0).getSeverity()) //
         .isEqualTo(ERROR);
   }
+
+  @Test
+  public void testThatViolationsCanBeParsedFromJunitWithoutMessageAndType() {
+    final String rootFolder = getRootFolder();
+
+    final Set<Violation> actual =
+        violationsApi() //
+            .withPattern(".*/junit/junit-no-message-or-type\\.xml$") //
+            .inFolder(rootFolder) //
+            .findAll(JUNIT) //
+            .violations();
+
+    assertThat(actual) //
+        .hasSize(1);
+
+    assertThat(new ArrayList<>(actual).get(0).getSource()) //
+        .isEqualTo("timrAPITests.UtilTests");
+    assertThat(new ArrayList<>(actual).get(0).getFile()) //
+        .isEqualTo("timrAPITests/UtilTests.swift");
+    assertThat(new ArrayList<>(actual).get(0).getMessage()) //
+        .isEqualTo(
+            "testJoinStringsWithCustomSeparator : XCTAssertEqual failed: (\"\") is not equal to (\"TESTFAIL\")");
+    assertThat(new ArrayList<>(actual).get(0).getSeverity()) //
+        .isEqualTo(ERROR);
+  }
 }

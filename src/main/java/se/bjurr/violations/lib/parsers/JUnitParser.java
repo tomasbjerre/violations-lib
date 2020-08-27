@@ -1,11 +1,13 @@
 package se.bjurr.violations.lib.parsers;
 
+import static java.util.logging.Level.FINE;
 import static java.util.logging.Level.WARNING;
 import static se.bjurr.violations.lib.model.SEVERITY.ERROR;
 import static se.bjurr.violations.lib.reports.Parser.JUNIT;
 import static se.bjurr.violations.lib.util.ViolationParserUtils.findAttribute;
 import static se.bjurr.violations.lib.util.ViolationParserUtils.getAttribute;
 import static se.bjurr.violations.lib.util.ViolationParserUtils.getChunks;
+import static se.bjurr.violations.lib.util.ViolationParserUtils.getContent;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -33,28 +35,33 @@ public class JUnitParser implements ViolationsParser {
 
       for (final String failure : chunks) {
         final Optional<String> messageOpt = findAttribute(failure, "message");
-        final String message = messageOpt.orElse(findAttribute(failure, "type").get());
+        final String message = messageOpt.orElse(findAttribute(failure, "type").orElse(null));
+        if (message == null) {
+          continue;
+        }
         final String className = getAttribute(errorChunk, "classname");
         final String name = getAttribute(errorChunk, "name");
-        final String type = getAttribute(errorChunk, "type");
+        final String type = findAttribute(errorChunk, "type").orElse(null);
 
         final List<String> failLine = getChunks(failure, className + "." + name, "\\)");
 
+        String fileNameLine;
         if (failLine.isEmpty()) {
-          violationsLogger.log(
-              WARNING, "Found failure, but failed to find fail line from stacktrace");
-          continue;
-        }
-        final List<String> fileNameAndLine = getChunks(failLine.get(0), "\\(", "\\)");
+          violationsLogger.log(FINE, "Found failure, but failed to find fail line from stacktrace");
+          fileNameLine = getContent(failure, "failure");
+        } else {
+          final List<String> fileNameAndLine = getChunks(failLine.get(0), "\\(", "\\)");
 
-        if (fileNameAndLine.isEmpty()) {
-          violationsLogger.log(
-              WARNING,
-              "Found failure line from stacktrace. But failed to get File name and line number from it.");
-          continue;
+          if (fileNameAndLine.isEmpty()) {
+            violationsLogger.log(
+                WARNING,
+                "Found failure line from stacktrace. But failed to get File name and line number from it.");
+            continue;
+          }
+          fileNameLine = fileNameAndLine.get(0);
         }
 
-        final String[] split = fileNameAndLine.get(0).split("[.\\:\\)]");
+        final String[] split = fileNameLine.split("[.\\:\\)]");
 
         if (split.length < 3) {
           violationsLogger.log(WARNING, "Failed to split Filename to its ending and line number");

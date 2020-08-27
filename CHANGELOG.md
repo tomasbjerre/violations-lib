@@ -3,6 +3,15 @@
 
 Changelog of Violations lib.
 
+## Unreleased
+### GitHub [#97](https://github.com/tomasbjerre/violations-lib/issues/97) NoSuchElementException when parsing JUnit report without type  
+
+**JUnit missing message and type**
+
+
+[86bf03c55874f43](https://github.com/tomasbjerre/violations-lib/commit/86bf03c55874f43) Tomas Bjerre *2020-08-27 16:19:43*
+
+
 ## 1.121
 ### No issue
 
