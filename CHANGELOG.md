@@ -3,6 +3,15 @@
 
 Changelog of Violations lib.
 
+## 1.124
+### GitHub [#100](https://github.com/tomasbjerre/violations-lib/issues/100) JUnit failures without type or message will be skipped  
+
+**Support JUNI reports without message**
+
+
+[925c96b9f43b734](https://github.com/tomasbjerre/violations-lib/commit/925c96b9f43b734) Tomas Bjerre *2020-09-04 15:41:14*
+
+
 ## 1.123
 ### GitHub [#98](https://github.com/tomasbjerre/violations-lib/issues/98) compareTo method of Violation is broken and filters too many unique warnings  
 
