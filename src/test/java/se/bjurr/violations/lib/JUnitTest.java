@@ -145,4 +145,30 @@ public class JUnitTest {
     assertThat(new ArrayList<>(actual).get(0).getSeverity()) //
         .isEqualTo(ERROR);
   }
+
+  @Test
+  public void testThatViolationsCanBeParsedFromJunit4() {
+    final String rootFolder = getRootFolder();
+
+    final Set<Violation> actual =
+        violationsApi() //
+            .withPattern(".*/junit/junit2\\.xml$") //
+            .inFolder(rootFolder) //
+            .findAll(JUNIT) //
+            .violations();
+
+    assertThat(actual) //
+        .hasSize(1);
+
+    final Violation violation0 = new ArrayList<>(actual).get(0);
+    assertThat(violation0.getSource()) //
+        .isEqualTo("my.company.MainActivityTest");
+    assertThat(violation0.getFile()) //
+        .isEqualTo("my/company/MainActivityTest.java");
+    assertThat(violation0.getMessage()) //
+        .startsWith(
+            "openAppInfoTest : androidx.test.espresso.AppNotIdleException: Looped for 3838 iterations over 60 SECONDS. The following Idle Conditions failed .");
+    assertThat(violation0.getSeverity()) //
+        .isEqualTo(ERROR);
+  }
 }
