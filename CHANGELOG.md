@@ -3,6 +3,15 @@
 
 Changelog of Violations lib.
 
+## 1.125
+### No issue
+
+**adjusting message of junit parser**
+
+
+[96e73a365e55117](https://github.com/tomasbjerre/violations-lib/commit/96e73a365e55117) Tomas Bjerre *2020-09-05 06:35:02*
+
+
 ## 1.124
 ### GitHub [#100](https://github.com/tomasbjerre/violations-lib/issues/100) JUnit failures without type or message will be skipped  
 
