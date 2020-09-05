@@ -116,7 +116,8 @@ public class JUnitTest {
     assertThat(new ArrayList<>(actual).get(0).getFile()) //
         .isEqualTo("de/tobiasmichael/me/MyTest.java");
     assertThat(new ArrayList<>(actual).get(0).getMessage()) //
-        .isEqualTo("testConcatenate4 : org.opentest4j.AssertionFailedError");
+        .startsWith(
+            "testConcatenate4 : org.opentest4j.AssertionFailedError: expected: <onefive> but was: <onetwo>");
     assertThat(new ArrayList<>(actual).get(0).getSeverity()) //
         .isEqualTo(ERROR);
   }

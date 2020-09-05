@@ -35,9 +35,9 @@ public class JUnitParser implements ViolationsParser {
 
       for (final String failure : chunks) {
         final Optional<String> messageOpt = findAttribute(failure, "message");
-        String message = messageOpt.orElse(findAttribute(failure, "type").orElse(null));
+        String message = messageOpt.orElse(null);
         if (message == null) {
-          message = failure.replaceAll("(<failure[^>]*>|</failure>)", "");
+          message = failure.replaceAll("(<failure[^>]*>|</failure>|<!\\[CDATA\\[|\\]\\]>)", "");
         }
         final String className = getAttribute(errorChunk, "classname");
         final String name = getAttribute(errorChunk, "name");
