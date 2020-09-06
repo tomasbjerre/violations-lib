@@ -3,6 +3,15 @@
 
 Changelog of Violations lib.
 
+## 1.126
+### GitHub [#95](https://github.com/tomasbjerre/violations-lib/issues/95) Add support for &quot;suggested change&quot;    *enhancement*  
+
+**Moving PatchParser from violation-comments-lib**
+
+
+[8430d1796086717](https://github.com/tomasbjerre/violations-lib/commit/8430d1796086717) Tomas Bjerre *2020-09-06 05:16:01*
+
+
 ## 1.125
 ### No issue
 
