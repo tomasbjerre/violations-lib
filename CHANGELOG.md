@@ -3,6 +3,15 @@
 
 Changelog of Violations lib.
 
+## Unreleased
+### GitHub [#95](https://github.com/tomasbjerre/violations-lib/issues/95) Add support for &quot;suggested change&quot;    *enhancement*  
+
+**DiffParser**
+
+
+[e282c85c4e58980](https://github.com/tomasbjerre/violations-lib/commit/e282c85c4e58980) Tomas Bjerre *2020-09-06 07:03:03*
+
+
 ## 1.127
 ### GitHub [#95](https://github.com/tomasbjerre/violations-lib/issues/95) Add support for &quot;suggested change&quot;    *enhancement*  
 

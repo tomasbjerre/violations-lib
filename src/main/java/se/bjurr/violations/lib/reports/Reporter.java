@@ -97,6 +97,11 @@ public enum Reporter {
       Parser.GOOGLEERRORPRONE,
       "https://github.com/uber/NullAway",
       "Same format as Google Error Prone."),
+  DIFF(
+      "Patch",
+      Parser.DIFF,
+      "https://en.wikipedia.org/wiki/Diff",
+      "Unidiff, often used by the `patch` program."),
   PCLINT(
       "PCLint",
       Parser.PCLINT,

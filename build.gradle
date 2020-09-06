@@ -21,6 +21,7 @@ apply from: project.buildscript.classLoader.getResource('release.gradle').toURI(
 
 dependencies {
  compile 'com.google.code.gson:gson:2.8.2'
+ compile 'io.github.java-diff-utils:java-diff-utils:4.7'
  compileOnly 'com.github.spotbugs:spotbugs-annotations:3.1.12'
  testCompile 'junit:junit:4.12'
  testCompile 'org.assertj:assertj-core:2.3.0'
@@ -28,6 +29,7 @@ dependencies {
 }
 
 shadowJar {
+ relocate 'io.github',      safeJavaIdentidier(project.group + '.' + project.name + '.io.github')
  relocate 'com.google',      safeJavaIdentidier(project.group + '.' + project.name + '.com.google')
  relocate 'com.jakewharton', safeJavaIdentidier(project.group + '.' + project.name + '.com.jakewharton')
 }

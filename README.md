@@ -53,6 +53,7 @@ A number of **parsers** have been implemented. Some **parsers** can parse output
 | [_PHPCS_](https://github.com/squizlabs/PHP_CodeSniffer)                               | `CHECKSTYLE`         | With `phpcs api.php --report=checkstyle`.
 | [_PHPPMD_](https://phpmd.org/)                                                        | `PMD`                | With `phpmd api.php xml ruleset.xml`.
 | [_PMD_](https://pmd.github.io/)                                                       | `PMD`                | 
+| [_Patch_](https://en.wikipedia.org/wiki/Diff)                                         | `DIFF`               | Unidiff, often used by the `patch` program.
 | [_Pep8_](https://github.com/PyCQA/pycodestyle)                                        | `FLAKE8`             | 
 | [_PerlCritic_](https://github.com/Perl-Critic)                                        | `PERLCRITIC`         | 
 | [_PiTest_](http://pitest.org/)                                                        | `PITEST`             | 

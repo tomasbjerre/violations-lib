@@ -20,6 +20,7 @@ import se.bjurr.violations.lib.parsers.CheckStyleParser;
 import se.bjurr.violations.lib.parsers.CodeClimateParser;
 import se.bjurr.violations.lib.parsers.CodeNarcParser;
 import se.bjurr.violations.lib.parsers.CppLintParser;
+import se.bjurr.violations.lib.parsers.DiffParser;
 import se.bjurr.violations.lib.parsers.DocFXParser;
 import se.bjurr.violations.lib.parsers.FindbugsParser;
 import se.bjurr.violations.lib.parsers.Flake8Parser;
@@ -79,6 +80,7 @@ public enum Parser {
   KOTLINGRADLE(new KotlinGradleParser()), //
   MSCPP(new MSCPPParser()), //
   MYPY(new MyPyParser()), //
+  DIFF(new DiffParser()), //
   GOLINT(new GoLintParser()), //
   GOOGLEERRORPRONE(new GoogleErrorProneParser()), //
   PERLCRITIC(new PerlCriticParser()), //

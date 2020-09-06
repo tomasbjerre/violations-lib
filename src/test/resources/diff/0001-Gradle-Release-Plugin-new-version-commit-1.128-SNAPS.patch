@@ -1,0 +1,41 @@
+From 513d19e33d0a78b778bc2cd33551a300e7605975 Mon Sep 17 00:00:00 2001
+From: Tomas Bjerre <tomas.bjerre85@gmail.com>
+Date: Sun, 6 Sep 2020 07:26:13 +0200
+Subject: [PATCH] [Gradle Release Plugin] - new version commit: 
+ '1.128-SNAPSHOT'.
+
+---
+ CHANGELOG.md      | 9 +++++++++
+ gradle.properties | 2 +-
+ 2 files changed, 10 insertions(+), 1 deletion(-)
+
+diff --git a/CHANGELOG.md b/CHANGELOG.md
+index 7b2cb23..a1ee761 100644
+--- a/CHANGELOG.md
++++ b/CHANGELOG.md
+@@ -3,6 +3,15 @@
+ 
+ Changelog of Violations lib.
+ 
++## 1.127
++### GitHub [#95](https://github.com/tomasbjerre/violations-lib/issues/95) Add support for &quot;suggested change&quot;    *enhancement*  
++
++**Moving PatchParser from violation-comments-lib**
++
++
++[5c52a3933792d14](https://github.com/tomasbjerre/violations-lib/commit/5c52a3933792d14) Tomas Bjerre *2020-09-06 05:24:56*
++
++
+ ## 1.126
+ ### GitHub [#95](https://github.com/tomasbjerre/violations-lib/issues/95) Add support for &quot;suggested change&quot;    *enhancement*  
+ 
+diff --git a/gradle.properties b/gradle.properties
+index aca4c1a..eda4430 100644
+--- a/gradle.properties
++++ b/gradle.properties
+@@ -1 +1 @@
+-version = 1.127
++version = 1.128-SNAPSHOT
+-- 
+2.25.1
+
