@@ -9,7 +9,7 @@ import java.util.TreeMap;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-public class PatchParser {
+public class PatchParserUtil {
 
   private static final Pattern RANGE_PATTERN =
       Pattern.compile(
@@ -18,7 +18,7 @@ public class PatchParser {
   private final Map<Integer, Optional<Integer>> newLineToOldLineTable;
   private final Map<Integer, Optional<Integer>> newLineToLineInDiffTable;
 
-  public PatchParser(String patchString) {
+  public PatchParserUtil(String patchString) {
     newLineToOldLineTable = new TreeMap<>();
     newLineToLineInDiffTable = new TreeMap<>();
     if (patchString == null) {

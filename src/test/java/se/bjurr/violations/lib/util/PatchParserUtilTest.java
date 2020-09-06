@@ -7,8 +7,8 @@ import java.util.Optional;
 import java.util.logging.Logger;
 import org.junit.Test;
 
-public class PatchParserTest {
-  private static Logger LOG = Logger.getLogger(PatchParser.class.getSimpleName());
+public class PatchParserUtilTest {
+  private static Logger LOG = Logger.getLogger(PatchParserUtil.class.getSimpleName());
 
   private static final String NEW_DIFF =
       "@@ -1,6 +1,6 @@\n <html>\n  <head></head>\n <body>\n-<font>\n+<font> \n </body> \n </html>";
@@ -63,7 +63,7 @@ public class PatchParserTest {
 
     getIntegerOptionalMap(patch);
 
-    final PatchParser pp = new PatchParser(patch);
+    final PatchParserUtil pp = new PatchParserUtil(patch);
 
     assertThat(pp.isLineInDiff(999)) //
         .isFalse();
@@ -124,7 +124,7 @@ public class PatchParserTest {
   private Integer findLineToComment(String patch, int commentLint) {
     getIntegerOptionalMap(patch);
 
-    return new PatchParser(patch) //
+    return new PatchParserUtil(patch) //
         .findLineInDiff(commentLint) //
         .orElse(null);
   }
@@ -136,7 +136,7 @@ public class PatchParserTest {
       sb.append(i + 1 + " | " + diffLines[i] + "\n");
     }
     final Map<Integer, Optional<Integer>> map =
-        new PatchParser(patch) //
+        new PatchParserUtil(patch) //
             .getNewLineToOldLineTable();
     for (Map.Entry<Integer, Optional<Integer>> e : map.entrySet()) {
       sb.append(e.getKey() + " : " + e.getValue().orElse(null) + "\n");
