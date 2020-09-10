@@ -45,6 +45,7 @@ public enum Reporter {
       Parser.GENDARME,
       "http://www.mono-project.com/docs/tools+libraries/tools/gendarme/",
       ""),
+  GENERIC("Generic reporter", Parser.FILEPARSER, "", ""),
   GOLINT("GoLint", Parser.GOLINT, "https://github.com/golang/lint", ""),
   GOLANGLINT(
       "GolangCI-Lint",
