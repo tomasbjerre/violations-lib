@@ -21,6 +21,7 @@ import se.bjurr.violations.lib.parsers.CodeClimateParser;
 import se.bjurr.violations.lib.parsers.CodeNarcParser;
 import se.bjurr.violations.lib.parsers.CppLintParser;
 import se.bjurr.violations.lib.parsers.DocFXParser;
+import se.bjurr.violations.lib.parsers.GenericParser;
 import se.bjurr.violations.lib.parsers.FindbugsParser;
 import se.bjurr.violations.lib.parsers.Flake8Parser;
 import se.bjurr.violations.lib.parsers.FxCopParser;
@@ -65,6 +66,7 @@ public enum Parser {
   CPPCHECK(new CPPCheckParser()), //
   CPPLINT(new CppLintParser()), //
   CSSLINT(new CSSLintParser()), //
+  GENERIC(new GenericParser()),
   FINDBUGS(new FindbugsParser()), //
   FLAKE8(new Flake8Parser()), //
   FXCOP(new FxCopParser()), //
