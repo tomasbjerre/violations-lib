@@ -45,7 +45,11 @@ public enum Reporter {
       Parser.GENDARME,
       "http://www.mono-project.com/docs/tools+libraries/tools/gendarme/",
       ""),
-  GENERIC("Generic reporter", Parser.GENERIC, "", "Will create one single violation with all the content as message."),
+  GENERIC(
+      "Generic reporter",
+      Parser.GENERIC,
+      "",
+      "Will create one single violation with all the content as message."),
   GOLINT("GoLint", Parser.GOLINT, "https://github.com/golang/lint", ""),
   GOLANGLINT(
       "GolangCI-Lint",

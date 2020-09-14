@@ -13,28 +13,27 @@ import se.bjurr.violations.lib.model.Violation;
 
 public class GenericParserTest {
 
-    @Test
-    public void testThatViolationsCanBeParsed() {
-        final String rootFolder = getRootFolder();
+  @Test
+  public void testThatViolationsCanBeParsed() {
+    final String rootFolder = getRootFolder();
 
-        final Set<Violation> actual =
-          violationsApi()
-                  .withPattern(".*/file-parser/file.*\\.txt$")
-                  .inFolder(rootFolder) //
-                  .findAll(GENERIC)
-                  .violations();
-        assertThat(actual) //
-                .contains( //
-                        violationBuilder() //
-                                .setParser(GENERIC) //
-                                .setFile("Generic Comment") //
-                                .setStartLine(0)
-                                .setColumn(0)
-                                .setMessage("This is just a dummy text.") //
-                                .setSeverity(INFO) //
-                                .build() //
-                ) //
-                .hasSize(1);
-    }
+    final Set<Violation> actual =
+        violationsApi()
+            .withPattern(".*/file-parser/file.*\\.txt$")
+            .inFolder(rootFolder) //
+            .findAll(GENERIC)
+            .violations();
+    assertThat(actual) //
+        .contains( //
+            violationBuilder() //
+                .setParser(GENERIC) //
+                .setFile("Generic Comment") //
+                .setStartLine(0)
+                .setColumn(0)
+                .setMessage("This is just a dummy text.") //
+                .setSeverity(INFO) //
+                .build() //
+            ) //
+        .hasSize(1);
+  }
 }
-
