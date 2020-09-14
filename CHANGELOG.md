@@ -3,6 +3,25 @@
 
 Changelog of Violations lib.
 
+## 1.128
+### No issue
+
+**change parser name to generic**
+
+
+[99446c2bb39cbe5](https://github.com/tomasbjerre/violations-lib/commit/99446c2bb39cbe5) Anirudh Bagri *2020-09-14 06:15:22*
+
+**map file parser to generic reporter**
+
+
+[dfe2ac1d46365f4](https://github.com/tomasbjerre/violations-lib/commit/dfe2ac1d46365f4) Anirudh Bagri *2020-09-10 15:21:30*
+
+**add file parser**
+
+
+[0c9846f76ea9a14](https://github.com/tomasbjerre/violations-lib/commit/0c9846f76ea9a14) Anirudh Bagri *2020-09-10 15:12:07*
+
+
 ## 1.127
 ### GitHub [#95](https://github.com/tomasbjerre/violations-lib/issues/95) Add support for &quot;suggested change&quot;    *enhancement*  
 
