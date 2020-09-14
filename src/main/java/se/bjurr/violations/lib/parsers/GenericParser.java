@@ -9,13 +9,13 @@ import se.bjurr.violations.lib.reports.Parser;
 import java.util.Set;
 import java.util.TreeSet;
 
-public class FileParser implements ViolationsParser{
+public class GenericParser implements ViolationsParser{
     @Override
     public Set<Violation> parseReportOutput(String reportContent, ViolationsLogger violationsLogger) throws Exception {
         final Set<Violation> violations = new TreeSet<>();
         violations.add(
                 violationBuilder()
-                        .setParser(Parser.FILEPARSER)
+                        .setParser(Parser.GENERIC)
                         .setFile("Generic Comment")
                         .setStartLine(0)
                         .setColumn(0)
