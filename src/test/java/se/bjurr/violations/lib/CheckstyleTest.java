@@ -271,4 +271,22 @@ public class CheckstyleTest {
                 .build() //
             );
   }
+
+  @Test
+  public void testThatCheckstyleReportWithNoLineIsParsed() {
+    final Set<Violation> actual =
+        violationsApi() //
+            .withPattern(".*/checkstyle/scalastyle\\.xml$") //
+            .inFolder(this.rootFolder) //
+            .findAll(CHECKSTYLE) //
+            .withReporter("Checkstyle") //
+            .violations();
+
+    assertThat(actual) //
+        .hasSize(1);
+
+    final Violation violation = new ArrayList<>(actual).get(0);
+    assertThat(violation.getMessage()) //
+        .isEqualTo("File must end with newline character");
+  }
 }

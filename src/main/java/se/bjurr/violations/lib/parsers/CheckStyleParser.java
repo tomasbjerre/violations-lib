@@ -9,7 +9,6 @@ import static se.bjurr.violations.lib.util.ViolationParserUtils.findAttribute;
 import static se.bjurr.violations.lib.util.ViolationParserUtils.findIntegerAttribute;
 import static se.bjurr.violations.lib.util.ViolationParserUtils.getAttribute;
 import static se.bjurr.violations.lib.util.ViolationParserUtils.getChunks;
-import static se.bjurr.violations.lib.util.ViolationParserUtils.getIntegerAttribute;
 
 import java.util.List;
 import java.util.Optional;
@@ -32,7 +31,7 @@ public class CheckStyleParser implements ViolationsParser {
       final List<String> longFormErrors = getChunks(fileChunk, "<error", "</error>");
       errors.addAll(longFormErrors);
       for (final String errorChunk : errors) {
-        final Integer line = getIntegerAttribute(errorChunk, "line");
+        final Integer line = findIntegerAttribute(errorChunk, "line").orElse(0);
         final Optional<Integer> column = findIntegerAttribute(errorChunk, "column");
         final String severity = getAttribute(errorChunk, "severity");
         final String message = getAttribute(errorChunk, "message");

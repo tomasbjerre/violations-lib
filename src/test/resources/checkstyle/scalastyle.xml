@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<checkstyle version="5.0">
+ <file name="/home/fchamoun/work/data-analytics/databricks/apps/data-streaming/src/main/scala/com/work/spark/dynamoDb/utils/KafkaDataReader.scala">
+  <error source="org.scalastyle.file.NewLineAtEofChecker" severity="error" message="File must end with newline character"/>
+ </file>
+</checkstyle>

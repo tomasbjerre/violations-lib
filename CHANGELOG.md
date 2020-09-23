@@ -3,6 +3,15 @@
 
 Changelog of Violations lib.
 
+## Unreleased
+### GitHub [#107](https://github.com/tomasbjerre/violations-lib/issues/107) Checkstyle: don&#39;t fail if line attribute is not present  
+
+**Allow Checkstyle reports with no line**
+
+
+[744969970552012](https://github.com/tomasbjerre/violations-lib/commit/744969970552012) Tomas Bjerre *2020-09-23 15:46:26*
+
+
 ## 1.128
 ### No issue
 
