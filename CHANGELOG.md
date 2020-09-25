@@ -3,6 +3,23 @@
 
 Changelog of Violations lib.
 
+## 1.130
+### GitHub [#101](https://github.com/tomasbjerre/violations-lib/issues/101) Replace the regexp xml-parsing with STL xml parser  
+
+**Rewriting JUnit parser**
+
+
+[2eac2357a6a9606](https://github.com/tomasbjerre/violations-lib/commit/2eac2357a6a9606) Tomas Bjerre *2020-09-25 18:35:54*
+
+
+### GitHub [#108](https://github.com/tomasbjerre/violations-lib/issues/108) Parse jest-junit  
+
+**Rewriting JUnit parser**
+
+
+[2eac2357a6a9606](https://github.com/tomasbjerre/violations-lib/commit/2eac2357a6a9606) Tomas Bjerre *2020-09-25 18:35:54*
+
+
 ## 1.129
 ### GitHub [#107](https://github.com/tomasbjerre/violations-lib/issues/107) Checkstyle: don&#39;t fail if line attribute is not present  
 
