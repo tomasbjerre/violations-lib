@@ -1,21 +1,25 @@
 package se.bjurr.violations.lib.parsers;
 
-import static java.util.logging.Level.FINE;
-import static java.util.logging.Level.WARNING;
+import static java.nio.charset.StandardCharsets.UTF_8;
 import static se.bjurr.violations.lib.model.SEVERITY.ERROR;
+import static se.bjurr.violations.lib.model.Violation.violationBuilder;
 import static se.bjurr.violations.lib.reports.Parser.JUNIT;
-import static se.bjurr.violations.lib.util.ViolationParserUtils.findAttribute;
 import static se.bjurr.violations.lib.util.ViolationParserUtils.getAttribute;
-import static se.bjurr.violations.lib.util.ViolationParserUtils.getChunks;
-import static se.bjurr.violations.lib.util.ViolationParserUtils.getContent;
 
+import java.io.ByteArrayInputStream;
+import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Optional;
 import java.util.Set;
 import java.util.TreeSet;
+import java.util.logging.Level;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+import javax.xml.stream.XMLStreamConstants;
+import javax.xml.stream.XMLStreamReader;
 import se.bjurr.violations.lib.ViolationsLogger;
 import se.bjurr.violations.lib.model.Violation;
+import se.bjurr.violations.lib.util.ViolationParserUtils;
 
 public class JUnitParser implements ViolationsParser {
 
@@ -23,72 +27,111 @@ public class JUnitParser implements ViolationsParser {
   public Set<Violation> parseReportOutput(
       final String reportContent, final ViolationsLogger violationsLogger) throws Exception {
     final Set<Violation> violations = new TreeSet<>();
+    try (InputStream input = new ByteArrayInputStream(reportContent.getBytes(UTF_8))) {
 
-    final List<String> errors = getChunks(reportContent, "<testcase", "(/>|</testcase>)");
-
-    for (final String errorChunk : errors) {
-      final List<String> failureChunks = getChunks(errorChunk, "<failure", "</failure>");
-      final List<String> errorChunks = getChunks(errorChunk, "<error", "</error>");
-      final ArrayList<String> chunks = new ArrayList<>();
-      chunks.addAll(failureChunks);
-      chunks.addAll(errorChunks);
-
-      for (final String failure : chunks) {
-        final Optional<String> messageOpt = findAttribute(failure, "message");
-        String message = messageOpt.orElse(null);
-        if (message == null) {
-          message = failure.replaceAll("(<failure[^>]*>|</failure>|<!\\[CDATA\\[|\\]\\]>)", "");
-        }
-        final String className = getAttribute(errorChunk, "classname");
-        final String name = getAttribute(errorChunk, "name");
-        final String type = findAttribute(errorChunk, "type").orElse(null);
-
-        final List<String> failLine = getChunks(failure, className + "." + name, "\\)");
-
-        String fileNameLine;
-        if (failLine.isEmpty()) {
-          violationsLogger.log(FINE, "Found failure, but failed to find fail line from stacktrace");
-          fileNameLine = getContent(failure, "failure");
-        } else {
-          final List<String> fileNameAndLine = getChunks(failLine.get(0), "\\(", "\\)");
-
-          if (fileNameAndLine.isEmpty()) {
-            violationsLogger.log(
-                WARNING,
-                "Found failure line from stacktrace. But failed to get File name and line number from it.");
-            continue;
+      final XMLStreamReader xmlr = ViolationParserUtils.createXmlReader(input);
+      String className = null;
+      String name = null;
+      while (xmlr.hasNext()) {
+        final int eventType = xmlr.next();
+        if (eventType == XMLStreamConstants.START_ELEMENT) {
+          if (xmlr.getLocalName().equalsIgnoreCase("testcase")) {
+            className = getAttribute(xmlr, "classname");
+            name = getAttribute(xmlr, "name");
+          } else if (xmlr.getLocalName().equalsIgnoreCase("failure")) {
+            final Violation v = this.parseFailure(xmlr, className, name, violationsLogger);
+            if (v != null) {
+              violations.add(v);
+            }
           }
-          fileNameLine = fileNameAndLine.get(0);
         }
-
-        final String[] split = fileNameLine.split("[.\\:\\)]");
-
-        if (split.length < 3) {
-          violationsLogger.log(WARNING, "Failed to split Filename to its ending and line number");
-          continue;
-        }
-
-        int lineOfFailure;
-
-        try {
-          lineOfFailure = Integer.parseInt(split[2]);
-        } catch (final NumberFormatException e) {
-          violationsLogger.log(WARNING, "Failed to parse line number from: " + split[2]);
-          continue;
-        }
-
-        violations.add(
-            Violation.violationBuilder()
-                .setParser(JUNIT)
-                .setMessage(name + " : " + message)
-                .setStartLine(lineOfFailure)
-                .setFile(className.replaceAll("\\.", "/") + "." + split[1])
-                .setSource(className)
-                .setRule(type)
-                .setSeverity(ERROR) //
-                .build());
       }
     }
+
     return violations;
+  }
+
+  private static class FileAndLine {
+    public String file;
+    public Integer line;
+  }
+
+  private Violation parseFailure(
+      final XMLStreamReader xmlr,
+      final String className,
+      final String name,
+      final ViolationsLogger violationsLogger)
+      throws Exception {
+    final String messageAttr = xmlr.getAttributeValue("", "message");
+    final String failureContent = xmlr.getElementText();
+    FileAndLine fl = this.findFilePathInContent(failureContent, className);
+    if (fl == null) {
+      fl = this.deriveFileFromClass(failureContent);
+    }
+    if (fl == null) {
+      violationsLogger.log(Level.FINE, "Cannot determine file and line in:\n" + failureContent);
+      return null;
+    }
+    final String message =
+        name + " : " + (messageAttr != null ? messageAttr + " " + failureContent : failureContent);
+    return violationBuilder() //
+        .setParser(JUNIT) //
+        .setMessage(message.trim()) //
+        .setStartLine(fl.line) //
+        .setFile(fl.file) //
+        .setSource(className) //
+        .setSeverity(ERROR) //
+        .build();
+  }
+
+  private FileAndLine deriveFileFromClass(final String failureContent) {
+    final String failureContentFrontSlash = failureContent.replace("\\", "/");
+    final Matcher matcher =
+        Pattern.compile("((([a-zA-Z]+?/)|([a-zA-Z]:/)|(/))([^:]+?)):(\\d+)")
+            .matcher(failureContentFrontSlash);
+    final boolean foundFilePath = matcher.find();
+    if (foundFilePath) {
+      final FileAndLine fl = new FileAndLine();
+      fl.file = matcher.group(1);
+      fl.line = Integer.parseInt(matcher.group(7));
+      return fl;
+    }
+    return null;
+  }
+
+  private FileAndLine findFilePathInContent(final String failureContent, final String className) {
+    final String failureContentFrontSlash = failureContent.replace("\\", "/");
+    final Matcher matcher =
+        Pattern.compile("\\s+?at\\s([a-zA-Z0-9\\.]*)\\(([^:]+):(\\d+?)\\)", Pattern.MULTILINE)
+            .matcher(failureContentFrontSlash);
+    final List<FileAndLine> found = new ArrayList<>();
+    while (matcher.find()) {
+      final FileAndLine fl = new FileAndLine();
+      final String classNameFromMatcher = matcher.group(1);
+      String filepath = classNameFromMatcher.replace(".", "/");
+      filepath = filepath.substring(0, filepath.lastIndexOf("/"));
+      filepath = filepath.substring(0, filepath.lastIndexOf("/"));
+      final String filename = matcher.group(2);
+      fl.file = filepath + "/" + filename;
+      if (fl.file.startsWith("org/junit")
+          || fl.file.startsWith("java/lang")
+          || fl.file.startsWith("sun/reflect")) {
+        continue;
+      }
+      fl.line = Integer.parseInt(matcher.group(3));
+      found.add(fl);
+    }
+    if (found.size() == 0) {
+      return null;
+    }
+    if (found.size() == 1) {
+      return found.get(0);
+    }
+    for (final FileAndLine candidate : found) {
+      if (candidate.file.startsWith(className.replace(".", "/"))) {
+        return candidate;
+      }
+    }
+    return found.get(0);
   }
 }

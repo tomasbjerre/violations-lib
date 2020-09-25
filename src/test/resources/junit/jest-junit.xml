@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuites name="jest tests" tests="13" failures="1" time="9.045">
+  <testsuite name="snapshots" errors="0" failures="0" skipped="0" timestamp="2020-09-25T09:06:29" time="2.518" tests="3">
+    <testcase classname="snapshots should display correct snapshot" name="snapshots should display correct snapshot" time="0.055">
+    </testcase>
+    <testcase classname="onAbortConfirm should send applicationAborted statistics" name="onAbortConfirm should send applicationAborted statistics" time="0.011">
+    </testcase>
+    <testcase classname="onAbortClick should send applicationAborted statistics" name="onAbortClick should send applicationAborted statistics" time="0.011">
+    </testcase>
+  </testsuite>
+  <testsuite name="undefined" errors="0" failures="0" skipped="0" timestamp="2020-09-25T09:06:29" time="3.665" tests="2">
+    <testcase classname=" should match snapshot with a list of todo items, an input, a button and related services" name=" should match snapshot with a list of todo items, an input, a button and related services" time="0.086">
+    </testcase>
+    <testcase classname=" should send applicationStarted statistics" name=" should send applicationStarted statistics" time="0.016">
+    </testcase>
+  </testsuite>
+  <testsuite name="undefined" errors="0" failures="0" skipped="0" timestamp="2020-09-25T09:06:32" time="0.422" tests="1">
+    <testcase classname=" abort should clear storage, redirect user and send statistics" name=" abort should clear storage, redirect user and send statistics" time="0.002">
+    </testcase>
+  </testsuite>
+  <testsuite name="undefined" errors="0" failures="0" skipped="0" timestamp="2020-09-25T09:06:31" time="1.871" tests="1">
+    <testcase classname=" should match snapshot with a list of todo items, an input and a button" name=" should match snapshot with a list of todo items, an input and a button" time="0.037">
+    </testcase>
+  </testsuite>
+  <testsuite name="undefined" errors="0" failures="0" skipped="0" timestamp="2020-09-25T09:06:33" time="0.431" tests="2">
+    <testcase classname=" should match snapshot with a list of todo items, an input and a button" name=" should match snapshot with a list of todo items, an input and a button" time="0.079">
+    </testcase>
+    <testcase classname=" should call statistics" name=" should call statistics" time="0">
+    </testcase>
+  </testsuite>
+  <testsuite name="undefined" errors="0" failures="1" skipped="0" timestamp="2020-09-25T09:06:29" time="6.109" tests="4">
+    <testcase classname=" should not have any option checked by default" name=" should not have any option checked by default" time="0.095">
+      <failure>Error: expect(received).toBe(expected) // Object.is equality
+
+Expected: true
+Received: false
+    at Object.&lt;anonymous&gt; (C:\workspace\whatever-template\src\components\TestFile.spec.ts:96:59)</failure>
+      <failure>Error: expect.assertions(3)
+
+Expected three assertions to be called but received two assertion calls.
+    at Object.&lt;anonymous&gt; (C:\workspace\whatever-template\src\components\TestFile.spec.ts:80:12)
+    at Object.asyncJestTest (C:\workspace\whatever-template\node_modules\jest-jasmine2\build\jasmineAsyncInstall.js:102:37)
+    at C:\workspace\whatever-template\node_modules\jest-jasmine2\build\queueRunner.js:43:12
+    at new Promise (&lt;anonymous&gt;)
+    at mapper (C:\workspace\whatever-template\node_modules\jest-jasmine2\build\queueRunner.js:26:19)
+    at C:\workspace\whatever-template\node_modules\jest-jasmine2\build\queueRunner.js:73:41
+    at processTicksAndRejections (internal/process/task_queues.js:97:5)</failure>
+    </testcase>
+    <testcase classname="&quot;ed" name="&quot;Vilked" time="0.105">
+    </testcase>
+  </testsuite>
+</testsuites>

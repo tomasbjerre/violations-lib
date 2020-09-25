@@ -92,7 +92,7 @@ public class JUnitTest {
     assertThat(new ArrayList<>(actual).get(0).getFile()) //
         .isEqualTo("ch/bdna/tsm/service/PollingServiceTest.java");
     assertThat(new ArrayList<>(actual).get(0).getMessage()) //
-        .isEqualTo("testServices : Missing CPU value");
+        .startsWith("testServices : Missing CPU value");
     assertThat(new ArrayList<>(actual).get(0).getSeverity()) //
         .isEqualTo(ERROR);
   }
@@ -139,10 +139,10 @@ public class JUnitTest {
     assertThat(new ArrayList<>(actual).get(0).getSource()) //
         .isEqualTo("timrAPITests.UtilTests");
     assertThat(new ArrayList<>(actual).get(0).getFile()) //
-        .isEqualTo("timrAPITests/UtilTests.swift");
+        .isEqualTo("timrAPITests/Tests/Utils/UtilTests.swift");
     assertThat(new ArrayList<>(actual).get(0).getMessage()) //
         .isEqualTo(
-            "testJoinStringsWithCustomSeparator : XCTAssertEqual failed: (\"\") is not equal to (\"TESTFAIL\")");
+            "testJoinStringsWithCustomSeparator : XCTAssertEqual failed: (\"\") is not equal to (\"TESTFAIL\") timrAPITests/Tests/Utils/UtilTests.swift:23");
     assertThat(new ArrayList<>(actual).get(0).getSeverity()) //
         .isEqualTo(ERROR);
   }
@@ -171,5 +171,34 @@ public class JUnitTest {
             "openAppInfoTest : androidx.test.espresso.AppNotIdleException: Looped for 3838 iterations over 60 SECONDS. The following Idle Conditions failed .");
     assertThat(violation0.getSeverity()) //
         .isEqualTo(ERROR);
+  }
+
+  @Test
+  public void testThatViolationsCanBeParsedFromJestJunit() {
+    final String rootFolder = getRootFolder();
+
+    final Set<Violation> actual =
+        violationsApi() //
+            .withPattern(".*/junit/jest-junit\\.xml$") //
+            .inFolder(rootFolder) //
+            .findAll(JUNIT) //
+            .violations();
+
+    assertThat(actual) //
+        .hasSize(2);
+
+    final Violation violation0 = new ArrayList<>(actual).get(0);
+    assertThat(violation0.getFile())
+        .isEqualTo("C:/workspace/whatever-template/src/components/TestFile.spec.ts");
+    assertThat(violation0.getMessage())
+        .startsWith("should not have any option checked by default : Error: expect(receive");
+    assertThat(violation0.getSeverity()).isEqualTo(ERROR);
+
+    final Violation violation1 = new ArrayList<>(actual).get(1);
+    assertThat(violation1.getFile())
+        .isEqualTo("C:/workspace/whatever-template/src/components/TestFile.spec.ts");
+    assertThat(violation1.getMessage())
+        .startsWith("should not have any option checked by default : Error: expect.assertions(3)");
+    assertThat(violation1.getSeverity()).isEqualTo(ERROR);
   }
 }
