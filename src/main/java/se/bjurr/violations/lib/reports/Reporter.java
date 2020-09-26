@@ -13,7 +13,11 @@ public enum Reporter {
       "With `bandit -r examples/ -f custom -o bandit.out --msg-template \"{abspath}:{line}: {severity}: {test_id}: {msg}\"`"),
   CLANG("CLang", Parser.CLANG, "https://clang-analyzer.llvm.org/", ""),
   CPD("CPD", Parser.CPD, "http://pmd.sourceforge.net/pmd-4.3.0/cpd.html", ""),
-  CPPCHECK("CPPCheck", Parser.CPPCHECK, "http://cppcheck.sourceforge.net/", ""),
+  CPPCHECK(
+      "CPPCheck",
+      Parser.CPPCHECK,
+      "http://cppcheck.sourceforge.net/",
+      "With `cppcheck test.cpp --output-file=cppcheck.xml --xml`"),
   CPPLINT("CPPLint", Parser.CPPLINT, "https://github.com/theandrewdavis/cpplint", ""),
   CSSLINT("CSSLint", Parser.CSSLINT, "https://github.com/CSSLint/csslint", ""),
   CHECKSTYLE("Checkstyle", Parser.CHECKSTYLE, "http://checkstyle.sourceforge.net/", ""),
@@ -180,18 +184,18 @@ public enum Reporter {
   }
 
   public Parser getParser() {
-    return parser;
+    return this.parser;
   }
 
   public String getName() {
-    return name;
+    return this.name;
   }
 
   public String getUrl() {
-    return url;
+    return this.url;
   }
 
   public String getNote() {
-    return note;
+    return this.note;
   }
 }

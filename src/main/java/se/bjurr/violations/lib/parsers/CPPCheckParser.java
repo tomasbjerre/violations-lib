@@ -1,19 +1,24 @@
 package se.bjurr.violations.lib.parsers;
 
+import static java.nio.charset.StandardCharsets.UTF_8;
 import static se.bjurr.violations.lib.model.SEVERITY.ERROR;
 import static se.bjurr.violations.lib.model.SEVERITY.INFO;
 import static se.bjurr.violations.lib.model.SEVERITY.WARN;
+import static se.bjurr.violations.lib.model.Violation.violationBuilder;
 import static se.bjurr.violations.lib.reports.Parser.CPPCHECK;
+import static se.bjurr.violations.lib.util.ViolationParserUtils.createXmlReader;
 import static se.bjurr.violations.lib.util.ViolationParserUtils.findAttribute;
 import static se.bjurr.violations.lib.util.ViolationParserUtils.findIntegerAttribute;
 import static se.bjurr.violations.lib.util.ViolationParserUtils.getAttribute;
-import static se.bjurr.violations.lib.util.ViolationParserUtils.getChunks;
 import static se.bjurr.violations.lib.util.ViolationParserUtils.getIntegerAttribute;
 
-import java.util.List;
+import java.io.ByteArrayInputStream;
+import java.io.InputStream;
 import java.util.Optional;
 import java.util.Set;
 import java.util.TreeSet;
+import javax.xml.stream.XMLStreamConstants;
+import javax.xml.stream.XMLStreamReader;
 import se.bjurr.violations.lib.ViolationsLogger;
 import se.bjurr.violations.lib.model.SEVERITY;
 import se.bjurr.violations.lib.model.Violation;
@@ -22,60 +27,62 @@ public class CPPCheckParser implements ViolationsParser {
 
   @Override
   public Set<Violation> parseReportOutput(
-      final String string, final ViolationsLogger violationsLogger) throws Exception {
+      final String reportContent, final ViolationsLogger violationsLogger) throws Exception {
     final Set<Violation> violations = new TreeSet<>();
-    final List<String> errorChunks = getChunks(string, "<error ", "</error>");
-    for (int errorIndex = 0; errorIndex < errorChunks.size(); errorIndex++) {
-      final String errorChunk = errorChunks.get(errorIndex);
-      final String severity = getAttribute(errorChunk, "severity");
-      final String msg = getAttribute(errorChunk, "msg");
-      final Optional<String> verbose = findAttribute(errorChunk, "verbose");
-      final String id = getAttribute(errorChunk, "id");
-      final List<String> locationChunks = getChunks(errorChunk, "<location", "/>");
+    try (InputStream input = new ByteArrayInputStream(reportContent.getBytes(UTF_8))) {
 
-      for (final String locationChunk : locationChunks) {
-        final Integer line = getIntegerAttribute(locationChunk, "line");
-        final Optional<String> info = findAttribute(locationChunk, "info");
-        final String fileString = getAttribute(errorChunk, "file");
-        final String message = this.constructMessage(msg, verbose, info);
-        violations.add( //
-            Violation.violationBuilder() //
-                .setParser(CPPCHECK) //
-                .setStartLine(line) //
-                .setFile(fileString) //
-                .setSeverity(this.toSeverity(severity)) //
-                .setMessage(message) //
-                .setRule(id) //
-                .setGroup(Integer.toString(errorIndex)) //
-                .build() //
-            );
-      }
-    }
+      final XMLStreamReader xmlr = createXmlReader(input);
+      SEVERITY severity = null;
+      String msg = null;
+      Optional<String> verbose = null;
+      String id = null;
+      int errorIndex = -1;
+      while (xmlr.hasNext()) {
+        final int eventType = xmlr.next();
+        if (eventType == XMLStreamConstants.START_ELEMENT) {
+          if (xmlr.getLocalName().equalsIgnoreCase("error")) {
+            errorIndex++;
+            final String severityStr = getAttribute(xmlr, "severity");
+            severity = this.toSeverity(severityStr);
+            msg = getAttribute(xmlr, "msg");
+            verbose = findAttribute(xmlr, "verbose");
+            id = getAttribute(xmlr, "id");
 
-    final List<String> errorChunksNoEndtag = getChunks(string, "<error ", "\\/>");
-    for (int errorIndex = 0; errorIndex < errorChunksNoEndtag.size(); errorIndex++) {
-      final String errorChunk = errorChunksNoEndtag.get(errorIndex);
-      final String severity = getAttribute(errorChunk, "severity");
-      final String msg = getAttribute(errorChunk, "msg");
-      final Optional<String> verbose = findAttribute(errorChunk, "verbose");
-      final String id = getAttribute(errorChunk, "id");
-      final Optional<Integer> resultLine = findIntegerAttribute(errorChunk, "line");
-      final Optional<String> resultFile = findAttribute(errorChunk, "file");
-      final Optional<String> resultInfo = findAttribute(errorChunk, "info");
-
-      if (resultLine.isPresent() && resultFile.isPresent()) {
-        final String message = this.constructMessage(msg, verbose, resultInfo);
-        violations.add( //
-            Violation.violationBuilder() //
-                .setParser(CPPCHECK) //
-                .setStartLine(resultLine.get()) //
-                .setFile(resultFile.get()) //
-                .setSeverity(this.toSeverity(severity)) //
-                .setMessage(message) //
-                .setRule(id) //
-                .setGroup(Integer.toString(errorIndex)) //
-                .build() //
-            );
+            final Optional<String> resultFile = findAttribute(xmlr, "file");
+            final Optional<Integer> resultLine = findIntegerAttribute(xmlr, "line");
+            final Optional<String> resultInfo = findAttribute(xmlr, "info");
+            if (resultFile.isPresent() && resultLine.isPresent()) {
+              final String message = this.constructMessage(msg, verbose, resultInfo);
+              final Violation violation =
+                  violationBuilder() //
+                      .setParser(CPPCHECK) //
+                      .setStartLine(resultLine.get()) //
+                      .setFile(resultFile.get()) //
+                      .setSeverity(severity) //
+                      .setMessage(message) //
+                      .setRule(id) //
+                      .setGroup(Integer.toString(errorIndex)) //
+                      .build();
+              violations.add(violation);
+            }
+          } else if (xmlr.getLocalName().equalsIgnoreCase("location")) {
+            final Integer line = getIntegerAttribute(xmlr, "line");
+            final Optional<String> info = findAttribute(xmlr, "info");
+            final String message = this.constructMessage(msg, verbose, info);
+            final String file = getAttribute(xmlr, "file");
+            final Violation v =
+                violationBuilder() //
+                    .setParser(CPPCHECK) //
+                    .setMessage(message) //
+                    .setStartLine(line) //
+                    .setFile(file) //
+                    .setSeverity(severity) //
+                    .setRule(id) //
+                    .setGroup(Integer.toString(errorIndex)) //
+                    .build();
+            violations.add(v);
+          }
+        }
       }
     }
 

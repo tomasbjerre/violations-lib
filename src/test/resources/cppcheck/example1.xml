@@ -1,9 +1,27 @@
-<error id="redundantAssignment" severity="style" msg="Variable &apos;it&apos; is reassigned a value before the old one has been used." verbose="Variable &apos;it&apos; is reassigned a value before the old one has been used." cwe="563">
-    <location file0="apps\cloud_composer\src\point_selectors\rectangular_frustum_selector.cpp" file="apps\cloud_composer\src\point_selectors\rectangular_frustum_selector.cpp" line="53"/>
-    <location file0="apps\cloud_composer\src\point_selectors\rectangular_frustum_selector.cpp" file="apps\cloud_composer\src\point_selectors\rectangular_frustum_selector.cpp" line="51"/>
-    <symbol>it</symbol>
-</error>
-<error id="knownConditionTrueFalse" severity="style" msg="Condition &apos;rc&apos; is always true" verbose="Condition &apos;rc&apos; is always true" cwe="571">
-<location file0="surface\src\3rdparty\opennurbs\opennurbs_brep_tools.cpp" file="surface\src\3rdparty\opennurbs\opennurbs_brep_tools.cpp" line="346" info="Condition &apos;rc&apos; is always true"/>
-<location file0="surface\src\3rdparty\opennurbs\opennurbs_brep_tools.cpp" file="surface\src\3rdparty\opennurbs\opennurbs_brep_tools.cpp" line="335" info="Assignment &apos;rc=true&apos;, assigned value is 1"/>
-</error>
+<?xml version="1.0" encoding="UTF-8"?>
+<results version="2">
+	<error id="redundantAssignment" severity="style"
+		msg="Variable &apos;it&apos; is reassigned a value before the old one has been used."
+		verbose="Variable &apos;it&apos; is reassigned a value before the old one has been used."
+		cwe="563">
+		<location
+			file0="apps\cloud_composer\src\point_selectors\rectangular_frustum_selector.cpp"
+			file="apps\cloud_composer\src\point_selectors\rectangular_frustum_selector.cpp"
+			line="53" />
+		<location
+			file0="apps\cloud_composer\src\point_selectors\rectangular_frustum_selector.cpp"
+			file="apps\cloud_composer\src\point_selectors\rectangular_frustum_selector.cpp"
+			line="51" />
+		<symbol>it</symbol>
+	</error>
+	<error id="knownConditionTrueFalse" severity="style"
+		msg="Condition &apos;rc&apos; is always true" verbose="Condition &apos;rc&apos; is always true"
+		cwe="571">
+		<location file0="surface\src\3rdparty\opennurbs\opennurbs_brep_tools.cpp"
+			file="surface\src\3rdparty\opennurbs\opennurbs_brep_tools.cpp" line="346"
+			info="Condition &apos;rc&apos; is always true" />
+		<location file0="surface\src\3rdparty\opennurbs\opennurbs_brep_tools.cpp"
+			file="surface\src\3rdparty\opennurbs\opennurbs_brep_tools.cpp" line="335"
+			info="Assignment &apos;rc=true&apos;, assigned value is 1" />
+	</error>
+</results>
