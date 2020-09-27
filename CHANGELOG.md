@@ -3,6 +3,15 @@
 
 Changelog of Violations lib.
 
+## 1.132
+### No issue
+
+**Find Security Bugs messages**
+
+
+[f67a694356575c9](https://github.com/tomasbjerre/violations-lib/commit/f67a694356575c9) Tomas Bjerre *2020-09-27 16:13:07*
+
+
 ## 1.131
 ### GitHub [#101](https://github.com/tomasbjerre/violations-lib/issues/101) Replace the regexp xml-parsing with STL xml parser  
 
