@@ -237,21 +237,13 @@ public class CheckstyleTest {
     assertThat(actual) //
         .containsExactly( //
             violationBuilder()
-                //
                 .setParser(CHECKSTYLE)
-                //
                 .setReporter(CHECKSTYLE.name())
-                //
                 .setFile("pkg/clients/azure/redis/redis.go")
-                //
                 .setSource("")
-                //
                 .setStartLine(41)
-                //
                 .setEndLine(41)
-                //
                 .setColumn(1)
-                //
                 .setMessage(
                     "exported function `NewClient` should have comment or be unexported") //
                 .setRule("golint") //

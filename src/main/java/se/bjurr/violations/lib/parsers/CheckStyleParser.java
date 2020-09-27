@@ -8,45 +8,64 @@ import static se.bjurr.violations.lib.reports.Parser.CHECKSTYLE;
 import static se.bjurr.violations.lib.util.ViolationParserUtils.findAttribute;
 import static se.bjurr.violations.lib.util.ViolationParserUtils.findIntegerAttribute;
 import static se.bjurr.violations.lib.util.ViolationParserUtils.getAttribute;
-import static se.bjurr.violations.lib.util.ViolationParserUtils.getChunks;
 
-import java.util.List;
+import java.io.ByteArrayInputStream;
+import java.io.InputStream;
+import java.nio.charset.StandardCharsets;
 import java.util.Optional;
 import java.util.Set;
 import java.util.TreeSet;
+import javax.xml.stream.XMLStreamConstants;
+import javax.xml.stream.XMLStreamReader;
 import se.bjurr.violations.lib.ViolationsLogger;
 import se.bjurr.violations.lib.model.SEVERITY;
 import se.bjurr.violations.lib.model.Violation;
+import se.bjurr.violations.lib.util.ViolationParserUtils;
 
 public class CheckStyleParser implements ViolationsParser {
 
   @Override
   public Set<Violation> parseReportOutput(
-      final String string, final ViolationsLogger violationsLogger) throws Exception {
+      final String content, final ViolationsLogger violationsLogger) throws Exception {
     final Set<Violation> violations = new TreeSet<>();
-    final List<String> files = getChunks(string, "<file", "</file>");
-    for (final String fileChunk : files) {
-      final String filename = getAttribute(fileChunk, "name");
-      final List<String> errors = getChunks(fileChunk, "<error", "/>");
-      final List<String> longFormErrors = getChunks(fileChunk, "<error", "</error>");
-      errors.addAll(longFormErrors);
-      for (final String errorChunk : errors) {
-        final Integer line = findIntegerAttribute(errorChunk, "line").orElse(0);
-        final Optional<Integer> column = findIntegerAttribute(errorChunk, "column");
-        final String severity = getAttribute(errorChunk, "severity");
-        final String message = getAttribute(errorChunk, "message");
-        final String rule = findAttribute(errorChunk, "source").orElse(null);
-        violations.add( //
-            violationBuilder() //
-                .setParser(CHECKSTYLE) //
-                .setStartLine(line) //
-                .setColumn(column.orElse(null)) //
-                .setFile(filename) //
-                .setSeverity(this.toSeverity(severity)) //
-                .setMessage(message) //
-                .setRule(rule) //
-                .build() //
-            );
+
+    try (InputStream input = new ByteArrayInputStream(content.getBytes(StandardCharsets.UTF_8))) {
+      final XMLStreamReader xmlr = ViolationParserUtils.createXmlReader(input);
+      String filename = null;
+      Integer line = null;
+      Optional<Integer> column = null;
+      String severity = null;
+      String message = null;
+      String rule = null;
+      while (xmlr.hasNext()) {
+        final int eventType = xmlr.next();
+        if (eventType == XMLStreamConstants.START_ELEMENT) {
+          if (xmlr.getLocalName().equalsIgnoreCase("file")) {
+            filename = getAttribute(xmlr, "name");
+          }
+          if (xmlr.getLocalName().equalsIgnoreCase("error")) {
+            line = findIntegerAttribute(xmlr, "line").orElse(0);
+            column = findIntegerAttribute(xmlr, "column");
+            severity = getAttribute(xmlr, "severity");
+            message = getAttribute(xmlr, "message");
+            rule = findAttribute(xmlr, "source").orElse(null);
+          }
+        }
+        if (eventType == XMLStreamConstants.END_ELEMENT) {
+          if (xmlr.getLocalName().equalsIgnoreCase("error")) {
+            final Violation violation =
+                violationBuilder() //
+                    .setParser(CHECKSTYLE) //
+                    .setStartLine(line) //
+                    .setColumn(column.orElse(null)) //
+                    .setFile(filename) //
+                    .setSeverity(this.toSeverity(severity)) //
+                    .setMessage(message) //
+                    .setRule(rule) //
+                    .build();
+            violations.add(violation);
+          }
+        }
       }
     }
     return violations;
