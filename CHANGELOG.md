@@ -3,8 +3,13 @@
 
 Changelog of Violations lib.
 
-## Unreleased
+## 1.131
 ### GitHub [#101](https://github.com/tomasbjerre/violations-lib/issues/101) Replace the regexp xml-parsing with STL xml parser  
+
+**Rewriting ResharperParser parser**
+
+
+[dcf86f74b53956d](https://github.com/tomasbjerre/violations-lib/commit/dcf86f74b53956d) Tomas Bjerre *2020-09-27 15:38:33*
 
 **Rewriting PiTestParser parser**
 
