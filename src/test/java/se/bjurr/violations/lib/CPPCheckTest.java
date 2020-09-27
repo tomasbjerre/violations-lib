@@ -20,14 +20,17 @@ import java.util.stream.Collectors;
 import org.junit.Test;
 import se.bjurr.violations.lib.model.Violation;
 import se.bjurr.violations.lib.reports.Parser;
+import se.bjurr.violations.lib.util.ViolationAsserter;
 
 public class CPPCheckTest {
 
-  private static final String MSG_1 =
-      "The scope of the variable 'n' can be reduced. Warning: It can be unsafe to fix this message. Be careful. Especially when there are inner loops. Here is an example where cppcheck will write that the scope for 'i' can be reduced:&#xa;void f(int x)&#xa;{&#xa;    int i = 0;&#xa;    if (x) {&#xa;        // it's safe to move 'int i = 0' here&#xa;        for (int n = 0; n < 10; ++n) {&#xa;            // it is possible but not safe to move 'int i = 0' here&#xa;            do_something(&i);&#xa;        }&#xa;    }&#xa;}&#xa;When you see this message it is always safe to reduce the variable scope 1 level.";
-  private static final String MSG_2 =
-      "The scope of the variable 'i' can be reduced. Warning: It can be unsafe to fix this message. Be careful. Especially when there are inner loops. Here is an example where cppcheck will write that the scope for 'i' can be reduced:&#xa;void f(int x)&#xa;{&#xa;    int i = 0;&#xa;    if (x) {&#xa;        // it's safe to move 'int i = 0' here&#xa;        for (int n = 0; n < 10; ++n) {&#xa;            // it is possible but not safe to move 'int i = 0' here&#xa;            do_something(&i);&#xa;        }&#xa;    }&#xa;}&#xa;When you see this message it is always safe to reduce the variable scope 1 level.";
+  private static final String MSG_1 = "The scope of the variable 'n' can be reduced.";
+  private static final String MSG_2 = "The scope of the variable 'i' can be reduced.";
 
+  /**
+   * cppcheck --quiet --enable=all --force --inline-suppr --xml --xml-version=2 . 2>
+   * cppcheck-result.xml
+   */
   @Test
   public void testThatViolationsCanBeParsed() {
     final String rootFolder = getRootFolder();
@@ -39,30 +42,34 @@ public class CPPCheckTest {
             .findAll(CPPCHECK) //
             .violations();
 
-    assertThat(actual) //
-        .contains( //
-            violationBuilder() //
-                .setParser(CPPCHECK) //
-                .setFile("api.c") //
-                .setStartLine(498) //
-                .setEndLine(498) //
-                .setRule("variableScope") //
-                .setMessage(MSG_1) //
-                .setSeverity(INFO) //
-                .setGroup("1") //
-                .build()) //
-        .contains( //
-            violationBuilder() //
-                .setParser(CPPCHECK) //
-                .setFile("api_storage.c") //
-                .setStartLine(104) //
-                .setEndLine(104) //
-                .setRule("variableScope") //
-                .setMessage(MSG_2) //
-                .setSeverity(ERROR) //
-                .setGroup("2") //
-                .build()) //
-        .hasSize(3);
+    assertThat(actual).hasSize(3);
+
+    final Violation v1 =
+        violationBuilder() //
+            .setParser(CPPCHECK) //
+            .setFile("api.c") //
+            .setStartLine(498) //
+            .setEndLine(498) //
+            .setRule("variableScope") //
+            .setMessage(MSG_1) //
+            .setSeverity(INFO) //
+            .setGroup("1") //
+            .build();
+
+    final Violation v2 =
+        violationBuilder() //
+            .setParser(CPPCHECK) //
+            .setFile("api_storage.c") //
+            .setStartLine(104) //
+            .setEndLine(104) //
+            .setRule("variableScope") //
+            .setMessage(MSG_2) //
+            .setSeverity(ERROR) //
+            .setGroup("2") //
+            .build();
+    ViolationAsserter.assertThat(actual) //
+        .contains(v2, 2) //
+        .contains(v1, 1);
   }
 
   @Test
@@ -223,7 +230,7 @@ public class CPPCheckTest {
 
     final Set<Violation> actual =
         violationsApi() //
-            .withPattern(".*/cppcheck/self_closing_scope_limited\\.xml$") //
+            .withPattern(".*/cppcheck/self_closing_scope_limited.*") //
             .inFolder(rootFolder) //
             .findAll(CPPCHECK) //
             .violations();

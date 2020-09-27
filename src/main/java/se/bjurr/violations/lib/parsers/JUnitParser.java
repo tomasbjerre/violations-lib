@@ -113,11 +113,6 @@ public class JUnitParser implements ViolationsParser {
       filepath = filepath.substring(0, filepath.lastIndexOf("/"));
       final String filename = matcher.group(2);
       fl.file = filepath + "/" + filename;
-      if (fl.file.startsWith("org/junit")
-          || fl.file.startsWith("java/lang")
-          || fl.file.startsWith("sun/reflect")) {
-        continue;
-      }
       fl.line = Integer.parseInt(matcher.group(3));
       found.add(fl);
     }
