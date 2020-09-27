@@ -6,6 +6,11 @@ Changelog of Violations lib.
 ## Unreleased
 ### GitHub [#101](https://github.com/tomasbjerre/violations-lib/issues/101) Replace the regexp xml-parsing with STL xml parser  
 
+**Rewriting CSSLintParser parser**
+
+
+[0516f86b09078c7](https://github.com/tomasbjerre/violations-lib/commit/0516f86b09078c7) Tomas Bjerre *2020-09-27 14:19:19*
+
 **Rewriting PMDParser parser**
 
 
