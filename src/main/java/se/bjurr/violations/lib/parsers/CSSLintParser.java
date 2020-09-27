@@ -8,43 +8,59 @@ import static se.bjurr.violations.lib.reports.Parser.CSSLINT;
 import static se.bjurr.violations.lib.util.ViolationParserUtils.findAttribute;
 import static se.bjurr.violations.lib.util.ViolationParserUtils.findIntegerAttribute;
 import static se.bjurr.violations.lib.util.ViolationParserUtils.getAttribute;
-import static se.bjurr.violations.lib.util.ViolationParserUtils.getChunks;
 
-import java.util.List;
+import java.io.ByteArrayInputStream;
+import java.io.InputStream;
+import java.nio.charset.StandardCharsets;
 import java.util.Optional;
 import java.util.Set;
 import java.util.TreeSet;
+import javax.xml.stream.XMLStreamConstants;
+import javax.xml.stream.XMLStreamReader;
 import se.bjurr.violations.lib.ViolationsLogger;
 import se.bjurr.violations.lib.model.SEVERITY;
 import se.bjurr.violations.lib.model.Violation;
+import se.bjurr.violations.lib.util.ViolationParserUtils;
 
 public class CSSLintParser implements ViolationsParser {
 
   @Override
   public Set<Violation> parseReportOutput(
-      final String string, final ViolationsLogger violationsLogger) throws Exception {
+      final String content, final ViolationsLogger violationsLogger) throws Exception {
     final Set<Violation> violations = new TreeSet<>();
-    final List<String> files = getChunks(string, "<file", "</file>");
-    for (final String fileChunk : files) {
-      final String filename = getAttribute(fileChunk, "name");
-      final List<String> issues = getChunks(fileChunk, "<issue", "/>");
-      for (final String issueChunk : issues) {
-        final Integer line = findIntegerAttribute(issueChunk, "line").orElse(1);
-        final Optional<Integer> charAttrib = findIntegerAttribute(issueChunk, "char");
-        final String severity = getAttribute(issueChunk, "severity");
 
-        final String message = getAttribute(issueChunk, "reason");
-        final String evidence = findAttribute(issueChunk, "evidence").orElse("").trim();
-        violations.add( //
-            violationBuilder() //
-                .setParser(CSSLINT) //
-                .setStartLine(line) //
-                .setColumn(charAttrib.orElse(null)) //
-                .setFile(filename) //
-                .setSeverity(this.toSeverity(severity)) //
-                .setMessage(message + ": " + evidence) //
-                .build() //
-            );
+    try (InputStream input = new ByteArrayInputStream(content.getBytes(StandardCharsets.UTF_8))) {
+      final XMLStreamReader xmlr = ViolationParserUtils.createXmlReader(input);
+      String filename = null;
+      Integer line = null;
+      Optional<Integer> charAttrib = null;
+      String severity = null;
+      String message = null;
+      String evidence = null;
+      while (xmlr.hasNext()) {
+        final int eventType = xmlr.next();
+        if (eventType == XMLStreamConstants.START_ELEMENT) {
+          if (xmlr.getLocalName().equalsIgnoreCase("file")) {
+            filename = getAttribute(xmlr, "name");
+          }
+          if (xmlr.getLocalName().equalsIgnoreCase("issue")) {
+            line = findIntegerAttribute(xmlr, "line").orElse(1);
+            charAttrib = findIntegerAttribute(xmlr, "char");
+            severity = getAttribute(xmlr, "severity");
+            message = getAttribute(xmlr, "reason");
+            evidence = findAttribute(xmlr, "evidence").orElse("").trim();
+            final Violation violation =
+                violationBuilder() //
+                    .setParser(CSSLINT) //
+                    .setStartLine(line) //
+                    .setColumn(charAttrib.orElse(null)) //
+                    .setFile(filename) //
+                    .setSeverity(this.toSeverity(severity)) //
+                    .setMessage(message + ": " + evidence) //
+                    .build();
+            violations.add(violation);
+          }
+        }
       }
     }
     return violations;
