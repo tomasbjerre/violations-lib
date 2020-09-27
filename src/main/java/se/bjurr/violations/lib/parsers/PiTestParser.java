@@ -4,57 +4,102 @@ import static se.bjurr.violations.lib.model.SEVERITY.WARN;
 import static se.bjurr.violations.lib.model.Violation.violationBuilder;
 import static se.bjurr.violations.lib.reports.Parser.PITEST;
 import static se.bjurr.violations.lib.util.ViolationParserUtils.getAttribute;
-import static se.bjurr.violations.lib.util.ViolationParserUtils.getChunks;
-import static se.bjurr.violations.lib.util.ViolationParserUtils.getContent;
-import static se.bjurr.violations.lib.util.ViolationParserUtils.getIntegerContent;
 
+import java.io.ByteArrayInputStream;
+import java.io.InputStream;
+import java.nio.charset.StandardCharsets;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 import java.util.Set;
 import java.util.TreeSet;
+import javax.xml.stream.XMLStreamConstants;
+import javax.xml.stream.XMLStreamReader;
 import se.bjurr.violations.lib.ViolationsLogger;
 import se.bjurr.violations.lib.model.Violation;
+import se.bjurr.violations.lib.util.ViolationParserUtils;
 
 public class PiTestParser implements ViolationsParser {
 
   @Override
   public Set<Violation> parseReportOutput(
-      final String string, final ViolationsLogger violationsLogger) throws Exception {
+      final String content, final ViolationsLogger violationsLogger) throws Exception {
     final Set<Violation> violations = new TreeSet<>();
-    final String mutations = getContent(string, "mutations");
-    final List<String> mutationChunks = getChunks(mutations, "<mutation", "</mutation>");
-    for (final String mutationChunk : mutationChunks) {
-      final String mutatedClass = getContent(mutationChunk, "mutatedClass");
-      final String sourceFile = getContent(mutationChunk, "sourceFile");
-      final String filename = this.toFilename(mutatedClass, sourceFile);
-      final String status = getAttribute(mutationChunk, "status");
-      final String detected = getAttribute(mutationChunk, "detected");
-      final String mutatedMethod = getContent(mutationChunk, "mutatedMethod");
-      final String methodDescription = getContent(mutationChunk, "methodDescription");
-      final String mutator = getContent(mutationChunk, "mutator");
-      final String message = status + ", " + mutator + ", " + methodDescription;
-      final Integer startLine = getIntegerContent(mutationChunk, "lineNumber");
-      final Integer index = getIntegerContent(mutationChunk, "index");
-      final Map<String, String> specifics = new HashMap<>();
-      specifics.put("detected", detected);
-      specifics.put("mutatedMethod", mutatedMethod);
-      specifics.put("mutatedClass", mutatedClass);
-      specifics.put("status", status);
-      specifics.put("methodDescription", methodDescription);
-      violations.add( //
-          violationBuilder() //
-              .setRule(mutator) //
-              .setSource(sourceFile) //
-              .setParser(PITEST) //
-              .setStartLine(startLine) //
-              .setColumn(index) //
-              .setFile(filename) //
-              .setSeverity(WARN) //
-              .setMessage(message) //
-              .setSpecifics(specifics) //
-              .build() //
-          );
+
+    try (InputStream input = new ByteArrayInputStream(content.getBytes(StandardCharsets.UTF_8))) {
+      final XMLStreamReader xmlr = ViolationParserUtils.createXmlReader(input);
+      String status = null;
+      String detected = null;
+      String mutatedClass = null;
+      String sourceFile = null;
+      String mutatedMethod = null;
+      String methodDescription = null;
+      String mutator = null;
+      int index = 0;
+      int startLine = 0;
+      while (xmlr.hasNext()) {
+        final int eventType = xmlr.next();
+        if (eventType == XMLStreamConstants.START_ELEMENT) {
+          if (xmlr.getLocalName().equalsIgnoreCase("mutation")) {
+            status = null;
+            detected = null;
+            mutatedClass = null;
+            sourceFile = null;
+            mutatedMethod = null;
+            methodDescription = null;
+            mutator = null;
+            index = 0;
+            startLine = 0;
+            status = getAttribute(xmlr, "status");
+            detected = getAttribute(xmlr, "detected");
+          }
+          if (xmlr.getLocalName().equalsIgnoreCase("mutatedClass")) {
+            mutatedClass = xmlr.getElementText();
+          }
+          if (xmlr.getLocalName().equalsIgnoreCase("sourceFile")) {
+            sourceFile = xmlr.getElementText();
+          }
+          if (xmlr.getLocalName().equalsIgnoreCase("mutatedMethod")) {
+            mutatedMethod = xmlr.getElementText();
+          }
+          if (xmlr.getLocalName().equalsIgnoreCase("methodDescription")) {
+            methodDescription = xmlr.getElementText();
+          }
+          if (xmlr.getLocalName().equalsIgnoreCase("mutator")) {
+            mutator = xmlr.getElementText();
+          }
+          if (xmlr.getLocalName().equalsIgnoreCase("lineNumber")) {
+            startLine = Integer.parseInt(xmlr.getElementText());
+          }
+          if (xmlr.getLocalName().equalsIgnoreCase("index")) {
+            index = Integer.parseInt(xmlr.getElementText());
+          }
+        }
+        if (eventType == XMLStreamConstants.END_ELEMENT) {
+          if (xmlr.getLocalName().equalsIgnoreCase("mutation")) {
+            final Map<String, String> specifics = new HashMap<>();
+            specifics.put("detected", detected);
+            specifics.put("mutatedMethod", mutatedMethod);
+            specifics.put("mutatedClass", mutatedClass);
+            specifics.put("status", status);
+            specifics.put("methodDescription", methodDescription);
+            final String filename = this.toFilename(mutatedClass, sourceFile);
+            final String message = status + ", " + mutator + ", " + methodDescription;
+            final Violation violation =
+                violationBuilder() //
+                    .setRule(mutator) //
+                    .setSource(sourceFile) //
+                    .setParser(PITEST) //
+                    .setStartLine(startLine) //
+                    .setColumn(index) //
+                    .setFile(filename) //
+                    .setSeverity(WARN) //
+                    .setMessage(message) //
+                    .setSpecifics(specifics) //
+                    .build();
+            violations.add(violation);
+          }
+        }
+      }
     }
     return violations;
   }

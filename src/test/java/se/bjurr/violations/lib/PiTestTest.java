@@ -29,9 +29,9 @@ public class PiTestTest {
 
     assertThat(new ArrayList<>(actual).get(0).getFile()) //
         .isEqualTo("se/bjurr/violations/lib/example/CopyOfMyClass.java");
-    assertThat(new ArrayList<>(actual).get(0).getMessage()) //
-        .isEqualTo(
-            "NO_COVERAGE, org.pitest.mutationtest.engine.gregor.mutators.ReturnValsMutator, (Ljava/lang/Object;)Z");
+    assertThat(new ArrayList<>(actual).get(0).getMessage())
+        .startsWith(
+            "NO_COVERAGE, org.pitest.mutationtest.engine.gregor.mutators.ReturnValsMutator");
     assertThat(new ArrayList<>(actual).get(0).getStartLine()) //
         .isEqualTo(17);
     assertThat(new ArrayList<>(actual).get(0).getEndLine()) //
