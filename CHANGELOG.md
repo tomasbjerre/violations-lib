@@ -6,6 +6,11 @@ Changelog of Violations lib.
 ## Unreleased
 ### GitHub [#101](https://github.com/tomasbjerre/violations-lib/issues/101) Replace the regexp xml-parsing with STL xml parser  
 
+**Rewriting FindbugsParser parser**
+
+
+[c41fa9da64086e5](https://github.com/tomasbjerre/violations-lib/commit/c41fa9da64086e5) Tomas Bjerre *2020-09-27 09:32:45*
+
 **Rewriting CPPCheckParser parser**
 
 

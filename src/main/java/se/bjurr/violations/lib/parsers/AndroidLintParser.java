@@ -7,50 +7,72 @@ import static se.bjurr.violations.lib.model.Violation.violationBuilder;
 import static se.bjurr.violations.lib.reports.Parser.ANDROIDLINT;
 import static se.bjurr.violations.lib.util.ViolationParserUtils.findIntegerAttribute;
 import static se.bjurr.violations.lib.util.ViolationParserUtils.getAttribute;
-import static se.bjurr.violations.lib.util.ViolationParserUtils.getChunks;
 
-import java.util.List;
+import java.io.ByteArrayInputStream;
+import java.io.InputStream;
+import java.nio.charset.StandardCharsets;
 import java.util.Optional;
 import java.util.Set;
 import java.util.TreeSet;
+import javax.xml.stream.XMLStreamConstants;
+import javax.xml.stream.XMLStreamReader;
 import se.bjurr.violations.lib.ViolationsLogger;
 import se.bjurr.violations.lib.model.SEVERITY;
 import se.bjurr.violations.lib.model.Violation;
+import se.bjurr.violations.lib.util.ViolationParserUtils;
 
 public class AndroidLintParser implements ViolationsParser {
 
   @Override
   public Set<Violation> parseReportOutput(
-      final String string, final ViolationsLogger violationsLogger) throws Exception {
+      final String content, final ViolationsLogger violationsLogger) throws Exception {
     final Set<Violation> violations = new TreeSet<>();
-    final List<String> issues = getChunks(string, "<issue", "</issue>");
-    for (final String issueChunk : issues) {
-      /** Only ever going to be one location. */
-      final String location = getChunks(issueChunk, "<location", "/>").get(0);
 
-      final String filename = getAttribute(location, "file");
-      final Optional<Integer> line = findIntegerAttribute(location, "line");
-      final Optional<Integer> charAttrib = findIntegerAttribute(location, "column");
-      final String severity = getAttribute(issueChunk, "severity");
-
-      final String id = getAttribute(issueChunk, "id");
-      final String message = getAttribute(issueChunk, "message");
-      final String summary = getAttribute(issueChunk, "summary").trim();
-      final String explanation = getAttribute(issueChunk, "explanation");
-
-      final String category = getAttribute(issueChunk, "category");
-
-      violations.add( //
-          violationBuilder()
-              .setParser(ANDROIDLINT)
-              .setStartLine(line.orElse(0))
-              .setColumn(charAttrib.orElse(null))
-              .setFile(filename)
-              .setSeverity(this.toSeverity(severity))
-              .setRule(id)
-              .setCategory(category)
-              .setMessage(summary + "\n" + message + "\n" + explanation) //
-              .build());
+    try (InputStream input = new ByteArrayInputStream(content.getBytes(StandardCharsets.UTF_8))) {
+      final XMLStreamReader xmlr = ViolationParserUtils.createXmlReader(input);
+      String severity = null;
+      String id = null;
+      String message = null;
+      String summary = null;
+      String explanation = null;
+      String category = null;
+      String filename = null;
+      Optional<Integer> line = null;
+      Optional<Integer> charAttrib = null;
+      while (xmlr.hasNext()) {
+        final int eventType = xmlr.next();
+        if (eventType == XMLStreamConstants.START_ELEMENT) {
+          if (xmlr.getLocalName().equalsIgnoreCase("issue")) {
+            severity = getAttribute(xmlr, "severity");
+            id = getAttribute(xmlr, "id");
+            message = getAttribute(xmlr, "message");
+            summary = getAttribute(xmlr, "summary").trim();
+            explanation = getAttribute(xmlr, "explanation");
+            category = getAttribute(xmlr, "category");
+          }
+          if (xmlr.getLocalName().equalsIgnoreCase("location")) {
+            filename = getAttribute(xmlr, "file");
+            line = findIntegerAttribute(xmlr, "line");
+            charAttrib = findIntegerAttribute(xmlr, "column");
+          }
+        }
+        if (eventType == XMLStreamConstants.END_ELEMENT) {
+          if (xmlr.getLocalName().equalsIgnoreCase("issue")) {
+            final Violation violation =
+                violationBuilder()
+                    .setParser(ANDROIDLINT)
+                    .setStartLine(line.orElse(0))
+                    .setColumn(charAttrib.orElse(null))
+                    .setFile(filename)
+                    .setSeverity(this.toSeverity(severity))
+                    .setRule(id)
+                    .setCategory(category)
+                    .setMessage(summary + "\n" + message + "\n" + explanation) //
+                    .build();
+            violations.add(violation);
+          }
+        }
+      }
     }
     return violations;
   }
