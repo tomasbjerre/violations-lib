@@ -1,13 +1,12 @@
 package se.bjurr.violations.lib.parsers;
 
+import static java.nio.charset.StandardCharsets.UTF_8;
 import static java.util.logging.Level.SEVERE;
 import static se.bjurr.violations.lib.model.Violation.violationBuilder;
 import static se.bjurr.violations.lib.reports.Parser.FINDBUGS;
 import static se.bjurr.violations.lib.util.Utils.isNullOrEmpty;
 import static se.bjurr.violations.lib.util.ViolationParserUtils.findIntegerAttribute;
 import static se.bjurr.violations.lib.util.ViolationParserUtils.getAttribute;
-import static se.bjurr.violations.lib.util.ViolationParserUtils.getChunks;
-import static se.bjurr.violations.lib.util.ViolationParserUtils.getContent;
 import static se.bjurr.violations.lib.util.ViolationParserUtils.getIntegerAttribute;
 
 import java.io.ByteArrayInputStream;
@@ -41,7 +40,8 @@ public class FindbugsParser implements ViolationsParser {
     FindbugsParser.findbugsMessagesXml = findbugsMessagesXml;
   }
 
-  private Map<String, String> getMessagesPerType(final ViolationsLogger violationsLogger) {
+  private Map<String, String> getMessagesPerType(final ViolationsLogger violationsLogger)
+      throws Exception {
     final Map<String, String> messagesPerType = new HashMap<>();
     try {
       if (isNullOrEmpty(findbugsMessagesXml)) {
@@ -52,13 +52,31 @@ public class FindbugsParser implements ViolationsParser {
         }
         findbugsMessagesXml = Utils.toString(resource);
       }
-      final List<String> bugPatterns =
-          getChunks(findbugsMessagesXml, "<BugPattern", "</BugPattern>");
-      for (final String bugPattern : bugPatterns) {
-        final String type = getAttribute(bugPattern, "type");
-        final String shortDescription = getContent(bugPattern, "ShortDescription");
-        final String details = getContent(bugPattern, "Details");
-        messagesPerType.put(type, shortDescription + "\n\n" + details);
+
+      try (InputStream input = new ByteArrayInputStream(findbugsMessagesXml.getBytes(UTF_8))) {
+        final XMLStreamReader xmlr = ViolationParserUtils.createXmlReader(input);
+        String type = "";
+        String shortDescription = "";
+        String details = "";
+        while (xmlr.hasNext()) {
+          final int eventType = xmlr.next();
+          if (eventType == XMLStreamConstants.START_ELEMENT) {
+            if (xmlr.getLocalName().equalsIgnoreCase("BugPattern")) {
+              type = getAttribute(xmlr, "type");
+            }
+            if (xmlr.getLocalName().equalsIgnoreCase("ShortDescription")) {
+              shortDescription = xmlr.getElementText();
+            }
+            if (xmlr.getLocalName().equalsIgnoreCase("Details")) {
+              details = xmlr.getElementText();
+            }
+          }
+          if (eventType == XMLStreamConstants.END_ELEMENT) {
+            if (xmlr.getLocalName().equalsIgnoreCase("BugPattern")) {
+              messagesPerType.put(type, shortDescription + "\n\n" + details);
+            }
+          }
+        }
       }
     } catch (final IOException e) {
       violationsLogger.log(SEVERE, e.getMessage(), e);
@@ -131,7 +149,6 @@ public class FindbugsParser implements ViolationsParser {
     final Map<String, String> messagesPerType = this.getMessagesPerType(violationsLogger);
 
     try (InputStream input = new ByteArrayInputStream(string.getBytes(StandardCharsets.UTF_8))) {
-
       final XMLStreamReader xmlr = ViolationParserUtils.createXmlReader(input);
       while (xmlr.hasNext()) {
         final int eventType = xmlr.next();

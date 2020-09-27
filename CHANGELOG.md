@@ -3,6 +3,15 @@
 
 Changelog of Violations lib.
 
+## Unreleased
+### GitHub [#101](https://github.com/tomasbjerre/violations-lib/issues/101) Replace the regexp xml-parsing with STL xml parser  
+
+**Rewriting CPPCheckParser parser**
+
+
+[17b0dfe72755568](https://github.com/tomasbjerre/violations-lib/commit/17b0dfe72755568) Tomas Bjerre *2020-09-26 19:11:55*
+
+
 ## 1.130
 ### GitHub [#101](https://github.com/tomasbjerre/violations-lib/issues/101) Replace the regexp xml-parsing with STL xml parser  
 
