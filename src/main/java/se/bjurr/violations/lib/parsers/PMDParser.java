@@ -8,56 +8,78 @@ import static se.bjurr.violations.lib.reports.Parser.PMD;
 import static se.bjurr.violations.lib.util.ViolationParserUtils.findAttribute;
 import static se.bjurr.violations.lib.util.ViolationParserUtils.findIntegerAttribute;
 import static se.bjurr.violations.lib.util.ViolationParserUtils.getAttribute;
-import static se.bjurr.violations.lib.util.ViolationParserUtils.getChunks;
-import static se.bjurr.violations.lib.util.ViolationParserUtils.getContent;
 import static se.bjurr.violations.lib.util.ViolationParserUtils.getIntegerAttribute;
 
-import java.util.List;
+import java.io.ByteArrayInputStream;
+import java.io.InputStream;
+import java.nio.charset.StandardCharsets;
 import java.util.Optional;
 import java.util.Set;
 import java.util.TreeSet;
+import javax.xml.stream.XMLStreamConstants;
+import javax.xml.stream.XMLStreamReader;
 import se.bjurr.violations.lib.ViolationsLogger;
 import se.bjurr.violations.lib.model.SEVERITY;
 import se.bjurr.violations.lib.model.Violation;
+import se.bjurr.violations.lib.util.ViolationParserUtils;
 
 public class PMDParser implements ViolationsParser {
 
   @Override
   public Set<Violation> parseReportOutput(
-      final String string, final ViolationsLogger violationsLogger) throws Exception {
+      final String content, final ViolationsLogger violationsLogger) throws Exception {
     final Set<Violation> violations = new TreeSet<>();
-    final List<String> files = getChunks(string, "<file", "</file>");
-    for (final String fileChunk : files) {
-      final String filename = getAttribute(fileChunk, "name");
-      final List<String> violationsChunks = getChunks(fileChunk, "<violation", "</violation>");
-      for (final String violationChunk : violationsChunks) {
-        final Integer beginLine = getIntegerAttribute(violationChunk, "beginline");
-        final Integer endLine = getIntegerAttribute(violationChunk, "endline");
-        final Optional<Integer> beginColumn = findIntegerAttribute(violationChunk, "begincolumn");
-        final Optional<Integer> endColumn = findIntegerAttribute(violationChunk, "endcolumn");
-        final String rule = getAttribute(violationChunk, "rule").trim();
-        final Optional<String> ruleSetOpt = findAttribute(violationChunk, "ruleset");
-        final Optional<String> externalInfoUrlOpt =
-            findAttribute(violationChunk, "externalInfoUrl");
-        final Integer priority = getIntegerAttribute(violationChunk, "priority");
-        final SEVERITY severity = this.toSeverity(priority);
-        final String content = getContent(violationChunk, "violation");
-        final String message =
-            content + "\n\n" + ruleSetOpt.orElse("") + " " + externalInfoUrlOpt.orElse("");
-        violations.add( //
-            violationBuilder()
-                .setParser(PMD)
-                .setStartLine(beginLine)
-                .setEndLine(endLine)
-                .setColumn(beginColumn.orElse(null))
-                .setEndColumn(endColumn.orElse(null))
-                .setFile(filename)
-                .setSeverity(severity)
-                .setRule(rule)
-                .setCategory(ruleSetOpt.orElse(null))
-                .setMessage(message.trim()) //
-                .build() //
-            );
+
+    try (InputStream input = new ByteArrayInputStream(content.getBytes(StandardCharsets.UTF_8))) {
+      final XMLStreamReader xmlr = ViolationParserUtils.createXmlReader(input);
+      String filename = null;
+      Integer beginLine = null;
+      Integer endLine = null;
+      Optional<Integer> beginColumn = null;
+      Optional<Integer> endColumn = null;
+      String rule = null;
+      Optional<String> ruleSetOpt = null;
+      SEVERITY severity = null;
+      String message = null;
+      while (xmlr.hasNext()) {
+        final int eventType = xmlr.next();
+        if (eventType == XMLStreamConstants.START_ELEMENT) {
+          if (xmlr.getLocalName().equalsIgnoreCase("file")) {
+            filename = getAttribute(xmlr, "name");
+          }
+          if (xmlr.getLocalName().equalsIgnoreCase("violation")) {
+            beginLine = getIntegerAttribute(xmlr, "beginline");
+            endLine = getIntegerAttribute(xmlr, "endline");
+            beginColumn = findIntegerAttribute(xmlr, "begincolumn");
+            endColumn = findIntegerAttribute(xmlr, "endcolumn");
+            rule = getAttribute(xmlr, "rule").trim();
+            ruleSetOpt = findAttribute(xmlr, "ruleset");
+            final Optional<String> externalInfoUrlOpt = findAttribute(xmlr, "externalInfoUrl");
+            final Integer priority = getIntegerAttribute(xmlr, "priority");
+            severity = this.toSeverity(priority);
+            final String violationContent = xmlr.getElementText();
+            message =
+                violationContent
+                    + "\n\n"
+                    + ruleSetOpt.orElse("")
+                    + " "
+                    + externalInfoUrlOpt.orElse("");
+            final Violation violation =
+                violationBuilder()
+                    .setParser(PMD)
+                    .setStartLine(beginLine)
+                    .setEndLine(endLine)
+                    .setColumn(beginColumn.orElse(null))
+                    .setEndColumn(endColumn.orElse(null))
+                    .setFile(filename)
+                    .setSeverity(severity)
+                    .setRule(rule)
+                    .setCategory(ruleSetOpt.orElse(null))
+                    .setMessage(message.trim()) //
+                    .build();
+            violations.add(violation);
+          }
+        }
       }
     }
     return violations;

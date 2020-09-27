@@ -6,6 +6,11 @@ Changelog of Violations lib.
 ## Unreleased
 ### GitHub [#101](https://github.com/tomasbjerre/violations-lib/issues/101) Replace the regexp xml-parsing with STL xml parser  
 
+**Rewriting CheckstyleParser parser**
+
+
+[0b0b28466969a11](https://github.com/tomasbjerre/violations-lib/commit/0b0b28466969a11) Tomas Bjerre *2020-09-27 13:53:30*
+
 **Rewriting AndroidLintParser parser**
 
 

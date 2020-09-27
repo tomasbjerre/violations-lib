@@ -101,7 +101,7 @@ public class PMDTest {
         .isEqualTo(
             "/home/cm/prod/workspace/applikation-mr-pipeline@3/applikation-web/src/main/java/pkg/applikation/application/Some.java");
     assertThat(violationZero.getMessage()) //
-        .isEqualTo("Applikationslagret f&#xe5;r inte kommunicera upp&#xe5;t.") //
+        .isEqualTo("Applikationslagret får inte kommunicera uppåt.") //
         .doesNotContain("CDATA");
     assertThat(violationZero.getStartLine()) //
         .isEqualTo(1);

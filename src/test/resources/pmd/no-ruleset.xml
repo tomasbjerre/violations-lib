@@ -1,17 +1,26 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <pmd version="5.2.3" timestamp="2017-11-22T16:58:52.128">
-<file name="/home/cm/prod/workspace/applikation-mr-pipeline@3/applikation-web/src/main/java/pkg/applikation/application/Some.java">
-<violation beginline="1" endline="149" begincolumn="1" endcolumn="3" rule="ApplicationAccessLimit" ruleset="" package="se.sjv.applikation.application" priority="1">
-Applikationslagret f&#xe5;r inte kommunicera upp&#xe5;t.
-</violation>
-</file>
-<file name="/home/cm/prod/workspace/applikation-mr-pipeline@3/applikation-web/src/main/java/pkg/applikation/application/rest/RESTBeanTest.java">
-<violation beginline="195" endline="195" begincolumn="13" endcolumn="29" rule="printStackTrace" ruleset="" package="se.sjv.applikation.application.rest" class="RESTBeanTest" method="doTheCall" priority="1">
-printStackTrace ska ers&#xe4;ttas med korrekt loggning.
-</violation>
-<violation beginline="199" endline="199" begincolumn="13" endcolumn="29" rule="printStackTrace" ruleset="" package="se.sjv.applikation.application.rest" class="RESTBeanTest" method="doTheCall" priority="1">
-printStackTrace ska ers&#xe4;ttas med korrekt loggning.
-</violation>
-</file>
-</file>
+	<file
+		name="/home/cm/prod/workspace/applikation-mr-pipeline@3/applikation-web/src/main/java/pkg/applikation/application/Some.java">
+		<violation beginline="1" endline="149" begincolumn="1"
+			endcolumn="3" rule="ApplicationAccessLimit" ruleset=""
+			package="se.sjv.applikation.application" priority="1">
+			Applikationslagret f&#xe5;r inte kommunicera upp&#xe5;t.
+		</violation>
+	</file>
+	<file
+		name="/home/cm/prod/workspace/applikation-mr-pipeline@3/applikation-web/src/main/java/pkg/applikation/application/rest/RESTBeanTest.java">
+		<violation beginline="195" endline="195" begincolumn="13"
+			endcolumn="29" rule="printStackTrace" ruleset=""
+			package="se.sjv.applikation.application.rest" class="RESTBeanTest"
+			method="doTheCall" priority="1">
+			printStackTrace ska ers&#xe4;ttas med korrekt loggning.
+		</violation>
+		<violation beginline="199" endline="199" begincolumn="13"
+			endcolumn="29" rule="printStackTrace" ruleset=""
+			package="se.sjv.applikation.application.rest" class="RESTBeanTest"
+			method="doTheCall" priority="1">
+			printStackTrace ska ers&#xe4;ttas med korrekt loggning.
+		</violation>
+	</file>
 </pmd>
