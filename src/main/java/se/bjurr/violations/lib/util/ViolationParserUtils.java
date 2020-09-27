@@ -3,9 +3,7 @@ package se.bjurr.violations.lib.util;
 import static java.lang.Integer.parseInt;
 import static java.util.Optional.empty;
 import static java.util.Optional.ofNullable;
-import static java.util.regex.Pattern.DOTALL;
 import static java.util.regex.Pattern.quote;
-import static se.bjurr.violations.lib.util.StringUtils.xmlDecode;
 
 import java.io.InputStream;
 import java.io.StringWriter;
@@ -38,29 +36,8 @@ public final class ViolationParserUtils {
     return stringWriter.toString();
   }
 
-  public static Optional<String> findAttribute(final String in, final String attribute) {
-    Pattern pattern = Pattern.compile("[\\s<^]" + attribute + "='([^']+?)'");
-    Matcher matcher = pattern.matcher(in);
-    if (matcher.find()) {
-      return ofNullable(xmlDecode(matcher.group(1)));
-    }
-    pattern = Pattern.compile("[\\s<^]" + attribute + "=\"([^\"]+?)\"");
-    matcher = pattern.matcher(in);
-    if (matcher.find()) {
-      return ofNullable(xmlDecode(matcher.group(1)));
-    }
-    return empty();
-  }
-
   public static Optional<String> findAttribute(final XMLStreamReader in, final String attribute) {
     return ofNullable(in.getAttributeValue("", attribute));
-  }
-
-  public static Optional<Integer> findIntegerAttribute(final String in, final String attribute) {
-    if (findAttribute(in, attribute).isPresent()) {
-      return ofNullable(parseInt(getAttribute(in, attribute)));
-    }
-    return empty();
   }
 
   public static Optional<Integer> findIntegerAttribute(
@@ -71,14 +48,6 @@ public final class ViolationParserUtils {
     } else {
       return ofNullable(Integer.parseInt(attr));
     }
-  }
-
-  public static String getAttribute(final String in, final String attribute) {
-    final Optional<String> foundOpt = findAttribute(in, attribute);
-    if (foundOpt.isPresent()) {
-      return foundOpt.get();
-    }
-    throw new RuntimeException("\"" + attribute + "\" not found in \"" + in + "\"");
   }
 
   public static String getAttribute(final XMLStreamReader in, final String attribute) {
@@ -95,46 +64,8 @@ public final class ViolationParserUtils {
     return foundOpt;
   }
 
-  public static List<String> getChunks(
-      final String in, final String includingStart, final String includingEnd) {
-    final Pattern pattern =
-        Pattern.compile("(" + includingStart + ".+?" + includingEnd + ")", DOTALL);
-    final Matcher matcher = pattern.matcher(in);
-    final List<String> chunks = new ArrayList<>();
-    while (matcher.find()) {
-      chunks.add(matcher.group());
-    }
-    return chunks;
-  }
-
-  public static String getContent(final String in, final String tag) {
-    Pattern pattern =
-        Pattern.compile(
-            "<" + tag + "\\s?[^>]*>[^<]*<!\\[CDATA\\[(" + ".+?" + ")\\]\\]>[^<]*</" + tag + ">",
-            DOTALL);
-    Matcher matcher = pattern.matcher(in);
-    if (matcher.find()) {
-      return matcher.group(1);
-    }
-    pattern = Pattern.compile("<" + tag + "\\s?[^>]*>(" + ".+?" + ")</" + tag + ">", DOTALL);
-    matcher = pattern.matcher(in);
-    if (matcher.find()) {
-      return matcher.group(1);
-    }
-    throw new RuntimeException("\"" + tag + "\" not found in " + in);
-  }
-
-  public static Integer getIntegerAttribute(final String in, final String attribute) {
-    return parseInt(getAttribute(in, attribute));
-  }
-
   public static Integer getIntegerAttribute(final XMLStreamReader in, final String attribute) {
     return parseInt(getAttribute(in, attribute));
-  }
-
-  public static Integer getIntegerContent(final String in, final String tag) {
-    final String content = getContent(in, tag);
-    return parseInt(content);
   }
 
   public static List<String> getLines(final String string) {
