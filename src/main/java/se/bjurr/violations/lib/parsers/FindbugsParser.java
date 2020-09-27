@@ -35,25 +35,22 @@ public class FindbugsParser implements ViolationsParser {
   public static final String FINDBUGS_SPECIFIC_RANK = "RANK";
 
   private static String findbugsMessagesXml;
+  private static String findSecurityBugsMessagesXml;
 
   public static void setFindbugsMessagesXml(final String findbugsMessagesXml) {
     FindbugsParser.findbugsMessagesXml = findbugsMessagesXml;
   }
 
-  private Map<String, String> getMessagesPerType(final ViolationsLogger violationsLogger)
-      throws Exception {
+  public static void setFindSecurityBugsMessagesXml(final String findSecurityBugsMessagesXml) {
+    FindbugsParser.findSecurityBugsMessagesXml = findSecurityBugsMessagesXml;
+  }
+
+  private Map<String, String> getMessagesPerType(
+      final ViolationsLogger violationsLogger, final String messagesXml) throws Exception {
     final Map<String, String> messagesPerType = new HashMap<>();
     try {
-      if (isNullOrEmpty(findbugsMessagesXml)) {
-        final String messagesResourceFilename = "/findbugs/messages.xml";
-        final URL resource = FindbugsParser.class.getResource(messagesResourceFilename);
-        if (resource == null) {
-          throw new RuntimeException("Unable to find resource " + messagesResourceFilename);
-        }
-        findbugsMessagesXml = Utils.toString(resource);
-      }
 
-      try (InputStream input = new ByteArrayInputStream(findbugsMessagesXml.getBytes(UTF_8))) {
+      try (InputStream input = new ByteArrayInputStream(messagesXml.getBytes(UTF_8))) {
         final XMLStreamReader xmlr = ViolationParserUtils.createXmlReader(input);
         String type = "";
         String shortDescription = "";
@@ -146,7 +143,14 @@ public class FindbugsParser implements ViolationsParser {
   public Set<Violation> parseReportOutput(
       final String string, final ViolationsLogger violationsLogger) throws Exception {
     final Set<Violation> violations = new TreeSet<>();
-    final Map<String, String> messagesPerType = this.getMessagesPerType(violationsLogger);
+
+    final Map<String, String> messagesPerType =
+        this.getMessagesPerType(
+            violationsLogger, this.getMessagesXml(findbugsMessagesXml, "/findbugs/messages.xml"));
+    messagesPerType.putAll(
+        this.getMessagesPerType(
+            violationsLogger,
+            this.getMessagesXml(findSecurityBugsMessagesXml, "/findbugs/fsb-messages.xml")));
 
     try (InputStream input = new ByteArrayInputStream(string.getBytes(StandardCharsets.UTF_8))) {
       final XMLStreamReader xmlr = ViolationParserUtils.createXmlReader(input);
@@ -160,6 +164,21 @@ public class FindbugsParser implements ViolationsParser {
       }
     }
     return violations;
+  }
+
+  private String getMessagesXml(final String staticValue, final String messagesResourceFilename)
+      throws IOException {
+    String messagesXml;
+    if (isNullOrEmpty(staticValue)) {
+      final URL resource = FindbugsParser.class.getResource(messagesResourceFilename);
+      if (resource == null) {
+        throw new RuntimeException("Unable to find resource " + messagesResourceFilename);
+      }
+      messagesXml = Utils.toString(resource);
+    } else {
+      messagesXml = staticValue;
+    }
+    return messagesXml;
   }
 
   /**
