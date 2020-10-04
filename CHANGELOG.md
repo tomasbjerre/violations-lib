@@ -3,6 +3,15 @@
 
 Changelog of Violations lib.
 
+## 1.133
+### GitHub [#112](https://github.com/tomasbjerre/violations-lib/issues/112) Add rule to code climate report  
+
+**check_name and engine_name in CodeClimate**
+
+
+[18f8681ad3293ec](https://github.com/tomasbjerre/violations-lib/commit/18f8681ad3293ec) Tomas Bjerre *2020-10-04 07:19:35*
+
+
 ## 1.132
 ### No issue
 
