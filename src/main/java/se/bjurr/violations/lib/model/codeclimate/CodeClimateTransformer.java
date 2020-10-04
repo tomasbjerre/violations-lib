@@ -26,7 +26,7 @@ public class CodeClimateTransformer {
     final CodeClimateLines lines = new CodeClimateLines(v.getStartLine());
     final CodeClimateLocation location = new CodeClimateLocation(v.getFile(), lines, null);
     final CodeClimateSeverity severity = toSeverity(v.getSeverity());
-    final String check_name = v.getRule() == null ? v.getReporter() : v.getRule();
+    final String check_name = v.getRule().isEmpty() ? v.getReporter() : v.getRule();
     final String engine_name = v.getReporter();
     final List<CodeClimateCategory> categories = new ArrayList<CodeClimateCategory>();
     categories.add(CodeClimateCategory.BUGRISK);

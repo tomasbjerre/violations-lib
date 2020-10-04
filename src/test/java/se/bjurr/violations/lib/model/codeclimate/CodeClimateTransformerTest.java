@@ -21,7 +21,8 @@ public class CodeClimateTransformerTest {
     final String fingerprint = "287f089bbb587fbb815c35558f2053564c792d5add0f19cfd38fc6ffea3454fc";
     final Integer begin = 123;
     final String path = "/whatever/path.c";
-    final Violation violation =
+    final Set<Violation> violationSet = new TreeSet<Violation>();
+    final Violation violation1 =
         violationBuilder() //
             .setFile(path) //
             .setMessage(description) //
@@ -30,8 +31,17 @@ public class CodeClimateTransformerTest {
             .setSeverity(SEVERITY.ERROR) //
             .setStartLine(begin) //
             .build();
-    final Set<Violation> violationSet = new TreeSet<Violation>();
-    violationSet.add(violation);
+    violationSet.add(violation1);
+    final Violation violation2 =
+        violationBuilder() //
+            .setFile(path) //
+            .setMessage(description) //
+            .setParser(Parser.ANDROIDLINT) //
+            .setRule(null) //
+            .setSeverity(SEVERITY.INFO) //
+            .setStartLine(begin) //
+            .build();
+    violationSet.add(violation2);
     final List<CodeClimate> transformed = CodeClimateTransformer.fromViolations(violationSet);
     final CodeClimateLines lines = new CodeClimateLines(begin);
     final CodeClimateLocation location = new CodeClimateLocation(path, lines, null);
@@ -39,8 +49,8 @@ public class CodeClimateTransformerTest {
     final String check_name = "Cyclomatic complexity";
     final String engine_name = Parser.CHECKSTYLE.name();
     final List<CodeClimateCategory> categories = Arrays.asList(CodeClimateCategory.BUGRISK);
-    assertThat(transformed).hasSize(1);
-    assertThat(this.toJson(transformed.get(0))) //
+    assertThat(transformed).hasSize(2);
+    assertThat(this.toJson(transformed.get(1))) //
         .isEqualTo(
             this.toJson(
                 new CodeClimate(
