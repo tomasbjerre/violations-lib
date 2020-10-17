@@ -3,6 +3,15 @@
 
 Changelog of Violations lib.
 
+## 1.135
+### GitHub [#113](https://github.com/tomasbjerre/violations-lib/issues/113) JUnit parser throws StringIndexOutOfBoundsException  
+
+**JUnit parser throws StringIndexOutOfBoundsException**
+
+
+[893e64079ff11a0](https://github.com/tomasbjerre/violations-lib/commit/893e64079ff11a0) Tomas Bjerre *2020-10-17 19:45:12*
+
+
 ## 1.134
 ### GitHub [#112](https://github.com/tomasbjerre/violations-lib/issues/112) Add rule to code climate report  
 
