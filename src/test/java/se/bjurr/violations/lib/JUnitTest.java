@@ -201,4 +201,25 @@ public class JUnitTest {
         .startsWith("should not have any option checked by default : Error: expect.assertions(3)");
     assertThat(violation1.getSeverity()).isEqualTo(ERROR);
   }
+
+  @Test
+  public void testThatViolationsCanBeParsedFromJunit113() {
+    final String rootFolder = getRootFolder();
+
+    final Set<Violation> actual =
+        violationsApi() //
+            .withPattern(".*/junit/issue-113\\.xml$") //
+            .inFolder(rootFolder) //
+            .findAll(JUNIT) //
+            .violations();
+
+    assertThat(actual) //
+        .hasSize(1);
+
+    final Violation violation0 = new ArrayList<>(actual).get(0);
+    assertThat(violation0.getFile()).isEqualTo("Assignment1Test.java");
+    assertThat(violation0.getMessage())
+        .startsWith("shouldDrawIBIntoEmptyWorld : java.lang.AssertionError");
+    assertThat(violation0.getSeverity()).isEqualTo(ERROR);
+  }
 }

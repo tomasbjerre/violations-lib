@@ -110,9 +110,17 @@ public class JUnitParser implements ViolationsParser {
       final String classNameFromMatcher = matcher.group(1);
       String filepath = classNameFromMatcher.replace(".", "/");
       filepath = filepath.substring(0, filepath.lastIndexOf("/"));
-      filepath = filepath.substring(0, filepath.lastIndexOf("/"));
+      if (filepath.lastIndexOf("/") == -1) {
+        filepath = "";
+      } else {
+        filepath = filepath.substring(0, filepath.lastIndexOf("/"));
+      }
       final String filename = matcher.group(2);
-      fl.file = filepath + "/" + filename;
+      if (filepath.isEmpty()) {
+        fl.file = filename;
+      } else {
+        fl.file = filepath + "/" + filename;
+      }
       fl.line = Integer.parseInt(matcher.group(3));
       found.add(fl);
     }

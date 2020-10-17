@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://maven.apache.org/surefire/maven-surefire-plugin/xsd/surefire-test-report-3.0.xsd" version="3.0" name="Assignment1Test" time="0.319" tests="1" errors="0" skipped="0" failures="1">
+  <properties>
+    <property name="gopherProxySet" value="false"/>
+    <property name="awt.toolkit" value="sun.lwawt.macosx.LWCToolkit"/>
+    <property name="java.specification.version" value="11"/>
+    <property name="sun.cpu.isalist" value=""/>
+    <property name="sun.jnu.encoding" value="UTF-8"/>
+    <property name="java.class.path" value="/Users/hafner/Development/git/kara-assignment-1/target/test-classes:/Users/hafner/Development/git/kara-assignment-1/target/classes:/Users/hafner/.m2/repository/edu/hm/hafner/karatest/2.0.2/karatest-2.0.2.jar:/Users/hafner/.m2/repository/edu/hm/hafner/codingstyle/1.4.0/codingstyle-1.4.0.jar:/Users/hafner/.m2/repository/commons-io/commons-io/2.7/commons-io-2.7.jar:/Users/hafner/.m2/repository/com/google/code/findbugs/annotations/3.0.0/annotations-3.0.0.jar:/Users/hafner/.m2/repository/org/apache/commons/commons-lang3/3.11/commons-lang3-3.11.jar:/Users/hafner/.m2/repository/junit/junit/4.13/junit-4.13.jar:/Users/hafner/.m2/repository/org/hamcrest/hamcrest-core/1.3/hamcrest-core-1.3.jar:/Users/hafner/.m2/repository/edu/hm/hafner/karatest/2.0.2/karatest-2.0.2-tests.jar:/Users/hafner/.m2/repository/com/github/spotbugs/spotbugs-annotations/4.1.2/spotbugs-annotations-4.1.2.jar:/Users/hafner/.m2/repository/com/google/code/findbugs/jsr305/3.0.2/jsr305-3.0.2.jar:/Users/hafner/.m2/repository/com/google/errorprone/error_prone_annotations/2.4.0/error_prone_annotations-2.4.0.jar:/Users/hafner/.m2/repository/org/slf4j/slf4j-nop/1.7.30/slf4j-nop-1.7.30.jar:/Users/hafner/.m2/repository/org/slf4j/slf4j-api/1.7.30/slf4j-api-1.7.30.jar:/Users/hafner/.m2/repository/org/junit/jupiter/junit-jupiter-api/5.7.0/junit-jupiter-api-5.7.0.jar:/Users/hafner/.m2/repository/org/apiguardian/apiguardian-api/1.1.0/apiguardian-api-1.1.0.jar:/Users/hafner/.m2/repository/org/opentest4j/opentest4j/1.2.0/opentest4j-1.2.0.jar:/Users/hafner/.m2/repository/org/junit/platform/junit-platform-commons/1.7.0/junit-platform-commons-1.7.0.jar:/Users/hafner/.m2/repository/org/junit/jupiter/junit-jupiter-engine/5.7.0/junit-jupiter-engine-5.7.0.jar:/Users/hafner/.m2/repository/org/junit/platform/junit-platform-engine/1.7.0/junit-platform-engine-1.7.0.jar:/Users/hafner/.m2/repository/org/junit/platform/junit-platform-launcher/1.7.0/junit-platform-launcher-1.7.0.jar:/Users/hafner/.m2/repository/org/junit/jupiter/junit-jupiter-params/5.7.0/junit-jupiter-params-5.7.0.jar:/Users/hafner/.m2/repository/org/mockito/mockito-core/3.5.11/mockito-core-3.5.11.jar:/Users/hafner/.m2/repository/net/bytebuddy/byte-buddy/1.10.13/byte-buddy-1.10.13.jar:/Users/hafner/.m2/repository/net/bytebuddy/byte-buddy-agent/1.10.13/byte-buddy-agent-1.10.13.jar:/Users/hafner/.m2/repository/org/objenesis/objenesis/3.1/objenesis-3.1.jar:/Users/hafner/.m2/repository/org/assertj/assertj-core/3.17.2/assertj-core-3.17.2.jar:/Users/hafner/.m2/repository/com/tngtech/archunit/archunit-junit5-api/0.14.1/archunit-junit5-api-0.14.1.jar:/Users/hafner/.m2/repository/com/tngtech/archunit/archunit/0.14.1/archunit-0.14.1.jar:/Users/hafner/.m2/repository/com/tngtech/archunit/archunit-junit5-engine/0.14.1/archunit-junit5-engine-0.14.1.jar:/Users/hafner/.m2/repository/com/tngtech/archunit/archunit-junit5-engine-api/0.14.1/archunit-junit5-engine-api-0.14.1.jar:"/>
+    <property name="java.vm.vendor" value="AdoptOpenJDK"/>
+    <property name="sun.arch.data.model" value="64"/>
+    <property name="java.vendor.url" value="https://adoptopenjdk.net/"/>
+    <property name="user.timezone" value=""/>
+    <property name="java.vm.specification.version" value="11"/>
+    <property name="os.name" value="Mac OS X"/>
+    <property name="sun.java.launcher" value="SUN_STANDARD"/>
+    <property name="user.country" value="DE"/>
+    <property name="sun.boot.library.path" value="/Library/Java/JavaVirtualMachines/adoptopenjdk-11.jdk/Contents/Home/lib"/>
+    <property name="sun.java.command" value="/Users/hafner/Development/git/kara-assignment-1/target/surefire/surefirebooter6205457956710158621.jar /Users/hafner/Development/git/kara-assignment-1/target/surefire 2020-10-16T19-34-41_834-jvmRun1 surefire6970973934371388499tmp surefire_01394935309435081625tmp"/>
+    <property name="http.nonProxyHosts" value="local|*.local|169.254/16|*.169.254/16"/>
+    <property name="jdk.debug" value="release"/>
+    <property name="test" value="Assignment1Test"/>
+    <property name="surefire.test.class.path" value="/Users/hafner/Development/git/kara-assignment-1/target/test-classes:/Users/hafner/Development/git/kara-assignment-1/target/classes:/Users/hafner/.m2/repository/edu/hm/hafner/karatest/2.0.2/karatest-2.0.2.jar:/Users/hafner/.m2/repository/edu/hm/hafner/codingstyle/1.4.0/codingstyle-1.4.0.jar:/Users/hafner/.m2/repository/commons-io/commons-io/2.7/commons-io-2.7.jar:/Users/hafner/.m2/repository/com/google/code/findbugs/annotations/3.0.0/annotations-3.0.0.jar:/Users/hafner/.m2/repository/org/apache/commons/commons-lang3/3.11/commons-lang3-3.11.jar:/Users/hafner/.m2/repository/junit/junit/4.13/junit-4.13.jar:/Users/hafner/.m2/repository/org/hamcrest/hamcrest-core/1.3/hamcrest-core-1.3.jar:/Users/hafner/.m2/repository/edu/hm/hafner/karatest/2.0.2/karatest-2.0.2-tests.jar:/Users/hafner/.m2/repository/com/github/spotbugs/spotbugs-annotations/4.1.2/spotbugs-annotations-4.1.2.jar:/Users/hafner/.m2/repository/com/google/code/findbugs/jsr305/3.0.2/jsr305-3.0.2.jar:/Users/hafner/.m2/repository/com/google/errorprone/error_prone_annotations/2.4.0/error_prone_annotations-2.4.0.jar:/Users/hafner/.m2/repository/org/slf4j/slf4j-nop/1.7.30/slf4j-nop-1.7.30.jar:/Users/hafner/.m2/repository/org/slf4j/slf4j-api/1.7.30/slf4j-api-1.7.30.jar:/Users/hafner/.m2/repository/org/junit/jupiter/junit-jupiter-api/5.7.0/junit-jupiter-api-5.7.0.jar:/Users/hafner/.m2/repository/org/apiguardian/apiguardian-api/1.1.0/apiguardian-api-1.1.0.jar:/Users/hafner/.m2/repository/org/opentest4j/opentest4j/1.2.0/opentest4j-1.2.0.jar:/Users/hafner/.m2/repository/org/junit/platform/junit-platform-commons/1.7.0/junit-platform-commons-1.7.0.jar:/Users/hafner/.m2/repository/org/junit/jupiter/junit-jupiter-engine/5.7.0/junit-jupiter-engine-5.7.0.jar:/Users/hafner/.m2/repository/org/junit/platform/junit-platform-engine/1.7.0/junit-platform-engine-1.7.0.jar:/Users/hafner/.m2/repository/org/junit/platform/junit-platform-launcher/1.7.0/junit-platform-launcher-1.7.0.jar:/Users/hafner/.m2/repository/org/junit/jupiter/junit-jupiter-params/5.7.0/junit-jupiter-params-5.7.0.jar:/Users/hafner/.m2/repository/org/mockito/mockito-core/3.5.11/mockito-core-3.5.11.jar:/Users/hafner/.m2/repository/net/bytebuddy/byte-buddy/1.10.13/byte-buddy-1.10.13.jar:/Users/hafner/.m2/repository/net/bytebuddy/byte-buddy-agent/1.10.13/byte-buddy-agent-1.10.13.jar:/Users/hafner/.m2/repository/org/objenesis/objenesis/3.1/objenesis-3.1.jar:/Users/hafner/.m2/repository/org/assertj/assertj-core/3.17.2/assertj-core-3.17.2.jar:/Users/hafner/.m2/repository/com/tngtech/archunit/archunit-junit5-api/0.14.1/archunit-junit5-api-0.14.1.jar:/Users/hafner/.m2/repository/com/tngtech/archunit/archunit/0.14.1/archunit-0.14.1.jar:/Users/hafner/.m2/repository/com/tngtech/archunit/archunit-junit5-engine/0.14.1/archunit-junit5-engine-0.14.1.jar:/Users/hafner/.m2/repository/com/tngtech/archunit/archunit-junit5-engine-api/0.14.1/archunit-junit5-engine-api-0.14.1.jar:"/>
+    <property name="sun.cpu.endian" value="little"/>
+    <property name="user.home" value="/Users/hafner"/>
+    <property name="user.language" value="de"/>
+    <property name="java.specification.vendor" value="Oracle Corporation"/>
+    <property name="java.version.date" value="2019-07-16"/>
+    <property name="java.home" value="/Library/Java/JavaVirtualMachines/adoptopenjdk-11.jdk/Contents/Home"/>
+    <property name="file.separator" value="/"/>
+    <property name="basedir" value="/Users/hafner/Development/git/kara-assignment-1"/>
+    <property name="java.vm.compressedOopsMode" value="Zero based"/>
+    <property name="line.separator" value="&#10;"/>
+    <property name="java.specification.name" value="Java Platform API Specification"/>
+    <property name="java.vm.specification.vendor" value="Oracle Corporation"/>
+    <property name="java.awt.graphicsenv" value="sun.awt.CGraphicsEnvironment"/>
+    <property name="surefire.real.class.path" value="/Users/hafner/Development/git/kara-assignment-1/target/surefire/surefirebooter6205457956710158621.jar"/>
+    <property name="java.util.logging.config.file" value="logging.properties"/>
+    <property name="sun.management.compiler" value="HotSpot 64-Bit Tiered Compilers"/>
+    <property name="ftp.nonProxyHosts" value="local|*.local|169.254/16|*.169.254/16"/>
+    <property name="java.runtime.version" value="11.0.4+11"/>
+    <property name="user.name" value="hafner"/>
+    <property name="path.separator" value=":"/>
+    <property name="os.version" value="10.15.6"/>
+    <property name="java.runtime.name" value="OpenJDK Runtime Environment"/>
+    <property name="file.encoding" value="UTF-8"/>
+    <property name="java.vm.name" value="OpenJDK 64-Bit Server VM"/>
+    <property name="java.vendor.version" value="AdoptOpenJDK"/>
+    <property name="localRepository" value="/Users/hafner/.m2/repository"/>
+    <property name="java.vendor.url.bug" value="https://github.com/AdoptOpenJDK/openjdk-build/issues"/>
+    <property name="java.io.tmpdir" value="/var/folders/pg/qr8ry2kd4qjc151jhq9ksgx00000gn/T/"/>
+    <property name="java.version" value="11.0.4"/>
+    <property name="user.dir" value="/Users/hafner/Development/git/kara-assignment-1"/>
+    <property name="os.arch" value="x86_64"/>
+    <property name="java.vm.specification.name" value="Java Virtual Machine Specification"/>
+    <property name="java.awt.printerjob" value="sun.lwawt.macosx.CPrinterJob"/>
+    <property name="sun.os.patch.level" value="unknown"/>
+    <property name="java.library.path" value="/Users/hafner/Library/Java/Extensions:/Library/Java/Extensions:/Network/Library/Java/Extensions:/System/Library/Java/Extensions:/usr/lib/java:."/>
+    <property name="java.vendor" value="AdoptOpenJDK"/>
+    <property name="java.vm.info" value="mixed mode"/>
+    <property name="java.vm.version" value="11.0.4+11"/>
+    <property name="sun.io.unicode.encoding" value="UnicodeBig"/>
+    <property name="java.class.version" value="55.0"/>
+    <property name="socksNonProxyHosts" value="local|*.local|169.254/16|*.169.254/16"/>
+  </properties>
+  <testcase name="shouldDrawIBIntoEmptyWorld" classname="Assignment1Test" time="0.306">
+    <failure type="java.lang.AssertionError"><![CDATA[java.lang.AssertionError: 
+Die Welten sind nicht korrekt expected:<
+Kara: [0, 0, RIGHT]
+.   . .   .
+.   . .. ..
+..... . . .
+.   . .   .
+.   . .   .
+> but was:<
+Kara: [0, 0, RIGHT]
+           
+           
+           
+           
+           
+>
+	at Assignment1Test.shouldDrawIBIntoEmptyWorld(Assignment1Test.java:14)
+]]></failure>
+  </testcase>
+</testsuite>
