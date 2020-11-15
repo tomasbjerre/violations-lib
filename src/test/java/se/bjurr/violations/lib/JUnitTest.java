@@ -222,4 +222,25 @@ public class JUnitTest {
         .startsWith("shouldDrawIBIntoEmptyWorld : java.lang.AssertionError");
     assertThat(violation0.getSeverity()).isEqualTo(ERROR);
   }
+
+  @Test
+  public void testThatViolationsCanBeParsedFromJENKINS64117() {
+    final String rootFolder = getRootFolder();
+
+    final Set<Violation> actual =
+        violationsApi() //
+            .withPattern(".*/junit/JENKINS-64117\\.xml$") //
+            .inFolder(rootFolder) //
+            .findAll(JUNIT) //
+            .violations();
+
+    assertThat(actual) //
+        .hasSize(1);
+
+    final Violation violation0 = new ArrayList<>(actual).get(0);
+    assertThat(violation0.getFile())
+        .isEqualTo("eu/pinteam/kyoto/gunit/testenv/test/CalculationUtilTest.java");
+    assertThat(violation0.getMessage()).startsWith("runCalculationScriptTest : The container");
+    assertThat(violation0.getSeverity()).isEqualTo(ERROR);
+  }
 }

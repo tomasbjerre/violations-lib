@@ -38,7 +38,8 @@ public class JUnitParser implements ViolationsParser {
           if (xmlr.getLocalName().equalsIgnoreCase("testcase")) {
             className = getAttribute(xmlr, "classname");
             name = getAttribute(xmlr, "name");
-          } else if (xmlr.getLocalName().equalsIgnoreCase("failure")) {
+          } else if (xmlr.getLocalName().equalsIgnoreCase("failure")
+              || xmlr.getLocalName().equalsIgnoreCase("error")) {
             final Violation v = this.parseFailure(xmlr, className, name, violationsLogger);
             if (v != null) {
               violations.add(v);
