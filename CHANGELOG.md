@@ -3,6 +3,15 @@
 
 Changelog of Violations lib.
 
+## 1.136
+### GitHub [#115](https://github.com/tomasbjerre/violations-lib/issues/115) JUnit parser does not detect a failure  
+
+**Parsing error tag in JUnit reports**
+
+
+[8853ccd4f3ea181](https://github.com/tomasbjerre/violations-lib/commit/8853ccd4f3ea181) Tomas Bjerre *2020-11-15 16:22:50*
+
+
 ## 1.135
 ### GitHub [#113](https://github.com/tomasbjerre/violations-lib/issues/113) JUnit parser throws StringIndexOutOfBoundsException  
 
