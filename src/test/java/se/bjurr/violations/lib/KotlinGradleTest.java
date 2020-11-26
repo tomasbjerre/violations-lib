@@ -39,5 +39,7 @@ public class KotlinGradleTest {
         .isEqualTo("");
     assertThat(violation0.getParser()) //
         .isEqualTo(KOTLINGRADLE);
+    assertThat(violation0.getColumn())
+            .isEqualTo(87);
   }
 }

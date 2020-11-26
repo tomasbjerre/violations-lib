@@ -21,7 +21,7 @@ public class KotlinGradleParser implements ViolationsParser {
       throws Exception {
     final Set<Violation> violations = new TreeSet<>();
     final List<List<String>> partsPerLine =
-        getLines(string, "(w|e):([^:]*)[^\\d]+?(\\d+?)[^\\d]+?(\\d+?)[^:]+?:(.*)");
+        getLines(string, "(w|e):([^:]*)[^\\d]+?(\\d+?)[^\\d]+?(\\d+)[^:]+?:(.*)");
     for (final List<String> parts : partsPerLine) {
       final String severity = parts.get(1).trim();
       final String filename = parts.get(2).trim();
