@@ -25,7 +25,7 @@ public class KotlinGradleTest {
             .violations();
 
     assertThat(actual) //
-        .hasSize(3);
+        .hasSize(4);
 
     final Violation violation0 = new ArrayList<>(actual).get(0);
     assertThat(violation0.getMessage()) //
@@ -41,5 +41,11 @@ public class KotlinGradleTest {
         .isEqualTo(KOTLINGRADLE);
     assertThat(violation0.getColumn())
             .isEqualTo(87);
+    
+    final Violation violation3 = new ArrayList<>(actual).get(3);
+    assertThat(violation3.getFile()).
+            isEqualTo("C:/Users/User/Documents/testProject/src/main/java/ru/novikov/maps/CameraPosition.kt");
+    assertThat(violation3.getStartLine())
+            .isEqualTo(25);
   }
 }
