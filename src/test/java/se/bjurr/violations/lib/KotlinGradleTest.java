@@ -39,13 +39,12 @@ public class KotlinGradleTest {
         .isEqualTo("");
     assertThat(violation0.getParser()) //
         .isEqualTo(KOTLINGRADLE);
-    assertThat(violation0.getColumn())
-            .isEqualTo(87);
-    
+    assertThat(violation0.getColumn()).isEqualTo(87);
+
     final Violation violation3 = new ArrayList<>(actual).get(3);
-    assertThat(violation3.getFile()).
-            isEqualTo("C:/Users/User/Documents/testProject/src/main/java/ru/novikov/maps/CameraPosition.kt");
-    assertThat(violation3.getStartLine())
-            .isEqualTo(25);
+    assertThat(violation3.getFile())
+        .isEqualTo(
+            "C:/Users/User/Documents/testProject/src/main/java/ru/novikov/maps/CameraPosition.kt");
+    assertThat(violation3.getStartLine()).isEqualTo(25);
   }
 }

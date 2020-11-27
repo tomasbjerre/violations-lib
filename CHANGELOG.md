@@ -3,6 +3,20 @@
 
 Changelog of Violations lib.
 
+## Unreleased
+### No issue
+
+**fix parse gradle kotlin windows-style path**
+
+
+[80408d1630ce84f](https://github.com/tomasbjerre/violations-lib/commit/80408d1630ce84f) Nov1kov *2020-11-27 12:49:42*
+
+**fix parse gradle kotlin column line**
+
+
+[5ac9c50de3d6bbd](https://github.com/tomasbjerre/violations-lib/commit/5ac9c50de3d6bbd) Nov1kov *2020-11-26 18:38:36*
+
+
 ## 1.136
 ### GitHub [#115](https://github.com/tomasbjerre/violations-lib/issues/115) JUnit parser does not detect a failure  
 
