@@ -3,8 +3,13 @@
 
 Changelog of Violations lib.
 
-## Unreleased
+## 1.137
 ### No issue
+
+**fix formatting after merge**
+
+
+[3583b539d6064fe](https://github.com/tomasbjerre/violations-lib/commit/3583b539d6064fe) Tomas Bjerre *2020-11-27 13:06:22*
 
 **fix parse gradle kotlin windows-style path**
 
