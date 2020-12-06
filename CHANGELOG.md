@@ -3,6 +3,15 @@
 
 Changelog of Violations lib.
 
+## 1.138
+### GitHub [#72](https://github.com/tomasbjerre/violations-lib/issues/72) Still comment on unchanged lines if &quot;Comment only changed part of files&quot; is checked  
+
+**ignorePaths jenkinsci/violation-comments-to-stash-plugin**
+
+
+[1508d313f91b7d2](https://github.com/tomasbjerre/violations-lib/commit/1508d313f91b7d2) Tomas Bjerre *2020-12-06 07:41:13*
+
+
 ## 1.137
 ### No issue
 
