@@ -31,7 +31,8 @@ public class ReportsFinder {
             @Override
             public FileVisitResult visitFile(final Path file, final BasicFileAttributes attrs)
                 throws IOException {
-              if (this.isIgnored(file, ignorePaths)) {
+              final String relativePath = startPath.relativize(file).toString();
+              if (isIgnored(relativePath, ignorePaths)) {
                 return super.visitFile(file, attrs);
               }
 
@@ -45,16 +46,6 @@ public class ReportsFinder {
               }
               return super.visitFile(file, attrs);
             }
-
-            private boolean isIgnored(final Path file, final List<String> ignorePaths) {
-              final String relativePath = startPath.relativize(file).toString();
-              for (final String ignorePath : ignorePaths) {
-                if (withFrontSlashes(relativePath).startsWith(withFrontSlashes(ignorePath))) {
-                  return true;
-                }
-              }
-              return false;
-            }
           });
     } catch (final IOException e) {
       throw new RuntimeException(e);
@@ -65,5 +56,14 @@ public class ReportsFinder {
 
   static String withFrontSlashes(final String file) {
     return file.replace('\\', '/');
+  }
+
+  public static boolean isIgnored(final String path, final List<String> ignorePaths) {
+    for (final String ignorePath : ignorePaths) {
+      if (withFrontSlashes(path).startsWith(withFrontSlashes(ignorePath))) {
+        return true;
+      }
+    }
+    return false;
   }
 }
