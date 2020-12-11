@@ -13,7 +13,7 @@ public class PatchParserUtil {
 
   private static final Pattern RANGE_PATTERN =
       Pattern.compile(
-          "@@\\p{IsWhite_Space}-[0-9]+(?:,[0-9]+)?\\p{IsWhite_Space}\\+([0-9]+)(?:,[0-9]+)?\\p{IsWhite_Space}@@.*");
+          "@@\\p{IsWhite_Space}-([0-9]+)(?:,[0-9]+)?\\p{IsWhite_Space}\\+([0-9]+)(?:,[0-9]+)?\\p{IsWhite_Space}@@.*");
 
   private final Map<Integer, Optional<Integer>> newLineToOldLineTable;
   private final Map<Integer, Optional<Integer>> newLineToLineInDiffTable;
@@ -34,8 +34,8 @@ public class PatchParserUtil {
           throw new IllegalStateException(
               "Unable to parse patch line " + line + "\nFull patch: \n" + patchString);
         }
-        currentLine = Integer.parseInt(matcher.group(1));
-        patchLocation = currentLine;
+        currentLine = Integer.parseInt(matcher.group(2));
+        patchLocation = Integer.parseInt(matcher.group(1));
       } else if (line.startsWith("+") && !line.startsWith("++")) {
         newLineToOldLineTable.put(currentLine, empty());
         currentLine++;
@@ -52,7 +52,7 @@ public class PatchParserUtil {
   }
 
   public boolean isLineInDiff(Integer newLine) {
-    return newLineToLineInDiffTable.containsKey(newLine);
+    return newLineToOldLineTable.containsKey(newLine);
   }
 
   public Optional<Integer> findOldLine(Integer newLine) {

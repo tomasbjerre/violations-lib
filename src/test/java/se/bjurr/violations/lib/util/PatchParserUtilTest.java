@@ -57,6 +57,32 @@ public class PatchParserUtilTest {
   }
 
   @Test
+  public void testThatViolationBetweenDiffBlocks(){
+    String patch = "@@ -143,7 +144,6 @@ import ru.novikov.somepackage1\n" +
+            " import ru.novikov.somepackage2\n" +
+            " import ru.novikov.somepackage3\n" +
+            " import ru.novikov.somepackage4\n" +
+            "-import ru.novikov.somepackage5\n" +
+            " import ru.novikov.somepackage6\n" +
+            " import ru.novikov.somepackage7\n" +
+            " import ru.novikov.somepackage8\n" +
+            "@@ -187,7 +187,8 @@ import javax.inject.Singleton\n" +
+            "             SomeModule1::class,\n" +
+            "             SomeModule2::class,\n" +
+            "             SomeModule3::class,\n" +
+            "-            SomeModule4::class\n" +
+            "+            SomeModule4::class,\n" +
+            "+            LoggerModule::class\n" +
+            "         ]\n" +
+            " )\n" +
+            " @Singleton\n";
+
+    final PatchParserUtil pp = new PatchParserUtil(patch);
+    assertThat(pp.isLineInDiff(150)) //
+            .isFalse();
+  }
+
+  @Test
   public void testThatOldLineIsEmptyIfOutsideOfDiff() {
     String patch =
         "--- a/src/main/java/se/bjurr/violations/lib/example/OtherClass.java\n+++ b/src/main/java/se/bjurr/violations/lib/example/OtherClass.java\n@@ -4,12 +4,15 @@ package se.bjurr.violations.lib.example;\n  * No ending dot\n  */\n public class OtherClass {\n- public static String CoNstANT = \"yes\";\n+ public static String CoNstANT = \"yes\"; \n \n  public void myMethod() {\n   if (CoNstANT.equals(\"abc\")) {\n \n   }\n+  if (CoNstANT.equals(\"abc\")) {\n+\n+  }\n  }\n \n  @Override\n";
