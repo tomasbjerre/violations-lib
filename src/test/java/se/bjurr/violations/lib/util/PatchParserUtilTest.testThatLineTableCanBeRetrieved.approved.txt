@@ -1,0 +1,58 @@
+patch:
+0	: --- a/src/main/java/se/bjurr/violations/lib/example/OtherClass.java
+1	: +++ b/src/main/java/se/bjurr/violations/lib/example/OtherClass.java
+2	: @@ -4,12 +4,15 @@ package se.bjurr.violations.lib.example;
+3	:   * No ending dot
+4	:   */
+5	:  public class OtherClass {
+6	: - public static String CoNstANT = "yes";
+7	: + public static String CoNstANT = "yes"; 
+8	:  
+9	:   public void myMethod() {
+10	:    if (CoNstANT.equals("abc")) {
+11	:  
+12	:    }
+13	: +  if (CoNstANT.equals("abc")) {
+14	: +
+15	: +  }
+16	:   }
+17	:  
+18	:   @Override
+
+
+newLineToLineInDiffTable:
+-1 : 2
+4 : 3
+5 : 4
+6 : 5
+7 : 7
+8 : 8
+9 : 9
+10 : 10
+11 : 11
+12 : 12
+13 : 13
+14 : 14
+15 : 15
+16 : 16
+17 : 17
+18 : 18
+19 : 19
+
+
+newLineToOldLineTable:
+4 : 4
+5 : 5
+6 : 6
+7 : null
+8 : 8
+9 : 9
+10 : 10
+11 : 11
+12 : 12
+13 : null
+14 : null
+15 : null
+16 : 13
+17 : 14
+18 : 15

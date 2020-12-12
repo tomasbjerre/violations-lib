@@ -25,6 +25,7 @@ dependencies {
  testCompile 'junit:junit:4.12'
  testCompile 'org.assertj:assertj-core:2.3.0'
  testCompile 'uk.co.jemos.podam:podam:7.2.1.RELEASE'
+ testCompile 'com.approvaltests:approvaltests:9.5.0'
 }
 
 shadowJar {

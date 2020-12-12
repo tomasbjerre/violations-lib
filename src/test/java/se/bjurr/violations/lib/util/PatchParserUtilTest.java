@@ -5,6 +5,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 import java.util.Map;
 import java.util.Optional;
 import java.util.logging.Logger;
+import org.approvaltests.Approvals;
 import org.junit.Test;
 
 public class PatchParserUtilTest {
@@ -19,49 +20,50 @@ public class PatchParserUtilTest {
 
   @Test
   public void testThatChangedContentCanBeCommented() {
-    assertThat(findLineToComment("patch", 1)) //
+    assertThat(this.findLineToComment("patch", 1)) //
         .isNull();
   }
 
   @Test
   public void testThatChangedContentCanBeCommentedNewFile() {
-    assertThat(findLineToComment(NEW_DIFF, 1)) //
+    assertThat(this.findLineToComment(NEW_DIFF, 1)) //
         .isEqualTo(1);
 
-    assertThat(findLineToComment(NEW_DIFF, 5)) //
+    assertThat(this.findLineToComment(NEW_DIFF, 5)) //
         .isEqualTo(6);
   }
 
   @Test
   public void testThatChangedContentCanBeCommentedChangedFile() {
-    assertThat(findLineToComment(CHANGED_DIFF, 1)) //
+    assertThat(this.findLineToComment(CHANGED_DIFF, 1)) //
         .isEqualTo(2);
 
-    assertThat(findLineToComment(CHANGED_DIFF, 4)) //
+    assertThat(this.findLineToComment(CHANGED_DIFF, 4)) //
         .isEqualTo(5);
   }
 
   @Test
   public void testThatChangedContentCanBeCommentedChangedPartsOfFile() {
-    assertThat(findLineToComment(CHANGED_DIFF_2, 6)) //
+    assertThat(this.findLineToComment(CHANGED_DIFF_2, 6)) //
         .isEqualTo(1);
 
-    assertThat(findLineToComment(CHANGED_DIFF_2, 8)) //
+    assertThat(this.findLineToComment(CHANGED_DIFF_2, 8)) //
         .isEqualTo(3);
 
-    assertThat(findLineToComment(CHANGED_DIFF_2, 14)) //
+    assertThat(this.findLineToComment(CHANGED_DIFF_2, 14)) //
         .isEqualTo(9);
 
-    assertThat(findLineToComment(CHANGED_DIFF_2, 21)) //
+    assertThat(this.findLineToComment(CHANGED_DIFF_2, 21)) //
         .isEqualTo(16);
   }
 
   @Test
   public void testThatOldLineIsEmptyIfOutsideOfDiff() {
-    String patch =
+    final String patch =
         "--- a/src/main/java/se/bjurr/violations/lib/example/OtherClass.java\n+++ b/src/main/java/se/bjurr/violations/lib/example/OtherClass.java\n@@ -4,12 +4,15 @@ package se.bjurr.violations.lib.example;\n  * No ending dot\n  */\n public class OtherClass {\n- public static String CoNstANT = \"yes\";\n+ public static String CoNstANT = \"yes\"; \n \n  public void myMethod() {\n   if (CoNstANT.equals(\"abc\")) {\n \n   }\n+  if (CoNstANT.equals(\"abc\")) {\n+\n+  }\n  }\n \n  @Override\n";
+    Approvals.verify(new PatchParserUtil(patch));
 
-    getIntegerOptionalMap(patch);
+    this.getIntegerOptionalMap(patch);
 
     final PatchParserUtil pp = new PatchParserUtil(patch);
 
@@ -82,9 +84,10 @@ public class PatchParserUtilTest {
 
   @Test
   public void testThatLineTableCanBeRetrieved() {
-    String patch =
+    final String patch =
         "--- a/src/main/java/se/bjurr/violations/lib/example/OtherClass.java\n+++ b/src/main/java/se/bjurr/violations/lib/example/OtherClass.java\n@@ -4,12 +4,15 @@ package se.bjurr.violations.lib.example;\n  * No ending dot\n  */\n public class OtherClass {\n- public static String CoNstANT = \"yes\";\n+ public static String CoNstANT = \"yes\"; \n \n  public void myMethod() {\n   if (CoNstANT.equals(\"abc\")) {\n \n   }\n+  if (CoNstANT.equals(\"abc\")) {\n+\n+  }\n  }\n \n  @Override\n";
-    final Map<Integer, Optional<Integer>> map = getIntegerOptionalMap(patch);
+    Approvals.verify(new PatchParserUtil(patch));
+    final Map<Integer, Optional<Integer>> map = this.getIntegerOptionalMap(patch);
 
     assertThat(map.get(6).orElse(null)) //
         .isEqualTo(6);
@@ -107,9 +110,11 @@ public class PatchParserUtilTest {
 
   @Test
   public void testThatLineTableCanBeRetrieved2() {
-    String patch =
+    final String patch =
         "--- a/src/main/java/se/bjurr/violations/lib/example/MyClass.java\n+++ b/src/main/java/se/bjurr/violations/lib/example/MyClass.java\n@@ -9,6 +9,8 @@ public class MyClass {\n   } else {\n \n   }\n+  if (a == null)\n+   a.charAt(123);\n   a.length();\n  }\n \n";
-    final Map<Integer, Optional<Integer>> map = getIntegerOptionalMap(patch);
+    Approvals.verify(new PatchParserUtil(patch));
+
+    final Map<Integer, Optional<Integer>> map = this.getIntegerOptionalMap(patch);
 
     assertThat(map.get(11).orElse(null)) //
         .isEqualTo(11);
@@ -121,8 +126,23 @@ public class PatchParserUtilTest {
         .isEqualTo(12);
   }
 
-  private Integer findLineToComment(String patch, int commentLint) {
-    getIntegerOptionalMap(patch);
+  @Test
+  public void testPatchApprovalNewDiff() {
+    Approvals.verify(new PatchParserUtil(NEW_DIFF));
+  }
+
+  @Test
+  public void testPatchApprovalChangedDiff() {
+    Approvals.verify(new PatchParserUtil(CHANGED_DIFF));
+  }
+
+  @Test
+  public void testPatchApprovalChangedDiff2() {
+    Approvals.verify(new PatchParserUtil(CHANGED_DIFF_2));
+  }
+
+  private Integer findLineToComment(final String patch, final int commentLint) {
+    this.getIntegerOptionalMap(patch);
 
     return new PatchParserUtil(patch) //
         .findLineInDiff(commentLint) //
@@ -130,15 +150,15 @@ public class PatchParserUtilTest {
   }
 
   private Map<Integer, Optional<Integer>> getIntegerOptionalMap(final String patch) {
-    String[] diffLines = patch.split("\n");
-    StringBuilder sb = new StringBuilder();
+    final String[] diffLines = patch.split("\n");
+    final StringBuilder sb = new StringBuilder();
     for (int i = 0; i < diffLines.length; i++) {
       sb.append(i + 1 + " | " + diffLines[i] + "\n");
     }
     final Map<Integer, Optional<Integer>> map =
         new PatchParserUtil(patch) //
             .getNewLineToOldLineTable();
-    for (Map.Entry<Integer, Optional<Integer>> e : map.entrySet()) {
+    for (final Map.Entry<Integer, Optional<Integer>> e : map.entrySet()) {
       sb.append(e.getKey() + " : " + e.getValue().orElse(null) + "\n");
     }
     LOG.info("\n" + sb.toString());

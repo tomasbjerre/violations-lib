@@ -1,0 +1,36 @@
+patch:
+0	: --- a/src/main/java/se/bjurr/violations/lib/example/MyClass.java
+1	: +++ b/src/main/java/se/bjurr/violations/lib/example/MyClass.java
+2	: @@ -9,6 +9,8 @@ public class MyClass {
+3	:    } else {
+4	:  
+5	:    }
+6	: +  if (a == null)
+7	: +   a.charAt(123);
+8	:    a.length();
+9	:   }
+10	:  
+
+
+newLineToLineInDiffTable:
+-1 : 2
+9 : 3
+10 : 4
+11 : 5
+12 : 6
+13 : 7
+14 : 8
+15 : 9
+16 : 10
+17 : 11
+
+
+newLineToOldLineTable:
+9 : 9
+10 : 10
+11 : 11
+12 : null
+13 : null
+14 : 12
+15 : 13
+16 : 14

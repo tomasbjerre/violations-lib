@@ -1,0 +1,28 @@
+patch:
+0	: @@ -1,6 +1,6 @@
+1	:  <html>
+2	:   <head></head>
+3	:  <body>
+4	: -<font>
+5	: +<font> 
+6	:  </body> 
+7	:  </html>
+
+
+newLineToLineInDiffTable:
+1 : 1
+2 : 2
+3 : 3
+4 : 5
+5 : 6
+6 : 7
+7 : 8
+
+
+newLineToOldLineTable:
+1 : 1
+2 : 2
+3 : 3
+4 : null
+5 : 5
+6 : 6
