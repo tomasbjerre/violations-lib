@@ -8,6 +8,7 @@ import static se.bjurr.violations.lib.util.Utils.checkNotNull;
 import static se.bjurr.violations.lib.util.Utils.setReporter;
 
 import java.io.File;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Set;
 import java.util.logging.Level;
@@ -23,6 +24,8 @@ public class ViolationsApi {
   private Parser parser;
   private File startFile;
   private String reporter;
+  private List<String> ignorePaths = new ArrayList<>();
+
   private ViolationsLogger violationsLogger =
       filterLevel(
           new ViolationsLogger() {
@@ -67,9 +70,14 @@ public class ViolationsApi {
     return this;
   }
 
+  public ViolationsApi withIgnorePaths(final List<String> ignorePaths) {
+    this.ignorePaths = checkNotNull(ignorePaths, "ignorePaths");
+    return this;
+  }
+
   public Set<Violation> violations() {
     final List<File> includedFiles =
-        findAllReports(this.violationsLogger, this.startFile, this.pattern);
+        findAllReports(this.violationsLogger, this.startFile, this.pattern, this.ignorePaths);
     this.violationsLogger.log(
         INFO,
         "Found "

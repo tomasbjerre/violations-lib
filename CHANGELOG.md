@@ -3,6 +3,43 @@
 
 Changelog of Violations lib.
 
+## 1.139
+### GitHub [#72](https://github.com/tomasbjerre/violations-lib/issues/72) Still comment on unchanged lines if &quot;Comment only changed part of files&quot; is checked  
+
+**Making isIgnored public jenkinsci/violation-comments-to-stash-plugin**
+
+
+[37b6d19e9884302](https://github.com/tomasbjerre/violations-lib/commit/37b6d19e9884302) Tomas Bjerre *2020-12-06 08:33:13*
+
+
+## 1.138
+### GitHub [#72](https://github.com/tomasbjerre/violations-lib/issues/72) Still comment on unchanged lines if &quot;Comment only changed part of files&quot; is checked  
+
+**ignorePaths jenkinsci/violation-comments-to-stash-plugin**
+
+
+[1508d313f91b7d2](https://github.com/tomasbjerre/violations-lib/commit/1508d313f91b7d2) Tomas Bjerre *2020-12-06 07:41:13*
+
+
+## 1.137
+### No issue
+
+**fix formatting after merge**
+
+
+[3583b539d6064fe](https://github.com/tomasbjerre/violations-lib/commit/3583b539d6064fe) Tomas Bjerre *2020-11-27 13:06:22*
+
+**fix parse gradle kotlin windows-style path**
+
+
+[80408d1630ce84f](https://github.com/tomasbjerre/violations-lib/commit/80408d1630ce84f) Nov1kov *2020-11-27 12:49:42*
+
+**fix parse gradle kotlin column line**
+
+
+[5ac9c50de3d6bbd](https://github.com/tomasbjerre/violations-lib/commit/5ac9c50de3d6bbd) Nov1kov *2020-11-26 18:38:36*
+
+
 ## 1.136
 ### GitHub [#115](https://github.com/tomasbjerre/violations-lib/issues/115) JUnit parser does not detect a failure  
 

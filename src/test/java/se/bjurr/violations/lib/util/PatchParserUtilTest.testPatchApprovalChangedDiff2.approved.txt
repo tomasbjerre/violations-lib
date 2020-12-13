@@ -1,0 +1,78 @@
+patch:
+0	: @@ -6,6 +6,16 @@
+1	:   void npe(String a, String b) {
+2	:    if (a == null) {
+3	:     System.out.println();
+4	: +   System.out.println();
+5	: +  } else {
+6	: +
+7	: +  }
+8	: +  a.length();
+9	: + }
+10	: +
+11	: + void npe2(String a, String b) {
+12	: +  if (a == null) {
+13	: +   System.out.println();
+14	:    } else {
+15	:  
+16	:    }
+17	: @@ -14,6 +24,6 @@ void npe(String a, String b) {
+18	:  
+19	:   @Override
+20	:   public boolean equals(Object obj) {
+21	: -  return true;
+22	: +  return false;
+23	:   }
+24	:  }
+
+
+newLineToLineInDiffTable:
+6 : 1
+7 : 2
+8 : 3
+9 : 4
+10 : 5
+11 : 6
+12 : 7
+13 : 8
+14 : 9
+15 : 10
+16 : 11
+17 : 12
+18 : 13
+19 : 14
+20 : 15
+21 : 16
+22 : 17
+24 : 18
+25 : 19
+26 : 20
+27 : 22
+28 : 23
+29 : 24
+30 : 25
+
+
+newLineToOldLineTable:
+6 : 6
+7 : 7
+8 : 8
+9 : null
+10 : null
+11 : null
+12 : null
+13 : null
+14 : null
+15 : null
+16 : null
+17 : null
+18 : null
+19 : 9
+20 : 10
+21 : 11
+24 : 24
+25 : 25
+26 : 26
+27 : null
+28 : 28
+29 : 29

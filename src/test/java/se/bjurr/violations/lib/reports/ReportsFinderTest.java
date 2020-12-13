@@ -7,6 +7,7 @@ import static se.bjurr.violations.lib.reports.ReportsFinder.findAllReports;
 import java.io.File;
 import java.net.URISyntaxException;
 import java.nio.file.Paths;
+import java.util.ArrayList;
 import java.util.logging.Handler;
 import java.util.logging.Level;
 import java.util.logging.LogRecord;
@@ -64,7 +65,7 @@ public class ReportsFinderTest {
           }
         };
     assertThat(
-            findAllReports(violationsLogger, path, ".*test-traversal.*txt$")
+            findAllReports(violationsLogger, path, ".*test-traversal.*txt$", new ArrayList<>())
                 .stream()
                 .map(
                     it -> {
@@ -74,7 +75,7 @@ public class ReportsFinderTest {
         .containsOnly("file-in-subdir.txt", "file-in-subdir2.txt", "file-in-subdir3.txt");
 
     assertThat(
-            findAllReports(violationsLogger, path, ".*subdir3\\.txt")
+            findAllReports(violationsLogger, path, ".*subdir3\\.txt", new ArrayList<>())
                 .stream()
                 .map(
                     it -> {

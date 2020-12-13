@@ -18,7 +18,10 @@ import se.bjurr.violations.lib.ViolationsLogger;
 public class ReportsFinder {
 
   public static List<File> findAllReports(
-      final ViolationsLogger violationsLogger, final File startFile, final String pattern) {
+      final ViolationsLogger violationsLogger,
+      final File startFile,
+      final String pattern,
+      final List<String> ignorePaths) {
     final List<File> found = new ArrayList<>();
     final Path startPath = startFile.toPath();
     try {
@@ -28,6 +31,11 @@ public class ReportsFinder {
             @Override
             public FileVisitResult visitFile(final Path file, final BasicFileAttributes attrs)
                 throws IOException {
+              final String relativePath = startPath.relativize(file).toString();
+              if (isIgnored(relativePath, ignorePaths)) {
+                return super.visitFile(file, attrs);
+              }
+
               final String absolutePath = file.toFile().getAbsolutePath();
               if (matches(pattern, absolutePath)
                   || matches(pattern, withFrontSlashes(absolutePath))) {
@@ -48,5 +56,14 @@ public class ReportsFinder {
 
   static String withFrontSlashes(final String file) {
     return file.replace('\\', '/');
+  }
+
+  public static boolean isIgnored(final String path, final List<String> ignorePaths) {
+    for (final String ignorePath : ignorePaths) {
+      if (withFrontSlashes(path).startsWith(withFrontSlashes(ignorePath))) {
+        return true;
+      }
+    }
+    return false;
   }
 }
