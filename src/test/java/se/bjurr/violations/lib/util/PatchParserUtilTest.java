@@ -16,7 +16,31 @@ public class PatchParserUtilTest {
   private static final String CHANGED_DIFF =
       " @@ -1,4 +1,5 @@\n .klass {\n  font-size: 14px;\n+ \n  font-size: 14px;\n }";
   private static final String CHANGED_DIFF_2 =
-      "@@ -6,6 +6,16 @@\n  void npe(String a, String b) {\n   if (a == null) {\n    System.out.println();\n+   System.out.println();\n+  } else {\n+\n+  }\n+  a.length();\n+ }\n+\n+ void npe2(String a, String b) {\n+  if (a == null) {\n+   System.out.println();\n   } else {\n \n   }\n@@ -14,6 +24,6 @@ void npe(String a, String b) {\n \n  @Override\n  public boolean equals(Object obj) {\n-  return true;\n+  return false;\n  }\n }";
+      "@@ -6,6 +6,16 @@\n" +
+      "  void npe(String a, String b) {\n" +
+      "   if (a == null) {\n" +
+      "    System.out.println();\n" +
+      "+   System.out.println();\n" +
+      "+  } else {\n" +
+      "+\n" +
+      "+  }\n" +
+      "+  a.length();\n" +
+      "+ }\n" +
+      "+\n" +
+      "+ void npe2(String a, String b) {\n" +
+      "+  if (a == null) {\n" +
+      "+   System.out.println();\n" +
+      "   } else {\n" +
+      " \n" +
+      "   }\n" +
+      "@@ -14,6 +24,6 @@ void npe(String a, String b) {\n" +
+      " \n" +
+      "  @Override\n" +
+      "  public boolean equals(Object obj) {\n" +
+      "-  return true;\n" +
+      "+  return false;\n" +
+      "  }\n" +
+      " }";
 
   @Test
   public void testThatChangedContentCanBeCommented() {
