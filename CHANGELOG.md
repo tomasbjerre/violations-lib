@@ -3,6 +3,30 @@
 
 Changelog of Violations lib.
 
+## 1.140
+### No issue
+
+**fix unit test**
+
+
+[b71b5e4bdc362f8](https://github.com/tomasbjerre/violations-lib/commit/b71b5e4bdc362f8) Nov1kov *2020-12-13 09:18:45*
+
+**merge master to fix_patch_parser**
+
+
+[02e44df7acc7076](https://github.com/tomasbjerre/violations-lib/commit/02e44df7acc7076) Nov1kov *2020-12-13 09:09:19*
+
+**Approval testing of PatchParser**
+
+
+[688266f408a3d41](https://github.com/tomasbjerre/violations-lib/commit/688266f408a3d41) Tomas Bjerre *2020-12-12 11:31:21*
+
+**prevent comment line out of diff**
+
+
+[4517af59127c16a](https://github.com/tomasbjerre/violations-lib/commit/4517af59127c16a) Nov1kov *2020-12-11 11:12:34*
+
+
 ## 1.139
 ### GitHub [#72](https://github.com/tomasbjerre/violations-lib/issues/72) Still comment on unchanged lines if &quot;Comment only changed part of files&quot; is checked  
 
