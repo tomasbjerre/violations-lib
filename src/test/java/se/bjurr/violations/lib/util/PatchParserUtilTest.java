@@ -16,7 +16,31 @@ public class PatchParserUtilTest {
   private static final String CHANGED_DIFF =
       " @@ -1,4 +1,5 @@\n .klass {\n  font-size: 14px;\n+ \n  font-size: 14px;\n }";
   private static final String CHANGED_DIFF_2 =
-      "@@ -6,6 +6,16 @@\n  void npe(String a, String b) {\n   if (a == null) {\n    System.out.println();\n+   System.out.println();\n+  } else {\n+\n+  }\n+  a.length();\n+ }\n+\n+ void npe2(String a, String b) {\n+  if (a == null) {\n+   System.out.println();\n   } else {\n \n   }\n@@ -14,6 +24,6 @@ void npe(String a, String b) {\n \n  @Override\n  public boolean equals(Object obj) {\n-  return true;\n+  return false;\n  }\n }";
+      "@@ -6,6 +6,16 @@\n" +
+      "  void npe(String a, String b) {\n" +
+      "   if (a == null) {\n" +
+      "    System.out.println();\n" +
+      "+   System.out.println();\n" +
+      "+  } else {\n" +
+      "+\n" +
+      "+  }\n" +
+      "+  a.length();\n" +
+      "+ }\n" +
+      "+\n" +
+      "+ void npe2(String a, String b) {\n" +
+      "+  if (a == null) {\n" +
+      "+   System.out.println();\n" +
+      "   } else {\n" +
+      " \n" +
+      "   }\n" +
+      "@@ -14,6 +24,6 @@ void npe(String a, String b) {\n" +
+      " \n" +
+      "  @Override\n" +
+      "  public boolean equals(Object obj) {\n" +
+      "-  return true;\n" +
+      "+  return false;\n" +
+      "  }\n" +
+      " }";
 
   @Test
   public void testThatChangedContentCanBeCommented() {
@@ -55,6 +79,32 @@ public class PatchParserUtilTest {
 
     assertThat(this.findLineToComment(CHANGED_DIFF_2, 21)) //
         .isEqualTo(16);
+  }
+
+  @Test
+  public void testThatViolationBetweenDiffBlocks(){
+    String patch = "@@ -143,7 +144,6 @@ import ru.novikov.somepackage1\n" +
+            " import ru.novikov.somepackage2\n" +
+            " import ru.novikov.somepackage3\n" +
+            " import ru.novikov.somepackage4\n" +
+            "-import ru.novikov.somepackage5\n" +
+            " import ru.novikov.somepackage6\n" +
+            " import ru.novikov.somepackage7\n" +
+            " import ru.novikov.somepackage8\n" +
+            "@@ -187,7 +187,8 @@ import javax.inject.Singleton\n" +
+            "             SomeModule1::class,\n" +
+            "             SomeModule2::class,\n" +
+            "             SomeModule3::class,\n" +
+            "-            SomeModule4::class\n" +
+            "+            SomeModule4::class,\n" +
+            "+            LoggerModule::class\n" +
+            "         ]\n" +
+            " )\n" +
+            " @Singleton\n";
+
+    final PatchParserUtil pp = new PatchParserUtil(patch);
+    assertThat(pp.isLineInDiff(150)) //
+            .isFalse();
   }
 
   @Test
