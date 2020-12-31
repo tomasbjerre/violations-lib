@@ -8,6 +8,7 @@ import static se.bjurr.violations.lib.util.Utils.nullToEmpty;
 import java.io.Serializable;
 import java.util.HashMap;
 import java.util.Map;
+
 import se.bjurr.violations.lib.parsers.CPPCheckParser;
 import se.bjurr.violations.lib.reports.Parser;
 
@@ -117,6 +118,8 @@ public class Violation implements Serializable, Comparable<Violation> {
   }
 
   private static final long serialVersionUID = -6052921679385466168L;
+  /** A {@link #file} used when there is no file specified in the parsed report. */
+  public static final String NO_FILE = "-";
 
   public static ViolationBuilder violationBuilder() {
     return new ViolationBuilder();
@@ -125,7 +128,9 @@ public class Violation implements Serializable, Comparable<Violation> {
   private Integer column;
   private final Integer endLine;
   private final Integer endColumn;
+  /** Also see {@link #NO_FILE} */
   private final String file;
+
   private final String message;
   /** The algorithm, the format, used. */
   private final Parser parser;

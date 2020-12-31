@@ -242,4 +242,33 @@ public class CPPCheckTest {
 
     Logger.getLogger("").removeHandler(logHandler);
   }
+
+  @Test
+  public void testThatViolationsCanBeParsedFromIssue64519() {
+    final String rootFolder = getRootFolder();
+
+    final Set<Violation> actual =
+        violationsApi() //
+            .withPattern(".*issue64519\\.xml$") //
+            .inFolder(rootFolder) //
+            .findAll(CPPCHECK) //
+            .violations();
+
+    assertThat(actual) //
+        .hasSize(1);
+
+    final Violation violation = new ArrayList<>(actual).get(0);
+    assertThat(violation.getMessage()) //
+        .startsWith("Cppcheck cannot find all the include files");
+    assertThat(violation.getFile()) //
+        .isEqualTo(Violation.NO_FILE);
+    assertThat(violation.getSeverity()) //
+        .isEqualTo(INFO);
+    assertThat(violation.getRule()) //
+        .isEqualTo("missingInclude");
+    assertThat(violation.getStartLine()) //
+        .isEqualTo(0);
+    assertThat(violation.getEndLine()) //
+        .isEqualTo(0);
+  }
 }

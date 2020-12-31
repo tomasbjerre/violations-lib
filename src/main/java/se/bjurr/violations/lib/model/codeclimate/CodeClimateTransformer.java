@@ -5,6 +5,7 @@ import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Locale;
 import java.util.Set;
 import java.util.stream.Collectors;
 import se.bjurr.violations.lib.model.SEVERITY;
@@ -71,6 +72,6 @@ public class CodeClimateTransformer {
       }
       hexString.append(hex);
     }
-    return hexString.toString().toLowerCase();
+    return hexString.toString().toLowerCase(Locale.ENGLISH);
   }
 }

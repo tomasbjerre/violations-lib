@@ -37,10 +37,30 @@ public class CPPCheckParser implements ViolationsParser {
       Optional<String> verbose = null;
       String id = null;
       int errorIndex = -1;
+      boolean violationAddedFromError = false;
+      String message = null;
       while (xmlr.hasNext()) {
         final int eventType = xmlr.next();
+        if (eventType == XMLStreamConstants.END_ELEMENT) {
+          if (xmlr.getLocalName().equalsIgnoreCase("error")) {
+            if (!violationAddedFromError) {
+              final Violation violation =
+                  violationBuilder() //
+                      .setParser(CPPCHECK) //
+                      .setStartLine(0) //
+                      .setFile(Violation.NO_FILE) //
+                      .setSeverity(severity) //
+                      .setMessage(message) //
+                      .setRule(id) //
+                      .setGroup(Integer.toString(errorIndex)) //
+                      .build();
+              violations.add(violation);
+            }
+          }
+        }
         if (eventType == XMLStreamConstants.START_ELEMENT) {
           if (xmlr.getLocalName().equalsIgnoreCase("error")) {
+            violationAddedFromError = false;
             errorIndex++;
             final String severityStr = getAttribute(xmlr, "severity");
             severity = this.toSeverity(severityStr);
@@ -51,8 +71,8 @@ public class CPPCheckParser implements ViolationsParser {
             final Optional<String> resultFile = findAttribute(xmlr, "file");
             final Optional<Integer> resultLine = findIntegerAttribute(xmlr, "line");
             final Optional<String> resultInfo = findAttribute(xmlr, "info");
+            message = this.constructMessage(msg, verbose, resultInfo);
             if (resultFile.isPresent() && resultLine.isPresent()) {
-              final String message = this.constructMessage(msg, verbose, resultInfo);
               final Violation violation =
                   violationBuilder() //
                       .setParser(CPPCHECK) //
@@ -64,11 +84,12 @@ public class CPPCheckParser implements ViolationsParser {
                       .setGroup(Integer.toString(errorIndex)) //
                       .build();
               violations.add(violation);
+              violationAddedFromError = true;
             }
           } else if (xmlr.getLocalName().equalsIgnoreCase("location")) {
             final Integer line = getIntegerAttribute(xmlr, "line");
             final Optional<String> info = findAttribute(xmlr, "info");
-            final String message = this.constructMessage(msg, verbose, info);
+            message = this.constructMessage(msg, verbose, info);
             final String file = getAttribute(xmlr, "file");
             final Violation v =
                 violationBuilder() //
@@ -81,6 +102,7 @@ public class CPPCheckParser implements ViolationsParser {
                     .setGroup(Integer.toString(errorIndex)) //
                     .build();
             violations.add(v);
+            violationAddedFromError = true;
           }
         }
       }
