@@ -8,7 +8,6 @@ import static se.bjurr.violations.lib.util.Utils.nullToEmpty;
 import java.io.Serializable;
 import java.util.HashMap;
 import java.util.Map;
-
 import se.bjurr.violations.lib.parsers.CPPCheckParser;
 import se.bjurr.violations.lib.reports.Parser;
 
