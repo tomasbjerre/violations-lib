@@ -3,6 +3,15 @@
 
 Changelog of Violations lib.
 
+## 1.141
+### GitHub [#118](https://github.com/tomasbjerre/violations-lib/issues/118) CppCheck parser ignores errors without location  
+
+**Parse CPPCheck reports without file**
+
+
+[c2c58662d6adee4](https://github.com/tomasbjerre/violations-lib/commit/c2c58662d6adee4) Tomas Bjerre *2020-01-01 13:12:42*
+
+
 ## 1.140
 ### No issue
 
