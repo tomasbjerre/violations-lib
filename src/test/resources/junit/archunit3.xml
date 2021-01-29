@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://maven.apache.org/surefire/maven-surefire-plugin/xsd/surefire-test-report-3.0.xsd" version="3.0" name="Aufgabe3Test" time="0.58" tests="1" errors="0" skipped="0" failures="1">
+  <testcase name="ALL_FINAL" classname="Aufgabe3Test" time="0.579">
+    <failure type="java.lang.AssertionError"><![CDATA[java.lang.AssertionError: 
+Architecture Violation [Priority: MEDIUM] - Rule 'classes that have simple name 'Integers' should have only final fields' was violated (1 times):
+Field <Integers.value> is not final in (Integers.java:0)
+]]></failure>
+  </testcase>
+</testsuite>

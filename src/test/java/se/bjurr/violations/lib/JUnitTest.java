@@ -243,4 +243,71 @@ public class JUnitTest {
     assertThat(violation0.getMessage()).startsWith("runCalculationScriptTest : The container");
     assertThat(violation0.getSeverity()).isEqualTo(ERROR);
   }
+
+  @Test
+  public void testThatViolationsCanBeParsedFromArchUnit1() {
+    final String rootFolder = getRootFolder();
+
+    final Set<Violation> actual =
+        violationsApi() //
+            .withPattern(".*/junit/archunit1\\.xml$") //
+            .inFolder(rootFolder) //
+            .findAll(JUNIT) //
+            .violations();
+
+    assertThat(actual) //
+        .hasSize(1);
+
+    final Violation violation0 = new ArrayList<>(actual).get(0);
+    assertThat(violation0.getFile()).isEqualTo("Aufgabe3Test.java");
+    assertThat(violation0.getMessage())
+        .startsWith("shouldSplitToEmptyRight(int)[1] : org.opentest4j.AssertionFailedError:");
+    assertThat(violation0.getSeverity()).isEqualTo(ERROR);
+  }
+
+  @Test
+  public void testThatViolationsCanBeParsedFromArchUnit2() {
+    final String rootFolder = getRootFolder();
+
+    final Set<Violation> actual =
+        violationsApi() //
+            .withPattern(".*/junit/archunit2\\.xml$") //
+            .inFolder(rootFolder) //
+            .findAll(JUNIT) //
+            .violations();
+
+    assertThat(actual) //
+        .hasSize(2);
+
+    final Violation violation0 = new ArrayList<>(actual).get(0);
+    assertThat(violation0.getFile()).isEqualTo("Aufgabe3Test.java");
+    assertThat(violation0.getMessage())
+        .startsWith("shouldSplitToEmptyRight(int)[1] : org.opentest4j.AssertionFailedError:");
+    assertThat(violation0.getSeverity()).isEqualTo(ERROR);
+
+    final Violation violation1 = new ArrayList<>(actual).get(1);
+    assertThat(violation1.getFile()).isEqualTo("Integers.java");
+    assertThat(violation1.getMessage()).startsWith("ALL_FINAL : java.lang.AssertionError");
+    assertThat(violation1.getSeverity()).isEqualTo(ERROR);
+  }
+
+  @Test
+  public void testThatViolationsCanBeParsedFromArchUnit3() {
+    final String rootFolder = getRootFolder();
+
+    final Set<Violation> actual =
+        violationsApi() //
+            .withPattern(".*/junit/archunit3\\.xml$") //
+            .inFolder(rootFolder) //
+            .findAll(JUNIT) //
+            .violations();
+
+    assertThat(actual) //
+        .hasSize(1);
+
+    final Violation violation0 = new ArrayList<>(actual).get(0);
+    assertThat(violation0.getFile()).isEqualTo("Integers.java");
+    assertThat(violation0.getMessage()).startsWith("ALL_FINAL : java.lang.AssertionError");
+    assertThat(violation0.getSeverity()).isEqualTo(ERROR);
+  }
 }

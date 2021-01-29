@@ -97,6 +97,16 @@ public class JUnitParser implements ViolationsParser {
       fl.line = Integer.parseInt(matcher.group(7));
       return fl;
     }
+
+    final Matcher classNameMatcher =
+        Pattern.compile("([a-zA-Z\\.]+?):(\\d+)").matcher(failureContentFrontSlash);
+    final boolean foundClassName = classNameMatcher.find();
+    if (foundClassName) {
+      final FileAndLine fl = new FileAndLine();
+      fl.file = classNameMatcher.group(1);
+      fl.line = Integer.parseInt(classNameMatcher.group(2));
+      return fl;
+    }
     return null;
   }
 
