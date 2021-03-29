@@ -21,6 +21,8 @@ public class ViolationAsserter {
     final Violation actualViolation = new ArrayList<>(this.actual).get(postition);
     Assertions.assertThat(actualViolation.getFile()) //
         .isEqualTo(expected.getFile());
+    Assertions.assertThat(actualViolation.getSeverity()) //
+        .isEqualTo(expected.getSeverity());
     Assertions.assertThat(actualViolation.getStartLine()) //
         .isEqualTo(expected.getStartLine());
     Assertions.assertThat(actualViolation.getMessage()) //

@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<issues format="4" by="lint 25.1.1">
+    <issue
+        id="Instantiatable"
+        severity="Fatal"
+        message="`NavigationMapFragment` must extend android.app.Activity"
+        category="Correctness"
+        priority="6"
+        summary="Registered class is not instantiatable"
+        explanation="Activities, services, broadcast receivers etc. registered in the manifest file (or for custom views, in a layout file) must be &quot;instantiatable&quot; by the system, which means that the class must be public, it must have an empty public constructor, and if it&apos;s an inner class, it must be a static inner class.">
+        <location
+            file="..."
+            line="54"
+            column="33"/>
+    </issue>
+</issues>

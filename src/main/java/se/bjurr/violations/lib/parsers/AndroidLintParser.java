@@ -78,7 +78,7 @@ public class AndroidLintParser implements ViolationsParser {
   }
 
   public SEVERITY toSeverity(final String severity) {
-    if (severity.equalsIgnoreCase("ERROR")) {
+    if (severity.equalsIgnoreCase("ERROR") || severity.equalsIgnoreCase("FATAL")) {
       return ERROR;
     }
     if (severity.equalsIgnoreCase("WARNING")) {

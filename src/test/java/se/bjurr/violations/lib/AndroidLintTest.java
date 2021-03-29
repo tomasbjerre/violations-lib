@@ -22,7 +22,7 @@ public class AndroidLintTest {
 
     final Set<Violation> actual =
         violationsApi() //
-            .withPattern(".*/androidlint/.*\\.xml$") //
+            .withPattern(".*/androidlint/lint-results.*\\.xml$") //
             .inFolder(rootFolder) //
             .findAll(ANDROIDLINT) //
             .violations();
@@ -59,5 +59,35 @@ public class AndroidLintTest {
     ViolationAsserter.assertThat(actual) //
         .contains(v1, 1) //
         .contains(v2, 0);
+  }
+
+  @Test
+  public void testThatFatalViolationsCanBeParsed() {
+
+    final String rootFolder = getRootFolder();
+
+    final Set<Violation> actual =
+        violationsApi() //
+            .withPattern(".*/androidlint/fatal.*\\.xml$") //
+            .inFolder(rootFolder) //
+            .findAll(ANDROIDLINT) //
+            .violations();
+
+    final Violation v1 =
+        violationBuilder()
+            .setParser(ANDROIDLINT)
+            .setFile("...")
+            .setSource(null)
+            .setStartLine(54)
+            .setEndLine(54)
+            .setColumn(33)
+            .setRule("Instantiatable")
+            .setCategory("Correctness")
+            .setMessage("Registered class")
+            .setSeverity(ERROR) //
+            .build();
+
+    ViolationAsserter.assertThat(actual) //
+        .contains(v1, 0);
   }
 }
