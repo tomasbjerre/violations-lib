@@ -4,6 +4,27 @@
 Changelog of Violations lib.
 
 
+## 1.143
+ 
+  
+   
+### GitHub [#121](https://github.com/tomasbjerre/violations-lib/issues/121) New Android Severity Fatal  
+   
+   
+  
+  
+
+  
+**interpreting Fatal in AndroidLint as Error**
+
+
+
+[47647c2886bfde9](https://github.com/tomasbjerre/violations-lib/commit/47647c2886bfde9) Tomas Bjerre *2021-03-29 14:43:54*
+
+  
+
+ 
+
 ## 1.142
  
   
