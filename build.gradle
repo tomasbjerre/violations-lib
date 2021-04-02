@@ -10,6 +10,7 @@ buildscript {
  }
 }
 project.ext.buildConfig = [
+    repoType: "VIOLATIONS",
     publishing: [
         relocate: [
             'com.google',
