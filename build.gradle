@@ -1,23 +1,23 @@
 apply plugin: 'java'
 
-project.ext.tags = ['violation', 'static code analysis', 'Checkstyle', 'CPPLint', 'CPPCheck', 'CSSLint', 'Findbugs', 'Flake8', 'PyLint', 'Pep8', 'Mccabe', 'PyFlakes', 'JSHint', 'Lint', 'PerlCritic', 'PMD', 'ReSharper', 'XMLLint']
-group = 'se.bjurr.violations'
-description = 'Library for parsing report files from static code analysis'
-project.ext.useShadowJar = true
-
-
 buildscript {
  repositories {
-  maven { url "https://jitpack.io" }
+  mavenCentral()
+  mavenLocal()
  }
  dependencies {
-  classpath 'com.github.tomasbjerre:gradle-scripts:1.17'
+  classpath 'se.bjurr.gradle:gradle-scripts:latest-SNAPSHOT'
  }
 }
-apply from: project.buildscript.classLoader.getResource('java.gradle').toURI()
-apply from: project.buildscript.classLoader.getResource('changelog.gradle').toURI()
-apply from: project.buildscript.classLoader.getResource('release.gradle').toURI()
-
+project.ext.buildConfig = [
+    publishing: [
+        relocate: [
+            'com.google',
+            'com.jakewharton'
+        ]
+    ]
+]
+apply from: project.buildscript.classLoader.getResource('main.gradle').toURI()
 
 dependencies {
  compile 'com.google.code.gson:gson:2.8.2'
@@ -26,9 +26,4 @@ dependencies {
  testCompile 'org.assertj:assertj-core:2.3.0'
  testCompile 'uk.co.jemos.podam:podam:7.2.1.RELEASE'
  testCompile 'com.approvaltests:approvaltests:9.5.0'
-}
-
-shadowJar {
- relocate 'com.google',      safeJavaIdentidier(project.group + '.' + project.name + '.com.google')
- relocate 'com.jakewharton', safeJavaIdentidier(project.group + '.' + project.name + '.com.jakewharton')
 }
