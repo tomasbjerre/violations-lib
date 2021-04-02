@@ -3,13 +3,13 @@
 
 Changelog of violations-lib.
 
-## Unreleased
+## 1.144.3
 ### No issue
 
 **Using new buildscript**
 
 
-[6f165f0c0b49c27](https://github.com/tomasbjerre/violations-lib/commit/6f165f0c0b49c27) Tomas Bjerre *2021-04-02 16:54:55*
+[f0e5223fbbda0c6](https://github.com/tomasbjerre/violations-lib/commit/f0e5223fbbda0c6) Tomas Bjerre *2021-04-02 17:50:33*
 
 
 ## 1.143
