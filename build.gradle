@@ -10,19 +10,21 @@ buildscript {
  }
 }
 project.ext.buildConfig = [
-    repoType: "VIOLATIONS",
-    publishing: [
-        relocate: [
-            'com.google',
-            'com.jakewharton'
-        ]
+  publishing: [
+    relocate: [
+      'com.google',
+      'com.jakewharton'
     ]
+  ],
+  violations: [
+    updateReadme: true
+  ]
 ]
 apply from: project.buildscript.classLoader.getResource('main.gradle').toURI()
 
 dependencies {
  compile 'com.google.code.gson:gson:2.8.2'
- compileOnly 'com.github.spotbugs:spotbugs-annotations:3.1.12'
+
  testCompile 'junit:junit:4.12'
  testCompile 'org.assertj:assertj-core:2.3.0'
  testCompile 'uk.co.jemos.podam:podam:7.2.1.RELEASE'
