@@ -3,6 +3,28 @@
 
 Changelog of violations-lib.
 
+## 1.144.4
+### GitHub [#124](https://github.com/tomasbjerre/violations-lib/issues/124) JUnit parser cannot parse reports with plain errors  
+
+**fix: parsing junit parser with missing file (refs )**
+
+
+[b9bbce64b93509a](https://github.com/tomasbjerre/violations-lib/commit/b9bbce64b93509a) Tomas Bjerre *2021-04-08 16:35:26*
+
+
+### No issue
+
+**removing violations repoType**
+
+
+[fd92797b9c969f6](https://github.com/tomasbjerre/violations-lib/commit/fd92797b9c969f6) Tomas Bjerre *2021-04-05 07:48:37*
+
+**correcting repoTyp**
+
+
+[7e413f219fdb726](https://github.com/tomasbjerre/violations-lib/commit/7e413f219fdb726) Tomas Bjerre *2021-04-02 18:27:48*
+
+
 ## 1.144.3
 ### No issue
 
