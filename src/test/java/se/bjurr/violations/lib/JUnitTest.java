@@ -310,4 +310,27 @@ public class JUnitTest {
     assertThat(violation0.getMessage()).startsWith("ALL_FINAL : java.lang.AssertionError");
     assertThat(violation0.getSeverity()).isEqualTo(ERROR);
   }
+
+  @Test
+  public void testThatViolationsCanBeParsedFromPlain() {
+    final String rootFolder = getRootFolder();
+
+    final Set<Violation> actual =
+        violationsApi() //
+            .withPattern(".*/junit/plainerror\\.xml$") //
+            .inFolder(rootFolder) //
+            .findAll(JUNIT) //
+            .violations();
+
+    assertThat(actual) //
+        .hasSize(1);
+
+    final Violation violation0 = new ArrayList<>(actual).get(0);
+    assertThat(violation0.getFile()).isEqualTo("-");
+    assertThat(violation0.getStartLine()).isEqualTo(0);
+    assertThat(violation0.getMessage())
+        .isEqualTo(
+            "shouldParseEmptyFile : org.json.JSONException: Missing value at 0 [character 1 line 1]");
+    assertThat(violation0.getSeverity()).isEqualTo(ERROR);
+  }
 }

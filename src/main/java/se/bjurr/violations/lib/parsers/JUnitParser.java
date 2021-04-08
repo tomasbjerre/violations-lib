@@ -41,9 +41,7 @@ public class JUnitParser implements ViolationsParser {
           } else if (xmlr.getLocalName().equalsIgnoreCase("failure")
               || xmlr.getLocalName().equalsIgnoreCase("error")) {
             final Violation v = this.parseFailure(xmlr, className, name, violationsLogger);
-            if (v != null) {
-              violations.add(v);
-            }
+            violations.add(v);
           }
         }
       }
@@ -71,7 +69,9 @@ public class JUnitParser implements ViolationsParser {
     }
     if (fl == null) {
       violationsLogger.log(Level.FINE, "Cannot determine file and line in:\n" + failureContent);
-      return null;
+      fl = new FileAndLine();
+      fl.line = 0;
+      fl.file = Violation.NO_FILE;
     }
     final String message =
         name + " : " + (messageAttr != null ? messageAttr + " " + failureContent : failureContent);

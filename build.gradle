@@ -18,7 +18,10 @@ project.ext.buildConfig = [
   ],
   violations: [
     updateReadme: true
-  ]
+  ],
+  staticCodeAnalysis: [
+    maxViolations: 10
+  ],
 ]
 apply from: project.buildscript.classLoader.getResource('main.gradle').toURI()
 

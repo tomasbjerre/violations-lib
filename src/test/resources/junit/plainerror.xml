@@ -1,0 +1,4 @@
+<testcase name="shouldParseEmptyFile" classname="edu.hm.hafner.analysis.parser.SonarQubeDiffParserTest" time="0">
+    <error type="org.json.JSONException"><![CDATA[org.json.JSONException: Missing value at 0 [character 1 line 1]
+]]></error>
+</testcase>
