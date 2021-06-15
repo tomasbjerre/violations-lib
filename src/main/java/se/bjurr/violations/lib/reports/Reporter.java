@@ -100,6 +100,11 @@ public enum Reporter {
   LINT("Lint", Parser.LINT, "", "A common XML format, used by different linters."),
   MCCABE("Mccabe", Parser.FLAKE8, "https://pypi.python.org/pypi/mccabe", ""),
   MYPY("MyPy", Parser.MYPY, "https://pypi.python.org/pypi/mypy-lang", ""),
+  MSBUILDLOG(
+      "MSBuildLog",
+      Parser.MSBULDLOG,
+      "https://docs.microsoft.com/en-us/visualstudio/msbuild/obtaining-build-logs-with-msbuild?view=vs-2019",
+      "With `-fileLogger` use `.*msbuild\\\\.log$` as pattern or `-fl -flp:logfile=MyProjectOutput.log;verbosity=diagnostic` for a custom output filename"),
   MSCPP("MSCpp", Parser.MSCPP, "https://visualstudio.microsoft.com/vs/features/cplusplus/", ""),
   NULLAWAY(
       "NullAway",
