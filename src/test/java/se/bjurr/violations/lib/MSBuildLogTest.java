@@ -1,16 +1,15 @@
 package se.bjurr.violations.lib;
 
-import org.junit.Test;
-import se.bjurr.violations.lib.model.Violation;
-
-import java.util.ArrayList;
-import java.util.Set;
-
 import static org.assertj.core.api.Assertions.assertThat;
 import static se.bjurr.violations.lib.TestUtils.getRootFolder;
 import static se.bjurr.violations.lib.ViolationsApi.violationsApi;
 import static se.bjurr.violations.lib.model.SEVERITY.*;
 import static se.bjurr.violations.lib.reports.Parser.MSBULDLOG;
+
+import java.util.ArrayList;
+import java.util.Set;
+import org.junit.Test;
+import se.bjurr.violations.lib.model.Violation;
 
 public class MSBuildLogTest {
 
@@ -52,5 +51,4 @@ public class MSBuildLogTest {
     assertThat(violation3.getStartLine()) //
         .isEqualTo(7);
   }
-
 }

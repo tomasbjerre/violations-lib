@@ -112,8 +112,7 @@ public class CPPCheckTest {
             .violations();
 
     final Map<String, List<Violation>> violationsPerRule =
-        violationsList
-            .stream() //
+        violationsList.stream() //
             .collect(Collectors.groupingBy(Violation::getRule));
     assertThat(violationsPerRule) //
         .hasSize(2);
@@ -121,8 +120,7 @@ public class CPPCheckTest {
         .hasSize(2);
 
     final Map<Parser, List<Violation>> violationsPerParser =
-        violationsList
-            .stream() //
+        violationsList.stream() //
             .collect(Collectors.groupingBy(Violation::getParser));
     assertThat(violationsPerParser) //
         .hasSize(1);
@@ -130,8 +128,7 @@ public class CPPCheckTest {
         .hasSize(4);
 
     final Map<String, List<Violation>> violationsPerGroupMap =
-        violationsList
-            .stream() //
+        violationsList.stream() //
             .collect(Collectors.groupingBy(Violation::getGroup));
     assertThat(violationsPerGroupMap) //
         .as("There are 2 error tags and there should be 2 groups identified.") //

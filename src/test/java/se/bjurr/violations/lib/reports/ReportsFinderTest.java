@@ -75,8 +75,7 @@ public class ReportsFinderTest {
         .containsOnly("file-in-subdir.txt", "file-in-subdir2.txt", "file-in-subdir3.txt");
 
     assertThat(
-            findAllReports(violationsLogger, path, ".*subdir3\\.txt", new ArrayList<>())
-                .stream()
+            findAllReports(violationsLogger, path, ".*subdir3\\.txt", new ArrayList<>()).stream()
                 .map(
                     it -> {
                       return it.getName();

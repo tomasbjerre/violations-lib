@@ -24,7 +24,9 @@ public class MSBuildLogParser implements ViolationsParser {
       final String reportContent, final ViolationsLogger violationsLogger) throws Exception {
     final Set<Violation> violations = new TreeSet<>();
     final List<List<String>> partsPerLine =
-        getLines(reportContent, "^\\s*([^\\(]*)\\(([^,]*),([^\\)]*)\\):\\s([^\\s]*)\\s([^:]*):([^\\[]*).*$");
+        getLines(
+            reportContent,
+            "^\\s*([^\\(]*)\\(([^,]*),([^\\)]*)\\):\\s([^\\s]*)\\s([^:]*):([^\\[]*).*$");
     for (final List<String> parts : partsPerLine) {
       final String fileName = parts.get(1);
       Integer lineNumber = 0;

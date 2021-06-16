@@ -46,8 +46,7 @@ public class CodeClimate {
   }
 
   public List<CodeClimateCategory> getCategories() {
-    return Arrays.asList(CodeClimateCategory.values())
-        .stream()
+    return Arrays.asList(CodeClimateCategory.values()).stream()
         .filter((it) -> this.categories.contains(it.getName()))
         .collect(Collectors.toList());
   }
