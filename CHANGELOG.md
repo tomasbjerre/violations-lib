@@ -1,1889 +1,2363 @@
-
 # violations-lib changelog
 
 Changelog of violations-lib.
 
-## 1.144.4
-### GitHub [#124](https://github.com/tomasbjerre/violations-lib/issues/124) JUnit parser cannot parse reports with plain errors  
-
-**fix: parsing junit parser with missing file (refs )**
+## [1.144.5](https://github.com/tomasbjerre/violations-lib/releases/tag/1.144.5) (2021-06-16)
 
 
-[b9bbce64b93509a](https://github.com/tomasbjerre/violations-lib/commit/b9bbce64b93509a) Tomas Bjerre *2021-04-08 16:35:26*
 
 
-### No issue
+
+
+
+### Other changes
+
+**add parser for msbuild log files**
+
+
+[6ca81](https://github.com/tomasbjerre/violations-lib/commit/6ca811486b28540) Michael Kaiser *2021-06-15 14:06:06*
+
+## [1.144.4](https://github.com/tomasbjerre/violations-lib/releases/tag/1.144.4) (2021-04-08)
+
+
+
+
+
+### Bug Fixes
+
+-  parsing junit parser with missing file ([b9bbc](https://github.com/tomasbjerre/violations-lib/commit/b9bbce64b93509a))  [#124](https://github.com/tomasbjerre/violations-lib/issues/124)  
+
+
+### Other changes
 
 **removing violations repoType**
 
 
-[fd92797b9c969f6](https://github.com/tomasbjerre/violations-lib/commit/fd92797b9c969f6) Tomas Bjerre *2021-04-05 07:48:37*
-
+[fd927](https://github.com/tomasbjerre/violations-lib/commit/fd92797b9c969f6) Tomas Bjerre *2021-04-05 07:48:37*
 **correcting repoTyp**
 
 
-[7e413f219fdb726](https://github.com/tomasbjerre/violations-lib/commit/7e413f219fdb726) Tomas Bjerre *2021-04-02 18:27:48*
+[7e413](https://github.com/tomasbjerre/violations-lib/commit/7e413f219fdb726) Tomas Bjerre *2021-04-02 18:27:48*
+
+## [1.144.3](https://github.com/tomasbjerre/violations-lib/releases/tag/1.144.3) (2021-04-02)
 
 
-## 1.144.3
-### No issue
+
+
+
+
+
+### Other changes
 
 **Using new buildscript**
 
 
-[f0e5223fbbda0c6](https://github.com/tomasbjerre/violations-lib/commit/f0e5223fbbda0c6) Tomas Bjerre *2021-04-02 17:50:33*
+[f0e52](https://github.com/tomasbjerre/violations-lib/commit/f0e5223fbbda0c6) Tomas Bjerre *2021-04-02 17:50:33*
+
+## [1.143](https://github.com/tomasbjerre/violations-lib/releases/tag/1.143) (2021-03-29)
 
 
-## 1.143
-### GitHub [#121](https://github.com/tomasbjerre/violations-lib/issues/121) New Android Severity Fatal  
-
-**interpreting Fatal in AndroidLint as Error**
 
 
-[47647c2886bfde9](https://github.com/tomasbjerre/violations-lib/commit/47647c2886bfde9) Tomas Bjerre *2021-03-29 14:43:54*
 
 
-## 1.142
-### GitHub [#120](https://github.com/tomasbjerre/violations-lib/issues/120) Failures of architecture tests are not detected  
 
-**testing archunit**
+### Other changes
 
-
-[0f9bc7565e82956](https://github.com/tomasbjerre/violations-lib/commit/0f9bc7565e82956) Tomas Bjerre *2021-01-29 19:20:44*
+**interpreting Fatal in AndroidLint as Error #121**
 
 
-## 1.141
-### GitHub [#118](https://github.com/tomasbjerre/violations-lib/issues/118) CppCheck parser ignores errors without location  
+[47647](https://github.com/tomasbjerre/violations-lib/commit/47647c2886bfde9) Tomas Bjerre *2021-03-29 14:43:54*
 
-**Parse CPPCheck reports without file**
-
-
-[c2c58662d6adee4](https://github.com/tomasbjerre/violations-lib/commit/c2c58662d6adee4) Tomas Bjerre *2020-01-01 13:12:42*
+## [1.142](https://github.com/tomasbjerre/violations-lib/releases/tag/1.142) (2021-01-29)
 
 
-## 1.140
-### No issue
+
+
+
+
+
+### Other changes
+
+**testing archunit #120**
+
+
+[0f9bc](https://github.com/tomasbjerre/violations-lib/commit/0f9bc7565e82956) Tomas Bjerre *2021-01-29 19:20:44*
+
+## [1.141](https://github.com/tomasbjerre/violations-lib/releases/tag/1.141) (2020-01-01)
+
+
+
+
+
+
+
+### Other changes
+
+**Parse CPPCheck reports without file #118**
+
+
+[c2c58](https://github.com/tomasbjerre/violations-lib/commit/c2c58662d6adee4) Tomas Bjerre *2020-01-01 13:12:42*
+
+## [1.140](https://github.com/tomasbjerre/violations-lib/releases/tag/1.140) (2020-12-14)
+
+
+
+
+
+
+
+### Other changes
 
 **fix unit test**
 
 
-[b71b5e4bdc362f8](https://github.com/tomasbjerre/violations-lib/commit/b71b5e4bdc362f8) Nov1kov *2020-12-13 09:18:45*
-
+[b71b5](https://github.com/tomasbjerre/violations-lib/commit/b71b5e4bdc362f8) Nov1kov *2020-12-13 09:18:45*
 **merge master to fix_patch_parser**
 
 
-[02e44df7acc7076](https://github.com/tomasbjerre/violations-lib/commit/02e44df7acc7076) Nov1kov *2020-12-13 09:09:19*
-
+[02e44](https://github.com/tomasbjerre/violations-lib/commit/02e44df7acc7076) Nov1kov *2020-12-13 09:09:19*
 **Approval testing of PatchParser**
 
 
-[688266f408a3d41](https://github.com/tomasbjerre/violations-lib/commit/688266f408a3d41) Tomas Bjerre *2020-12-12 11:31:21*
-
+[68826](https://github.com/tomasbjerre/violations-lib/commit/688266f408a3d41) Tomas Bjerre *2020-12-12 11:31:21*
 **prevent comment line out of diff**
 
 
-[4517af59127c16a](https://github.com/tomasbjerre/violations-lib/commit/4517af59127c16a) Nov1kov *2020-12-11 11:12:34*
+[4517a](https://github.com/tomasbjerre/violations-lib/commit/4517af59127c16a) Nov1kov *2020-12-11 11:12:34*
+
+## [1.139](https://github.com/tomasbjerre/violations-lib/releases/tag/1.139) (2020-12-06)
 
 
-## 1.139
-### GitHub [#72](https://github.com/tomasbjerre/violations-lib/issues/72) Still comment on unchanged lines if &quot;Comment only changed part of files&quot; is checked  
-
-**Making isIgnored public jenkinsci/violation-comments-to-stash-plugin**
 
 
-[37b6d19e9884302](https://github.com/tomasbjerre/violations-lib/commit/37b6d19e9884302) Tomas Bjerre *2020-12-06 08:33:13*
 
 
-## 1.138
-### GitHub [#72](https://github.com/tomasbjerre/violations-lib/issues/72) Still comment on unchanged lines if &quot;Comment only changed part of files&quot; is checked  
 
-**ignorePaths jenkinsci/violation-comments-to-stash-plugin**
+### Other changes
 
-
-[1508d313f91b7d2](https://github.com/tomasbjerre/violations-lib/commit/1508d313f91b7d2) Tomas Bjerre *2020-12-06 07:41:13*
+**Making isIgnored public jenkinsci/violation-comments-to-stash-plugin#72**
 
 
-## 1.137
-### No issue
+[37b6d](https://github.com/tomasbjerre/violations-lib/commit/37b6d19e9884302) Tomas Bjerre *2020-12-06 08:33:13*
+
+## [1.138](https://github.com/tomasbjerre/violations-lib/releases/tag/1.138) (2020-12-06)
+
+
+
+
+
+
+
+### Other changes
+
+**ignorePaths jenkinsci/violation-comments-to-stash-plugin#72**
+
+
+[1508d](https://github.com/tomasbjerre/violations-lib/commit/1508d313f91b7d2) Tomas Bjerre *2020-12-06 07:41:13*
+
+## [1.137](https://github.com/tomasbjerre/violations-lib/releases/tag/1.137) (2020-11-27)
+
+
+
+
+
+
+
+### Other changes
 
 **fix formatting after merge**
 
 
-[3583b539d6064fe](https://github.com/tomasbjerre/violations-lib/commit/3583b539d6064fe) Tomas Bjerre *2020-11-27 13:06:22*
-
+[3583b](https://github.com/tomasbjerre/violations-lib/commit/3583b539d6064fe) Tomas Bjerre *2020-11-27 13:06:22*
 **fix parse gradle kotlin windows-style path**
 
 
-[80408d1630ce84f](https://github.com/tomasbjerre/violations-lib/commit/80408d1630ce84f) Nov1kov *2020-11-27 12:49:42*
-
+[80408](https://github.com/tomasbjerre/violations-lib/commit/80408d1630ce84f) Nov1kov *2020-11-27 12:49:42*
 **fix parse gradle kotlin column line**
 
 
-[5ac9c50de3d6bbd](https://github.com/tomasbjerre/violations-lib/commit/5ac9c50de3d6bbd) Nov1kov *2020-11-26 18:38:36*
+[5ac9c](https://github.com/tomasbjerre/violations-lib/commit/5ac9c50de3d6bbd) Nov1kov *2020-11-26 18:38:36*
+
+## [1.136](https://github.com/tomasbjerre/violations-lib/releases/tag/1.136) (2020-11-15)
 
 
-## 1.136
-### GitHub [#115](https://github.com/tomasbjerre/violations-lib/issues/115) JUnit parser does not detect a failure  
-
-**Parsing error tag in JUnit reports**
 
 
-[8853ccd4f3ea181](https://github.com/tomasbjerre/violations-lib/commit/8853ccd4f3ea181) Tomas Bjerre *2020-11-15 16:22:50*
 
 
-## 1.135
-### GitHub [#113](https://github.com/tomasbjerre/violations-lib/issues/113) JUnit parser throws StringIndexOutOfBoundsException  
 
-**JUnit parser throws StringIndexOutOfBoundsException**
+### Other changes
 
-
-[893e64079ff11a0](https://github.com/tomasbjerre/violations-lib/commit/893e64079ff11a0) Tomas Bjerre *2020-10-17 19:45:12*
+**Parsing error tag in JUnit reports #115**
 
 
-## 1.134
-### GitHub [#112](https://github.com/tomasbjerre/violations-lib/issues/112) Add rule to code climate report  
+[8853c](https://github.com/tomasbjerre/violations-lib/commit/8853ccd4f3ea181) Tomas Bjerre *2020-11-15 16:22:50*
 
-**check_name and engine_name in CodeClimate**
-
-
-[c84cd5922cfa3cc](https://github.com/tomasbjerre/violations-lib/commit/c84cd5922cfa3cc) Tomas Bjerre *2020-10-04 10:19:52*
+## [1.135](https://github.com/tomasbjerre/violations-lib/releases/tag/1.135) (2020-10-17)
 
 
-## 1.133
-### GitHub [#112](https://github.com/tomasbjerre/violations-lib/issues/112) Add rule to code climate report  
-
-**check_name and engine_name in CodeClimate**
 
 
-[18f8681ad3293ec](https://github.com/tomasbjerre/violations-lib/commit/18f8681ad3293ec) Tomas Bjerre *2020-10-04 07:19:35*
 
 
-## 1.132
-### No issue
+
+### Other changes
+
+**JUnit parser throws StringIndexOutOfBoundsException #113**
+
+
+[893e6](https://github.com/tomasbjerre/violations-lib/commit/893e64079ff11a0) Tomas Bjerre *2020-10-17 19:45:12*
+
+## [1.134](https://github.com/tomasbjerre/violations-lib/releases/tag/1.134) (2020-10-04)
+
+
+
+
+
+
+
+### Other changes
+
+**check_name and engine_name in CodeClimate #112**
+
+
+[c84cd](https://github.com/tomasbjerre/violations-lib/commit/c84cd5922cfa3cc) Tomas Bjerre *2020-10-04 10:19:52*
+
+## [1.133](https://github.com/tomasbjerre/violations-lib/releases/tag/1.133) (2020-10-04)
+
+
+
+
+
+
+
+### Other changes
+
+**check_name and engine_name in CodeClimate #112**
+
+
+[18f86](https://github.com/tomasbjerre/violations-lib/commit/18f8681ad3293ec) Tomas Bjerre *2020-10-04 07:19:35*
+
+## [1.132](https://github.com/tomasbjerre/violations-lib/releases/tag/1.132) (2020-09-27)
+
+
+
+
+
+
+
+### Other changes
 
 **Find Security Bugs messages**
 
 
-[f67a694356575c9](https://github.com/tomasbjerre/violations-lib/commit/f67a694356575c9) Tomas Bjerre *2020-09-27 16:13:07*
+[f67a6](https://github.com/tomasbjerre/violations-lib/commit/f67a694356575c9) Tomas Bjerre *2020-09-27 16:13:07*
+
+## [1.131](https://github.com/tomasbjerre/violations-lib/releases/tag/1.131) (2020-09-27)
 
 
-## 1.131
-### GitHub [#101](https://github.com/tomasbjerre/violations-lib/issues/101) Replace the regexp xml-parsing with STL xml parser  
-
-**Rewriting ResharperParser parser**
 
 
-[dcf86f74b53956d](https://github.com/tomasbjerre/violations-lib/commit/dcf86f74b53956d) Tomas Bjerre *2020-09-27 15:38:33*
-
-**Rewriting PiTestParser parser**
 
 
-[91d02fa7e169df1](https://github.com/tomasbjerre/violations-lib/commit/91d02fa7e169df1) Tomas Bjerre *2020-09-27 15:04:27*
 
-**Rewriting LintParser parser**
+### Other changes
 
-
-[c8289ce3bc6142f](https://github.com/tomasbjerre/violations-lib/commit/c8289ce3bc6142f) Tomas Bjerre *2020-09-27 14:45:48*
-
-**Rewriting JSLintParser parser**
+**Rewriting ResharperParser parser #101**
 
 
-[0533eca96a12c48](https://github.com/tomasbjerre/violations-lib/commit/0533eca96a12c48) Tomas Bjerre *2020-09-27 14:24:33*
-
-**Rewriting CSSLintParser parser**
-
-
-[0516f86b09078c7](https://github.com/tomasbjerre/violations-lib/commit/0516f86b09078c7) Tomas Bjerre *2020-09-27 14:19:19*
-
-**Rewriting PMDParser parser**
+[dcf86](https://github.com/tomasbjerre/violations-lib/commit/dcf86f74b53956d) Tomas Bjerre *2020-09-27 15:38:33*
+**Rewriting PiTestParser parser #101**
 
 
-[5f968ce7f75969e](https://github.com/tomasbjerre/violations-lib/commit/5f968ce7f75969e) Tomas Bjerre *2020-09-27 14:07:01*
-
-**Rewriting CheckstyleParser parser**
-
-
-[0b0b28466969a11](https://github.com/tomasbjerre/violations-lib/commit/0b0b28466969a11) Tomas Bjerre *2020-09-27 13:53:30*
-
-**Rewriting AndroidLintParser parser**
+[91d02](https://github.com/tomasbjerre/violations-lib/commit/91d02fa7e169df1) Tomas Bjerre *2020-09-27 15:04:27*
+**Rewriting LintParser parser #101**
 
 
-[d2e8ca2e819c989](https://github.com/tomasbjerre/violations-lib/commit/d2e8ca2e819c989) Tomas Bjerre *2020-09-27 13:44:48*
-
-**Rewriting FindbugsParser parser**
-
-
-[c41fa9da64086e5](https://github.com/tomasbjerre/violations-lib/commit/c41fa9da64086e5) Tomas Bjerre *2020-09-27 09:32:45*
-
-**Rewriting CPPCheckParser parser**
+[c8289](https://github.com/tomasbjerre/violations-lib/commit/c8289ce3bc6142f) Tomas Bjerre *2020-09-27 14:45:48*
+**Rewriting JSLintParser parser #101**
 
 
-[17b0dfe72755568](https://github.com/tomasbjerre/violations-lib/commit/17b0dfe72755568) Tomas Bjerre *2020-09-26 19:11:55*
+[0533e](https://github.com/tomasbjerre/violations-lib/commit/0533eca96a12c48) Tomas Bjerre *2020-09-27 14:24:33*
+**Rewriting CSSLintParser parser #101**
 
 
-## 1.130
-### GitHub [#101](https://github.com/tomasbjerre/violations-lib/issues/101) Replace the regexp xml-parsing with STL xml parser  
-
-**Rewriting JUnit parser**
+[0516f](https://github.com/tomasbjerre/violations-lib/commit/0516f86b09078c7) Tomas Bjerre *2020-09-27 14:19:19*
+**Rewriting PMDParser parser #101**
 
 
-[2eac2357a6a9606](https://github.com/tomasbjerre/violations-lib/commit/2eac2357a6a9606) Tomas Bjerre *2020-09-25 18:35:54*
+[5f968](https://github.com/tomasbjerre/violations-lib/commit/5f968ce7f75969e) Tomas Bjerre *2020-09-27 14:07:01*
+**Rewriting CheckstyleParser parser #101**
 
 
-### GitHub [#108](https://github.com/tomasbjerre/violations-lib/issues/108) Parse jest-junit  
-
-**Rewriting JUnit parser**
-
-
-[2eac2357a6a9606](https://github.com/tomasbjerre/violations-lib/commit/2eac2357a6a9606) Tomas Bjerre *2020-09-25 18:35:54*
+[0b0b2](https://github.com/tomasbjerre/violations-lib/commit/0b0b28466969a11) Tomas Bjerre *2020-09-27 13:53:30*
+**Rewriting AndroidLintParser parser #101**
 
 
-## 1.129
-### GitHub [#107](https://github.com/tomasbjerre/violations-lib/issues/107) Checkstyle: don&#x27;t fail if line attribute is not present  
-
-**Allow Checkstyle reports with no line**
+[d2e8c](https://github.com/tomasbjerre/violations-lib/commit/d2e8ca2e819c989) Tomas Bjerre *2020-09-27 13:44:48*
+**Rewriting FindbugsParser parser #101**
 
 
-[708c769aeca3dff](https://github.com/tomasbjerre/violations-lib/commit/708c769aeca3dff) Tomas Bjerre *2020-09-23 15:47:40*
+[c41fa](https://github.com/tomasbjerre/violations-lib/commit/c41fa9da64086e5) Tomas Bjerre *2020-09-27 09:32:45*
+**Rewriting CPPCheckParser parser #101**
 
 
-## 1.128
-### No issue
+[17b0d](https://github.com/tomasbjerre/violations-lib/commit/17b0dfe72755568) Tomas Bjerre *2020-09-26 19:11:55*
+
+## [1.130](https://github.com/tomasbjerre/violations-lib/releases/tag/1.130) (2020-09-25)
+
+
+
+
+
+
+
+### Other changes
+
+**Rewriting JUnit parser #108 #101**
+
+
+[2eac2](https://github.com/tomasbjerre/violations-lib/commit/2eac2357a6a9606) Tomas Bjerre *2020-09-25 18:35:54*
+
+## [1.129](https://github.com/tomasbjerre/violations-lib/releases/tag/1.129) (2020-09-23)
+
+
+
+
+
+
+
+### Other changes
+
+**Allow Checkstyle reports with no line #107**
+
+
+[708c7](https://github.com/tomasbjerre/violations-lib/commit/708c769aeca3dff) Tomas Bjerre *2020-09-23 15:47:40*
+
+## [1.128](https://github.com/tomasbjerre/violations-lib/releases/tag/1.128) (2020-09-14)
+
+
+
+
+
+
+
+### Other changes
 
 **change parser name to generic**
 
 
-[99446c2bb39cbe5](https://github.com/tomasbjerre/violations-lib/commit/99446c2bb39cbe5) Anirudh Bagri *2020-09-14 06:15:22*
-
+[99446](https://github.com/tomasbjerre/violations-lib/commit/99446c2bb39cbe5) Anirudh Bagri *2020-09-14 06:15:22*
 **map file parser to generic reporter**
 
 
-[dfe2ac1d46365f4](https://github.com/tomasbjerre/violations-lib/commit/dfe2ac1d46365f4) Anirudh Bagri *2020-09-10 15:21:30*
-
+[dfe2a](https://github.com/tomasbjerre/violations-lib/commit/dfe2ac1d46365f4) Anirudh Bagri *2020-09-10 15:21:30*
 **add file parser**
 
 
-[0c9846f76ea9a14](https://github.com/tomasbjerre/violations-lib/commit/0c9846f76ea9a14) Anirudh Bagri *2020-09-10 15:12:07*
+[0c984](https://github.com/tomasbjerre/violations-lib/commit/0c9846f76ea9a14) Anirudh Bagri *2020-09-10 15:12:07*
+
+## [1.127](https://github.com/tomasbjerre/violations-lib/releases/tag/1.127) (2020-09-06)
 
 
-## 1.127
-### GitHub [#95](https://github.com/tomasbjerre/violations-lib/issues/95) Add support for &quot;suggested change&quot;    *enhancement*  
-
-**Moving PatchParser from violation-comments-lib**
 
 
-[5c52a3933792d14](https://github.com/tomasbjerre/violations-lib/commit/5c52a3933792d14) Tomas Bjerre *2020-09-06 05:24:56*
 
 
-## 1.126
-### GitHub [#95](https://github.com/tomasbjerre/violations-lib/issues/95) Add support for &quot;suggested change&quot;    *enhancement*  
 
-**Moving PatchParser from violation-comments-lib**
+### Other changes
 
-
-[8430d1796086717](https://github.com/tomasbjerre/violations-lib/commit/8430d1796086717) Tomas Bjerre *2020-09-06 05:16:01*
+**Moving PatchParser from violation-comments-lib #95**
 
 
-## 1.125
-### No issue
+[5c52a](https://github.com/tomasbjerre/violations-lib/commit/5c52a3933792d14) Tomas Bjerre *2020-09-06 05:24:56*
+
+## [1.126](https://github.com/tomasbjerre/violations-lib/releases/tag/1.126) (2020-09-06)
+
+
+
+
+
+
+
+### Other changes
+
+**Moving PatchParser from violation-comments-lib #95**
+
+
+[8430d](https://github.com/tomasbjerre/violations-lib/commit/8430d1796086717) Tomas Bjerre *2020-09-06 05:16:01*
+
+## [1.125](https://github.com/tomasbjerre/violations-lib/releases/tag/1.125) (2020-09-05)
+
+
+
+
+
+
+
+### Other changes
 
 **adjusting message of junit parser**
 
 
-[96e73a365e55117](https://github.com/tomasbjerre/violations-lib/commit/96e73a365e55117) Tomas Bjerre *2020-09-05 06:35:02*
+[96e73](https://github.com/tomasbjerre/violations-lib/commit/96e73a365e55117) Tomas Bjerre *2020-09-05 06:35:02*
+
+## [1.124](https://github.com/tomasbjerre/violations-lib/releases/tag/1.124) (2020-09-04)
 
 
-## 1.124
-### GitHub [#100](https://github.com/tomasbjerre/violations-lib/issues/100) JUnit failures without type or message will be skipped  
-
-**Support JUNI reports without message**
 
 
-[925c96b9f43b734](https://github.com/tomasbjerre/violations-lib/commit/925c96b9f43b734) Tomas Bjerre *2020-09-04 15:41:14*
 
 
-## 1.123
-### GitHub [#98](https://github.com/tomasbjerre/violations-lib/issues/98) compareTo method of Violation is broken and filters too many unique warnings  
 
-**Avoid removing violations that are not duplicates**
+### Other changes
 
-
-[0b81ef8c7fcdd95](https://github.com/tomasbjerre/violations-lib/commit/0b81ef8c7fcdd95) Tomas Bjerre *2020-08-27 17:43:08*
+**Support JUNI reports without message #100**
 
 
-## 1.122
-### GitHub [#97](https://github.com/tomasbjerre/violations-lib/issues/97) NoSuchElementException when parsing JUnit report without type  
+[925c9](https://github.com/tomasbjerre/violations-lib/commit/925c96b9f43b734) Tomas Bjerre *2020-09-04 15:41:14*
 
-**JUnit missing message and type**
-
-
-[2d06bb63c1266b9](https://github.com/tomasbjerre/violations-lib/commit/2d06bb63c1266b9) Tomas Bjerre *2020-08-27 16:20:21*
+## [1.123](https://github.com/tomasbjerre/violations-lib/releases/tag/1.123) (2020-08-27)
 
 
-## 1.121
-### No issue
+
+
+
+
+
+### Other changes
+
+**Avoid removing violations that are not duplicates #98**
+
+
+[0b81e](https://github.com/tomasbjerre/violations-lib/commit/0b81ef8c7fcdd95) Tomas Bjerre *2020-08-27 17:43:08*
+
+## [1.122](https://github.com/tomasbjerre/violations-lib/releases/tag/1.122) (2020-08-27)
+
+
+
+
+
+
+
+### Other changes
+
+**JUnit missing message and type #97**
+
+
+[2d06b](https://github.com/tomasbjerre/violations-lib/commit/2d06bb63c1266b9) Tomas Bjerre *2020-08-27 16:20:21*
+
+## [1.121](https://github.com/tomasbjerre/violations-lib/releases/tag/1.121) (2020-07-26)
+
+
+
+
+
+
+
+### Other changes
 
 **ignore codeclimate json**
 
 
-[c04ae1f28ea2dda](https://github.com/tomasbjerre/violations-lib/commit/c04ae1f28ea2dda) Tomas Bjerre *2020-07-26 06:30:38*
-
+[c04ae](https://github.com/tomasbjerre/violations-lib/commit/c04ae1f28ea2dda) Tomas Bjerre *2020-07-26 06:30:38*
 **Add test for MyPy error messages containing colons**
 
 
-[01cb5aa61ef7557](https://github.com/tomasbjerre/violations-lib/commit/01cb5aa61ef7557) David Kolossa *2020-07-25 09:18:59*
-
+[01cb5](https://github.com/tomasbjerre/violations-lib/commit/01cb5aa61ef7557) David Kolossa *2020-07-25 09:18:59*
 **Non-greedy match in MyPy Parser**
 
 * This avoids cutting of error messages containing colons &quot;:&quot; 
 * e.g.: 
 * error: Need type annotation for &#x27;a&#x27; (hint: &quot;a: List[&lt;type&gt;] &#x3D; ...&quot;) 
 
-[3d40d5ec9564d35](https://github.com/tomasbjerre/violations-lib/commit/3d40d5ec9564d35) David Kolossa *2020-07-25 08:37:08*
+[3d40d](https://github.com/tomasbjerre/violations-lib/commit/3d40d5ec9564d35) David Kolossa *2020-07-25 08:37:08*
+
+## [1.120](https://github.com/tomasbjerre/violations-lib/releases/tag/1.120) (2020-07-05)
 
 
-## 1.120
-### No issue
-
-**New: using Set for violations everywhere, to avoid transforming with List**
 
 
-[d8c2e0c0851f8cc](https://github.com/tomasbjerre/violations-lib/commit/d8c2e0c0851f8cc) Tomas Bjerre *2020-07-05 10:32:22*
 
 
-## 1.119
-### No issue
-
-**New: allow custom logger**
 
 
-[84e42361237a9fa](https://github.com/tomasbjerre/violations-lib/commit/84e42361237a9fa) Tomas Bjerre *2020-07-05 09:13:11*
+## [1.119](https://github.com/tomasbjerre/violations-lib/releases/tag/1.119) (2020-07-05)
 
 
-## 1.118
-### GitHub [#91](https://github.com/tomasbjerre/violations-lib/issues/91) Can&#x27;t parse Junit5 (Jupiter) report  
-
-**Allow missing message in JUnit report**
 
 
-[bc74058e8c2963c](https://github.com/tomasbjerre/violations-lib/commit/bc74058e8c2963c) Tomas Bjerre *2020-06-26 16:58:57*
 
 
-## 1.117
-### No issue
 
-**Sonar: parse endColumn**
 
-* Signed-off-by: Semyon Levin &lt;levin.semen@gmail.com&gt; 
+## [1.118](https://github.com/tomasbjerre/violations-lib/releases/tag/1.118) (2020-06-26)
 
-[2fc844d71ffe6d5](https://github.com/tomasbjerre/violations-lib/commit/2fc844d71ffe6d5) Semyon Levin *2020-06-10 20:32:03*
 
-**PMD: parse endColumn**
 
-* Signed-off-by: Semyon Levin &lt;levin.semen@gmail.com&gt; 
 
-[596e76a21cafd51](https://github.com/tomasbjerre/violations-lib/commit/596e76a21cafd51) Semyon Levin *2020-06-10 20:31:55*
+
+
+
+### Other changes
+
+**Allow missing message in JUnit report #91**
+
+
+[bc740](https://github.com/tomasbjerre/violations-lib/commit/bc74058e8c2963c) Tomas Bjerre *2020-06-26 16:58:57*
+
+## [1.117](https://github.com/tomasbjerre/violations-lib/releases/tag/1.117) (2020-06-12)
+
+
+
+
+
+
+
+### Other changes
 
 **Add Violation.endColumn property**
 
 * Signed-off-by: Semyon Levin &lt;levin.semen@gmail.com&gt; 
 
-[e513933d7505021](https://github.com/tomasbjerre/violations-lib/commit/e513933d7505021) Semyon Levin *2020-06-10 20:31:38*
+[e5139](https://github.com/tomasbjerre/violations-lib/commit/e513933d7505021) Semyon Levin *2020-06-10 20:31:38*
+
+## [1.116](https://github.com/tomasbjerre/violations-lib/releases/tag/1.116) (2020-05-20)
 
 
-## 1.116
-### No issue
+
+
+
+
+
+### Other changes
 
 **Fixing SECURITY-1854**
 
 
-[b100cdb54e18cae](https://github.com/tomasbjerre/violations-lib/commit/b100cdb54e18cae) Tomas Bjerre *2020-05-20 14:42:04*
+[b100c](https://github.com/tomasbjerre/violations-lib/commit/b100cdb54e18cae) Tomas Bjerre *2020-05-20 14:42:04*
+
+## [1.115](https://github.com/tomasbjerre/violations-lib/releases/tag/1.115) (2020-05-16)
 
 
-## 1.115
-### GitHub [#86](https://github.com/tomasbjerre/violations-lib/issues/86) CppCheck parser errors out on translation unit with no warnings followed by self-closing XML tag  
-
-**Add better test for**
 
 
-[27c0fe5f01ab3a6](https://github.com/tomasbjerre/violations-lib/commit/27c0fe5f01ab3a6) Timothy Brackett *2020-05-16 15:20:20*
-
-**Testing empty cppcheck**
 
 
-[553fd892d041c29](https://github.com/tomasbjerre/violations-lib/commit/553fd892d041c29) Tomas Bjerre *2020-05-15 16:20:49*
 
-
-### No issue
+### Other changes
 
 **Reformatting after merge**
 
 
-[c1bbc0ce5d874c0](https://github.com/tomasbjerre/violations-lib/commit/c1bbc0ce5d874c0) Tomas Bjerre *2020-05-16 16:58:22*
-
+[c1bbc](https://github.com/tomasbjerre/violations-lib/commit/c1bbc0ce5d874c0) Tomas Bjerre *2020-05-16 16:58:22*
 **Make CPPCheck opening regex more specific**
 
 
-[aef04ecae9e9874](https://github.com/tomasbjerre/violations-lib/commit/aef04ecae9e9874) Timothy Brackett *2020-05-16 15:21:28*
+[aef04](https://github.com/tomasbjerre/violations-lib/commit/aef04ecae9e9874) Timothy Brackett *2020-05-16 15:21:28*
+**Add better test for #86**
 
 
-## 1.114
-### GitHub [#85](https://github.com/tomasbjerre/violations-lib/issues/85) JUnitParser does not detect failures in xml generated by Ant&#x27;s Junit task  
-
-**Fix: JUunit parser**
+[27c0f](https://github.com/tomasbjerre/violations-lib/commit/27c0fe5f01ab3a6) Timothy Brackett *2020-05-16 15:20:20*
+**Testing empty cppcheck #86**
 
 
-[39ecef0ea441b89](https://github.com/tomasbjerre/violations-lib/commit/39ecef0ea441b89) Tomas Bjerre *2020-05-12 14:59:52*
+[553fd](https://github.com/tomasbjerre/violations-lib/commit/553fd892d041c29) Tomas Bjerre *2020-05-15 16:20:49*
+
+## [1.114](https://github.com/tomasbjerre/violations-lib/releases/tag/1.114) (2020-05-12)
 
 
-## 1.113
-### GitHub [#1](https://github.com/tomasbjerre/violations-lib/pull/1) This is just a test...  
-
-**Not including lines in codeclimate fingerprint tomasbjerre/violations-maven-plugin**
 
 
-[1fff248fab4afe3](https://github.com/tomasbjerre/violations-lib/commit/1fff248fab4afe3) Tomas Bjerre *2020-03-29 14:08:24*
 
 
-## 1.112
-### No issue
+
+
+## [1.113](https://github.com/tomasbjerre/violations-lib/releases/tag/1.113) (2020-03-29)
+
+
+
+
+
+
+
+### Other changes
+
+**Not including lines in codeclimate fingerprint tomasbjerre/violations-maven-plugin#1**
+
+
+[1fff2](https://github.com/tomasbjerre/violations-lib/commit/1fff248fab4afe3) Tomas Bjerre *2020-03-29 14:08:24*
+
+## [1.112](https://github.com/tomasbjerre/violations-lib/releases/tag/1.112) (2020-03-03)
+
+
+
+
+
+
+
+### Other changes
 
 **Doc**
 
 
-[24a917bc11d0a73](https://github.com/tomasbjerre/violations-lib/commit/24a917bc11d0a73) Tomas Bjerre *2020-03-03 18:22:05*
+[24a91](https://github.com/tomasbjerre/violations-lib/commit/24a917bc11d0a73) Tomas Bjerre *2020-03-03 18:22:05*
+
+## [1.111](https://github.com/tomasbjerre/violations-lib/releases/tag/1.111) (2020-03-03)
 
 
-## 1.111
-### GitHub [#82](https://github.com/tomasbjerre/violations-lib/issues/82) CPPCheckParser does not parse auto closed &lt;error/&gt; tags  
-
-**CPPCheckParser results version 2**
 
 
-[2b96ad75cee880a](https://github.com/tomasbjerre/violations-lib/commit/2b96ad75cee880a) Tomas Bjerre *2020-02-06 18:27:04*
 
 
-### GitHub [#84](https://github.com/tomasbjerre/violations-lib/issues/84) XUnit parser    *enhancement*  
 
-**XUnit tomasbjerre/violations-lib**
+### Other changes
 
-
-[04762515e66b859](https://github.com/tomasbjerre/violations-lib/commit/04762515e66b859) Tomas Bjerre *2020-03-03 16:42:09*
+**XUnit tomasbjerre/violations-lib#84**
 
 
-## 1.110
-### GitHub [#82](https://github.com/tomasbjerre/violations-lib/issues/82) CPPCheckParser does not parse auto closed &lt;error/&gt; tags  
-
-**CPPCheckParser with auto closed <error/> tags**
+[04762](https://github.com/tomasbjerre/violations-lib/commit/04762515e66b859) Tomas Bjerre *2020-03-03 16:42:09*
+**CPPCheckParser results version 2 #82**
 
 
-[64781db68be28d7](https://github.com/tomasbjerre/violations-lib/commit/64781db68be28d7) Tomas Bjerre *2020-02-03 15:57:04*
+[2b96a](https://github.com/tomasbjerre/violations-lib/commit/2b96ad75cee880a) Tomas Bjerre *2020-02-06 18:27:04*
+
+## [1.110](https://github.com/tomasbjerre/violations-lib/releases/tag/1.110) (2020-02-03)
 
 
-## 1.109
-### No issue
+
+
+
+
+
+### Other changes
+
+**CPPCheckParser with auto closed <error/> tags #82**
+
+
+[64781](https://github.com/tomasbjerre/violations-lib/commit/64781db68be28d7) Tomas Bjerre *2020-02-03 15:57:04*
+
+## [1.109](https://github.com/tomasbjerre/violations-lib/releases/tag/1.109) (2020-01-19)
+
+
+
+
+
+
+
+### Other changes
 
 **Filtering out duplicated violations**
 
 
-[487cfbbad3f0692](https://github.com/tomasbjerre/violations-lib/commit/487cfbbad3f0692) Tomas Bjerre *2020-01-19 15:50:54*
-
+[487cf](https://github.com/tomasbjerre/violations-lib/commit/487cfbbad3f0692) Tomas Bjerre *2020-01-19 15:50:54*
 **Correcting Spotbugs warnings**
 
 
-[97ed66ad9a70c31](https://github.com/tomasbjerre/violations-lib/commit/97ed66ad9a70c31) Tomas Bjerre *2020-01-03 06:41:18*
+[97ed6](https://github.com/tomasbjerre/violations-lib/commit/97ed66ad9a70c31) Tomas Bjerre *2020-01-03 06:41:18*
+
+## [1.108](https://github.com/tomasbjerre/violations-lib/releases/tag/1.108) (2020-01-03)
 
 
-## 1.108
-### No issue
+
+
+
+
+
+### Other changes
 
 **Add support for newer sonar report format**
 
 
-[432e5ab3f1efceb](https://github.com/tomasbjerre/violations-lib/commit/432e5ab3f1efceb) Zakey Faieq *2020-01-02 22:18:04*
+[432e5](https://github.com/tomasbjerre/violations-lib/commit/432e5ab3f1efceb) Zakey Faieq *2020-01-02 22:18:04*
+
+## [1.107](https://github.com/tomasbjerre/violations-lib/releases/tag/1.107) (2019-10-22)
 
 
-## 1.107
-### No issue
+
+
+
+
+
+### Other changes
 
 **Add parser for protolint**
 
 
-[80e3c8dd7fb95ea](https://github.com/tomasbjerre/violations-lib/commit/80e3c8dd7fb95ea) David *2019-10-21 20:25:12*
+[80e3c](https://github.com/tomasbjerre/violations-lib/commit/80e3c8dd7fb95ea) David *2019-10-21 20:25:12*
+
+## [1.106](https://github.com/tomasbjerre/violations-lib/releases/tag/1.106) (2019-10-10)
 
 
-## 1.106
-### GitHub [#71](https://github.com/tomasbjerre/violations-lib/issues/71) PyDocStyleParser fails with IndexOutOfBoundsException    *bug*  
-
-**Parsing PyDocStyle generated with `-s`**
 
 
-[2de776d9f8c8bbc](https://github.com/tomasbjerre/violations-lib/commit/2de776d9f8c8bbc) Tomas Bjerre *2019-10-10 15:22:54*
 
 
-### GitHub [#78](https://github.com/tomasbjerre/violations-lib/issues/78) ResharperParser throws exception if message is empty    *bug*  
 
-**Accepting empty message in ResharperParser**
+### Other changes
 
-
-[fd0896fd6dd242f](https://github.com/tomasbjerre/violations-lib/commit/fd0896fd6dd242f) Tomas Bjerre *2019-10-09 19:18:36*
+**Parsing PyDocStyle generated with `-s` #71**
 
 
-### No issue
-
+[2de77](https://github.com/tomasbjerre/violations-lib/commit/2de776d9f8c8bbc) Tomas Bjerre *2019-10-10 15:22:54*
 **1.105-SNAPSHOT**
 
 
-[6cc2ebd6bcc2845](https://github.com/tomasbjerre/violations-lib/commit/6cc2ebd6bcc2845) Tomas Bjerre *2019-10-09 19:27:48*
+[6cc2e](https://github.com/tomasbjerre/violations-lib/commit/6cc2ebd6bcc2845) Tomas Bjerre *2019-10-09 19:27:48*
+**Accepting empty message in ResharperParser #78**
 
+
+[fd089](https://github.com/tomasbjerre/violations-lib/commit/fd0896fd6dd242f) Tomas Bjerre *2019-10-09 19:18:36*
 **doc**
 
 
-[ff1afd7f34348d6](https://github.com/tomasbjerre/violations-lib/commit/ff1afd7f34348d6) Tomas Bjerre *2019-10-09 16:57:30*
-
+[ff1af](https://github.com/tomasbjerre/violations-lib/commit/ff1afd7f34348d6) Tomas Bjerre *2019-10-09 16:57:30*
 **Spotbugs**
 
 
-[2cec50ee48b3f2c](https://github.com/tomasbjerre/violations-lib/commit/2cec50ee48b3f2c) Tomas Bjerre *2019-10-07 18:30:04*
+[2cec5](https://github.com/tomasbjerre/violations-lib/commit/2cec50ee48b3f2c) Tomas Bjerre *2019-10-07 18:30:04*
+
+## [1.103](https://github.com/tomasbjerre/violations-lib/releases/tag/1.103) (2019-10-05)
 
 
-## 1.103
-### No issue
+
+
+
+
+
+### Other changes
 
 **More logging**
 
 
-[266e22ad8778fa5](https://github.com/tomasbjerre/violations-lib/commit/266e22ad8778fa5) Tomas Bjerre *2019-10-05 06:21:10*
-
+[266e2](https://github.com/tomasbjerre/violations-lib/commit/266e22ad8778fa5) Tomas Bjerre *2019-10-05 06:21:10*
 **Testing reportsfinder traversal**
 
 
-[019eade65d41af1](https://github.com/tomasbjerre/violations-lib/commit/019eade65d41af1) Tomas Bjerre *2019-10-05 05:24:28*
+[019ea](https://github.com/tomasbjerre/violations-lib/commit/019eade65d41af1) Tomas Bjerre *2019-10-05 05:24:28*
+
+## [1.102](https://github.com/tomasbjerre/violations-lib/releases/tag/1.102) (2019-10-04)
 
 
-## 1.102
-### GitHub [#76](https://github.com/tomasbjerre/violations-lib/issues/76) Support CodeClimate as output format for GitLab integration    *enhancement*  
-
-**Validating attributes in CodeClimate Parser**
 
 
-[e07038ba58e9c62](https://github.com/tomasbjerre/violations-lib/commit/e07038ba58e9c62) Tomas Bjerre *2019-09-07 12:17:03*
 
 
-### GitHub [#77](https://github.com/tomasbjerre/violations-lib/issues/77) Add hadolint support  
 
-**Documenting HadoLint**
-
-
-[d516f1a69b84b72](https://github.com/tomasbjerre/violations-lib/commit/d516f1a69b84b72) Tomas Bjerre *2019-09-09 14:24:15*
-
-
-### No issue
+### Other changes
 
 **Always front slashes when searching FS**
 
 * Also adding logging the help determining why some files is not getting picked up. 
 
-[7e237cc5f23517a](https://github.com/tomasbjerre/violations-lib/commit/7e237cc5f23517a) Tomas Bjerre *2019-10-04 14:44:12*
-
+[7e237](https://github.com/tomasbjerre/violations-lib/commit/7e237cc5f23517a) Tomas Bjerre *2019-10-04 14:44:12*
 **Create FUNDING.yml**
 
 
-[429014771ec2c64](https://github.com/tomasbjerre/violations-lib/commit/429014771ec2c64) Tomas Bjerre *2019-09-28 06:58:05*
+[42901](https://github.com/tomasbjerre/violations-lib/commit/429014771ec2c64) Tomas Bjerre *2019-09-28 06:58:05*
+**Documenting HadoLint #77**
 
 
-## 1.100
-### GitHub [#76](https://github.com/tomasbjerre/violations-lib/issues/76) Support CodeClimate as output format for GitLab integration    *enhancement*  
-
-**Validating attributes in CodeClimate Parser**
+[d516f](https://github.com/tomasbjerre/violations-lib/commit/d516f1a69b84b72) Tomas Bjerre *2019-09-09 14:24:15*
+**Validating attributes in CodeClimate Parser #76**
 
 
-[51074e66c7abce0](https://github.com/tomasbjerre/violations-lib/commit/51074e66c7abce0) Tomas Bjerre *2019-09-07 12:09:14*
+[e0703](https://github.com/tomasbjerre/violations-lib/commit/e07038ba58e9c62) Tomas Bjerre *2019-09-07 12:17:03*
+
+## [1.100](https://github.com/tomasbjerre/violations-lib/releases/tag/1.100) (2019-09-07)
 
 
-## 1.99
-### GitHub [#76](https://github.com/tomasbjerre/violations-lib/issues/76) Support CodeClimate as output format for GitLab integration    *enhancement*  
-
-**CodeClimate**
 
 
-[60420531325577f](https://github.com/tomasbjerre/violations-lib/commit/60420531325577f) Tomas Bjerre *2019-09-07 11:45:10*
 
 
-## 1.98
-### No issue
+
+### Other changes
+
+**Validating attributes in CodeClimate Parser #76**
+
+
+[51074](https://github.com/tomasbjerre/violations-lib/commit/51074e66c7abce0) Tomas Bjerre *2019-09-07 12:09:14*
+
+## [1.99](https://github.com/tomasbjerre/violations-lib/releases/tag/1.99) (2019-09-07)
+
+
+
+
+
+
+
+### Other changes
+
+**CodeClimate #76**
+
+
+[60420](https://github.com/tomasbjerre/violations-lib/commit/60420531325577f) Tomas Bjerre *2019-09-07 11:45:10*
+
+## [1.98](https://github.com/tomasbjerre/violations-lib/releases/tag/1.98) (2019-09-04)
+
+
+
+
+
+
+
+### Other changes
 
 **Documenting Sonar**
 
 
-[f6f7f7d209fa74d](https://github.com/tomasbjerre/violations-lib/commit/f6f7f7d209fa74d) Tomas Bjerre *2019-09-04 19:52:52*
+[f6f7f](https://github.com/tomasbjerre/violations-lib/commit/f6f7f7d209fa74d) Tomas Bjerre *2019-09-04 19:52:52*
+
+## [1.97](https://github.com/tomasbjerre/violations-lib/releases/tag/1.97) (2019-09-04)
 
 
-## 1.97
-### GitHub [#75](https://github.com/tomasbjerre/violations-lib/issues/75) Sonar parser doesn&#x27;t work  
-
-**Handling Sonar reports without severity**
 
 
-[b7fff16b27cb2a4](https://github.com/tomasbjerre/violations-lib/commit/b7fff16b27cb2a4) Tomas Bjerre *2019-09-04 19:23:23*
 
 
-## 1.96
-### GitHub [#74](https://github.com/tomasbjerre/violations-lib/issues/74) JSHint parser uses JSLint format    *bug*  
 
-**Renaming JSHINT parser to JSLINT**
+### Other changes
+
+**Handling Sonar reports without severity #75**
+
+
+[b7fff](https://github.com/tomasbjerre/violations-lib/commit/b7fff16b27cb2a4) Tomas Bjerre *2019-09-04 19:23:23*
+
+## [1.96](https://github.com/tomasbjerre/violations-lib/releases/tag/1.96) (2019-08-03)
+
+
+
+
+
+
+
+### Other changes
+
+**Renaming JSHINT parser to JSLINT #74**
 
 * Because the format parsed by the parser is actually JSLint. This breaks compatibility! 
 
-[d34e2a36d3523a0](https://github.com/tomasbjerre/violations-lib/commit/d34e2a36d3523a0) Tomas Bjerre *2019-08-03 10:36:59*
+[d34e2](https://github.com/tomasbjerre/violations-lib/commit/d34e2a36d3523a0) Tomas Bjerre *2019-08-03 10:36:59*
+
+## [1.95](https://github.com/tomasbjerre/violations-lib/releases/tag/1.95) (2019-08-02)
 
 
-## 1.95
-### GitHub [#73](https://github.com/tomasbjerre/violations-lib/issues/73) New format: Bandit for Python    *enhancement*  
-
-**Bandit**
 
 
-[0af669fb166b952](https://github.com/tomasbjerre/violations-lib/commit/0af669fb166b952) Tomas Bjerre *2019-08-02 06:06:51*
 
 
-## 1.94
-### GitHub [#70](https://github.com/tomasbjerre/violations-lib/pull/70) Added JUnit parser    *enhancement*  
 
-**Testing with Mavens Surefire Report**
+### Other changes
 
-
-[cd486448a7c4b65](https://github.com/tomasbjerre/violations-lib/commit/cd486448a7c4b65) Tomas Bjerre *2019-06-15 05:40:39*
+**Bandit #73**
 
 
-### No issue
+[0af66](https://github.com/tomasbjerre/violations-lib/commit/0af669fb166b952) Tomas Bjerre *2019-08-02 06:06:51*
 
+## [1.94](https://github.com/tomasbjerre/violations-lib/releases/tag/1.94) (2019-06-15)
+
+
+
+
+
+
+
+### Other changes
+
+**Testing with Mavens Surefire Report #70**
+
+
+[cd486](https://github.com/tomasbjerre/violations-lib/commit/cd486448a7c4b65) Tomas Bjerre *2019-06-15 05:40:39*
 **OpenJDK 11 in Travis**
 
 
-[d5e57cf07a068bb](https://github.com/tomasbjerre/violations-lib/commit/d5e57cf07a068bb) Tomas Bjerre *2019-06-11 17:10:38*
-
+[d5e57](https://github.com/tomasbjerre/violations-lib/commit/d5e57cf07a068bb) Tomas Bjerre *2019-06-11 17:10:38*
 **doc**
 
 
-[7ec4f26bf7b94a4](https://github.com/tomasbjerre/violations-lib/commit/7ec4f26bf7b94a4) Tomas Bjerre *2019-06-09 18:09:59*
-
+[7ec4f](https://github.com/tomasbjerre/violations-lib/commit/7ec4f26bf7b94a4) Tomas Bjerre *2019-06-09 18:09:59*
 **Added JUnit parser**
 
 
-[131000779822531](https://github.com/tomasbjerre/violations-lib/commit/131000779822531) Antti Keistinen *2019-06-04 02:46:29*
+[13100](https://github.com/tomasbjerre/violations-lib/commit/131000779822531) Antti Keistinen *2019-06-04 02:46:29*
+
+## [1.93](https://github.com/tomasbjerre/violations-lib/releases/tag/1.93) (2019-06-07)
 
 
-## 1.93
-### GitHub [#69](https://github.com/tomasbjerre/violations-lib/issues/69) NumberFormatException at Flake8 parser  
-
-**Allowing noise in Flake8 parser**
 
 
-[1ab666f7d16afdd](https://github.com/tomasbjerre/violations-lib/commit/1ab666f7d16afdd) Tomas Bjerre *2019-06-07 05:38:45*
 
 
-### No issue
 
+### Other changes
+
+**Allowing noise in Flake8 parser #69**
+
+
+[1ab66](https://github.com/tomasbjerre/violations-lib/commit/1ab666f7d16afdd) Tomas Bjerre *2019-06-07 05:38:45*
 **doc**
 
 
-[8d9a2d5c16852f2](https://github.com/tomasbjerre/violations-lib/commit/8d9a2d5c16852f2) Tomas Bjerre *2019-06-01 13:41:05*
-
+[8d9a2](https://github.com/tomasbjerre/violations-lib/commit/8d9a2d5c16852f2) Tomas Bjerre *2019-06-01 13:41:05*
 **doc**
 
 
-[b9720430d4db962](https://github.com/tomasbjerre/violations-lib/commit/b9720430d4db962) Tomas Bjerre *2019-06-01 13:16:48*
-
+[b9720](https://github.com/tomasbjerre/violations-lib/commit/b9720430d4db962) Tomas Bjerre *2019-06-01 13:16:48*
 **doc**
 
 
-[09670621f7e77fe](https://github.com/tomasbjerre/violations-lib/commit/09670621f7e77fe) Tomas Bjerre *2019-06-01 10:30:52*
-
+[09670](https://github.com/tomasbjerre/violations-lib/commit/09670621f7e77fe) Tomas Bjerre *2019-06-01 10:30:52*
 **doc**
 
 
-[9697bfaefe75836](https://github.com/tomasbjerre/violations-lib/commit/9697bfaefe75836) Tomas Bjerre *2019-05-30 20:28:12*
+[9697b](https://github.com/tomasbjerre/violations-lib/commit/9697bfaefe75836) Tomas Bjerre *2019-05-30 20:28:12*
+
+## [1.92](https://github.com/tomasbjerre/violations-lib/releases/tag/1.92) (2019-04-24)
 
 
-## 1.92
-### GitHub [#68](https://github.com/tomasbjerre/violations-lib/issues/68) cpplint parser does not recognize any violations from cpplint report  
-
-**Handling line "None" in cpplint**
 
 
-[d9164ce9f45d564](https://github.com/tomasbjerre/violations-lib/commit/d9164ce9f45d564) Tomas Bjerre *2019-04-24 14:55:49*
-
-**Testing**
 
 
-[ae13633f9e953aa](https://github.com/tomasbjerre/violations-lib/commit/ae13633f9e953aa) Tomas Bjerre *2019-04-23 17:52:56*
 
-
-### No issue
+### Other changes
 
 **Bumping version**
 
 
-[2e3458328cff557](https://github.com/tomasbjerre/violations-lib/commit/2e3458328cff557) Tomas Bjerre *2019-04-24 15:24:42*
-
+[2e345](https://github.com/tomasbjerre/violations-lib/commit/2e3458328cff557) Tomas Bjerre *2019-04-24 15:24:42*
 **Bumping version**
 
 
-[6a1fd6fefb88a4c](https://github.com/tomasbjerre/violations-lib/commit/6a1fd6fefb88a4c) Tomas Bjerre *2019-04-24 15:07:14*
+[6a1fd](https://github.com/tomasbjerre/violations-lib/commit/6a1fd6fefb88a4c) Tomas Bjerre *2019-04-24 15:07:14*
+**Handling line "None" in cpplint #68**
 
 
-## 1.89
-### GitHub [#67](https://github.com/tomasbjerre/violations-lib/issues/67) Sonar Parser : Wrong Severity level -&gt; when unknow then by default set to INFO  
-
-**Correcting Sonar severity mapping**
+[d9164](https://github.com/tomasbjerre/violations-lib/commit/d9164ce9f45d564) Tomas Bjerre *2019-04-24 14:55:49*
+**Testing #68**
 
 
-[1eeafaff359c01b](https://github.com/tomasbjerre/violations-lib/commit/1eeafaff359c01b) Tomas Bjerre *2019-03-29 14:40:51*
+[ae136](https://github.com/tomasbjerre/violations-lib/commit/ae13633f9e953aa) Tomas Bjerre *2019-04-23 17:52:56*
+
+## [1.89](https://github.com/tomasbjerre/violations-lib/releases/tag/1.89) (2019-04-03)
 
 
-### No issue
+
+
+
+
+
+### Other changes
 
 **Note on Sonar**
 
 
-[7656a723dea9410](https://github.com/tomasbjerre/violations-lib/commit/7656a723dea9410) Tomas Bjerre *2019-04-03 14:17:03*
-
+[7656a](https://github.com/tomasbjerre/violations-lib/commit/7656a723dea9410) Tomas Bjerre *2019-04-03 14:17:03*
 **Bumping version**
 
 
-[227760877d0df93](https://github.com/tomasbjerre/violations-lib/commit/227760877d0df93) Tomas Bjerre *2019-03-29 15:03:56*
-
+[22776](https://github.com/tomasbjerre/violations-lib/commit/227760877d0df93) Tomas Bjerre *2019-03-29 15:03:56*
 **Bumping version**
 
 
-[2aa01b76eaf839d](https://github.com/tomasbjerre/violations-lib/commit/2aa01b76eaf839d) Tomas Bjerre *2019-03-29 14:56:12*
+[2aa01](https://github.com/tomasbjerre/violations-lib/commit/2aa01b76eaf839d) Tomas Bjerre *2019-03-29 14:56:12*
+**Correcting Sonar severity mapping #67**
 
 
-## 1.86
-### GitHub [#66](https://github.com/tomasbjerre/violations-lib/issues/66) Add support for SonarQube preview report    *enhancement*  
+[1eeaf](https://github.com/tomasbjerre/violations-lib/commit/1eeafaff359c01b) Tomas Bjerre *2019-03-29 14:40:51*
 
-**Sonar Report**
-
-
-[09af9bc235197db](https://github.com/tomasbjerre/violations-lib/commit/09af9bc235197db) Tomas Bjerre *2019-03-23 14:28:21*
+## [1.86](https://github.com/tomasbjerre/violations-lib/releases/tag/1.86) (2019-03-23)
 
 
-## 1.85
-### GitHub [#65](https://github.com/tomasbjerre/violations-lib/pull/65) Add line attribute to one of the issues reported  
-
-**Correcting test case after merge of**
 
 
-[c2f538660c3f1a5](https://github.com/tomasbjerre/violations-lib/commit/c2f538660c3f1a5) Tomas Bjerre *2019-03-13 18:57:38*
 
 
-### No issue
 
+### Other changes
+
+**Sonar Report #66**
+
+
+[09af9](https://github.com/tomasbjerre/violations-lib/commit/09af9bc235197db) Tomas Bjerre *2019-03-23 14:28:21*
+
+## [1.85](https://github.com/tomasbjerre/violations-lib/releases/tag/1.85) (2019-03-13)
+
+
+
+
+
+
+
+### Other changes
+
+**Correcting test case after merge of #65**
+
+
+[c2f53](https://github.com/tomasbjerre/violations-lib/commit/c2f538660c3f1a5) Tomas Bjerre *2019-03-13 18:57:38*
 **Add line attribute to one of the issues reported**
 
 * Add line attribute to one of the issues reported to test optional line number plotting in klocwork report 
 
-[7899d43347d69e3](https://github.com/tomasbjerre/violations-lib/commit/7899d43347d69e3) deepuj *2019-03-13 18:43:05*
-
+[7899d](https://github.com/tomasbjerre/violations-lib/commit/7899d43347d69e3) deepuj *2019-03-13 18:43:05*
 **Support line number optionally in klocwork reports**
 
 
-[b74f84862211f55](https://github.com/tomasbjerre/violations-lib/commit/b74f84862211f55) deepuj *2019-03-13 18:38:16*
+[b74f8](https://github.com/tomasbjerre/violations-lib/commit/b74f84862211f55) deepuj *2019-03-13 18:38:16*
+
+## [1.84](https://github.com/tomasbjerre/violations-lib/releases/tag/1.84) (2019-03-07)
 
 
-## 1.84
-### No issue
+
+
+
+
+
+### Other changes
 
 **golangci-lint**
 
 
-[fb3dd6173a2dc80](https://github.com/tomasbjerre/violations-lib/commit/fb3dd6173a2dc80) Tomas Bjerre *2019-03-07 17:08:38*
+[fb3dd](https://github.com/tomasbjerre/violations-lib/commit/fb3dd6173a2dc80) Tomas Bjerre *2019-03-07 17:08:38*
+
+## [1.83](https://github.com/tomasbjerre/violations-lib/releases/tag/1.83) (2019-03-07)
 
 
-## 1.83
-### No issue
+
+
+
+
+
+### Other changes
 
 **Add support for golangci-lint flavoured Checkstyle**
 
 * aka Checkstyle 5.0, apparently. 
 * Signed-off-by: Nic Cope &lt;negz@rk0n.org&gt; 
 
-[1bf2826f6b26e4a](https://github.com/tomasbjerre/violations-lib/commit/1bf2826f6b26e4a) Nic Cope *2019-03-07 10:25:12*
-
+[1bf28](https://github.com/tomasbjerre/violations-lib/commit/1bf2826f6b26e4a) Nic Cope *2019-03-07 10:25:12*
 **Add a test demonstrating that golangci-lint Checkstyle does not parse**
 
 * Signed-off-by: Nic Cope &lt;negz@rk0n.org&gt; 
 
-[82712daea397daf](https://github.com/tomasbjerre/violations-lib/commit/82712daea397daf) Nic Cope *2019-03-07 10:22:37*
+[82712](https://github.com/tomasbjerre/violations-lib/commit/82712daea397daf) Nic Cope *2019-03-07 10:22:37*
+
+## [1.82](https://github.com/tomasbjerre/violations-lib/releases/tag/1.82) (2019-02-25)
 
 
-## 1.82
-### GitHub [#54](https://github.com/tomasbjerre/violations-lib/issues/54) locationChunks in CppCheck are reported as individual violations  
-
-**Adding group attribute**
 
 
-[df1c897e8d473a3](https://github.com/tomasbjerre/violations-lib/commit/df1c897e8d473a3) Tomas Bjerre *2019-02-24 15:28:55*
 
 
-### No issue
 
+### Other changes
+
+**Adding group attribute #54**
+
+
+[df1c8](https://github.com/tomasbjerre/violations-lib/commit/df1c897e8d473a3) Tomas Bjerre *2019-02-24 15:28:55*
 **Example streaming**
 
 
-[f9fb95039e88d97](https://github.com/tomasbjerre/violations-lib/commit/f9fb95039e88d97) Tomas Bjerre *2019-02-20 17:19:25*
+[f9fb9](https://github.com/tomasbjerre/violations-lib/commit/f9fb95039e88d97) Tomas Bjerre *2019-02-20 17:19:25*
+
+## [1.81](https://github.com/tomasbjerre/violations-lib/releases/tag/1.81) (2019-02-10)
 
 
-## 1.81
-### GitHub [#58](https://github.com/tomasbjerre/violations-lib/issues/58) [flake8] file names with prefix &#x60;./&#x60; are not detected  
-
-**Correcting Flake8 parser**
 
 
-[14d611e4bbf390b](https://github.com/tomasbjerre/violations-lib/commit/14d611e4bbf390b) Tomas Bjerre *2019-02-10 15:35:41*
 
 
-## 1.80
-### No issue
+
+### Other changes
+
+**Correcting Flake8 parser #58**
+
+
+[14d61](https://github.com/tomasbjerre/violations-lib/commit/14d611e4bbf390b) Tomas Bjerre *2019-02-10 15:35:41*
+
+## [1.80](https://github.com/tomasbjerre/violations-lib/releases/tag/1.80) (2019-02-02)
+
+
+
+
+
+
+
+### Other changes
 
 **Sorting reporters in README**
 
 
-[345c4aa528b1bbf](https://github.com/tomasbjerre/violations-lib/commit/345c4aa528b1bbf) Tomas Bjerre *2019-02-02 09:35:10*
-
+[345c4](https://github.com/tomasbjerre/violations-lib/commit/345c4aa528b1bbf) Tomas Bjerre *2019-02-02 09:35:10*
 **Documentation changed to reflect the support for Scalastyle**
 
 
-[edd14d12d04c619](https://github.com/tomasbjerre/violations-lib/commit/edd14d12d04c619) Andre Carmo *2019-02-01 23:50:25*
-
+[edd14](https://github.com/tomasbjerre/violations-lib/commit/edd14d12d04c619) Andre Carmo *2019-02-01 23:50:25*
 **Added ScalaStyle reporter with CheckStyle parser**
 
 
-[bcf7092fa4f321d](https://github.com/tomasbjerre/violations-lib/commit/bcf7092fa4f321d) Andre Carmo *2019-02-01 23:30:12*
-
+[bcf70](https://github.com/tomasbjerre/violations-lib/commit/bcf7092fa4f321d) Andre Carmo *2019-02-01 23:30:12*
 **Doc**
 
 
-[2c6a31e642acd8e](https://github.com/tomasbjerre/violations-lib/commit/2c6a31e642acd8e) Tomas Bjerre *2019-01-30 17:00:29*
+[2c6a3](https://github.com/tomasbjerre/violations-lib/commit/2c6a31e642acd8e) Tomas Bjerre *2019-01-30 17:00:29*
+
+## [1.79](https://github.com/tomasbjerre/violations-lib/releases/tag/1.79) (2019-01-29)
 
 
-## 1.79
-### GitHub [#55](https://github.com/tomasbjerre/violations-lib/issues/55) Support for IAR compiler warnings    *enhancement*  
-
-**MSCPP and IAR**
 
 
-[91a9b89bc4514f4](https://github.com/tomasbjerre/violations-lib/commit/91a9b89bc4514f4) Tomas Bjerre *2019-01-29 16:59:16*
 
 
-### GitHub [#56](https://github.com/tomasbjerre/violations-lib/issues/56) Support for Microsoft Visual C++ compiler via msys2 makefile    *enhancement*  
 
-**MSCPP and IAR**
+### Other changes
 
-
-[91a9b89bc4514f4](https://github.com/tomasbjerre/violations-lib/commit/91a9b89bc4514f4) Tomas Bjerre *2019-01-29 16:59:16*
+**MSCPP and IAR #55 #56**
 
 
-### No issue
-
+[91a9b](https://github.com/tomasbjerre/violations-lib/commit/91a9b89bc4514f4) Tomas Bjerre *2019-01-29 16:59:16*
 **Including info in CppCheck**
 
 
-[69e26e53cdcbf77](https://github.com/tomasbjerre/violations-lib/commit/69e26e53cdcbf77) Tomas Bjerre *2019-01-23 07:22:24*
+[69e26](https://github.com/tomasbjerre/violations-lib/commit/69e26e53cdcbf77) Tomas Bjerre *2019-01-23 07:22:24*
+
+## [1.78](https://github.com/tomasbjerre/violations-lib/releases/tag/1.78) (2019-01-14)
 
 
-## 1.78
-### GitHub [#53](https://github.com/tomasbjerre/violations-lib/issues/53) Shouldn&#x27;t CodeNarc-Parsing respect SourceDirectory-Element    *bug*  
-
-**Avoiding faulty slash with CodeNarc**
 
 
-[fa97ac81772c01b](https://github.com/tomasbjerre/violations-lib/commit/fa97ac81772c01b) Tomas Bjerre *2019-01-14 17:05:33*
 
 
-## 1.77
-### GitHub [#53](https://github.com/tomasbjerre/violations-lib/issues/53) Shouldn&#x27;t CodeNarc-Parsing respect SourceDirectory-Element    *bug*  
 
-**Respecting source directory in CodeNarc**
+### Other changes
 
-
-[2fbb203859a0636](https://github.com/tomasbjerre/violations-lib/commit/2fbb203859a0636) Tomas Bjerre *2019-01-08 20:14:11*
+**Avoiding faulty slash with CodeNarc #53**
 
 
-### No issue
+[fa97a](https://github.com/tomasbjerre/violations-lib/commit/fa97ac81772c01b) Tomas Bjerre *2019-01-14 17:05:33*
+
+## [1.77](https://github.com/tomasbjerre/violations-lib/releases/tag/1.77) (2019-01-09)
+
+
+
+
+
+
+
+### Other changes
 
 **Setting version to fix faulty release**
 
 
-[547751028bcc781](https://github.com/tomasbjerre/violations-lib/commit/547751028bcc781) Tomas Bjerre *2019-01-09 16:42:44*
-
+[54775](https://github.com/tomasbjerre/violations-lib/commit/547751028bcc781) Tomas Bjerre *2019-01-09 16:42:44*
 **Setting version to fix faulty release**
 
 
-[5754b1124779614](https://github.com/tomasbjerre/violations-lib/commit/5754b1124779614) Tomas Bjerre *2019-01-09 16:27:05*
+[5754b](https://github.com/tomasbjerre/violations-lib/commit/5754b1124779614) Tomas Bjerre *2019-01-09 16:27:05*
+**Respecting source directory in CodeNarc #53**
 
 
-## 1.74
-### GitHub [#52](https://github.com/tomasbjerre/violations-lib/issues/52) Ansible Lint issue    *bug*  
+[2fbb2](https://github.com/tomasbjerre/violations-lib/commit/2fbb203859a0636) Tomas Bjerre *2019-01-08 20:14:11*
 
-**Correctly parsing AnsibleLint**
-
-
-[6c95cf891f06873](https://github.com/tomasbjerre/violations-lib/commit/6c95cf891f06873) Tomas Bjerre *2019-01-02 21:06:41*
+## [1.74](https://github.com/tomasbjerre/violations-lib/releases/tag/1.74) (2019-01-02)
 
 
-### No issue
 
+
+
+
+
+### Other changes
+
+**Correctly parsing AnsibleLint #52**
+
+
+[6c95c](https://github.com/tomasbjerre/violations-lib/commit/6c95cf891f06873) Tomas Bjerre *2019-01-02 21:06:41*
 **Podam update**
 
 
-[274b7897621d919](https://github.com/tomasbjerre/violations-lib/commit/274b7897621d919) Tomas Bjerre *2018-12-22 11:38:33*
+[274b7](https://github.com/tomasbjerre/violations-lib/commit/274b7897621d919) Tomas Bjerre *2018-12-22 11:38:33*
+
+## [1.73](https://github.com/tomasbjerre/violations-lib/releases/tag/1.73) (2018-11-15)
 
 
-## 1.73
-### GitHub [#51](https://github.com/tomasbjerre/violations-lib/issues/51) Embedded Ruby Templates    *enhancement*  
-
-**Documenting ERB**
 
 
-[50bcfaaf1afdbdd](https://github.com/tomasbjerre/violations-lib/commit/50bcfaaf1afdbdd) Tomas Bjerre *2018-11-15 17:23:40*
 
 
-## 1.72
-### GitHub [#50](https://github.com/tomasbjerre/violations-lib/issues/50) puppet-lint  
 
-**Documenting Puppet-Lint**
+### Other changes
 
-
-[ec23727e779c721](https://github.com/tomasbjerre/violations-lib/commit/ec23727e779c721) Tomas Bjerre *2018-11-14 19:10:04*
+**Documenting ERB #51**
 
 
-## 1.71
-### No issue
+[50bcf](https://github.com/tomasbjerre/violations-lib/commit/50bcfaaf1afdbdd) Tomas Bjerre *2018-11-15 17:23:40*
+
+## [1.72](https://github.com/tomasbjerre/violations-lib/releases/tag/1.72) (2018-11-14)
+
+
+
+
+
+
+
+### Other changes
+
+**Documenting Puppet-Lint #50**
+
+
+[ec237](https://github.com/tomasbjerre/violations-lib/commit/ec23727e779c721) Tomas Bjerre *2018-11-14 19:10:04*
+
+## [1.71](https://github.com/tomasbjerre/violations-lib/releases/tag/1.71) (2018-10-08)
+
+
+
+
+
+
+
+### Other changes
 
 **Removing custom Optional**
 
 
-[8e0005f4897a74d](https://github.com/tomasbjerre/violations-lib/commit/8e0005f4897a74d) Tomas Bjerre *2018-10-08 14:10:31*
+[8e000](https://github.com/tomasbjerre/violations-lib/commit/8e0005f4897a74d) Tomas Bjerre *2018-10-08 14:10:31*
+
+## [1.70](https://github.com/tomasbjerre/violations-lib/releases/tag/1.70) (2018-10-08)
 
 
-## 1.70
-### No issue
+
+
+
+
+
+### Other changes
 
 **Making readme update work on Windows**
 
 
-[7fbdda0d6a1090a](https://github.com/tomasbjerre/violations-lib/commit/7fbdda0d6a1090a) Tomas Bjerre *2018-10-08 06:22:35*
+[7fbdd](https://github.com/tomasbjerre/violations-lib/commit/7fbdda0d6a1090a) Tomas Bjerre *2018-10-08 06:22:35*
+
+## [1.69](https://github.com/tomasbjerre/violations-lib/releases/tag/1.69) (2018-10-06)
 
 
-## 1.69
-### GitHub [#46](https://github.com/tomasbjerre/violations-lib/issues/46) Incomplete rule IDs in Flake8 parser    *enhancement*  
-
-**Including entire rule in Flake8**
 
 
-[67c8480c165d673](https://github.com/tomasbjerre/violations-lib/commit/67c8480c165d673) Tomas Bjerre *2018-10-06 06:18:22*
 
 
-### No issue
 
+### Other changes
+
+**Including entire rule in Flake8 #46**
+
+
+[67c84](https://github.com/tomasbjerre/violations-lib/commit/67c8480c165d673) Tomas Bjerre *2018-10-06 06:18:22*
 **Updating changelog**
 
 
-[df5387dbf1d4db3](https://github.com/tomasbjerre/violations-lib/commit/df5387dbf1d4db3) Tomas Bjerre *2018-09-25 07:29:46*
+[df538](https://github.com/tomasbjerre/violations-lib/commit/df5387dbf1d4db3) Tomas Bjerre *2018-09-25 07:29:46*
+
+## [1.67](https://github.com/tomasbjerre/violations-lib/releases/tag/1.67) (2018-09-23)
 
 
-## 1.67
-### No issue
-
-**Automating reporters in readme**
 
 
-[01d4a55ff297bd5](https://github.com/tomasbjerre/violations-lib/commit/01d4a55ff297bd5) Tomas Bjerre *2018-09-23 11:54:36*
 
 
-## 1.66
-### No issue
+
+### Other changes
 
 **Automating reporters in readme**
 
 
-[ef097c18f85e488](https://github.com/tomasbjerre/violations-lib/commit/ef097c18f85e488) Tomas Bjerre *2018-09-23 11:38:55*
+[01d4a](https://github.com/tomasbjerre/violations-lib/commit/01d4a55ff297bd5) Tomas Bjerre *2018-09-23 11:54:36*
 
+## [1.66](https://github.com/tomasbjerre/violations-lib/releases/tag/1.66) (2018-09-23)
+
+
+
+
+
+
+
+### Other changes
+
+**Automating reporters in readme**
+
+
+[ef097](https://github.com/tomasbjerre/violations-lib/commit/ef097c18f85e488) Tomas Bjerre *2018-09-23 11:38:55*
 **Doc**
 
 
-[93a2736d0116198](https://github.com/tomasbjerre/violations-lib/commit/93a2736d0116198) Tomas Bjerre *2018-09-22 17:08:39*
-
+[93a27](https://github.com/tomasbjerre/violations-lib/commit/93a2736d0116198) Tomas Bjerre *2018-09-22 17:08:39*
 **Documenting parsers as a table**
 
 
-[ba0e4e7044e2300](https://github.com/tomasbjerre/violations-lib/commit/ba0e4e7044e2300) Tomas Bjerre *2018-09-22 08:37:03*
-
+[ba0e4](https://github.com/tomasbjerre/violations-lib/commit/ba0e4e7044e2300) Tomas Bjerre *2018-09-22 08:37:03*
 **Updating README.md**
 
 
-[cc731ae81a2150e](https://github.com/tomasbjerre/violations-lib/commit/cc731ae81a2150e) Tomas Bjerre *2018-09-22 08:01:27*
+[cc731](https://github.com/tomasbjerre/violations-lib/commit/cc731ae81a2150e) Tomas Bjerre *2018-09-22 08:01:27*
+
+## [1.65](https://github.com/tomasbjerre/violations-lib/releases/tag/1.65) (2018-09-20)
 
 
-## 1.65
-### GitHub [#45](https://github.com/tomasbjerre/violations-lib/issues/45) False positive matches in KotlinGradleParser    *enhancement*  
-
-**Correcting Kotlin parsers**
 
 
-[fb2ce3dc8149194](https://github.com/tomasbjerre/violations-lib/commit/fb2ce3dc8149194) Tomas Bjerre *2018-09-20 23:01:21*
 
 
-## 1.64
-### GitHub [#44](https://github.com/tomasbjerre/violations-lib/issues/44) Support kotlinc warnings    *enhancement*  
 
-**Kotlin Maven and Gradle parsers**
+### Other changes
 
-
-[59daadfab031933](https://github.com/tomasbjerre/violations-lib/commit/59daadfab031933) Tomas Bjerre *2018-09-20 13:45:35*
+**Correcting Kotlin parsers #45**
 
 
-## 1.63
-### No issue
+[fb2ce](https://github.com/tomasbjerre/violations-lib/commit/fb2ce3dc8149194) Tomas Bjerre *2018-09-20 23:01:21*
+
+## [1.64](https://github.com/tomasbjerre/violations-lib/releases/tag/1.64) (2018-09-20)
+
+
+
+
+
+
+
+### Other changes
+
+**Kotlin Maven and Gradle parsers #44**
+
+
+[59daa](https://github.com/tomasbjerre/violations-lib/commit/59daadfab031933) Tomas Bjerre *2018-09-20 13:45:35*
+
+## [1.63](https://github.com/tomasbjerre/violations-lib/releases/tag/1.63) (2018-09-17)
+
+
+
+
+
+
+
+### Other changes
 
 **fixed yamllint parser**
 
 
-[8f804cf422e884d](https://github.com/tomasbjerre/violations-lib/commit/8f804cf422e884d) Aleksei_Philippov *2018-09-17 12:59:38*
+[8f804](https://github.com/tomasbjerre/violations-lib/commit/8f804cf422e884d) Aleksei_Philippov *2018-09-17 12:59:38*
+
+## [1.62](https://github.com/tomasbjerre/violations-lib/releases/tag/1.62) (2018-09-15)
 
 
-## 1.62
-### GitHub [#42](https://github.com/tomasbjerre/violations-lib/pull/42) Added yamllint parser  
-
-**Correcting YAMLLint**
 
 
-[fd4e6df1b950bd4](https://github.com/tomasbjerre/violations-lib/commit/fd4e6df1b950bd4) Tomas Bjerre *2018-09-15 07:29:13*
 
 
-### No issue
 
+### Other changes
+
+**Correcting YAMLLint #42**
+
+
+[fd4e6](https://github.com/tomasbjerre/violations-lib/commit/fd4e6df1b950bd4) Tomas Bjerre *2018-09-15 07:29:13*
 **Gradle Wrapper 4.10.1**
 
 
-[baf59e87c9821da](https://github.com/tomasbjerre/violations-lib/commit/baf59e87c9821da) Tomas Bjerre *2018-09-15 05:56:42*
-
+[baf59](https://github.com/tomasbjerre/violations-lib/commit/baf59e87c9821da) Tomas Bjerre *2018-09-15 05:56:42*
 **updated README**
 
 
-[f66213f734f7b6f](https://github.com/tomasbjerre/violations-lib/commit/f66213f734f7b6f) Alexey Filippov *2018-09-14 22:05:06*
-
+[f6621](https://github.com/tomasbjerre/violations-lib/commit/f66213f734f7b6f) Alexey Filippov *2018-09-14 22:05:06*
 **added rules for parser**
 
 
-[9333395b1ec1dda](https://github.com/tomasbjerre/violations-lib/commit/9333395b1ec1dda) Alexey Filippov *2018-09-14 21:59:27*
-
+[93333](https://github.com/tomasbjerre/violations-lib/commit/9333395b1ec1dda) Alexey Filippov *2018-09-14 21:59:27*
 **Added YAMLlint parser**
 
 
-[ae03c28f28b005c](https://github.com/tomasbjerre/violations-lib/commit/ae03c28f28b005c) Aleksei_Philippov *2018-09-14 15:18:11*
+[ae03c](https://github.com/tomasbjerre/violations-lib/commit/ae03c28f28b005c) Aleksei_Philippov *2018-09-14 15:18:11*
+
+## [1.61](https://github.com/tomasbjerre/violations-lib/releases/tag/1.61) (2018-09-12)
 
 
-## 1.61
-### No issue
+
+
+
+
+
+### Other changes
 
 **Removing Fliptables dependency**
 
 
-[32f55e98cc590cb](https://github.com/tomasbjerre/violations-lib/commit/32f55e98cc590cb) Tomas Bjerre *2018-09-12 20:19:43*
+[32f55](https://github.com/tomasbjerre/violations-lib/commit/32f55e98cc590cb) Tomas Bjerre *2018-09-12 20:19:43*
+
+## [1.60](https://github.com/tomasbjerre/violations-lib/releases/tag/1.60) (2018-09-12)
 
 
-## 1.60
-### No issue
+
+
+
+
+
+### Other changes
 
 **Fix copy-n-paste in reporting CPD violations**
 
 
-[bcc9aaf0f8bf978](https://github.com/tomasbjerre/violations-lib/commit/bcc9aaf0f8bf978) terje *2018-09-12 18:05:59*
-
+[bcc9a](https://github.com/tomasbjerre/violations-lib/commit/bcc9aaf0f8bf978) terje *2018-09-12 18:05:59*
 **Testing Spotbugs**
 
 
-[457780347d3fb94](https://github.com/tomasbjerre/violations-lib/commit/457780347d3fb94) Tomas Bjerre *2018-09-12 16:32:10*
+[45778](https://github.com/tomasbjerre/violations-lib/commit/457780347d3fb94) Tomas Bjerre *2018-09-12 16:32:10*
+
+## [1.59](https://github.com/tomasbjerre/violations-lib/releases/tag/1.59) (2018-08-18)
 
 
-## 1.59
-### GitHub [#39](https://github.com/tomasbjerre/violations-lib/issues/39) AndroidLintParser doesn&#x27;t expose rule correctly    *enhancement*  
-
-**Adding category to model**
 
 
-[9fa7ff29c678148](https://github.com/tomasbjerre/violations-lib/commit/9fa7ff29c678148) Tomas Bjerre *2018-08-18 14:13:38*
 
 
-## 1.58
-### No issue
+
+### Other changes
+
+**Adding category to model #39**
+
+
+[9fa7f](https://github.com/tomasbjerre/violations-lib/commit/9fa7ff29c678148) Tomas Bjerre *2018-08-18 14:13:38*
+
+## [1.58](https://github.com/tomasbjerre/violations-lib/releases/tag/1.58) (2018-07-27)
+
+
+
+
+
+
+
+### Other changes
 
 **Cleaning Violation class, reducing memory**
 
 
-[efb508a5d73ad23](https://github.com/tomasbjerre/violations-lib/commit/efb508a5d73ad23) Tomas Bjerre *2018-07-27 07:14:16*
+[efb50](https://github.com/tomasbjerre/violations-lib/commit/efb508a5d73ad23) Tomas Bjerre *2018-07-27 07:14:16*
+
+## [1.57](https://github.com/tomasbjerre/violations-lib/releases/tag/1.57) (2018-07-04)
 
 
-## 1.57
-### GitHub [#38](https://github.com/tomasbjerre/violations-lib/issues/38) gcc, ARM-Gcc and Doxygen    *enhancement*  
-
-**GCC, ARM GCC and Doxygen**
 
 
-[062647397a858f0](https://github.com/tomasbjerre/violations-lib/commit/062647397a858f0) Tomas Bjerre *2018-07-04 17:41:33*
 
 
-## 1.56
-### No issue
+
+### Other changes
+
+**GCC, ARM GCC and Doxygen #38**
+
+
+[06264](https://github.com/tomasbjerre/violations-lib/commit/062647397a858f0) Tomas Bjerre *2018-07-04 17:41:33*
+
+## [1.56](https://github.com/tomasbjerre/violations-lib/releases/tag/1.56) (2018-07-04)
+
+
+
+
+
+
+
+### Other changes
 
 **Excaped message and filename**
 
 
-[04313947c88e23a](https://github.com/tomasbjerre/violations-lib/commit/04313947c88e23a) Tomas Bjerre *2018-07-04 10:05:38*
-
+[04313](https://github.com/tomasbjerre/violations-lib/commit/04313947c88e23a) Tomas Bjerre *2018-07-04 10:05:38*
 **Issue template**
 
 
-[990f4d6da1000b6](https://github.com/tomasbjerre/violations-lib/commit/990f4d6da1000b6) Tomas Bjerre *2018-07-03 14:12:54*
-
+[990f4](https://github.com/tomasbjerre/violations-lib/commit/990f4d6da1000b6) Tomas Bjerre *2018-07-03 14:12:54*
 **Updating docs on PyLint**
 
 
-[4016805bf281f1f](https://github.com/tomasbjerre/violations-lib/commit/4016805bf281f1f) Tomas Bjerre *2018-05-03 17:08:10*
+[40168](https://github.com/tomasbjerre/violations-lib/commit/4016805bf281f1f) Tomas Bjerre *2018-05-03 17:08:10*
+
+## [1.55](https://github.com/tomasbjerre/violations-lib/releases/tag/1.55) (2018-05-01)
 
 
-## 1.55
-### GitHub [#33](https://github.com/tomasbjerre/violations-lib/issues/33) Add support for NullAway    *enhancement*  
-
-**NullAway**
 
 
-[72244241bbd2ead](https://github.com/tomasbjerre/violations-lib/commit/72244241bbd2ead) Tomas Bjerre *2018-04-14 05:08:26*
 
 
-### GitHub [#35](https://github.com/tomasbjerre/violations-lib/issues/35) cpplint parser does not recognize any violations    *bug*  
 
-**Testing cpplint variant**
-
-
-[8455fc596c6a547](https://github.com/tomasbjerre/violations-lib/commit/8455fc596c6a547) Tomas Bjerre *2018-04-13 11:45:16*
-
-
-### No issue
+### Other changes
 
 **Avoiding Optional in model**
 
 
-[a2c03571ee99246](https://github.com/tomasbjerre/violations-lib/commit/a2c03571ee99246) Tomas Bjerre *2018-05-01 04:58:35*
-
+[a2c03](https://github.com/tomasbjerre/violations-lib/commit/a2c03571ee99246) Tomas Bjerre *2018-05-01 04:58:35*
 **TSLint**
 
 
-[9df7684f4fba7e8](https://github.com/tomasbjerre/violations-lib/commit/9df7684f4fba7e8) Tomas Bjerre *2018-04-20 10:06:18*
+[9df76](https://github.com/tomasbjerre/violations-lib/commit/9df7684f4fba7e8) Tomas Bjerre *2018-04-20 10:06:18*
+**NullAway #33**
 
+
+[72244](https://github.com/tomasbjerre/violations-lib/commit/72244241bbd2ead) Tomas Bjerre *2018-04-14 05:08:26*
+**Testing cpplint variant #35**
+
+
+[8455f](https://github.com/tomasbjerre/violations-lib/commit/8455fc596c6a547) Tomas Bjerre *2018-04-13 11:45:16*
 **Adding another PMD test**
 
 
-[c36c7bd5a99a442](https://github.com/tomasbjerre/violations-lib/commit/c36c7bd5a99a442) Tomas Bjerre *2018-03-07 18:05:26*
-
+[c36c7](https://github.com/tomasbjerre/violations-lib/commit/c36c7bd5a99a442) Tomas Bjerre *2018-03-07 18:05:26*
 **Fixed typo (assertion on wrong issue checked).**
 
 
-[5381b5d9381a6d1](https://github.com/tomasbjerre/violations-lib/commit/5381b5d9381a6d1) Ulli Hafner *2018-03-02 22:56:12*
-
+[5381b](https://github.com/tomasbjerre/violations-lib/commit/5381b5d9381a6d1) Ulli Hafner *2018-03-02 22:56:12*
 **Bumping version to fix release**
 
 
-[1cbb6a7a096604b](https://github.com/tomasbjerre/violations-lib/commit/1cbb6a7a096604b) Tomas Bjerre *2018-02-13 18:25:15*
-
+[1cbb6](https://github.com/tomasbjerre/violations-lib/commit/1cbb6a7a096604b) Tomas Bjerre *2018-02-13 18:25:15*
 **Autoformatting and removed debug code**
 
 
-[5e3d49f4165798e](https://github.com/tomasbjerre/violations-lib/commit/5e3d49f4165798e) Øyvind Rørtveit *2018-02-13 15:10:07*
-
+[5e3d4](https://github.com/tomasbjerre/violations-lib/commit/5e3d49f4165798e) Øyvind Rørtveit *2018-02-13 15:10:07*
 **Fixed file parsing under Windows, fixed PC-lint parser, added detection of MISRA errors for PC-lint**
 
 
-[45d308d631a6113](https://github.com/tomasbjerre/violations-lib/commit/45d308d631a6113) Øyvind Rørtveit *2018-02-13 14:51:34*
-
+[45d30](https://github.com/tomasbjerre/violations-lib/commit/45d308d631a6113) Øyvind Rørtveit *2018-02-13 14:51:34*
 **Added PC-lint parser**
 
 
-[be94e0831808f2b](https://github.com/tomasbjerre/violations-lib/commit/be94e0831808f2b) Øyvind Rørtveit *2018-02-12 16:36:04*
+[be94e](https://github.com/tomasbjerre/violations-lib/commit/be94e0831808f2b) Øyvind Rørtveit *2018-02-12 16:36:04*
+
+## [1.52](https://github.com/tomasbjerre/violations-lib/releases/tag/1.52) (2018-01-14)
 
 
-## 1.52
-### GitHub [#10](https://github.com/tomasbjerre/violations-lib/issues/10) Google error-prone    *enhancement*  
-
-**Google error-prone**
 
 
-[f2720de0ec7d36c](https://github.com/tomasbjerre/violations-lib/commit/f2720de0ec7d36c) Tomas Bjerre *2018-01-14 11:20:10*
 
 
-## 1.51
-### GitHub [#30](https://github.com/tomasbjerre/violations-lib/pull/30) Parameterize the max line length for the report table.  
 
-**Parameterize max width of reporter table**
+### Other changes
 
-
-[87c5ab7cb5f4ae7](https://github.com/tomasbjerre/violations-lib/commit/87c5ab7cb5f4ae7) Tomas Bjerre *2018-01-13 19:06:03*
+**Google error-prone #10**
 
 
-## 1.50
-### GitHub [#28](https://github.com/tomasbjerre/violations-lib/issues/28) Single quotes in xml are printed as &amp;apos;   
+[f2720](https://github.com/tomasbjerre/violations-lib/commit/f2720de0ec7d36c) Tomas Bjerre *2018-01-14 11:20:10*
 
-**Un-escape XML when reading attributes.**
-
-* Fixes 
-
-[9b10f800c7b7941](https://github.com/tomasbjerre/violations-lib/commit/9b10f800c7b7941) Sam Judd *2017-12-31 03:25:14*
+## [1.51](https://github.com/tomasbjerre/violations-lib/releases/tag/1.51) (2018-01-13)
 
 
-### No issue
+
+
+
+
+
+### Other changes
+
+**Parameterize max width of reporter table #30**
+
+
+[87c5a](https://github.com/tomasbjerre/violations-lib/commit/87c5ab7cb5f4ae7) Tomas Bjerre *2018-01-13 19:06:03*
+
+## [1.50](https://github.com/tomasbjerre/violations-lib/releases/tag/1.50) (2017-12-31)
+
+
+
+
+
+
+
+### Other changes
 
 **Gathering string utils**
 
 
-[6951f1a5039f968](https://github.com/tomasbjerre/violations-lib/commit/6951f1a5039f968) Tomas Bjerre *2017-12-31 05:51:14*
+[6951f](https://github.com/tomasbjerre/violations-lib/commit/6951f1a5039f968) Tomas Bjerre *2017-12-31 05:51:14*
+**Un-escape XML when reading attributes.**
+
+* Fixes #28 
+
+[9b10f](https://github.com/tomasbjerre/violations-lib/commit/9b10f800c7b7941) Sam Judd *2017-12-31 03:25:14*
+
+## [1.49](https://github.com/tomasbjerre/violations-lib/releases/tag/1.49) (2017-12-30)
 
 
-## 1.49
-### No issue
+
+
+
+
+
+### Other changes
 
 **Relocating to correct Java identifier**
 
 
-[8e64583ce0fec03](https://github.com/tomasbjerre/violations-lib/commit/8e64583ce0fec03) Tomas Bjerre *2017-12-30 18:32:34*
-
+[8e645](https://github.com/tomasbjerre/violations-lib/commit/8e64583ce0fec03) Tomas Bjerre *2017-12-30 18:32:34*
 **Doc**
 
 
-[ba8ca533c8ada71](https://github.com/tomasbjerre/violations-lib/commit/ba8ca533c8ada71) Tomas Bjerre *2017-12-30 10:27:45*
+[ba8ca](https://github.com/tomasbjerre/violations-lib/commit/ba8ca533c8ada71) Tomas Bjerre *2017-12-30 10:27:45*
+
+## [1.48](https://github.com/tomasbjerre/violations-lib/releases/tag/1.48) (2017-12-25)
 
 
-## 1.48
-### No issue
+
+
+
+
+
+### Other changes
 
 **Limiting width of report messages**
 
 
-[0f4c1919ccf1ae3](https://github.com/tomasbjerre/violations-lib/commit/0f4c1919ccf1ae3) Tomas Bjerre *2017-12-25 16:02:22*
+[0f4c1](https://github.com/tomasbjerre/violations-lib/commit/0f4c1919ccf1ae3) Tomas Bjerre *2017-12-25 16:02:22*
+
+## [1.47](https://github.com/tomasbjerre/violations-lib/releases/tag/1.47) (2017-12-25)
 
 
-## 1.47
-### No issue
+
+
+
+
+
+### Other changes
 
 **Using UTF-8, instead of default**
 
 
-[b3c21719bdce84c](https://github.com/tomasbjerre/violations-lib/commit/b3c21719bdce84c) Tomas Bjerre *2017-12-24 21:49:53*
-
+[b3c21](https://github.com/tomasbjerre/violations-lib/commit/b3c21719bdce84c) Tomas Bjerre *2017-12-24 21:49:53*
 **Re-throwing any IOException**
 
 
-[6c5f8f5b9edf1dc](https://github.com/tomasbjerre/violations-lib/commit/6c5f8f5b9edf1dc) Tomas Bjerre *2017-12-24 20:31:13*
+[6c5f8](https://github.com/tomasbjerre/violations-lib/commit/6c5f8f5b9edf1dc) Tomas Bjerre *2017-12-24 20:31:13*
+
+## [1.46](https://github.com/tomasbjerre/violations-lib/releases/tag/1.46) (2017-12-24)
 
 
-## 1.46
-### No issue
+
+
+
+
+
+### Other changes
 
 **Implementing reporter output**
 
 
-[e390aaedcb7ec68](https://github.com/tomasbjerre/violations-lib/commit/e390aaedcb7ec68) Tomas Bjerre *2017-12-24 12:00:57*
+[e390a](https://github.com/tomasbjerre/violations-lib/commit/e390aaedcb7ec68) Tomas Bjerre *2017-12-24 12:00:57*
+
+## [1.44](https://github.com/tomasbjerre/violations-lib/releases/tag/1.44) (2017-12-22)
 
 
-## 1.44
-### No issue
+
+
+
+
+
+### Other changes
 
 **Packaging fat jar as main jar**
 
 * So that no special classifier is needed to get the relocated gson. 
 
-[764fe8fd94835a4](https://github.com/tomasbjerre/violations-lib/commit/764fe8fd94835a4) Tomas Bjerre *2017-12-22 18:28:23*
+[764fe](https://github.com/tomasbjerre/violations-lib/commit/764fe8fd94835a4) Tomas Bjerre *2017-12-22 18:28:23*
+
+## [1.43](https://github.com/tomasbjerre/violations-lib/releases/tag/1.43) (2017-12-22)
 
 
-## 1.43
-### No issue
+
+
+
+
+
+### Other changes
 
 **Bumping version to fix faulty release**
 
 
-[01745f931b7d426](https://github.com/tomasbjerre/violations-lib/commit/01745f931b7d426) Tomas Bjerre *2017-12-22 17:22:00*
-
+[01745](https://github.com/tomasbjerre/violations-lib/commit/01745f931b7d426) Tomas Bjerre *2017-12-22 17:22:00*
 **Adding project.ext.useShadowJar = true**
 
 * Updated release.gradle to only optionally create shadow jar. 
 
-[09f13a83635d7ac](https://github.com/tomasbjerre/violations-lib/commit/09f13a83635d7ac) Tomas Bjerre *2017-12-22 15:38:14*
-
+[09f13](https://github.com/tomasbjerre/violations-lib/commit/09f13a83635d7ac) Tomas Bjerre *2017-12-22 15:38:14*
 **Doc**
 
 
-[cffd7099ed9ad2d](https://github.com/tomasbjerre/violations-lib/commit/cffd7099ed9ad2d) Tomas Bjerre *2017-12-22 12:31:48*
+[cffd7](https://github.com/tomasbjerre/violations-lib/commit/cffd7099ed9ad2d) Tomas Bjerre *2017-12-22 12:31:48*
+
+## [1.40](https://github.com/tomasbjerre/violations-lib/releases/tag/1.40) (2017-12-22)
 
 
-## 1.40
-### No issue
+
+
+
+
+
+### Other changes
 
 **Fixing release script to include shadow jar**
 
 
-[dd4353ebc98226a](https://github.com/tomasbjerre/violations-lib/commit/dd4353ebc98226a) Tomas Bjerre *2017-12-22 10:51:49*
+[dd435](https://github.com/tomasbjerre/violations-lib/commit/dd4353ebc98226a) Tomas Bjerre *2017-12-22 10:51:49*
+
+## [1.39](https://github.com/tomasbjerre/violations-lib/releases/tag/1.39) (2017-12-22)
 
 
-## 1.39
-### No issue
+
+
+
+
+
+### Other changes
 
 **Replacing ScriptEngine with Gson**
 
 * To avoid the security issue that arise if custom Javascript can be added to the DocFX file being parsed. 
 * Using a shaddow jar (named all) to relocate Gson and avoid classpath issues. 
 
-[524c39c2ff47d40](https://github.com/tomasbjerre/violations-lib/commit/524c39c2ff47d40) Tomas Bjerre *2017-12-22 10:35:12*
+[524c3](https://github.com/tomasbjerre/violations-lib/commit/524c39c2ff47d40) Tomas Bjerre *2017-12-22 10:35:12*
+
+## [1.38](https://github.com/tomasbjerre/violations-lib/releases/tag/1.38) (2017-12-21)
 
 
-## 1.38
-### Jira JENKINS-48669   
-
-**Ignoring case when checking for equality**
 
 
-[4d7069f628813b6](https://github.com/tomasbjerre/violations-lib/commit/4d7069f628813b6) Tomas Bjerre *2017-12-21 10:12:56*
 
 
-### Jira JENKINS-48670   
 
-**DocFX parser**
+### Other changes
 
-
-[1ca81e02c394734](https://github.com/tomasbjerre/violations-lib/commit/1ca81e02c394734) Tomas Bjerre *2017-12-21 12:32:33*
+**DocFX parser JENKINS-48670**
 
 
-### No issue
+[1ca81](https://github.com/tomasbjerre/violations-lib/commit/1ca81e02c394734) Tomas Bjerre *2017-12-21 12:32:33*
+**Ignoring case when checking for equality JENKINS-48669**
 
+
+[4d706](https://github.com/tomasbjerre/violations-lib/commit/4d7069f628813b6) Tomas Bjerre *2017-12-21 10:12:56*
 **Doc**
 
 
-[8c1de7f777b3c0e](https://github.com/tomasbjerre/violations-lib/commit/8c1de7f777b3c0e) Tomas Bjerre *2017-12-06 18:23:43*
+[8c1de](https://github.com/tomasbjerre/violations-lib/commit/8c1de7f777b3c0e) Tomas Bjerre *2017-12-06 18:23:43*
+
+## [1.36](https://github.com/tomasbjerre/violations-lib/releases/tag/1.36) (2017-12-03)
 
 
-## 1.36
-### No issue
+
+
+
+
+
+### Other changes
 
 **Cleaning up build scripts**
 
 
-[068312ba927037d](https://github.com/tomasbjerre/violations-lib/commit/068312ba927037d) Tomas Bjerre *2017-12-03 07:09:14*
+[06831](https://github.com/tomasbjerre/violations-lib/commit/068312ba927037d) Tomas Bjerre *2017-12-03 07:09:14*
+
+## [1.35](https://github.com/tomasbjerre/violations-lib/releases/tag/1.35) (2017-12-02)
 
 
-## 1.35
-### No issue
+
+
+
+
+
+### Other changes
 
 **Adjusting to OSS repo in Bintray**
 
 
-[f8c0ad2397d2894](https://github.com/tomasbjerre/violations-lib/commit/f8c0ad2397d2894) Tomas Bjerre *2017-12-02 07:29:54*
-
+[f8c0a](https://github.com/tomasbjerre/violations-lib/commit/f8c0ad2397d2894) Tomas Bjerre *2017-12-02 07:29:54*
 **Doc**
 
 
-[8e0c4d426273dd8](https://github.com/tomasbjerre/violations-lib/commit/8e0c4d426273dd8) Tomas Bjerre *2017-12-02 05:56:31*
+[8e0c4](https://github.com/tomasbjerre/violations-lib/commit/8e0c4d426273dd8) Tomas Bjerre *2017-12-02 05:56:31*
+
+## [1.34](https://github.com/tomasbjerre/violations-lib/releases/tag/1.34) (2017-12-01)
 
 
-## 1.34
-### GitHub [#27](https://github.com/tomasbjerre/violations-lib/issues/27) PMD may miss ruleSet and externalInfoUrl    *bug*  
-
-**Accepting PMD files without ruleset-tag**
 
 
-[a8e1e2ded94e9be](https://github.com/tomasbjerre/violations-lib/commit/a8e1e2ded94e9be) Tomas Bjerre *2017-11-22 19:56:15*
 
 
-### No issue
+
+### Other changes
 
 **Bintray release scripts**
 
 
-[a0c35cce38d7689](https://github.com/tomasbjerre/violations-lib/commit/a0c35cce38d7689) Tomas Bjerre *2017-12-01 18:42:50*
+[a0c35](https://github.com/tomasbjerre/violations-lib/commit/a0c35cce38d7689) Tomas Bjerre *2017-12-01 18:42:50*
+**Accepting PMD files without ruleset-tag #27**
 
+
+[a8e1e](https://github.com/tomasbjerre/violations-lib/commit/a8e1e2ded94e9be) Tomas Bjerre *2017-11-22 19:56:15*
 **Adding SwiftLint to Readme**
 
 
-[709283d45a6537c](https://github.com/tomasbjerre/violations-lib/commit/709283d45a6537c) Tomas Bjerre *2017-11-18 13:37:31*
-
+[70928](https://github.com/tomasbjerre/violations-lib/commit/709283d45a6537c) Tomas Bjerre *2017-11-18 13:37:31*
 **Doc**
 
 
-[f845737670c5e10](https://github.com/tomasbjerre/violations-lib/commit/f845737670c5e10) Tomas Bjerre *2017-10-28 20:19:52*
+[f8457](https://github.com/tomasbjerre/violations-lib/commit/f845737670c5e10) Tomas Bjerre *2017-10-28 20:19:52*
+
+## [1.33](https://github.com/tomasbjerre/violations-lib/releases/tag/1.33) (2017-10-13)
 
 
-## 1.33
-### No issue
+
+
+
+
+
+### Other changes
 
 **Add Resharper WikiUrl to output message**
 
 
-[7c1024d3326478d](https://github.com/tomasbjerre/violations-lib/commit/7c1024d3326478d) nickfish *2017-10-12 00:51:10*
+[7c102](https://github.com/tomasbjerre/violations-lib/commit/7c1024d3326478d) nickfish *2017-10-12 00:51:10*
+
+## [1.32](https://github.com/tomasbjerre/violations-lib/releases/tag/1.32) (2017-10-09)
 
 
-## 1.32
-### GitHub [#24](https://github.com/tomasbjerre/violations-lib/pull/24) Added handling for empty IssueType Description attributes for Resharper  
-
-**Cleanup after merge**
 
 
-[9eed4592d38dff7](https://github.com/tomasbjerre/violations-lib/commit/9eed4592d38dff7) Tomas Bjerre *2017-10-09 16:27:38*
 
 
-### No issue
 
+### Other changes
+
+**Cleanup after merge #24**
+
+
+[9eed4](https://github.com/tomasbjerre/violations-lib/commit/9eed4592d38dff7) Tomas Bjerre *2017-10-09 16:27:38*
 **Added handling for empty IssueType Description attributes for Resharper**
 
 
-[dbb61563dc31487](https://github.com/tomasbjerre/violations-lib/commit/dbb61563dc31487) nickfish *2017-10-09 03:32:29*
-
+[dbb61](https://github.com/tomasbjerre/violations-lib/commit/dbb61563dc31487) nickfish *2017-10-09 03:32:29*
 **Travis with JDK8**
 
 
-[4298d4b63e9ba3f](https://github.com/tomasbjerre/violations-lib/commit/4298d4b63e9ba3f) Tomas Bjerre *2017-09-01 19:23:05*
+[4298d](https://github.com/tomasbjerre/violations-lib/commit/4298d4b63e9ba3f) Tomas Bjerre *2017-09-01 19:23:05*
+
+## [1.31](https://github.com/tomasbjerre/violations-lib/releases/tag/1.31) (2017-09-01)
 
 
-## 1.31
-### GitHub [#23](https://github.com/tomasbjerre/violations-lib/issues/23) Checkstyle: don&#x27;t fail if rule attribute is not present  
-
-**Allowing absent source in Checkstyle parser**
 
 
-[dd522411c894105](https://github.com/tomasbjerre/violations-lib/commit/dd522411c894105) Tomas Bjerre *2017-09-01 10:54:30*
 
 
-## 1.30
-### No issue
+
+### Other changes
+
+**Allowing absent source in Checkstyle parser #23**
+
+
+[dd522](https://github.com/tomasbjerre/violations-lib/commit/dd522411c894105) Tomas Bjerre *2017-09-01 10:54:30*
+
+## [1.30](https://github.com/tomasbjerre/violations-lib/releases/tag/1.30) (2017-08-11)
+
+
+
+
+
+
+
+### Other changes
 
 **Checking for null in API-calls**
 
 * For better error messages. 
 
-[214765989fbc706](https://github.com/tomasbjerre/violations-lib/commit/214765989fbc706) Tomas Bjerre *2017-08-11 09:42:30*
-
+[21476](https://github.com/tomasbjerre/violations-lib/commit/214765989fbc706) Tomas Bjerre *2017-08-11 09:42:30*
 **Testing with reporter**
 
 
-[b73430f34a55ff6](https://github.com/tomasbjerre/violations-lib/commit/b73430f34a55ff6) Tomas Bjerre *2017-07-14 19:31:04*
+[b7343](https://github.com/tomasbjerre/violations-lib/commit/b73430f34a55ff6) Tomas Bjerre *2017-07-14 19:31:04*
+
+## [1.29](https://github.com/tomasbjerre/violations-lib/releases/tag/1.29) (2017-07-14)
 
 
-## 1.29
-### No issue
+
+
+
+
+
+### Other changes
 
 **Adding withReporter in reporter API**
 
 
-[5a013dc35c75504](https://github.com/tomasbjerre/violations-lib/commit/5a013dc35c75504) Tomas Bjerre *2017-07-14 19:25:23*
+[5a013](https://github.com/tomasbjerre/violations-lib/commit/5a013dc35c75504) Tomas Bjerre *2017-07-14 19:25:23*
+
+## [1.28](https://github.com/tomasbjerre/violations-lib/releases/tag/1.28) (2017-07-14)
 
 
-## 1.28
-### GitHub [#19](https://github.com/tomasbjerre/violations-lib/issues/19) Support detekt    *enhancement*  
-
-**Updating doc about Detekt**
 
 
-[bf5475d3e59fb3d](https://github.com/tomasbjerre/violations-lib/commit/bf5475d3e59fb3d) Tomas Bjerre *2017-06-13 18:14:41*
 
 
-### GitHub [#20](https://github.com/tomasbjerre/violations-lib/issues/20) Support Facebook Infer    *enhancement*  
 
-**Updating doc on Infer**
+### Other changes
 
-
-[22a2eb9add9884c](https://github.com/tomasbjerre/violations-lib/commit/22a2eb9add9884c) Tomas Bjerre *2017-06-23 12:44:57*
-
-
-### GitHub [#22](https://github.com/tomasbjerre/violations-lib/pull/22) Renaming Reporter to Parser    *enhancement*  
-
-**Renaming Reporter to Parser**
+**Renaming Reporter to Parser #22**
 
 * Also adding a reporter String in Violation to record the tool being used to produce the Violation. 
 
-[8401c647572fb5d](https://github.com/tomasbjerre/violations-lib/commit/8401c647572fb5d) Tomas Bjerre *2017-07-14 18:50:23*
-
-
-### No issue
-
+[8401c](https://github.com/tomasbjerre/violations-lib/commit/8401c647572fb5d) Tomas Bjerre *2017-07-14 18:50:23*
 **Doc**
 
 
-[e6c85825c084b59](https://github.com/tomasbjerre/violations-lib/commit/e6c85825c084b59) Tomas Bjerre *2017-07-12 18:03:16*
+[e6c85](https://github.com/tomasbjerre/violations-lib/commit/e6c85825c084b59) Tomas Bjerre *2017-07-12 18:03:16*
+**Updating doc on Infer #20**
 
 
-## 1.27
-### No issue
+[22a2e](https://github.com/tomasbjerre/violations-lib/commit/22a2eb9add9884c) Tomas Bjerre *2017-06-23 12:44:57*
+**Updating doc about Detekt #19**
+
+
+[bf547](https://github.com/tomasbjerre/violations-lib/commit/bf5475d3e59fb3d) Tomas Bjerre *2017-06-13 18:14:41*
+
+## [1.27](https://github.com/tomasbjerre/violations-lib/releases/tag/1.27) (2017-04-11)
+
+
+
+
+
+
+
+### Other changes
 
 **URL in Klocwork**
 
 
-[43fc14f46fcfb98](https://github.com/tomasbjerre/violations-lib/commit/43fc14f46fcfb98) Tomas Bjerre *2017-04-11 18:11:22*
-
+[43fc1](https://github.com/tomasbjerre/violations-lib/commit/43fc14f46fcfb98) Tomas Bjerre *2017-04-11 18:11:22*
 **doc**
 
 
-[4c367bce8658529](https://github.com/tomasbjerre/violations-lib/commit/4c367bce8658529) Tomas Bjerre *2017-04-10 20:12:21*
+[4c367](https://github.com/tomasbjerre/violations-lib/commit/4c367bce8658529) Tomas Bjerre *2017-04-10 20:12:21*
+
+## [1.26](https://github.com/tomasbjerre/violations-lib/releases/tag/1.26) (2017-04-10)
 
 
-## 1.26
-### No issue
+
+
+
+
+
+### Other changes
 
 **Testing that parsers are mentioned in README.md**
 
 
-[0f27abfb54542f3](https://github.com/tomasbjerre/violations-lib/commit/0f27abfb54542f3) Tomas Bjerre *2017-04-10 18:10:28*
-
+[0f27a](https://github.com/tomasbjerre/violations-lib/commit/0f27abfb54542f3) Tomas Bjerre *2017-04-10 18:10:28*
 **Support sbt-scalac**
 
 
-[bc75205ca390a62](https://github.com/tomasbjerre/violations-lib/commit/bc75205ca390a62) Trung Nguyen *2017-04-10 17:35:19*
-
+[bc752](https://github.com/tomasbjerre/violations-lib/commit/bc75205ca390a62) Trung Nguyen *2017-04-10 17:35:19*
 **doc**
 
 
-[9a44d279d312230](https://github.com/tomasbjerre/violations-lib/commit/9a44d279d312230) Tomas Bjerre *2017-03-30 19:22:00*
+[9a44d](https://github.com/tomasbjerre/violations-lib/commit/9a44d279d312230) Tomas Bjerre *2017-03-30 19:22:00*
+
+## [1.25](https://github.com/tomasbjerre/violations-lib/releases/tag/1.25) (2017-03-30)
 
 
-## 1.25
-### No issue
+
+
+
+
+
+### Other changes
 
 **Klocwork parser**
 
 
-[4a875240f568a02](https://github.com/tomasbjerre/violations-lib/commit/4a875240f568a02) Tomas Bjerre *2017-03-30 17:14:56*
-
+[4a875](https://github.com/tomasbjerre/violations-lib/commit/4a875240f568a02) Tomas Bjerre *2017-03-30 17:14:56*
 **doc**
 
 
-[009b846e120e0ff](https://github.com/tomasbjerre/violations-lib/commit/009b846e120e0ff) Tomas Bjerre *2017-03-17 21:39:52*
+[009b8](https://github.com/tomasbjerre/violations-lib/commit/009b846e120e0ff) Tomas Bjerre *2017-03-17 21:39:52*
+
+## [1.24](https://github.com/tomasbjerre/violations-lib/releases/tag/1.24) (2017-03-17)
 
 
-## 1.24
-### No issue
+
+
+
+
+
+### Other changes
 
 **Adding filtering util**
 
 
-[30788adc503bdd4](https://github.com/tomasbjerre/violations-lib/commit/30788adc503bdd4) Tomas Bjerre *2017-03-17 14:09:58*
-
+[30788](https://github.com/tomasbjerre/violations-lib/commit/30788adc503bdd4) Tomas Bjerre *2017-03-17 14:09:58*
 **Google Java Format**
 
 
-[71746a1614d51b3](https://github.com/tomasbjerre/violations-lib/commit/71746a1614d51b3) Tomas Bjerre *2017-02-25 12:25:45*
-
+[71746](https://github.com/tomasbjerre/violations-lib/commit/71746a1614d51b3) Tomas Bjerre *2017-02-25 12:25:45*
 **doc**
 
 
-[6dd871dfa4713e9](https://github.com/tomasbjerre/violations-lib/commit/6dd871dfa4713e9) Tomas Bjerre *2017-02-19 14:15:07*
+[6dd87](https://github.com/tomasbjerre/violations-lib/commit/6dd871dfa4713e9) Tomas Bjerre *2017-02-19 14:15:07*
+
+## [1.23](https://github.com/tomasbjerre/violations-lib/releases/tag/1.23) (2017-02-18)
 
 
-## 1.23
-### GitHub [#14](https://github.com/tomasbjerre/violations-lib/issues/14) Support php checkers    *enhancement*  
-
-**PHPMD and PHPCS**
 
 
-[f7212555f7a986b](https://github.com/tomasbjerre/violations-lib/commit/f7212555f7a986b) Tomas Bjerre *2017-02-18 20:01:36*
 
 
-### GitHub [#15](https://github.com/tomasbjerre/violations-lib/issues/15) Support Rubycop    *enhancement*  
 
-**Support RubyCop**
+### Other changes
 
-
-[75ad3b3d415384a](https://github.com/tomasbjerre/violations-lib/commit/75ad3b3d415384a) Tomas Bjerre *2017-02-18 21:36:36*
+**Support RubyCop #15**
 
 
-### GitHub [#16](https://github.com/tomasbjerre/violations-lib/issues/16) Support clang    *enhancement*  
-
-**Support CLang**
-
-
-[68ac9c8cf268d17](https://github.com/tomasbjerre/violations-lib/commit/68ac9c8cf268d17) Tomas Bjerre *2017-02-18 21:28:31*
+[75ad3](https://github.com/tomasbjerre/violations-lib/commit/75ad3b3d415384a) Tomas Bjerre *2017-02-18 21:36:36*
+**Support CLang #16**
 
 
-### GitHub [#17](https://github.com/tomasbjerre/violations-lib/issues/17) Support golint    *enhancement*  
-
-**Support GoLint**
-
-
-[fdbc050e06fd90a](https://github.com/tomasbjerre/violations-lib/commit/fdbc050e06fd90a) Tomas Bjerre *2017-02-18 21:01:02*
+[68ac9](https://github.com/tomasbjerre/violations-lib/commit/68ac9c8cf268d17) Tomas Bjerre *2017-02-18 21:28:31*
+**Support GoLint #17**
 
 
-## 1.22
-### No issue
+[fdbc0](https://github.com/tomasbjerre/violations-lib/commit/fdbc050e06fd90a) Tomas Bjerre *2017-02-18 21:01:02*
+**PHPMD and PHPCS #14**
+
+
+[f7212](https://github.com/tomasbjerre/violations-lib/commit/f7212555f7a986b) Tomas Bjerre *2017-02-18 20:01:36*
+
+## [1.22](https://github.com/tomasbjerre/violations-lib/releases/tag/1.22) (2017-02-16)
+
+
+
+
+
+
+
+### Other changes
 
 **Finding findbugsmessages and correcting codenarc**
 
 * Was finding findbugs messages xml incorrectly in classpath. 
 * Was not handling codenarc reports with empty line numbers. 
 
-[60d19fedbefdf85](https://github.com/tomasbjerre/violations-lib/commit/60d19fedbefdf85) Tomas Bjerre *2017-02-16 20:51:05*
-
+[60d19](https://github.com/tomasbjerre/violations-lib/commit/60d19fedbefdf85) Tomas Bjerre *2017-02-16 20:51:05*
 **doc**
 
 
-[84e505343e497a2](https://github.com/tomasbjerre/violations-lib/commit/84e505343e497a2) Tomas Bjerre *2017-02-07 05:42:45*
+[84e50](https://github.com/tomasbjerre/violations-lib/commit/84e505343e497a2) Tomas Bjerre *2017-02-07 05:42:45*
+
+## [1.21](https://github.com/tomasbjerre/violations-lib/releases/tag/1.21) (2017-02-06)
 
 
-## 1.21
-### GitHub [#12](https://github.com/tomasbjerre/violations-lib/issues/12) Support pydocstyle (old pep257)    *enhancement*  
-
-**Adding MyPy and PyDocStyle parsers**
 
 
-[acfe3312656237f](https://github.com/tomasbjerre/violations-lib/commit/acfe3312656237f) Tomas Bjerre *2017-02-06 17:07:33*
 
 
-### GitHub [#13](https://github.com/tomasbjerre/violations-lib/issues/13) Support mypy    *enhancement*  
 
-**Adding MyPy and PyDocStyle parsers**
+### Other changes
 
-
-[acfe3312656237f](https://github.com/tomasbjerre/violations-lib/commit/acfe3312656237f) Tomas Bjerre *2017-02-06 17:07:33*
+**Adding MyPy and PyDocStyle parsers #12 #13**
 
 
-### No issue
-
+[acfe3](https://github.com/tomasbjerre/violations-lib/commit/acfe3312656237f) Tomas Bjerre *2017-02-06 17:07:33*
 **Set theme jekyll-theme-slate**
 
 
-[6063d15ecfbb8a7](https://github.com/tomasbjerre/violations-lib/commit/6063d15ecfbb8a7) Tomas Bjerre *2017-01-12 03:06:06*
-
+[6063d](https://github.com/tomasbjerre/violations-lib/commit/6063d15ecfbb8a7) Tomas Bjerre *2017-01-12 03:06:06*
 **doc**
 
 
-[943154cb27cfd1e](https://github.com/tomasbjerre/violations-lib/commit/943154cb27cfd1e) Tomas Bjerre *2016-12-21 16:46:56*
+[94315](https://github.com/tomasbjerre/violations-lib/commit/943154cb27cfd1e) Tomas Bjerre *2016-12-21 16:46:56*
+
+## [1.20](https://github.com/tomasbjerre/violations-lib/releases/tag/1.20) (2016-12-21)
 
 
-## 1.20
-### No issue
+
+
+
+
+
+### Other changes
 
 **Renaming parse method in ViolationsParser**
 
 * To make its usage clearer. 
 
-[f4dacbd541b6625](https://github.com/tomasbjerre/violations-lib/commit/f4dacbd541b6625) Tomas Bjerre *2016-12-21 16:34:24*
-
+[f4dac](https://github.com/tomasbjerre/violations-lib/commit/f4dacbd541b6625) Tomas Bjerre *2016-12-21 16:34:24*
 **doc**
 
 
-[e17915d91a4ef8a](https://github.com/tomasbjerre/violations-lib/commit/e17915d91a4ef8a) Tomas Bjerre *2016-12-18 07:50:45*
+[e1791](https://github.com/tomasbjerre/violations-lib/commit/e17915d91a4ef8a) Tomas Bjerre *2016-12-18 07:50:45*
+
+## [1.19](https://github.com/tomasbjerre/violations-lib/releases/tag/1.19) (2016-12-16)
 
 
-## 1.19
-### No issue
+
+
+
+
+
+### Other changes
 
 **Correcting utility method for finding resource**
 
 
-[5dd52bd39c5265a](https://github.com/tomasbjerre/violations-lib/commit/5dd52bd39c5265a) Tomas Bjerre *2016-12-16 07:19:49*
+[5dd52](https://github.com/tomasbjerre/violations-lib/commit/5dd52bd39c5265a) Tomas Bjerre *2016-12-16 07:19:49*
+
+## [1.18](https://github.com/tomasbjerre/violations-lib/releases/tag/1.18) (2016-12-15)
 
 
-## 1.18
-### No issue
+
+
+
+
+
+### Other changes
 
 **Removing SLF4J dependency**
 
 
-[8961db105e44f36](https://github.com/tomasbjerre/violations-lib/commit/8961db105e44f36) Tomas Bjerre *2016-12-15 17:32:00*
+[8961d](https://github.com/tomasbjerre/violations-lib/commit/8961db105e44f36) Tomas Bjerre *2016-12-15 17:32:00*
+
+## [1.17](https://github.com/tomasbjerre/violations-lib/releases/tag/1.17) (2016-12-14)
 
 
-## 1.17
-### No issue
+
+
+
+
+
+### Other changes
 
 **Removing Guava dependency**
 
 
-[0b8af64b20efcca](https://github.com/tomasbjerre/violations-lib/commit/0b8af64b20efcca) Tomas Bjerre *2016-12-14 17:48:47*
-
+[0b8af](https://github.com/tomasbjerre/violations-lib/commit/0b8af64b20efcca) Tomas Bjerre *2016-12-14 17:48:47*
 **doc**
 
 
-[5d94e7f3626a273](https://github.com/tomasbjerre/violations-lib/commit/5d94e7f3626a273) Tomas Bjerre *2016-11-06 18:12:13*
+[5d94e](https://github.com/tomasbjerre/violations-lib/commit/5d94e7f3626a273) Tomas Bjerre *2016-11-06 18:12:13*
+
+## [1.16](https://github.com/tomasbjerre/violations-lib/releases/tag/1.16) (2016-11-05)
 
 
-## 1.16
-### No issue
+
+
+
+
+
+### Other changes
 
 **Simian, ZPTLint, JCReport**
 
 
-[60fa8a9b6091ddd](https://github.com/tomasbjerre/violations-lib/commit/60fa8a9b6091ddd) Tomas Bjerre *2016-11-05 22:39:23*
-
+[60fa8](https://github.com/tomasbjerre/violations-lib/commit/60fa8a9b6091ddd) Tomas Bjerre *2016-11-05 22:39:23*
 **Gendarme**
 
 
-[3ac58ccc82b8360](https://github.com/tomasbjerre/violations-lib/commit/3ac58ccc82b8360) Tomas Bjerre *2016-11-05 21:28:33*
-
+[3ac58](https://github.com/tomasbjerre/violations-lib/commit/3ac58ccc82b8360) Tomas Bjerre *2016-11-05 21:28:33*
 **CPD**
 
 
-[7a4e651c53ab3b2](https://github.com/tomasbjerre/violations-lib/commit/7a4e651c53ab3b2) Tomas Bjerre *2016-11-05 19:16:50*
-
+[7a4e6](https://github.com/tomasbjerre/violations-lib/commit/7a4e651c53ab3b2) Tomas Bjerre *2016-11-05 19:16:50*
 **CodeNarc**
 
 
-[23fa562feee2bb2](https://github.com/tomasbjerre/violations-lib/commit/23fa562feee2bb2) Tomas Bjerre *2016-11-05 18:58:32*
+[23fa5](https://github.com/tomasbjerre/violations-lib/commit/23fa562feee2bb2) Tomas Bjerre *2016-11-05 18:58:32*
+
+## [1.15](https://github.com/tomasbjerre/violations-lib/releases/tag/1.15) (2016-11-03)
 
 
-## 1.15
-### No issue
+
+
+
+
+
+### Other changes
 
 **Exposing parser in reporter**
 
 
-[2e216ee38cb2fdb](https://github.com/tomasbjerre/violations-lib/commit/2e216ee38cb2fdb) Tomas Bjerre *2016-11-03 18:03:08*
+[2e216](https://github.com/tomasbjerre/violations-lib/commit/2e216ee38cb2fdb) Tomas Bjerre *2016-11-03 18:03:08*
+
+## [1.14](https://github.com/tomasbjerre/violations-lib/releases/tag/1.14) (2016-11-03)
 
 
-## 1.14
-### No issue
+
+
+
+
+
+### Other changes
 
 **Letting the reporters parse strings, not files**
 
 
-[375706d8e579bfc](https://github.com/tomasbjerre/violations-lib/commit/375706d8e579bfc) Tomas Bjerre *2016-11-03 17:54:20*
+[37570](https://github.com/tomasbjerre/violations-lib/commit/375706d8e579bfc) Tomas Bjerre *2016-11-03 17:54:20*
+
+## [1.13](https://github.com/tomasbjerre/violations-lib/releases/tag/1.13) (2016-10-26)
 
 
-## 1.13
-### GitHub [#11](https://github.com/tomasbjerre/violations-lib/issues/11) CSSLint rollup output causes parsing error    *bug*  
 
-**Handling css-lint reports where there are not line or evidence**
+
+
+
+
+### Other changes
+
+**Handling css-lint reports where there are not line or evidence #11**
 
 * Also setting severity level for PyLint. 
 
-[35d5d33b447b37a](https://github.com/tomasbjerre/violations-lib/commit/35d5d33b447b37a) Tomas Bjerre *2016-10-26 15:39:37*
+[35d5d](https://github.com/tomasbjerre/violations-lib/commit/35d5d33b447b37a) Tomas Bjerre *2016-10-26 15:39:37*
+
+## [1.12](https://github.com/tomasbjerre/violations-lib/releases/tag/1.12) (2016-10-25)
 
 
-## 1.12
-### No issue
+
+
+
+
+
+### Other changes
 
 **Changing rule format in PyLint to CODE(codeName)**
 
 
-[24618707a88497c](https://github.com/tomasbjerre/violations-lib/commit/24618707a88497c) Tomas Bjerre *2016-10-25 17:44:33*
+[24618](https://github.com/tomasbjerre/violations-lib/commit/24618707a88497c) Tomas Bjerre *2016-10-25 17:44:33*
+
+## [1.11](https://github.com/tomasbjerre/violations-lib/releases/tag/1.11) (2016-10-24)
 
 
-## 1.11
-### No issue
+
+
+
+
+
+### Other changes
 
 **PyLint parser**
 
 
-[ec90aa741fdeb67](https://github.com/tomasbjerre/violations-lib/commit/ec90aa741fdeb67) Tomas Bjerre *2016-10-24 17:16:46*
+[ec90a](https://github.com/tomasbjerre/violations-lib/commit/ec90aa741fdeb67) Tomas Bjerre *2016-10-24 17:16:46*
+
+## [1.10](https://github.com/tomasbjerre/violations-lib/releases/tag/1.10) (2016-10-03)
 
 
-## 1.10
-### No issue
+
+
+
+
+
+### Other changes
 
 **Supporting StyleCop**
 
 * And project level issue in FxCop. 
 
-[d68d368e8ffc609](https://github.com/tomasbjerre/violations-lib/commit/d68d368e8ffc609) Tomas Bjerre *2016-10-03 17:00:57*
-
+[d68d3](https://github.com/tomasbjerre/violations-lib/commit/d68d368e8ffc609) Tomas Bjerre *2016-10-03 17:00:57*
 **Formatting code**
 
 
-[09347946765a096](https://github.com/tomasbjerre/violations-lib/commit/09347946765a096) Tomas Bjerre *2016-10-02 12:34:51*
+[09347](https://github.com/tomasbjerre/violations-lib/commit/09347946765a096) Tomas Bjerre *2016-10-02 12:34:51*
+
+## [1.9](https://github.com/tomasbjerre/violations-lib/releases/tag/1.9) (2016-10-01)
 
 
-## 1.9
-### GitHub [#4](https://github.com/tomasbjerre/violations-lib/issues/4) eslint    *enhancement*  
-
-**ESLint**
 
 
-[e9f338ef44d3a45](https://github.com/tomasbjerre/violations-lib/commit/e9f338ef44d3a45) Tomas Bjerre *2016-10-01 11:25:19*
 
 
-### No issue
 
+### Other changes
+
+**ESLint #4**
+
+
+[e9f33](https://github.com/tomasbjerre/violations-lib/commit/e9f338ef44d3a45) Tomas Bjerre *2016-10-01 11:25:19*
 **Preliminary support for StyleCop**
 
 
-[81e30321fa1619b](https://github.com/tomasbjerre/violations-lib/commit/81e30321fa1619b) Tomas Bjerre *2016-10-01 10:24:14*
-
+[81e30](https://github.com/tomasbjerre/violations-lib/commit/81e30321fa1619b) Tomas Bjerre *2016-10-01 10:24:14*
 **Support for FxCop**
 
 
-[ac5a58c002f8c97](https://github.com/tomasbjerre/violations-lib/commit/ac5a58c002f8c97) Tomas Bjerre *2016-10-01 09:55:19*
-
+[ac5a5](https://github.com/tomasbjerre/violations-lib/commit/ac5a58c002f8c97) Tomas Bjerre *2016-10-01 09:55:19*
 **Refactoring, adding ViolationsParser interface**
 
 * Also preparing for FxCop. 
 
-[adef3f6ed9c6cfc](https://github.com/tomasbjerre/violations-lib/commit/adef3f6ed9c6cfc) Tomas Bjerre *2016-10-01 08:38:19*
-
+[adef3](https://github.com/tomasbjerre/violations-lib/commit/adef3f6ed9c6cfc) Tomas Bjerre *2016-10-01 08:38:19*
 **doc**
 
 
-[4f54260b7b47e96](https://github.com/tomasbjerre/violations-lib/commit/4f54260b7b47e96) Tomas Bjerre *2016-07-28 20:22:22*
+[4f542](https://github.com/tomasbjerre/violations-lib/commit/4f54260b7b47e96) Tomas Bjerre *2016-07-28 20:22:22*
+
+## [1.8](https://github.com/tomasbjerre/violations-lib/releases/tag/1.8) (2016-04-27)
 
 
-## 1.8
-### No issue
+
+
+
+
+
+### Other changes
 
 **Updating README.md**
 
 * And formatting code after merge of PR. 
 
-[34cc693dfcc7bad](https://github.com/tomasbjerre/violations-lib/commit/34cc693dfcc7bad) Tomas Bjerre *2016-04-27 05:34:51*
-
+[34cc6](https://github.com/tomasbjerre/violations-lib/commit/34cc693dfcc7bad) Tomas Bjerre *2016-04-27 05:34:51*
 **Add Android Lint parser**
 
 
-[05a11ed65560142](https://github.com/tomasbjerre/violations-lib/commit/05a11ed65560142) panpanini *2016-04-27 04:38:50*
-
+[05a11](https://github.com/tomasbjerre/violations-lib/commit/05a11ed65560142) panpanini *2016-04-27 04:38:50*
 **Doc**
 
 
-[8a3d860da48c56d](https://github.com/tomasbjerre/violations-lib/commit/8a3d860da48c56d) Tomas Bjerre *2016-04-23 17:08:41*
+[8a3d8](https://github.com/tomasbjerre/violations-lib/commit/8a3d860da48c56d) Tomas Bjerre *2016-04-23 17:08:41*
+
+## [1.7](https://github.com/tomasbjerre/violations-lib/releases/tag/1.7) (2016-04-23)
 
 
-## 1.7
-### No issue
+
+
+
+
+
+### Other changes
 
 **Making Violation class serializable**
 
 
-[408ea213a51516c](https://github.com/tomasbjerre/violations-lib/commit/408ea213a51516c) Tomas Bjerre *2016-04-23 17:06:14*
-
+[408ea](https://github.com/tomasbjerre/violations-lib/commit/408ea213a51516c) Tomas Bjerre *2016-04-23 17:06:14*
 **Updating docs**
 
 
-[30e7ac53b0b7efd](https://github.com/tomasbjerre/violations-lib/commit/30e7ac53b0b7efd) Tomas Bjerre *2016-04-07 16:39:05*
+[30e7a](https://github.com/tomasbjerre/violations-lib/commit/30e7ac53b0b7efd) Tomas Bjerre *2016-04-07 16:39:05*
+
+## [1.6](https://github.com/tomasbjerre/violations-lib/releases/tag/1.6) (2016-04-07)
 
 
-## 1.6
-### GitHub [#5](https://github.com/tomasbjerre/violations-lib/issues/5) PiTest    *enhancement*  
-
-**Adding pitest parser**
 
 
-[eeb2a624a99a7ff](https://github.com/tomasbjerre/violations-lib/commit/eeb2a624a99a7ff) Tomas Bjerre *2016-03-26 19:22:06*
 
 
-### GitHub [#7](https://github.com/tomasbjerre/violations-lib/issues/7) Findbugs parser misses bugs    *bug*  
 
-**Correcting exception message thrown if attribute not found**
+### Other changes
+
+**Correcting exception message thrown if attribute not found #7**
 
 * XMLStreamReader does not have its own implementation of toString. 
 
-[53719338add95a3](https://github.com/tomasbjerre/violations-lib/commit/53719338add95a3) Tomas Bjerre *2016-04-07 16:24:14*
-
-
-### No issue
-
+[53719](https://github.com/tomasbjerre/violations-lib/commit/53719338add95a3) Tomas Bjerre *2016-04-07 16:24:14*
 **FindBugsParser is using string matching to try to parse XML, which is**
 
 * failing because SourceLine elements may, or may not self-terminate. 
@@ -1892,118 +2366,147 @@ Changelog of violations-lib.
 * instead will do a forwards-only stream read. 
 * Signed-off-by: Nigel Magnay &lt;nigel.magnay@gmail.com&gt; 
 
-[c6679a504380bcd](https://github.com/tomasbjerre/violations-lib/commit/c6679a504380bcd) Nigel Magnay *2016-04-07 15:41:56*
+[c6679](https://github.com/tomasbjerre/violations-lib/commit/c6679a504380bcd) Nigel Magnay *2016-04-07 15:41:56*
+**Adding pitest parser #5**
 
+
+[eeb2a](https://github.com/tomasbjerre/violations-lib/commit/eeb2a624a99a7ff) Tomas Bjerre *2016-03-26 19:22:06*
 **Adding Jenkins plugin link to README.md**
 
 
-[eb90c644065c9b6](https://github.com/tomasbjerre/violations-lib/commit/eb90c644065c9b6) Tomas Bjerre *2016-03-06 20:20:42*
+[eb90c](https://github.com/tomasbjerre/violations-lib/commit/eb90c644065c9b6) Tomas Bjerre *2016-03-06 20:20:42*
+
+## [1.5](https://github.com/tomasbjerre/violations-lib/releases/tag/1.5) (2016-03-06)
 
 
-## 1.5
-### GitHub [#3](https://github.com/tomasbjerre/violations-lib/issues/3) Support more formats    *enhancement*  
-
-**Support PerlCritic and XMLLint**
 
 
-[b7c4ea0c66a4c69](https://github.com/tomasbjerre/violations-lib/commit/b7c4ea0c66a4c69) Tomas Bjerre *2016-03-06 13:45:16*
-
-**Support CPPLint**
 
 
-[319eaabe55b383b](https://github.com/tomasbjerre/violations-lib/commit/319eaabe55b383b) Tomas Bjerre *2016-03-06 13:39:27*
 
-**Flake8 (PyLint) and Lint parser**
+### Other changes
 
-
-[30ba7fd5ed017d3](https://github.com/tomasbjerre/violations-lib/commit/30ba7fd5ed017d3) Tomas Bjerre *2016-03-06 13:39:25*
-
-**Resharper support**
+**Support PerlCritic and XMLLint #3**
 
 
-[5bfc5d3448ab978](https://github.com/tomasbjerre/violations-lib/commit/5bfc5d3448ab978) Tomas Bjerre *2016-03-06 13:39:23*
-
-**CPPCheck support**
-
-
-[e1a7ad7be14653b](https://github.com/tomasbjerre/violations-lib/commit/e1a7ad7be14653b) Tomas Bjerre *2016-03-06 13:39:20*
+[b7c4e](https://github.com/tomasbjerre/violations-lib/commit/b7c4ea0c66a4c69) Tomas Bjerre *2016-03-06 13:45:16*
+**Support CPPLint #3**
 
 
-## 1.4
-### No issue
+[319ea](https://github.com/tomasbjerre/violations-lib/commit/319eaabe55b383b) Tomas Bjerre *2016-03-06 13:39:27*
+**Flake8 (PyLint) and Lint parser #3**
+
+
+[30ba7](https://github.com/tomasbjerre/violations-lib/commit/30ba7fd5ed017d3) Tomas Bjerre *2016-03-06 13:39:25*
+**Resharper support #3**
+
+
+[5bfc5](https://github.com/tomasbjerre/violations-lib/commit/5bfc5d3448ab978) Tomas Bjerre *2016-03-06 13:39:23*
+**CPPCheck support #3**
+
+
+[e1a7a](https://github.com/tomasbjerre/violations-lib/commit/e1a7ad7be14653b) Tomas Bjerre *2016-03-06 13:39:20*
+
+## [1.4](https://github.com/tomasbjerre/violations-lib/releases/tag/1.4) (2016-03-05)
+
+
+
+
+
+
+
+### Other changes
 
 **Adding possibility to set findbugs messages**
 
 
-[3a8c7089d924848](https://github.com/tomasbjerre/violations-lib/commit/3a8c7089d924848) Tomas Bjerre *2016-03-05 09:34:51*
+[3a8c7](https://github.com/tomasbjerre/violations-lib/commit/3a8c7089d924848) Tomas Bjerre *2016-03-05 09:34:51*
+
+## [1.3](https://github.com/tomasbjerre/violations-lib/releases/tag/1.3) (2016-03-04)
 
 
-## 1.3
-### No issue
+
+
+
+
+
+### Other changes
 
 **Only most specific FindBugs line**
 
 * Also SLF4J and some debug logging. 
 
-[b50c549861119cf](https://github.com/tomasbjerre/violations-lib/commit/b50c549861119cf) Tomas Bjerre *2016-03-04 17:16:52*
+[b50c5](https://github.com/tomasbjerre/violations-lib/commit/b50c549861119cf) Tomas Bjerre *2016-03-04 17:16:52*
+
+## [1.2](https://github.com/tomasbjerre/violations-lib/releases/tag/1.2) (2016-03-04)
 
 
-## 1.2
-### No issue
+
+
+
+
+
+### Other changes
 
 **Adding reporter to Violation**
 
 
-[ddddaefba1f1aee](https://github.com/tomasbjerre/violations-lib/commit/ddddaefba1f1aee) Tomas Bjerre *2016-03-04 05:34:23*
-
+[dddda](https://github.com/tomasbjerre/violations-lib/commit/ddddaefba1f1aee) Tomas Bjerre *2016-03-04 05:34:23*
 **Adding links to projects using this lib**
 
 
-[b6b4b74339b5008](https://github.com/tomasbjerre/violations-lib/commit/b6b4b74339b5008) Tomas Bjerre *2016-03-03 21:05:58*
-
+[b6b4b](https://github.com/tomasbjerre/violations-lib/commit/b6b4b74339b5008) Tomas Bjerre *2016-03-03 21:05:58*
 **Moving example reports to its own repo**
 
 
-[344567418ac1167](https://github.com/tomasbjerre/violations-lib/commit/344567418ac1167) Tomas Bjerre *2016-03-03 18:53:24*
+[34456](https://github.com/tomasbjerre/violations-lib/commit/344567418ac1167) Tomas Bjerre *2016-03-03 18:53:24*
+
+## [1.1](https://github.com/tomasbjerre/violations-lib/releases/tag/1.1) (2016-02-28)
 
 
-## 1.1
-### No issue
+
+
+
+
+
+### Other changes
 
 **Adding accumulated builder**
 
 * With sorting by file or severity. 
 * With filtering of severity. 
 
-[9b87b1d1184d184](https://github.com/tomasbjerre/violations-lib/commit/9b87b1d1184d184) Tomas Bjerre *2016-02-28 19:40:26*
+[9b87b](https://github.com/tomasbjerre/violations-lib/commit/9b87b1d1184d184) Tomas Bjerre *2016-02-28 19:40:26*
+
+## [1.0](https://github.com/tomasbjerre/violations-lib/releases/tag/1.0) (2016-02-21)
 
 
-## 1.0
-### No issue
+
+
+
+
+
+### Other changes
 
 **Update README.md**
 
 
-[2dca003de3f0764](https://github.com/tomasbjerre/violations-lib/commit/2dca003de3f0764) Tomas Bjerre *2016-02-21 13:09:41*
-
+[2dca0](https://github.com/tomasbjerre/violations-lib/commit/2dca003de3f0764) Tomas Bjerre *2016-02-21 13:09:41*
 **JSHint and PMD parsers**
 
 
-[48773067b5e86d1](https://github.com/tomasbjerre/violations-lib/commit/48773067b5e86d1) Tomas Bjerre *2016-02-21 12:18:13*
-
+[48773](https://github.com/tomasbjerre/violations-lib/commit/48773067b5e86d1) Tomas Bjerre *2016-02-21 12:18:13*
 **Findbugs parser**
 
 
-[395483a7117cdb7](https://github.com/tomasbjerre/violations-lib/commit/395483a7117cdb7) Tomas Bjerre *2016-02-21 11:42:53*
-
+[39548](https://github.com/tomasbjerre/violations-lib/commit/395483a7117cdb7) Tomas Bjerre *2016-02-21 11:42:53*
 **Adding specifics and column to Violation**
 
 
-[d6e0920176a6d9f](https://github.com/tomasbjerre/violations-lib/commit/d6e0920176a6d9f) Tomas Bjerre *2016-02-21 08:33:00*
-
+[d6e09](https://github.com/tomasbjerre/violations-lib/commit/d6e0920176a6d9f) Tomas Bjerre *2016-02-21 08:33:00*
 **Parsers and sample reports**
 
 
-[b8d5a66e8ec407c](https://github.com/tomasbjerre/violations-lib/commit/b8d5a66e8ec407c) Tomas Bjerre *2016-02-20 21:40:52*
+[b8d5a](https://github.com/tomasbjerre/violations-lib/commit/b8d5a66e8ec407c) Tomas Bjerre *2016-02-20 21:40:52*
 
-
+    
