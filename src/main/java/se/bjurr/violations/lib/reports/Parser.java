@@ -29,7 +29,7 @@ public enum Parser {
   FXCOP(new FxCopParser()), //
   GENDARME(new GendarmeParser()), //
   IAR(new IARParser()), //
-  JACOCO(new JacocoXmlParser()), //
+  JACOCO(new JacocoParser()), //
   JCREPORT(new JCReportParser()), //
   JSLINT(new JSLintParser()), //
   JUNIT(new JUnitParser()), //
