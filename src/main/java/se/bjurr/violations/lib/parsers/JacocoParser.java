@@ -4,140 +4,163 @@ import static java.lang.String.format;
 import static java.nio.charset.StandardCharsets.UTF_8;
 import static se.bjurr.violations.lib.model.Violation.violationBuilder;
 import static se.bjurr.violations.lib.reports.Parser.JACOCO;
+import static se.bjurr.violations.lib.util.ViolationParserUtils.getAttribute;
 
 import java.io.ByteArrayInputStream;
 import java.io.InputStream;
-import java.io.StringReader;
+import java.util.HashMap;
 import java.util.LinkedHashSet;
+import java.util.Map;
 import java.util.Optional;
 import java.util.Set;
-import javax.xml.parsers.DocumentBuilder;
-import javax.xml.parsers.DocumentBuilderFactory;
+import javax.xml.stream.XMLStreamConstants;
 import javax.xml.stream.XMLStreamReader;
-import org.w3c.dom.Document;
-import org.w3c.dom.Element;
-import org.w3c.dom.NodeList;
-import org.xml.sax.InputSource;
-import se.bjurr.violations.lib.ViolationsApi;
 import se.bjurr.violations.lib.ViolationsLogger;
 import se.bjurr.violations.lib.model.SEVERITY;
 import se.bjurr.violations.lib.model.Violation;
-import se.bjurr.violations.lib.reports.Parser;
 import se.bjurr.violations.lib.util.ViolationParserUtils;
 
 public class JacocoParser implements ViolationsParser {
 
-  private static final int MIN_LINE_COUNT = 4;
+  private final int minLineCount;
 
-  private static final double MIN_COVERAGE = 70d;
+  private final double minCoverage;
 
-  private static Element find(NodeList list, String type) {
-    for (int i = 0; i < list.getLength(); i++) {
-      Element item = (Element) list.item(i);
-      if (item.hasAttribute("type") && item.getAttribute("type").equals(type)) {
-        return item;
-      }
-    }
-    return null;
+  public JacocoParser() {
+    this(4, 0.70);
   }
 
-  public static void main(String[] args) {
-    Set<Violation> violations = ViolationsApi.violationsApi() //
-        .withPattern(".*/x\\.xml$") //
-        .inFolder(".") //
-        .findAll(Parser.JACOCO) //
-        .violations();
-    for (Violation violation : violations) {
-      System.out.println("violation = " + violation);
-    }
+  public JacocoParser(int minLineCount, double minCoverage) {
+    this.minLineCount = minLineCount;
+    this.minCoverage = minCoverage;
   }
 
   @Override
   public Set<Violation> parseReportOutput(String reportContent, ViolationsLogger violationsLogger)
       throws Exception {
     Set<Violation> violations = new LinkedHashSet<>();
-    DocumentBuilderFactory documentBuilderFactory = DocumentBuilderFactory.newInstance();
-    documentBuilderFactory
-        .setFeature("http://apache.org/xml/features/disallow-doctype-decl", false);
-    documentBuilderFactory
-        .setFeature("http://apache.org/xml/features/nonvalidating/load-external-dtd", false);
-    DocumentBuilder db = documentBuilderFactory.newDocumentBuilder();
-    InputSource is = new InputSource(new StringReader(reportContent));
-    Document document = db.parse(is);
-    document.getDocumentElement().normalize();
-    NodeList list = document.getElementsByTagName("package");
-    for (int temp = 0; temp < list.getLength(); temp++) {
-      violations.addAll(process((Element) list.item(temp)));
+    try (InputStream input = new ByteArrayInputStream(reportContent.getBytes(UTF_8))) {
+      MethodViolationBuilder builder = new MethodViolationBuilder();
+      XMLStreamReader xmlr = ViolationParserUtils.createXmlReader(input);
+      while (xmlr.hasNext()) {
+        final int eventType = xmlr.next();
+        switch (eventType) {
+          case XMLStreamConstants.START_ELEMENT:
+            switch (xmlr.getLocalName()) {
+              case "package":
+                builder.setPackageDetails(getAttribute(xmlr, "name"));
+                break;
+              case "class":
+                builder.setClassDetails(getAttribute(xmlr, "sourcefilename"));
+                break;
+              case "method":
+                builder.setMethodDetails(
+                    getAttribute(xmlr, "name"),
+                    getAttribute(xmlr, "desc"),
+                    Integer.parseInt(getAttribute(xmlr, "line")));
+                break;
+              case "counter":
+                builder.setCounterDetails(
+                    getAttribute(xmlr, "type"),
+                    Integer.parseInt(getAttribute(xmlr, "covered")),
+                    Integer.parseInt(getAttribute(xmlr, "missed")));
+                break;
+            }
+            break;
+          case XMLStreamConstants.END_ELEMENT:
+            if (xmlr.getLocalName().equals("method")) {
+              builder.build(minLineCount, minCoverage).ifPresent(violations::add);
+            }
+            break;
+        }
+      }
     }
     return violations;
   }
 
-  private Set<Violation> process(Element p) {
-    Set<Violation> violations = new LinkedHashSet<>();
-    NodeList list = p.getElementsByTagName("class");
-    for (int temp = 0; temp < list.getLength(); temp++) {
-      violations.addAll(process(p, (Element) list.item(temp)));
-    }
-    return violations;
-  }
+  private static class MethodViolationBuilder {
 
-  private Set<Violation> process(Element p, Element c) {
-    Set<Violation> violations = new LinkedHashSet<>();
-    NodeList list = c.getElementsByTagName("method");
-    for (int temp = 0; temp < list.getLength(); temp++) {
-      process(p, c, (Element) list.item(temp)).ifPresent(violations::add);
-    }
-    return violations;
-  }
+    private String packageName;
 
-  private Optional<Violation> process(Element p, Element c, Element m) {
-    CoverageDetails cl = new CoverageDetails(
-        find(m.getElementsByTagName("counter"), "LINE"));
-    if (cl.getTotal() < MIN_LINE_COUNT) {
-      return Optional.empty();
+    private String fileName;
+
+    private String methodName;
+
+    private String methodDescription;
+
+    private int methodLine;
+
+    private Map<String, CoverageDetails> coverage = new HashMap<>();
+
+    public void setPackageDetails(String packageName) {
+      this.packageName = packageName;
     }
-    CoverageDetails ci = new CoverageDetails(
-        find(m.getElementsByTagName("counter"), "INSTRUCTION"));
-    if (ci.getCoverage() >= MIN_COVERAGE) {
-      return Optional.empty();
+
+    public void setClassDetails(String fileName) {
+      this.fileName = fileName;
     }
-    return Optional.of(violationBuilder()
-        .setParser(JACOCO)
-        .setStartLine(Integer.valueOf(m.getAttribute("line")))
-        .setColumn(1)
-        .setFile(p.getAttribute("name") + "/" + c.getAttribute("sourcefilename"))
-        .setSeverity(SEVERITY.WARN)
-        .setMessage(format("Covered %d out of %d instructions (%.2f%%) for %s%s",
-            ci.getCovered(),
-            ci.getTotal(),
-            ci.getCoverage(),
-            m.getAttribute("name"),
-            m.getAttribute("desc")))
-        .build());
+
+    public void setMethodDetails(String methodName, String methodDescription, int methodLine) {
+      this.methodName = methodName;
+      this.methodDescription = methodDescription;
+      this.methodLine = methodLine;
+      this.coverage.clear();
+    }
+
+    public void setCounterDetails(String counterName, int covered, int missed) {
+      this.coverage.put(counterName, new CoverageDetails(covered, missed));
+    }
+
+    public Optional<Violation> build(int minLineCount, double minCoverage) {
+      CoverageDetails cl = coverage.get("LINE");
+      if (cl.getTotal() < minLineCount) {
+        return Optional.empty();
+      }
+      CoverageDetails ci = coverage.get("INSTRUCTION");
+      if (ci.getCoverage() >= minCoverage) {
+        return Optional.empty();
+      }
+      return Optional.of(violationBuilder()
+          .setParser(JACOCO)
+          .setStartLine(methodLine)
+          .setColumn(1)
+          .setFile(packageName + "/" + fileName)
+          .setSeverity(SEVERITY.WARN)
+          .setMessage(format("Covered %d out of %d instructions (%.2f%%) for %s%s",
+              ci.getCovered(),
+              ci.getTotal(),
+              ci.getCoverage() * 100d,
+              methodName,
+              methodDescription))
+          .build());
+    }
   }
 
   private static final class CoverageDetails {
 
-    private final Element element;
+    private final int covered;
 
-    public CoverageDetails(Element element) {
-      this.element = element;
+    private final int missed;
+
+    public CoverageDetails(int covered, int missed) {
+      this.covered = covered;
+      this.missed = missed;
     }
 
-    int getCovered() {
-      return element != null ? Integer.parseInt(element.getAttribute("covered")) : 0;
+    public int getCovered() {
+      return covered;
     }
 
-    int getMissed() {
-      return element != null ? Integer.parseInt(element.getAttribute("missed")) : 0;
+    public int getMissed() {
+      return missed;
     }
 
-    int getTotal() {
+    public int getTotal() {
       return getCovered() + getMissed();
     }
 
-    double getCoverage() {
-      return getTotal() > 0 ? getCovered() * 100d / getTotal() : 1;
+    public double getCoverage() {
+      return getTotal() > 0 ? getCovered() * 1d / getTotal() : 1d;
     }
   }
 }
