@@ -74,6 +74,7 @@ public enum Reporter {
       Parser.IAR,
       "https://www.iar.com/iar-embedded-workbench/",
       "With `--no_wrap_diagnostics`"),
+  JACOCO("JACOCO", Parser.JACOCO, "https://www.jacoco.org/", ""),
   JCREPORT("JCReport", Parser.JCREPORT, "https://github.com/jCoderZ/fawkez/wiki/JcReport", ""),
   JSHINT(
       "JSHint",

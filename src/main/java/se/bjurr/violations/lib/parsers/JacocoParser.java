@@ -6,6 +6,7 @@ import static se.bjurr.violations.lib.model.Violation.violationBuilder;
 import static se.bjurr.violations.lib.reports.Parser.JACOCO;
 import static se.bjurr.violations.lib.util.ViolationParserUtils.getAttribute;
 
+import edu.umd.cs.findbugs.annotations.SuppressFBWarnings;
 import java.io.ByteArrayInputStream;
 import java.io.InputStream;
 import java.util.HashMap;
@@ -36,6 +37,7 @@ public class JacocoParser implements ViolationsParser {
   }
 
   @Override
+  @SuppressFBWarnings("SF_SWITCH_NO_DEFAULT")
   public Set<Violation> parseReportOutput(String reportContent, ViolationsLogger violationsLogger)
       throws Exception {
     Set<Violation> violations = new LinkedHashSet<>();
@@ -120,19 +122,22 @@ public class JacocoParser implements ViolationsParser {
       if (ci.getCoverage() >= minCoverage) {
         return Optional.empty();
       }
-      return Optional.of(violationBuilder()
-          .setParser(JACOCO)
-          .setStartLine(methodLine)
-          .setColumn(1)
-          .setFile(packageName + "/" + fileName)
-          .setSeverity(SEVERITY.WARN)
-          .setMessage(format("Covered %d out of %d instructions (%.2f%%) for %s%s",
-              ci.getCovered(),
-              ci.getTotal(),
-              ci.getCoverage() * 100d,
-              methodName,
-              methodDescription))
-          .build());
+      return Optional.of(
+          violationBuilder()
+              .setParser(JACOCO)
+              .setStartLine(methodLine)
+              .setColumn(1)
+              .setFile(packageName + "/" + fileName)
+              .setSeverity(SEVERITY.WARN)
+              .setMessage(
+                  format(
+                      "Covered %d out of %d instructions (%.2f%%) for %s%s",
+                      ci.getCovered(),
+                      ci.getTotal(),
+                      ci.getCoverage() * 100d,
+                      methodName,
+                      methodDescription))
+              .build());
     }
   }
 
