@@ -2,6 +2,18 @@
 
 Changelog of violations-lib.
 
+## [1.145.0](https://github.com/tomasbjerre/violations-lib/releases/tag/1.145.0) (2021-07-12)
+
+
+
+### Features
+
+-  allow parser instance to be given ([3d606](https://github.com/tomasbjerre/violations-lib/commit/3d60602c95c54b5))  
+
+
+
+
+
 ## [1.144.6](https://github.com/tomasbjerre/violations-lib/releases/tag/1.144.6) (2021-07-12)
 
 
