@@ -23,27 +23,24 @@ import se.bjurr.violations.lib.util.ViolationParserUtils;
 
 public class JacocoParser implements ViolationsParser {
 
-  private final int minLineCount;
-
-  private final double minCoverage;
+  private final JacocoParserSettings settings;
 
   public JacocoParser() {
-    this(4, 0.70);
+    this.settings = new JacocoParserSettings();
   }
 
-  public JacocoParser(int minLineCount, double minCoverage) {
-    this.minLineCount = minLineCount;
-    this.minCoverage = minCoverage;
+  public JacocoParser(final JacocoParserSettings settings) {
+    this.settings = settings;
   }
 
   @Override
   @SuppressFBWarnings("SF_SWITCH_NO_DEFAULT")
-  public Set<Violation> parseReportOutput(String reportContent, ViolationsLogger violationsLogger)
-      throws Exception {
-    Set<Violation> violations = new LinkedHashSet<>();
+  public Set<Violation> parseReportOutput(
+      final String reportContent, final ViolationsLogger violationsLogger) throws Exception {
+    final Set<Violation> violations = new LinkedHashSet<>();
     try (InputStream input = new ByteArrayInputStream(reportContent.getBytes(UTF_8))) {
-      MethodViolationBuilder builder = new MethodViolationBuilder();
-      XMLStreamReader xmlr = ViolationParserUtils.createXmlReader(input);
+      final MethodViolationBuilder builder = new MethodViolationBuilder();
+      final XMLStreamReader xmlr = ViolationParserUtils.createXmlReader(input);
       while (xmlr.hasNext()) {
         final int eventType = xmlr.next();
         switch (eventType) {
@@ -71,7 +68,9 @@ public class JacocoParser implements ViolationsParser {
             break;
           case XMLStreamConstants.END_ELEMENT:
             if (xmlr.getLocalName().equals("method")) {
-              builder.build(minLineCount, minCoverage).ifPresent(violations::add);
+              builder
+                  .build(this.settings.getMinLineCount(), this.settings.getMinCoverage())
+                  .ifPresent(violations::add);
             }
             break;
         }
@@ -92,42 +91,43 @@ public class JacocoParser implements ViolationsParser {
 
     private int methodLine;
 
-    private Map<String, CoverageDetails> coverage = new HashMap<>();
+    private final Map<String, CoverageDetails> coverage = new HashMap<>();
 
-    public void setPackageDetails(String packageName) {
+    public void setPackageDetails(final String packageName) {
       this.packageName = packageName;
     }
 
-    public void setClassDetails(String fileName) {
+    public void setClassDetails(final String fileName) {
       this.fileName = fileName;
     }
 
-    public void setMethodDetails(String methodName, String methodDescription, int methodLine) {
+    public void setMethodDetails(
+        final String methodName, final String methodDescription, final int methodLine) {
       this.methodName = methodName;
       this.methodDescription = methodDescription;
       this.methodLine = methodLine;
       this.coverage.clear();
     }
 
-    public void setCounterDetails(String counterName, int covered, int missed) {
+    public void setCounterDetails(final String counterName, final int covered, final int missed) {
       this.coverage.put(counterName, new CoverageDetails(covered, missed));
     }
 
-    public Optional<Violation> build(int minLineCount, double minCoverage) {
-      CoverageDetails cl = coverage.get("LINE");
+    public Optional<Violation> build(final int minLineCount, final double minCoverage) {
+      final CoverageDetails cl = this.coverage.get("LINE");
       if (cl.getTotal() < minLineCount) {
         return Optional.empty();
       }
-      CoverageDetails ci = coverage.get("INSTRUCTION");
+      final CoverageDetails ci = this.coverage.get("INSTRUCTION");
       if (ci.getCoverage() >= minCoverage) {
         return Optional.empty();
       }
       return Optional.of(
           violationBuilder()
               .setParser(JACOCO)
-              .setStartLine(methodLine)
+              .setStartLine(this.methodLine)
               .setColumn(1)
-              .setFile(packageName + "/" + fileName)
+              .setFile(this.packageName + "/" + this.fileName)
               .setSeverity(SEVERITY.WARN)
               .setMessage(
                   format(
@@ -135,8 +135,8 @@ public class JacocoParser implements ViolationsParser {
                       ci.getCovered(),
                       ci.getTotal(),
                       ci.getCoverage() * 100d,
-                      methodName,
-                      methodDescription))
+                      this.methodName,
+                      this.methodDescription))
               .build());
     }
   }
@@ -147,25 +147,25 @@ public class JacocoParser implements ViolationsParser {
 
     private final int missed;
 
-    public CoverageDetails(int covered, int missed) {
+    public CoverageDetails(final int covered, final int missed) {
       this.covered = covered;
       this.missed = missed;
     }
 
     public int getCovered() {
-      return covered;
+      return this.covered;
     }
 
     public int getMissed() {
-      return missed;
+      return this.missed;
     }
 
     public int getTotal() {
-      return getCovered() + getMissed();
+      return this.getCovered() + this.getMissed();
     }
 
     public double getCoverage() {
-      return getTotal() > 0 ? getCovered() * 1d / getTotal() : 1d;
+      return this.getTotal() > 0 ? this.getCovered() * 1d / this.getTotal() : 1d;
     }
   }
 }
