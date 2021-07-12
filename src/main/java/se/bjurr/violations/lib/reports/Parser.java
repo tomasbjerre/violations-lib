@@ -1,18 +1,56 @@
 package se.bjurr.violations.lib.reports;
 
-import static java.util.logging.Level.FINE;
-import static java.util.logging.Level.SEVERE;
-
 import java.io.File;
-import java.io.FileInputStream;
 import java.util.List;
 import java.util.Set;
-import java.util.TreeSet;
-import java.util.logging.Logger;
 import se.bjurr.violations.lib.ViolationsLogger;
 import se.bjurr.violations.lib.model.Violation;
-import se.bjurr.violations.lib.parsers.*;
-import se.bjurr.violations.lib.util.Utils;
+import se.bjurr.violations.lib.parsers.AndroidLintParser;
+import se.bjurr.violations.lib.parsers.CLangParser;
+import se.bjurr.violations.lib.parsers.CPDParser;
+import se.bjurr.violations.lib.parsers.CPPCheckParser;
+import se.bjurr.violations.lib.parsers.CSSLintParser;
+import se.bjurr.violations.lib.parsers.CheckStyleParser;
+import se.bjurr.violations.lib.parsers.CodeClimateParser;
+import se.bjurr.violations.lib.parsers.CodeNarcParser;
+import se.bjurr.violations.lib.parsers.CppLintParser;
+import se.bjurr.violations.lib.parsers.DocFXParser;
+import se.bjurr.violations.lib.parsers.FindbugsParser;
+import se.bjurr.violations.lib.parsers.Flake8Parser;
+import se.bjurr.violations.lib.parsers.FxCopParser;
+import se.bjurr.violations.lib.parsers.GendarmeParser;
+import se.bjurr.violations.lib.parsers.GenericParser;
+import se.bjurr.violations.lib.parsers.GoLintParser;
+import se.bjurr.violations.lib.parsers.GoogleErrorProneParser;
+import se.bjurr.violations.lib.parsers.IARParser;
+import se.bjurr.violations.lib.parsers.JCReportParser;
+import se.bjurr.violations.lib.parsers.JSLintParser;
+import se.bjurr.violations.lib.parsers.JUnitParser;
+import se.bjurr.violations.lib.parsers.JacocoParser;
+import se.bjurr.violations.lib.parsers.KlocworkParser;
+import se.bjurr.violations.lib.parsers.KotlinGradleParser;
+import se.bjurr.violations.lib.parsers.KotlinMavenParser;
+import se.bjurr.violations.lib.parsers.LintParser;
+import se.bjurr.violations.lib.parsers.MSBuildLogParser;
+import se.bjurr.violations.lib.parsers.MSCPPParser;
+import se.bjurr.violations.lib.parsers.MyPyParser;
+import se.bjurr.violations.lib.parsers.PCLintParser;
+import se.bjurr.violations.lib.parsers.PMDParser;
+import se.bjurr.violations.lib.parsers.PerlCriticParser;
+import se.bjurr.violations.lib.parsers.PiTestParser;
+import se.bjurr.violations.lib.parsers.ProtoLintParser;
+import se.bjurr.violations.lib.parsers.PyDocStyleParser;
+import se.bjurr.violations.lib.parsers.PyLintParser;
+import se.bjurr.violations.lib.parsers.ResharperParser;
+import se.bjurr.violations.lib.parsers.SbtScalacParser;
+import se.bjurr.violations.lib.parsers.SimianParser;
+import se.bjurr.violations.lib.parsers.SonarParser;
+import se.bjurr.violations.lib.parsers.StyleCopParser;
+import se.bjurr.violations.lib.parsers.ViolationsParser;
+import se.bjurr.violations.lib.parsers.XMLLintParser;
+import se.bjurr.violations.lib.parsers.XUnitParser;
+import se.bjurr.violations.lib.parsers.YAMLlintParser;
+import se.bjurr.violations.lib.parsers.ZPTLintParser;
 
 public enum Parser {
   ANDROIDLINT(new AndroidLintParser()), //
@@ -69,25 +107,8 @@ public enum Parser {
 
   public Set<Violation> findViolations(
       final ViolationsLogger violationsLogger, final List<File> includedFiles) {
-    final Set<Violation> violations = new TreeSet<>();
-    for (final File file : includedFiles) {
-      String content = null;
-      try {
-        content = Utils.toString(new FileInputStream(file));
-        if (Logger.getLogger(Parser.class.getSimpleName()).isLoggable(FINE)) {
-          violationsLogger.log(
-              FINE, "Using " + this.violationsParser.getClass().getName() + " to parse " + content);
-        }
-        violations.addAll(this.violationsParser.parseReportOutput(content, violationsLogger));
-      } catch (final Throwable e) {
-        final String withContent = content == null ? "" : " content:\n\n" + content;
-        violationsLogger.log(
-            SEVERE,
-            "Error when parsing " + file.getAbsolutePath() + " as " + this.name() + withContent,
-            e);
-      }
-    }
-    return violations;
+    return new ViolationsFinder(this.violationsParser)
+        .findViolations(violationsLogger, includedFiles);
   }
 
   public ViolationsParser getViolationsParser() {

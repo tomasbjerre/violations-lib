@@ -16,12 +16,14 @@ import java.util.logging.Logger;
 import se.bjurr.violations.lib.model.Violation;
 import se.bjurr.violations.lib.model.codeclimate.CodeClimate;
 import se.bjurr.violations.lib.model.codeclimate.CodeClimateTransformer;
+import se.bjurr.violations.lib.parsers.ViolationsParser;
 import se.bjurr.violations.lib.reports.Parser;
+import se.bjurr.violations.lib.reports.ViolationsFinder;
 
 public class ViolationsApi {
   private final Logger LOGGER = Logger.getLogger(ViolationsApi.class.getSimpleName());
   private String pattern;
-  private Parser parser;
+  private ViolationsParser violationsParser;
   private File startFile;
   private String reporter;
   private List<String> ignorePaths = new ArrayList<>();
@@ -48,7 +50,12 @@ public class ViolationsApi {
   private ViolationsApi() {}
 
   public ViolationsApi findAll(final Parser parser) {
-    this.parser = checkNotNull(parser, "parser");
+    this.violationsParser = checkNotNull(parser, "parser").getViolationsParser();
+    return this;
+  }
+
+  public ViolationsApi withViolationsParser(final ViolationsParser violationsParser) {
+    this.violationsParser = checkNotNull(violationsParser, "violationsParser");
     return this;
   }
 
@@ -90,11 +97,9 @@ public class ViolationsApi {
       this.violationsLogger.log(INFO, "    - " + f.getAbsolutePath());
     }
     final Set<Violation> foundViolations =
-        this.parser.findViolations(this.violationsLogger, includedFiles);
-    final boolean reporterWasSupplied =
-        this.reporter != null
-            && !this.reporter.trim().isEmpty()
-            && !this.reporter.equals(this.parser.name());
+        new ViolationsFinder(this.violationsParser)
+            .findViolations(this.violationsLogger, includedFiles);
+    final boolean reporterWasSupplied = this.reporter != null && !this.reporter.trim().isEmpty();
     if (reporterWasSupplied) {
       setReporter(foundViolations, this.reporter);
     }
