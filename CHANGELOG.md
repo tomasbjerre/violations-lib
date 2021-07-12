@@ -2,6 +2,33 @@
 
 Changelog of violations-lib.
 
+## [1.144.6](https://github.com/tomasbjerre/violations-lib/releases/tag/1.144.6) (2021-07-12)
+
+
+
+
+
+
+
+### Other changes
+
+**Fixed failing tests from the framework**
+
+
+[de042](https://github.com/tomasbjerre/violations-lib/commit/de042fa5423b9e6) Aurelian Teglas *2021-07-10 20:04:13*
+**Migrated to XMLStreamReader**
+
+
+[caeb0](https://github.com/tomasbjerre/violations-lib/commit/caeb0fa52558e4b) Aurelian Teglas *2021-07-10 19:45:55*
+**Added unit tests for hte jacoco xml parser**
+
+
+[29b36](https://github.com/tomasbjerre/violations-lib/commit/29b36ea182feb38) Aurelian Teglas *2021-07-10 18:47:25*
+**Added starting point for Jacoco coverage parser**
+
+
+[a818c](https://github.com/tomasbjerre/violations-lib/commit/a818cb6bc732add) Aurelian Teglas *2021-07-06 17:53:46*
+
 ## [1.144.5](https://github.com/tomasbjerre/violations-lib/releases/tag/1.144.5) (2021-06-16)
 
 
