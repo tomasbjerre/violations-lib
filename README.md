@@ -40,6 +40,7 @@ A number of **parsers** have been implemented. Some **parsers** can parse output
 | [_HadoLint_](https://github.com/hadolint/hadolint/)                                   | `CHECKSTYLE`         | With `-f checkstyle`
 | [_IAR_](https://www.iar.com/iar-embedded-workbench/)                                  | `IAR`                | With `--no_wrap_diagnostics`
 | [_Infer_](http://fbinfer.com/)                                                        | `PMD`                | Facebook Infer. With `--pmd-xml`.
+| [_JACOCO_](https://www.jacoco.org/)                                                   | `JACOCO`             | 
 | [_JCReport_](https://github.com/jCoderZ/fawkez/wiki/JcReport)                         | `JCREPORT`           | 
 | [_JSHint_](http://jshint.com/)                                                        | `JSLINT`             | With `--reporter=jslint` or the CHECKSTYLE parser with `--reporter=checkstyle`
 | [_JUnit_](https://junit.org/junit4/)                                                  | `JUNIT`              | It only contains the failures.
