@@ -1,0 +1,12 @@
+<report name="violations-lib">
+  <package name="se/bjurr/violations/lib/reports">
+    <class name="se/bjurr/violations/lib/reports/Parser" sourcefilename="Parser.java">
+      <method name="findViolations"
+        desc="(Lse/bjurr/violations/lib/ViolationsLogger;Ljava/util/List;)Ljava/util/Set;"
+        line="71">
+        <counter type="INSTRUCTION" missed="52" covered="40"/>
+        <counter type="LINE" missed="6" covered="9"/>
+      </method>
+    </class>
+  </package>
+</report>
