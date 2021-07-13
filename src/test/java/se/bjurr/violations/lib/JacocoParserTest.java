@@ -1,4 +1,4 @@
-package se.bjurr.violations.lib.parsers;
+package se.bjurr.violations.lib;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static se.bjurr.violations.lib.TestUtils.getRootFolder;
