@@ -4,6 +4,7 @@ import static java.lang.String.format;
 import static java.nio.charset.StandardCharsets.UTF_8;
 import static se.bjurr.violations.lib.model.Violation.violationBuilder;
 import static se.bjurr.violations.lib.reports.Parser.JACOCO;
+import static se.bjurr.violations.lib.util.ViolationParserUtils.findIntegerAttribute;
 import static se.bjurr.violations.lib.util.ViolationParserUtils.getAttribute;
 
 import edu.umd.cs.findbugs.annotations.SuppressFBWarnings;
@@ -56,7 +57,7 @@ public class JacocoParser implements ViolationsParser {
                 builder.setMethodDetails(
                     getAttribute(xmlr, "name"),
                     getAttribute(xmlr, "desc"),
-                    Integer.parseInt(getAttribute(xmlr, "line")));
+                    findIntegerAttribute(xmlr, "line").orElse(0));
                 break;
               case "counter":
                 builder.setCounterDetails(
@@ -114,6 +115,9 @@ public class JacocoParser implements ViolationsParser {
     }
 
     public Optional<Violation> build(final int minLineCount, final double minCoverage) {
+      if (methodLine == 0) {
+        return Optional.empty();
+      }
       final CoverageDetails cl = this.coverage.get("LINE");
       if (cl.getTotal() < minLineCount) {
         return Optional.empty();
