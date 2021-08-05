@@ -179,4 +179,19 @@ public class JacocoParserTest {
     assertThat(violation1.getStartLine()) //
         .isEqualTo(71);
   }
+
+  @Test
+  public void shouldSkipViolationWithoutLineInfo() {
+    final String rootFolder = getRootFolder();
+
+    final Set<Violation> actual =
+            violationsApi() //
+                    .withPattern(".*/jacoco/shouldSkipViolationWithoutLineInfo\\.xml$") //
+                    .inFolder(rootFolder) //
+                    .findAll(JACOCO) //
+                    .violations();
+
+    assertThat(actual) //
+            .hasSize(0);
+  }
 }
