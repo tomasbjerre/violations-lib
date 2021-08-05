@@ -2,6 +2,22 @@
 
 Changelog of violations-lib.
 
+## [1.145.1](https://github.com/tomasbjerre/violations-lib/releases/tag/1.145.1) (2021-08-05)
+
+
+
+
+
+
+
+### Other changes
+
+**Generated code does not have line information so we are skipping violations in those cases**
+
+
+[89019](https://github.com/tomasbjerre/violations-lib/commit/890190b734f5220) Aurelian Teglas *2021-08-05 09:37:30*
+
+
 ## [1.145.0](https://github.com/tomasbjerre/violations-lib/releases/tag/1.145.0) (2021-07-12)
 
 
