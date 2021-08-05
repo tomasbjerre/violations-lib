@@ -185,13 +185,13 @@ public class JacocoParserTest {
     final String rootFolder = getRootFolder();
 
     final Set<Violation> actual =
-            violationsApi() //
-                    .withPattern(".*/jacoco/shouldSkipViolationWithoutLineInfo\\.xml$") //
-                    .inFolder(rootFolder) //
-                    .findAll(JACOCO) //
-                    .violations();
+        violationsApi() //
+            .withPattern(".*/jacoco/shouldSkipViolationWithoutLineInfo\\.xml$") //
+            .inFolder(rootFolder) //
+            .findAll(JACOCO) //
+            .violations();
 
     assertThat(actual) //
-            .hasSize(0);
+        .hasSize(0);
   }
 }
