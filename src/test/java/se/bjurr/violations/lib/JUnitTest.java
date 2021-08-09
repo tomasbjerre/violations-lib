@@ -333,4 +333,31 @@ public class JUnitTest {
             "shouldParseEmptyFile : org.json.JSONException: Missing value at 0 [character 1 line 1]");
     assertThat(violation0.getSeverity()).isEqualTo(ERROR);
   }
+
+  @Test
+  public void testThatViolationsCanBeParsedFromCfn() {
+    final String rootFolder = getRootFolder();
+
+    final Set<Violation> actual =
+        violationsApi() //
+            .withPattern(".*/junit/cfn-lint\\.xml$") //
+            .inFolder(rootFolder) //
+            .findAll(JUNIT) //
+            .violations();
+
+    assertThat(actual) //
+        .hasSize(2);
+
+    final Violation violation0 = new ArrayList<>(actual).get(0);
+    assertThat(violation0.getSource()) //
+        .isEqualTo("");
+    assertThat(violation0.getFile()) //
+        .isEqualTo("-");
+    assertThat(violation0.getMessage()) //
+        .startsWith("E3012") //
+        .contains(
+            "E3012 Check resource properties values : Property Resources/ActivitiesTable/Properties/ProvisionedThroughput/ReadCapacityUnits should be of type Long at sam-python-crud-sample/template.yaml:142:9");
+    assertThat(violation0.getSeverity()) //
+        .isEqualTo(ERROR);
+  }
 }

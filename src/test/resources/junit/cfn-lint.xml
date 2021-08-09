@@ -1,0 +1,187 @@
+<?xml version="1.0" ?>
+<testsuites disabled="0" errors="0" failures="1" tests="141" time="0.0">
+        <testsuite disabled="0" errors="0" failures="1" name="CloudFormation Lint" skipped="19" tests="141" time="0">
+                <testcase name="I7010 Mapping limit">
+                        <skipped type="skipped" message="Ignored rule"/>
+                </testcase>
+                <testcase name="E7001 Mappings are appropriately configured" url="https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/mappings-section-structure.html"/>
+                <testcase name="E7010 Mapping limit not exceeded" url="https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/cloudformation-limits.html"/>
+                <testcase name="W7001 Check if Mappings are Used" url="https://github.com/aws-cloudformation/cfn-python-lint"/>
+                <testcase name="E7003 Mapping keys are strings and alphanumeric" url="https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/mappings-section-structure.html"/>
+                <testcase name="E7012 Mapping attribute limit not exceeded" url="https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/cloudformation-limits.html"/>
+                <testcase name="I7011 Mapping name limit">
+                        <skipped type="skipped" message="Ignored rule"/>
+                </testcase>
+                <testcase name="I7012 Mapping attribute limit">
+                        <skipped type="skipped" message="Ignored rule"/>
+                </testcase>
+                <testcase name="E7002 Mappings have appropriate names" url="https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/mappings-section-structure.html"/>
+                <testcase name="E7011 Mapping name limit not exceeded" url="https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/cloudformation-limits.html"/>
+                <testcase name="E8004 Check Fn::And structure for validity" url="https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/intrinsic-function-reference-conditions.html#intrinsic-function-reference-conditions-and"/>
+                <testcase name="E8002 Check if the referenced Conditions are defined" url="https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/conditions-section-structure.html"/>
+                <testcase name="E8006 Check Fn::Or structure for validity" url="https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/intrinsic-function-reference-conditions.html#intrinsic-function-reference-conditions-or"/>
+                <testcase name="E8001 Conditions have appropriate properties" url="https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/conditions-section-structure.html"/>
+                <testcase name="W8001 Check if Conditions are Used" url="https://github.com/aws-cloudformation/cfn-python-lint"/>
+                <testcase name="E8003 Check Fn::Equals structure for validity" url="https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/intrinsic-function-reference-conditions.html#intrinsic-function-reference-conditions-equals"/>
+                <testcase name="E8005 Check Fn::Not structure for validity" url="https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/intrinsic-function-reference-conditions.html#intrinsic-function-reference-conditions-not"/>
+                <testcase name="I1003 Template description limit">
+                        <skipped type="skipped" message="Ignored rule"/>
+                </testcase>
+                <testcase name="E1004 Template description can only be a string" url="https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/template-description-structure.html"/>
+                <testcase name="E1001 Basic CloudFormation Template Configuration" url="https://github.com/aws-cloudformation/cfn-python-lint"/>
+                <testcase name="E1002 Template size limit" url="https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/cloudformation-limits.html"/>
+                <testcase name="I1002 Template size limit">
+                        <skipped type="skipped" message="Ignored rule"/>
+                </testcase>
+                <testcase name="E1003 Template description limit" url="https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/cloudformation-limits.html"/>
+                <testcase name="E1029 Sub is required if a variable is used in a string" url="https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/intrinsic-function-reference-sub.html"/>
+                <testcase name="E1026 Cannot reference resources in the Conditions block of the template" url="https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/intrinsic-function-reference-conditions.html#w2ab2c21c28c21c45"/>
+                <testcase name="E1024 Cidr validation of parameters" url="https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/intrinsic-function-reference-cidr.html"/>
+                <testcase name="E1016 ImportValue validation of parameters" url="https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/intrinsic-function-reference-importvalue.html"/>
+                <testcase name="W1019 Sub validation of parameters" url="https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/intrinsic-function-reference-sub.html"/>
+                <testcase name="W1011 FindInMap keys exist in the map" url="https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/intrinsic-function-reference-findinmap.html"/>
+                <testcase name="E1028 Check Fn::If structure for validity" url="https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/intrinsic-function-reference-conditions.html#intrinsic-function-reference-conditions-if"/>
+                <testcase name="E1017 Select validation of parameters" url="https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/intrinsic-function-reference-select.html"/>
+                <testcase name="E1012 Check if Refs exist" url="https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/intrinsic-function-reference-ref.html"/>
+                <testcase name="E1011 FindInMap validation of configuration" url="https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/intrinsic-function-reference-findinmap.html"/>
+                <testcase name="W1001 Ref/GetAtt to resource that is available when conditions are applied" url="https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/intrinsic-function-reference-ref.html"/>
+                <testcase name="E1015 GetAz validation of parameters" url="https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/intrinsic-function-reference-getavailabilityzones.html"/>
+                <testcase name="E1018 Split validation of parameters" url="https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/intrinsic-function-reference-split.html"/>
+                <testcase name="I1022 Use Sub instead of Join">
+                        <skipped type="skipped" message="Ignored rule"/>
+                </testcase>
+                <testcase name="E1027 Check dynamic references secure strings are in supported locations" url="https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/dynamic-references.html"/>
+                <testcase name="E1010 GetAtt validation of parameters" url="https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/intrinsic-function-reference-getatt.html"/>
+                <testcase name="E1023 Validation NOT function configuration" url="https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/intrinsic-function-reference-conditions.html#intrinsic-function-reference-conditions-not"/>
+                <testcase name="E1020 Ref validation of value" url="https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/intrinsic-function-reference-ref.html"/>
+                <testcase name="W1020 Sub isn't needed if it doesn't have a variable defined" url="https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/intrinsic-function-reference-sub.html"/>
+                <testcase name="E1022 Join validation of parameters" url="https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/intrinsic-function-reference-join.html"/>
+                <testcase name="E1021 Base64 validation of parameters" url="https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/intrinsic-function-reference-base64.html"/>
+                <testcase name="E1019 Sub validation of parameters" url="https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/intrinsic-function-reference-sub.html"/>
+                <testcase name="E4001 Metadata Interface have appropriate properties" url="https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-cloudformation-interface.html"/>
+                <testcase name="W4001 Metadata Interface parameters exist" url="https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-cloudformation-interface.html"/>
+                <testcase name="W3011 Check resources with UpdateReplacePolicy/DeletionPolicy have both" url="https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-attribute-deletionpolicy.html"/>
+                <testcase name="I3010 Resource limit">
+                        <skipped type="skipped" message="Ignored rule"/>
+                </testcase>
+                <testcase name="E3001 Basic CloudFormation Resource Check" url="https://github.com/aws-cloudformation/cfn-python-lint"/>
+                <testcase name="E3010 Resource limit not exceeded" url="https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/cloudformation-limits.html"/>
+                <testcase name="E3000 Resource schema" url="https://github.com/aws-cloudformation/aws-cloudformation-resource-schema/"/>
+                <testcase name="I3013 Check resources with auto expiring content have explicit retention period">
+                        <skipped type="skipped" message="Ignored rule"/>
+                </testcase>
+                <testcase name="W4002 Check for NoEcho References" url="https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/parameters-section-structure.html#parameters-section-structure-properties"/>
+                <testcase name="E3005 Check DependsOn values for Resources" url="https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-attribute-dependson.html"/>
+                <testcase name="I3012 Resource name limit">
+                        <skipped type="skipped" message="Ignored rule"/>
+                </testcase>
+                <testcase name="E3004 Resource dependencies are not circular" url="https://github.com/aws-cloudformation/cfn-python-lint"/>
+                <testcase name="E3038 Check if Serverless Resources have Serverless Transform" url="https://github.com/aws-cloudformation/cfn-python-lint"/>
+                <testcase name="E5001 Check that Modules resources are valid" url="https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/"/>
+                <testcase name="E3006 Resources have appropriate names" url="https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/resources-section-structure.html#resources-section-structure-logicalid"/>
+                <testcase name="I3011 Check stateful resources have a set UpdateReplacePolicy/DeletionPolicy">
+                        <skipped type="skipped" message="Ignored rule"/>
+                </testcase>
+                <testcase name="E3011 Resource name limit not exceeded" url="https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/cloudformation-limits.html"/>
+                <testcase name="E3036 Check UpdateReplacePolicy values for Resources" url="https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-attribute-updatereplacepolicy.html"/>
+                <testcase name="E3007 Unique resource and parameter names" url="https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/resources-section-structure.html"/>
+                <testcase name="E3035 Check DeletionPolicy values for Resources" url="https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-attribute-deletionpolicy.html"/>
+                <testcase name="W3005 Check obsolete DependsOn configuration for Resources" url="https://aws.amazon.com/blogs/devops/optimize-aws-cloudformation-templates/"/>
+                <testcase name="I3042 ARNs should use correctly placed Pseudo Parameters">
+                        <skipped type="skipped" message="Ignored rule"/>
+                </testcase>
+                <testcase name="E2506 Resource EC2 Security Group Ingress Properties" url="https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-ec2-security-group-ingress.html"/>
+                <testcase name="E2504 Check Ec2 Ebs Properties" url="https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-ec2-blockdev-template.html"/>
+                <testcase name="E3022 Resource SubnetRouteTableAssociation Properties" url="https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-ec2-subnet-route-table-assoc.html"/>
+                <testcase name="E2503 Resource ELB Properties" url="https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-ec2-elb-listener.html"/>
+                <testcase name="E3025 RDS instance type is compatible with the RDS type" url="https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/Concepts.DBInstanceClass.html"/>
+                <testcase name="E3503 ValidationDomain is superdomain of DomainName" url="https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-certificatemanager-certificate-domainvalidationoption.html#cfn-certificatemanager-certificate-domainvalidationoption-validationdomain"/>
+                <testcase name="E3013 CloudFront Aliases" url="https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-cloudfront-distribution-distributionconfig.html#cfn-cloudfront-distribution-distributionconfig-aliases"/>
+                <testcase name="E3026 Check Elastic Cache Redis Cluster settings" url="https://github.com/awslabs/cfn-python-lint"/>
+                <testcase name="E3042 Check at least one essential container is specified" url="https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-ecs-taskdefinition-containerdefinitions.html#cfn-ecs-taskdefinition-containerdefinition-essential"/>
+                <testcase name="E2532 Check State Machine Definition for proper syntax" url="https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-stepfunctions-statemachine.html"/>
+                <testcase name="E3016 Check the configuration of a resources UpdatePolicy" url="https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-attribute-updatepolicy.html"/>
+                <testcase name="E2529 Check for SubscriptionFilters have beyond 2 attachments to a CloudWatch Log Group" url="https://github.com/awslabs/serverless-application-model/blob/master/versions/2016-10-31.md#user-content-cloudwatchlogs"/>
+                <testcase name="W2531 Check if EOL Lambda Function Runtimes are used" url="https://docs.aws.amazon.com/lambda/latest/dg/runtime-support-policy.html"/>
+                <testcase name="E2531 Check if EOL Lambda Function Runtimes are used" url="https://docs.aws.amazon.com/lambda/latest/dg/runtime-support-policy.html"/>
+                <testcase name="E3008 Check values of properties for valid Refs and GetAtts"/>
+                <testcase name="E3012 Check resource properties values" url="https://github.com/aws-cloudformation/cfn-python-lint/blob/main/docs/cfn-resource-specification.md#valueprimitivetype">
+                        <failure type="Property Resources/ActivitiesTable/Properties/ProvisionedThroughput/ReadCapacityUnits should be of type Long" message="Property Resources/ActivitiesTable/Properties/ProvisionedThroughput/ReadCapacityUnits should be of type Long at sam-python-crud-sample/template.yaml:142:9"/>
+                        <failure type="Property Resources/ActivitiesTable/Properties/ProvisionedThroughput/WriteCapacityUnits should be of type Long" message="Property Resources/ActivitiesTable/Properties/ProvisionedThroughput/WriteCapacityUnits should be of type Long at sam-python-crud-sample/template.yaml:143:9"/>
+                </testcase>
+                <testcase name="W3010 Availability Zone Parameters should not be hardcoded" url="https://github.com/aws-cloudformation/cfn-python-lint"/>
+                <testcase name="E3002 Resource properties are valid" url="https://github.com/aws-cloudformation/cfn-python-lint/blob/main/docs/cfn-resource-specification.md#properties"/>
+                <testcase name="E3032 Check if a list has between min and max number of values specified" url="https://github.com/awslabs/cfn-python-lint/blob/main/docs/cfn-resource-specification.md#allowedpattern"/>
+                <testcase name="E3030 Check if properties have a valid value" url="https://github.com/aws-cloudformation/cfn-python-lint/blob/main/docs/cfn-resource-specification.md#allowedvalue"/>
+                <testcase name="E2523 Check Properties that need only one of a list of properties" url="https://github.com/aws-cloudformation/cfn-python-lint"/>
+                <testcase name="I3037 Check if a list that allows duplicates has any duplicates">
+                        <skipped type="skipped" message="Ignored rule"/>
+                </testcase>
+                <testcase name="E3037 Check if a list has duplicate values" url="https://github.com/aws-cloudformation/cfn-python-lint/blob/main/docs/cfn-resource-specification.md#allowedvalue"/>
+                <testcase name="W2506 Check if ImageId Parameters have the correct type" url="https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/best-practices.html#parmtypes"/>
+                <testcase name="E3031 Check if property values adhere to a specific pattern" url="https://github.com/awslabs/cfn-python-lint/blob/main/docs/cfn-resource-specification.md#allowedpattern"/>
+                <testcase name="E3502 Check if a JSON Object is within size limits" url="https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/cloudformation-limits.html"/>
+                <testcase name="E2521 Check Properties that are required together" url="https://github.com/aws-cloudformation/cfn-python-lint"/>
+                <testcase name="E3017 Property is required based on another properties value"/>
+                <testcase name="E3033 Check if a string has between min and max number of values specified" url="https://github.com/awslabs/cfn-python-lint/blob/main/docs/cfn-resource-specification.md#allowedpattern"/>
+                <testcase name="E2522 Check Properties that need at least one of a list of properties" url="https://github.com/aws-cloudformation/cfn-python-lint"/>
+                <testcase name="W3002 Warn when properties are configured to only work with the package command" url="https://docs.aws.amazon.com/cli/latest/reference/cloudformation/package.html"/>
+                <testcase name="E3034 Check if a number is between min and max" url="https://github.com/awslabs/cfn-python-lint/blob/main/docs/cfn-resource-specification.md#allowedpattern"/>
+                <testcase name="E3018 Property is unwanted based on another properties value"/>
+                <testcase name="E3003 Required Resource properties are missing" url="https://github.com/aws-cloudformation/cfn-python-lint/blob/main/docs/cfn-resource-specification.md#required"/>
+                <testcase name="W2501 Check if Password Properties are correctly configured" url="https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/best-practices.html#creds"/>
+                <testcase name="E2520 Check Properties that are mutually exclusive" url="https://github.com/aws-cloudformation/cfn-python-lint"/>
+                <testcase name="E3039 AttributeDefinitions / KeySchemas mismatch" url="https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-dynamodb-table.html"/>
+                <testcase name="E3020 Validate Route53 RecordSets" url="https://docs.aws.amazon.com/Route53/latest/DeveloperGuide/ResourceRecordTypes.html"/>
+                <testcase name="E3041 RecordSet HostedZoneName is a superdomain of Name" url="https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-route53-recordset.html#cfn-route53-recordset-name"/>
+                <testcase name="E2541 CodePipeline Stage Actions" url="https://docs.aws.amazon.com/codepipeline/latest/userguide/reference-pipeline-structure.html#pipeline-requirements"/>
+                <testcase name="E2540 CodePipeline Stages" url="https://docs.aws.amazon.com/codepipeline/latest/userguide/reference-pipeline-structure.html#pipeline-requirements"/>
+                <testcase name="E3027 Validate AWS Event ScheduleExpression format" url="https://docs.aws.amazon.com/AmazonCloudWatch/latest/events/ScheduledEvents.html"/>
+                <testcase name="E3021 Check Events Rule Targets are less than or equal to 5" url="https://docs.aws.amazon.com/AmazonCloudWatch/latest/events/cloudwatch_limits_cwe.html"/>
+                <testcase name="W2511 Check IAM Resource Policies syntax" url="https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_policies_elements.html"/>
+                <testcase name="E2507 Check if IAM Policies are properly configured" url="https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-iam-policy.html"/>
+                <testcase name="E3050 Check if REFing to a IAM resource with path set" url="https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_policies_elements.html"/>
+                <testcase name="W3037 Check IAM Permission configuration">
+                        <skipped type="skipped" message="Experimental rule - not enabled"/>
+                </testcase>
+                <testcase name="E2002 Parameters have appropriate type" url="https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/best-practices.html#parmtypes"/>
+                <testcase name="I2010 Parameter limit">
+                        <skipped type="skipped" message="Ignored rule"/>
+                </testcase>
+                <testcase name="E2001 Parameters have appropriate properties" url="https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/parameters-section-structure.html"/>
+                <testcase name="E2015 Default value is within parameter constraints" url="https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/parameters-section-structure.html"/>
+                <testcase name="I2012 Parameter value limit">
+                        <skipped type="skipped" message="Ignored rule"/>
+                </testcase>
+                <testcase name="E2010 Parameter limit not exceeded" url="https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/cloudformation-limits.html"/>
+                <testcase name="W2030 Check if parameters have a valid value" url="https://github.com/aws-cloudformation/cfn-python-lint/blob/main/docs/cfn-resource-specification.md#allowedvalue"/>
+                <testcase name="W2001 Check if Parameters are Used" url="https://github.com/aws-cloudformation/cfn-python-lint"/>
+                <testcase name="E2014 Default value cannot use Refs" url="https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/parameters-section-structure.html"/>
+                <testcase name="I2011 Parameter name limit">
+                        <skipped type="skipped" message="Ignored rule"/>
+                </testcase>
+                <testcase name="W2031 Check if parameters have a valid value based on an allowed pattern" url="https://github.com/aws-cloudformation/cfn-python-lint/blob/main/docs/cfn-resource-specification.md#allowedpattern"/>
+                <testcase name="E2003 Parameters have appropriate names" url="https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/parameters-section-structure.html#parameters-section-structure-requirements"/>
+                <testcase name="W2510 Parameter Memory Size attributes should have max and min" url="https://docs.aws.amazon.com/lambda/latest/dg/API_CreateFunction.html#SSS-CreateFunction-request-MemorySize"/>
+                <testcase name="E2011 Parameter name limit not exceeded" url="https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/cloudformation-limits.html"/>
+                <testcase name="E2012 Parameter value limit not exceeded" url="https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/cloudformation-limits.html"/>
+                <testcase name="I6012 Output description limit">
+                        <skipped type="skipped" message="Ignored rule"/>
+                </testcase>
+                <testcase name="W6001 Check Outputs using ImportValue" url="https://github.com/aws-cloudformation/cfn-python-lint"/>
+                <testcase name="I6010 Output limit">
+                        <skipped type="skipped" message="Ignored rule"/>
+                </testcase>
+                <testcase name="E6001 Outputs have appropriate properties" url="https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/outputs-section-structure.html"/>
+                <testcase name="E6005 Outputs descriptions can only be strings" url="https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/outputs-section-structure.html"/>
+                <testcase name="E6010 Output limit not exceeded" url="https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/cloudformation-limits.html"/>
+                <testcase name="I6011 Output name limit">
+                        <skipped type="skipped" message="Ignored rule"/>
+                </testcase>
+                <testcase name="E6004 Outputs have appropriate names" url="https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/outputs-section-structure.html"/>
+                <testcase name="E6003 Outputs have values of strings" url="https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/outputs-section-structure.html"/>
+                <testcase name="E6002 Outputs have required properties" url="https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/outputs-section-structure.html"/>
+                <testcase name="E6011 Output name limit not exceeded" url="https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/cloudformation-limits.html"/>
+                <testcase name="E6012 Output description limit not exceeded" url="https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/outputs-section-structure.html"/>
+        </testsuite>
+</testsuites>

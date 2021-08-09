@@ -12,6 +12,11 @@ public enum Reporter {
       "https://github.com/PyCQA/bandit",
       "With `bandit -r examples/ -f custom -o bandit.out --msg-template \"{abspath}:{line}: {severity}: {test_id}: {msg}\"`"),
   CLANG("CLang", Parser.CLANG, "https://clang-analyzer.llvm.org/", ""),
+  CFN(
+      "CloudFormation Linter",
+      Parser.JUNIT,
+      "https://github.com/aws-cloudformation/cfn-lint",
+      "`cfn-lint . -f junit --output-file report-junit.xml`"),
   CPD("CPD", Parser.CPD, "http://pmd.sourceforge.net/pmd-4.3.0/cpd.html", ""),
   CPPCHECK(
       "CPPCheck",

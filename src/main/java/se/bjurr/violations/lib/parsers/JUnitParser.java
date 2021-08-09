@@ -4,6 +4,7 @@ import static java.nio.charset.StandardCharsets.UTF_8;
 import static se.bjurr.violations.lib.model.SEVERITY.ERROR;
 import static se.bjurr.violations.lib.model.Violation.violationBuilder;
 import static se.bjurr.violations.lib.reports.Parser.JUNIT;
+import static se.bjurr.violations.lib.util.ViolationParserUtils.findAttribute;
 import static se.bjurr.violations.lib.util.ViolationParserUtils.getAttribute;
 
 import java.io.ByteArrayInputStream;
@@ -36,7 +37,7 @@ public class JUnitParser implements ViolationsParser {
         final int eventType = xmlr.next();
         if (eventType == XMLStreamConstants.START_ELEMENT) {
           if (xmlr.getLocalName().equalsIgnoreCase("testcase")) {
-            className = getAttribute(xmlr, "classname");
+            className = findAttribute(xmlr, "classname").orElse("");
             name = getAttribute(xmlr, "name");
           } else if (xmlr.getLocalName().equalsIgnoreCase("failure")
               || xmlr.getLocalName().equalsIgnoreCase("error")) {
@@ -141,9 +142,11 @@ public class JUnitParser implements ViolationsParser {
     if (found.size() == 1) {
       return found.get(0);
     }
-    for (final FileAndLine candidate : found) {
-      if (candidate.file.startsWith(className.replace(".", "/"))) {
-        return candidate;
+    if (!className.isEmpty()) {
+      for (final FileAndLine candidate : found) {
+        if (candidate.file.startsWith(className.replace(".", "/"))) {
+          return candidate;
+        }
       }
     }
     return found.get(0);

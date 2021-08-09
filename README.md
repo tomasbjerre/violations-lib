@@ -20,6 +20,7 @@ A number of **parsers** have been implemented. Some **parsers** can parse output
 | [_CPPLint_](https://github.com/theandrewdavis/cpplint)                                | `CPPLINT`            | 
 | [_CSSLint_](https://github.com/CSSLint/csslint)                                       | `CSSLINT`            | 
 | [_Checkstyle_](http://checkstyle.sourceforge.net/)                                    | `CHECKSTYLE`         | 
+| [_CloudFormation Linter_](https://github.com/aws-cloudformation/cfn-lint)             | `JUNIT`              | `cfn-lint . -f junit --output-file report-junit.xml`
 | [_CodeClimate_](https://codeclimate.com/)                                             | `CODECLIMATE`        | 
 | [_CodeNarc_](http://codenarc.sourceforge.net/)                                        | `CODENARC`           | 
 | [_Detekt_](https://github.com/arturbosch/detekt)                                      | `CHECKSTYLE`         | With `--output-format xml`.
