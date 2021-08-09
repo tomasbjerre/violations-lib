@@ -2,6 +2,18 @@
 
 Changelog of violations-lib.
 
+## [1.145.2](https://github.com/tomasbjerre/violations-lib/releases/tag/1.145.2) (2021-08-09)
+
+
+
+
+
+### Bug Fixes
+
+-  support CFN with JUnit format ([56175](https://github.com/tomasbjerre/violations-lib/commit/56175a442d188ee))  [#131](https://github.com/tomasbjerre/violations-lib/issues/131)  
+
+
+
 ## [1.145.1](https://github.com/tomasbjerre/violations-lib/releases/tag/1.145.1) (2021-08-05)
 
 
