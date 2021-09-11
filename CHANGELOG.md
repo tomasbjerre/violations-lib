@@ -2,6 +2,18 @@
 
 Changelog of violations-lib.
 
+## [1.145.4](https://github.com/tomasbjerre/violations-lib/releases/tag/1.145.4) (2021-09-11)
+
+
+
+
+
+### Bug Fixes
+
+-  mapping engine_name and check_name in CodeClimate ([14497](https://github.com/tomasbjerre/violations-lib/commit/144971bb855a7a3))  [#132](https://github.com/tomasbjerre/violations-lib/issues/132)  [#133](https://github.com/tomasbjerre/violations-lib/issues/133)  
+
+
+
 ## [1.145.2](https://github.com/tomasbjerre/violations-lib/releases/tag/1.145.2) (2021-08-09)
 
 
