@@ -4,12 +4,14 @@ import static java.util.logging.Level.FINE;
 import static se.bjurr.violations.lib.model.Violation.violationBuilder;
 import static se.bjurr.violations.lib.reports.Parser.CODECLIMATE;
 
-import com.google.gson.Gson;
-import com.google.gson.reflect.TypeToken;
 import java.lang.reflect.Type;
 import java.util.List;
 import java.util.Set;
 import java.util.TreeSet;
+
+import com.google.gson.Gson;
+import com.google.gson.reflect.TypeToken;
+
 import se.bjurr.violations.lib.ViolationsLogger;
 import se.bjurr.violations.lib.model.SEVERITY;
 import se.bjurr.violations.lib.model.Violation;
@@ -50,7 +52,8 @@ public class CodeClimateParser implements ViolationsParser {
               .setCategory(issue.getCategories().get(0).getName()) //
               .setMessage(issue.getDescription()) //
               .setParser(CODECLIMATE) //
-              .setReporter(CODECLIMATE.name()) //
+              .setReporter(issue.getEngine_name()) //
+              .setRule(issue.getCheck_name()) //
               .setSeverity(this.toSeverity(issue.getSeverity())) //
               .setStartLine(begin) //
               .build());

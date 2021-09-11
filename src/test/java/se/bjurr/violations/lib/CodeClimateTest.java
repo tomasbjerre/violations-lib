@@ -3,10 +3,13 @@ package se.bjurr.violations.lib;
 import static org.assertj.core.api.Assertions.assertThat;
 import static se.bjurr.violations.lib.TestUtils.getRootFolder;
 import static se.bjurr.violations.lib.ViolationsApi.violationsApi;
+import static se.bjurr.violations.lib.reports.Parser.CODECLIMATE;
 
 import java.util.ArrayList;
 import java.util.Set;
+
 import org.junit.Test;
+
 import se.bjurr.violations.lib.model.SEVERITY;
 import se.bjurr.violations.lib.model.Violation;
 import se.bjurr.violations.lib.reports.Parser;
@@ -35,7 +38,11 @@ public class CodeClimateTest {
     assertThat(violation0.getSeverity()) //
         .isEqualTo(SEVERITY.WARN);
     assertThat(violation0.getRule()) //
-        .isEqualTo("");
+    .isEqualTo("argument_count");
+    assertThat(violation0.getReporter()) //
+    .isEqualTo("structure");
+    assertThat(violation0.getParser()) //
+    .isEqualTo(CODECLIMATE);
     assertThat(violation0.getStartLine()) //
         .isEqualTo(2);
   }
