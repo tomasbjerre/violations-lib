@@ -42,6 +42,7 @@ import se.bjurr.violations.lib.parsers.ProtoLintParser;
 import se.bjurr.violations.lib.parsers.PyDocStyleParser;
 import se.bjurr.violations.lib.parsers.PyLintParser;
 import se.bjurr.violations.lib.parsers.ResharperParser;
+import se.bjurr.violations.lib.parsers.SarifParser;
 import se.bjurr.violations.lib.parsers.SbtScalacParser;
 import se.bjurr.violations.lib.parsers.SimianParser;
 import se.bjurr.violations.lib.parsers.SonarParser;
@@ -87,6 +88,7 @@ public enum Parser {
   PYDOCSTYLE(new PyDocStyleParser()), //
   PYLINT(new PyLintParser()), //
   RESHARPER(new ResharperParser()), //
+  SARIFPARSER(new SarifParser()), //
   SBTSCALAC(new SbtScalacParser()), //
   SIMIAN(new SimianParser()), //
   SONAR(new SonarParser()), //
