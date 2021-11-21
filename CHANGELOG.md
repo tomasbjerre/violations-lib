@@ -2,6 +2,18 @@
 
 Changelog of violations-lib.
 
+## [1.145.5](https://github.com/tomasbjerre/violations-lib/releases/tag/1.145.5) (2021-11-21)
+
+
+
+
+
+### Bug Fixes
+
+-  sort results in Jacoco ([b454f](https://github.com/tomasbjerre/violations-lib/commit/b454f8708ef4756))  
+
+
+
 ## [1.145.4](https://github.com/tomasbjerre/violations-lib/releases/tag/1.145.4) (2021-09-11)
 
 
