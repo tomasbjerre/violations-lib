@@ -10,11 +10,11 @@ import static se.bjurr.violations.lib.util.ViolationParserUtils.getAttribute;
 import edu.umd.cs.findbugs.annotations.SuppressFBWarnings;
 import java.io.ByteArrayInputStream;
 import java.io.InputStream;
-import java.util.HashMap;
-import java.util.LinkedHashSet;
 import java.util.Map;
 import java.util.Optional;
 import java.util.Set;
+import java.util.TreeMap;
+import java.util.TreeSet;
 import javax.xml.stream.XMLStreamConstants;
 import javax.xml.stream.XMLStreamReader;
 import se.bjurr.violations.lib.ViolationsLogger;
@@ -38,7 +38,7 @@ public class JacocoParser implements ViolationsParser {
   @SuppressFBWarnings("SF_SWITCH_NO_DEFAULT")
   public Set<Violation> parseReportOutput(
       final String reportContent, final ViolationsLogger violationsLogger) throws Exception {
-    final Set<Violation> violations = new LinkedHashSet<>();
+    final Set<Violation> violations = new TreeSet<>();
     try (InputStream input = new ByteArrayInputStream(reportContent.getBytes(UTF_8))) {
       final MethodViolationBuilder builder = new MethodViolationBuilder();
       final XMLStreamReader xmlr = ViolationParserUtils.createXmlReader(input);
@@ -92,7 +92,7 @@ public class JacocoParser implements ViolationsParser {
 
     private int methodLine;
 
-    private final Map<String, CoverageDetails> coverage = new HashMap<>();
+    private final Map<String, CoverageDetails> coverage = new TreeMap<>();
 
     public void setPackageDetails(final String packageName) {
       this.packageName = packageName;
@@ -115,7 +115,7 @@ public class JacocoParser implements ViolationsParser {
     }
 
     public Optional<Violation> build(final int minLineCount, final double minCoverage) {
-      if (methodLine == 0) {
+      if (this.methodLine == 0) {
         return Optional.empty();
       }
       final CoverageDetails cl = this.coverage.get("LINE");
