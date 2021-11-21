@@ -4,6 +4,8 @@ jdk:
   - openjdk8
   - openjdk11
 script:
-  - ./gradlew build -xgoogleJavaFormat
+  - ./gradlew build
+after_script:
+  - find -name TEST* -exec cat {} \;
 notifications:
   email: false
