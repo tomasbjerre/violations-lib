@@ -2,6 +2,18 @@
 
 Changelog of violations-lib.
 
+## [1.146.0](https://github.com/tomasbjerre/violations-lib/releases/tag/1.146.0) (2021-11-28)
+
+
+
+### Features
+
+-  parse column from CPPCheck ([9458f](https://github.com/tomasbjerre/violations-lib/commit/9458f8f394c30f2))  [#136](https://github.com/tomasbjerre/violations-lib/issues/136)  
+
+
+
+
+
 ## [1.145.5](https://github.com/tomasbjerre/violations-lib/releases/tag/1.145.5) (2021-11-21)
 
 
