@@ -70,6 +70,7 @@ public class CPPCheckParser implements ViolationsParser {
 
             final Optional<String> resultFile = findAttribute(xmlr, "file");
             final Optional<Integer> resultLine = findIntegerAttribute(xmlr, "line");
+            final Optional<Integer> resultColumn = findIntegerAttribute(xmlr, "column");
             final Optional<String> resultInfo = findAttribute(xmlr, "info");
             message = this.constructMessage(msg, verbose, resultInfo);
             if (resultFile.isPresent() && resultLine.isPresent()) {
@@ -77,6 +78,7 @@ public class CPPCheckParser implements ViolationsParser {
                   violationBuilder() //
                       .setParser(CPPCHECK) //
                       .setStartLine(resultLine.get()) //
+                      .setColumn(resultColumn.orElse(0)) //
                       .setFile(resultFile.get()) //
                       .setSeverity(severity) //
                       .setMessage(message) //
@@ -88,6 +90,7 @@ public class CPPCheckParser implements ViolationsParser {
             }
           } else if (xmlr.getLocalName().equalsIgnoreCase("location")) {
             final Integer line = getIntegerAttribute(xmlr, "line");
+            final Optional<Integer> column = findIntegerAttribute(xmlr, "column");
             final Optional<String> info = findAttribute(xmlr, "info");
             message = this.constructMessage(msg, verbose, info);
             final String file = getAttribute(xmlr, "file");
@@ -96,6 +99,7 @@ public class CPPCheckParser implements ViolationsParser {
                     .setParser(CPPCHECK) //
                     .setMessage(message) //
                     .setStartLine(line) //
+                    .setColumn(column.orElse(null)) //
                     .setFile(file) //
                     .setSeverity(severity) //
                     .setRule(id) //

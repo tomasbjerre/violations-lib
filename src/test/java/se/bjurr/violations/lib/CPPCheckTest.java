@@ -205,7 +205,7 @@ public class CPPCheckTest {
   @Test
   public void testSelfClosingErrorTagScoping() {
 
-    final List<LogRecord> severeLogEvents = new ArrayList<LogRecord>();
+    final List<LogRecord> severeLogEvents = new ArrayList<>();
     final Handler logHandler =
         new Handler() {
           @Override
@@ -267,5 +267,46 @@ public class CPPCheckTest {
         .isEqualTo(0);
     assertThat(violation.getEndLine()) //
         .isEqualTo(0);
+  }
+
+  @Test
+  public void testThatColumnCanBeParsed() {
+    final String rootFolder = getRootFolder();
+
+    final Set<Violation> actual =
+        violationsApi() //
+            .withPattern(".*issue-136\\.xml$") //
+            .inFolder(rootFolder) //
+            .findAll(CPPCHECK) //
+            .violations();
+
+    assertThat(actual) //
+        .hasSize(3);
+
+    final Violation violation0 = new ArrayList<>(actual).get(0);
+    assertThat(violation0.getMessage()) //
+        .startsWith("Returning pointer to local variable");
+    assertThat(violation0.getFile()) //
+        .isEqualTo("folderWithCPPfiles/19389.cpp");
+    assertThat(violation0.getSeverity()) //
+        .isEqualTo(ERROR);
+    assertThat(violation0.getRule()) //
+        .isEqualTo("returnDanglingLifetime");
+    assertThat(violation0.getStartLine()) //
+        .isEqualTo(4);
+    assertThat(violation0.getEndLine()) //
+        .isEqualTo(4);
+    assertThat(violation0.getColumn()) //
+        .isEqualTo(13);
+    assertThat(violation0.getEndColumn()) //
+        .isNull();
+
+    final Violation violation1 = new ArrayList<>(actual).get(1);
+    assertThat(violation1.getColumn()) //
+        .isEqualTo(13);
+
+    final Violation violation2 = new ArrayList<>(actual).get(2);
+    assertThat(violation2.getColumn()) //
+        .isEqualTo(11);
   }
 }

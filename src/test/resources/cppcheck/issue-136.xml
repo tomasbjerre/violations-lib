@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<results version="2">
+    <cppcheck version="2.6"/>
+    <errors>
+        <error id="returnDanglingLifetime" severity="error" msg="Returning pointer to local variable &apos;c&apos; that will be invalid when returning." verbose="Returning pointer to local variable &apos;c&apos; that will be invalid when returning." cwe="562" hash="8042533878513096525">
+            <location file0="folderWithCPPfiles\19389.cpp" file="folderWithCPPfiles\19389.cpp" line="4" column="13"/>
+            <location file0="folderWithCPPfiles\19389.cpp" file="folderWithCPPfiles\19389.cpp" line="3" column="11" info="Variable created here."/>
+            <location file0="folderWithCPPfiles\19389.cpp" file="folderWithCPPfiles\19389.cpp" line="4" column="13" info="Address of variable taken here."/>
+        </error>
+   </errors>
+</results>
