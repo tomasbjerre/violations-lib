@@ -2,6 +2,27 @@
 
 Changelog of violations-lib.
 
+## [1.146.1](https://github.com/tomasbjerre/violations-lib/releases/tag/1.146.1) (2021-12-05)
+
+
+
+
+
+
+
+### Other changes
+
+**add valgrind xml output parser**
+
+
+[be845](https://github.com/tomasbjerre/violations-lib/commit/be845ce4851486a) Tony Ciavarella *2021-12-05 04:42:11*
+
+**ci**
+
+
+[0fd82](https://github.com/tomasbjerre/violations-lib/commit/0fd820adea2f6f8) Tomas Bjerre *2021-12-04 09:53:17*
+
+
 ## [1.146.0](https://github.com/tomasbjerre/violations-lib/releases/tag/1.146.0) (2021-11-28)
 
 
