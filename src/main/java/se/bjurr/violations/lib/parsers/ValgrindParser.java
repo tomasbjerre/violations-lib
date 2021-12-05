@@ -7,7 +7,6 @@ import static se.bjurr.violations.lib.reports.Parser.VALGRIND;
 import static se.bjurr.violations.lib.util.ViolationParserUtils.createXmlReader;
 
 import com.google.gson.Gson;
-
 import java.io.ByteArrayInputStream;
 import java.io.InputStream;
 import java.util.ArrayList;
@@ -18,7 +17,6 @@ import java.util.Set;
 import java.util.TreeSet;
 import javax.xml.stream.XMLStreamConstants;
 import javax.xml.stream.XMLStreamReader;
-
 import se.bjurr.violations.lib.ViolationsLogger;
 import se.bjurr.violations.lib.model.Violation;
 
@@ -115,7 +113,8 @@ public class ValgrindParser implements ViolationsParser {
             } else if (element == Element.XAUXWHAT) {
               element = Element.XAUXWHAT_TEXT;
             }
-          } else if ((element == Element.SUPPRESSION) && xml.getLocalName().equalsIgnoreCase("rawtext")) {
+          } else if ((element == Element.SUPPRESSION)
+              && xml.getLocalName().equalsIgnoreCase("rawtext")) {
             element = Element.SUPPRESSION_RAWTEXT;
           }
         } else if (eventType == XMLStreamConstants.END_ELEMENT) {
@@ -123,7 +122,7 @@ public class ValgrindParser implements ViolationsParser {
             String file = Violation.NO_FILE;
             int startLine = 0;
 
-            Map<String, String> specifics = new HashMap<>();
+            final Map<String, String> specifics = new HashMap<>();
 
             if (tid != null) {
               specifics.put("tid", tid);
@@ -138,7 +137,7 @@ public class ValgrindParser implements ViolationsParser {
             }
 
             if ((stacks != null) && !stacks.isEmpty()) {
-              for (StackFrame f: stacks.get(0)) {
+              for (final StackFrame f : stacks.get(0)) {
                 if ((f.file != null) && !f.file.equals("vg_replace_malloc.c")) {
                   file = f.file;
                   startLine = f.line;
@@ -154,38 +153,43 @@ public class ValgrindParser implements ViolationsParser {
             }
 
             violations.add(
-              violationBuilder() //
-                .setParser(VALGRIND) //
-                .setSeverity(ERROR) //
-                .setSource(source) //
-                .setRule(rule) //
-                .setFile(file) //
-                .setStartLine(startLine) //
-                .setMessage(what) //
-                .setReporter(reporter) //
-                .setGroup(group) //
-                .setSpecifics(specifics) //
-                .build());
+                violationBuilder() //
+                    .setParser(VALGRIND) //
+                    .setSeverity(ERROR) //
+                    .setSource(source) //
+                    .setRule(rule) //
+                    .setFile(file) //
+                    .setStartLine(startLine) //
+                    .setMessage(what) //
+                    .setReporter(reporter) //
+                    .setGroup(group) //
+                    .setSpecifics(specifics) //
+                    .build());
             element = null;
           } else if ((element == Element.UNIQUE) && xml.getLocalName().equalsIgnoreCase("unique")) {
             element = Element.ERROR;
           } else if ((element == Element.TID) && xml.getLocalName().equalsIgnoreCase("tid")) {
             element = Element.ERROR;
-          } else if ((element == Element.THREADNAME) && xml.getLocalName().equalsIgnoreCase("threadname")) {
+          } else if ((element == Element.THREADNAME)
+              && xml.getLocalName().equalsIgnoreCase("threadname")) {
             element = Element.ERROR;
           } else if ((element == Element.KIND) && xml.getLocalName().equalsIgnoreCase("kind")) {
             element = Element.ERROR;
           } else if ((element == Element.WHAT) && xml.getLocalName().equalsIgnoreCase("what")) {
             element = Element.ERROR;
-          } else if ((element == Element.AUXWHAT) && xml.getLocalName().equalsIgnoreCase("auxwhat")) {
+          } else if ((element == Element.AUXWHAT)
+              && xml.getLocalName().equalsIgnoreCase("auxwhat")) {
             element = Element.ERROR;
           } else if ((element == Element.XWHAT) && xml.getLocalName().equalsIgnoreCase("xwhat")) {
             element = Element.ERROR;
-          } else if ((element == Element.XWHAT_TEXT) && xml.getLocalName().equalsIgnoreCase("text")) {
+          } else if ((element == Element.XWHAT_TEXT)
+              && xml.getLocalName().equalsIgnoreCase("text")) {
             element = Element.XWHAT;
-          } else if ((element == Element.XAUXWHAT) && xml.getLocalName().equalsIgnoreCase("xwhat")) {
+          } else if ((element == Element.XAUXWHAT)
+              && xml.getLocalName().equalsIgnoreCase("xwhat")) {
             element = Element.ERROR;
-          } else if ((element == Element.XAUXWHAT_TEXT) && xml.getLocalName().equalsIgnoreCase("text")) {
+          } else if ((element == Element.XAUXWHAT_TEXT)
+              && xml.getLocalName().equalsIgnoreCase("text")) {
             element = Element.XAUXWHAT;
           } else if ((element == Element.STACK) && xml.getLocalName().equalsIgnoreCase("stack")) {
             if ((stacks != null) && (stack != null)) {
@@ -219,14 +223,15 @@ public class ValgrindParser implements ViolationsParser {
             element = Element.ARGS;
           } else if ((element == Element.EXE) && xml.getLocalName().equalsIgnoreCase("exe")) {
             element = Element.ARGV;
-          } else if ((element == Element.SUPPRESSION) && xml.getLocalName().equalsIgnoreCase("suppression")) {
+          } else if ((element == Element.SUPPRESSION)
+              && xml.getLocalName().equalsIgnoreCase("suppression")) {
             element = Element.ERROR;
-          } else if ((element == Element.SUPPRESSION_RAWTEXT) && xml.getLocalName().equalsIgnoreCase("rawtext")) {
+          } else if ((element == Element.SUPPRESSION_RAWTEXT)
+              && xml.getLocalName().equalsIgnoreCase("rawtext")) {
             element = Element.SUPPRESSION;
           }
         } else if ((element != null) && (eventType == XMLStreamConstants.CHARACTERS)) {
-          switch (element)
-          {
+          switch (element) {
             case TOOL:
               reporter = xml.getText();
               break;
@@ -246,16 +251,10 @@ public class ValgrindParser implements ViolationsParser {
               rule = xml.getText();
               break;
             case WHAT:
-              what = xml.getText();
-              break;
             case XWHAT_TEXT:
               what = xml.getText();
               break;
             case AUXWHAT:
-              if (auxWhats != null) {
-                auxWhats.add(xml.getText());
-              }
-              break;
             case XAUXWHAT_TEXT:
               if (auxWhats != null) {
                 auxWhats.add(xml.getText());
@@ -292,9 +291,11 @@ public class ValgrindParser implements ViolationsParser {
               }
               break;
             case SUPPRESSION_RAWTEXT:
-              if (!xml.getText().isBlank()) {
-                suppression = xml.getText().strip();
+              if (!xml.getText().isEmpty()) {
+                suppression = xml.getText().trim();
               }
+              break;
+            default:
               break;
           }
         }
@@ -332,12 +333,30 @@ public class ValgrindParser implements ViolationsParser {
     SUPPRESSION_RAWTEXT,
   }
 
-  private final class StackFrame {
+  private static final class StackFrame {
     public String ip;
     public String obj;
     public String fn;
     public String dir;
     public String file;
     public int line;
-  };
+
+    @Override
+    public String toString() {
+      return "StackFrame [ip="
+          + this.ip
+          + ", obj="
+          + this.obj
+          + ", fn="
+          + this.fn
+          + ", dir="
+          + this.dir
+          + ", file="
+          + this.file
+          + ", line="
+          + this.line
+          + "]";
+    }
+  }
+  ;
 }

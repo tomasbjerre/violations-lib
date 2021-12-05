@@ -8,6 +8,7 @@ import se.bjurr.violations.lib.model.Violation;
 public class ViolationAsserter {
 
   private final Set<Violation> actual;
+  private int postitionCounter = 0;
 
   public ViolationAsserter(final Set<Violation> actual) {
     this.actual = actual;
@@ -15,6 +16,10 @@ public class ViolationAsserter {
 
   public static ViolationAsserter assertThat(final Set<Violation> actual) {
     return new ViolationAsserter(actual);
+  }
+
+  public ViolationAsserter contains(final Violation expected) {
+    return this.contains(expected, this.postitionCounter++);
   }
 
   public ViolationAsserter contains(final Violation expected, final int postition) {

@@ -81,11 +81,11 @@ public class Utils {
   public static void updateReadmeWithReporters() throws IOException {
 
     String reporters = "";
-    List<Reporter> sorted =
+    final List<Reporter> sorted =
         Arrays.stream(Reporter.values())
             .sorted(Comparator.comparing((r1) -> r1.getName()))
             .collect(Collectors.toList());
-    for (Reporter reporter : sorted) {
+    for (final Reporter reporter : sorted) {
       reporters +=
           "| "
               + padRight("[_" + reporter.getName() + "_](" + reporter.getUrl() + ") ", 85)
@@ -96,8 +96,9 @@ public class Utils {
               + "\n";
     }
 
-    File readmeFile = findReadmeFile(new File("."));
-    String content = new String(Files.readAllBytes(readmeFile.toPath()), StandardCharsets.UTF_8);
+    final File readmeFile = findReadmeFile(new File("."));
+    final String content =
+        new String(Files.readAllBytes(readmeFile.toPath()), StandardCharsets.UTF_8);
     final String beginPart = "| Reporter | Parser | Notes";
     final String endPart =
         "Missing a format? Open an issue [here](https://github.com/tomasbjerre/violations-lib/issues)!";
@@ -115,15 +116,16 @@ public class Utils {
     final String beforePart = content.substring(0, start + beginPart.length());
     final String afterPart = content.substring(end);
     final String reportersPart = reporters.trim();
-    String newContent = beforePart + "\n| --- | --- | ---\n" + reportersPart + "\n\n" + afterPart;
+    final String newContent =
+        beforePart + "\n| --- | --- | ---\n" + reportersPart + "\n\n" + afterPart;
 
     Files.write(readmeFile.toPath(), newContent.getBytes(StandardCharsets.UTF_8));
   }
 
-  public static File findReadmeFile(File file) {
-    File[] files = file.listFiles();
+  public static File findReadmeFile(final File file) {
+    final File[] files = file.listFiles();
     if (files != null) {
-      for (File candidate : files) {
+      for (final File candidate : files) {
         if (candidate.getName().equals("README.md")) {
           return candidate;
         }
