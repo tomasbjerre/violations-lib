@@ -76,6 +76,7 @@ A number of **parsers** have been implemented. Some **parsers** can parse output
 | [_StyleCop_](https://stylecop.codeplex.com/)                                          | `STYLECOP`           | 
 | [_SwiftLint_](https://github.com/realm/SwiftLint)                                     | `CHECKSTYLE`         | With `--reporter checkstyle`.
 | [_TSLint_](https://palantir.github.io/tslint/usage/cli/)                              | `CHECKSTYLE`         | With `-t checkstyle`
+| [_Valgrind_](https://valgrind.org/)                                                   | `VALGRIND`           | With `--xml=yes`.
 | [_XMLLint_](http://xmlsoft.org/xmllint.html)                                          | `XMLLINT`            | 
 | [_XUnit_](https://xunit.net/)                                                         | `XUNIT`              | It only contains the failures.
 | [_YAMLLint_](https://yamllint.readthedocs.io/en/stable/index.html)                    | `YAMLLINT`           | With `-f parsable`

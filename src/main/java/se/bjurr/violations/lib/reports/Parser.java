@@ -46,6 +46,7 @@ import se.bjurr.violations.lib.parsers.SbtScalacParser;
 import se.bjurr.violations.lib.parsers.SimianParser;
 import se.bjurr.violations.lib.parsers.SonarParser;
 import se.bjurr.violations.lib.parsers.StyleCopParser;
+import se.bjurr.violations.lib.parsers.ValgrindParser;
 import se.bjurr.violations.lib.parsers.ViolationsParser;
 import se.bjurr.violations.lib.parsers.XMLLintParser;
 import se.bjurr.violations.lib.parsers.XUnitParser;
@@ -97,7 +98,8 @@ public enum Parser {
   DOCFX(new DocFXParser()), //
   PCLINT(new PCLintParser()), //
   CODECLIMATE(new CodeClimateParser()), //
-  XUNIT(new XUnitParser());
+  XUNIT(new XUnitParser()), //
+  VALGRIND(new ValgrindParser());
 
   private transient ViolationsParser violationsParser;
 

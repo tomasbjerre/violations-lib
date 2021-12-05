@@ -172,6 +172,7 @@ public enum Reporter {
       Parser.CHECKSTYLE,
       "https://palantir.github.io/tslint/usage/cli/",
       "With `-t checkstyle`"),
+  VALGRIND("Valgrind", Parser.VALGRIND, "https://valgrind.org/", "With `--xml=yes`."),
   XUNIT("XUnit", Parser.XUNIT, "https://xunit.net/", "It only contains the failures."),
   XMLLINT("XMLLint", Parser.XMLLINT, "http://xmlsoft.org/xmllint.html", ""),
   YAMLLINT(
