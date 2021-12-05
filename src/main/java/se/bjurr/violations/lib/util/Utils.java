@@ -7,7 +7,9 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.net.URL;
 import java.nio.charset.StandardCharsets;
+import java.nio.file.FileSystems;
 import java.nio.file.Files;
+import java.nio.file.Path;
 import java.util.Arrays;
 import java.util.Comparator;
 import java.util.List;
@@ -97,7 +99,7 @@ public class Utils {
               + "\n";
     }
 
-    final File readmeFile = findReadmeFile(new File("."));
+    final File readmeFile = findReadmeFile(FileSystems.getDefault().getPath("."));
     final String content =
         new String(Files.readAllBytes(readmeFile.toPath()), StandardCharsets.UTF_8);
     final String beginPart = "| Reporter | Parser | Notes";
@@ -125,8 +127,8 @@ public class Utils {
     Files.write(readmeFile.toPath(), newContent.getBytes(StandardCharsets.UTF_8));
   }
 
-  public static File findReadmeFile(final File file) {
-    final File[] files = file.listFiles();
+  public static File findReadmeFile(final Path file) {
+    final File[] files = file.toFile().listFiles();
     if (files != null) {
       for (final File candidate : files) {
         if (candidate.getName().equals("README.md")) {
@@ -134,6 +136,6 @@ public class Utils {
         }
       }
     }
-    return findReadmeFile(file.getParentFile());
+    return findReadmeFile(file.getParent());
   }
 }
