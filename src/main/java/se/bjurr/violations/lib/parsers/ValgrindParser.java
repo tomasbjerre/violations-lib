@@ -10,10 +10,10 @@ import com.google.gson.Gson;
 import java.io.ByteArrayInputStream;
 import java.io.InputStream;
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
+import java.util.TreeMap;
 import java.util.TreeSet;
 import javax.xml.stream.XMLStreamConstants;
 import javax.xml.stream.XMLStreamReader;
@@ -122,7 +122,7 @@ public class ValgrindParser implements ViolationsParser {
             String file = Violation.NO_FILE;
             int startLine = 0;
 
-            final Map<String, String> specifics = new HashMap<>();
+            final Map<String, String> specifics = new TreeMap<>();
 
             if (tid != null) {
               specifics.put("tid", tid);

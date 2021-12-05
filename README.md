@@ -82,6 +82,8 @@ A number of **parsers** have been implemented. Some **parsers** can parse output
 | [_YAMLLint_](https://yamllint.readthedocs.io/en/stable/index.html)                    | `YAMLLINT`           | With `-f parsable`
 | [_ZPTLint_](https://pypi.python.org/pypi/zptlint)                                     | `ZPTLINT`            |
 
+46 parsers and 72 reporters.
+
 Missing a format? Open an issue [here](https://github.com/tomasbjerre/violations-lib/issues)!
 
 ## Usage

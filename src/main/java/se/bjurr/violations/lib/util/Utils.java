@@ -15,6 +15,7 @@ import java.util.Scanner;
 import java.util.Set;
 import java.util.stream.Collectors;
 import se.bjurr.violations.lib.model.Violation;
+import se.bjurr.violations.lib.reports.Parser;
 import se.bjurr.violations.lib.reports.Reporter;
 
 public class Utils {
@@ -116,8 +117,10 @@ public class Utils {
     final String beforePart = content.substring(0, start + beginPart.length());
     final String afterPart = content.substring(end);
     final String reportersPart = reporters.trim();
+    final String stats =
+        Parser.values().length + " parsers and " + Reporter.values().length + " reporters.";
     final String newContent =
-        beforePart + "\n| --- | --- | ---\n" + reportersPart + "\n\n" + afterPart;
+        beforePart + "\n| --- | --- | ---\n" + reportersPart + "\n\n" + stats + "\n\n" + afterPart;
 
     Files.write(readmeFile.toPath(), newContent.getBytes(StandardCharsets.UTF_8));
   }

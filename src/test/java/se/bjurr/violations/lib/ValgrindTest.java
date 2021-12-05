@@ -6,8 +6,8 @@ import static se.bjurr.violations.lib.model.SEVERITY.ERROR;
 import static se.bjurr.violations.lib.model.Violation.violationBuilder;
 import static se.bjurr.violations.lib.reports.Parser.VALGRIND;
 
-import java.util.HashMap;
 import java.util.Set;
+import java.util.TreeMap;
 import org.junit.Test;
 import se.bjurr.violations.lib.model.Violation;
 import se.bjurr.violations.lib.util.ViolationAsserter;
@@ -42,7 +42,7 @@ public class ValgrindTest {
             .setSeverity(ERROR) //
             .setGroup("0x1") //
             .setSpecifics( //
-                new HashMap<String, String>() {
+                new TreeMap<String, String>() {
                   { //
                     this.put("tid", "1");
                     this.put(
@@ -71,7 +71,7 @@ public class ValgrindTest {
             .setSeverity(ERROR) //
             .setGroup("0x0") //
             .setSpecifics( //
-                new HashMap<String, String>() {
+                new TreeMap<String, String>() {
                   { //
                     this.put("tid", "1"); //
                     this.put("threadname", "worst thread ever"); //
@@ -101,7 +101,7 @@ public class ValgrindTest {
             .setSeverity(ERROR) //
             .setGroup("0x2") //
             .setSpecifics( //
-                new HashMap<String, String>() {
+                new TreeMap<String, String>() {
                   { //
                     this.put("tid", "1"); //
                     this.put(
