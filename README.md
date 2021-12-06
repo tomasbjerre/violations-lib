@@ -108,6 +108,10 @@ It can also export the violations to the [_CodeClimate_](https://codeclimate.com
 
 The library is used in a bunch of other projects, these are some of them.
 
+GitHub Action:
+
+ * [Violation Comments Action](https://github.com/tomasbjerre/violation-comments-action)
+
 Command line:
  * [Violations Command Line](https://github.com/tomasbjerre/violations-command-line)
  * [Violation Comments to GitLab Command Line](https://github.com/tomasbjerre/violation-comments-to-gitlab-command-line)
