@@ -2,16 +2,17 @@ package se.bjurr.violations.lib.util;
 
 import static se.bjurr.violations.lib.util.StringUtils.padRight;
 
-import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
 import java.net.URL;
 import java.nio.charset.StandardCharsets;
+import java.nio.file.DirectoryStream;
 import java.nio.file.FileSystems;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.util.Arrays;
 import java.util.Comparator;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Scanner;
 import java.util.Set;
@@ -99,21 +100,15 @@ public class Utils {
               + "\n";
     }
 
-    final File readmeFile = findReadmeFile(FileSystems.getDefault().getPath("."));
-    final String content =
-        new String(Files.readAllBytes(readmeFile.toPath()), StandardCharsets.UTF_8);
+    final Path readmeFile = findReadmeFile(FileSystems.getDefault().getPath("."));
+    final String content = new String(Files.readAllBytes(readmeFile), StandardCharsets.UTF_8);
     final String beginPart = "| Reporter | Parser | Notes";
     final String endPart =
         "Missing a format? Open an issue [here](https://github.com/tomasbjerre/violations-lib/issues)!";
     final int start = content.indexOf(beginPart);
     if (start == -1) {
       throw new RuntimeException(
-          "Could not find:\n\n"
-              + beginPart
-              + "\n"
-              + endPart
-              + "\n\n in "
-              + readmeFile.getAbsolutePath());
+          "Could not find:\n\n" + beginPart + "\n" + endPart + "\n\n in " + readmeFile.toString());
     }
     final int end = content.indexOf(endPart);
     final String beforePart = content.substring(0, start + beginPart.length());
@@ -124,16 +119,22 @@ public class Utils {
     final String newContent =
         beforePart + "\n| --- | --- | ---\n" + reportersPart + "\n\n" + stats + "\n\n" + afterPart;
 
-    Files.write(readmeFile.toPath(), newContent.getBytes(StandardCharsets.UTF_8));
+    Files.write(readmeFile, newContent.getBytes(StandardCharsets.UTF_8));
   }
 
-  public static File findReadmeFile(final Path file) {
-    final File[] files = file.toFile().listFiles();
-    if (files != null) {
-      for (final File candidate : files) {
-        if (candidate.getName().equals("README.md")) {
-          return candidate;
+  public static Path findReadmeFile(final Path file) throws IOException {
+    final Set<Path> files = new HashSet<>();
+    try (DirectoryStream<Path> stream = Files.newDirectoryStream(file)) {
+      for (final Path path : stream) {
+        if (!Files.isDirectory(path)) {
+          files.add(path);
         }
+      }
+    }
+    for (final Path candidate : files) {
+      final Path fileName = candidate.getFileName();
+      if (fileName != null && fileName.toString().equals("README.md")) {
+        return candidate;
       }
     }
     return findReadmeFile(file.getParent());
