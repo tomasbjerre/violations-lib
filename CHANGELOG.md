@@ -2,6 +2,22 @@
 
 Changelog of violations-lib.
 
+## [1.146.2](https://github.com/tomasbjerre/violations-lib/releases/tag/1.146.2) (2021-12-06)
+
+
+
+
+
+
+
+### Other changes
+
+**fix valgrind suppression parsing**
+
+
+[18f02](https://github.com/tomasbjerre/violations-lib/commit/18f0261f153a32a) Tony Ciavarella *2021-12-06 04:31:16*
+
+
 ## [1.146.1](https://github.com/tomasbjerre/violations-lib/releases/tag/1.146.1) (2021-12-05)
 
 
