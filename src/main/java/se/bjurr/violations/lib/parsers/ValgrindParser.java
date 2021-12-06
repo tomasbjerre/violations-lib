@@ -290,14 +290,15 @@ public class ValgrindParser implements ViolationsParser {
                 frame.line = Integer.parseInt(xml.getText());
               }
               break;
-            case SUPPRESSION_RAWTEXT: {
-              final String trimmedText = xml.getText().trim();
+            case SUPPRESSION_RAWTEXT:
+              {
+                final String trimmedText = xml.getText().trim();
 
-              if (!trimmedText.isEmpty()) {
-                suppression = trimmedText;
+                if (!trimmedText.isEmpty()) {
+                  suppression = trimmedText;
+                }
+                break;
               }
-              break;
-            }
             default:
               break;
           }

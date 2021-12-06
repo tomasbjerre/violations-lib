@@ -53,7 +53,9 @@ public class ValgrindTest {
                         "[[{\"ip\":\"0x109177\",\"obj\":\"/home/some_user/terrible_program/terrible_program\",\"fn\":\"main\",\"dir\":\"/home/some_user/terrible_program\",\"file\":\"terrible_program.cpp\",\"line\":10}]," //
                             + "[{\"ip\":\"0x483B20F\",\"obj\":\"/usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so\",\"fn\":\"operator new[](unsigned long)\",\"dir\":\"./coregrind/m_replacemalloc\",\"file\":\"vg_replace_malloc.c\",\"line\":640}," //
                             + "{\"ip\":\"0x109151\",\"obj\":\"/home/some_user/terrible_program/terrible_program\",\"fn\":\"main\",\"dir\":\"/home/some_user/terrible_program\",\"file\":\"terrible_program.cpp\",\"line\":3}]]"); //
-                    this.put("suppression", "{\n   <insert_a_suppression_name_here>\n   Memcheck:Addr4\n   fun:main\n}");
+                    this.put(
+                        "suppression",
+                        "{\n   <insert_a_suppression_name_here>\n   Memcheck:Addr4\n   fun:main\n}");
                   }
                 }) //
             .build();
@@ -83,7 +85,9 @@ public class ValgrindTest {
                         "[[{\"ip\":\"0x109163\",\"obj\":\"/home/some_user/terrible_program/terrible_program\",\"fn\":\"main\",\"dir\":\"/home/some_user/terrible_program\",\"file\":\"terrible_program.cpp\",\"line\":5}]," //
                             + "[{\"ip\":\"0x483B20F\",\"obj\":\"/usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so\",\"fn\":\"operator new[](unsigned long)\",\"dir\":\"./coregrind/m_replacemalloc\",\"file\":\"vg_replace_malloc.c\",\"line\":640}," //
                             + "{\"ip\":\"0x109151\",\"obj\":\"/home/some_user/terrible_program/terrible_program\",\"fn\":\"main\",\"dir\":\"/home/some_user/terrible_program\",\"file\":\"terrible_program.cpp\",\"line\":3}]]"); //
-                    this.put("suppression", "{\n   <insert_a_suppression_name_here>\n   Memcheck:Cond\n   fun:main\n}");
+                    this.put(
+                        "suppression",
+                        "{\n   <insert_a_suppression_name_here>\n   Memcheck:Cond\n   fun:main\n}");
                   }
                 })
             .build();
@@ -108,7 +112,9 @@ public class ValgrindTest {
                         "stacks",
                         "[[{\"ip\":\"0x483B20F\",\"obj\":\"/usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so\",\"fn\":\"operator new[](unsigned long)\",\"dir\":\"./coregrind/m_replacemalloc\",\"file\":\"vg_replace_malloc.c\",\"line\":640}," //
                             + "{\"ip\":\"0x109151\",\"obj\":\"/home/some_user/terrible_program/terrible_program\",\"fn\":\"main\",\"dir\":\"/home/some_user/terrible_program\",\"file\":\"terrible_program.cpp\",\"line\":3}]]"); //
-                    this.put("suppression", "{\n   <insert_a_suppression_name_here>\n   Memcheck:Leak\n   match-leak-kinds: definite\n   fun:_Znam\n   fun:main\n}");
+                    this.put(
+                        "suppression",
+                        "{\n   <insert_a_suppression_name_here>\n   Memcheck:Leak\n   match-leak-kinds: definite\n   fun:_Znam\n   fun:main\n}");
                   }
                 }) //
             .build();
