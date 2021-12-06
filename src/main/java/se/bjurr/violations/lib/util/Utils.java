@@ -101,6 +101,9 @@ public class Utils {
     }
 
     final Path readmeFile = findReadmeFile(FileSystems.getDefault().getPath("."));
+    if (readmeFile == null) {
+      return;
+    }
     final String content = new String(Files.readAllBytes(readmeFile), StandardCharsets.UTF_8);
     final String beginPart = "| Reporter | Parser | Notes";
     final String endPart =
@@ -123,6 +126,9 @@ public class Utils {
   }
 
   public static Path findReadmeFile(final Path file) throws IOException {
+    if (file == null) {
+      return null;
+    }
     final Set<Path> files = new HashSet<>();
     try (DirectoryStream<Path> stream = Files.newDirectoryStream(file)) {
       for (final Path path : stream) {
