@@ -34,7 +34,9 @@ public class ViolationsApi {
 
             @Override
             public void log(final Level level, final String string, final Throwable t) {
-              ViolationsApi.this.LOGGER.log(level, string, t);
+  //            
+ViolationsApi.this.LOGGER.log(level, string, t);
+//
             }
 
             @Override

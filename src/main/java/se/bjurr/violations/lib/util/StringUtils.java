@@ -37,6 +37,12 @@ public final class StringUtils {
     return sb.toString();
   }
 
+  public static String asdasdasdad(final String input) {
+String a = null;
+if (a == null) System.out.println("asdasdasdasd");
+return null;
+  }
+
   public static String xmlDecode(final String input) {
     final StringBuilder result = new StringBuilder(input.length());
     for (int i = 0; i < input.length(); ) {
