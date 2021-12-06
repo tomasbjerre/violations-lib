@@ -2,6 +2,18 @@
 
 Changelog of violations-lib.
 
+## [1.146.3](https://github.com/tomasbjerre/violations-lib/releases/tag/1.146.3) (2021-12-06)
+
+
+
+
+
+### Bug Fixes
+
+-  make build script run on Windows ([84883](https://github.com/tomasbjerre/violations-lib/commit/84883773f3a1d97))  
+
+
+
 ## [1.146.2](https://github.com/tomasbjerre/violations-lib/releases/tag/1.146.2) (2021-12-06)
 
 
