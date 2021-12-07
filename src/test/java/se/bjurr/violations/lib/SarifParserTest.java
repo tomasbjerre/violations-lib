@@ -4,7 +4,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 import static se.bjurr.violations.lib.TestUtils.getRootFolder;
 import static se.bjurr.violations.lib.ViolationsApi.violationsApi;
 import static se.bjurr.violations.lib.model.SEVERITY.INFO;
-import static se.bjurr.violations.lib.reports.Parser.SARIFPARSER;
+import static se.bjurr.violations.lib.reports.Parser.SARIF;
 
 import java.util.ArrayList;
 import java.util.Set;
@@ -21,7 +21,7 @@ public class SarifParserTest {
         violationsApi() //
             .withPattern(".*/sarif/.*(sarif|json)$") //
             .inFolder(rootFolder) //
-            .findAll(SARIFPARSER) //
+            .findAll(SARIF) //
             .violations();
 
     assertThat(actual) //
@@ -36,7 +36,7 @@ public class SarifParserTest {
         violationsApi() //
             .withPattern(".*/sarif/.*/simple-example.sarif$") //
             .inFolder(rootFolder) //
-            .findAll(SARIFPARSER) //
+            .findAll(SARIF) //
             .violations();
 
     assertThat(actual) //

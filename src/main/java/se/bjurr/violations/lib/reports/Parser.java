@@ -89,7 +89,7 @@ public enum Parser {
   PYDOCSTYLE(new PyDocStyleParser()), //
   PYLINT(new PyLintParser()), //
   RESHARPER(new ResharperParser()), //
-  SARIFPARSER(new SarifParser()), //
+  SARIF(new SarifParser()), //
   SBTSCALAC(new SbtScalacParser()), //
   SIMIAN(new SimianParser()), //
   SONAR(new SonarParser()), //

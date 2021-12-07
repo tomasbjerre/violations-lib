@@ -48,7 +48,7 @@ public class SarifTransformerTest {
     Approvals.verify(actual, new Options().withReporter(new AutoApproveReporter()));
 
     final Set<Violation> parsedViolations =
-        Parser.SARIFPARSER.getViolationsParser().parseReportOutput(actual, null);
+        Parser.SARIF.getViolationsParser().parseReportOutput(actual, null);
 
     assertThat(parsedViolations).hasSameSizeAs(givenViolations);
   }

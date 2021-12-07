@@ -56,7 +56,7 @@ public class SarifParser implements ViolationsParser {
           }
           violations.add(
               violationBuilder()
-                  .setParser(Parser.SARIFPARSER)
+                  .setParser(Parser.SARIF)
                   .setFile(filename)
                   .setStartLine(startLine)
                   .setRule(ruleId)
