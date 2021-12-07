@@ -151,11 +151,7 @@ public enum Reporter {
       Parser.CLANG,
       "http://rubocop.readthedocs.io/en/latest/formatters/",
       "With `rubycop -f clang file.rb`"),
-  SARIF(
-      "SARIF",
-      Parser.SARIFPARSER,
-      "https://github.com/oasis-tcs/sarif-spec",
-      ""),
+  SARIF("SARIF", Parser.SARIFPARSER, "https://github.com/oasis-tcs/sarif-spec", ""),
   SBTSCALAC("SbtScalac", Parser.SBTSCALAC, "http://www.scala-sbt.org/", ""),
   SIMIAN("Simian", Parser.SIMIAN, "http://www.harukizaemon.com/simian/", ""),
   SPOTBUGS("Spotbugs", Parser.FINDBUGS, "https://spotbugs.github.io/", ""),
