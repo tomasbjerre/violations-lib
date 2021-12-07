@@ -114,7 +114,7 @@ GitHub Action:
  * [Violation Comments Action](https://github.com/tomasbjerre/violation-comments-action)
 
 Command line:
- * [Violations Command Line](https://github.com/tomasbjerre/violations-command-line)
+ * [Violations Command Line](https://github.com/tomasbjerre/violations-command-line) Can parse, log, fail, and/or export to `CodeClimate` and `Sarif` files.
  * [Violation Comments to GitLab Command Line](https://github.com/tomasbjerre/violation-comments-to-gitlab-command-line)
  * [Violation Comments to GitHub Command Line](https://github.com/tomasbjerre/violation-comments-to-github-command-line)
  * [Violation Comments to Bitbucket Server Command Line](https://github.com/tomasbjerre/violation-comments-to-bitbucket-server-command-line)
