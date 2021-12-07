@@ -2,6 +2,18 @@
 
 Changelog of violations-lib.
 
+## [1.147.0](https://github.com/tomasbjerre/violations-lib/releases/tag/1.147.0) (2021-12-07)
+
+
+
+### Features
+
+-  sarif parser ([09a41](https://github.com/tomasbjerre/violations-lib/commit/09a41f43f75279e))  
+
+
+
+
+
 ## [1.146.3](https://github.com/tomasbjerre/violations-lib/releases/tag/1.146.3) (2021-12-06)
 
 
