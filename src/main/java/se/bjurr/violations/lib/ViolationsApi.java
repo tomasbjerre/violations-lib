@@ -16,6 +16,8 @@ import java.util.logging.Logger;
 import se.bjurr.violations.lib.model.Violation;
 import se.bjurr.violations.lib.model.codeclimate.CodeClimate;
 import se.bjurr.violations.lib.model.codeclimate.CodeClimateTransformer;
+import se.bjurr.violations.lib.model.generated.sarif.SarifSchema;
+import se.bjurr.violations.lib.model.sarif.SarifTransformer;
 import se.bjurr.violations.lib.parsers.ViolationsParser;
 import se.bjurr.violations.lib.reports.Parser;
 import se.bjurr.violations.lib.reports.ViolationsFinder;
@@ -127,6 +129,10 @@ public class ViolationsApi {
 
   public List<CodeClimate> codeClimate() {
     return CodeClimateTransformer.fromViolations(this.violations());
+  }
+
+  public SarifSchema sarif() {
+    return SarifTransformer.fromViolations(this.violations());
   }
 
   private String makeWindowsFriendly(final String regularExpression) {
