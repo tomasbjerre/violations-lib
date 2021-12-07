@@ -2,6 +2,18 @@
 
 Changelog of violations-lib.
 
+## [1.147.2](https://github.com/tomasbjerre/violations-lib/releases/tag/1.147.2) (2021-12-07)
+
+
+
+
+
+### Bug Fixes
+
+-  renaming SARIFPARSER to SARIF ([00f61](https://github.com/tomasbjerre/violations-lib/commit/00f6127b4f498b0))  
+
+
+
 ## [1.147.1](https://github.com/tomasbjerre/violations-lib/releases/tag/1.147.1) (2021-12-07)
 
 
