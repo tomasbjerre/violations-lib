@@ -2,6 +2,18 @@
 
 Changelog of violations-lib.
 
+## [1.147.1](https://github.com/tomasbjerre/violations-lib/releases/tag/1.147.1) (2021-12-07)
+
+
+
+
+
+### Bug Fixes
+
+-  correcting sarif link ([b3684](https://github.com/tomasbjerre/violations-lib/commit/b3684ab1171b5d8))  
+
+
+
 ## [1.147.0](https://github.com/tomasbjerre/violations-lib/releases/tag/1.147.0) (2021-12-07)
 
 
