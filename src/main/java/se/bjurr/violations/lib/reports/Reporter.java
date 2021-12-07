@@ -154,7 +154,7 @@ public enum Reporter {
   SARIF(
       "SARIF",
       Parser.SARIFPARSER,
-      "http://docs.oasis-open.org/sarif/sarif/v2.0/csprd01/sarif-v2.0-csprd01.html",
+      "https://github.com/oasis-tcs/sarif-spec",
       ""),
   SBTSCALAC("SbtScalac", Parser.SBTSCALAC, "http://www.scala-sbt.org/", ""),
   SIMIAN("Simian", Parser.SIMIAN, "http://www.harukizaemon.com/simian/", ""),
