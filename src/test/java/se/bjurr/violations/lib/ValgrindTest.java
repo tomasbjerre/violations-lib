@@ -34,7 +34,7 @@ public class ValgrindTest {
             .setParser(VALGRIND) //
             .setReporter(MEMCHECK_REPORTER) //
             .setSource(SOURCE) //
-            .setFile("terrible_program.cpp") //
+            .setFile("/home/some_user/terrible_program/terrible_program.cpp") //
             .setStartLine(10) //
             .setEndLine(10) //
             .setRule("InvalidWrite") //
@@ -65,7 +65,7 @@ public class ValgrindTest {
             .setParser(VALGRIND) //
             .setReporter(MEMCHECK_REPORTER) //
             .setSource(SOURCE) //
-            .setFile("terrible_program.cpp") //
+            .setFile("/home/some_user/terrible_program/terrible_program.cpp") //
             .setStartLine(5) //
             .setEndLine(5) //
             .setRule("UninitCondition") //
@@ -97,7 +97,7 @@ public class ValgrindTest {
             .setParser(VALGRIND) //
             .setReporter(MEMCHECK_REPORTER) //
             .setSource(SOURCE) //
-            .setFile("terrible_program.cpp") //
+            .setFile("/home/some_user/terrible_program/terrible_program.cpp") //
             .setStartLine(3) //
             .setEndLine(3) //
             .setRule("Leak_DefinitelyLost") //
