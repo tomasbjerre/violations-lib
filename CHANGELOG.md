@@ -2,6 +2,22 @@
 
 Changelog of violations-lib.
 
+## [1.147.3](https://github.com/tomasbjerre/violations-lib/releases/tag/1.147.3) (2021-12-09)
+
+
+
+
+
+
+
+### Other changes
+
+**add paths to valgrind Violation.file**
+
+
+[ebca9](https://github.com/tomasbjerre/violations-lib/commit/ebca9e142112cd0) Tony Ciavarella *2021-12-09 00:31:20*
+
+
 ## [1.147.2](https://github.com/tomasbjerre/violations-lib/releases/tag/1.147.2) (2021-12-07)
 
 
