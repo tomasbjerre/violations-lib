@@ -47,6 +47,7 @@ public enum Reporter {
       "With `format: 'checkstyle'`."),
   FINDBUGS("Findbugs", Parser.FINDBUGS, "http://findbugs.sourceforge.net/", ""),
   FLAKE8("Flake8", Parser.FLAKE8, "http://flake8.readthedocs.org/en/latest/", ""),
+  DART("Dart", Parser.MACHINE, "https://dart.dev/", " With `dart analyze --format=machine`"),
   FXCOP("FxCop", Parser.FXCOP, "https://en.wikipedia.org/wiki/FxCop", ""),
   GCC("GCC", Parser.CLANG, "https://gcc.gnu.org/", ""),
   GENDARME(

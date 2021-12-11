@@ -33,6 +33,7 @@ import se.bjurr.violations.lib.parsers.KotlinMavenParser;
 import se.bjurr.violations.lib.parsers.LintParser;
 import se.bjurr.violations.lib.parsers.MSBuildLogParser;
 import se.bjurr.violations.lib.parsers.MSCPPParser;
+import se.bjurr.violations.lib.parsers.MachineParser;
 import se.bjurr.violations.lib.parsers.MyPyParser;
 import se.bjurr.violations.lib.parsers.PCLintParser;
 import se.bjurr.violations.lib.parsers.PMDParser;
@@ -66,6 +67,7 @@ public enum Parser {
   GENERIC(new GenericParser()),
   FINDBUGS(new FindbugsParser()), //
   FLAKE8(new Flake8Parser()), //
+  MACHINE(new MachineParser()), //
   FXCOP(new FxCopParser()), //
   GENDARME(new GendarmeParser()), //
   IAR(new IARParser()), //

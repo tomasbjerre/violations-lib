@@ -181,7 +181,8 @@ public class Violation implements Serializable, Comparable<Violation> {
     this.endColumn = vb.endColumn;
     this.severity = checkNotNull(vb.severity, "severity");
     this.message = checkNotNull(emptyToNull(vb.message), "message");
-    this.file = checkNotNull(emptyToNull(vb.file), "file").replaceAll("\\\\", "/");
+    this.file =
+        checkNotNull(emptyToNull(vb.file), "file").replace("\\\\", "\\").replaceAll("\\\\", "/");
     this.source = nullToEmpty(vb.source);
     this.rule = nullToEmpty(vb.rule);
     this.category = nullToEmpty(vb.category);
