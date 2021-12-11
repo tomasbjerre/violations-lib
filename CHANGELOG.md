@@ -2,6 +2,18 @@
 
 Changelog of violations-lib.
 
+## [1.148.0](https://github.com/tomasbjerre/violations-lib/releases/tag/1.148.0) (2021-12-11)
+
+
+
+### Features
+
+-  Dart MACHINE parser ([46dfd](https://github.com/tomasbjerre/violations-lib/commit/46dfd1ca444813d))  [#142](https://github.com/tomasbjerre/violations-lib/issues/142)  
+
+
+
+
+
 ## [1.147.3](https://github.com/tomasbjerre/violations-lib/releases/tag/1.147.3) (2021-12-09)
 
 
