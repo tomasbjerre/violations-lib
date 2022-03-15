@@ -3,11 +3,14 @@ package se.bjurr.violations.lib.parsers;
 import static se.bjurr.violations.lib.model.Violation.violationBuilder;
 
 import com.google.gson.Gson;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Set;
 import java.util.TreeSet;
 import se.bjurr.violations.lib.ViolationsLogger;
 import se.bjurr.violations.lib.model.SEVERITY;
 import se.bjurr.violations.lib.model.Violation;
+import se.bjurr.violations.lib.model.generated.sarif.Artifact;
 import se.bjurr.violations.lib.model.generated.sarif.Location;
 import se.bjurr.violations.lib.model.generated.sarif.Message;
 import se.bjurr.violations.lib.model.generated.sarif.PhysicalLocation;
@@ -31,6 +34,7 @@ public class SarifParser implements ViolationsParser {
       return violations;
     }
     for (final Run run : report.getRuns()) {
+      final List<Artifact> artifacts = new ArrayList<>(run.getArtifacts());
       for (final Result result : run.getResults()) {
         final String ruleId = result.getRuleId();
         final String message = result.getMessage().getText();
@@ -48,7 +52,13 @@ public class SarifParser implements ViolationsParser {
           if (startLine == null) {
             continue;
           }
-          final String filename = physicalLocation.getArtifactLocation().getUri();
+          String filename = null;
+          final Integer artifactLocationIndex = physicalLocation.getArtifactLocation().getIndex();
+          if (artifactLocationIndex != null && artifactLocationIndex != -1) {
+            filename = artifacts.get(artifactLocationIndex).getLocation().getUri();
+          } else {
+            filename = physicalLocation.getArtifactLocation().getUri();
+          }
           final Message regionMessage = region.getMessage();
           String regionMessageText = "";
           if (regionMessage != null) {

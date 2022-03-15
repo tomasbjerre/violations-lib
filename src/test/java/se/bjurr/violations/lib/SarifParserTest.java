@@ -19,7 +19,7 @@ public class SarifParserTest {
 
     final Set<Violation> actual =
         violationsApi() //
-            .withPattern(".*/sarif/.*(sarif|json)$") //
+            .withPattern(".*/sarif/samples/.*(sarif|json)$") //
             .inFolder(rootFolder) //
             .findAll(SARIF) //
             .violations();
@@ -55,5 +55,36 @@ public class SarifParserTest {
         .isEqualTo(1);
     assertThat(first.getEndLine()) //
         .isEqualTo(1);
+  }
+
+  @Test
+  public void testThatViolationsCanBeParsed_result_line_nr() {
+    final String rootFolder = getRootFolder();
+
+    final Set<Violation> actual =
+        violationsApi() //
+            .withPattern(".*/sarif/result_line_nr.json$") //
+            .inFolder(rootFolder) //
+            .findAll(SARIF) //
+            .violations();
+
+    assertThat(actual) //
+        .hasSize(439);
+
+    final Violation first = new ArrayList<>(actual).get(0);
+    assertThat(first.getMessage()) //
+        .isEqualTo(
+            "'unsigned char' doesn't provide information about its size. Define and use typedefs clarifying type and size for numerical types or use one of the exact-width numerical types defined in <stdint.h>.");
+    assertThat(first.getFile()) //
+        .isEqualTo(
+            "file:/c:/var/lib/jenkins/workspace/PSBF_PIControl_DeclPipeline_Access/pi_alg/pi_alg.c");
+    assertThat(first.getSeverity()) //
+        .isEqualTo(INFO);
+    assertThat(first.getRule()) //
+        .isEqualTo("MISRA C:2012 D4.6");
+    assertThat(first.getStartLine()) //
+        .isEqualTo(144);
+    assertThat(first.getEndLine()) //
+        .isEqualTo(144);
   }
 }
