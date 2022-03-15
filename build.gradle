@@ -1,4 +1,4 @@
-apply plugin: 'java'
+apply plugin: 'java-library'
 
 buildscript {
  repositories {
@@ -38,10 +38,10 @@ jsonSchema2Pojo {
 }
 
 dependencies {
- compile 'com.google.code.gson:gson:2.8.2'
+ api 'com.google.code.gson:gson:2.8.2'
 
- testCompile 'junit:junit:4.12'
- testCompile 'org.assertj:assertj-core:2.3.0'
- testCompile 'uk.co.jemos.podam:podam:7.2.1.RELEASE'
- testCompile 'com.approvaltests:approvaltests:12.3.2'
+ testImplementation 'junit:junit:4.12'
+ testImplementation 'org.assertj:assertj-core:2.3.0'
+ testImplementation 'uk.co.jemos.podam:podam:7.2.1.RELEASE'
+ testImplementation 'com.approvaltests:approvaltests:12.3.2'
 }
