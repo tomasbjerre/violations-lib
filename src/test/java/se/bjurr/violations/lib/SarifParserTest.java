@@ -19,7 +19,7 @@ public class SarifParserTest {
 
     final Set<Violation> actual =
         violationsApi() //
-            .withPattern(".*/sarif/.*(sarif|json)$") //
+            .withPattern(".*/sarif/samples/.*(sarif|json)$") //
             .inFolder(rootFolder) //
             .findAll(SARIF) //
             .violations();
@@ -55,5 +55,20 @@ public class SarifParserTest {
         .isEqualTo(1);
     assertThat(first.getEndLine()) //
         .isEqualTo(1);
+  }
+
+  @Test
+  public void testThatViolationsCanBeParsed_result_line_nr() {
+    final String rootFolder = getRootFolder();
+
+    final Set<Violation> actual =
+        violationsApi() //
+            .withPattern(".*/sarif/result_line_nr.json$") //
+            .inFolder(rootFolder) //
+            .findAll(SARIF) //
+            .violations();
+
+    assertThat(actual) //
+        .hasSize(439);
   }
 }
