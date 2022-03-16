@@ -2,19 +2,31 @@
 
 Changelog of violations-lib.
 
-## [1.148.0](https://github.com/tomasbjerre/violations-lib/releases/tag/1.148.0) (2021-12-11)
+## 1.148.1 (2022-03-16)
+
+
+
+
+
+### Bug Fixes
+
+-  parse safir locations ([0e9a1](https://github.com/tomasbjerre/violations-lib/commit/0e9a19b4b8c6d8a) Tomas Bjerre)  [#143](https://github.com/tomasbjerre/violations-lib/issues/143)  
+
+
+
+## 1.148.0 (2021-12-11)
 
 
 
 ### Features
 
--  Dart MACHINE parser ([46dfd](https://github.com/tomasbjerre/violations-lib/commit/46dfd1ca444813d))  [#142](https://github.com/tomasbjerre/violations-lib/issues/142)  
+-  Dart MACHINE parser ([46dfd](https://github.com/tomasbjerre/violations-lib/commit/46dfd1ca444813d) Tomas Bjerre)  [#142](https://github.com/tomasbjerre/violations-lib/issues/142)  
 
 
 
 
 
-## [1.147.3](https://github.com/tomasbjerre/violations-lib/releases/tag/1.147.3) (2021-12-09)
+## 1.147.3 (2021-12-09)
 
 
 
@@ -30,7 +42,7 @@ Changelog of violations-lib.
 [ebca9](https://github.com/tomasbjerre/violations-lib/commit/ebca9e142112cd0) Tony Ciavarella *2021-12-09 00:31:20*
 
 
-## [1.147.2](https://github.com/tomasbjerre/violations-lib/releases/tag/1.147.2) (2021-12-07)
+## 1.147.2 (2021-12-07)
 
 
 
@@ -38,11 +50,11 @@ Changelog of violations-lib.
 
 ### Bug Fixes
 
--  renaming SARIFPARSER to SARIF ([00f61](https://github.com/tomasbjerre/violations-lib/commit/00f6127b4f498b0))  
+-  renaming SARIFPARSER to SARIF ([00f61](https://github.com/tomasbjerre/violations-lib/commit/00f6127b4f498b0) Tomas Bjerre)  
 
 
 
-## [1.147.1](https://github.com/tomasbjerre/violations-lib/releases/tag/1.147.1) (2021-12-07)
+## 1.147.1 (2021-12-07)
 
 
 
@@ -50,23 +62,23 @@ Changelog of violations-lib.
 
 ### Bug Fixes
 
--  correcting sarif link ([b3684](https://github.com/tomasbjerre/violations-lib/commit/b3684ab1171b5d8))  
+-  correcting sarif link ([b3684](https://github.com/tomasbjerre/violations-lib/commit/b3684ab1171b5d8) Tomas Bjerre)  
 
 
 
-## [1.147.0](https://github.com/tomasbjerre/violations-lib/releases/tag/1.147.0) (2021-12-07)
+## 1.147.0 (2021-12-07)
 
 
 
 ### Features
 
--  sarif parser ([09a41](https://github.com/tomasbjerre/violations-lib/commit/09a41f43f75279e))  
+-  sarif parser ([09a41](https://github.com/tomasbjerre/violations-lib/commit/09a41f43f75279e) Tomas Bjerre)  
 
 
 
 
 
-## [1.146.3](https://github.com/tomasbjerre/violations-lib/releases/tag/1.146.3) (2021-12-06)
+## 1.146.3 (2021-12-06)
 
 
 
@@ -74,11 +86,11 @@ Changelog of violations-lib.
 
 ### Bug Fixes
 
--  make build script run on Windows ([84883](https://github.com/tomasbjerre/violations-lib/commit/84883773f3a1d97))  
+-  make build script run on Windows ([84883](https://github.com/tomasbjerre/violations-lib/commit/84883773f3a1d97) Tomas Bjerre)  
 
 
 
-## [1.146.2](https://github.com/tomasbjerre/violations-lib/releases/tag/1.146.2) (2021-12-06)
+## 1.146.2 (2021-12-06)
 
 
 
@@ -94,7 +106,7 @@ Changelog of violations-lib.
 [18f02](https://github.com/tomasbjerre/violations-lib/commit/18f0261f153a32a) Tony Ciavarella *2021-12-06 04:31:16*
 
 
-## [1.146.1](https://github.com/tomasbjerre/violations-lib/releases/tag/1.146.1) (2021-12-05)
+## 1.146.1 (2021-12-05)
 
 
 
@@ -115,31 +127,19 @@ Changelog of violations-lib.
 [0fd82](https://github.com/tomasbjerre/violations-lib/commit/0fd820adea2f6f8) Tomas Bjerre *2021-12-04 09:53:17*
 
 
-## [1.146.0](https://github.com/tomasbjerre/violations-lib/releases/tag/1.146.0) (2021-11-28)
+## 1.146.0 (2021-11-28)
 
 
 
 ### Features
 
--  parse column from CPPCheck ([9458f](https://github.com/tomasbjerre/violations-lib/commit/9458f8f394c30f2))  [#136](https://github.com/tomasbjerre/violations-lib/issues/136)  
+-  parse column from CPPCheck ([9458f](https://github.com/tomasbjerre/violations-lib/commit/9458f8f394c30f2) Tomas Bjerre)  [#136](https://github.com/tomasbjerre/violations-lib/issues/136)  
 
 
 
 
 
-## [1.145.5](https://github.com/tomasbjerre/violations-lib/releases/tag/1.145.5) (2021-11-21)
-
-
-
-
-
-### Bug Fixes
-
--  sort results in Jacoco ([b454f](https://github.com/tomasbjerre/violations-lib/commit/b454f8708ef4756))  
-
-
-
-## [1.145.4](https://github.com/tomasbjerre/violations-lib/releases/tag/1.145.4) (2021-09-11)
+## 1.145.5 (2021-11-21)
 
 
 
@@ -147,11 +147,11 @@ Changelog of violations-lib.
 
 ### Bug Fixes
 
--  mapping engine_name and check_name in CodeClimate ([14497](https://github.com/tomasbjerre/violations-lib/commit/144971bb855a7a3))  [#132](https://github.com/tomasbjerre/violations-lib/issues/132)  [#133](https://github.com/tomasbjerre/violations-lib/issues/133)  
+-  sort results in Jacoco ([b454f](https://github.com/tomasbjerre/violations-lib/commit/b454f8708ef4756) Tomas Bjerre)  
 
 
 
-## [1.145.2](https://github.com/tomasbjerre/violations-lib/releases/tag/1.145.2) (2021-08-09)
+## 1.145.4 (2021-09-11)
 
 
 
@@ -159,11 +159,23 @@ Changelog of violations-lib.
 
 ### Bug Fixes
 
--  support CFN with JUnit format ([56175](https://github.com/tomasbjerre/violations-lib/commit/56175a442d188ee))  [#131](https://github.com/tomasbjerre/violations-lib/issues/131)  
+-  mapping engine_name and check_name in CodeClimate ([14497](https://github.com/tomasbjerre/violations-lib/commit/144971bb855a7a3) Tomas Bjerre)  [#132](https://github.com/tomasbjerre/violations-lib/issues/132)  [#133](https://github.com/tomasbjerre/violations-lib/issues/133)  
 
 
 
-## [1.145.1](https://github.com/tomasbjerre/violations-lib/releases/tag/1.145.1) (2021-08-05)
+## 1.145.2 (2021-08-09)
+
+
+
+
+
+### Bug Fixes
+
+-  support CFN with JUnit format ([56175](https://github.com/tomasbjerre/violations-lib/commit/56175a442d188ee) Tomas Bjerre)  [#131](https://github.com/tomasbjerre/violations-lib/issues/131)  
+
+
+
+## 1.145.1 (2021-08-05)
 
 
 
@@ -179,19 +191,19 @@ Changelog of violations-lib.
 [89019](https://github.com/tomasbjerre/violations-lib/commit/890190b734f5220) Aurelian Teglas *2021-08-05 09:37:30*
 
 
-## [1.145.0](https://github.com/tomasbjerre/violations-lib/releases/tag/1.145.0) (2021-07-12)
+## 1.145.0 (2021-07-12)
 
 
 
 ### Features
 
--  allow parser instance to be given ([3d606](https://github.com/tomasbjerre/violations-lib/commit/3d60602c95c54b5))  
+-  allow parser instance to be given ([3d606](https://github.com/tomasbjerre/violations-lib/commit/3d60602c95c54b5) Tomas Bjerre)  
 
 
 
 
 
-## [1.144.6](https://github.com/tomasbjerre/violations-lib/releases/tag/1.144.6) (2021-07-12)
+## 1.144.6 (2021-07-12)
 
 
 
@@ -222,7 +234,7 @@ Changelog of violations-lib.
 [a818c](https://github.com/tomasbjerre/violations-lib/commit/a818cb6bc732add) Aurelian Teglas *2021-07-06 17:53:46*
 
 
-## [1.144.5](https://github.com/tomasbjerre/violations-lib/releases/tag/1.144.5) (2021-06-16)
+## 1.144.5 (2021-06-16)
 
 
 
@@ -238,7 +250,7 @@ Changelog of violations-lib.
 [6ca81](https://github.com/tomasbjerre/violations-lib/commit/6ca811486b28540) Michael Kaiser *2021-06-15 14:06:06*
 
 
-## [1.144.4](https://github.com/tomasbjerre/violations-lib/releases/tag/1.144.4) (2021-04-08)
+## 1.144.4 (2021-04-08)
 
 
 
@@ -246,7 +258,7 @@ Changelog of violations-lib.
 
 ### Bug Fixes
 
--  parsing junit parser with missing file ([b9bbc](https://github.com/tomasbjerre/violations-lib/commit/b9bbce64b93509a))  [#124](https://github.com/tomasbjerre/violations-lib/issues/124)  
+-  parsing junit parser with missing file ([b9bbc](https://github.com/tomasbjerre/violations-lib/commit/b9bbce64b93509a) Tomas Bjerre)  [#124](https://github.com/tomasbjerre/violations-lib/issues/124)  
 
 
 ### Other changes
@@ -262,7 +274,7 @@ Changelog of violations-lib.
 [7e413](https://github.com/tomasbjerre/violations-lib/commit/7e413f219fdb726) Tomas Bjerre *2021-04-02 18:27:48*
 
 
-## [1.144.3](https://github.com/tomasbjerre/violations-lib/releases/tag/1.144.3) (2021-04-02)
+## 1.144.3 (2021-04-02)
 
 
 
@@ -278,7 +290,7 @@ Changelog of violations-lib.
 [f0e52](https://github.com/tomasbjerre/violations-lib/commit/f0e5223fbbda0c6) Tomas Bjerre *2021-04-02 17:50:33*
 
 
-## [1.143](https://github.com/tomasbjerre/violations-lib/releases/tag/1.143) (2021-03-29)
+## 1.143 (2021-03-29)
 
 
 
@@ -294,7 +306,7 @@ Changelog of violations-lib.
 [47647](https://github.com/tomasbjerre/violations-lib/commit/47647c2886bfde9) Tomas Bjerre *2021-03-29 14:43:54*
 
 
-## [1.142](https://github.com/tomasbjerre/violations-lib/releases/tag/1.142) (2021-01-29)
+## 1.142 (2021-01-29)
 
 
 
@@ -310,7 +322,7 @@ Changelog of violations-lib.
 [0f9bc](https://github.com/tomasbjerre/violations-lib/commit/0f9bc7565e82956) Tomas Bjerre *2021-01-29 19:20:44*
 
 
-## [1.141](https://github.com/tomasbjerre/violations-lib/releases/tag/1.141) (2020-01-01)
+## 1.141 (2021-01-01)
 
 
 
@@ -323,10 +335,10 @@ Changelog of violations-lib.
 **Parse CPPCheck reports without file #118**
 
 
-[c2c58](https://github.com/tomasbjerre/violations-lib/commit/c2c58662d6adee4) Tomas Bjerre *2020-01-01 13:12:42*
+[c2c58](https://github.com/tomasbjerre/violations-lib/commit/c2c58662d6adee4) Tomas Bjerre *2021-01-01 13:12:42*
 
 
-## [1.140](https://github.com/tomasbjerre/violations-lib/releases/tag/1.140) (2020-12-14)
+## 1.140 (2020-12-14)
 
 
 
@@ -357,7 +369,7 @@ Changelog of violations-lib.
 [4517a](https://github.com/tomasbjerre/violations-lib/commit/4517af59127c16a) Nov1kov *2020-12-11 11:12:34*
 
 
-## [1.139](https://github.com/tomasbjerre/violations-lib/releases/tag/1.139) (2020-12-06)
+## 1.139 (2020-12-06)
 
 
 
@@ -373,7 +385,7 @@ Changelog of violations-lib.
 [37b6d](https://github.com/tomasbjerre/violations-lib/commit/37b6d19e9884302) Tomas Bjerre *2020-12-06 08:33:13*
 
 
-## [1.138](https://github.com/tomasbjerre/violations-lib/releases/tag/1.138) (2020-12-06)
+## 1.138 (2020-12-06)
 
 
 
@@ -389,7 +401,7 @@ Changelog of violations-lib.
 [1508d](https://github.com/tomasbjerre/violations-lib/commit/1508d313f91b7d2) Tomas Bjerre *2020-12-06 07:41:13*
 
 
-## [1.137](https://github.com/tomasbjerre/violations-lib/releases/tag/1.137) (2020-11-27)
+## 1.137 (2020-11-27)
 
 
 
@@ -415,7 +427,7 @@ Changelog of violations-lib.
 [5ac9c](https://github.com/tomasbjerre/violations-lib/commit/5ac9c50de3d6bbd) Nov1kov *2020-11-26 18:38:36*
 
 
-## [1.136](https://github.com/tomasbjerre/violations-lib/releases/tag/1.136) (2020-11-15)
+## 1.136 (2020-11-15)
 
 
 
@@ -431,7 +443,7 @@ Changelog of violations-lib.
 [8853c](https://github.com/tomasbjerre/violations-lib/commit/8853ccd4f3ea181) Tomas Bjerre *2020-11-15 16:22:50*
 
 
-## [1.135](https://github.com/tomasbjerre/violations-lib/releases/tag/1.135) (2020-10-17)
+## 1.135 (2020-10-17)
 
 
 
@@ -447,7 +459,7 @@ Changelog of violations-lib.
 [893e6](https://github.com/tomasbjerre/violations-lib/commit/893e64079ff11a0) Tomas Bjerre *2020-10-17 19:45:12*
 
 
-## [1.134](https://github.com/tomasbjerre/violations-lib/releases/tag/1.134) (2020-10-04)
+## 1.134 (2020-10-04)
 
 
 
@@ -463,7 +475,7 @@ Changelog of violations-lib.
 [c84cd](https://github.com/tomasbjerre/violations-lib/commit/c84cd5922cfa3cc) Tomas Bjerre *2020-10-04 10:19:52*
 
 
-## [1.133](https://github.com/tomasbjerre/violations-lib/releases/tag/1.133) (2020-10-04)
+## 1.133 (2020-10-04)
 
 
 
@@ -479,7 +491,7 @@ Changelog of violations-lib.
 [18f86](https://github.com/tomasbjerre/violations-lib/commit/18f8681ad3293ec) Tomas Bjerre *2020-10-04 07:19:35*
 
 
-## [1.132](https://github.com/tomasbjerre/violations-lib/releases/tag/1.132) (2020-09-27)
+## 1.132 (2020-09-27)
 
 
 
@@ -495,7 +507,7 @@ Changelog of violations-lib.
 [f67a6](https://github.com/tomasbjerre/violations-lib/commit/f67a694356575c9) Tomas Bjerre *2020-09-27 16:13:07*
 
 
-## [1.131](https://github.com/tomasbjerre/violations-lib/releases/tag/1.131) (2020-09-27)
+## 1.131 (2020-09-27)
 
 
 
@@ -556,7 +568,7 @@ Changelog of violations-lib.
 [17b0d](https://github.com/tomasbjerre/violations-lib/commit/17b0dfe72755568) Tomas Bjerre *2020-09-26 19:11:55*
 
 
-## [1.130](https://github.com/tomasbjerre/violations-lib/releases/tag/1.130) (2020-09-25)
+## 1.130 (2020-09-25)
 
 
 
@@ -572,7 +584,7 @@ Changelog of violations-lib.
 [2eac2](https://github.com/tomasbjerre/violations-lib/commit/2eac2357a6a9606) Tomas Bjerre *2020-09-25 18:35:54*
 
 
-## [1.129](https://github.com/tomasbjerre/violations-lib/releases/tag/1.129) (2020-09-23)
+## 1.129 (2020-09-23)
 
 
 
@@ -588,7 +600,7 @@ Changelog of violations-lib.
 [708c7](https://github.com/tomasbjerre/violations-lib/commit/708c769aeca3dff) Tomas Bjerre *2020-09-23 15:47:40*
 
 
-## [1.128](https://github.com/tomasbjerre/violations-lib/releases/tag/1.128) (2020-09-14)
+## 1.128 (2020-09-14)
 
 
 
@@ -614,7 +626,7 @@ Changelog of violations-lib.
 [0c984](https://github.com/tomasbjerre/violations-lib/commit/0c9846f76ea9a14) Anirudh Bagri *2020-09-10 15:12:07*
 
 
-## [1.127](https://github.com/tomasbjerre/violations-lib/releases/tag/1.127) (2020-09-06)
+## 1.127 (2020-09-06)
 
 
 
@@ -630,7 +642,7 @@ Changelog of violations-lib.
 [5c52a](https://github.com/tomasbjerre/violations-lib/commit/5c52a3933792d14) Tomas Bjerre *2020-09-06 05:24:56*
 
 
-## [1.126](https://github.com/tomasbjerre/violations-lib/releases/tag/1.126) (2020-09-06)
+## 1.126 (2020-09-06)
 
 
 
@@ -646,7 +658,7 @@ Changelog of violations-lib.
 [8430d](https://github.com/tomasbjerre/violations-lib/commit/8430d1796086717) Tomas Bjerre *2020-09-06 05:16:01*
 
 
-## [1.125](https://github.com/tomasbjerre/violations-lib/releases/tag/1.125) (2020-09-05)
+## 1.125 (2020-09-05)
 
 
 
@@ -662,7 +674,7 @@ Changelog of violations-lib.
 [96e73](https://github.com/tomasbjerre/violations-lib/commit/96e73a365e55117) Tomas Bjerre *2020-09-05 06:35:02*
 
 
-## [1.124](https://github.com/tomasbjerre/violations-lib/releases/tag/1.124) (2020-09-04)
+## 1.124 (2020-09-04)
 
 
 
@@ -678,7 +690,7 @@ Changelog of violations-lib.
 [925c9](https://github.com/tomasbjerre/violations-lib/commit/925c96b9f43b734) Tomas Bjerre *2020-09-04 15:41:14*
 
 
-## [1.123](https://github.com/tomasbjerre/violations-lib/releases/tag/1.123) (2020-08-27)
+## 1.123 (2020-08-27)
 
 
 
@@ -694,7 +706,7 @@ Changelog of violations-lib.
 [0b81e](https://github.com/tomasbjerre/violations-lib/commit/0b81ef8c7fcdd95) Tomas Bjerre *2020-08-27 17:43:08*
 
 
-## [1.122](https://github.com/tomasbjerre/violations-lib/releases/tag/1.122) (2020-08-27)
+## 1.122 (2020-08-27)
 
 
 
@@ -710,7 +722,7 @@ Changelog of violations-lib.
 [2d06b](https://github.com/tomasbjerre/violations-lib/commit/2d06bb63c1266b9) Tomas Bjerre *2020-08-27 16:20:21*
 
 
-## [1.121](https://github.com/tomasbjerre/violations-lib/releases/tag/1.121) (2020-07-26)
+## 1.121 (2020-07-26)
 
 
 
@@ -739,7 +751,7 @@ Changelog of violations-lib.
 [3d40d](https://github.com/tomasbjerre/violations-lib/commit/3d40d5ec9564d35) David Kolossa *2020-07-25 08:37:08*
 
 
-## [1.120](https://github.com/tomasbjerre/violations-lib/releases/tag/1.120) (2020-07-05)
+## 1.120 (2020-07-05)
 
 
 
@@ -748,7 +760,7 @@ Changelog of violations-lib.
 
 
 
-## [1.119](https://github.com/tomasbjerre/violations-lib/releases/tag/1.119) (2020-07-05)
+## 1.119 (2020-07-05)
 
 
 
@@ -757,7 +769,7 @@ Changelog of violations-lib.
 
 
 
-## [1.118](https://github.com/tomasbjerre/violations-lib/releases/tag/1.118) (2020-06-26)
+## 1.118 (2020-06-26)
 
 
 
@@ -773,7 +785,7 @@ Changelog of violations-lib.
 [bc740](https://github.com/tomasbjerre/violations-lib/commit/bc74058e8c2963c) Tomas Bjerre *2020-06-26 16:58:57*
 
 
-## [1.117](https://github.com/tomasbjerre/violations-lib/releases/tag/1.117) (2020-06-12)
+## 1.117 (2020-06-12)
 
 
 
@@ -790,7 +802,7 @@ Changelog of violations-lib.
 [e5139](https://github.com/tomasbjerre/violations-lib/commit/e513933d7505021) Semyon Levin *2020-06-10 20:31:38*
 
 
-## [1.116](https://github.com/tomasbjerre/violations-lib/releases/tag/1.116) (2020-05-20)
+## 1.116 (2020-05-20)
 
 
 
@@ -806,7 +818,7 @@ Changelog of violations-lib.
 [b100c](https://github.com/tomasbjerre/violations-lib/commit/b100cdb54e18cae) Tomas Bjerre *2020-05-20 14:42:04*
 
 
-## [1.115](https://github.com/tomasbjerre/violations-lib/releases/tag/1.115) (2020-05-16)
+## 1.115 (2020-05-16)
 
 
 
@@ -837,7 +849,7 @@ Changelog of violations-lib.
 [553fd](https://github.com/tomasbjerre/violations-lib/commit/553fd892d041c29) Tomas Bjerre *2020-05-15 16:20:49*
 
 
-## [1.114](https://github.com/tomasbjerre/violations-lib/releases/tag/1.114) (2020-05-12)
+## 1.114 (2020-05-12)
 
 
 
@@ -846,7 +858,7 @@ Changelog of violations-lib.
 
 
 
-## [1.113](https://github.com/tomasbjerre/violations-lib/releases/tag/1.113) (2020-03-29)
+## 1.113 (2020-03-29)
 
 
 
@@ -862,7 +874,7 @@ Changelog of violations-lib.
 [1fff2](https://github.com/tomasbjerre/violations-lib/commit/1fff248fab4afe3) Tomas Bjerre *2020-03-29 14:08:24*
 
 
-## [1.112](https://github.com/tomasbjerre/violations-lib/releases/tag/1.112) (2020-03-03)
+## 1.112 (2020-03-03)
 
 
 
@@ -878,7 +890,7 @@ Changelog of violations-lib.
 [24a91](https://github.com/tomasbjerre/violations-lib/commit/24a917bc11d0a73) Tomas Bjerre *2020-03-03 18:22:05*
 
 
-## [1.111](https://github.com/tomasbjerre/violations-lib/releases/tag/1.111) (2020-03-03)
+## 1.111 (2020-03-03)
 
 
 
@@ -899,7 +911,7 @@ Changelog of violations-lib.
 [2b96a](https://github.com/tomasbjerre/violations-lib/commit/2b96ad75cee880a) Tomas Bjerre *2020-02-06 18:27:04*
 
 
-## [1.110](https://github.com/tomasbjerre/violations-lib/releases/tag/1.110) (2020-02-03)
+## 1.110 (2020-02-03)
 
 
 
@@ -915,7 +927,7 @@ Changelog of violations-lib.
 [64781](https://github.com/tomasbjerre/violations-lib/commit/64781db68be28d7) Tomas Bjerre *2020-02-03 15:57:04*
 
 
-## [1.109](https://github.com/tomasbjerre/violations-lib/releases/tag/1.109) (2020-01-19)
+## 1.109 (2020-01-19)
 
 
 
@@ -936,7 +948,7 @@ Changelog of violations-lib.
 [97ed6](https://github.com/tomasbjerre/violations-lib/commit/97ed66ad9a70c31) Tomas Bjerre *2020-01-03 06:41:18*
 
 
-## [1.108](https://github.com/tomasbjerre/violations-lib/releases/tag/1.108) (2020-01-03)
+## 1.108 (2020-01-03)
 
 
 
@@ -952,7 +964,7 @@ Changelog of violations-lib.
 [432e5](https://github.com/tomasbjerre/violations-lib/commit/432e5ab3f1efceb) Zakey Faieq *2020-01-02 22:18:04*
 
 
-## [1.107](https://github.com/tomasbjerre/violations-lib/releases/tag/1.107) (2019-10-22)
+## 1.107 (2019-10-22)
 
 
 
@@ -968,7 +980,7 @@ Changelog of violations-lib.
 [80e3c](https://github.com/tomasbjerre/violations-lib/commit/80e3c8dd7fb95ea) David *2019-10-21 20:25:12*
 
 
-## [1.106](https://github.com/tomasbjerre/violations-lib/releases/tag/1.106) (2019-10-10)
+## 1.106 (2019-10-10)
 
 
 
@@ -1004,7 +1016,7 @@ Changelog of violations-lib.
 [2cec5](https://github.com/tomasbjerre/violations-lib/commit/2cec50ee48b3f2c) Tomas Bjerre *2019-10-07 18:30:04*
 
 
-## [1.103](https://github.com/tomasbjerre/violations-lib/releases/tag/1.103) (2019-10-05)
+## 1.103 (2019-10-05)
 
 
 
@@ -1025,7 +1037,7 @@ Changelog of violations-lib.
 [019ea](https://github.com/tomasbjerre/violations-lib/commit/019eade65d41af1) Tomas Bjerre *2019-10-05 05:24:28*
 
 
-## [1.102](https://github.com/tomasbjerre/violations-lib/releases/tag/1.102) (2019-10-04)
+## 1.102 (2019-10-04)
 
 
 
@@ -1057,7 +1069,7 @@ Changelog of violations-lib.
 [e0703](https://github.com/tomasbjerre/violations-lib/commit/e07038ba58e9c62) Tomas Bjerre *2019-09-07 12:17:03*
 
 
-## [1.100](https://github.com/tomasbjerre/violations-lib/releases/tag/1.100) (2019-09-07)
+## 1.100 (2019-09-07)
 
 
 
@@ -1073,7 +1085,7 @@ Changelog of violations-lib.
 [51074](https://github.com/tomasbjerre/violations-lib/commit/51074e66c7abce0) Tomas Bjerre *2019-09-07 12:09:14*
 
 
-## [1.99](https://github.com/tomasbjerre/violations-lib/releases/tag/1.99) (2019-09-07)
+## 1.99 (2019-09-07)
 
 
 
@@ -1089,7 +1101,7 @@ Changelog of violations-lib.
 [60420](https://github.com/tomasbjerre/violations-lib/commit/60420531325577f) Tomas Bjerre *2019-09-07 11:45:10*
 
 
-## [1.98](https://github.com/tomasbjerre/violations-lib/releases/tag/1.98) (2019-09-04)
+## 1.98 (2019-09-04)
 
 
 
@@ -1105,7 +1117,7 @@ Changelog of violations-lib.
 [f6f7f](https://github.com/tomasbjerre/violations-lib/commit/f6f7f7d209fa74d) Tomas Bjerre *2019-09-04 19:52:52*
 
 
-## [1.97](https://github.com/tomasbjerre/violations-lib/releases/tag/1.97) (2019-09-04)
+## 1.97 (2019-09-04)
 
 
 
@@ -1121,7 +1133,7 @@ Changelog of violations-lib.
 [b7fff](https://github.com/tomasbjerre/violations-lib/commit/b7fff16b27cb2a4) Tomas Bjerre *2019-09-04 19:23:23*
 
 
-## [1.96](https://github.com/tomasbjerre/violations-lib/releases/tag/1.96) (2019-08-03)
+## 1.96 (2019-08-03)
 
 
 
@@ -1138,7 +1150,7 @@ Changelog of violations-lib.
 [d34e2](https://github.com/tomasbjerre/violations-lib/commit/d34e2a36d3523a0) Tomas Bjerre *2019-08-03 10:36:59*
 
 
-## [1.95](https://github.com/tomasbjerre/violations-lib/releases/tag/1.95) (2019-08-02)
+## 1.95 (2019-08-02)
 
 
 
@@ -1154,7 +1166,7 @@ Changelog of violations-lib.
 [0af66](https://github.com/tomasbjerre/violations-lib/commit/0af669fb166b952) Tomas Bjerre *2019-08-02 06:06:51*
 
 
-## [1.94](https://github.com/tomasbjerre/violations-lib/releases/tag/1.94) (2019-06-15)
+## 1.94 (2019-06-15)
 
 
 
@@ -1185,7 +1197,7 @@ Changelog of violations-lib.
 [13100](https://github.com/tomasbjerre/violations-lib/commit/131000779822531) Antti Keistinen *2019-06-04 02:46:29*
 
 
-## [1.93](https://github.com/tomasbjerre/violations-lib/releases/tag/1.93) (2019-06-07)
+## 1.93 (2019-06-07)
 
 
 
@@ -1221,7 +1233,7 @@ Changelog of violations-lib.
 [9697b](https://github.com/tomasbjerre/violations-lib/commit/9697bfaefe75836) Tomas Bjerre *2019-05-30 20:28:12*
 
 
-## [1.92](https://github.com/tomasbjerre/violations-lib/releases/tag/1.92) (2019-04-24)
+## 1.92 (2019-04-24)
 
 
 
@@ -1252,7 +1264,7 @@ Changelog of violations-lib.
 [ae136](https://github.com/tomasbjerre/violations-lib/commit/ae13633f9e953aa) Tomas Bjerre *2019-04-23 17:52:56*
 
 
-## [1.89](https://github.com/tomasbjerre/violations-lib/releases/tag/1.89) (2019-04-03)
+## 1.89 (2019-04-03)
 
 
 
@@ -1283,7 +1295,7 @@ Changelog of violations-lib.
 [1eeaf](https://github.com/tomasbjerre/violations-lib/commit/1eeafaff359c01b) Tomas Bjerre *2019-03-29 14:40:51*
 
 
-## [1.86](https://github.com/tomasbjerre/violations-lib/releases/tag/1.86) (2019-03-23)
+## 1.86 (2019-03-23)
 
 
 
@@ -1299,7 +1311,7 @@ Changelog of violations-lib.
 [09af9](https://github.com/tomasbjerre/violations-lib/commit/09af9bc235197db) Tomas Bjerre *2019-03-23 14:28:21*
 
 
-## [1.85](https://github.com/tomasbjerre/violations-lib/releases/tag/1.85) (2019-03-13)
+## 1.85 (2019-03-13)
 
 
 
@@ -1326,7 +1338,7 @@ Changelog of violations-lib.
 [b74f8](https://github.com/tomasbjerre/violations-lib/commit/b74f84862211f55) deepuj *2019-03-13 18:38:16*
 
 
-## [1.84](https://github.com/tomasbjerre/violations-lib/releases/tag/1.84) (2019-03-07)
+## 1.84 (2019-03-07)
 
 
 
@@ -1342,7 +1354,7 @@ Changelog of violations-lib.
 [fb3dd](https://github.com/tomasbjerre/violations-lib/commit/fb3dd6173a2dc80) Tomas Bjerre *2019-03-07 17:08:38*
 
 
-## [1.83](https://github.com/tomasbjerre/violations-lib/releases/tag/1.83) (2019-03-07)
+## 1.83 (2019-03-07)
 
 
 
@@ -1366,7 +1378,7 @@ Changelog of violations-lib.
 [82712](https://github.com/tomasbjerre/violations-lib/commit/82712daea397daf) Nic Cope *2019-03-07 10:22:37*
 
 
-## [1.82](https://github.com/tomasbjerre/violations-lib/releases/tag/1.82) (2019-02-25)
+## 1.82 (2019-02-25)
 
 
 
@@ -1387,7 +1399,7 @@ Changelog of violations-lib.
 [f9fb9](https://github.com/tomasbjerre/violations-lib/commit/f9fb95039e88d97) Tomas Bjerre *2019-02-20 17:19:25*
 
 
-## [1.81](https://github.com/tomasbjerre/violations-lib/releases/tag/1.81) (2019-02-10)
+## 1.81 (2019-02-10)
 
 
 
@@ -1403,7 +1415,7 @@ Changelog of violations-lib.
 [14d61](https://github.com/tomasbjerre/violations-lib/commit/14d611e4bbf390b) Tomas Bjerre *2019-02-10 15:35:41*
 
 
-## [1.80](https://github.com/tomasbjerre/violations-lib/releases/tag/1.80) (2019-02-02)
+## 1.80 (2019-02-02)
 
 
 
@@ -1434,7 +1446,7 @@ Changelog of violations-lib.
 [2c6a3](https://github.com/tomasbjerre/violations-lib/commit/2c6a31e642acd8e) Tomas Bjerre *2019-01-30 17:00:29*
 
 
-## [1.79](https://github.com/tomasbjerre/violations-lib/releases/tag/1.79) (2019-01-29)
+## 1.79 (2019-01-29)
 
 
 
@@ -1455,7 +1467,7 @@ Changelog of violations-lib.
 [69e26](https://github.com/tomasbjerre/violations-lib/commit/69e26e53cdcbf77) Tomas Bjerre *2019-01-23 07:22:24*
 
 
-## [1.78](https://github.com/tomasbjerre/violations-lib/releases/tag/1.78) (2019-01-14)
+## 1.78 (2019-01-14)
 
 
 
@@ -1471,7 +1483,7 @@ Changelog of violations-lib.
 [fa97a](https://github.com/tomasbjerre/violations-lib/commit/fa97ac81772c01b) Tomas Bjerre *2019-01-14 17:05:33*
 
 
-## [1.77](https://github.com/tomasbjerre/violations-lib/releases/tag/1.77) (2019-01-09)
+## 1.77 (2019-01-09)
 
 
 
@@ -1497,7 +1509,7 @@ Changelog of violations-lib.
 [2fbb2](https://github.com/tomasbjerre/violations-lib/commit/2fbb203859a0636) Tomas Bjerre *2019-01-08 20:14:11*
 
 
-## [1.74](https://github.com/tomasbjerre/violations-lib/releases/tag/1.74) (2019-01-02)
+## 1.74 (2019-01-02)
 
 
 
@@ -1518,7 +1530,7 @@ Changelog of violations-lib.
 [274b7](https://github.com/tomasbjerre/violations-lib/commit/274b7897621d919) Tomas Bjerre *2018-12-22 11:38:33*
 
 
-## [1.73](https://github.com/tomasbjerre/violations-lib/releases/tag/1.73) (2018-11-15)
+## 1.73 (2018-11-15)
 
 
 
@@ -1534,7 +1546,7 @@ Changelog of violations-lib.
 [50bcf](https://github.com/tomasbjerre/violations-lib/commit/50bcfaaf1afdbdd) Tomas Bjerre *2018-11-15 17:23:40*
 
 
-## [1.72](https://github.com/tomasbjerre/violations-lib/releases/tag/1.72) (2018-11-14)
+## 1.72 (2018-11-14)
 
 
 
@@ -1550,7 +1562,7 @@ Changelog of violations-lib.
 [ec237](https://github.com/tomasbjerre/violations-lib/commit/ec23727e779c721) Tomas Bjerre *2018-11-14 19:10:04*
 
 
-## [1.71](https://github.com/tomasbjerre/violations-lib/releases/tag/1.71) (2018-10-08)
+## 1.71 (2018-10-08)
 
 
 
@@ -1566,7 +1578,7 @@ Changelog of violations-lib.
 [8e000](https://github.com/tomasbjerre/violations-lib/commit/8e0005f4897a74d) Tomas Bjerre *2018-10-08 14:10:31*
 
 
-## [1.70](https://github.com/tomasbjerre/violations-lib/releases/tag/1.70) (2018-10-08)
+## 1.70 (2018-10-08)
 
 
 
@@ -1582,7 +1594,7 @@ Changelog of violations-lib.
 [7fbdd](https://github.com/tomasbjerre/violations-lib/commit/7fbdda0d6a1090a) Tomas Bjerre *2018-10-08 06:22:35*
 
 
-## [1.69](https://github.com/tomasbjerre/violations-lib/releases/tag/1.69) (2018-10-06)
+## 1.69 (2018-10-06)
 
 
 
@@ -1603,7 +1615,7 @@ Changelog of violations-lib.
 [df538](https://github.com/tomasbjerre/violations-lib/commit/df5387dbf1d4db3) Tomas Bjerre *2018-09-25 07:29:46*
 
 
-## [1.67](https://github.com/tomasbjerre/violations-lib/releases/tag/1.67) (2018-09-23)
+## 1.67 (2018-09-23)
 
 
 
@@ -1619,7 +1631,7 @@ Changelog of violations-lib.
 [01d4a](https://github.com/tomasbjerre/violations-lib/commit/01d4a55ff297bd5) Tomas Bjerre *2018-09-23 11:54:36*
 
 
-## [1.66](https://github.com/tomasbjerre/violations-lib/releases/tag/1.66) (2018-09-23)
+## 1.66 (2018-09-23)
 
 
 
@@ -1650,7 +1662,7 @@ Changelog of violations-lib.
 [cc731](https://github.com/tomasbjerre/violations-lib/commit/cc731ae81a2150e) Tomas Bjerre *2018-09-22 08:01:27*
 
 
-## [1.65](https://github.com/tomasbjerre/violations-lib/releases/tag/1.65) (2018-09-20)
+## 1.65 (2018-09-20)
 
 
 
@@ -1666,7 +1678,7 @@ Changelog of violations-lib.
 [fb2ce](https://github.com/tomasbjerre/violations-lib/commit/fb2ce3dc8149194) Tomas Bjerre *2018-09-20 23:01:21*
 
 
-## [1.64](https://github.com/tomasbjerre/violations-lib/releases/tag/1.64) (2018-09-20)
+## 1.64 (2018-09-20)
 
 
 
@@ -1682,7 +1694,7 @@ Changelog of violations-lib.
 [59daa](https://github.com/tomasbjerre/violations-lib/commit/59daadfab031933) Tomas Bjerre *2018-09-20 13:45:35*
 
 
-## [1.63](https://github.com/tomasbjerre/violations-lib/releases/tag/1.63) (2018-09-17)
+## 1.63 (2018-09-17)
 
 
 
@@ -1698,7 +1710,7 @@ Changelog of violations-lib.
 [8f804](https://github.com/tomasbjerre/violations-lib/commit/8f804cf422e884d) Aleksei_Philippov *2018-09-17 12:59:38*
 
 
-## [1.62](https://github.com/tomasbjerre/violations-lib/releases/tag/1.62) (2018-09-15)
+## 1.62 (2018-09-15)
 
 
 
@@ -1734,7 +1746,7 @@ Changelog of violations-lib.
 [ae03c](https://github.com/tomasbjerre/violations-lib/commit/ae03c28f28b005c) Aleksei_Philippov *2018-09-14 15:18:11*
 
 
-## [1.61](https://github.com/tomasbjerre/violations-lib/releases/tag/1.61) (2018-09-12)
+## 1.61 (2018-09-12)
 
 
 
@@ -1750,7 +1762,7 @@ Changelog of violations-lib.
 [32f55](https://github.com/tomasbjerre/violations-lib/commit/32f55e98cc590cb) Tomas Bjerre *2018-09-12 20:19:43*
 
 
-## [1.60](https://github.com/tomasbjerre/violations-lib/releases/tag/1.60) (2018-09-12)
+## 1.60 (2018-09-12)
 
 
 
@@ -1771,7 +1783,7 @@ Changelog of violations-lib.
 [45778](https://github.com/tomasbjerre/violations-lib/commit/457780347d3fb94) Tomas Bjerre *2018-09-12 16:32:10*
 
 
-## [1.59](https://github.com/tomasbjerre/violations-lib/releases/tag/1.59) (2018-08-18)
+## 1.59 (2018-08-18)
 
 
 
@@ -1787,7 +1799,7 @@ Changelog of violations-lib.
 [9fa7f](https://github.com/tomasbjerre/violations-lib/commit/9fa7ff29c678148) Tomas Bjerre *2018-08-18 14:13:38*
 
 
-## [1.58](https://github.com/tomasbjerre/violations-lib/releases/tag/1.58) (2018-07-27)
+## 1.58 (2018-07-27)
 
 
 
@@ -1803,7 +1815,7 @@ Changelog of violations-lib.
 [efb50](https://github.com/tomasbjerre/violations-lib/commit/efb508a5d73ad23) Tomas Bjerre *2018-07-27 07:14:16*
 
 
-## [1.57](https://github.com/tomasbjerre/violations-lib/releases/tag/1.57) (2018-07-04)
+## 1.57 (2018-07-04)
 
 
 
@@ -1819,7 +1831,7 @@ Changelog of violations-lib.
 [06264](https://github.com/tomasbjerre/violations-lib/commit/062647397a858f0) Tomas Bjerre *2018-07-04 17:41:33*
 
 
-## [1.56](https://github.com/tomasbjerre/violations-lib/releases/tag/1.56) (2018-07-04)
+## 1.56 (2018-07-04)
 
 
 
@@ -1845,7 +1857,7 @@ Changelog of violations-lib.
 [40168](https://github.com/tomasbjerre/violations-lib/commit/4016805bf281f1f) Tomas Bjerre *2018-05-03 17:08:10*
 
 
-## [1.55](https://github.com/tomasbjerre/violations-lib/releases/tag/1.55) (2018-05-01)
+## 1.55 (2018-05-01)
 
 
 
@@ -1906,7 +1918,7 @@ Changelog of violations-lib.
 [be94e](https://github.com/tomasbjerre/violations-lib/commit/be94e0831808f2b) Øyvind Rørtveit *2018-02-12 16:36:04*
 
 
-## [1.52](https://github.com/tomasbjerre/violations-lib/releases/tag/1.52) (2018-01-14)
+## 1.52 (2018-01-14)
 
 
 
@@ -1922,7 +1934,7 @@ Changelog of violations-lib.
 [f2720](https://github.com/tomasbjerre/violations-lib/commit/f2720de0ec7d36c) Tomas Bjerre *2018-01-14 11:20:10*
 
 
-## [1.51](https://github.com/tomasbjerre/violations-lib/releases/tag/1.51) (2018-01-13)
+## 1.51 (2018-01-13)
 
 
 
@@ -1938,7 +1950,7 @@ Changelog of violations-lib.
 [87c5a](https://github.com/tomasbjerre/violations-lib/commit/87c5ab7cb5f4ae7) Tomas Bjerre *2018-01-13 19:06:03*
 
 
-## [1.50](https://github.com/tomasbjerre/violations-lib/releases/tag/1.50) (2017-12-31)
+## 1.50 (2017-12-31)
 
 
 
@@ -1960,7 +1972,7 @@ Changelog of violations-lib.
 [9b10f](https://github.com/tomasbjerre/violations-lib/commit/9b10f800c7b7941) Sam Judd *2017-12-31 03:25:14*
 
 
-## [1.49](https://github.com/tomasbjerre/violations-lib/releases/tag/1.49) (2017-12-30)
+## 1.49 (2017-12-30)
 
 
 
@@ -1981,7 +1993,7 @@ Changelog of violations-lib.
 [ba8ca](https://github.com/tomasbjerre/violations-lib/commit/ba8ca533c8ada71) Tomas Bjerre *2017-12-30 10:27:45*
 
 
-## [1.48](https://github.com/tomasbjerre/violations-lib/releases/tag/1.48) (2017-12-25)
+## 1.48 (2017-12-25)
 
 
 
@@ -1997,7 +2009,7 @@ Changelog of violations-lib.
 [0f4c1](https://github.com/tomasbjerre/violations-lib/commit/0f4c1919ccf1ae3) Tomas Bjerre *2017-12-25 16:02:22*
 
 
-## [1.47](https://github.com/tomasbjerre/violations-lib/releases/tag/1.47) (2017-12-25)
+## 1.47 (2017-12-25)
 
 
 
@@ -2018,7 +2030,7 @@ Changelog of violations-lib.
 [6c5f8](https://github.com/tomasbjerre/violations-lib/commit/6c5f8f5b9edf1dc) Tomas Bjerre *2017-12-24 20:31:13*
 
 
-## [1.46](https://github.com/tomasbjerre/violations-lib/releases/tag/1.46) (2017-12-24)
+## 1.46 (2017-12-24)
 
 
 
@@ -2034,7 +2046,7 @@ Changelog of violations-lib.
 [e390a](https://github.com/tomasbjerre/violations-lib/commit/e390aaedcb7ec68) Tomas Bjerre *2017-12-24 12:00:57*
 
 
-## [1.44](https://github.com/tomasbjerre/violations-lib/releases/tag/1.44) (2017-12-22)
+## 1.44 (2017-12-22)
 
 
 
@@ -2051,7 +2063,7 @@ Changelog of violations-lib.
 [764fe](https://github.com/tomasbjerre/violations-lib/commit/764fe8fd94835a4) Tomas Bjerre *2017-12-22 18:28:23*
 
 
-## [1.43](https://github.com/tomasbjerre/violations-lib/releases/tag/1.43) (2017-12-22)
+## 1.43 (2017-12-22)
 
 
 
@@ -2078,7 +2090,7 @@ Changelog of violations-lib.
 [cffd7](https://github.com/tomasbjerre/violations-lib/commit/cffd7099ed9ad2d) Tomas Bjerre *2017-12-22 12:31:48*
 
 
-## [1.40](https://github.com/tomasbjerre/violations-lib/releases/tag/1.40) (2017-12-22)
+## 1.40 (2017-12-22)
 
 
 
@@ -2094,7 +2106,7 @@ Changelog of violations-lib.
 [dd435](https://github.com/tomasbjerre/violations-lib/commit/dd4353ebc98226a) Tomas Bjerre *2017-12-22 10:51:49*
 
 
-## [1.39](https://github.com/tomasbjerre/violations-lib/releases/tag/1.39) (2017-12-22)
+## 1.39 (2017-12-22)
 
 
 
@@ -2112,7 +2124,7 @@ Changelog of violations-lib.
 [524c3](https://github.com/tomasbjerre/violations-lib/commit/524c39c2ff47d40) Tomas Bjerre *2017-12-22 10:35:12*
 
 
-## [1.38](https://github.com/tomasbjerre/violations-lib/releases/tag/1.38) (2017-12-21)
+## 1.38 (2017-12-21)
 
 
 
@@ -2138,7 +2150,7 @@ Changelog of violations-lib.
 [8c1de](https://github.com/tomasbjerre/violations-lib/commit/8c1de7f777b3c0e) Tomas Bjerre *2017-12-06 18:23:43*
 
 
-## [1.36](https://github.com/tomasbjerre/violations-lib/releases/tag/1.36) (2017-12-03)
+## 1.36 (2017-12-03)
 
 
 
@@ -2154,7 +2166,7 @@ Changelog of violations-lib.
 [06831](https://github.com/tomasbjerre/violations-lib/commit/068312ba927037d) Tomas Bjerre *2017-12-03 07:09:14*
 
 
-## [1.35](https://github.com/tomasbjerre/violations-lib/releases/tag/1.35) (2017-12-02)
+## 1.35 (2017-12-02)
 
 
 
@@ -2175,7 +2187,7 @@ Changelog of violations-lib.
 [8e0c4](https://github.com/tomasbjerre/violations-lib/commit/8e0c4d426273dd8) Tomas Bjerre *2017-12-02 05:56:31*
 
 
-## [1.34](https://github.com/tomasbjerre/violations-lib/releases/tag/1.34) (2017-12-01)
+## 1.34 (2017-12-01)
 
 
 
@@ -2206,7 +2218,7 @@ Changelog of violations-lib.
 [f8457](https://github.com/tomasbjerre/violations-lib/commit/f845737670c5e10) Tomas Bjerre *2017-10-28 20:19:52*
 
 
-## [1.33](https://github.com/tomasbjerre/violations-lib/releases/tag/1.33) (2017-10-13)
+## 1.33 (2017-10-13)
 
 
 
@@ -2222,7 +2234,7 @@ Changelog of violations-lib.
 [7c102](https://github.com/tomasbjerre/violations-lib/commit/7c1024d3326478d) nickfish *2017-10-12 00:51:10*
 
 
-## [1.32](https://github.com/tomasbjerre/violations-lib/releases/tag/1.32) (2017-10-09)
+## 1.32 (2017-10-09)
 
 
 
@@ -2248,7 +2260,7 @@ Changelog of violations-lib.
 [4298d](https://github.com/tomasbjerre/violations-lib/commit/4298d4b63e9ba3f) Tomas Bjerre *2017-09-01 19:23:05*
 
 
-## [1.31](https://github.com/tomasbjerre/violations-lib/releases/tag/1.31) (2017-09-01)
+## 1.31 (2017-09-01)
 
 
 
@@ -2264,7 +2276,7 @@ Changelog of violations-lib.
 [dd522](https://github.com/tomasbjerre/violations-lib/commit/dd522411c894105) Tomas Bjerre *2017-09-01 10:54:30*
 
 
-## [1.30](https://github.com/tomasbjerre/violations-lib/releases/tag/1.30) (2017-08-11)
+## 1.30 (2017-08-11)
 
 
 
@@ -2286,7 +2298,7 @@ Changelog of violations-lib.
 [b7343](https://github.com/tomasbjerre/violations-lib/commit/b73430f34a55ff6) Tomas Bjerre *2017-07-14 19:31:04*
 
 
-## [1.29](https://github.com/tomasbjerre/violations-lib/releases/tag/1.29) (2017-07-14)
+## 1.29 (2017-07-14)
 
 
 
@@ -2302,7 +2314,7 @@ Changelog of violations-lib.
 [5a013](https://github.com/tomasbjerre/violations-lib/commit/5a013dc35c75504) Tomas Bjerre *2017-07-14 19:25:23*
 
 
-## [1.28](https://github.com/tomasbjerre/violations-lib/releases/tag/1.28) (2017-07-14)
+## 1.28 (2017-07-14)
 
 
 
@@ -2334,7 +2346,7 @@ Changelog of violations-lib.
 [bf547](https://github.com/tomasbjerre/violations-lib/commit/bf5475d3e59fb3d) Tomas Bjerre *2017-06-13 18:14:41*
 
 
-## [1.27](https://github.com/tomasbjerre/violations-lib/releases/tag/1.27) (2017-04-11)
+## 1.27 (2017-04-11)
 
 
 
@@ -2355,7 +2367,7 @@ Changelog of violations-lib.
 [4c367](https://github.com/tomasbjerre/violations-lib/commit/4c367bce8658529) Tomas Bjerre *2017-04-10 20:12:21*
 
 
-## [1.26](https://github.com/tomasbjerre/violations-lib/releases/tag/1.26) (2017-04-10)
+## 1.26 (2017-04-10)
 
 
 
@@ -2381,7 +2393,7 @@ Changelog of violations-lib.
 [9a44d](https://github.com/tomasbjerre/violations-lib/commit/9a44d279d312230) Tomas Bjerre *2017-03-30 19:22:00*
 
 
-## [1.25](https://github.com/tomasbjerre/violations-lib/releases/tag/1.25) (2017-03-30)
+## 1.25 (2017-03-30)
 
 
 
@@ -2402,7 +2414,7 @@ Changelog of violations-lib.
 [009b8](https://github.com/tomasbjerre/violations-lib/commit/009b846e120e0ff) Tomas Bjerre *2017-03-17 21:39:52*
 
 
-## [1.24](https://github.com/tomasbjerre/violations-lib/releases/tag/1.24) (2017-03-17)
+## 1.24 (2017-03-17)
 
 
 
@@ -2428,7 +2440,7 @@ Changelog of violations-lib.
 [6dd87](https://github.com/tomasbjerre/violations-lib/commit/6dd871dfa4713e9) Tomas Bjerre *2017-02-19 14:15:07*
 
 
-## [1.23](https://github.com/tomasbjerre/violations-lib/releases/tag/1.23) (2017-02-18)
+## 1.23 (2017-02-18)
 
 
 
@@ -2459,7 +2471,7 @@ Changelog of violations-lib.
 [f7212](https://github.com/tomasbjerre/violations-lib/commit/f7212555f7a986b) Tomas Bjerre *2017-02-18 20:01:36*
 
 
-## [1.22](https://github.com/tomasbjerre/violations-lib/releases/tag/1.22) (2017-02-16)
+## 1.22 (2017-02-16)
 
 
 
@@ -2482,7 +2494,7 @@ Changelog of violations-lib.
 [84e50](https://github.com/tomasbjerre/violations-lib/commit/84e505343e497a2) Tomas Bjerre *2017-02-07 05:42:45*
 
 
-## [1.21](https://github.com/tomasbjerre/violations-lib/releases/tag/1.21) (2017-02-06)
+## 1.21 (2017-02-06)
 
 
 
@@ -2508,7 +2520,7 @@ Changelog of violations-lib.
 [94315](https://github.com/tomasbjerre/violations-lib/commit/943154cb27cfd1e) Tomas Bjerre *2016-12-21 16:46:56*
 
 
-## [1.20](https://github.com/tomasbjerre/violations-lib/releases/tag/1.20) (2016-12-21)
+## 1.20 (2016-12-21)
 
 
 
@@ -2530,7 +2542,7 @@ Changelog of violations-lib.
 [e1791](https://github.com/tomasbjerre/violations-lib/commit/e17915d91a4ef8a) Tomas Bjerre *2016-12-18 07:50:45*
 
 
-## [1.19](https://github.com/tomasbjerre/violations-lib/releases/tag/1.19) (2016-12-16)
+## 1.19 (2016-12-16)
 
 
 
@@ -2546,7 +2558,7 @@ Changelog of violations-lib.
 [5dd52](https://github.com/tomasbjerre/violations-lib/commit/5dd52bd39c5265a) Tomas Bjerre *2016-12-16 07:19:49*
 
 
-## [1.18](https://github.com/tomasbjerre/violations-lib/releases/tag/1.18) (2016-12-15)
+## 1.18 (2016-12-15)
 
 
 
@@ -2562,7 +2574,7 @@ Changelog of violations-lib.
 [8961d](https://github.com/tomasbjerre/violations-lib/commit/8961db105e44f36) Tomas Bjerre *2016-12-15 17:32:00*
 
 
-## [1.17](https://github.com/tomasbjerre/violations-lib/releases/tag/1.17) (2016-12-14)
+## 1.17 (2016-12-14)
 
 
 
@@ -2583,7 +2595,7 @@ Changelog of violations-lib.
 [5d94e](https://github.com/tomasbjerre/violations-lib/commit/5d94e7f3626a273) Tomas Bjerre *2016-11-06 18:12:13*
 
 
-## [1.16](https://github.com/tomasbjerre/violations-lib/releases/tag/1.16) (2016-11-05)
+## 1.16 (2016-11-05)
 
 
 
@@ -2614,7 +2626,7 @@ Changelog of violations-lib.
 [23fa5](https://github.com/tomasbjerre/violations-lib/commit/23fa562feee2bb2) Tomas Bjerre *2016-11-05 18:58:32*
 
 
-## [1.15](https://github.com/tomasbjerre/violations-lib/releases/tag/1.15) (2016-11-03)
+## 1.15 (2016-11-03)
 
 
 
@@ -2630,7 +2642,7 @@ Changelog of violations-lib.
 [2e216](https://github.com/tomasbjerre/violations-lib/commit/2e216ee38cb2fdb) Tomas Bjerre *2016-11-03 18:03:08*
 
 
-## [1.14](https://github.com/tomasbjerre/violations-lib/releases/tag/1.14) (2016-11-03)
+## 1.14 (2016-11-03)
 
 
 
@@ -2646,7 +2658,7 @@ Changelog of violations-lib.
 [37570](https://github.com/tomasbjerre/violations-lib/commit/375706d8e579bfc) Tomas Bjerre *2016-11-03 17:54:20*
 
 
-## [1.13](https://github.com/tomasbjerre/violations-lib/releases/tag/1.13) (2016-10-26)
+## 1.13 (2016-10-26)
 
 
 
@@ -2663,7 +2675,7 @@ Changelog of violations-lib.
 [35d5d](https://github.com/tomasbjerre/violations-lib/commit/35d5d33b447b37a) Tomas Bjerre *2016-10-26 15:39:37*
 
 
-## [1.12](https://github.com/tomasbjerre/violations-lib/releases/tag/1.12) (2016-10-25)
+## 1.12 (2016-10-25)
 
 
 
@@ -2679,7 +2691,7 @@ Changelog of violations-lib.
 [24618](https://github.com/tomasbjerre/violations-lib/commit/24618707a88497c) Tomas Bjerre *2016-10-25 17:44:33*
 
 
-## [1.11](https://github.com/tomasbjerre/violations-lib/releases/tag/1.11) (2016-10-24)
+## 1.11 (2016-10-24)
 
 
 
@@ -2695,7 +2707,7 @@ Changelog of violations-lib.
 [ec90a](https://github.com/tomasbjerre/violations-lib/commit/ec90aa741fdeb67) Tomas Bjerre *2016-10-24 17:16:46*
 
 
-## [1.10](https://github.com/tomasbjerre/violations-lib/releases/tag/1.10) (2016-10-03)
+## 1.10 (2016-10-03)
 
 
 
@@ -2717,7 +2729,7 @@ Changelog of violations-lib.
 [09347](https://github.com/tomasbjerre/violations-lib/commit/09347946765a096) Tomas Bjerre *2016-10-02 12:34:51*
 
 
-## [1.9](https://github.com/tomasbjerre/violations-lib/releases/tag/1.9) (2016-10-01)
+## 1.9 (2016-10-01)
 
 
 
@@ -2754,7 +2766,7 @@ Changelog of violations-lib.
 [4f542](https://github.com/tomasbjerre/violations-lib/commit/4f54260b7b47e96) Tomas Bjerre *2016-07-28 20:22:22*
 
 
-## [1.8](https://github.com/tomasbjerre/violations-lib/releases/tag/1.8) (2016-04-27)
+## 1.8 (2016-04-27)
 
 
 
@@ -2781,7 +2793,7 @@ Changelog of violations-lib.
 [8a3d8](https://github.com/tomasbjerre/violations-lib/commit/8a3d860da48c56d) Tomas Bjerre *2016-04-23 17:08:41*
 
 
-## [1.7](https://github.com/tomasbjerre/violations-lib/releases/tag/1.7) (2016-04-23)
+## 1.7 (2016-04-23)
 
 
 
@@ -2802,7 +2814,7 @@ Changelog of violations-lib.
 [30e7a](https://github.com/tomasbjerre/violations-lib/commit/30e7ac53b0b7efd) Tomas Bjerre *2016-04-07 16:39:05*
 
 
-## [1.6](https://github.com/tomasbjerre/violations-lib/releases/tag/1.6) (2016-04-07)
+## 1.6 (2016-04-07)
 
 
 
@@ -2839,7 +2851,7 @@ Changelog of violations-lib.
 [eb90c](https://github.com/tomasbjerre/violations-lib/commit/eb90c644065c9b6) Tomas Bjerre *2016-03-06 20:20:42*
 
 
-## [1.5](https://github.com/tomasbjerre/violations-lib/releases/tag/1.5) (2016-03-06)
+## 1.5 (2016-03-06)
 
 
 
@@ -2875,7 +2887,7 @@ Changelog of violations-lib.
 [e1a7a](https://github.com/tomasbjerre/violations-lib/commit/e1a7ad7be14653b) Tomas Bjerre *2016-03-06 13:39:20*
 
 
-## [1.4](https://github.com/tomasbjerre/violations-lib/releases/tag/1.4) (2016-03-05)
+## 1.4 (2016-03-05)
 
 
 
@@ -2891,7 +2903,7 @@ Changelog of violations-lib.
 [3a8c7](https://github.com/tomasbjerre/violations-lib/commit/3a8c7089d924848) Tomas Bjerre *2016-03-05 09:34:51*
 
 
-## [1.3](https://github.com/tomasbjerre/violations-lib/releases/tag/1.3) (2016-03-04)
+## 1.3 (2016-03-04)
 
 
 
@@ -2908,7 +2920,7 @@ Changelog of violations-lib.
 [b50c5](https://github.com/tomasbjerre/violations-lib/commit/b50c549861119cf) Tomas Bjerre *2016-03-04 17:16:52*
 
 
-## [1.2](https://github.com/tomasbjerre/violations-lib/releases/tag/1.2) (2016-03-04)
+## 1.2 (2016-03-04)
 
 
 
@@ -2934,7 +2946,7 @@ Changelog of violations-lib.
 [34456](https://github.com/tomasbjerre/violations-lib/commit/344567418ac1167) Tomas Bjerre *2016-03-03 18:53:24*
 
 
-## [1.1](https://github.com/tomasbjerre/violations-lib/releases/tag/1.1) (2016-02-28)
+## 1.1 (2016-02-28)
 
 
 
@@ -2952,7 +2964,7 @@ Changelog of violations-lib.
 [9b87b](https://github.com/tomasbjerre/violations-lib/commit/9b87b1d1184d184) Tomas Bjerre *2016-02-28 19:40:26*
 
 
-## [1.0](https://github.com/tomasbjerre/violations-lib/releases/tag/1.0) (2016-02-21)
+## 1.0 (2016-02-21)
 
 
 
@@ -2987,5 +2999,9 @@ Changelog of violations-lib.
 
 [b8d5a](https://github.com/tomasbjerre/violations-lib/commit/b8d5a66e8ec407c) Tomas Bjerre *2016-02-20 21:40:52*
 
+**First commit**
 
-    
+
+[f141f](https://github.com/tomasbjerre/violations-lib/commit/f141f3565174869) Tomas Bjerre *2016-02-18 18:17:50*
+
+
