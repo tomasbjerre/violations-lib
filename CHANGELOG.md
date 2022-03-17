@@ -2,6 +2,18 @@
 
 Changelog of violations-lib.
 
+## 1.148.2 (2022-03-17)
+
+
+
+
+
+### Bug Fixes
+
+-  correcting groupId ([b3c8e](https://github.com/tomasbjerre/violations-lib/commit/b3c8edf25872cc2) Tomas Bjerre)  
+
+
+
 ## 1.148.1 (2022-03-16)
 
 
