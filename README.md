@@ -22,7 +22,7 @@ A number of **parsers** have been implemented. Some **parsers** can parse output
 | [_CloudFormation Linter_](https://github.com/aws-cloudformation/cfn-lint)             | `JUNIT`              | `cfn-lint . -f junit --output-file report-junit.xml`
 | [_CodeClimate_](https://codeclimate.com/)                                             | `CODECLIMATE`        | 
 | [_CodeNarc_](http://codenarc.sourceforge.net/)                                        | `CODENARC`           | 
-| [_Dart_](https://dart.dev/)                                                           | `MACHINE`            | With `dart analyze --format=machine`
+| [_Dart_](https://dart.dev/)                                                           | `MACHINE`            |  With `dart analyze --format=machine`
 | [_Detekt_](https://github.com/arturbosch/detekt)                                      | `CHECKSTYLE`         | With `--output-format xml`.
 | [_DocFX_](http://dotnet.github.io/docfx/)                                             | `DOCFX`              | 
 | [_Doxygen_](https://www.stack.nl/~dimitri/doxygen/)                                   | `CLANG`              | 
