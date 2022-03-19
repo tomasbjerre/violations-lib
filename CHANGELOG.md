@@ -2,6 +2,18 @@
 
 Changelog of violations-lib.
 
+## 1.148.3 (2022-03-19)
+
+
+
+
+
+### Bug Fixes
+
+-  parsing severity of results in SARIF ([bfafe](https://github.com/tomasbjerre/violations-lib/commit/bfafee1692869e5) Tomas Bjerre)  [#144](https://github.com/tomasbjerre/violations-lib/issues/144)  
+
+
+
 ## 1.148.2 (2022-03-17)
 
 
