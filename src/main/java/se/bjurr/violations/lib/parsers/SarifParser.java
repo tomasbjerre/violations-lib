@@ -2,7 +2,12 @@ package se.bjurr.violations.lib.parsers;
 
 import static se.bjurr.violations.lib.model.Violation.violationBuilder;
 
-import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
+import com.google.gson.JsonDeserializationContext;
+import com.google.gson.JsonDeserializer;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonParseException;
+import java.lang.reflect.Type;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Set;
@@ -24,10 +29,29 @@ import se.bjurr.violations.lib.util.Utils;
 
 public class SarifParser implements ViolationsParser {
 
+  private static class ResultDeserializer implements JsonDeserializer<Level> {
+
+    @Override
+    public Level deserialize(
+        final JsonElement json, final Type typeOfT, final JsonDeserializationContext context)
+        throws JsonParseException {
+      try {
+        final String asString = json.getAsString();
+        return Level.fromValue(asString);
+      } catch (final Exception e) {
+        return Level.NONE;
+      }
+    }
+  }
+
   @Override
   public Set<Violation> parseReportOutput(
       final String reportContent, final ViolationsLogger violationsLogger) throws Exception {
-    final SarifSchema report = new Gson().fromJson(reportContent, SarifSchema.class);
+    final SarifSchema report =
+        new GsonBuilder()
+            .registerTypeAdapter(Level.class, new ResultDeserializer())
+            .create()
+            .fromJson(reportContent, SarifSchema.class);
 
     final Set<Violation> violations = new TreeSet<>();
     if (report.getRuns() == null) {

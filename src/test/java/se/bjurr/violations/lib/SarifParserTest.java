@@ -3,12 +3,14 @@ package se.bjurr.violations.lib;
 import static org.assertj.core.api.Assertions.assertThat;
 import static se.bjurr.violations.lib.TestUtils.getRootFolder;
 import static se.bjurr.violations.lib.ViolationsApi.violationsApi;
-import static se.bjurr.violations.lib.model.SEVERITY.INFO;
 import static se.bjurr.violations.lib.reports.Parser.SARIF;
 
 import java.util.ArrayList;
+import java.util.List;
 import java.util.Set;
+import java.util.stream.Collectors;
 import org.junit.Test;
+import se.bjurr.violations.lib.model.SEVERITY;
 import se.bjurr.violations.lib.model.Violation;
 
 public class SarifParserTest {
@@ -48,7 +50,7 @@ public class SarifParserTest {
     assertThat(first.getFile()) //
         .isEqualTo("file:///C:/dev/sarif/sarif-tutorials/samples/Introduction/simple-example.js");
     assertThat(first.getSeverity()) //
-        .isEqualTo(INFO);
+        .isEqualTo(SEVERITY.ERROR);
     assertThat(first.getRule()) //
         .isEqualTo("no-unused-vars");
     assertThat(first.getStartLine()) //
@@ -79,12 +81,46 @@ public class SarifParserTest {
         .isEqualTo(
             "file:/c:/var/lib/jenkins/workspace/PSBF_PIControl_DeclPipeline_Access/pi_alg/pi_alg.c");
     assertThat(first.getSeverity()) //
-        .isEqualTo(INFO);
+        .isEqualTo(SEVERITY.ERROR);
     assertThat(first.getRule()) //
         .isEqualTo("MISRA C:2012 D4.6");
     assertThat(first.getStartLine()) //
         .isEqualTo(144);
     assertThat(first.getEndLine()) //
         .isEqualTo(144);
+  }
+
+  @Test
+  public void testThatViolationsCanBeParsed_securityscan() {
+    final String rootFolder = getRootFolder();
+
+    final Set<Violation> actual =
+        violationsApi() //
+            .withPattern(".*/sarif/security-scan.json$") //
+            .inFolder(rootFolder) //
+            .findAll(SARIF) //
+            .violations();
+
+    assertThat(actual) //
+        .hasSize(51);
+
+    final List<Violation> arrayList = new ArrayList<>(actual);
+
+    final Violation first = arrayList.get(0);
+    assertThat(first.getMessage()) //
+        .isEqualTo("The cookie is missing 'HttpOnly' flag.");
+    assertThat(first.getFile()) //
+        .isEqualTo("DummyFile.cs");
+    assertThat(first.getSeverity()) //
+        .isEqualTo(SEVERITY.WARN);
+
+    final String severities =
+        actual.stream()
+            .map(Violation::getSeverity)
+            .map(it -> it.name())
+            .collect(Collectors.joining(","));
+    assertThat(severities) //
+        .isEqualTo(
+            "WARN,WARN,ERROR,WARN,WARN,WARN,WARN,WARN,WARN,WARN,WARN,WARN,WARN,WARN,INFO,WARN,WARN,WARN,WARN,WARN,WARN,WARN,WARN,WARN,WARN,WARN,WARN,WARN,INFO,WARN,WARN,WARN,WARN,WARN,WARN,WARN,ERROR,WARN,WARN,WARN,WARN,WARN,WARN,WARN,WARN,WARN,WARN,WARN,INFO,WARN,ERROR");
   }
 }
