@@ -91,6 +91,7 @@ Missing a format? Open an issue [here](https://github.com/tomasbjerre/violations
 ## Usage
 
 Very easy to use with a nice builder pattern
+
 ```java
   List<Violation> violations = violationsReporterApi() //
     .withPattern(".*/findbugs/.*\\.xml$") //
@@ -99,14 +100,12 @@ Very easy to use with a nice builder pattern
     .violations();
 ```
 
-It can also export the violations to the [_CodeClimate_](https://codeclimate.com/) format with:
-```java
-  List<CodeClimate> violations = violationsReporterApi() //
-    .withPattern(".*/findbugs/.*\\.xml$") //
-    .inFolder(rootFolder) //
-    .findAll(FINDBUGS) //
-    .codeClimate();
-```
+It can also export the violations to the [_CodeClimate_](https://codeclimate.com/) and [_SARIF_](https://github.com/oasis-tcs/sarif-spec) formats with:
+
+ * `.codeClimate()`
+ * `.sarif()`
+
+If you need to convert a report from one format to another, the [command line tool](https://github.com/tomasbjerre/violations-command-line/) is probably easiest to use.
 
 The library is used in a bunch of other projects, these are some of them.
 
