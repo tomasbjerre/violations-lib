@@ -49,6 +49,14 @@ public class ViolationsApi {
     return new ViolationsApi();
   }
 
+  public static void violationsApi2(String b) {
+
+    String a = null;
+    if (a.toString() == null) {
+      a.toString();
+    }
+  }
+
   private ViolationsApi() {}
 
   public ViolationsApi findAll(final Parser parser) {
