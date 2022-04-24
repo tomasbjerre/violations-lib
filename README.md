@@ -69,7 +69,7 @@ A number of **parsers** have been implemented. Some **parsers** can parse output
 | [_PyLint_](https://www.pylint.org/)                                                   | `PYLINT`             | With `pylint --output-format=parseable`.
 | [_ReSharper_](https://www.jetbrains.com/resharper/)                                   | `RESHARPER`          | 
 | [_RubyCop_](http://rubocop.readthedocs.io/en/latest/formatters/)                      | `CLANG`              | With `rubycop -f clang file.rb`
-| [_SARIF_](https://github.com/oasis-tcs/sarif-spec)                                    | `SARIF`              | 
+| [_SARIF_](https://github.com/oasis-tcs/sarif-spec)                                    | `SARIF`              | v2.x. Microsoft Visual C# can generate it with `ErrorLog="BuildErrors.sarif,version=2"`.
 | [_SbtScalac_](http://www.scala-sbt.org/)                                              | `SBTSCALAC`          | 
 | [_Scalastyle_](http://www.scalastyle.org/)                                            | `CHECKSTYLE`         | 
 | [_Simian_](http://www.harukizaemon.com/simian/)                                       | `SIMIAN`             | 

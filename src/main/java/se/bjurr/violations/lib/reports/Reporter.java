@@ -152,7 +152,11 @@ public enum Reporter {
       Parser.CLANG,
       "http://rubocop.readthedocs.io/en/latest/formatters/",
       "With `rubycop -f clang file.rb`"),
-  SARIF("SARIF", Parser.SARIF, "https://github.com/oasis-tcs/sarif-spec", ""),
+  SARIF(
+      "SARIF",
+      Parser.SARIF,
+      "https://github.com/oasis-tcs/sarif-spec",
+      "v2.x. Microsoft Visual C# can generate it with `ErrorLog=\"BuildErrors.sarif,version=2\"`."),
   SBTSCALAC("SbtScalac", Parser.SBTSCALAC, "http://www.scala-sbt.org/", ""),
   SIMIAN("Simian", Parser.SIMIAN, "http://www.harukizaemon.com/simian/", ""),
   SPOTBUGS("Spotbugs", Parser.FINDBUGS, "https://spotbugs.github.io/", ""),
