@@ -57,6 +57,7 @@ public class SarifParserTest {
         .isEqualTo(1);
     assertThat(first.getEndLine()) //
         .isEqualTo(1);
+    assertThat(first.getReporter()).isEqualTo("ESLint");
   }
 
   @Test
@@ -88,6 +89,7 @@ public class SarifParserTest {
         .isEqualTo(144);
     assertThat(first.getEndLine()) //
         .isEqualTo(144);
+    assertThat(first.getReporter()).isEqualTo("Polyspace");
   }
 
   @Test

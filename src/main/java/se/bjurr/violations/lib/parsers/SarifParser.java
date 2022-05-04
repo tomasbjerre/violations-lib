@@ -58,6 +58,13 @@ public class SarifParser implements ViolationsParser {
       return violations;
     }
     for (final Run run : report.getRuns()) {
+      String reporter = "Sarif";
+      if (run.getTool() != null
+          && run.getTool().getDriver() != null
+          && run.getTool().getDriver().getName() != null
+          && !run.getTool().getDriver().getName().trim().isEmpty()) {
+        reporter = run.getTool().getDriver().getName();
+      }
       final List<Artifact> artifacts = new ArrayList<>(run.getArtifacts());
       for (final Result result : run.getResults()) {
         final String ruleId = result.getRuleId();
@@ -96,6 +103,7 @@ public class SarifParser implements ViolationsParser {
                   .setRule(ruleId)
                   .setMessage((message + " " + regionMessageText).trim())
                   .setSeverity(this.toSeverity(level))
+                  .setReporter(reporter)
                   .build());
         }
       }
