@@ -50,6 +50,7 @@ public enum Reporter {
   DART("Dart", Parser.MACHINE, "https://dart.dev/", "With `dart analyze --format=machine`"),
   FXCOP("FxCop", Parser.FXCOP, "https://en.wikipedia.org/wiki/FxCop", ""),
   GCC("GCC", Parser.CLANG, "https://gcc.gnu.org/", ""),
+  GHS("GHS", Parser.GHS, "https://www.ghs.com/", ""),
   GENDARME(
       "Gendarme",
       Parser.GENDARME,

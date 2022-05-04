@@ -20,6 +20,7 @@ import se.bjurr.violations.lib.parsers.Flake8Parser;
 import se.bjurr.violations.lib.parsers.FxCopParser;
 import se.bjurr.violations.lib.parsers.GendarmeParser;
 import se.bjurr.violations.lib.parsers.GenericParser;
+import se.bjurr.violations.lib.parsers.GHSParser;
 import se.bjurr.violations.lib.parsers.GoLintParser;
 import se.bjurr.violations.lib.parsers.GoogleErrorProneParser;
 import se.bjurr.violations.lib.parsers.IARParser;
@@ -65,6 +66,7 @@ public enum Parser {
   CPPLINT(new CppLintParser()), //
   CSSLINT(new CSSLintParser()), //
   GENERIC(new GenericParser()),
+  GHS(new GHSParser()),
   FINDBUGS(new FindbugsParser()), //
   FLAKE8(new Flake8Parser()), //
   MACHINE(new MachineParser()), //
