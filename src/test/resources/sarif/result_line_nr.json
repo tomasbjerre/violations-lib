@@ -5,7 +5,7 @@
     {
       "tool": {
         "driver": {
-          "name": "Polyspace ",
+          "name": "Polyspace",
           "semanticVersion": "R2021b",
           "organization": "MathWorks",
           "rules": [
