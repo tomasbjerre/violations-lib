@@ -115,7 +115,11 @@
             },
             {
               "id": "MISRA C:2012 D4.6",
-              "name": "Dir 4.6 typedefs that indicate size and signedness should be used in place of the basic numerical types."
+              "name": "Dir 4.6 typedefs that indicate size and signedness should be used in place of the basic numerical types.",
+              "help": {
+                "text": "https://www.mathworks.com/matlabcentral/answers/479913-how-to-resolve-polyspace-misra-c-2012-d4-14-rule-when-am-passing-pointer-as-parameter-to-function",
+                "markdown": "[How to resolve polyspace misra-c-2812](https://www.mathworks.com/matlabcentral/answers/479913-how-to-resolve-polyspace-misra-c-2012-d4-14-rule-when-am-passing-pointer-as-parameter-to-function)"
+              }
             },
             {
               "id": "MISRA C:2012 8.4",
