@@ -4,7 +4,6 @@ import static org.assertj.core.api.Assertions.assertThat;
 import static se.bjurr.violations.lib.TestUtils.getRootFolder;
 import static se.bjurr.violations.lib.ViolationsApi.violationsApi;
 import static se.bjurr.violations.lib.model.SEVERITY.ERROR;
-import static se.bjurr.violations.lib.model.SEVERITY.INFO;
 import static se.bjurr.violations.lib.model.SEVERITY.WARN;
 import static se.bjurr.violations.lib.reports.Parser.GHS;
 
@@ -30,27 +29,26 @@ public class GHSTest {
 
     final Violation violation0 = new ArrayList<>(actual).get(0);
     assertThat(violation0.getMessage()) //
-            .isEqualTo("overloading the &&, ||, or comma operators is dangerous");
+        .isEqualTo("overloading the &&, ||, or comma operators is dangerous");
     assertThat(violation0.getFile()) //
-            .isEqualTo("FormattedDate.cpp");
+        .isEqualTo("FormattedDate.cpp");
     assertThat(violation0.getSeverity()) //
-            .isEqualTo(WARN);
+        .isEqualTo(WARN);
     assertThat(violation0.getRule()) //
-            .isEqualTo("");
+        .isEqualTo("");
     assertThat(violation0.getStartLine()) //
-            .isEqualTo(91);
+        .isEqualTo(91);
 
     final Violation violation1 = new ArrayList<>(actual).get(1);
     assertThat(violation1.getMessage()) //
-            .isEqualTo("return value type does not match the function type");
+        .isEqualTo("return value type does not match the function type");
     assertThat(violation1.getFile()) //
-            .isEqualTo("profile.cpp");
+        .isEqualTo("profile.cpp");
     assertThat(violation1.getSeverity()) //
-            .isEqualTo(ERROR);
+        .isEqualTo(ERROR);
     assertThat(violation1.getRule()) //
-            .isEqualTo("");
+        .isEqualTo("");
     assertThat(violation1.getStartLine()) //
-            .isEqualTo(89);
+        .isEqualTo(89);
   }
-
 }

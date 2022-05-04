@@ -32,13 +32,13 @@ A number of **parsers** have been implemented. Some **parsers** can parse output
 | [_Flake8_](http://flake8.readthedocs.org/en/latest/)                                  | `FLAKE8`             | 
 | [_FxCop_](https://en.wikipedia.org/wiki/FxCop)                                        | `FXCOP`              | 
 | [_GCC_](https://gcc.gnu.org/)                                                         | `CLANG`              | 
+| [_GHS_](https://www.ghs.com/)                                                         | `GHS`                | 
 | [_Gendarme_](http://www.mono-project.com/docs/tools+libraries/tools/gendarme/)        | `GENDARME`           | 
 | [_Generic reporter_]()                                                                | `GENERIC`            | Will create one single violation with all the content as message.
 | [_GoLint_](https://github.com/golang/lint)                                            | `GOLINT`             | 
 | [_GoVet_](https://golang.org/cmd/vet/)                                                | `GOLINT`             | Same format as GoLint.
 | [_GolangCI-Lint_](https://github.com/golangci/golangci-lint/)                         | `CHECKSTYLE`         | With `--out-format=checkstyle`.
 | [_GoogleErrorProne_](https://github.com/google/error-prone)                           | `GOOGLEERRORPRONE`   | 
-| [_GreenHills_](https://www.ghs.com/)                                                  | `GHS`                | 
 | [_HadoLint_](https://github.com/hadolint/hadolint/)                                   | `CHECKSTYLE`         | With `-f checkstyle`
 | [_IAR_](https://www.iar.com/iar-embedded-workbench/)                                  | `IAR`                | With `--no_wrap_diagnostics`
 | [_Infer_](http://fbinfer.com/)                                                        | `PMD`                | Facebook Infer. With `--pmd-xml`.
@@ -85,7 +85,7 @@ A number of **parsers** have been implemented. Some **parsers** can parse output
 | [_YAMLLint_](https://yamllint.readthedocs.io/en/stable/index.html)                    | `YAMLLINT`           | With `-f parsable`
 | [_ZPTLint_](https://pypi.python.org/pypi/zptlint)                                     | `ZPTLINT`            |
 
-48 parsers and 74 reporters.
+49 parsers and 75 reporters.
 
 Missing a format? Open an issue [here](https://github.com/tomasbjerre/violations-lib/issues)!
 
