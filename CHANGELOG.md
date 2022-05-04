@@ -2,6 +2,30 @@
 
 Changelog of violations-lib.
 
+## 1.149.0 (2022-05-04)
+
+
+
+### Features
+
+-  Add GreenHills log parser. ([3c6a1](https://github.com/tomasbjerre/violations-lib/commit/3c6a14cfd8ef969) Alexander Falkenstern)  
+
+
+
+
+### Other changes
+
+**add support for help text from Sarif rules**
+
+
+[b3870](https://github.com/tomasbjerre/violations-lib/commit/b38700f7f1741a2) Jeremy Long *2022-05-04 13:33:33*
+
+**use driver tool name as the reporter when available**
+
+
+[c274a](https://github.com/tomasbjerre/violations-lib/commit/c274a675685077e) Jeremy Long *2022-05-04 11:33:32*
+
+
 ## 1.148.3 (2022-03-19)
 
 
