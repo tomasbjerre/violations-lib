@@ -1,0 +1,2 @@
+profile.cpp, line 89: error #120: return value type does not match the function type
+FormattedDate.cpp, line 91: warning #1974-D: overloading the &&, ||, or comma operators is dangerous
