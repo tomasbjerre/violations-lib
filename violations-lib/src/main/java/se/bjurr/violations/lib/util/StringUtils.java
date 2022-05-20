@@ -6,6 +6,7 @@ import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
+import org.owasp.encoder.Encode;
 
 public final class StringUtils {
   private static final Map<String, Character> XML_ESCAPE_CHARACTER_MAP;
@@ -64,18 +65,7 @@ public final class StringUtils {
   }
 
   public static String escapeHTML(final String s) {
-    final StringBuilder out = new StringBuilder(Math.max(16, s.length()));
-    for (int i = 0; i < s.length(); i++) {
-      final char c = s.charAt(i);
-      if (c > 127 || c == '"' || c == '<' || c == '>' || c == '&') {
-        out.append("&#");
-        out.append((int) c);
-        out.append(';');
-      } else {
-        out.append(c);
-      }
-    }
-    return out.toString();
+    return Encode.forHtml(s);
   }
 
   @SuppressFBWarnings

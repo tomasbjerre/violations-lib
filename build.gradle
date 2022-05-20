@@ -59,6 +59,7 @@ project(":violations-lib") {
 		api project(":violations-lib-sarif")
 		api project(":violations-lib-coverty")
 		api 'com.google.code.gson:gson:2.13.1'
+		implementation 'org.owasp.encoder:encoder:1.2.3'
 
 		testImplementation 'junit:junit:4.13.2'
 		testImplementation 'org.assertj:assertj-core:3.27.3'
@@ -68,6 +69,6 @@ project(":violations-lib") {
 	}
 
 	shadowExtension {
-		relocate.set("se:se,com.google")
+		relocate.set("se:se,com,org")
 	}
 }
