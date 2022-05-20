@@ -39,6 +39,7 @@ jsonSchema2Pojo {
 
 dependencies {
  api 'com.google.code.gson:gson:2.8.2'
+ implementation 'org.owasp.encoder:encoder:1.2.3'
 
  testImplementation 'junit:junit:4.12'
  testImplementation 'org.assertj:assertj-core:2.3.0'
