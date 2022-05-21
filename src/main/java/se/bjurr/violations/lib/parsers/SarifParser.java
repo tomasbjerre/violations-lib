@@ -95,10 +95,10 @@ public class SarifParser implements ViolationsParser {
           } else {
             filename = physicalLocation.getArtifactLocation().getUri();
           }
-          final Message regionMessage = region.getMessage();
+          final String regionMessage = extractMessage(region.getMessage());
           StringBuilder fullMessage = new StringBuilder(message);
           if (regionMessage != null) {
-            fullMessage.append("\n\n").append(regionMessage.getText());
+            fullMessage.append("\n\n").append(regionMessage);
           }
           if (helpMap.containsKey(ruleId)) {
             fullMessage.append("\n\nFor additional help see: ").append(helpMap.get(ruleId));
