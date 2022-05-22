@@ -2,6 +2,27 @@
 
 Changelog of violations-lib.
 
+## 1.149.1 (2022-05-22)
+
+
+
+
+
+
+
+### Other changes
+
+**favor markdown text**
+
+
+[ceff3](https://github.com/tomasbjerre/violations-lib/commit/ceff306659d114a) Jeremy Long *2022-05-21 09:58:25*
+
+**favor markdown when extracting the message from a finding**
+
+
+[3a57e](https://github.com/tomasbjerre/violations-lib/commit/3a57e0ebd00eefd) Jeremy Long *2022-05-21 09:55:27*
+
+
 ## 1.149.0 (2022-05-04)
 
 
