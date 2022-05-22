@@ -73,7 +73,7 @@ public class SarifParser implements ViolationsParser {
       for (final Result result : run.getResults()) {
 
         final String ruleId = result.getRuleId();
-        final String message = result.getMessage().getText();
+        final String message = extractMessage(result.getMessage());
         if (Utils.isNullOrEmpty(message)) {
           continue;
         }
@@ -95,10 +95,10 @@ public class SarifParser implements ViolationsParser {
           } else {
             filename = physicalLocation.getArtifactLocation().getUri();
           }
-          final Message regionMessage = region.getMessage();
+          final String regionMessage = extractMessage(region.getMessage());
           StringBuilder fullMessage = new StringBuilder(message);
           if (regionMessage != null) {
-            fullMessage.append("\n\n").append(regionMessage.getText());
+            fullMessage.append("\n\n").append(regionMessage);
           }
           if (helpMap.containsKey(ruleId)) {
             fullMessage.append("\n\nFor additional help see: ").append(helpMap.get(ruleId));
@@ -117,6 +117,23 @@ public class SarifParser implements ViolationsParser {
       }
     }
     return violations;
+  }
+
+  /**
+   * Returns the message text - favoring the markdown format.
+   *
+   * @param message the message from the Sarif result.
+   * @return the message text which could be `null`.
+   */
+  protected String extractMessage(Message message) {
+    if (message == null) {
+      return null;
+    }
+    String text = message.getMarkdown();
+    if (Utils.isNullOrEmpty(text)) {
+      text = message.getText();
+    }
+    return text;
   }
 
   private Map<String, String> extractHelpText(Run run) {
