@@ -2,6 +2,18 @@
 
 Changelog of violations-lib.
 
+## 1.149.2 (2022-06-13)
+
+
+
+
+
+### Bug Fixes
+
+-  NPE when file empty in cppcheck ([5b3a0](https://github.com/tomasbjerre/violations-lib/commit/5b3a01320de6eee) Tomas Bjerre)  
+
+
+
 ## 1.149.1 (2022-05-22)
 
 
