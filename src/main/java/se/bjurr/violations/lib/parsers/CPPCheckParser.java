@@ -22,6 +22,7 @@ import javax.xml.stream.XMLStreamReader;
 import se.bjurr.violations.lib.ViolationsLogger;
 import se.bjurr.violations.lib.model.SEVERITY;
 import se.bjurr.violations.lib.model.Violation;
+import se.bjurr.violations.lib.util.Utils;
 
 public class CPPCheckParser implements ViolationsParser {
 
@@ -93,7 +94,8 @@ public class CPPCheckParser implements ViolationsParser {
             final Optional<Integer> column = findIntegerAttribute(xmlr, "column");
             final Optional<String> info = findAttribute(xmlr, "info");
             message = this.constructMessage(msg, verbose, info);
-            final String file = getAttribute(xmlr, "file");
+            String file = findAttribute(xmlr, "file").orElse("");
+            file = Utils.firstNonNull(Utils.emptyToNull(file), Violation.NO_FILE);
             final Violation v =
                 violationBuilder() //
                     .setParser(CPPCHECK) //

@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<results version="2">
+    <cppcheck version="2.8"/>
+    <errors>
+        <error id="cppcheckdata-pythonError" severity="error" msg="Failed to load pathlib. Upgrade python to 3.x or install pathlib with &apos;pip install pathlib&apos;." verbose="Failed to load pathlib. Upgrade python to 3.x or install pathlib with &apos;pip install pathlib&apos;." file0="P1.cpp.dump">
+            <location file="" line="0" column="0"/>
+        </error>
+     </errors>
+</results>

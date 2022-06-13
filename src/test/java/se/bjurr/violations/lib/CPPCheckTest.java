@@ -309,4 +309,29 @@ public class CPPCheckTest {
     assertThat(violation2.getColumn()) //
         .isEqualTo(11);
   }
+
+  @Test
+  public void testThatEmptyFileCanBeParsed() {
+    final String rootFolder = getRootFolder();
+
+    final Set<Violation> actual =
+        violationsApi() //
+            .withPattern(".*/empty-file\\.xml$") //
+            .inFolder(rootFolder) //
+            .findAll(CPPCHECK) //
+            .violations();
+
+    assertThat(actual) //
+        .hasSize(1);
+
+    final Violation violation0 = new ArrayList<>(actual).get(0);
+    assertThat(violation0.getMessage()) //
+        .startsWith("Failed to load path");
+    assertThat(violation0.getFile()) //
+        .isEqualTo(Violation.NO_FILE);
+    assertThat(violation0.getSeverity()) //
+        .isEqualTo(ERROR);
+    assertThat(violation0.getRule()) //
+        .isEqualTo("cppcheckdata-pythonError");
+  }
 }
