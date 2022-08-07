@@ -7,7 +7,7 @@ buildscript {
  }
  dependencies {
   classpath 'se.bjurr.gradle:gradle-scripts:2.+'
-  classpath 'org.jsonschema2pojo:jsonschema2pojo-gradle-plugin:1.1.1'
+  classpath 'org.jsonschema2pojo:jsonschema2pojo-gradle-plugin:1.1.2'
  }
 }
 project.ext.buildConfig = [
@@ -38,10 +38,10 @@ jsonSchema2Pojo {
 }
 
 dependencies {
- api 'com.google.code.gson:gson:2.8.2'
+ api 'com.google.code.gson:gson:2.9.1'
 
- testImplementation 'junit:junit:4.12'
- testImplementation 'org.assertj:assertj-core:2.3.0'
- testImplementation 'uk.co.jemos.podam:podam:7.2.1.RELEASE'
- testImplementation 'com.approvaltests:approvaltests:12.3.2'
+ testImplementation 'junit:junit:4.13.2'
+ testImplementation 'org.assertj:assertj-core:3.23.1'
+ testImplementation 'uk.co.jemos.podam:podam:7.2.9.RELEASE'
+ testImplementation 'com.approvaltests:approvaltests:17.2.1'
 }
