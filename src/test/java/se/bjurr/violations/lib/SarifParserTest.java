@@ -9,7 +9,9 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Set;
 import java.util.stream.Collectors;
+
 import org.junit.Test;
+
 import se.bjurr.violations.lib.model.SEVERITY;
 import se.bjurr.violations.lib.model.Violation;
 
@@ -124,5 +126,21 @@ public class SarifParserTest {
     assertThat(severities) //
         .isEqualTo(
             "WARN,WARN,ERROR,WARN,WARN,WARN,WARN,WARN,WARN,WARN,WARN,WARN,WARN,WARN,INFO,WARN,WARN,WARN,WARN,WARN,WARN,WARN,WARN,WARN,WARN,WARN,WARN,WARN,INFO,WARN,WARN,WARN,WARN,WARN,WARN,WARN,ERROR,WARN,WARN,WARN,WARN,WARN,WARN,WARN,WARN,WARN,WARN,WARN,INFO,WARN,ERROR");
+  }
+
+
+  @Test
+  public void testThatViolationsCanBeParsed_without_location() {
+    final String rootFolder = getRootFolder();
+
+    final Set<Violation> actual =
+        violationsApi() //
+            .withPattern(".*/sarif/without-location.json$") //
+            .inFolder(rootFolder) //
+            .findAll(SARIF) //
+            .violations();
+
+    assertThat(actual) //
+        .hasSize(0);
   }
 }
