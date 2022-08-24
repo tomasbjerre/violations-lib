@@ -1,12 +1,8 @@
 package se.bjurr.violations.lib.parsers;
 
 import static se.bjurr.violations.lib.model.Violation.violationBuilder;
+import static se.bjurr.violations.lib.util.Utils.isNullOrEmpty;
 
-import com.google.gson.GsonBuilder;
-import com.google.gson.JsonDeserializationContext;
-import com.google.gson.JsonDeserializer;
-import com.google.gson.JsonElement;
-import com.google.gson.JsonParseException;
 import java.lang.reflect.Type;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -14,6 +10,13 @@ import java.util.List;
 import java.util.Map;
 import java.util.Set;
 import java.util.TreeSet;
+
+import com.google.gson.GsonBuilder;
+import com.google.gson.JsonDeserializationContext;
+import com.google.gson.JsonDeserializer;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonParseException;
+
 import se.bjurr.violations.lib.ViolationsLogger;
 import se.bjurr.violations.lib.model.SEVERITY;
 import se.bjurr.violations.lib.model.Violation;
@@ -74,7 +77,7 @@ public class SarifParser implements ViolationsParser {
 
         final String ruleId = result.getRuleId();
         final String message = this.extractMessage(result.getMessage());
-        if (Utils.isNullOrEmpty(message)) {
+        if (isNullOrEmpty(message)) {
           continue;
         }
         final Level level = result.getLevel();
@@ -167,23 +170,17 @@ public class SarifParser implements ViolationsParser {
         && run.getTool().getDriver() != null
         && run.getTool().getDriver().getRules() != null) {
       for (final ReportingDescriptor r : run.getTool().getDriver().getRules()) {
-        if (r.getHelp() != null
-            && r.getHelp().getMarkdown() != null
-            && !r.getHelp().getMarkdown().trim().isEmpty()) {
+        if (r.getHelp() != null && !isNullOrEmpty(r.getHelp().getMarkdown())) {
           helpMap.put(r.getId(), r.getHelp().getMarkdown());
-        } else if (r.getHelp() != null
-            && r.getHelp().getText() != null
-            && !r.getHelp().getText().trim().isEmpty()) {
+        } else if (r.getHelp() != null && !isNullOrEmpty(r.getHelp().getText())) {
           helpMap.put(r.getId(), r.getHelp().getText());
         } else if (r.getFullDescription() != null
-            && r.getFullDescription().getMarkdown() != null
-            && !r.getFullDescription().getMarkdown().trim().isEmpty()) {
+            && !isNullOrEmpty(r.getFullDescription().getMarkdown())) {
           helpMap.put(r.getId(), r.getFullDescription().getMarkdown());
         } else if (r.getFullDescription() != null
-            && r.getFullDescription().getText() != null
-            && !r.getFullDescription().getText().trim().isEmpty()) {
+            && !isNullOrEmpty(r.getFullDescription().getText())) {
           helpMap.put(r.getId(), r.getFullDescription().getText());
-        } else if (r.getName() != null && !r.getName().trim().isEmpty()) {
+        } else if (!isNullOrEmpty(r.getName())) {
           helpMap.put(r.getId(), r.getName());
         }
       }

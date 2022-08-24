@@ -77,7 +77,7 @@ public final class StringUtils {
     return out.toString();
   }
 
-  public static String padRight(String s, int n) {
+  public static String padRight(final String s, final int n) {
     return String.format("%1$-" + n + "s", s);
   }
 }
