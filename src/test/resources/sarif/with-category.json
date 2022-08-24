@@ -1,0 +1,288 @@
+{
+  "$schema": "http://json.schemastore.org/sarif-2.1.0",
+  "version": "2.1.0",
+  "runs": [
+    {
+      "results": [
+        {
+          "ruleId": "CA1014",
+          "ruleIndex": 0,
+          "level": "warning",
+          "message": {
+            "text": "Mark assemblies with CLSCompliant"
+          },
+          "properties": {
+            "warningLevel": 1
+          }
+        },
+        {
+          "ruleId": "CA1847",
+          "ruleIndex": 1,
+          "level": "warning",
+          "message": {
+            "text": "Use 'string.Contains(char)' instead of 'string.Contains(string)' when searching for a single character"
+          },
+          "suppressions": [
+            {
+              "kind": "inSource"
+            }
+          ],
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Projects/SarifCategoryDemo/Class1.cs"
+                },
+                "region": {
+                  "startLine": 8,
+                  "startColumn": 24,
+                  "endLine": 8,
+                  "endColumn": 27
+                }
+              }
+            }
+          ],
+          "properties": {
+            "warningLevel": 1
+          }
+        },
+        {
+          "ruleId": "CA2201",
+          "ruleIndex": 2,
+          "level": "warning",
+          "message": {
+            "text": "Exception type System.Exception is not sufficiently specific"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Projects/SarifCategoryDemo/Class1.cs"
+                },
+                "region": {
+                  "startLine": 11,
+                  "startColumn": 19,
+                  "endLine": 11,
+                  "endColumn": 78
+                }
+              }
+            }
+          ],
+          "properties": {
+            "warningLevel": 1
+          }
+        },
+        {
+          "ruleId": "CA1305",
+          "ruleIndex": 3,
+          "level": "warning",
+          "message": {
+            "text": "The behavior of 'string.Format(string, object)' could vary based on the current user's locale settings. Replace this call in 'Class1.M(string)' with a call to 'string.Format(IFormatProvider, string, params object[])'."
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Projects/SarifCategoryDemo/Class1.cs"
+                },
+                "region": {
+                  "startLine": 11,
+                  "startColumn": 33,
+                  "endLine": 11,
+                  "endColumn": 77
+                }
+              }
+            }
+          ],
+          "properties": {
+            "warningLevel": 1
+          }
+        },
+        {
+          "ruleId": "CA1307",
+          "ruleIndex": 4,
+          "level": "warning",
+          "message": {
+            "text": "'string.Contains(string)' has a method overload that takes a 'StringComparison' parameter. Replace this call in 'SarifCategoryDemo.Class1.M(string)' with a call to 'string.Contains(string, System.StringComparison)' for clarity of intent."
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Projects/SarifCategoryDemo/Class1.cs"
+                },
+                "region": {
+                  "startLine": 8,
+                  "startColumn": 13,
+                  "endLine": 8,
+                  "endColumn": 28
+                }
+              }
+            }
+          ],
+          "properties": {
+            "warningLevel": 1
+          }
+        },
+        {
+          "ruleId": "CA1822",
+          "ruleIndex": 5,
+          "level": "warning",
+          "message": {
+            "text": "Member 'M' does not access instance data and can be marked as static"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "file:///C:/Projects/SarifCategoryDemo/Class1.cs"
+                },
+                "region": {
+                  "startLine": 5,
+                  "startColumn": 10,
+                  "endLine": 5,
+                  "endColumn": 11
+                }
+              }
+            }
+          ],
+          "properties": {
+            "warningLevel": 1
+          }
+        }
+      ],
+      "tool": {
+        "driver": {
+          "name": "Microsoft (R) Visual C# Compiler",
+          "version": "4.2.0-4.22220.5 (432d17a8)",
+          "dottedQuadFileVersion": "4.2.0.0",
+          "semanticVersion": "4.2.0",
+          "language": "en-US",
+          "rules": [
+            {
+              "id": "CA1014",
+              "shortDescription": {
+                "text": "Mark assemblies with CLSCompliant"
+              },
+              "fullDescription": {
+                "text": "The Common Language Specification (CLS) defines naming restrictions, data types, and rules to which assemblies must conform if they will be used across programming languages. Good design dictates that all assemblies explicitly indicate CLS compliance by using CLSCompliantAttribute . If this attribute is not present on an assembly, the assembly is not compliant."
+              },
+              "defaultConfiguration": {
+                "enabled": false
+              },
+              "helpUri": "https://docs.microsoft.com/dotnet/fundamentals/code-analysis/quality-rules/ca1014",
+              "properties": {
+                "category": "Design",
+                "tags": [
+                  "PortedFromFxCop",
+                  "Telemetry",
+                  "EnabledRuleInAggressiveMode",
+                  "CompilationEnd"
+                ]
+              }
+            },
+            {
+              "id": "CA1847",
+              "shortDescription": {
+                "text": "Use char literal for a single character lookup"
+              },
+              "fullDescription": {
+                "text": "'string.Contains(char)' is available as a better performing overload for single char lookup."
+              },
+              "defaultConfiguration": {
+                "level": "note"
+              },
+              "helpUri": "https://docs.microsoft.com/dotnet/fundamentals/code-analysis/quality-rules/ca1847",
+              "properties": {
+                "category": "Performance",
+                "tags": [
+                  "Telemetry",
+                  "EnabledRuleInAggressiveMode"
+                ]
+              }
+            },
+            {
+              "id": "CA2201",
+              "shortDescription": {
+                "text": "Do not raise reserved exception types"
+              },
+              "fullDescription": {
+                "text": "An exception of type that is not sufficiently specific or reserved by the runtime should never be raised by user code. This makes the original error difficult to detect and debug. If this exception instance might be thrown, use a different exception type."
+              },
+              "helpUri": "https://docs.microsoft.com/dotnet/fundamentals/code-analysis/quality-rules/ca2201",
+              "properties": {
+                "category": "Usage",
+                "tags": [
+                  "PortedFromFxCop",
+                  "Telemetry",
+                  "EnabledRuleInAggressiveMode"
+                ]
+              }
+            },
+            {
+              "id": "CA1305",
+              "shortDescription": {
+                "text": "Specify IFormatProvider"
+              },
+              "fullDescription": {
+                "text": "A method or constructor calls one or more members that have overloads that accept a System.IFormatProvider parameter, and the method or constructor does not call the overload that takes the IFormatProvider parameter. When a System.Globalization.CultureInfo or IFormatProvider object is not supplied, the default value that is supplied by the overloaded member might not have the effect that you want in all locales. If the result will be based on the input from/output displayed to the user, specify 'CultureInfo.CurrentCulture' as the 'IFormatProvider'. Otherwise, if the result will be stored and accessed by software, such as when it is loaded from disk/database and when it is persisted to disk/database, specify 'CultureInfo.InvariantCulture'."
+              },
+              "helpUri": "https://docs.microsoft.com/dotnet/fundamentals/code-analysis/quality-rules/ca1305",
+              "properties": {
+                "category": "Globalization",
+                "tags": [
+                  "PortedFromFxCop",
+                  "Telemetry",
+                  "EnabledRuleInAggressiveMode"
+                ]
+              }
+            },
+            {
+              "id": "CA1307",
+              "shortDescription": {
+                "text": "Specify StringComparison for clarity"
+              },
+              "fullDescription": {
+                "text": "A string comparison operation uses a method overload that does not set a StringComparison parameter. It is recommended to use the overload with StringComparison parameter for clarity of intent. If the result will be displayed to the user, such as when sorting a list of items for display in a list box, specify 'StringComparison.CurrentCulture' or 'StringComparison.CurrentCultureIgnoreCase' as the 'StringComparison' parameter. If comparing case-insensitive identifiers, such as file paths, environment variables, or registry keys and values, specify 'StringComparison.OrdinalIgnoreCase'. Otherwise, if comparing case-sensitive identifiers, specify 'StringComparison.Ordinal'."
+              },
+              "defaultConfiguration": {
+                "enabled": false
+              },
+              "helpUri": "https://docs.microsoft.com/dotnet/fundamentals/code-analysis/quality-rules/ca1307",
+              "properties": {
+                "category": "Globalization",
+                "tags": [
+                  "PortedFromFxCop",
+                  "Telemetry",
+                  "EnabledRuleInAggressiveMode"
+                ]
+              }
+            },
+            {
+              "id": "CA1822",
+              "shortDescription": {
+                "text": "Mark members as static"
+              },
+              "fullDescription": {
+                "text": "Members that do not access instance data or call instance methods can be marked as static. After you mark the methods as static, the compiler will emit nonvirtual call sites to these members. This can give you a measurable performance gain for performance-sensitive code."
+              },
+              "defaultConfiguration": {
+                "level": "note"
+              },
+              "helpUri": "https://docs.microsoft.com/dotnet/fundamentals/code-analysis/quality-rules/ca1822",
+              "properties": {
+                "category": "Performance",
+                "tags": [
+                  "PortedFromFxCop",
+                  "Telemetry",
+                  "EnabledRuleInAggressiveMode"
+                ]
+              }
+            }
+          ]
+        }
+      },
+      "columnKind": "utf16CodeUnits"
+    }
+  ]
+}

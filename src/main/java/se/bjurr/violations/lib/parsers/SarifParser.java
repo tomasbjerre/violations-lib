@@ -3,20 +3,21 @@ package se.bjurr.violations.lib.parsers;
 import static se.bjurr.violations.lib.model.Violation.violationBuilder;
 import static se.bjurr.violations.lib.util.Utils.isNullOrEmpty;
 
-import java.lang.reflect.Type;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-import java.util.Set;
-import java.util.TreeSet;
-
 import com.google.gson.GsonBuilder;
 import com.google.gson.JsonDeserializationContext;
 import com.google.gson.JsonDeserializer;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonParseException;
-
+import java.lang.reflect.Type;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+import java.util.Optional;
+import java.util.Set;
+import java.util.TreeSet;
+import java.util.function.Function;
+import java.util.stream.Collectors;
 import se.bjurr.violations.lib.ViolationsLogger;
 import se.bjurr.violations.lib.model.SEVERITY;
 import se.bjurr.violations.lib.model.Violation;
@@ -24,6 +25,7 @@ import se.bjurr.violations.lib.model.generated.sarif.Artifact;
 import se.bjurr.violations.lib.model.generated.sarif.Location;
 import se.bjurr.violations.lib.model.generated.sarif.Message;
 import se.bjurr.violations.lib.model.generated.sarif.PhysicalLocation;
+import se.bjurr.violations.lib.model.generated.sarif.PropertyBag;
 import se.bjurr.violations.lib.model.generated.sarif.Region;
 import se.bjurr.violations.lib.model.generated.sarif.ReportingDescriptor;
 import se.bjurr.violations.lib.model.generated.sarif.Result;
@@ -64,6 +66,7 @@ public class SarifParser implements ViolationsParser {
       return violations;
     }
     for (final Run run : report.getRuns()) {
+      final Map<String, ReportingDescriptor> rulesById = this.getRulesById(run);
       String reporter = "Sarif";
       final boolean isToolSet = run.getTool() != null && run.getTool().getDriver() != null;
       if (isToolSet
@@ -72,9 +75,7 @@ public class SarifParser implements ViolationsParser {
         reporter = run.getTool().getDriver().getName();
       }
       final List<Artifact> artifacts = new ArrayList<>(run.getArtifacts());
-      final Map<String, String> helpMap = this.extractHelpText(run);
       for (final Result result : run.getResults()) {
-
         final String ruleId = result.getRuleId();
         final String message = this.extractMessage(result.getMessage());
         if (isNullOrEmpty(message)) {
@@ -82,6 +83,14 @@ public class SarifParser implements ViolationsParser {
         }
         final Level level = result.getLevel();
 
+        String category = null;
+        if (rulesById.get(ruleId) != null) {
+          final PropertyBag properties = rulesById.get(ruleId).getProperties();
+          if (properties != null && properties.getCategory() != null) {
+            category = properties.getCategory().toString();
+          }
+        }
+        final Optional<String> helpTextOpt = this.findHelpText(rulesById.get(ruleId));
         final List<Location> locations = result.getLocations();
         final boolean hasLocations = locations != null && locations.size() > 0;
         if (hasLocations) {
@@ -107,10 +116,8 @@ public class SarifParser implements ViolationsParser {
             if (regionMessage != null) {
               fullMessage.append("\n\n").append(regionMessage);
             }
-            if (helpMap.containsKey(ruleId)) {
-              fullMessage
-                  .append("\n\nFor additional help see: ")
-                  .append(this.getRuleHelpOrId(helpMap, ruleId));
+            if (helpTextOpt.isPresent()) {
+              fullMessage.append("\n\nFor additional help see: ").append(helpTextOpt.get());
             }
             violations.add(
                 violationBuilder()
@@ -121,6 +128,7 @@ public class SarifParser implements ViolationsParser {
                     .setMessage(fullMessage.toString().trim())
                     .setSeverity(this.toSeverity(level))
                     .setReporter(reporter)
+                    .setCategory(category)
                     .build());
           }
         } else {
@@ -130,21 +138,15 @@ public class SarifParser implements ViolationsParser {
                   .setFile(Violation.NO_FILE)
                   .setStartLine(Violation.NO_LINE)
                   .setRule(ruleId)
-                  .setMessage(this.getRuleHelpOrId(helpMap, ruleId))
+                  .setMessage(helpTextOpt.orElse(ruleId))
                   .setSeverity(this.toSeverity(level))
                   .setReporter(reporter)
+                  .setCategory(category)
                   .build());
         }
       }
     }
     return violations;
-  }
-
-  private String getRuleHelpOrId(final Map<String, String> helpMap, final String ruleId) {
-    if (helpMap.containsKey(ruleId)) {
-      return helpMap.get(ruleId);
-    }
-    return ruleId;
   }
 
   /**
@@ -164,28 +166,31 @@ public class SarifParser implements ViolationsParser {
     return text;
   }
 
-  private Map<String, String> extractHelpText(final Run run) {
-    final Map<String, String> helpMap = new HashMap<>();
+  private Map<String, ReportingDescriptor> getRulesById(final Run run) {
     if (run.getTool() != null
         && run.getTool().getDriver() != null
         && run.getTool().getDriver().getRules() != null) {
-      for (final ReportingDescriptor r : run.getTool().getDriver().getRules()) {
-        if (r.getHelp() != null && !isNullOrEmpty(r.getHelp().getMarkdown())) {
-          helpMap.put(r.getId(), r.getHelp().getMarkdown());
-        } else if (r.getHelp() != null && !isNullOrEmpty(r.getHelp().getText())) {
-          helpMap.put(r.getId(), r.getHelp().getText());
-        } else if (r.getFullDescription() != null
-            && !isNullOrEmpty(r.getFullDescription().getMarkdown())) {
-          helpMap.put(r.getId(), r.getFullDescription().getMarkdown());
-        } else if (r.getFullDescription() != null
-            && !isNullOrEmpty(r.getFullDescription().getText())) {
-          helpMap.put(r.getId(), r.getFullDescription().getText());
-        } else if (!isNullOrEmpty(r.getName())) {
-          helpMap.put(r.getId(), r.getName());
-        }
-      }
+      return run.getTool().getDriver().getRules().stream()
+          .collect(Collectors.toMap(ReportingDescriptor::getId, Function.identity()));
     }
-    return helpMap;
+    return new HashMap<>();
+  }
+
+  private Optional<String> findHelpText(final ReportingDescriptor r) {
+    if (r == null) {
+      return Optional.empty();
+    }
+    if (r.getHelp() != null && !isNullOrEmpty(r.getHelp().getMarkdown())) {
+      return Optional.ofNullable(r.getHelp().getMarkdown());
+    } else if (r.getHelp() != null && !isNullOrEmpty(r.getHelp().getText())) {
+      return Optional.ofNullable(r.getHelp().getText());
+    } else if (r.getFullDescription() != null
+        && !isNullOrEmpty(r.getFullDescription().getMarkdown())) {
+      return Optional.ofNullable(r.getFullDescription().getMarkdown());
+    } else if (r.getFullDescription() != null && !isNullOrEmpty(r.getFullDescription().getText())) {
+      return Optional.ofNullable(r.getFullDescription().getText());
+    }
+    return Optional.ofNullable(r.getName());
   }
 
   private SEVERITY toSeverity(final Level level) {

@@ -1648,6 +1648,10 @@
       "type": "object",
       "additionalProperties": true,
       "properties": {
+        "category": {
+          "description": "This is a modification, see: https://github.com/joelittlejohn/jsonschema2pojo/issues/186",
+          "type": "string"
+        },
         "tags": {
 
           "description": "A set of distinct strings that provide additional information.",
