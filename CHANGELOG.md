@@ -2,6 +2,12 @@
 
 Changelog of violations-lib.
 
+## 1.151.0 (2022-08-24)
+
+### Features
+
+-  **SARIF**  supporting category ([ac8ae](https://github.com/tomasbjerre/violations-lib/commit/ac8ae5e6694d7cb) Tomas Bjerre)  [#155](https://github.com/tomasbjerre/violations-lib/issues/155)  
+
 ## 1.150.0 (2022-08-24)
 
 ### Features
