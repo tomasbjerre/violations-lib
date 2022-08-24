@@ -62,54 +62,72 @@ public class SarifParser implements ViolationsParser {
     }
     for (final Run run : report.getRuns()) {
       String reporter = "Sarif";
-      if (run.getTool() != null
-          && run.getTool().getDriver() != null
+      final boolean isToolSet = run.getTool() != null && run.getTool().getDriver() != null;
+      if (isToolSet
           && run.getTool().getDriver().getName() != null
           && !run.getTool().getDriver().getName().trim().isEmpty()) {
         reporter = run.getTool().getDriver().getName();
       }
       final List<Artifact> artifacts = new ArrayList<>(run.getArtifacts());
-      Map<String, String> helpMap = extractHelpText(run);
+      final Map<String, String> helpMap = this.extractHelpText(run);
       for (final Result result : run.getResults()) {
 
         final String ruleId = result.getRuleId();
-        final String message = extractMessage(result.getMessage());
+        final String message = this.extractMessage(result.getMessage());
         if (Utils.isNullOrEmpty(message)) {
           continue;
         }
         final Level level = result.getLevel();
-        for (final Location location : result.getLocations()) {
-          final PhysicalLocation physicalLocation = location.getPhysicalLocation();
-          final Region region = physicalLocation.getRegion();
-          if (region == null) {
-            continue;
+
+        final List<Location> locations = result.getLocations();
+        final boolean hasLocations = locations != null && locations.size() > 0;
+        if (hasLocations) {
+          for (final Location location : locations) {
+            final PhysicalLocation physicalLocation = location.getPhysicalLocation();
+            final Region region = physicalLocation.getRegion();
+            if (region == null) {
+              continue;
+            }
+            final Integer startLine = region.getStartLine();
+            if (startLine == null) {
+              continue;
+            }
+            String filename = null;
+            final Integer artifactLocationIndex = physicalLocation.getArtifactLocation().getIndex();
+            if (artifactLocationIndex != null && artifactLocationIndex != -1) {
+              filename = artifacts.get(artifactLocationIndex).getLocation().getUri();
+            } else {
+              filename = physicalLocation.getArtifactLocation().getUri();
+            }
+            final String regionMessage = this.extractMessage(region.getMessage());
+            final StringBuilder fullMessage = new StringBuilder(message);
+            if (regionMessage != null) {
+              fullMessage.append("\n\n").append(regionMessage);
+            }
+            if (helpMap.containsKey(ruleId)) {
+              fullMessage
+                  .append("\n\nFor additional help see: ")
+                  .append(this.getRuleHelpOrId(helpMap, ruleId));
+            }
+            violations.add(
+                violationBuilder()
+                    .setParser(Parser.SARIF)
+                    .setFile(filename)
+                    .setStartLine(startLine)
+                    .setRule(ruleId)
+                    .setMessage(fullMessage.toString().trim())
+                    .setSeverity(this.toSeverity(level))
+                    .setReporter(reporter)
+                    .build());
           }
-          final Integer startLine = region.getStartLine();
-          if (startLine == null) {
-            continue;
-          }
-          String filename = null;
-          final Integer artifactLocationIndex = physicalLocation.getArtifactLocation().getIndex();
-          if (artifactLocationIndex != null && artifactLocationIndex != -1) {
-            filename = artifacts.get(artifactLocationIndex).getLocation().getUri();
-          } else {
-            filename = physicalLocation.getArtifactLocation().getUri();
-          }
-          final String regionMessage = extractMessage(region.getMessage());
-          StringBuilder fullMessage = new StringBuilder(message);
-          if (regionMessage != null) {
-            fullMessage.append("\n\n").append(regionMessage);
-          }
-          if (helpMap.containsKey(ruleId)) {
-            fullMessage.append("\n\nFor additional help see: ").append(helpMap.get(ruleId));
-          }
+        } else {
           violations.add(
               violationBuilder()
                   .setParser(Parser.SARIF)
-                  .setFile(filename)
-                  .setStartLine(startLine)
+                  .setFile(Violation.NO_FILE)
+                  .setStartLine(Violation.NO_LINE)
                   .setRule(ruleId)
-                  .setMessage(fullMessage.toString().trim())
+                  .setMessage(this.getRuleHelpOrId(helpMap, ruleId))
                   .setSeverity(this.toSeverity(level))
                   .setReporter(reporter)
                   .build());
@@ -119,13 +137,20 @@ public class SarifParser implements ViolationsParser {
     return violations;
   }
 
+  private String getRuleHelpOrId(final Map<String, String> helpMap, final String ruleId) {
+    if (helpMap.containsKey(ruleId)) {
+      return helpMap.get(ruleId);
+    }
+    return ruleId;
+  }
+
   /**
    * Returns the message text - favoring the markdown format.
    *
    * @param message the message from the Sarif result.
    * @return the message text which could be `null`.
    */
-  protected String extractMessage(Message message) {
+  protected String extractMessage(final Message message) {
     if (message == null) {
       return null;
     }
@@ -136,18 +161,30 @@ public class SarifParser implements ViolationsParser {
     return text;
   }
 
-  private Map<String, String> extractHelpText(Run run) {
-    Map<String, String> helpMap = new HashMap<>();
+  private Map<String, String> extractHelpText(final Run run) {
+    final Map<String, String> helpMap = new HashMap<>();
     if (run.getTool() != null
         && run.getTool().getDriver() != null
         && run.getTool().getDriver().getRules() != null) {
-      for (ReportingDescriptor r : run.getTool().getDriver().getRules()) {
-        if (r.getHelp() != null) {
-          if (r.getHelp().getMarkdown() != null && !r.getHelp().getMarkdown().trim().isEmpty()) {
-            helpMap.put(r.getId(), r.getHelp().getMarkdown());
-          } else if (r.getHelp().getMarkdown() != null && !r.getHelp().getText().trim().isEmpty()) {
-            helpMap.put(r.getId(), r.getHelp().getText());
-          }
+      for (final ReportingDescriptor r : run.getTool().getDriver().getRules()) {
+        if (r.getHelp() != null
+            && r.getHelp().getMarkdown() != null
+            && !r.getHelp().getMarkdown().trim().isEmpty()) {
+          helpMap.put(r.getId(), r.getHelp().getMarkdown());
+        } else if (r.getHelp() != null
+            && r.getHelp().getText() != null
+            && !r.getHelp().getText().trim().isEmpty()) {
+          helpMap.put(r.getId(), r.getHelp().getText());
+        } else if (r.getFullDescription() != null
+            && r.getFullDescription().getMarkdown() != null
+            && !r.getFullDescription().getMarkdown().trim().isEmpty()) {
+          helpMap.put(r.getId(), r.getFullDescription().getMarkdown());
+        } else if (r.getFullDescription() != null
+            && r.getFullDescription().getText() != null
+            && !r.getFullDescription().getText().trim().isEmpty()) {
+          helpMap.put(r.getId(), r.getFullDescription().getText());
+        } else if (r.getName() != null && !r.getName().trim().isEmpty()) {
+          helpMap.put(r.getId(), r.getName());
         }
       }
     }

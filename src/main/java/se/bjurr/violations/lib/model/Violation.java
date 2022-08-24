@@ -119,6 +119,8 @@ public class Violation implements Serializable, Comparable<Violation> {
   private static final long serialVersionUID = -6052921679385466168L;
   /** A {@link #file} used when there is no file specified in the parsed report. */
   public static final String NO_FILE = "-";
+  /** A {@link #startLine} used when there is no line specified in the parsed report. */
+  public static final Integer NO_LINE = 0;
 
   public static ViolationBuilder violationBuilder() {
     return new ViolationBuilder();
