@@ -87,22 +87,22 @@ public class SarifParserTest {
         .isEqualTo(Violation.NO_LINE);
     assertThat(first.getReporter()).isEqualTo("Polyspace");
 
-    final Violation forth = new ArrayList<>(actual).get(4);
-    assertThat(forth.getMessage()) //
+    final Violation fourth = new ArrayList<>(actual).get(4);
+    assertThat(fourth.getMessage()) //
         .isEqualTo(
             "'unsigned char' doesn't provide information about its size. Define and use typedefs clarifying type and size for numerical types or use one of the exact-width numerical types defined in <stdint.h>.\n\nFor additional help see: [How to resolve polyspace misra-c-2812](https://www.mathworks.com/matlabcentral/answers/479913-how-to-resolve-polyspace-misra-c-2012-d4-14-rule-when-am-passing-pointer-as-parameter-to-function)");
-    assertThat(forth.getFile()) //
+    assertThat(fourth.getFile()) //
         .isEqualTo(
             "file:/c:/var/lib/jenkins/workspace/PSBF_PIControl_DeclPipeline_Access/pi_alg/pi_alg.c");
-    assertThat(forth.getSeverity()) //
+    assertThat(fourth.getSeverity()) //
         .isEqualTo(SEVERITY.ERROR);
-    assertThat(forth.getRule()) //
+    assertThat(fourth.getRule()) //
         .isEqualTo("MISRA C:2012 D4.6");
-    assertThat(forth.getStartLine()) //
+    assertThat(fourth.getStartLine()) //
         .isEqualTo(144);
-    assertThat(forth.getEndLine()) //
+    assertThat(fourth.getEndLine()) //
         .isEqualTo(144);
-    assertThat(forth.getReporter()).isEqualTo("Polyspace");
+    assertThat(fourth.getReporter()).isEqualTo("Polyspace");
   }
 
   @Test
