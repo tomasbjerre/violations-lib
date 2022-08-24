@@ -2,25 +2,23 @@
 
 Changelog of violations-lib.
 
+## 1.150.0 (2022-08-24)
+
+### Features
+
+-  **SARIF**  including violations without location ([f2626](https://github.com/tomasbjerre/violations-lib/commit/f262693b8f94ed2) Tomas Bjerre)  [#160](https://github.com/tomasbjerre/violations-lib/issues/160)  
+
+### Bug Fixes
+
+-  stepping dependencies ([f4e9f](https://github.com/tomasbjerre/violations-lib/commit/f4e9fba06ec8ca8) Tomas Bjerre)  
+
 ## 1.149.2 (2022-06-13)
-
-
-
-
 
 ### Bug Fixes
 
 -  NPE when file empty in cppcheck ([5b3a0](https://github.com/tomasbjerre/violations-lib/commit/5b3a01320de6eee) Tomas Bjerre)  
 
-
-
 ## 1.149.1 (2022-05-22)
-
-
-
-
-
-
 
 ### Other changes
 
@@ -37,14 +35,9 @@ Changelog of violations-lib.
 
 ## 1.149.0 (2022-05-04)
 
-
-
 ### Features
 
 -  Add GreenHills log parser. ([3c6a1](https://github.com/tomasbjerre/violations-lib/commit/3c6a14cfd8ef969) Alexander Falkenstern)  
-
-
-
 
 ### Other changes
 
@@ -61,59 +54,29 @@ Changelog of violations-lib.
 
 ## 1.148.3 (2022-03-19)
 
-
-
-
-
 ### Bug Fixes
 
 -  parsing severity of results in SARIF ([bfafe](https://github.com/tomasbjerre/violations-lib/commit/bfafee1692869e5) Tomas Bjerre)  [#144](https://github.com/tomasbjerre/violations-lib/issues/144)  
 
-
-
 ## 1.148.2 (2022-03-17)
-
-
-
-
 
 ### Bug Fixes
 
 -  correcting groupId ([b3c8e](https://github.com/tomasbjerre/violations-lib/commit/b3c8edf25872cc2) Tomas Bjerre)  
 
-
-
 ## 1.148.1 (2022-03-16)
-
-
-
-
 
 ### Bug Fixes
 
 -  parse safir locations ([0e9a1](https://github.com/tomasbjerre/violations-lib/commit/0e9a19b4b8c6d8a) Tomas Bjerre)  [#143](https://github.com/tomasbjerre/violations-lib/issues/143)  
 
-
-
 ## 1.148.0 (2021-12-11)
-
-
 
 ### Features
 
 -  Dart MACHINE parser ([46dfd](https://github.com/tomasbjerre/violations-lib/commit/46dfd1ca444813d) Tomas Bjerre)  [#142](https://github.com/tomasbjerre/violations-lib/issues/142)  
 
-
-
-
-
 ## 1.147.3 (2021-12-09)
-
-
-
-
-
-
 
 ### Other changes
 
@@ -125,59 +88,29 @@ Changelog of violations-lib.
 
 ## 1.147.2 (2021-12-07)
 
-
-
-
-
 ### Bug Fixes
 
 -  renaming SARIFPARSER to SARIF ([00f61](https://github.com/tomasbjerre/violations-lib/commit/00f6127b4f498b0) Tomas Bjerre)  
 
-
-
 ## 1.147.1 (2021-12-07)
-
-
-
-
 
 ### Bug Fixes
 
 -  correcting sarif link ([b3684](https://github.com/tomasbjerre/violations-lib/commit/b3684ab1171b5d8) Tomas Bjerre)  
 
-
-
 ## 1.147.0 (2021-12-07)
-
-
 
 ### Features
 
 -  sarif parser ([09a41](https://github.com/tomasbjerre/violations-lib/commit/09a41f43f75279e) Tomas Bjerre)  
 
-
-
-
-
 ## 1.146.3 (2021-12-06)
-
-
-
-
 
 ### Bug Fixes
 
 -  make build script run on Windows ([84883](https://github.com/tomasbjerre/violations-lib/commit/84883773f3a1d97) Tomas Bjerre)  
 
-
-
 ## 1.146.2 (2021-12-06)
-
-
-
-
-
-
 
 ### Other changes
 
@@ -188,12 +121,6 @@ Changelog of violations-lib.
 
 
 ## 1.146.1 (2021-12-05)
-
-
-
-
-
-
 
 ### Other changes
 
@@ -210,59 +137,29 @@ Changelog of violations-lib.
 
 ## 1.146.0 (2021-11-28)
 
-
-
 ### Features
 
 -  parse column from CPPCheck ([9458f](https://github.com/tomasbjerre/violations-lib/commit/9458f8f394c30f2) Tomas Bjerre)  [#136](https://github.com/tomasbjerre/violations-lib/issues/136)  
 
-
-
-
-
 ## 1.145.5 (2021-11-21)
-
-
-
-
 
 ### Bug Fixes
 
 -  sort results in Jacoco ([b454f](https://github.com/tomasbjerre/violations-lib/commit/b454f8708ef4756) Tomas Bjerre)  
 
-
-
 ## 1.145.4 (2021-09-11)
-
-
-
-
 
 ### Bug Fixes
 
 -  mapping engine_name and check_name in CodeClimate ([14497](https://github.com/tomasbjerre/violations-lib/commit/144971bb855a7a3) Tomas Bjerre)  [#132](https://github.com/tomasbjerre/violations-lib/issues/132)  [#133](https://github.com/tomasbjerre/violations-lib/issues/133)  
 
-
-
 ## 1.145.2 (2021-08-09)
-
-
-
-
 
 ### Bug Fixes
 
 -  support CFN with JUnit format ([56175](https://github.com/tomasbjerre/violations-lib/commit/56175a442d188ee) Tomas Bjerre)  [#131](https://github.com/tomasbjerre/violations-lib/issues/131)  
 
-
-
 ## 1.145.1 (2021-08-05)
-
-
-
-
-
-
 
 ### Other changes
 
@@ -274,23 +171,11 @@ Changelog of violations-lib.
 
 ## 1.145.0 (2021-07-12)
 
-
-
 ### Features
 
 -  allow parser instance to be given ([3d606](https://github.com/tomasbjerre/violations-lib/commit/3d60602c95c54b5) Tomas Bjerre)  
 
-
-
-
-
 ## 1.144.6 (2021-07-12)
-
-
-
-
-
-
 
 ### Other changes
 
@@ -317,12 +202,6 @@ Changelog of violations-lib.
 
 ## 1.144.5 (2021-06-16)
 
-
-
-
-
-
-
 ### Other changes
 
 **add parser for msbuild log files**
@@ -333,14 +212,9 @@ Changelog of violations-lib.
 
 ## 1.144.4 (2021-04-08)
 
-
-
-
-
 ### Bug Fixes
 
 -  parsing junit parser with missing file ([b9bbc](https://github.com/tomasbjerre/violations-lib/commit/b9bbce64b93509a) Tomas Bjerre)  [#124](https://github.com/tomasbjerre/violations-lib/issues/124)  
-
 
 ### Other changes
 
@@ -357,12 +231,6 @@ Changelog of violations-lib.
 
 ## 1.144.3 (2021-04-02)
 
-
-
-
-
-
-
 ### Other changes
 
 **Using new buildscript**
@@ -372,12 +240,6 @@ Changelog of violations-lib.
 
 
 ## 1.143 (2021-03-29)
-
-
-
-
-
-
 
 ### Other changes
 
@@ -389,12 +251,6 @@ Changelog of violations-lib.
 
 ## 1.142 (2021-01-29)
 
-
-
-
-
-
-
 ### Other changes
 
 **testing archunit #120**
@@ -405,12 +261,6 @@ Changelog of violations-lib.
 
 ## 1.141 (2021-01-01)
 
-
-
-
-
-
-
 ### Other changes
 
 **Parse CPPCheck reports without file #118**
@@ -420,12 +270,6 @@ Changelog of violations-lib.
 
 
 ## 1.140 (2020-12-14)
-
-
-
-
-
-
 
 ### Other changes
 
@@ -452,12 +296,6 @@ Changelog of violations-lib.
 
 ## 1.139 (2020-12-06)
 
-
-
-
-
-
-
 ### Other changes
 
 **Making isIgnored public jenkinsci/violation-comments-to-stash-plugin#72**
@@ -468,12 +306,6 @@ Changelog of violations-lib.
 
 ## 1.138 (2020-12-06)
 
-
-
-
-
-
-
 ### Other changes
 
 **ignorePaths jenkinsci/violation-comments-to-stash-plugin#72**
@@ -483,12 +315,6 @@ Changelog of violations-lib.
 
 
 ## 1.137 (2020-11-27)
-
-
-
-
-
-
 
 ### Other changes
 
@@ -510,12 +336,6 @@ Changelog of violations-lib.
 
 ## 1.136 (2020-11-15)
 
-
-
-
-
-
-
 ### Other changes
 
 **Parsing error tag in JUnit reports #115**
@@ -525,12 +345,6 @@ Changelog of violations-lib.
 
 
 ## 1.135 (2020-10-17)
-
-
-
-
-
-
 
 ### Other changes
 
@@ -542,12 +356,6 @@ Changelog of violations-lib.
 
 ## 1.134 (2020-10-04)
 
-
-
-
-
-
-
 ### Other changes
 
 **check_name and engine_name in CodeClimate #112**
@@ -557,12 +365,6 @@ Changelog of violations-lib.
 
 
 ## 1.133 (2020-10-04)
-
-
-
-
-
-
 
 ### Other changes
 
@@ -574,12 +376,6 @@ Changelog of violations-lib.
 
 ## 1.132 (2020-09-27)
 
-
-
-
-
-
-
 ### Other changes
 
 **Find Security Bugs messages**
@@ -589,12 +385,6 @@ Changelog of violations-lib.
 
 
 ## 1.131 (2020-09-27)
-
-
-
-
-
-
 
 ### Other changes
 
@@ -651,12 +441,6 @@ Changelog of violations-lib.
 
 ## 1.130 (2020-09-25)
 
-
-
-
-
-
-
 ### Other changes
 
 **Rewriting JUnit parser #108 #101**
@@ -667,12 +451,6 @@ Changelog of violations-lib.
 
 ## 1.129 (2020-09-23)
 
-
-
-
-
-
-
 ### Other changes
 
 **Allow Checkstyle reports with no line #107**
@@ -682,12 +460,6 @@ Changelog of violations-lib.
 
 
 ## 1.128 (2020-09-14)
-
-
-
-
-
-
 
 ### Other changes
 
@@ -709,12 +481,6 @@ Changelog of violations-lib.
 
 ## 1.127 (2020-09-06)
 
-
-
-
-
-
-
 ### Other changes
 
 **Moving PatchParser from violation-comments-lib #95**
@@ -724,12 +490,6 @@ Changelog of violations-lib.
 
 
 ## 1.126 (2020-09-06)
-
-
-
-
-
-
 
 ### Other changes
 
@@ -741,12 +501,6 @@ Changelog of violations-lib.
 
 ## 1.125 (2020-09-05)
 
-
-
-
-
-
-
 ### Other changes
 
 **adjusting message of junit parser**
@@ -756,12 +510,6 @@ Changelog of violations-lib.
 
 
 ## 1.124 (2020-09-04)
-
-
-
-
-
-
 
 ### Other changes
 
@@ -773,12 +521,6 @@ Changelog of violations-lib.
 
 ## 1.123 (2020-08-27)
 
-
-
-
-
-
-
 ### Other changes
 
 **Avoid removing violations that are not duplicates #98**
@@ -789,12 +531,6 @@ Changelog of violations-lib.
 
 ## 1.122 (2020-08-27)
 
-
-
-
-
-
-
 ### Other changes
 
 **JUnit missing message and type #97**
@@ -804,12 +540,6 @@ Changelog of violations-lib.
 
 
 ## 1.121 (2020-07-26)
-
-
-
-
-
-
 
 ### Other changes
 
@@ -834,29 +564,9 @@ Changelog of violations-lib.
 
 ## 1.120 (2020-07-05)
 
-
-
-
-
-
-
-
 ## 1.119 (2020-07-05)
 
-
-
-
-
-
-
-
 ## 1.118 (2020-06-26)
-
-
-
-
-
-
 
 ### Other changes
 
@@ -867,12 +577,6 @@ Changelog of violations-lib.
 
 
 ## 1.117 (2020-06-12)
-
-
-
-
-
-
 
 ### Other changes
 
@@ -885,12 +589,6 @@ Changelog of violations-lib.
 
 ## 1.116 (2020-05-20)
 
-
-
-
-
-
-
 ### Other changes
 
 **Fixing SECURITY-1854**
@@ -900,12 +598,6 @@ Changelog of violations-lib.
 
 
 ## 1.115 (2020-05-16)
-
-
-
-
-
-
 
 ### Other changes
 
@@ -932,20 +624,7 @@ Changelog of violations-lib.
 
 ## 1.114 (2020-05-12)
 
-
-
-
-
-
-
-
 ## 1.113 (2020-03-29)
-
-
-
-
-
-
 
 ### Other changes
 
@@ -957,12 +636,6 @@ Changelog of violations-lib.
 
 ## 1.112 (2020-03-03)
 
-
-
-
-
-
-
 ### Other changes
 
 **Doc**
@@ -972,12 +645,6 @@ Changelog of violations-lib.
 
 
 ## 1.111 (2020-03-03)
-
-
-
-
-
-
 
 ### Other changes
 
@@ -994,12 +661,6 @@ Changelog of violations-lib.
 
 ## 1.110 (2020-02-03)
 
-
-
-
-
-
-
 ### Other changes
 
 **CPPCheckParser with auto closed <error/> tags #82**
@@ -1009,12 +670,6 @@ Changelog of violations-lib.
 
 
 ## 1.109 (2020-01-19)
-
-
-
-
-
-
 
 ### Other changes
 
@@ -1031,12 +686,6 @@ Changelog of violations-lib.
 
 ## 1.108 (2020-01-03)
 
-
-
-
-
-
-
 ### Other changes
 
 **Add support for newer sonar report format**
@@ -1047,12 +696,6 @@ Changelog of violations-lib.
 
 ## 1.107 (2019-10-22)
 
-
-
-
-
-
-
 ### Other changes
 
 **Add parser for protolint**
@@ -1062,12 +705,6 @@ Changelog of violations-lib.
 
 
 ## 1.106 (2019-10-10)
-
-
-
-
-
-
 
 ### Other changes
 
@@ -1099,12 +736,6 @@ Changelog of violations-lib.
 
 ## 1.103 (2019-10-05)
 
-
-
-
-
-
-
 ### Other changes
 
 **More logging**
@@ -1119,12 +750,6 @@ Changelog of violations-lib.
 
 
 ## 1.102 (2019-10-04)
-
-
-
-
-
-
 
 ### Other changes
 
@@ -1152,12 +777,6 @@ Changelog of violations-lib.
 
 ## 1.100 (2019-09-07)
 
-
-
-
-
-
-
 ### Other changes
 
 **Validating attributes in CodeClimate Parser #76**
@@ -1167,12 +786,6 @@ Changelog of violations-lib.
 
 
 ## 1.99 (2019-09-07)
-
-
-
-
-
-
 
 ### Other changes
 
@@ -1184,12 +797,6 @@ Changelog of violations-lib.
 
 ## 1.98 (2019-09-04)
 
-
-
-
-
-
-
 ### Other changes
 
 **Documenting Sonar**
@@ -1200,12 +807,6 @@ Changelog of violations-lib.
 
 ## 1.97 (2019-09-04)
 
-
-
-
-
-
-
 ### Other changes
 
 **Handling Sonar reports without severity #75**
@@ -1215,12 +816,6 @@ Changelog of violations-lib.
 
 
 ## 1.96 (2019-08-03)
-
-
-
-
-
-
 
 ### Other changes
 
@@ -1233,12 +828,6 @@ Changelog of violations-lib.
 
 ## 1.95 (2019-08-02)
 
-
-
-
-
-
-
 ### Other changes
 
 **Bandit #73**
@@ -1248,12 +837,6 @@ Changelog of violations-lib.
 
 
 ## 1.94 (2019-06-15)
-
-
-
-
-
-
 
 ### Other changes
 
@@ -1279,12 +862,6 @@ Changelog of violations-lib.
 
 
 ## 1.93 (2019-06-07)
-
-
-
-
-
-
 
 ### Other changes
 
@@ -1316,12 +893,6 @@ Changelog of violations-lib.
 
 ## 1.92 (2019-04-24)
 
-
-
-
-
-
-
 ### Other changes
 
 **Bumping version**
@@ -1346,12 +917,6 @@ Changelog of violations-lib.
 
 
 ## 1.89 (2019-04-03)
-
-
-
-
-
-
 
 ### Other changes
 
@@ -1378,12 +943,6 @@ Changelog of violations-lib.
 
 ## 1.86 (2019-03-23)
 
-
-
-
-
-
-
 ### Other changes
 
 **Sonar Report #66**
@@ -1393,12 +952,6 @@ Changelog of violations-lib.
 
 
 ## 1.85 (2019-03-13)
-
-
-
-
-
-
 
 ### Other changes
 
@@ -1421,12 +974,6 @@ Changelog of violations-lib.
 
 ## 1.84 (2019-03-07)
 
-
-
-
-
-
-
 ### Other changes
 
 **golangci-lint**
@@ -1436,12 +983,6 @@ Changelog of violations-lib.
 
 
 ## 1.83 (2019-03-07)
-
-
-
-
-
-
 
 ### Other changes
 
@@ -1461,12 +1002,6 @@ Changelog of violations-lib.
 
 ## 1.82 (2019-02-25)
 
-
-
-
-
-
-
 ### Other changes
 
 **Adding group attribute #54**
@@ -1482,12 +1017,6 @@ Changelog of violations-lib.
 
 ## 1.81 (2019-02-10)
 
-
-
-
-
-
-
 ### Other changes
 
 **Correcting Flake8 parser #58**
@@ -1497,12 +1026,6 @@ Changelog of violations-lib.
 
 
 ## 1.80 (2019-02-02)
-
-
-
-
-
-
 
 ### Other changes
 
@@ -1529,12 +1052,6 @@ Changelog of violations-lib.
 
 ## 1.79 (2019-01-29)
 
-
-
-
-
-
-
 ### Other changes
 
 **MSCPP and IAR #55 #56**
@@ -1550,12 +1067,6 @@ Changelog of violations-lib.
 
 ## 1.78 (2019-01-14)
 
-
-
-
-
-
-
 ### Other changes
 
 **Avoiding faulty slash with CodeNarc #53**
@@ -1565,12 +1076,6 @@ Changelog of violations-lib.
 
 
 ## 1.77 (2019-01-09)
-
-
-
-
-
-
 
 ### Other changes
 
@@ -1592,12 +1097,6 @@ Changelog of violations-lib.
 
 ## 1.74 (2019-01-02)
 
-
-
-
-
-
-
 ### Other changes
 
 **Correctly parsing AnsibleLint #52**
@@ -1613,12 +1112,6 @@ Changelog of violations-lib.
 
 ## 1.73 (2018-11-15)
 
-
-
-
-
-
-
 ### Other changes
 
 **Documenting ERB #51**
@@ -1628,12 +1121,6 @@ Changelog of violations-lib.
 
 
 ## 1.72 (2018-11-14)
-
-
-
-
-
-
 
 ### Other changes
 
@@ -1645,12 +1132,6 @@ Changelog of violations-lib.
 
 ## 1.71 (2018-10-08)
 
-
-
-
-
-
-
 ### Other changes
 
 **Removing custom Optional**
@@ -1661,12 +1142,6 @@ Changelog of violations-lib.
 
 ## 1.70 (2018-10-08)
 
-
-
-
-
-
-
 ### Other changes
 
 **Making readme update work on Windows**
@@ -1676,12 +1151,6 @@ Changelog of violations-lib.
 
 
 ## 1.69 (2018-10-06)
-
-
-
-
-
-
 
 ### Other changes
 
@@ -1698,12 +1167,6 @@ Changelog of violations-lib.
 
 ## 1.67 (2018-09-23)
 
-
-
-
-
-
-
 ### Other changes
 
 **Automating reporters in readme**
@@ -1713,12 +1176,6 @@ Changelog of violations-lib.
 
 
 ## 1.66 (2018-09-23)
-
-
-
-
-
-
 
 ### Other changes
 
@@ -1745,12 +1202,6 @@ Changelog of violations-lib.
 
 ## 1.65 (2018-09-20)
 
-
-
-
-
-
-
 ### Other changes
 
 **Correcting Kotlin parsers #45**
@@ -1760,12 +1211,6 @@ Changelog of violations-lib.
 
 
 ## 1.64 (2018-09-20)
-
-
-
-
-
-
 
 ### Other changes
 
@@ -1777,12 +1222,6 @@ Changelog of violations-lib.
 
 ## 1.63 (2018-09-17)
 
-
-
-
-
-
-
 ### Other changes
 
 **fixed yamllint parser**
@@ -1792,12 +1231,6 @@ Changelog of violations-lib.
 
 
 ## 1.62 (2018-09-15)
-
-
-
-
-
-
 
 ### Other changes
 
@@ -1829,12 +1262,6 @@ Changelog of violations-lib.
 
 ## 1.61 (2018-09-12)
 
-
-
-
-
-
-
 ### Other changes
 
 **Removing Fliptables dependency**
@@ -1844,12 +1271,6 @@ Changelog of violations-lib.
 
 
 ## 1.60 (2018-09-12)
-
-
-
-
-
-
 
 ### Other changes
 
@@ -1866,12 +1287,6 @@ Changelog of violations-lib.
 
 ## 1.59 (2018-08-18)
 
-
-
-
-
-
-
 ### Other changes
 
 **Adding category to model #39**
@@ -1881,12 +1296,6 @@ Changelog of violations-lib.
 
 
 ## 1.58 (2018-07-27)
-
-
-
-
-
-
 
 ### Other changes
 
@@ -1898,12 +1307,6 @@ Changelog of violations-lib.
 
 ## 1.57 (2018-07-04)
 
-
-
-
-
-
-
 ### Other changes
 
 **GCC, ARM GCC and Doxygen #38**
@@ -1913,12 +1316,6 @@ Changelog of violations-lib.
 
 
 ## 1.56 (2018-07-04)
-
-
-
-
-
-
 
 ### Other changes
 
@@ -1939,12 +1336,6 @@ Changelog of violations-lib.
 
 
 ## 1.55 (2018-05-01)
-
-
-
-
-
-
 
 ### Other changes
 
@@ -2001,12 +1392,6 @@ Changelog of violations-lib.
 
 ## 1.52 (2018-01-14)
 
-
-
-
-
-
-
 ### Other changes
 
 **Google error-prone #10**
@@ -2017,12 +1402,6 @@ Changelog of violations-lib.
 
 ## 1.51 (2018-01-13)
 
-
-
-
-
-
-
 ### Other changes
 
 **Parameterize max width of reporter table #30**
@@ -2032,12 +1411,6 @@ Changelog of violations-lib.
 
 
 ## 1.50 (2017-12-31)
-
-
-
-
-
-
 
 ### Other changes
 
@@ -2055,12 +1428,6 @@ Changelog of violations-lib.
 
 ## 1.49 (2017-12-30)
 
-
-
-
-
-
-
 ### Other changes
 
 **Relocating to correct Java identifier**
@@ -2076,12 +1443,6 @@ Changelog of violations-lib.
 
 ## 1.48 (2017-12-25)
 
-
-
-
-
-
-
 ### Other changes
 
 **Limiting width of report messages**
@@ -2091,12 +1452,6 @@ Changelog of violations-lib.
 
 
 ## 1.47 (2017-12-25)
-
-
-
-
-
-
 
 ### Other changes
 
@@ -2113,12 +1468,6 @@ Changelog of violations-lib.
 
 ## 1.46 (2017-12-24)
 
-
-
-
-
-
-
 ### Other changes
 
 **Implementing reporter output**
@@ -2128,12 +1477,6 @@ Changelog of violations-lib.
 
 
 ## 1.44 (2017-12-22)
-
-
-
-
-
-
 
 ### Other changes
 
@@ -2145,12 +1488,6 @@ Changelog of violations-lib.
 
 
 ## 1.43 (2017-12-22)
-
-
-
-
-
-
 
 ### Other changes
 
@@ -2173,12 +1510,6 @@ Changelog of violations-lib.
 
 ## 1.40 (2017-12-22)
 
-
-
-
-
-
-
 ### Other changes
 
 **Fixing release script to include shadow jar**
@@ -2188,12 +1519,6 @@ Changelog of violations-lib.
 
 
 ## 1.39 (2017-12-22)
-
-
-
-
-
-
 
 ### Other changes
 
@@ -2206,12 +1531,6 @@ Changelog of violations-lib.
 
 
 ## 1.38 (2017-12-21)
-
-
-
-
-
-
 
 ### Other changes
 
@@ -2233,12 +1552,6 @@ Changelog of violations-lib.
 
 ## 1.36 (2017-12-03)
 
-
-
-
-
-
-
 ### Other changes
 
 **Cleaning up build scripts**
@@ -2248,12 +1561,6 @@ Changelog of violations-lib.
 
 
 ## 1.35 (2017-12-02)
-
-
-
-
-
-
 
 ### Other changes
 
@@ -2269,12 +1576,6 @@ Changelog of violations-lib.
 
 
 ## 1.34 (2017-12-01)
-
-
-
-
-
-
 
 ### Other changes
 
@@ -2301,12 +1602,6 @@ Changelog of violations-lib.
 
 ## 1.33 (2017-10-13)
 
-
-
-
-
-
-
 ### Other changes
 
 **Add Resharper WikiUrl to output message**
@@ -2316,12 +1611,6 @@ Changelog of violations-lib.
 
 
 ## 1.32 (2017-10-09)
-
-
-
-
-
-
 
 ### Other changes
 
@@ -2343,12 +1632,6 @@ Changelog of violations-lib.
 
 ## 1.31 (2017-09-01)
 
-
-
-
-
-
-
 ### Other changes
 
 **Allowing absent source in Checkstyle parser #23**
@@ -2358,12 +1641,6 @@ Changelog of violations-lib.
 
 
 ## 1.30 (2017-08-11)
-
-
-
-
-
-
 
 ### Other changes
 
@@ -2381,12 +1658,6 @@ Changelog of violations-lib.
 
 ## 1.29 (2017-07-14)
 
-
-
-
-
-
-
 ### Other changes
 
 **Adding withReporter in reporter API**
@@ -2396,12 +1667,6 @@ Changelog of violations-lib.
 
 
 ## 1.28 (2017-07-14)
-
-
-
-
-
-
 
 ### Other changes
 
@@ -2429,12 +1694,6 @@ Changelog of violations-lib.
 
 ## 1.27 (2017-04-11)
 
-
-
-
-
-
-
 ### Other changes
 
 **URL in Klocwork**
@@ -2449,12 +1708,6 @@ Changelog of violations-lib.
 
 
 ## 1.26 (2017-04-10)
-
-
-
-
-
-
 
 ### Other changes
 
@@ -2476,12 +1729,6 @@ Changelog of violations-lib.
 
 ## 1.25 (2017-03-30)
 
-
-
-
-
-
-
 ### Other changes
 
 **Klocwork parser**
@@ -2496,12 +1743,6 @@ Changelog of violations-lib.
 
 
 ## 1.24 (2017-03-17)
-
-
-
-
-
-
 
 ### Other changes
 
@@ -2522,12 +1763,6 @@ Changelog of violations-lib.
 
 
 ## 1.23 (2017-02-18)
-
-
-
-
-
-
 
 ### Other changes
 
@@ -2554,12 +1789,6 @@ Changelog of violations-lib.
 
 ## 1.22 (2017-02-16)
 
-
-
-
-
-
-
 ### Other changes
 
 **Finding findbugsmessages and correcting codenarc**
@@ -2576,12 +1805,6 @@ Changelog of violations-lib.
 
 
 ## 1.21 (2017-02-06)
-
-
-
-
-
-
 
 ### Other changes
 
@@ -2603,12 +1826,6 @@ Changelog of violations-lib.
 
 ## 1.20 (2016-12-21)
 
-
-
-
-
-
-
 ### Other changes
 
 **Renaming parse method in ViolationsParser**
@@ -2625,12 +1842,6 @@ Changelog of violations-lib.
 
 ## 1.19 (2016-12-16)
 
-
-
-
-
-
-
 ### Other changes
 
 **Correcting utility method for finding resource**
@@ -2641,12 +1852,6 @@ Changelog of violations-lib.
 
 ## 1.18 (2016-12-15)
 
-
-
-
-
-
-
 ### Other changes
 
 **Removing SLF4J dependency**
@@ -2656,12 +1861,6 @@ Changelog of violations-lib.
 
 
 ## 1.17 (2016-12-14)
-
-
-
-
-
-
 
 ### Other changes
 
@@ -2677,12 +1876,6 @@ Changelog of violations-lib.
 
 
 ## 1.16 (2016-11-05)
-
-
-
-
-
-
 
 ### Other changes
 
@@ -2709,12 +1902,6 @@ Changelog of violations-lib.
 
 ## 1.15 (2016-11-03)
 
-
-
-
-
-
-
 ### Other changes
 
 **Exposing parser in reporter**
@@ -2725,12 +1912,6 @@ Changelog of violations-lib.
 
 ## 1.14 (2016-11-03)
 
-
-
-
-
-
-
 ### Other changes
 
 **Letting the reporters parse strings, not files**
@@ -2740,12 +1921,6 @@ Changelog of violations-lib.
 
 
 ## 1.13 (2016-10-26)
-
-
-
-
-
-
 
 ### Other changes
 
@@ -2758,12 +1933,6 @@ Changelog of violations-lib.
 
 ## 1.12 (2016-10-25)
 
-
-
-
-
-
-
 ### Other changes
 
 **Changing rule format in PyLint to CODE(codeName)**
@@ -2774,12 +1943,6 @@ Changelog of violations-lib.
 
 ## 1.11 (2016-10-24)
 
-
-
-
-
-
-
 ### Other changes
 
 **PyLint parser**
@@ -2789,12 +1952,6 @@ Changelog of violations-lib.
 
 
 ## 1.10 (2016-10-03)
-
-
-
-
-
-
 
 ### Other changes
 
@@ -2811,12 +1968,6 @@ Changelog of violations-lib.
 
 
 ## 1.9 (2016-10-01)
-
-
-
-
-
-
 
 ### Other changes
 
@@ -2849,12 +2000,6 @@ Changelog of violations-lib.
 
 ## 1.8 (2016-04-27)
 
-
-
-
-
-
-
 ### Other changes
 
 **Updating README.md**
@@ -2876,12 +2021,6 @@ Changelog of violations-lib.
 
 ## 1.7 (2016-04-23)
 
-
-
-
-
-
-
 ### Other changes
 
 **Making Violation class serializable**
@@ -2896,12 +2035,6 @@ Changelog of violations-lib.
 
 
 ## 1.6 (2016-04-07)
-
-
-
-
-
-
 
 ### Other changes
 
@@ -2934,12 +2067,6 @@ Changelog of violations-lib.
 
 ## 1.5 (2016-03-06)
 
-
-
-
-
-
-
 ### Other changes
 
 **Support PerlCritic and XMLLint #3**
@@ -2970,12 +2097,6 @@ Changelog of violations-lib.
 
 ## 1.4 (2016-03-05)
 
-
-
-
-
-
-
 ### Other changes
 
 **Adding possibility to set findbugs messages**
@@ -2985,12 +2106,6 @@ Changelog of violations-lib.
 
 
 ## 1.3 (2016-03-04)
-
-
-
-
-
-
 
 ### Other changes
 
@@ -3002,12 +2117,6 @@ Changelog of violations-lib.
 
 
 ## 1.2 (2016-03-04)
-
-
-
-
-
-
 
 ### Other changes
 
@@ -3029,12 +2138,6 @@ Changelog of violations-lib.
 
 ## 1.1 (2016-02-28)
 
-
-
-
-
-
-
 ### Other changes
 
 **Adding accumulated builder**
@@ -3046,12 +2149,6 @@ Changelog of violations-lib.
 
 
 ## 1.0 (2016-02-21)
-
-
-
-
-
-
 
 ### Other changes
 
