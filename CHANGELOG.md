@@ -2,6 +2,20 @@
 
 Changelog of violations-lib.
 
+## 1.152.0 (2022-08-25)
+
+### Features
+
+-  **SARIF**  parsing notifications from invocations ([08aab](https://github.com/tomasbjerre/violations-lib/commit/08aab8a36cb89b1) Tomas Bjerre)  [#154](https://github.com/tomasbjerre/violations-lib/issues/154)  
+
+### Other changes
+
+**Fix typo in test**
+
+
+[e8393](https://github.com/tomasbjerre/violations-lib/commit/e8393df548b0946) Róbert Papp *2022-08-24 18:35:29*
+
+
 ## 1.151.0 (2022-08-24)
 
 ### Features
