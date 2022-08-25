@@ -27,7 +27,7 @@ public class SarifParserTest {
             .violations();
 
     assertThat(actual) //
-        .hasSize(22);
+        .hasSize(29);
   }
 
   @Test
@@ -246,5 +246,29 @@ public class SarifParserTest {
         .isEqualTo(SEVERITY.WARN);
     assertThat(violation5.getCategory()) //
         .isEqualTo("Performance");
+  }
+
+  @Test
+  public void testThatViolationsCanBeParsed_with_tool_configuration_notifications() {
+    final String rootFolder = getRootFolder();
+
+    final Set<Violation> actual =
+        violationsApi() //
+            .withPattern(".*/sarif/with-toolConfigurationNotifications.json$") //
+            .inFolder(rootFolder) //
+            .findAll(SARIF) //
+            .violations();
+
+    assertThat(actual) //
+        .hasSize(1);
+    final List<Violation> arrayList = new ArrayList<>(actual);
+
+    final Violation violation0 = arrayList.get(0);
+    assertThat(violation0.getMessage()) //
+        .isEqualTo("Cannot copy from non-file URI: http://example.org/image.png");
+    assertThat(violation0.getFile()) //
+        .isEqualTo("config.xml");
+    assertThat(violation0.getSeverity()) //
+        .isEqualTo(SEVERITY.WARN);
   }
 }

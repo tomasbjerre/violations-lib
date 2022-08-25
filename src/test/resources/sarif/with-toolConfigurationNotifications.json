@@ -1,0 +1,75 @@
+{
+  "$schema": "https://json.schemastore.org/sarif-2.1.0.json",
+  "version": "2.1.0",
+  "runs": [
+    {
+      "tool": {
+        "driver": {
+          "name": "demo",
+          "version": "1.0.42",
+          "rules": [],
+          "notifications": [
+            {
+              "id": "DE0019",
+              "name": "CannotCopyFromNonFileUri",
+              "defaultConfiguration": {
+                "level": "warning"
+              }
+            }
+          ]
+        }
+      },
+      "invocations": [
+        {
+          "toolConfigurationNotifications": [
+            {
+              "descriptor": {
+                "index": 0
+              },
+              "locations": [
+                {
+                  "physicalLocation": {
+                    "artifactLocation": {
+                      "uri": "config.xml",
+                      "uriBaseId": "CWD"
+                    },
+                    "region": {
+                      "startLine": 290,
+                      "startColumn": 17
+                    }
+                  }
+                },
+                {
+                  "physicalLocation": {
+                    "artifactLocation": {
+                      "uri": "http://example.org/image.png"
+                    }
+                  }
+                }
+              ],
+              "message": {
+                "text": "Cannot copy from non-file URI: http://example.org/image.png"
+              },
+              "level": "warning",
+              "timeUtc": "2022-07-18T17:54:13.412202Z"
+            }
+          ],
+          "executionSuccessful": true
+        }
+      ],
+      "originalUriBaseIds": {
+        "CWD": {
+          "uri": "file:///home/demo/"
+        }
+      },
+      "specialLocations": {
+        "displayBase": {
+          "uri": "",
+          "uriBaseId": "CWD"
+        }
+      },
+      "results": [],
+      "columnKind": "utf16CodeUnits"
+    }
+  ]
+}
