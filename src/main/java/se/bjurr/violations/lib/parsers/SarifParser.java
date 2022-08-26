@@ -35,6 +35,7 @@ import se.bjurr.violations.lib.model.generated.sarif.Result;
 import se.bjurr.violations.lib.model.generated.sarif.Result.Level;
 import se.bjurr.violations.lib.model.generated.sarif.Run;
 import se.bjurr.violations.lib.model.generated.sarif.SarifSchema;
+import se.bjurr.violations.lib.model.generated.sarif.Suppression;
 import se.bjurr.violations.lib.model.generated.sarif.ToolComponent;
 import se.bjurr.violations.lib.model.generated.sarif.ToolComponentReference;
 import se.bjurr.violations.lib.reports.Parser;
@@ -48,6 +49,7 @@ public class SarifParser implements ViolationsParser {
   }
 
   public static final String SARIF_RESULTS_CORRELATION_GUID = "correlationGuid";
+  public static final String SARIF_RESULTS_SUPRESSED = "supressed";
 
   public class ParsedPhysicalLocation {
     public String regionMessage;
@@ -149,6 +151,7 @@ public class SarifParser implements ViolationsParser {
       if (!isNullOrEmpty(correlationGuid)) {
         specifics.put(SARIF_RESULTS_CORRELATION_GUID, correlationGuid);
       }
+      specifics.put(SARIF_RESULTS_SUPRESSED, this.isSuppressed(result) ? "true" : "false");
       final ReportingDescriptor reportingDescriptor =
           this.findReportingDescriptor(run, result, DescriptorElementOf.RULES).orElse(null);
       final String category = this.getCategory(reportingDescriptor);
@@ -192,6 +195,18 @@ public class SarifParser implements ViolationsParser {
       }
     }
     return violations;
+  }
+
+  private boolean isSuppressed(final Result result) {
+    final List<Suppression> supressions =
+        result.getSuppressions().stream()
+            .filter(
+                (it) -> {
+                  return it.getState() != Suppression.State.UNDER_REVIEW
+                      && it.getState() != Suppression.State.REJECTED;
+                })
+            .collect(Collectors.toList());
+    return !supressions.isEmpty();
   }
 
   private Set<Violation> parseNotifications(final Run run) {

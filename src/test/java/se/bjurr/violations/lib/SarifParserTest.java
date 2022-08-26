@@ -12,6 +12,7 @@ import java.util.stream.Collectors;
 import org.junit.Test;
 import se.bjurr.violations.lib.model.SEVERITY;
 import se.bjurr.violations.lib.model.Violation;
+import se.bjurr.violations.lib.parsers.SarifParser;
 
 public class SarifParserTest {
 
@@ -192,6 +193,8 @@ public class SarifParserTest {
         .isEqualTo(SEVERITY.WARN);
     assertThat(violation0.getCategory()) //
         .isEqualTo("Design");
+    assertThat(violation0.getSpecifics().get(SarifParser.SARIF_RESULTS_SUPRESSED)) //
+        .isEqualTo("false");
 
     final Violation violation1 = arrayList.get(1);
     assertThat(violation1.getMessage()) //
@@ -203,6 +206,8 @@ public class SarifParserTest {
         .isEqualTo(SEVERITY.WARN);
     assertThat(violation1.getCategory()) //
         .isEqualTo("Usage");
+    assertThat(violation1.getSpecifics().get(SarifParser.SARIF_RESULTS_SUPRESSED)) //
+        .isEqualTo("false");
 
     final Violation violation2 = arrayList.get(2);
     assertThat(violation2.getMessage()) //
@@ -214,6 +219,8 @@ public class SarifParserTest {
         .isEqualTo(SEVERITY.WARN);
     assertThat(violation2.getCategory()) //
         .isEqualTo("Globalization");
+    assertThat(violation2.getSpecifics().get(SarifParser.SARIF_RESULTS_SUPRESSED)) //
+        .isEqualTo("false");
 
     final Violation violation3 = arrayList.get(3);
     assertThat(violation3.getMessage()) //
@@ -225,6 +232,8 @@ public class SarifParserTest {
         .isEqualTo(SEVERITY.WARN);
     assertThat(violation3.getCategory()) //
         .isEqualTo("Globalization");
+    assertThat(violation3.getSpecifics().get(SarifParser.SARIF_RESULTS_SUPRESSED)) //
+        .isEqualTo("false");
 
     final Violation violation4 = arrayList.get(4);
     assertThat(violation4.getMessage()) //
@@ -236,6 +245,8 @@ public class SarifParserTest {
         .isEqualTo(SEVERITY.WARN);
     assertThat(violation4.getCategory()) //
         .isEqualTo("Performance");
+    assertThat(violation4.getSpecifics().get(SarifParser.SARIF_RESULTS_SUPRESSED)) //
+        .isEqualTo("true");
 
     final Violation violation5 = arrayList.get(5);
     assertThat(violation5.getMessage()) //
