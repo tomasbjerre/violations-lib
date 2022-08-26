@@ -16,7 +16,6 @@ import java.util.Map;
 import java.util.Optional;
 import java.util.Set;
 import java.util.TreeSet;
-import java.util.function.Function;
 import java.util.stream.Collectors;
 import se.bjurr.violations.lib.ViolationsLogger;
 import se.bjurr.violations.lib.model.SEVERITY;
@@ -31,14 +30,23 @@ import se.bjurr.violations.lib.model.generated.sarif.PropertyBag;
 import se.bjurr.violations.lib.model.generated.sarif.Region;
 import se.bjurr.violations.lib.model.generated.sarif.ReportingConfiguration;
 import se.bjurr.violations.lib.model.generated.sarif.ReportingDescriptor;
+import se.bjurr.violations.lib.model.generated.sarif.ReportingDescriptorReference;
 import se.bjurr.violations.lib.model.generated.sarif.Result;
 import se.bjurr.violations.lib.model.generated.sarif.Result.Level;
 import se.bjurr.violations.lib.model.generated.sarif.Run;
 import se.bjurr.violations.lib.model.generated.sarif.SarifSchema;
+import se.bjurr.violations.lib.model.generated.sarif.ToolComponent;
+import se.bjurr.violations.lib.model.generated.sarif.ToolComponentReference;
 import se.bjurr.violations.lib.reports.Parser;
 import se.bjurr.violations.lib.util.Utils;
 
 public class SarifParser implements ViolationsParser {
+  /** 3.52.3 */
+  public enum DescriptorElementOf {
+    RULES,
+    NOTIFICATIONS
+  }
+
   public static final String SARIF_RESULTS_CORRELATION_GUID = "correlationGuid";
 
   public class ParsedPhysicalLocation {
@@ -127,7 +135,6 @@ public class SarifParser implements ViolationsParser {
 
   private Set<Violation> parseResults(final Run run) {
     final Set<Violation> violations = new TreeSet<>();
-    final Map<String, ReportingDescriptor> rulesById = this.getRulesById(run);
     final String reporter = this.getReporter(run);
     for (final Result result : run.getResults()) {
       final String ruleId = result.getRuleId();
@@ -143,8 +150,8 @@ public class SarifParser implements ViolationsParser {
       if (!isNullOrEmpty(correlationGuid)) {
         specifics.put(SARIF_RESULTS_CORRELATION_GUID, correlationGuid);
       }
-
-      final ReportingDescriptor reportingDescriptor = rulesById.get(ruleId);
+      final ReportingDescriptor reportingDescriptor =
+          this.findReportingDescriptor(run, result, DescriptorElementOf.RULES).orElse(null);
       final String category = this.getCategory(reportingDescriptor);
 
       final Optional<String> helpTextOpt = this.findHelpText(reportingDescriptor);
@@ -189,12 +196,18 @@ public class SarifParser implements ViolationsParser {
 
   private Set<Violation> parseNotifications(final Run run) {
     final Set<Violation> violations = new TreeSet<>();
-    final List<ReportingDescriptor> notifications = this.getNotifications(run);
+    this.getNotifications(run);
     final String reporter = this.getReporter(run);
     for (final Invocation invocation : run.getInvocations()) {
       for (final Notification notification : invocation.getToolConfigurationNotifications()) {
+        final ReportingDescriptorReference ref = notification.getAssociatedRule();
+        final Integer ruleIndex = this.getRuleIndex(ref);
+        final String ruleId = null;
         final ReportingDescriptor reportingDescriptor =
-            this.getReportingDescriptor(notifications, notification);
+            this.findReportingDescriptor(
+                    run, DescriptorElementOf.NOTIFICATIONS, ref, ruleIndex, ruleId)
+                .orElse(null);
+
         final String reportingDescriptorName = this.getName(reportingDescriptor);
         final SEVERITY severity = this.toSeverity(notification.getLevel(), reportingDescriptor);
         final List<Location> locations = this.filter(notification.getLocations());
@@ -221,13 +234,18 @@ public class SarifParser implements ViolationsParser {
                     .build());
           }
         } else {
+          final String message =
+              this.extractMessage(notification.getMessage(), reportingDescriptor);
+          if (message.isEmpty()) {
+            continue;
+          }
           violations.add(
               violationBuilder()
                   .setParser(Parser.SARIF)
                   .setFile(Violation.NO_FILE)
                   .setStartLine(Violation.NO_LINE)
                   .setRule(reportingDescriptorName)
-                  .setMessage(this.extractMessage(notification.getMessage(), reportingDescriptor))
+                  .setMessage(message)
                   .setSeverity(severity)
                   .setReporter(reporter)
                   .build());
@@ -235,6 +253,17 @@ public class SarifParser implements ViolationsParser {
       }
     }
     return violations;
+  }
+
+  private Integer getRuleIndex(final ReportingDescriptorReference ref) {
+    Integer ruleIndex = null;
+    if (ref != null) {
+      ruleIndex = ref.getIndex();
+    }
+    if (ruleIndex == null || ruleIndex == -1) {
+      return null;
+    }
+    return ruleIndex;
   }
 
   private String getName(final ReportingDescriptor reportingDescriptor) {
@@ -293,18 +322,6 @@ public class SarifParser implements ViolationsParser {
                   && it.getPhysicalLocation().getRegion().getStartLine() != null;
             })
         .collect(Collectors.toList());
-  }
-
-  private ReportingDescriptor getReportingDescriptor(
-      final List<ReportingDescriptor> notifications, final Notification notification) {
-    if (notification.getDescriptor() == null) {
-      return null;
-    }
-    final Integer notificationIndex = notification.getDescriptor().getIndex();
-    if (notificationIndex == null) {
-      return null;
-    }
-    return notifications.get(notificationIndex);
   }
 
   private String toMessage(
@@ -392,16 +409,6 @@ public class SarifParser implements ViolationsParser {
     return "";
   }
 
-  private Map<String, ReportingDescriptor> getRulesById(final Run run) {
-    if (run.getTool() != null
-        && run.getTool().getDriver() != null
-        && run.getTool().getDriver().getRules() != null) {
-      return run.getTool().getDriver().getRules().stream()
-          .collect(Collectors.toMap(ReportingDescriptor::getId, Function.identity()));
-    }
-    return new HashMap<>();
-  }
-
   private Optional<String> findHelpText(final ReportingDescriptor r) {
     if (r == null) {
       return Optional.empty();
@@ -460,5 +467,116 @@ public class SarifParser implements ViolationsParser {
       }
     }
     return Optional.empty();
+  }
+
+  private Optional<ReportingDescriptor> findReportingDescriptor(
+      final Run run, final Result result, final DescriptorElementOf lookIn) {
+    final ReportingDescriptorReference ref = result.getRule();
+    final Integer ruleIndex = this.findRuleIndex(result, ref);
+    final String ruleId = result.getRuleId();
+    return this.findReportingDescriptor(run, lookIn, ref, ruleIndex, ruleId);
+  }
+
+  private Optional<ReportingDescriptor> findReportingDescriptor(
+      final Run run,
+      final DescriptorElementOf lookIn,
+      final ReportingDescriptorReference ref,
+      final Integer ruleIndex,
+      final String ruleId) {
+    final ToolComponent tool = this.findToolComponent(run, ref);
+    if (tool == null) {
+      return Optional.empty();
+    }
+    if (ruleIndex != null) {
+      return Optional.of(this.getReportingDescriptorByIndex(tool, ruleIndex, lookIn));
+    }
+
+    if (ref != null && ref.getGuid() != null) {
+      return this.findReportingDescriptorByGui(tool, ref.getGuid(), lookIn);
+    }
+    if (ruleId != null) {
+      return this.findReportingDescriptorByRuleId(tool, ruleId, lookIn);
+    }
+    return Optional.empty();
+  }
+
+  private Integer findRuleIndex(final Result result, final ReportingDescriptorReference ref) {
+    Integer ruleIndex = result.getRuleIndex();
+    if (ruleIndex == -1) {
+      ruleIndex = null;
+    }
+    if (ruleIndex == null && ref != null) {
+      ruleIndex = ref.getIndex();
+    }
+    return ruleIndex;
+  }
+
+  private ToolComponent findToolComponent(final Run run, final ReportingDescriptorReference ref) {
+    if (run.getTool() == null) {
+      return null;
+    }
+    if (ref == null) {
+      return run.getTool().getDriver();
+    }
+    final ToolComponentReference toolRef = ref.getToolComponent();
+    if (toolRef.getGuid() != null) {
+      return this.getToolComponentByGui(run, toolRef.getGuid());
+    }
+    if (toolRef.getIndex() != null) {
+      return this.getToolComponentByIndex(run, toolRef.getIndex());
+    }
+    return run.getTool().getDriver();
+  }
+
+  private ReportingDescriptor getReportingDescriptorByIndex(
+      final ToolComponent tool, final Integer index, final DescriptorElementOf lookIn) {
+    if (lookIn == DescriptorElementOf.RULES) {
+      return new ArrayList<>(tool.getRules()).get(index);
+    }
+    if (lookIn == DescriptorElementOf.NOTIFICATIONS) {
+      return new ArrayList<>(tool.getNotifications()).get(index);
+    }
+    throw new IllegalStateException(lookIn + " cannot find ReportingDescriptor");
+  }
+
+  private Optional<ReportingDescriptor> findReportingDescriptorByGui(
+      final ToolComponent tool, final String guid, final DescriptorElementOf lookIn) {
+    if (lookIn == DescriptorElementOf.RULES) {
+      return tool.getRules().stream()
+          .filter((it) -> it.getGuid() != null && it.getGuid().equals(guid))
+          .findFirst();
+    }
+    if (lookIn == DescriptorElementOf.NOTIFICATIONS) {
+      return tool.getNotifications().stream()
+          .filter((it) -> it.getGuid() != null && it.getGuid().equals(guid))
+          .findFirst();
+    }
+    return Optional.empty();
+  }
+
+  private Optional<ReportingDescriptor> findReportingDescriptorByRuleId(
+      final ToolComponent tool, final String ruleId, final DescriptorElementOf lookIn) {
+    if (lookIn == DescriptorElementOf.RULES) {
+      return tool.getRules().stream()
+          .filter((it) -> it.getId() != null && it.getId().equals(ruleId))
+          .findFirst();
+    }
+    if (lookIn == DescriptorElementOf.NOTIFICATIONS) {
+      return tool.getNotifications().stream()
+          .filter((it) -> it.getId() != null && it.getId().equals(ruleId))
+          .findFirst();
+    }
+    throw new IllegalStateException(lookIn + " cannot find ReportingDescriptor");
+  }
+
+  private ToolComponent getToolComponentByIndex(final Run run, final Integer index) {
+    return new ArrayList<>(run.getTool().getExtensions()).get(index);
+  }
+
+  private ToolComponent getToolComponentByGui(final Run run, final String guid) {
+    return run.getTool().getExtensions().stream()
+        .filter((it) -> it.getGuid() != null && it.getGuid().equals(guid))
+        .findFirst()
+        .get();
   }
 }

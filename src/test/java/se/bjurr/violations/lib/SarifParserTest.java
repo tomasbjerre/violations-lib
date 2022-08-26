@@ -27,7 +27,7 @@ public class SarifParserTest {
             .violations();
 
     assertThat(actual) //
-        .hasSize(54);
+        .hasSize(53);
   }
 
   @Test
