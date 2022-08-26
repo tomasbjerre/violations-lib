@@ -19,27 +19,25 @@ public class SarifParserTest {
   public void testThatViolationsCanBeParsed_smoke() {
     final String rootFolder = getRootFolder();
 
-    final Set<Violation> actual =
-        violationsApi() //
-            .withPattern(".*/sarif/samples/.*(sarif|json)$") //
-            .inFolder(rootFolder) //
-            .findAll(SARIF) //
-            .violations();
+    final Set<Violation> actual = violationsApi() //
+        .withPattern(".*/sarif/samples/.*(sarif|json)$") //
+        .inFolder(rootFolder) //
+        .findAll(SARIF) //
+        .violations();
 
     assertThat(actual) //
-        .hasSize(29);
+        .hasSize(54);
   }
 
   @Test
   public void testThatViolationsCanBeParsed_simple_example() {
     final String rootFolder = getRootFolder();
 
-    final Set<Violation> actual =
-        violationsApi() //
-            .withPattern(".*/sarif/.*/simple-example.sarif$") //
-            .inFolder(rootFolder) //
-            .findAll(SARIF) //
-            .violations();
+    final Set<Violation> actual = violationsApi() //
+        .withPattern(".*/sarif/.*/simple-example.sarif$") //
+        .inFolder(rootFolder) //
+        .findAll(SARIF) //
+        .violations();
 
     assertThat(actual) //
         .hasSize(1);
@@ -64,25 +62,25 @@ public class SarifParserTest {
   public void testThatViolationsCanBeParsed_result_line_nr() {
     final String rootFolder = getRootFolder();
 
-    final Set<Violation> actual =
-        violationsApi() //
-            .withPattern(".*/sarif/result_line_nr.json$") //
-            .inFolder(rootFolder) //
-            .findAll(SARIF) //
-            .violations();
+    final Set<Violation> actual = violationsApi() //
+        .withPattern(".*/sarif/result_line_nr.json$") //
+        .inFolder(rootFolder) //
+        .findAll(SARIF) //
+        .violations();
 
     assertThat(actual) //
         .hasSize(443);
 
     final Violation first = new ArrayList<>(actual).get(0);
     assertThat(first.getMessage()) //
-        .isEqualTo("Number of Direct Recursions");
+        .isEqualTo(
+            "AP_CG_CYCLE: Number of Recursions\n\nFor additional help see: Number of Recursions\n\nThis metric shows the number of recursions, both direct and indirect.");
     assertThat(first.getFile()) //
         .isEqualTo(Violation.NO_FILE);
     assertThat(first.getSeverity()) //
         .isEqualTo(SEVERITY.ERROR);
     assertThat(first.getRule()) //
-        .isEqualTo("AP_CG_DIRECT_CYCLE");
+        .isEqualTo("AP_CG_CYCLE");
     assertThat(first.getStartLine()) //
         .isEqualTo(Violation.NO_LINE);
     assertThat(first.getReporter()).isEqualTo("Polyspace");
@@ -109,12 +107,11 @@ public class SarifParserTest {
   public void testThatViolationsCanBeParsed_securityscan() {
     final String rootFolder = getRootFolder();
 
-    final Set<Violation> actual =
-        violationsApi() //
-            .withPattern(".*/sarif/security-scan.json$") //
-            .inFolder(rootFolder) //
-            .findAll(SARIF) //
-            .violations();
+    final Set<Violation> actual = violationsApi() //
+        .withPattern(".*/sarif/security-scan.json$") //
+        .inFolder(rootFolder) //
+        .findAll(SARIF) //
+        .violations();
 
     assertThat(actual) //
         .hasSize(51);
@@ -132,11 +129,10 @@ public class SarifParserTest {
     assertThat(first.getSeverity()) //
         .isEqualTo(SEVERITY.WARN);
 
-    final String severities =
-        actual.stream()
-            .map(Violation::getSeverity)
-            .map(it -> it.name())
-            .collect(Collectors.joining(","));
+    final String severities = actual.stream()
+        .map(Violation::getSeverity)
+        .map(it -> it.name())
+        .collect(Collectors.joining(","));
     assertThat(severities) //
         .isEqualTo(
             "WARN,WARN,ERROR,WARN,WARN,WARN,WARN,WARN,WARN,WARN,WARN,WARN,WARN,WARN,INFO,WARN,WARN,WARN,WARN,WARN,WARN,WARN,WARN,WARN,WARN,WARN,WARN,WARN,INFO,WARN,WARN,WARN,WARN,WARN,WARN,WARN,ERROR,WARN,WARN,WARN,WARN,WARN,WARN,WARN,WARN,WARN,WARN,WARN,INFO,WARN,ERROR");
@@ -146,12 +142,11 @@ public class SarifParserTest {
   public void testThatViolationsCanBeParsed_without_location() {
     final String rootFolder = getRootFolder();
 
-    final Set<Violation> actual =
-        violationsApi() //
-            .withPattern(".*/sarif/without-location.json$") //
-            .inFolder(rootFolder) //
-            .findAll(SARIF) //
-            .violations();
+    final Set<Violation> actual = violationsApi() //
+        .withPattern(".*/sarif/without-location.json$") //
+        .inFolder(rootFolder) //
+        .findAll(SARIF) //
+        .violations();
 
     assertThat(actual) //
         .hasSize(1);
@@ -159,7 +154,7 @@ public class SarifParserTest {
 
     final Violation first = arrayList.get(0);
     assertThat(first.getMessage()) //
-        .isEqualTo("Rule id 2 title");
+        .isEqualTo("rule.id.2: Rule id 2 title\n\nFor additional help see: Rule id 2 title");
     assertThat(first.getFile()) //
         .isEqualTo(Violation.NO_FILE);
     assertThat(first.getSeverity()) //
@@ -170,12 +165,11 @@ public class SarifParserTest {
   public void testThatViolationsCanBeParsed_with_category() {
     final String rootFolder = getRootFolder();
 
-    final Set<Violation> actual =
-        violationsApi() //
-            .withPattern(".*/sarif/with-category.json$") //
-            .inFolder(rootFolder) //
-            .findAll(SARIF) //
-            .violations();
+    final Set<Violation> actual = violationsApi() //
+        .withPattern(".*/sarif/with-category.json$") //
+        .inFolder(rootFolder) //
+        .findAll(SARIF) //
+        .violations();
 
     assertThat(actual) //
         .hasSize(6);
@@ -184,7 +178,7 @@ public class SarifParserTest {
     final Violation violation0 = arrayList.get(0);
     assertThat(violation0.getMessage()) //
         .isEqualTo(
-            "The Common Language Specification (CLS) defines naming restrictions, data types, and rules to which assemblies must conform if they will be used across programming languages. Good design dictates that all assemblies explicitly indicate CLS compliance by using CLSCompliantAttribute . If this attribute is not present on an assembly, the assembly is not compliant.");
+            "CA1014\n\nMark assemblies with CLSCompliant\n\nFor additional help see: The Common Language Specification (CLS) defines naming restrictions, data types, and rules to which assemblies must conform if they will be used across programming languages. Good design dictates that all assemblies explicitly indicate CLS compliance by using CLSCompliantAttribute . If this attribute is not present on an assembly, the assembly is not compliant.");
     assertThat(violation0.getFile()) //
         .isEqualTo(Violation.NO_FILE);
     assertThat(violation0.getSeverity()) //
@@ -252,12 +246,11 @@ public class SarifParserTest {
   public void testThatViolationsCanBeParsed_with_tool_configuration_notifications() {
     final String rootFolder = getRootFolder();
 
-    final Set<Violation> actual =
-        violationsApi() //
-            .withPattern(".*/sarif/with-toolConfigurationNotifications.json$") //
-            .inFolder(rootFolder) //
-            .findAll(SARIF) //
-            .violations();
+    final Set<Violation> actual = violationsApi() //
+        .withPattern(".*/sarif/with-toolConfigurationNotifications.json$") //
+        .inFolder(rootFolder) //
+        .findAll(SARIF) //
+        .violations();
 
     assertThat(actual) //
         .hasSize(1);
@@ -270,5 +263,19 @@ public class SarifParserTest {
         .isEqualTo("config.xml");
     assertThat(violation0.getSeverity()) //
         .isEqualTo(SEVERITY.WARN);
+  }
+
+  @Test
+  public void testThatViolationsCanBeParsed_with_duplicate_rule_ids() {
+    final String rootFolder = getRootFolder();
+
+    final Set<Violation> actual = violationsApi() //
+        .withPattern(".*/sarif/duplicate-rule-ids.json$") //
+        .inFolder(rootFolder) //
+        .findAll(SARIF) //
+        .violations();
+
+    assertThat(actual) //
+        .hasSize(3);
   }
 }

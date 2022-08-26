@@ -39,6 +39,7 @@ import se.bjurr.violations.lib.reports.Parser;
 import se.bjurr.violations.lib.util.Utils;
 
 public class SarifParser implements ViolationsParser {
+  public static final String SARIF_RESULTS_CORRELATION_GUID = "correlationGuid";
 
   public class ParsedPhysicalLocation {
     public String regionMessage;
@@ -135,6 +136,13 @@ public class SarifParser implements ViolationsParser {
         continue;
       }
       final Level level = result.getLevel();
+      // Multiple instances of the same rule id / message / location are not added to
+      // the violations collection. Parse unique identifier fields if they exist
+      final Map<String, String> specifics = new HashMap<>();
+      final String correlationGuid = result.getCorrelationGuid();
+      if (!isNullOrEmpty(correlationGuid)) {
+        specifics.put(SARIF_RESULTS_CORRELATION_GUID, correlationGuid);
+      }
 
       final ReportingDescriptor reportingDescriptor = rulesById.get(ruleId);
       final String category = this.getCategory(reportingDescriptor);
@@ -157,19 +165,23 @@ public class SarifParser implements ViolationsParser {
                   .setSeverity(this.toSeverity(level, reportingDescriptor))
                   .setReporter(reporter)
                   .setCategory(category)
+                  .setSpecifics(specifics)
                   .build());
         }
       } else {
+        final String fullMessage =
+              this.toMessage(message, helpTextOpt, reportingDescriptor);
         violations.add(
             violationBuilder()
                 .setParser(Parser.SARIF)
                 .setFile(Violation.NO_FILE)
                 .setStartLine(Violation.NO_LINE)
                 .setRule(ruleId)
-                .setMessage(helpTextOpt.orElse(ruleId))
+                .setMessage(fullMessage)
                 .setSeverity(this.toSeverity(level, reportingDescriptor))
                 .setReporter(reporter)
                 .setCategory(category)
+                .setSpecifics(specifics)
                 .build());
       }
     }
@@ -310,6 +322,34 @@ public class SarifParser implements ViolationsParser {
       fullMessage.append("\n\nFor additional help see: ").append(helpTextOpt.get());
     }
     return fullMessage.toString().trim();
+  }
+
+  private String toMessage(
+      final Message message,
+      final Optional<String> helpTextOpt,
+      final ReportingDescriptor reportingDescriptor) {
+    final StringBuilder fullMessage = new StringBuilder();
+    if(reportingDescriptor != null && reportingDescriptor.getId() != null) {
+      fullMessage.append(reportingDescriptor.getId());
+    }
+    if (reportingDescriptor != null && reportingDescriptor.getName() != null && !isNullOrEmpty(reportingDescriptor.getName())) {
+      fullMessage.append(": ").append(reportingDescriptor.getName());
+    }
+    if (reportingDescriptor != null && reportingDescriptor.getShortDescription() != null
+        && !isNullOrEmpty(reportingDescriptor.getShortDescription().getMarkdown())) {
+      fullMessage.append("\n\n").append(reportingDescriptor.getShortDescription().getMarkdown());
+    } else if (reportingDescriptor != null && reportingDescriptor.getShortDescription() != null
+        && !isNullOrEmpty(reportingDescriptor.getShortDescription().getText())) {
+      fullMessage.append("\n\n").append(reportingDescriptor.getShortDescription().getText());
+    }
+    if (helpTextOpt.isPresent()) {
+      fullMessage.append("\n\nFor additional help see: ").append(helpTextOpt.get());
+    }
+    final String messageText = this.extractMessage(message, null);
+    if (fullMessage.indexOf(messageText) < 0) {
+      fullMessage.append("\n\n").append(messageText);
+    }
+    return fullMessage.toString();
   }
 
   private ParsedPhysicalLocation parsePhysicalLocation(
