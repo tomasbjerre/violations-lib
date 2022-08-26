@@ -3,11 +3,6 @@ package se.bjurr.violations.lib.parsers;
 import static se.bjurr.violations.lib.model.Violation.violationBuilder;
 import static se.bjurr.violations.lib.util.Utils.isNullOrEmpty;
 
-import com.google.gson.GsonBuilder;
-import com.google.gson.JsonDeserializationContext;
-import com.google.gson.JsonDeserializer;
-import com.google.gson.JsonElement;
-import com.google.gson.JsonParseException;
 import java.lang.reflect.Type;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -17,6 +12,13 @@ import java.util.Optional;
 import java.util.Set;
 import java.util.TreeSet;
 import java.util.stream.Collectors;
+
+import com.google.gson.GsonBuilder;
+import com.google.gson.JsonDeserializationContext;
+import com.google.gson.JsonDeserializer;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonParseException;
+
 import se.bjurr.violations.lib.ViolationsLogger;
 import se.bjurr.violations.lib.model.SEVERITY;
 import se.bjurr.violations.lib.model.Violation;
@@ -49,7 +51,7 @@ public class SarifParser implements ViolationsParser {
   }
 
   public static final String SARIF_RESULTS_CORRELATION_GUID = "correlationGuid";
-  public static final String SARIF_RESULTS_SUPRESSED = "supressed";
+  public static final String SARIF_RESULTS_SUPPRESSED = "suppressed";
 
   public class ParsedPhysicalLocation {
     public String regionMessage;
@@ -151,7 +153,7 @@ public class SarifParser implements ViolationsParser {
       if (!isNullOrEmpty(correlationGuid)) {
         specifics.put(SARIF_RESULTS_CORRELATION_GUID, correlationGuid);
       }
-      specifics.put(SARIF_RESULTS_SUPRESSED, this.isSuppressed(result) ? "true" : "false");
+      specifics.put(SARIF_RESULTS_SUPPRESSED, this.isSuppressed(result) ? "true" : "false");
       final ReportingDescriptor reportingDescriptor =
           this.findReportingDescriptor(run, result, DescriptorElementOf.RULES).orElse(null);
       final String category = this.getCategory(reportingDescriptor);
