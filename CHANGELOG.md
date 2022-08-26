@@ -2,6 +2,12 @@
 
 Changelog of violations-lib.
 
+## 1.154.1 (2022-08-26)
+
+### Bug Fixes
+
+-  **SARIF**  correcting spelling of suppressed ([3a34d](https://github.com/tomasbjerre/violations-lib/commit/3a34da124805233) Tomas Bjerre)  [#156](https://github.com/tomasbjerre/violations-lib/issues/156)  
+
 ## 1.154.0 (2022-08-26)
 
 ### Features
