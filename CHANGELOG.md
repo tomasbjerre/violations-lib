@@ -2,6 +2,12 @@
 
 Changelog of violations-lib.
 
+## 1.154.0 (2022-08-26)
+
+### Features
+
+-  **SARIF**  adding suppressed in specifics of Violation ([34310](https://github.com/tomasbjerre/violations-lib/commit/34310b68ffd22dc) Tomas Bjerre)  [#156](https://github.com/tomasbjerre/violations-lib/issues/156)  
+
 ## 1.153.2 (2022-08-26)
 
 ### Bug Fixes
