@@ -2,6 +2,12 @@
 
 Changelog of violations-lib.
 
+## 1.153.1 (2022-08-26)
+
+### Bug Fixes
+
+-  **SARIF**  Correcting reporting descriptor lookup ([66084](https://github.com/tomasbjerre/violations-lib/commit/6608422b153b798) Tomas Bjerre)  [#154](https://github.com/tomasbjerre/violations-lib/issues/154)  
+
 ## 1.153.0 (2022-08-26)
 
 ### Features
