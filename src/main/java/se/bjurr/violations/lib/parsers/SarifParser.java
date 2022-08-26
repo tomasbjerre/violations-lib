@@ -135,7 +135,6 @@ public class SarifParser implements ViolationsParser {
 
   private Set<Violation> parseResults(final Run run) {
     final Set<Violation> violations = new TreeSet<>();
-    final String reporter = this.getReporter(run);
     for (final Result result : run.getResults()) {
       final String ruleId = result.getRuleId();
       final Message message = result.getMessage();
@@ -153,6 +152,7 @@ public class SarifParser implements ViolationsParser {
       final ReportingDescriptor reportingDescriptor =
           this.findReportingDescriptor(run, result, DescriptorElementOf.RULES).orElse(null);
       final String category = this.getCategory(reportingDescriptor);
+      final String reporter = this.getReporter(run, result.getRule());
 
       final Optional<String> helpTextOpt = this.findHelpText(reportingDescriptor);
       final List<Location> locations = this.filterLocations(result.getLocations());
@@ -197,7 +197,6 @@ public class SarifParser implements ViolationsParser {
   private Set<Violation> parseNotifications(final Run run) {
     final Set<Violation> violations = new TreeSet<>();
     this.getNotifications(run);
-    final String reporter = this.getReporter(run);
     for (final Invocation invocation : run.getInvocations()) {
       for (final Notification notification : invocation.getToolConfigurationNotifications()) {
         final ReportingDescriptorReference ref = notification.getAssociatedRule();
@@ -207,6 +206,7 @@ public class SarifParser implements ViolationsParser {
             this.findReportingDescriptor(
                     run, DescriptorElementOf.NOTIFICATIONS, ref, ruleIndex, ruleId)
                 .orElse(null);
+        final String reporter = this.getReporter(run, ref);
 
         final String reportingDescriptorName = this.getName(reportingDescriptor);
         final SEVERITY severity = this.toSeverity(notification.getLevel(), reportingDescriptor);
@@ -255,6 +255,14 @@ public class SarifParser implements ViolationsParser {
     return violations;
   }
 
+  private String getReporter(final Run run, final ReportingDescriptorReference ref) {
+    final ToolComponent tool = this.findToolComponent(run, ref);
+    if (tool != null && tool.getName() != null && !tool.getName().trim().isEmpty()) {
+      return tool.getName();
+    }
+    return "Sarif";
+  }
+
   private Integer getRuleIndex(final ReportingDescriptorReference ref) {
     Integer ruleIndex = null;
     if (ref != null) {
@@ -281,16 +289,6 @@ public class SarifParser implements ViolationsParser {
       }
     }
     return null;
-  }
-
-  private String getReporter(final Run run) {
-    if (run.getTool() != null
-        && run.getTool().getDriver() != null
-        && run.getTool().getDriver().getName() != null
-        && !run.getTool().getDriver().getName().trim().isEmpty()) {
-      return run.getTool().getDriver().getName();
-    }
-    return "Sarif";
   }
 
   private List<ReportingDescriptor> getNotifications(final Run run) {
