@@ -169,8 +169,7 @@ public class SarifParser implements ViolationsParser {
                   .build());
         }
       } else {
-        final String fullMessage =
-              this.toMessage(message, helpTextOpt, reportingDescriptor);
+        final String fullMessage = this.toMessage(message, helpTextOpt, reportingDescriptor);
         violations.add(
             violationBuilder()
                 .setParser(Parser.SARIF)
@@ -329,16 +328,20 @@ public class SarifParser implements ViolationsParser {
       final Optional<String> helpTextOpt,
       final ReportingDescriptor reportingDescriptor) {
     final StringBuilder fullMessage = new StringBuilder();
-    if(reportingDescriptor != null && reportingDescriptor.getId() != null) {
+    if (reportingDescriptor != null && reportingDescriptor.getId() != null) {
       fullMessage.append(reportingDescriptor.getId());
     }
-    if (reportingDescriptor != null && reportingDescriptor.getName() != null && !isNullOrEmpty(reportingDescriptor.getName())) {
+    if (reportingDescriptor != null
+        && reportingDescriptor.getName() != null
+        && !isNullOrEmpty(reportingDescriptor.getName())) {
       fullMessage.append(": ").append(reportingDescriptor.getName());
     }
-    if (reportingDescriptor != null && reportingDescriptor.getShortDescription() != null
+    if (reportingDescriptor != null
+        && reportingDescriptor.getShortDescription() != null
         && !isNullOrEmpty(reportingDescriptor.getShortDescription().getMarkdown())) {
       fullMessage.append("\n\n").append(reportingDescriptor.getShortDescription().getMarkdown());
-    } else if (reportingDescriptor != null && reportingDescriptor.getShortDescription() != null
+    } else if (reportingDescriptor != null
+        && reportingDescriptor.getShortDescription() != null
         && !isNullOrEmpty(reportingDescriptor.getShortDescription().getText())) {
       fullMessage.append("\n\n").append(reportingDescriptor.getShortDescription().getText());
     }
