@@ -2,6 +2,12 @@
 
 Changelog of violations-lib.
 
+## 1.153.0 (2022-08-26)
+
+### Features
+
+-  #160 #163 unique correlation id + rule message display ([f790b](https://github.com/tomasbjerre/violations-lib/commit/f790bc7e6a7552f) Eric Johnson)  
+
 ## 1.152.0 (2022-08-25)
 
 ### Features
