@@ -2,6 +2,12 @@
 
 Changelog of violations-lib.
 
+## 1.153.2 (2022-08-26)
+
+### Bug Fixes
+
+-  **SARIF**  reading reporter name from correct driver ([2bf11](https://github.com/tomasbjerre/violations-lib/commit/2bf11ed9870d10e) Tomas Bjerre)  
+
 ## 1.153.1 (2022-08-26)
 
 ### Bug Fixes
