@@ -1,0 +1,69 @@
+{
+    "$schema": "https://schemastore.azurewebsites.net/schemas/json/sarif-2.1.0-rtm.5.json",
+    "version": "2.1.0",
+    "runs": [
+        {
+            "results": [
+                {
+                    "ruleId": "rule.id.2",
+                    "level": "error",
+                    "message": {
+                        "text": "Rule id 2 title"
+                    },
+                    "correlationGuid": "11262816-34f9-42f2-b847-e898d49a75d8"
+                },
+                {
+                    "ruleId": "rule.id.2",
+                    "level": "error",
+                    "message": {
+                        "text": "Rule id 2 title"
+                    },
+                    "correlationGuid": "a3660638-8497-488a-860e-135dfb20e1b1"
+                },
+                {
+                    "ruleId": "rule.id.2",
+                    "level": "error",
+                    "message": {
+                        "text": "Rule id 2 title"
+                    },
+                    "correlationGuid": "06e80bd7-1e46-4fca-9a13-8630e5148163"
+                }
+            ],
+            "tool": {
+                "driver": {
+                    "name": "DuplicateRuleTest",
+                    "fullName": "DuplicateRuleTest Benchmark Title",
+                    "version": "1.0.0",
+                    "semanticVersion": "1.0.0",
+                    "rules": [
+                        {
+                            "id": "rule.id.1",
+                            "name": "Rule id 1 title",
+                            "fullDescription": {
+                                "text": "Rule id 1 title",
+                                "markdown": "Rule id 1 title"
+                            },
+                            "help": {
+                                "text": "Rule id 1 title",
+                                "markdown": "Rule id 1 title"
+                            }
+                        },
+                        {
+                            "id": "rule.id.2",
+                            "name": "Rule id 2 title",
+                            "fullDescription": {
+                                "text": "Rule id 2 title",
+                                "markdown": "Rule id 2 title"
+                            },
+                            "help": {
+                                "text": "Rule id 2 title",
+                                "markdown": "Rule id 2 title"
+                            }
+                        }
+                    ]
+                }
+            },
+            "columnKind": "utf16CodeUnits"
+        }
+    ]
+}

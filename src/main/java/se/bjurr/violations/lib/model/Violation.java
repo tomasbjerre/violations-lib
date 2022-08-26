@@ -439,30 +439,33 @@ public class Violation implements Serializable, Comparable<Violation> {
   }
 
   private String comparingString(final Violation o) {
-    return o.file
-        + "_"
-        + (Integer.MAX_VALUE - o.getStartLine())
-        + "_"
-        + o.getParser()
-        + "_"
-        + o.getMessage()
-        + "_"
-        + o.getReporter()
-        + "_"
-        + o.getEndLine()
-        + "_"
-        + o.getEndColumn()
-        + "_"
-        + o.getColumn()
-        + "_"
-        + o.getSeverity()
-        + "_"
-        + o.getSource()
-        + "_"
-        + o.getRule()
-        + "_"
-        + o.getCategory()
-        + "_"
-        + o.getGroup();
+    StringBuilder compare = new StringBuilder();
+    compare.append(o.file);
+    compare.append("_");
+    compare.append(Integer.MAX_VALUE - o.getStartLine());
+    compare.append("_");
+    compare.append(o.getParser());
+    compare.append("_");
+    compare.append(o.getMessage());
+    compare.append("_");
+    compare.append(o.getReporter());
+    compare.append("_");
+    compare.append(o.getEndLine());
+    compare.append("_");
+    compare.append(o.getEndColumn());
+    compare.append("_");
+    compare.append(o.getColumn());
+    compare.append("_");
+    compare.append(o.getSeverity());
+    compare.append("_");
+    compare.append(o.getSource());
+    compare.append("_");
+    compare.append(o.getRule());
+    compare.append("_");
+    compare.append(o.getCategory());
+    compare.append("_");
+    compare.append(o.getGroup());
+    o.getSpecifics().forEach((k, v) -> compare.append("_").append(k).append(v));
+    return compare.toString();
   }
 }
