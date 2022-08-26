@@ -15,4 +15,5 @@ node_modules
 src/test/resources/tests
 codeclimate.json
 *.received.txt
-
+*.DS_Store
+.vscode*
