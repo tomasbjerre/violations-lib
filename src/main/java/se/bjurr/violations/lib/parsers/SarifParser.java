@@ -13,6 +13,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Map.Entry;
 import java.util.Optional;
 import java.util.Set;
 import java.util.TreeSet;
@@ -24,6 +25,8 @@ import se.bjurr.violations.lib.model.generated.sarif.Artifact;
 import se.bjurr.violations.lib.model.generated.sarif.Invocation;
 import se.bjurr.violations.lib.model.generated.sarif.Location;
 import se.bjurr.violations.lib.model.generated.sarif.Message;
+import se.bjurr.violations.lib.model.generated.sarif.MessageStrings;
+import se.bjurr.violations.lib.model.generated.sarif.MultiformatMessageString;
 import se.bjurr.violations.lib.model.generated.sarif.Notification;
 import se.bjurr.violations.lib.model.generated.sarif.PhysicalLocation;
 import se.bjurr.violations.lib.model.generated.sarif.PropertyBag;
@@ -42,16 +45,16 @@ import se.bjurr.violations.lib.reports.Parser;
 import se.bjurr.violations.lib.util.Utils;
 
 public class SarifParser implements ViolationsParser {
+  public static final String SARIF_RESULTS_CORRELATION_GUID = "correlationGuid";
+  public static final String SARIF_RESULTS_SUPPRESSED = "suppressed";
+
   /** 3.52.3 */
-  public enum DescriptorElementOf {
+  private enum DescriptorElementOf {
     RULES,
     NOTIFICATIONS
   }
 
-  public static final String SARIF_RESULTS_CORRELATION_GUID = "correlationGuid";
-  public static final String SARIF_RESULTS_SUPPRESSED = "suppressed";
-
-  public class ParsedPhysicalLocation {
+  private static class ParsedPhysicalLocation {
     public String regionMessage;
     public String filename;
     public Integer startLine;
@@ -109,6 +112,31 @@ public class SarifParser implements ViolationsParser {
     }
   }
 
+  private static class MessageStringsDeserializer implements JsonDeserializer<MessageStrings> {
+
+    @Override
+    public MessageStrings deserialize(
+        final JsonElement json, final Type typeOfT, final JsonDeserializationContext context)
+        throws JsonParseException {
+      try {
+        final MessageStrings messageStrings = new MessageStrings();
+
+        for (final Entry<String, JsonElement> entry : json.getAsJsonObject().entrySet()) {
+          for (final Entry<String, JsonElement> valueEntry :
+              entry.getValue().getAsJsonObject().entrySet()) {
+            final MultiformatMessageString mv = new MultiformatMessageString();
+            mv.setText(valueEntry.getValue().getAsString());
+            messageStrings.getAdditionalProperties().put(entry.getKey(), mv);
+          }
+        }
+
+        return messageStrings;
+      } catch (final RuntimeException e) {
+        return new MessageStrings();
+      }
+    }
+  }
+
   @Override
   public Set<Violation> parseReportOutput(
       final String reportContent, final ViolationsLogger violationsLogger) throws Exception {
@@ -118,6 +146,7 @@ public class SarifParser implements ViolationsParser {
             .registerTypeAdapter(Notification.Level.class, new NotificationDeserializer())
             .registerTypeAdapter(
                 ReportingConfiguration.Level.class, new ReportingConfigurationDeserializer())
+            .registerTypeAdapter(MessageStrings.class, new MessageStringsDeserializer())
             .create()
             .fromJson(reportContent, SarifSchema.class);
 
@@ -197,21 +226,8 @@ public class SarifParser implements ViolationsParser {
     return violations;
   }
 
-  private boolean isSuppressed(final Result result) {
-    final List<Suppression> supressions =
-        result.getSuppressions().stream()
-            .filter(
-                (it) -> {
-                  return it.getState() != Suppression.State.UNDER_REVIEW
-                      && it.getState() != Suppression.State.REJECTED;
-                })
-            .collect(Collectors.toList());
-    return !supressions.isEmpty();
-  }
-
   private Set<Violation> parseNotifications(final Run run) {
     final Set<Violation> violations = new TreeSet<>();
-    this.getNotifications(run);
     for (final Invocation invocation : run.getInvocations()) {
       for (final Notification notification : invocation.getToolConfigurationNotifications()) {
         final ReportingDescriptorReference ref = notification.getAssociatedRule();
@@ -270,6 +286,18 @@ public class SarifParser implements ViolationsParser {
     return violations;
   }
 
+  private boolean isSuppressed(final Result result) {
+    final List<Suppression> supressions =
+        result.getSuppressions().stream()
+            .filter(
+                (it) -> {
+                  return it.getState() != Suppression.State.UNDER_REVIEW
+                      && it.getState() != Suppression.State.REJECTED;
+                })
+            .collect(Collectors.toList());
+    return !supressions.isEmpty();
+  }
+
   private String getReporter(final Run run, final ReportingDescriptorReference ref) {
     final ToolComponent tool = this.findToolComponent(run, ref);
     if (tool != null && tool.getName() != null && !tool.getName().trim().isEmpty()) {
@@ -300,19 +328,10 @@ public class SarifParser implements ViolationsParser {
     if (reportingDescriptor != null) {
       final PropertyBag properties = reportingDescriptor.getProperties();
       if (properties != null && properties.getCategory() != null) {
-        return properties.getCategory().toString();
+        return properties.getCategory();
       }
     }
     return null;
-  }
-
-  private List<ReportingDescriptor> getNotifications(final Run run) {
-    if (run.getTool() == null
-        || run.getTool().getDriver() == null
-        || run.getTool().getDriver().getNotifications() == null) {
-      return new ArrayList<>();
-    }
-    return new ArrayList<>(run.getTool().getDriver().getNotifications());
   }
 
   private boolean notEmptyOrNull(final List<Location> locations) {
@@ -413,13 +432,32 @@ public class SarifParser implements ViolationsParser {
     if (Utils.isNullOrEmpty(text)) {
       text = message.getText();
     }
-    if (text != null) {
+    if (!Utils.isNullOrEmpty(text)) {
       return text;
+    }
+    if (message.getId() != null) {
+      if (reportingDescriptor != null && reportingDescriptor.getMessageStrings() != null) {
+        final String messageText =
+            reportingDescriptor
+                .getMessageStrings()
+                .getAdditionalProperties()
+                .get(message.getId())
+                .getText();
+        final List<String> arguments = message.getArguments();
+        return this.renderString(messageText, arguments);
+      }
     }
     if (reportingDescriptor != null && reportingDescriptor.getShortDescription() != null) {
       return reportingDescriptor.getShortDescription().toString();
     }
     return "";
+  }
+
+  private String renderString(String text, final List<String> arguments) {
+    for (int i = 0; i < arguments.size(); i++) {
+      text = text.replace("{" + i + "}", arguments.get(i));
+    }
+    return text;
   }
 
   private Optional<String> findHelpText(final ReportingDescriptor r) {

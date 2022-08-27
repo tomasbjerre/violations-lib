@@ -21,7 +21,7 @@ project.ext.buildConfig = [
     updateReadme: true
   ],
   staticCodeAnalysis: [
-    maxViolations: 13
+    maxViolations: 6
   ],
 ]
 apply from: project.buildscript.classLoader.getResource('main.gradle').toURI()
@@ -43,5 +43,5 @@ dependencies {
  testImplementation 'junit:junit:4.13.2'
  testImplementation 'org.assertj:assertj-core:3.23.1'
  testImplementation 'uk.co.jemos.podam:podam:7.2.9.RELEASE'
- testImplementation 'com.approvaltests:approvaltests:17.2.1'
+ testImplementation 'com.approvaltests:approvaltests:18.0.0'
 }

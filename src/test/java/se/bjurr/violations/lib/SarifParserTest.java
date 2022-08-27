@@ -298,4 +298,37 @@ public class SarifParserTest {
     assertThat(actual) //
         .hasSize(3);
   }
+
+  @Test
+  public void testThatViolationsCanBeParsed_with_messages() {
+    final String rootFolder = getRootFolder();
+
+    final Set<Violation> actual =
+        violationsApi() //
+            .withPattern(".*/sarif/with-messages.json$") //
+            .inFolder(rootFolder) //
+            .findAll(SARIF) //
+            .violations();
+
+    assertThat(actual) //
+        .hasSize(30);
+    final List<Violation> arrayList = new ArrayList<>(actual);
+
+    final Violation violation0 = arrayList.get(0);
+    assertThat(violation0.getMessage()) //
+        .isEqualToIgnoringWhitespace(
+            "runs[0].tool.driver.rules[5]: The rule 'CA1822' does not provide a \"friendly name\" in its 'name' property. The friendly name should be a single Pascal-case identifier, for example, 'ProvideRuleFriendlyName', that helps users see at a glance the purpose of the analysis rule.\n"
+                + "\n"
+                + "For additional help see: Rule metadata should provide information that makes it easy to understand and fix the problem.\n"
+                + "\n"
+                + "Provide the 'name' property, which contains a \"friendly name\" that helps users see at a glance the purpose of the rule. For uniformity of experience across all tools that produce SARIF, the friendly name should be a single Pascal-case identifier, for example, 'ProvideRuleFriendlyName'.\n"
+                + "\n"
+                + "Provide the 'helpUri' property, which contains a URI where users can find detailed information about the rule. This information should include a detailed description of the invalid pattern, an explanation of why the pattern is poor practice (particularly in contexts such as security or accessibility where driving considerations might not be readily apparent), guidance for resolving the problem (including describing circumstances in which ignoring the problem altogether might be appropriate), examples of invalid and valid patterns, and special considerations (such as noting when a violation should never be ignored or suppressed, noting when a violation could cause downstream tool noise, and noting when a rule can be configured in some way to refine or alter the analysis).");
+    assertThat(violation0.getFile()) //
+        .isEqualTo("file:///C:/TEMP/log.sarif");
+    assertThat(violation0.getStartLine()) //
+        .isEqualTo(261);
+    assertThat(violation0.getSeverity()) //
+        .isEqualTo(SEVERITY.INFO);
+  }
 }
