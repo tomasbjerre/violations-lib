@@ -2,6 +2,12 @@
 
 Changelog of violations-lib.
 
+## 1.155.0 (2022-08-27)
+
+### Features
+
+-  **SARIF**  implementing message string lookup ([ae4f3](https://github.com/tomasbjerre/violations-lib/commit/ae4f34ab8761541) Tomas Bjerre)  [#157](https://github.com/tomasbjerre/violations-lib/issues/157)  
+
 ## 1.154.1 (2022-08-26)
 
 ### Bug Fixes
