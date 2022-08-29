@@ -2,6 +2,17 @@
 
 Changelog of violations-lib.
 
+## 1.155.1 (2022-08-29)
+
+### Other changes
+
+**Fixes #153: Handle absolute Windows paths in ErrorProne warnings**
+
+* Also fixes an issue where the first character of the file path was sometimes omitted. 
+
+[2ffdd](https://github.com/tomasbjerre/violations-lib/commit/2ffddfe56032c31) Timon Bijlsma *2022-08-29 12:22:47*
+
+
 ## 1.155.0 (2022-08-27)
 
 ### Features
