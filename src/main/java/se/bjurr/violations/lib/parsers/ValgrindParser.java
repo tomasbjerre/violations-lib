@@ -361,6 +361,5 @@ public class ValgrindParser implements ViolationsParser {
           + this.line
           + "]";
     }
-  }
-  ;
+  };
 }

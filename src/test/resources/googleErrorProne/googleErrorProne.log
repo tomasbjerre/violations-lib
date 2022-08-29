@@ -1,6 +1,7 @@
 :googleErrorProne UP-TO-DATE
 :googleJavaFormat NO-SOURCE
-:compileJava/home/bjerre/workspace/git-changelog/git-changelog-lib/src/main/java/se/bjurr/gitchangelog/internal/integrations/github/GitHubHelper.java:51: warning: [StringSplitter] Prefer Splitter to String.split
+:compileJava
+/home/bjerre/workspace/git-changelog/git-changelog-lib/src/main/java/se/bjurr/gitchangelog/internal/integrations/github/GitHubHelper.java:51: warning: [StringSplitter] Prefer Splitter to String.split
           for (final String part : link.split(",")) {
                                              ^
     (see http://errorprone.info/bugpattern/StringSplitter)

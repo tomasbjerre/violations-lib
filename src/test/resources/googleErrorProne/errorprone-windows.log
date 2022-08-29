@@ -1,0 +1,5 @@
+C:\proj\src\main\java\Test.java:12: warning: [NullAway] returning @Nullable expression from method with @NonNull return type
+            return null;
+            ^
+    (see http://t.uber.com/nullaway )
+1 warning

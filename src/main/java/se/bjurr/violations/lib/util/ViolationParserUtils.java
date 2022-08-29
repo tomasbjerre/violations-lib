@@ -72,9 +72,7 @@ public final class ViolationParserUtils {
     return Arrays.asList(string.split("\n"));
   }
 
-  /**
-   * @return List per line in String, with groups from regexpPerLine.
-   */
+  /** @return List per line in String, with groups from regexpPerLine. */
   public static List<List<String>> getLines(final String string, final String regexpPerLine) {
     final List<List<String>> results = new ArrayList<>();
     final Pattern pattern = Pattern.compile(regexpPerLine);

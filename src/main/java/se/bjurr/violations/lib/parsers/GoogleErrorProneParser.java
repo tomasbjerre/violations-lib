@@ -15,8 +15,18 @@ import se.bjurr.violations.lib.model.SEVERITY;
 import se.bjurr.violations.lib.model.Violation;
 
 public class GoogleErrorProneParser implements ViolationsParser {
-  private static Pattern NEW_VIOLATION =
-      Pattern.compile("^((:[^/]*)|([^:]))([^:]+?):([^:]+?):([^:]+?):[^\\[]*\\[([^\\]]+?)](.*)");
+
+  /**
+   * Matches paths in the style: path:lineNumber, including relative paths (../a.txt) and absolute
+   * Windows paths (C:\\a.txt, C:/a.txt)
+   */
+  private static final String PATH_REGEX = "(([A-Z]:)?[^:]+?):(\\d+)";
+
+  /** warning: [CheckName] Description of the problem */
+  private static final String WARNING_REGEX = "([^:]+?): \\[([^]]+?)] (.*)";
+
+  private static final Pattern NEW_VIOLATION =
+      Pattern.compile("^" + PATH_REGEX + ": " + WARNING_REGEX + "$");
 
   @Override
   public Set<Violation> parseReportOutput(
@@ -27,11 +37,11 @@ public class GoogleErrorProneParser implements ViolationsParser {
       String line = lines[i];
       final Matcher matcher = NEW_VIOLATION.matcher(line);
       if (matcher.find()) {
-        final String currentFilename = matcher.group(4).trim();
-        final int currentLine = Integer.parseInt(matcher.group(5));
-        final SEVERITY currentSeverity = this.toSeverity(matcher.group(6));
-        final String currentRule = matcher.group(7).trim();
-        final String currentRuleMessage = matcher.group(8).trim();
+        final String currentFilename = matcher.group(1).trim();
+        final int currentLine = Integer.parseInt(matcher.group(3));
+        final SEVERITY currentSeverity = this.toSeverity(matcher.group(4));
+        final String currentRule = matcher.group(5).trim();
+        final String currentRuleMessage = matcher.group(6).trim();
         final StringBuilder currentMessage = new StringBuilder();
         for (int j = i + 1; j < lines.length; j++) {
           line = lines[j];
