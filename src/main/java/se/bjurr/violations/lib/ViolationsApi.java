@@ -7,6 +7,7 @@ import static se.bjurr.violations.lib.reports.ReportsFinder.findAllReports;
 import static se.bjurr.violations.lib.util.Utils.checkNotNull;
 import static se.bjurr.violations.lib.util.Utils.setReporter;
 
+import edu.umd.cs.findbugs.annotations.SuppressFBWarnings;
 import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
@@ -22,6 +23,7 @@ import se.bjurr.violations.lib.parsers.ViolationsParser;
 import se.bjurr.violations.lib.reports.Parser;
 import se.bjurr.violations.lib.reports.ViolationsFinder;
 
+@SuppressFBWarnings("CRLF_INJECTION_LOGS")
 public class ViolationsApi {
   private final Logger LOGGER = Logger.getLogger(ViolationsApi.class.getSimpleName());
   private String pattern;
@@ -71,6 +73,7 @@ public class ViolationsApi {
     return this;
   }
 
+  @SuppressFBWarnings("PATH_TRAVERSAL_IN")
   public ViolationsApi inFolder(final String folder) {
     this.startFile = new File(checkNotNull(folder, "folder"));
     if (!this.startFile.exists()) {

@@ -3,12 +3,14 @@ package se.bjurr.violations.lib.util;
 import static java.util.Optional.empty;
 import static java.util.Optional.of;
 
+import edu.umd.cs.findbugs.annotations.SuppressFBWarnings;
 import java.util.Map;
 import java.util.Optional;
 import java.util.TreeMap;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
+@SuppressFBWarnings("REDOS")
 public class PatchParserUtil {
 
   private static final Pattern RANGE_PATTERN =

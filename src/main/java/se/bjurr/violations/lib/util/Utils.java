@@ -2,6 +2,7 @@ package se.bjurr.violations.lib.util;
 
 import static se.bjurr.violations.lib.util.StringUtils.padRight;
 
+import edu.umd.cs.findbugs.annotations.SuppressFBWarnings;
 import java.io.IOException;
 import java.io.InputStream;
 import java.net.URL;
@@ -67,6 +68,7 @@ public class Utils {
     return result;
   }
 
+  @SuppressFBWarnings("URLCONNECTION_SSRF_FD")
   public static String toString(final URL resource) throws IOException {
     try {
       return toString(resource.openStream());
