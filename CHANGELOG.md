@@ -2,6 +2,12 @@
 
 Changelog of violations-lib.
 
+## 1.155.2 (2022-09-24)
+
+### Bug Fixes
+
+-  make paths relative in CodeClimate ([1d5df](https://github.com/tomasbjerre/violations-lib/commit/1d5df32ed4574ea) Tomas Bjerre)  [#123](https://github.com/tomasbjerre/violations-lib/issues/123)  
+
 ## 1.155.1 (2022-08-29)
 
 ### Other changes
