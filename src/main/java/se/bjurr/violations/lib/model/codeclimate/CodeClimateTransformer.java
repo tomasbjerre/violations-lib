@@ -1,5 +1,7 @@
 package se.bjurr.violations.lib.model.codeclimate;
 
+import edu.umd.cs.findbugs.annotations.SuppressFBWarnings;
+import java.io.File;
 import java.nio.charset.StandardCharsets;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
@@ -42,14 +44,23 @@ public class CodeClimateTransformer {
     return relativePath(file, userDir);
   }
 
+  @SuppressFBWarnings("PATH_TRAVERSAL_IN")
   static String relativePath(final String file, final String userDir) {
     final String cwd = Violation.frontSlashes(Optional.ofNullable(userDir).orElse(""));
-    if (!cwd.isEmpty() && file.contains(cwd)) {
-      final String relative = file.replace(cwd, "");
-      if (relative.startsWith("/")) {
-        return relative.substring(1);
-      }
-      return relative;
+    final boolean isAbsolute = new File(file).isAbsolute();
+    if (!isAbsolute || cwd.isEmpty()) {
+      return removeAnySlashAtBeginning(file);
+    }
+    if (file.startsWith(cwd)) {
+      final String relative = file.replaceFirst(cwd, "");
+      return removeAnySlashAtBeginning(relative);
+    }
+    return file;
+  }
+
+  private static String removeAnySlashAtBeginning(final String file) {
+    if (file.startsWith("/")) {
+      return file.substring(1);
     }
     return file;
   }
