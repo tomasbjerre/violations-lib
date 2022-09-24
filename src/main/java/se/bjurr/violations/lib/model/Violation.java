@@ -183,13 +183,16 @@ public class Violation implements Serializable, Comparable<Violation> {
     this.endColumn = vb.endColumn;
     this.severity = checkNotNull(vb.severity, "severity");
     this.message = checkNotNull(emptyToNull(vb.message), "message");
-    this.file =
-        checkNotNull(emptyToNull(vb.file), "file").replace("\\\\", "\\").replaceAll("\\\\", "/");
+    this.file = frontSlashes(checkNotNull(emptyToNull(vb.file), "file"));
     this.source = nullToEmpty(vb.source);
     this.rule = nullToEmpty(vb.rule);
     this.category = nullToEmpty(vb.category);
     this.group = nullToEmpty(vb.group);
     this.specifics = vb.specifics;
+  }
+
+  public static String frontSlashes(final String in) {
+    return in.replace("\\\\", "\\").replaceAll("\\\\", "/");
   }
 
   public Violation(final Violation v) {
@@ -439,7 +442,7 @@ public class Violation implements Serializable, Comparable<Violation> {
   }
 
   private String comparingString(final Violation o) {
-    StringBuilder compare = new StringBuilder();
+    final StringBuilder compare = new StringBuilder();
     compare.append(o.file);
     compare.append("_");
     compare.append(Integer.MAX_VALUE - o.getStartLine());

@@ -2,6 +2,7 @@ package se.bjurr.violations.lib.model.codeclimate;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static se.bjurr.violations.lib.model.Violation.violationBuilder;
+import static se.bjurr.violations.lib.model.codeclimate.CodeClimateTransformer.relativePath;
 
 import com.google.gson.GsonBuilder;
 import java.util.Arrays;
@@ -21,7 +22,7 @@ public class CodeClimateTransformerTest {
     final String fingerprint = "287f089bbb587fbb815c35558f2053564c792d5add0f19cfd38fc6ffea3454fc";
     final Integer begin = 123;
     final String path = "/whatever/path.c";
-    final Set<Violation> violationSet = new TreeSet<Violation>();
+    final Set<Violation> violationSet = new TreeSet<>();
     final Violation violation1 =
         violationBuilder() //
             .setFile(path) //
@@ -61,6 +62,18 @@ public class CodeClimateTransformerTest {
                     check_name,
                     engine_name,
                     categories)));
+  }
+
+  @Test
+  public void testRelative() {
+    assertThat(relativePath("-", null)).isEqualTo("-");
+    assertThat(relativePath("/absolute/file.xml", null)).isEqualTo("/absolute/file.xml");
+    assertThat(relativePath("relative/file.xml", null)).isEqualTo("relative/file.xml");
+    assertThat(relativePath("file.xml", null)).isEqualTo("file.xml");
+
+    assertThat(relativePath("/absolute/file.xml", "/absolute")).isEqualTo("file.xml");
+    assertThat(relativePath("/absolute/file.xml", "/absolute/")).isEqualTo("file.xml");
+    assertThat(relativePath("/absolute/path/file.xml", "/absolute/")).isEqualTo("path/file.xml");
   }
 
   private String toJson(final Object o) {

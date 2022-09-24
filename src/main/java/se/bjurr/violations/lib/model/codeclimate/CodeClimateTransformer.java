@@ -6,6 +6,7 @@ import java.security.NoSuchAlgorithmException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Locale;
+import java.util.Optional;
 import java.util.Set;
 import java.util.stream.Collectors;
 import se.bjurr.violations.lib.model.SEVERITY;
@@ -25,14 +26,32 @@ public class CodeClimateTransformer {
     final String description = v.getMessage();
     final String fingerprint = toHash(v);
     final CodeClimateLines lines = new CodeClimateLines(v.getStartLine());
-    final CodeClimateLocation location = new CodeClimateLocation(v.getFile(), lines, null);
+    final CodeClimateLocation location = new CodeClimateLocation(relativePath(v), lines, null);
     final CodeClimateSeverity severity = toSeverity(v.getSeverity());
     final String check_name = v.getRule().isEmpty() ? v.getReporter() : v.getRule();
     final String engine_name = v.getReporter();
-    final List<CodeClimateCategory> categories = new ArrayList<CodeClimateCategory>();
+    final List<CodeClimateCategory> categories = new ArrayList<>();
     categories.add(CodeClimateCategory.BUGRISK);
     return new CodeClimate(
         description, fingerprint, location, severity, check_name, engine_name, categories);
+  }
+
+  private static String relativePath(final Violation v) {
+    final String userDir = System.getProperty("user.dir");
+    final String file = v.getFile();
+    return relativePath(file, userDir);
+  }
+
+  static String relativePath(final String file, final String userDir) {
+    final String cwd = Violation.frontSlashes(Optional.ofNullable(userDir).orElse(""));
+    if (!cwd.isEmpty() && file.contains(cwd)) {
+      final String relative = file.replace(cwd, "");
+      if (relative.startsWith("/")) {
+        return relative.substring(1);
+      }
+      return relative;
+    }
+    return file;
   }
 
   private static CodeClimateSeverity toSeverity(final SEVERITY severity) {
@@ -54,7 +73,7 @@ public class CodeClimateTransformer {
     }
     final String fingerprintString =
         v.getColumn()
-            + v.getFile()
+            + relativePath(v)
             + v.getMessage()
             + v.getParser()
             + v.getReporter()
