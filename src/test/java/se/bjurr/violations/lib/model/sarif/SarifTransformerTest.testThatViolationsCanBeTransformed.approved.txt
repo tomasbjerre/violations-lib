@@ -13,7 +13,7 @@
           "contents": [
             "nonLocalizedData"
           ],
-          "isComprehensive": false,
+          "isComprehensive": true,
           "supportedTaxonomies": []
         },
         "extensions": []

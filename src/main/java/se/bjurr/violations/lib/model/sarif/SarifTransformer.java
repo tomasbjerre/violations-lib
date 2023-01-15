@@ -6,7 +6,6 @@ import java.util.List;
 import java.util.Set;
 import java.util.TreeSet;
 import java.util.stream.Collectors;
-
 import se.bjurr.violations.lib.model.SEVERITY;
 import se.bjurr.violations.lib.model.Violation;
 import se.bjurr.violations.lib.model.generated.sarif.ArtifactLocation;
@@ -37,8 +36,8 @@ public class SarifTransformer {
     return new SarifSchema().withVersion("2.1.0").withRuns(runs);
   }
 
-private static Tool toTool() {
-	final Set<Object> contents = new TreeSet<>();
+  private static Tool toTool() {
+    final Set<Object> contents = new TreeSet<>();
     contents.add("nonLocalizedData");
 
     final ToolComponent driver = new ToolComponent();
@@ -48,8 +47,8 @@ private static Tool toTool() {
 
     final Tool tool = new Tool();
     tool.setDriver(driver);
-	return tool;
-}
+    return tool;
+  }
 
   private static List<Result> toResults(final Set<Violation> from) {
     return from.stream().map(it -> transform(it)).collect(Collectors.toList());
