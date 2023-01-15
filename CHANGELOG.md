@@ -2,6 +2,12 @@
 
 Changelog of violations-lib.
 
+## 1.155.4 (2023-01-15)
+
+### Bug Fixes
+
+-  producing valid sarif format ([04973](https://github.com/tomasbjerre/violations-lib/commit/049738a1ecb37ca) Tomas Bjerre)  
+
 ## 1.155.3 (2022-09-24)
 
 ### Bug Fixes
