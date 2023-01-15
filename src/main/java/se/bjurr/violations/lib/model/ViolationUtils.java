@@ -1,5 +1,6 @@
 package se.bjurr.violations.lib.model;
 
+import edu.umd.cs.findbugs.annotations.SuppressFBWarnings;
 import java.io.File;
 import java.io.IOException;
 import java.nio.file.Files;
@@ -11,19 +12,16 @@ import java.util.Optional;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
-import edu.umd.cs.findbugs.annotations.SuppressFBWarnings;
-
+@SuppressFBWarnings("PATH_TRAVERSAL_IN")
 public final class ViolationUtils {
   private ViolationUtils() {}
 
-  @SuppressFBWarnings("PATH_TRAVERSAL_IN")
   public static String relativePath(final Violation v) {
     final String userDir = System.getProperty("user.dir");
     final String file = v.getFile();
     return relativePath(file, userDir);
   }
 
-  @SuppressFBWarnings("PATH_TRAVERSAL_IN")
   static String relativePath(final String file, final String userDir) {
     final String userDirNotNull = Optional.ofNullable(userDir).orElse("");
     final String cwd = Violation.frontSlashes(userDirNotNull);
