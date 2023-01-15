@@ -2,6 +2,13 @@
 
 Changelog of violations-lib.
 
+## 1.155.7 (2023-01-15)
+
+### Bug Fixes
+
+-  relative paths to root in sarif export ([dbf02](https://github.com/tomasbjerre/violations-lib/commit/dbf0279053ab009) Tomas Bjerre)  
+-  relative paths to root in sarif export ([6db05](https://github.com/tomasbjerre/violations-lib/commit/6db0554da1927a7) Tomas Bjerre)  
+
 ## 1.155.6 (2023-01-15)
 
 ### Bug Fixes
