@@ -4,7 +4,9 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Set;
+import java.util.TreeSet;
 import java.util.stream.Collectors;
+
 import se.bjurr.violations.lib.model.SEVERITY;
 import se.bjurr.violations.lib.model.Violation;
 import se.bjurr.violations.lib.model.generated.sarif.ArtifactLocation;
@@ -13,30 +15,48 @@ import se.bjurr.violations.lib.model.generated.sarif.Message;
 import se.bjurr.violations.lib.model.generated.sarif.PhysicalLocation;
 import se.bjurr.violations.lib.model.generated.sarif.Region;
 import se.bjurr.violations.lib.model.generated.sarif.Result;
-import se.bjurr.violations.lib.model.generated.sarif.Result.Level;
 import se.bjurr.violations.lib.model.generated.sarif.Run;
 import se.bjurr.violations.lib.model.generated.sarif.SarifSchema;
+import se.bjurr.violations.lib.model.generated.sarif.Tool;
+import se.bjurr.violations.lib.model.generated.sarif.ToolComponent;
 
 public class SarifTransformer {
 
   public static SarifSchema fromViolations(final Set<Violation> from) {
     final List<Result> results = toResults(from);
 
+    final Tool tool = toTool();
+
     final Run run = new Run();
+    run.setTool(tool);
     run.withResults(results);
 
     final List<Run> runs = new ArrayList<>();
     runs.add(run);
 
-    return new SarifSchema().withRuns(runs);
+    return new SarifSchema().withVersion("2.1.0").withRuns(runs);
   }
+
+private static Tool toTool() {
+	final Set<Object> contents = new TreeSet<>();
+    contents.add("nonLocalizedData");
+
+    final ToolComponent driver = new ToolComponent();
+    driver.setName("Violations Lib");
+    driver.setContents(contents);
+    driver.setIsComprehensive(true);
+
+    final Tool tool = new Tool();
+    tool.setDriver(driver);
+	return tool;
+}
 
   private static List<Result> toResults(final Set<Violation> from) {
     return from.stream().map(it -> transform(it)).collect(Collectors.toList());
   }
 
   private static Result transform(final Violation from) {
-    final Level level = toLevel(from.getSeverity());
+    final String level = toLevel(from.getSeverity());
 
     final Region region =
         new Region()
@@ -54,16 +74,17 @@ public class SarifTransformer {
         .withRuleId(from.getRule())
         .withMessage(new Message().withText(from.getMessage()))
         .withLevel(level)
-        .withLocations(locations);
+        .withLocations(locations)
+        .withKind("fail");
   }
 
-  private static Level toLevel(final SEVERITY severity) {
+  private static String toLevel(final SEVERITY severity) {
     if (severity == SEVERITY.ERROR) {
-      return Level.ERROR;
+      return "error";
     }
     if (severity == SEVERITY.WARN) {
-      return Level.WARNING;
+      return "warning";
     }
-    return Level.NONE;
+    return "none";
   }
 }

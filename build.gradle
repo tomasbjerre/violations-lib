@@ -35,13 +35,15 @@ jsonSchema2Pojo {
   generateBuilders = true
   annotationStyle = 'none'
   includeGeneratedAnnotation = false
+  removeOldOutput = true
 }
 
 dependencies {
- api 'com.google.code.gson:gson:2.10'
+ api 'com.google.code.gson:gson:2.10.1'
 
  testImplementation 'junit:junit:4.13.2'
- testImplementation 'org.assertj:assertj-core:3.23.1'
+ testImplementation 'org.assertj:assertj-core:3.24.1'
  testImplementation 'uk.co.jemos.podam:podam:7.2.11.RELEASE'
  testImplementation 'com.approvaltests:approvaltests:18.5.0'
+ testImplementation 'com.networknt:json-schema-validator:1.0.76'
 }

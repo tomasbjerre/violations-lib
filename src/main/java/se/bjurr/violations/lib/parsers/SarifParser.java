@@ -35,7 +35,6 @@ import se.bjurr.violations.lib.model.generated.sarif.ReportingConfiguration;
 import se.bjurr.violations.lib.model.generated.sarif.ReportingDescriptor;
 import se.bjurr.violations.lib.model.generated.sarif.ReportingDescriptorReference;
 import se.bjurr.violations.lib.model.generated.sarif.Result;
-import se.bjurr.violations.lib.model.generated.sarif.Result.Level;
 import se.bjurr.violations.lib.model.generated.sarif.Run;
 import se.bjurr.violations.lib.model.generated.sarif.SarifSchema;
 import se.bjurr.violations.lib.model.generated.sarif.Suppression;
@@ -63,21 +62,6 @@ public class SarifParser implements ViolationsParser {
       this.filename = Violation.NO_FILE;
       this.startLine = Violation.NO_LINE;
       this.regionMessage = null;
-    }
-  }
-
-  private static class ResultDeserializer implements JsonDeserializer<Result.Level> {
-
-    @Override
-    public Result.Level deserialize(
-        final JsonElement json, final Type typeOfT, final JsonDeserializationContext context)
-        throws JsonParseException {
-      try {
-        final String asString = json.getAsString();
-        return Result.Level.fromValue(asString);
-      } catch (final Exception e) {
-        return Level.NONE;
-      }
     }
   }
 
@@ -142,7 +126,6 @@ public class SarifParser implements ViolationsParser {
       final String reportContent, final ViolationsLogger violationsLogger) throws Exception {
     final SarifSchema report =
         new GsonBuilder()
-            .registerTypeAdapter(Result.Level.class, new ResultDeserializer())
             .registerTypeAdapter(Notification.Level.class, new NotificationDeserializer())
             .registerTypeAdapter(
                 ReportingConfiguration.Level.class, new ReportingConfigurationDeserializer())
@@ -172,7 +155,7 @@ public class SarifParser implements ViolationsParser {
       if (message == null) {
         continue;
       }
-      final Level level = result.getLevel();
+      final Object level = result.getLevel();
       // Multiple instances of the same rule id / message / location are not added to
       // the violations collection. Parse unique identifier fields if they exist
       final Map<String, String> specifics = new HashMap<>();
@@ -491,15 +474,14 @@ public class SarifParser implements ViolationsParser {
     return SEVERITY.INFO;
   }
 
-  private SEVERITY toSeverity(
-      final Result.Level level, final ReportingDescriptor reportingDescriptor) {
+  private SEVERITY toSeverity(final Object level, final ReportingDescriptor reportingDescriptor) {
     if (level == null) {
       return this.toSeverity(reportingDescriptor).orElse(SEVERITY.INFO);
     }
-    if (level == Result.Level.ERROR) {
+    if (level.equals("error")) {
       return SEVERITY.ERROR;
     }
-    if (level == Result.Level.WARNING) {
+    if (level.equals("warning")) {
       return SEVERITY.WARN;
     }
     return SEVERITY.INFO;

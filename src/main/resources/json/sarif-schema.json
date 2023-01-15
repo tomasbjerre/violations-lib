@@ -15,7 +15,7 @@
 
     "version": {
       "description": "The SARIF format version of this log file.",
-      "enum": [ "2.1.0" ]
+      "string": [ "2.1.0" ]
     },
 
     "runs": {
@@ -2052,13 +2052,13 @@
         "kind": {
           "description": "A value that categorizes results by evaluation state.",
           "default": "fail",
-          "enum": [ "notApplicable", "pass", "fail", "review", "open", "informational" ]
+          "string": [ "notApplicable", "pass", "fail", "review", "open", "informational" ]
         },
 
         "level": {
           "description": "A value specifying the severity level of the result.",
           "default": "warning",
-          "enum": [ "none", "note", "warning", "error" ]
+          "string": [ "none", "note", "warning", "error" ]
         },
 
         "message": {
@@ -3073,7 +3073,7 @@
           "uniqueItems": true,
           "default": [ "localizedData", "nonLocalizedData" ],
           "items": {
-            "enum": [
+            "string": [
               "localizedData",
               "nonLocalizedData"
             ]

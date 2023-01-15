@@ -1,6 +1,23 @@
 {
+  "version": "2.1.0",
   "runs": [
     {
+      "tool": {
+        "driver": {
+          "name": "Violations Lib",
+          "notifications": [],
+          "rules": [],
+          "taxa": [],
+          "locations": [],
+          "language": "en-US",
+          "contents": [
+            "nonLocalizedData"
+          ],
+          "isComprehensive": false,
+          "supportedTaxonomies": []
+        },
+        "extensions": []
+      },
       "invocations": [],
       "language": "en-US",
       "versionControlProvenance": [],
@@ -11,8 +28,8 @@
         {
           "ruleId": "",
           "ruleIndex": -1,
-          "kind": "FAIL",
-          "level": "NONE",
+          "kind": "fail",
+          "level": "none",
           "message": {
             "text": "asdasd",
             "arguments": []
@@ -56,8 +73,8 @@
         {
           "ruleId": "Cyclomatic complexity",
           "ruleIndex": -1,
-          "kind": "FAIL",
-          "level": "ERROR",
+          "kind": "fail",
+          "level": "error",
           "message": {
             "text": "asdasd",
             "arguments": []
