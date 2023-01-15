@@ -2,6 +2,12 @@
 
 Changelog of violations-lib.
 
+## 1.155.6 (2023-01-15)
+
+### Bug Fixes
+
+-  relative paths in sarif export ([778bb](https://github.com/tomasbjerre/violations-lib/commit/778bbea48ef546b) Tomas Bjerre)  
+
 ## 1.155.5 (2023-01-15)
 
 ### Bug Fixes
