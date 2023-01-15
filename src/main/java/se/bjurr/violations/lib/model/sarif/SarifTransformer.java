@@ -8,6 +8,7 @@ import java.util.TreeSet;
 import java.util.stream.Collectors;
 import se.bjurr.violations.lib.model.SEVERITY;
 import se.bjurr.violations.lib.model.Violation;
+import se.bjurr.violations.lib.model.ViolationUtils;
 import se.bjurr.violations.lib.model.generated.sarif.ArtifactLocation;
 import se.bjurr.violations.lib.model.generated.sarif.Location;
 import se.bjurr.violations.lib.model.generated.sarif.Message;
@@ -64,7 +65,8 @@ public class SarifTransformer {
             .withEndLine(zeroToOne(from.getEndLine()))
             .withEndColumn(from.getEndColumn());
 
-    final ArtifactLocation artifactLocation = new ArtifactLocation().withUri(from.getFile());
+    final ArtifactLocation artifactLocation =
+        new ArtifactLocation().withUri(ViolationUtils.relativePath(from));
     final PhysicalLocation logicalLocations =
         new PhysicalLocation().withRegion(region).withArtifactLocation(artifactLocation);
     final List<Location> locations =

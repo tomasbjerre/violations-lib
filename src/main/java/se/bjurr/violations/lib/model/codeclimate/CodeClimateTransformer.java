@@ -1,18 +1,16 @@
 package se.bjurr.violations.lib.model.codeclimate;
 
-import edu.umd.cs.findbugs.annotations.SuppressFBWarnings;
-import java.io.File;
 import java.nio.charset.StandardCharsets;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Locale;
-import java.util.Optional;
 import java.util.Set;
 import java.util.stream.Collectors;
 import se.bjurr.violations.lib.model.SEVERITY;
 import se.bjurr.violations.lib.model.Violation;
+import se.bjurr.violations.lib.model.ViolationUtils;
 
 public class CodeClimateTransformer {
   public static List<CodeClimate> fromViolations(final Set<Violation> from) {
@@ -28,7 +26,8 @@ public class CodeClimateTransformer {
     final String description = v.getMessage();
     final String fingerprint = toHash(v);
     final CodeClimateLines lines = new CodeClimateLines(v.getStartLine());
-    final CodeClimateLocation location = new CodeClimateLocation(relativePath(v), lines, null);
+    final CodeClimateLocation location =
+        new CodeClimateLocation(ViolationUtils.relativePath(v), lines, null);
     final CodeClimateSeverity severity = toSeverity(v.getSeverity());
     final String check_name = v.getRule().isEmpty() ? v.getReporter() : v.getRule();
     final String engine_name = v.getReporter();
@@ -36,33 +35,6 @@ public class CodeClimateTransformer {
     categories.add(CodeClimateCategory.BUGRISK);
     return new CodeClimate(
         description, fingerprint, location, severity, check_name, engine_name, categories);
-  }
-
-  private static String relativePath(final Violation v) {
-    final String userDir = System.getProperty("user.dir");
-    final String file = v.getFile();
-    return relativePath(file, userDir);
-  }
-
-  @SuppressFBWarnings("PATH_TRAVERSAL_IN")
-  static String relativePath(final String file, final String userDir) {
-    final String cwd = Violation.frontSlashes(Optional.ofNullable(userDir).orElse(""));
-    final boolean isAbsolute = new File(file).isAbsolute();
-    if (!isAbsolute || cwd.isEmpty()) {
-      return removeAnySlashAtBeginning(file);
-    }
-    if (file.startsWith(cwd)) {
-      final String relative = file.replaceFirst(cwd, "");
-      return removeAnySlashAtBeginning(relative);
-    }
-    return file;
-  }
-
-  private static String removeAnySlashAtBeginning(final String file) {
-    if (file.startsWith("/")) {
-      return file.substring(1);
-    }
-    return file;
   }
 
   private static CodeClimateSeverity toSeverity(final SEVERITY severity) {
@@ -84,7 +56,7 @@ public class CodeClimateTransformer {
     }
     final String fingerprintString =
         v.getColumn()
-            + relativePath(v)
+            + ViolationUtils.relativePath(v)
             + v.getMessage()
             + v.getParser()
             + v.getReporter()
