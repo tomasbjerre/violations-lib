@@ -39,7 +39,7 @@
               "id": -1,
               "physicalLocation": {
                 "artifactLocation": {
-                  "uri": "/whatever/path.c",
+                  "uri": "whatever/path.c",
                   "index": -1
                 },
                 "region": {
@@ -84,7 +84,7 @@
               "id": -1,
               "physicalLocation": {
                 "artifactLocation": {
-                  "uri": "/whatever/path.c",
+                  "uri": "whatever/path.c",
                   "index": -1
                 },
                 "region": {

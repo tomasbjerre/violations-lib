@@ -1,7 +1,6 @@
 package se.bjurr.violations.lib.model;
 
 import edu.umd.cs.findbugs.annotations.SuppressFBWarnings;
-import java.io.File;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
@@ -47,15 +46,18 @@ public final class ViolationUtils {
   }
 
   private static String removeSlashAtBeginning(final String file, final String cwd) {
-    final boolean isAbsolute = new File(file).isAbsolute();
-    if (!isAbsolute || cwd.isEmpty()) {
+    if (file.equals(Violation.NO_FILE)) {
+      return file;
+    }
+    if (cwd == null || cwd.isEmpty()) {
       return removeAnySlashAtBeginning(file);
     }
-    if (file.startsWith(cwd)) {
-      final String relative = file.replaceFirst(cwd, "");
-      return removeAnySlashAtBeginning(relative);
+    final String fileRemoved = removeAnySlashAtBeginning(file);
+    final String cwdRemoved = removeAnySlashAtBeginning(cwd);
+    if (fileRemoved.startsWith(cwdRemoved)) {
+      return removeAnySlashAtBeginning(fileRemoved.substring(cwdRemoved.length()));
     }
-    return file;
+    return fileRemoved;
   }
 
   private static String removeAnySlashAtBeginning(final String file) {

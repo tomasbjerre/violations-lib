@@ -18,9 +18,9 @@ public class CodeClimateTransformerTest {
   @Test
   public void testThatViolationsCanBeTransformed() {
     final String description = "asdasd";
-    final String fingerprint = "287f089bbb587fbb815c35558f2053564c792d5add0f19cfd38fc6ffea3454fc";
+    final String fingerprint = "fb75b24a7540f02e4fd8fa1b9e646a88434e3085a7affab97fb3f7dd0e90844b";
     final Integer begin = 123;
-    final String path = "/whatever/path.c";
+    final String path = "whatever/path.c";
     final Set<Violation> violationSet = new TreeSet<>();
     final Violation violation1 =
         violationBuilder() //
