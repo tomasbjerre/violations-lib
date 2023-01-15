@@ -60,8 +60,8 @@ public class SarifTransformer {
     final Region region =
         new Region()
             .withMessage(new Message().withText(from.getMessage()))
-            .withStartLine(from.getStartLine())
-            .withEndLine(from.getEndLine())
+            .withStartLine(zeroToOne(from.getStartLine()))
+            .withEndLine(zeroToOne(from.getEndLine()))
             .withEndColumn(from.getEndColumn());
 
     final ArtifactLocation artifactLocation = new ArtifactLocation().withUri(from.getFile());
@@ -75,6 +75,13 @@ public class SarifTransformer {
         .withLevel(level)
         .withLocations(locations)
         .withKind("fail");
+  }
+
+  private static Integer zeroToOne(final Integer startLine) {
+    if (startLine == null || startLine == 0) {
+      return 1;
+    }
+    return startLine;
   }
 
   private static String toLevel(final SEVERITY severity) {
