@@ -6,6 +6,7 @@ import java.util.Set;
 import se.bjurr.violations.lib.ViolationsLogger;
 import se.bjurr.violations.lib.model.Violation;
 import se.bjurr.violations.lib.parsers.AndroidLintParser;
+import se.bjurr.violations.lib.parsers.AnsibleLaterParser;
 import se.bjurr.violations.lib.parsers.CLangParser;
 import se.bjurr.violations.lib.parsers.CPDParser;
 import se.bjurr.violations.lib.parsers.CPPCheckParser;
@@ -58,6 +59,7 @@ import se.bjurr.violations.lib.parsers.ZPTLintParser;
 
 public enum Parser {
   ANDROIDLINT(new AndroidLintParser()), //
+  ANSIBLELATER(new AnsibleLaterParser()), //
   CHECKSTYLE(new CheckStyleParser()), //
   CODENARC(new CodeNarcParser()), //
   CLANG(new CLangParser()), //

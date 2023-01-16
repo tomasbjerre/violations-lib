@@ -11,6 +11,7 @@ A number of **parsers** have been implemented. Some **parsers** can parse output
 | --- | --- | ---
 | [_ARM-GCC_](https://developer.arm.com/open-source/gnu-toolchain/gnu-rm)               | `CLANG`              | 
 | [_AndroidLint_](http://developer.android.com/tools/help/lint.html)                    | `ANDROIDLINT`        | 
+| [_Ansible-Later_](https://github.com/thegeeklab/ansible-later)                        | `ANSIBLELATER`       | With `json` format
 | [_AnsibleLint_](https://github.com/willthames/ansible-lint)                           | `FLAKE8`             | With `-p`
 | [_Bandit_](https://github.com/PyCQA/bandit)                                           | `CLANG`              | With `bandit -r examples/ -f custom -o bandit.out --msg-template "{abspath}:{line}: {severity}: {test_id}: {msg}"`
 | [_CLang_](https://clang-analyzer.llvm.org/)                                           | `CLANG`              | 
@@ -85,7 +86,7 @@ A number of **parsers** have been implemented. Some **parsers** can parse output
 | [_YAMLLint_](https://yamllint.readthedocs.io/en/stable/index.html)                    | `YAMLLINT`           | With `-f parsable`
 | [_ZPTLint_](https://pypi.python.org/pypi/zptlint)                                     | `ZPTLINT`            |
 
-49 parsers and 75 reporters.
+50 parsers and 76 reporters.
 
 Missing a format? Open an issue [here](https://github.com/tomasbjerre/violations-lib/issues)!
 

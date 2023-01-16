@@ -4,6 +4,11 @@ public enum Reporter {
   ARMGCC("ARM-GCC", Parser.CLANG, "https://developer.arm.com/open-source/gnu-toolchain/gnu-rm", ""),
   ANDROIDLINT(
       "AndroidLint", Parser.ANDROIDLINT, "http://developer.android.com/tools/help/lint.html", ""),
+  ANSIBLELATER(
+      "Ansible-Later",
+      Parser.ANSIBLELATER,
+      "https://github.com/thegeeklab/ansible-later",
+      "With `json` format"),
   ANSIBLELINT(
       "AnsibleLint", Parser.FLAKE8, "https://github.com/willthames/ansible-lint", "With `-p`"),
   BANDIT(
