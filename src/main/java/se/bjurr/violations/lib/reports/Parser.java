@@ -47,6 +47,7 @@ import se.bjurr.violations.lib.parsers.PyLintParser;
 import se.bjurr.violations.lib.parsers.ResharperParser;
 import se.bjurr.violations.lib.parsers.SarifParser;
 import se.bjurr.violations.lib.parsers.SbtScalacParser;
+import se.bjurr.violations.lib.parsers.SemgrepParser;
 import se.bjurr.violations.lib.parsers.SimianParser;
 import se.bjurr.violations.lib.parsers.SonarParser;
 import se.bjurr.violations.lib.parsers.StyleCopParser;
@@ -97,6 +98,7 @@ public enum Parser {
   RESHARPER(new ResharperParser()), //
   SARIF(new SarifParser()), //
   SBTSCALAC(new SbtScalacParser()), //
+  SEMGREP(new SemgrepParser()), //
   SIMIAN(new SimianParser()), //
   SONAR(new SonarParser()), //
   STYLECOP(new StyleCopParser()), //

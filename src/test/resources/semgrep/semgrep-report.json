@@ -1,0 +1,1281 @@
+{
+  "errors": [],
+  "paths": {
+    "_comment": "<add --verbose for a list of skipped paths>",
+    "scanned": [
+      ".github/workflows/gradle-ci.yml",
+      ".gitignore",
+      "CHANGELOG.md",
+      "ISSUE_TEMPLATE",
+      "LICENSE",
+      "README.md",
+      "build.gradle",
+      "gradle/wrapper/gradle-wrapper.jar",
+      "gradle/wrapper/gradle-wrapper.properties",
+      "gradle.properties",
+      "gradlew",
+      "gradlew.bat",
+      "semgrep.json",
+      "semgrep.json~",
+      "src/gen/java/.gitkeep",
+      "src/main/java/se/bjurr/violations/lib/FilteringViolationsLogger.java",
+      "src/main/java/se/bjurr/violations/lib/ORDERED_BY.java",
+      "src/main/java/se/bjurr/violations/lib/ViolationsApi.java",
+      "src/main/java/se/bjurr/violations/lib/ViolationsLogger.java",
+      "src/main/java/se/bjurr/violations/lib/model/SEVERITY.java",
+      "src/main/java/se/bjurr/violations/lib/model/Violation.java",
+      "src/main/java/se/bjurr/violations/lib/model/codeclimate/CodeClimate.java",
+      "src/main/java/se/bjurr/violations/lib/model/codeclimate/CodeClimateCategory.java",
+      "src/main/java/se/bjurr/violations/lib/model/codeclimate/CodeClimateLines.java",
+      "src/main/java/se/bjurr/violations/lib/model/codeclimate/CodeClimateLocation.java",
+      "src/main/java/se/bjurr/violations/lib/model/codeclimate/CodeClimatePosition.java",
+      "src/main/java/se/bjurr/violations/lib/model/codeclimate/CodeClimatePositions.java",
+      "src/main/java/se/bjurr/violations/lib/model/codeclimate/CodeClimateSeverity.java",
+      "src/main/java/se/bjurr/violations/lib/model/codeclimate/CodeClimateTransformer.java",
+      "src/main/java/se/bjurr/violations/lib/model/sarif/SarifTransformer.java",
+      "src/main/java/se/bjurr/violations/lib/parsers/AndroidLintParser.java",
+      "src/main/java/se/bjurr/violations/lib/parsers/CLangParser.java",
+      "src/main/java/se/bjurr/violations/lib/parsers/CPDParser.java",
+      "src/main/java/se/bjurr/violations/lib/parsers/CPPCheckParser.java",
+      "src/main/java/se/bjurr/violations/lib/parsers/CSSLintParser.java",
+      "src/main/java/se/bjurr/violations/lib/parsers/CheckStyleParser.java",
+      "src/main/java/se/bjurr/violations/lib/parsers/CodeClimateParser.java",
+      "src/main/java/se/bjurr/violations/lib/parsers/CodeNarcParser.java",
+      "src/main/java/se/bjurr/violations/lib/parsers/CppLintParser.java",
+      "src/main/java/se/bjurr/violations/lib/parsers/DocFXParser.java",
+      "src/main/java/se/bjurr/violations/lib/parsers/FindbugsParser.java",
+      "src/main/java/se/bjurr/violations/lib/parsers/Flake8Parser.java",
+      "src/main/java/se/bjurr/violations/lib/parsers/FxCopParser.java",
+      "src/main/java/se/bjurr/violations/lib/parsers/GHSParser.java",
+      "src/main/java/se/bjurr/violations/lib/parsers/GendarmeParser.java",
+      "src/main/java/se/bjurr/violations/lib/parsers/GenericParser.java",
+      "src/main/java/se/bjurr/violations/lib/parsers/GoLintParser.java",
+      "src/main/java/se/bjurr/violations/lib/parsers/GoogleErrorProneParser.java",
+      "src/main/java/se/bjurr/violations/lib/parsers/IARParser.java",
+      "src/main/java/se/bjurr/violations/lib/parsers/JCReportParser.java",
+      "src/main/java/se/bjurr/violations/lib/parsers/JSLintParser.java",
+      "src/main/java/se/bjurr/violations/lib/parsers/JUnitParser.java",
+      "src/main/java/se/bjurr/violations/lib/parsers/JacocoParser.java",
+      "src/main/java/se/bjurr/violations/lib/parsers/JacocoParserSettings.java",
+      "src/main/java/se/bjurr/violations/lib/parsers/KlocworkParser.java",
+      "src/main/java/se/bjurr/violations/lib/parsers/KotlinGradleParser.java",
+      "src/main/java/se/bjurr/violations/lib/parsers/KotlinMavenParser.java",
+      "src/main/java/se/bjurr/violations/lib/parsers/LintParser.java",
+      "src/main/java/se/bjurr/violations/lib/parsers/MSBuildLogParser.java",
+      "src/main/java/se/bjurr/violations/lib/parsers/MSCPPParser.java",
+      "src/main/java/se/bjurr/violations/lib/parsers/MachineParser.java",
+      "src/main/java/se/bjurr/violations/lib/parsers/MyPyParser.java",
+      "src/main/java/se/bjurr/violations/lib/parsers/PCLintParser.java",
+      "src/main/java/se/bjurr/violations/lib/parsers/PMDParser.java",
+      "src/main/java/se/bjurr/violations/lib/parsers/PerlCriticParser.java",
+      "src/main/java/se/bjurr/violations/lib/parsers/PiTestParser.java",
+      "src/main/java/se/bjurr/violations/lib/parsers/ProtoLintParser.java",
+      "src/main/java/se/bjurr/violations/lib/parsers/PyDocStyleParser.java",
+      "src/main/java/se/bjurr/violations/lib/parsers/PyLintParser.java",
+      "src/main/java/se/bjurr/violations/lib/parsers/ResharperParser.java",
+      "src/main/java/se/bjurr/violations/lib/parsers/SarifParser.java",
+      "src/main/java/se/bjurr/violations/lib/parsers/SbtScalacParser.java",
+      "src/main/java/se/bjurr/violations/lib/parsers/SemgrepParser.java",
+      "src/main/java/se/bjurr/violations/lib/parsers/SimianParser.java",
+      "src/main/java/se/bjurr/violations/lib/parsers/SonarParser.java",
+      "src/main/java/se/bjurr/violations/lib/parsers/StyleCopParser.java",
+      "src/main/java/se/bjurr/violations/lib/parsers/ValgrindParser.java",
+      "src/main/java/se/bjurr/violations/lib/parsers/ViolationsParser.java",
+      "src/main/java/se/bjurr/violations/lib/parsers/XMLLintParser.java",
+      "src/main/java/se/bjurr/violations/lib/parsers/XUnitParser.java",
+      "src/main/java/se/bjurr/violations/lib/parsers/YAMLlintParser.java",
+      "src/main/java/se/bjurr/violations/lib/parsers/ZPTLintParser.java",
+      "src/main/java/se/bjurr/violations/lib/reports/Parser.java",
+      "src/main/java/se/bjurr/violations/lib/reports/Reporter.java",
+      "src/main/java/se/bjurr/violations/lib/reports/ReportsFinder.java",
+      "src/main/java/se/bjurr/violations/lib/reports/ViolationsFinder.java",
+      "src/main/java/se/bjurr/violations/lib/util/Filtering.java",
+      "src/main/java/se/bjurr/violations/lib/util/PatchParserUtil.java",
+      "src/main/java/se/bjurr/violations/lib/util/StringUtils.java",
+      "src/main/java/se/bjurr/violations/lib/util/Utils.java",
+      "src/main/java/se/bjurr/violations/lib/util/ViolationParserUtils.java",
+      "src/main/resources/findbugs/fsb-messages.xml",
+      "src/main/resources/findbugs/messages.xml",
+      "src/main/resources/json/sarif-schema.json"
+    ]
+  },
+  "results": [
+    {
+      "check_id": "java.lang.security.audit.formatted-sql-string.formatted-sql-string",
+      "end": {
+        "col": 86,
+        "line": 33,
+        "offset": 1340
+      },
+      "extra": {
+        "dataflow_trace": {
+          "taint_sink": [
+            "CliLoc",
+            [
+              {
+                "end": {
+                  "col": 86,
+                  "line": 33,
+                  "offset": 1340
+                },
+                "path": "src/main/java/se/bjurr/violations/lib/parsers/JUnitParser.java",
+                "start": {
+                  "col": 24,
+                  "line": 33,
+                  "offset": 1278
+                }
+              },
+              "c.createStatement().executeQuery(\"SELECT * FROM \" + tableName)"
+            ]
+          ],
+          "taint_source": [
+            "CliLoc",
+            [
+              {
+                "end": {
+                  "col": 85,
+                  "line": 33,
+                  "offset": 1339
+                },
+                "path": "src/main/java/se/bjurr/violations/lib/parsers/JUnitParser.java",
+                "start": {
+                  "col": 76,
+                  "line": 33,
+                  "offset": 1330
+                }
+              },
+              "tableName"
+            ]
+          ]
+        },
+        "fingerprint": "334e2d3966cb97a0d595f97908004965f37f26b6abcb3dc8b10b96af553a04bf02cda8ae91381802eceb0907df707dcea761bf8d232cca1a3d4928b374e313bf_0",
+        "is_ignored": false,
+        "lines": "        ResultSet rs = c.createStatement().executeQuery(\"SELECT * FROM \" + tableName);",
+        "message": "Detected a formatted string in a SQL statement. This could lead to SQL injection if variables in the SQL statement are not properly sanitized. Use a prepared statements (java.sql.PreparedStatement) instead. You can obtain a PreparedStatement using 'connection.prepareStatement'.",
+        "metadata": {
+          "asvs": {
+            "control_id": "5.3.5 Injection",
+            "control_url": "https://github.com/OWASP/ASVS/blob/master/4.0/en/0x13-V5-Validation-Sanitization-Encoding.md#v53-output-encoding-and-injection-prevention-requirements",
+            "section": "V5: Validation, Sanitization and Encoding Verification Requirements",
+            "version": "4"
+          },
+          "category": "security",
+          "confidence": "MEDIUM",
+          "cwe": [
+            "CWE-89: Improper Neutralization of Special Elements used in an SQL Command ('SQL Injection')"
+          ],
+          "cwe2021-top25": true,
+          "cwe2022-top25": true,
+          "impact": "MEDIUM",
+          "license": "Commons Clause License Condition v1.0[LGPL-2.1-only]",
+          "likelihood": "HIGH",
+          "owasp": [
+            "A01:2017 - Injection",
+            "A03:2021 - Injection"
+          ],
+          "references": [
+            "https://cheatsheetseries.owasp.org/cheatsheets/SQL_Injection_Prevention_Cheat_Sheet.html",
+            "https://docs.oracle.com/javase/tutorial/jdbc/basics/prepared.html#create_ps",
+            "https://software-security.sans.org/developer-how-to/fix-sql-injection-in-java-using-prepared-callable-statement"
+          ],
+          "semgrep.dev": {
+            "rule": {
+              "rule_id": "QrUzxR",
+              "url": "https://semgrep.dev/playground/r/3ZTx0L/java.lang.security.audit.formatted-sql-string.formatted-sql-string",
+              "version_id": "3ZTx0L"
+            }
+          },
+          "shortlink": "https://sg.run/OPXp",
+          "source": "https://semgrep.dev/r/java.lang.security.audit.formatted-sql-string.formatted-sql-string",
+          "source-rule-url": "https://find-sec-bugs.github.io/bugs.htm#SQL_INJECTION",
+          "subcategory": [
+            "vuln"
+          ],
+          "technology": [
+            "java"
+          ]
+        },
+        "metavars": {
+          "$ANNOT": {
+            "abstract_content": "void",
+            "end": {
+              "col": 16,
+              "line": 30,
+              "offset": 1133
+            },
+            "start": {
+              "col": 12,
+              "line": 30,
+              "offset": 1129
+            }
+          },
+          "$C": {
+            "abstract_content": "c",
+            "end": {
+              "col": 25,
+              "line": 33,
+              "offset": 1279
+            },
+            "propagated_value": {
+              "svalue_abstract_content": "null",
+              "svalue_end": {
+                "col": 28,
+                "line": 31,
+                "offset": 1212
+              },
+              "svalue_start": {
+                "col": 24,
+                "line": 31,
+                "offset": 1208
+              }
+            },
+            "start": {
+              "col": 24,
+              "line": 33,
+              "offset": 1278
+            }
+          },
+          "$FUNC": {
+            "abstract_content": "selectAll",
+            "end": {
+              "col": 26,
+              "line": 30,
+              "offset": 1143
+            },
+            "start": {
+              "col": 17,
+              "line": 30,
+              "offset": 1134
+            }
+          },
+          "$INPUT": {
+            "abstract_content": "tableName",
+            "end": {
+              "col": 85,
+              "line": 33,
+              "offset": 1339
+            },
+            "start": {
+              "col": 76,
+              "line": 33,
+              "offset": 1330
+            }
+          },
+          "$SQLFUNC": {
+            "abstract_content": "executeQuery",
+            "end": {
+              "col": 56,
+              "line": 33,
+              "offset": 1310
+            },
+            "start": {
+              "col": 44,
+              "line": 33,
+              "offset": 1298
+            }
+          }
+        },
+        "severity": "ERROR"
+      },
+      "path": "src/main/java/se/bjurr/violations/lib/parsers/JUnitParser.java",
+      "start": {
+        "col": 24,
+        "line": 33,
+        "offset": 1278
+      }
+    },
+    {
+      "check_id": "java.lang.security.audit.formatted-sql-string.formatted-sql-string",
+      "end": {
+        "col": 61,
+        "line": 40,
+        "offset": 1639
+      },
+      "extra": {
+        "dataflow_trace": {
+          "intermediate_vars": [
+            {
+              "content": "sql",
+              "location": {
+                "end": {
+                  "col": 19,
+                  "line": 37,
+                  "offset": 1434
+                },
+                "path": "src/main/java/se/bjurr/violations/lib/parsers/JUnitParser.java",
+                "start": {
+                  "col": 16,
+                  "line": 37,
+                  "offset": 1431
+                }
+              }
+            }
+          ],
+          "taint_sink": [
+            "CliLoc",
+            [
+              {
+                "end": {
+                  "col": 61,
+                  "line": 40,
+                  "offset": 1639
+                },
+                "path": "src/main/java/se/bjurr/violations/lib/parsers/JUnitParser.java",
+                "start": {
+                  "col": 24,
+                  "line": 40,
+                  "offset": 1602
+                }
+              },
+              "c.createStatement().executeQuery(sql)"
+            ]
+          ],
+          "taint_source": [
+            "CliLoc",
+            [
+              {
+                "end": {
+                  "col": 69,
+                  "line": 37,
+                  "offset": 1484
+                },
+                "path": "src/main/java/se/bjurr/violations/lib/parsers/JUnitParser.java",
+                "start": {
+                  "col": 67,
+                  "line": 37,
+                  "offset": 1482
+                }
+              },
+              "id"
+            ]
+          ]
+        },
+        "fingerprint": "f9b4721b69e1d15c842d7fac2f2213bdb24a48c3b9f5eafecac2b686de64eb9e6c6dcee5e307a4f93c26b9be588ba812e10bacc6eba5693434d352b962233428_0",
+        "is_ignored": false,
+        "lines": "        ResultSet rs = c.createStatement().executeQuery(sql);",
+        "message": "Detected a formatted string in a SQL statement. This could lead to SQL injection if variables in the SQL statement are not properly sanitized. Use a prepared statements (java.sql.PreparedStatement) instead. You can obtain a PreparedStatement using 'connection.prepareStatement'.",
+        "metadata": {
+          "asvs": {
+            "control_id": "5.3.5 Injection",
+            "control_url": "https://github.com/OWASP/ASVS/blob/master/4.0/en/0x13-V5-Validation-Sanitization-Encoding.md#v53-output-encoding-and-injection-prevention-requirements",
+            "section": "V5: Validation, Sanitization and Encoding Verification Requirements",
+            "version": "4"
+          },
+          "category": "security",
+          "confidence": "MEDIUM",
+          "cwe": [
+            "CWE-89: Improper Neutralization of Special Elements used in an SQL Command ('SQL Injection')"
+          ],
+          "cwe2021-top25": true,
+          "cwe2022-top25": true,
+          "impact": "MEDIUM",
+          "license": "Commons Clause License Condition v1.0[LGPL-2.1-only]",
+          "likelihood": "HIGH",
+          "owasp": [
+            "A01:2017 - Injection",
+            "A03:2021 - Injection"
+          ],
+          "references": [
+            "https://cheatsheetseries.owasp.org/cheatsheets/SQL_Injection_Prevention_Cheat_Sheet.html",
+            "https://docs.oracle.com/javase/tutorial/jdbc/basics/prepared.html#create_ps",
+            "https://software-security.sans.org/developer-how-to/fix-sql-injection-in-java-using-prepared-callable-statement"
+          ],
+          "semgrep.dev": {
+            "rule": {
+              "rule_id": "QrUzxR",
+              "url": "https://semgrep.dev/playground/r/3ZTx0L/java.lang.security.audit.formatted-sql-string.formatted-sql-string",
+              "version_id": "3ZTx0L"
+            }
+          },
+          "shortlink": "https://sg.run/OPXp",
+          "source": "https://semgrep.dev/r/java.lang.security.audit.formatted-sql-string.formatted-sql-string",
+          "source-rule-url": "https://find-sec-bugs.github.io/bugs.htm#SQL_INJECTION",
+          "subcategory": [
+            "vuln"
+          ],
+          "technology": [
+            "java"
+          ]
+        },
+        "metavars": {
+          "$ANNOT": {
+            "abstract_content": "void",
+            "end": {
+              "col": 16,
+              "line": 36,
+              "offset": 1367
+            },
+            "start": {
+              "col": 12,
+              "line": 36,
+              "offset": 1363
+            }
+          },
+          "$C": {
+            "abstract_content": "c",
+            "end": {
+              "col": 25,
+              "line": 40,
+              "offset": 1603
+            },
+            "propagated_value": {
+              "svalue_abstract_content": "new ConnectionMock()",
+              "svalue_end": {
+                "col": 44,
+                "line": 38,
+                "offset": 1536
+              },
+              "svalue_start": {
+                "col": 24,
+                "line": 38,
+                "offset": 1516
+              }
+            },
+            "start": {
+              "col": 24,
+              "line": 40,
+              "offset": 1602
+            }
+          },
+          "$FUNC": {
+            "abstract_content": "selectAllById",
+            "end": {
+              "col": 30,
+              "line": 36,
+              "offset": 1381
+            },
+            "start": {
+              "col": 17,
+              "line": 36,
+              "offset": 1368
+            }
+          },
+          "$INPUT": {
+            "abstract_content": "id",
+            "end": {
+              "col": 69,
+              "line": 37,
+              "offset": 1484
+            },
+            "start": {
+              "col": 67,
+              "line": 37,
+              "offset": 1482
+            }
+          },
+          "$SQLFUNC": {
+            "abstract_content": "executeQuery",
+            "end": {
+              "col": 56,
+              "line": 40,
+              "offset": 1634
+            },
+            "start": {
+              "col": 44,
+              "line": 40,
+              "offset": 1622
+            }
+          }
+        },
+        "severity": "INFO"
+      },
+      "path": "src/main/java/se/bjurr/violations/lib/parsers/JUnitParser.java",
+      "start": {
+        "col": 24,
+        "line": 40,
+        "offset": 1602
+      }
+    },
+    {
+      "check_id": "java.lang.security.audit.formatted-sql-string.formatted-sql-string",
+      "end": {
+        "col": 61,
+        "line": 51,
+        "offset": 2005
+      },
+      "extra": {
+        "dataflow_trace": {
+          "intermediate_vars": [
+            {
+              "content": "sql",
+              "location": {
+                "end": {
+                  "col": 12,
+                  "line": 45,
+                  "offset": 1775
+                },
+                "path": "src/main/java/se/bjurr/violations/lib/parsers/JUnitParser.java",
+                "start": {
+                  "col": 9,
+                  "line": 45,
+                  "offset": 1772
+                }
+              }
+            }
+          ],
+          "taint_sink": [
+            "CliLoc",
+            [
+              {
+                "end": {
+                  "col": 61,
+                  "line": 51,
+                  "offset": 2005
+                },
+                "path": "src/main/java/se/bjurr/violations/lib/parsers/JUnitParser.java",
+                "start": {
+                  "col": 24,
+                  "line": 51,
+                  "offset": 1968
+                }
+              },
+              "c.createStatement().executeQuery(sql)"
+            ]
+          ],
+          "taint_source": [
+            "CliLoc",
+            [
+              {
+                "end": {
+                  "col": 21,
+                  "line": 45,
+                  "offset": 1784
+                },
+                "path": "src/main/java/se/bjurr/violations/lib/parsers/JUnitParser.java",
+                "start": {
+                  "col": 16,
+                  "line": 45,
+                  "offset": 1779
+                }
+              },
+              "field"
+            ]
+          ]
+        },
+        "fingerprint": "a6404caed63112b80dad512d99f4e093d26878de9f8186ab1e8bcbda888f60e7d2c1b5e10147dbcf605ffbb47220a84afd3b4503bd951e8004755ecdf5f21d5d_0",
+        "is_ignored": false,
+        "lines": "        ResultSet rs = c.createStatement().executeQuery(sql);",
+        "message": "Detected a formatted string in a SQL statement. This could lead to SQL injection if variables in the SQL statement are not properly sanitized. Use a prepared statements (java.sql.PreparedStatement) instead. You can obtain a PreparedStatement using 'connection.prepareStatement'.",
+        "metadata": {
+          "asvs": {
+            "control_id": "5.3.5 Injection",
+            "control_url": "https://github.com/OWASP/ASVS/blob/master/4.0/en/0x13-V5-Validation-Sanitization-Encoding.md#v53-output-encoding-and-injection-prevention-requirements",
+            "section": "V5: Validation, Sanitization and Encoding Verification Requirements",
+            "version": "4"
+          },
+          "category": "security",
+          "confidence": "MEDIUM",
+          "cwe": [
+            "CWE-89: Improper Neutralization of Special Elements used in an SQL Command ('SQL Injection')"
+          ],
+          "cwe2021-top25": true,
+          "cwe2022-top25": true,
+          "impact": "MEDIUM",
+          "license": "Commons Clause License Condition v1.0[LGPL-2.1-only]",
+          "likelihood": "HIGH",
+          "owasp": [
+            "A01:2017 - Injection",
+            "A03:2021 - Injection"
+          ],
+          "references": [
+            "https://cheatsheetseries.owasp.org/cheatsheets/SQL_Injection_Prevention_Cheat_Sheet.html",
+            "https://docs.oracle.com/javase/tutorial/jdbc/basics/prepared.html#create_ps",
+            "https://software-security.sans.org/developer-how-to/fix-sql-injection-in-java-using-prepared-callable-statement"
+          ],
+          "semgrep.dev": {
+            "rule": {
+              "rule_id": "QrUzxR",
+              "url": "https://semgrep.dev/playground/r/3ZTx0L/java.lang.security.audit.formatted-sql-string.formatted-sql-string",
+              "version_id": "3ZTx0L"
+            }
+          },
+          "shortlink": "https://sg.run/OPXp",
+          "source": "https://semgrep.dev/r/java.lang.security.audit.formatted-sql-string.formatted-sql-string",
+          "source-rule-url": "https://find-sec-bugs.github.io/bugs.htm#SQL_INJECTION",
+          "subcategory": [
+            "vuln"
+          ],
+          "technology": [
+            "java"
+          ]
+        },
+        "metavars": {
+          "$ANNOT": {
+            "abstract_content": "void",
+            "end": {
+              "col": 16,
+              "line": 43,
+              "offset": 1666
+            },
+            "start": {
+              "col": 12,
+              "line": 43,
+              "offset": 1662
+            }
+          },
+          "$C": {
+            "abstract_content": "c",
+            "end": {
+              "col": 25,
+              "line": 51,
+              "offset": 1969
+            },
+            "propagated_value": {
+              "svalue_abstract_content": "null",
+              "svalue_end": {
+                "col": 28,
+                "line": 49,
+                "offset": 1902
+              },
+              "svalue_start": {
+                "col": 24,
+                "line": 49,
+                "offset": 1898
+              }
+            },
+            "start": {
+              "col": 24,
+              "line": 51,
+              "offset": 1968
+            }
+          },
+          "$FUNC": {
+            "abstract_content": "selectFieldById",
+            "end": {
+              "col": 32,
+              "line": 43,
+              "offset": 1682
+            },
+            "start": {
+              "col": 17,
+              "line": 43,
+              "offset": 1667
+            }
+          },
+          "$INPUT": {
+            "abstract_content": "field",
+            "end": {
+              "col": 21,
+              "line": 45,
+              "offset": 1784
+            },
+            "start": {
+              "col": 16,
+              "line": 45,
+              "offset": 1779
+            }
+          },
+          "$SQLFUNC": {
+            "abstract_content": "executeQuery",
+            "end": {
+              "col": 56,
+              "line": 51,
+              "offset": 2000
+            },
+            "start": {
+              "col": 44,
+              "line": 51,
+              "offset": 1988
+            }
+          }
+        },
+        "severity": "WARNING"
+      },
+      "path": "src/main/java/se/bjurr/violations/lib/parsers/JUnitParser.java",
+      "start": {
+        "col": 24,
+        "line": 51,
+        "offset": 1968
+      }
+    },
+    {
+      "check_id": "java.lang.security.audit.formatted-sql-string.formatted-sql-string",
+      "end": {
+        "col": 86,
+        "line": 25,
+        "offset": 884
+      },
+      "extra": {
+        "dataflow_trace": {
+          "taint_sink": [
+            "CliLoc",
+            [
+              {
+                "end": {
+                  "col": 86,
+                  "line": 25,
+                  "offset": 884
+                },
+                "path": "src/main/java/se/bjurr/violations/lib/parsers/SemgrepParser.java",
+                "start": {
+                  "col": 24,
+                  "line": 25,
+                  "offset": 822
+                }
+              },
+              "c.createStatement().executeQuery(\"SELECT * FROM \" + tableName)"
+            ]
+          ],
+          "taint_source": [
+            "CliLoc",
+            [
+              {
+                "end": {
+                  "col": 85,
+                  "line": 25,
+                  "offset": 883
+                },
+                "path": "src/main/java/se/bjurr/violations/lib/parsers/SemgrepParser.java",
+                "start": {
+                  "col": 76,
+                  "line": 25,
+                  "offset": 874
+                }
+              },
+              "tableName"
+            ]
+          ]
+        },
+        "fingerprint": "62d66940490d730e2656f3b185bf7ca00580760dd7f794e81fd23df8a25d7ae0715bfbeb2aceebe320fe39bd395cd93fc43012d2e0ce9ac5d7ad46e112f49bac_0",
+        "is_ignored": false,
+        "lines": "        ResultSet rs = c.createStatement().executeQuery(\"SELECT * FROM \" + tableName);",
+        "message": "Detected a formatted string in a SQL statement. This could lead to SQL injection if variables in the SQL statement are not properly sanitized. Use a prepared statements (java.sql.PreparedStatement) instead. You can obtain a PreparedStatement using 'connection.prepareStatement'.",
+        "metadata": {
+          "asvs": {
+            "control_id": "5.3.5 Injection",
+            "control_url": "https://github.com/OWASP/ASVS/blob/master/4.0/en/0x13-V5-Validation-Sanitization-Encoding.md#v53-output-encoding-and-injection-prevention-requirements",
+            "section": "V5: Validation, Sanitization and Encoding Verification Requirements",
+            "version": "4"
+          },
+          "category": "security",
+          "confidence": "MEDIUM",
+          "cwe": [
+            "CWE-89: Improper Neutralization of Special Elements used in an SQL Command ('SQL Injection')"
+          ],
+          "cwe2021-top25": true,
+          "cwe2022-top25": true,
+          "impact": "MEDIUM",
+          "license": "Commons Clause License Condition v1.0[LGPL-2.1-only]",
+          "likelihood": "HIGH",
+          "owasp": [
+            "A01:2017 - Injection",
+            "A03:2021 - Injection"
+          ],
+          "references": [
+            "https://cheatsheetseries.owasp.org/cheatsheets/SQL_Injection_Prevention_Cheat_Sheet.html",
+            "https://docs.oracle.com/javase/tutorial/jdbc/basics/prepared.html#create_ps",
+            "https://software-security.sans.org/developer-how-to/fix-sql-injection-in-java-using-prepared-callable-statement"
+          ],
+          "semgrep.dev": {
+            "rule": {
+              "rule_id": "QrUzxR",
+              "url": "https://semgrep.dev/playground/r/3ZTx0L/java.lang.security.audit.formatted-sql-string.formatted-sql-string",
+              "version_id": "3ZTx0L"
+            }
+          },
+          "shortlink": "https://sg.run/OPXp",
+          "source": "https://semgrep.dev/r/java.lang.security.audit.formatted-sql-string.formatted-sql-string",
+          "source-rule-url": "https://find-sec-bugs.github.io/bugs.htm#SQL_INJECTION",
+          "subcategory": [
+            "vuln"
+          ],
+          "technology": [
+            "java"
+          ]
+        },
+        "metavars": {
+          "$ANNOT": {
+            "abstract_content": "void",
+            "end": {
+              "col": 16,
+              "line": 22,
+              "offset": 680
+            },
+            "start": {
+              "col": 12,
+              "line": 22,
+              "offset": 676
+            }
+          },
+          "$C": {
+            "abstract_content": "c",
+            "end": {
+              "col": 25,
+              "line": 25,
+              "offset": 823
+            },
+            "propagated_value": {
+              "svalue_abstract_content": "null",
+              "svalue_end": {
+                "col": 28,
+                "line": 23,
+                "offset": 758
+              },
+              "svalue_start": {
+                "col": 24,
+                "line": 23,
+                "offset": 754
+              }
+            },
+            "start": {
+              "col": 24,
+              "line": 25,
+              "offset": 822
+            }
+          },
+          "$FUNC": {
+            "abstract_content": "selectAll",
+            "end": {
+              "col": 26,
+              "line": 22,
+              "offset": 690
+            },
+            "start": {
+              "col": 17,
+              "line": 22,
+              "offset": 681
+            }
+          },
+          "$INPUT": {
+            "abstract_content": "tableName",
+            "end": {
+              "col": 85,
+              "line": 25,
+              "offset": 883
+            },
+            "start": {
+              "col": 76,
+              "line": 25,
+              "offset": 874
+            }
+          },
+          "$SQLFUNC": {
+            "abstract_content": "executeQuery",
+            "end": {
+              "col": 56,
+              "line": 25,
+              "offset": 854
+            },
+            "start": {
+              "col": 44,
+              "line": 25,
+              "offset": 842
+            }
+          }
+        },
+        "severity": "ERROR"
+      },
+      "path": "src/main/java/se/bjurr/violations/lib/parsers/SemgrepParser.java",
+      "start": {
+        "col": 24,
+        "line": 25,
+        "offset": 822
+      }
+    },
+    {
+      "check_id": "java.lang.security.audit.formatted-sql-string.formatted-sql-string",
+      "end": {
+        "col": 61,
+        "line": 32,
+        "offset": 1176
+      },
+      "extra": {
+        "dataflow_trace": {
+          "intermediate_vars": [
+            {
+              "content": "sql",
+              "location": {
+                "end": {
+                  "col": 19,
+                  "line": 29,
+                  "offset": 974
+                },
+                "path": "src/main/java/se/bjurr/violations/lib/parsers/SemgrepParser.java",
+                "start": {
+                  "col": 16,
+                  "line": 29,
+                  "offset": 971
+                }
+              }
+            }
+          ],
+          "taint_sink": [
+            "CliLoc",
+            [
+              {
+                "end": {
+                  "col": 61,
+                  "line": 32,
+                  "offset": 1176
+                },
+                "path": "src/main/java/se/bjurr/violations/lib/parsers/SemgrepParser.java",
+                "start": {
+                  "col": 24,
+                  "line": 32,
+                  "offset": 1139
+                }
+              },
+              "c.createStatement().executeQuery(sql)"
+            ]
+          ],
+          "taint_source": [
+            "CliLoc",
+            [
+              {
+                "end": {
+                  "col": 69,
+                  "line": 29,
+                  "offset": 1024
+                },
+                "path": "src/main/java/se/bjurr/violations/lib/parsers/SemgrepParser.java",
+                "start": {
+                  "col": 67,
+                  "line": 29,
+                  "offset": 1022
+                }
+              },
+              "id"
+            ]
+          ]
+        },
+        "fingerprint": "45f10fd246d4d5f3a44e50d8496af26bc5105ed9ab7e0afc75719cd26f19f8a92cbf5dd4df7c4adc80a9c4a93267b60fb1d5446a79daa0bf2d80bfe13fbdb8bf_0",
+        "is_ignored": false,
+        "lines": "        ResultSet rs = c.createStatement().executeQuery(sql);",
+        "message": "Detected a formatted string in a SQL statement. This could lead to SQL injection if variables in the SQL statement are not properly sanitized. Use a prepared statements (java.sql.PreparedStatement) instead. You can obtain a PreparedStatement using 'connection.prepareStatement'.",
+        "metadata": {
+          "asvs": {
+            "control_id": "5.3.5 Injection",
+            "control_url": "https://github.com/OWASP/ASVS/blob/master/4.0/en/0x13-V5-Validation-Sanitization-Encoding.md#v53-output-encoding-and-injection-prevention-requirements",
+            "section": "V5: Validation, Sanitization and Encoding Verification Requirements",
+            "version": "4"
+          },
+          "category": "security",
+          "confidence": "MEDIUM",
+          "cwe": [
+            "CWE-89: Improper Neutralization of Special Elements used in an SQL Command ('SQL Injection')"
+          ],
+          "cwe2021-top25": true,
+          "cwe2022-top25": true,
+          "impact": "MEDIUM",
+          "license": "Commons Clause License Condition v1.0[LGPL-2.1-only]",
+          "likelihood": "HIGH",
+          "owasp": [
+            "A01:2017 - Injection",
+            "A03:2021 - Injection"
+          ],
+          "references": [
+            "https://cheatsheetseries.owasp.org/cheatsheets/SQL_Injection_Prevention_Cheat_Sheet.html",
+            "https://docs.oracle.com/javase/tutorial/jdbc/basics/prepared.html#create_ps",
+            "https://software-security.sans.org/developer-how-to/fix-sql-injection-in-java-using-prepared-callable-statement"
+          ],
+          "semgrep.dev": {
+            "rule": {
+              "rule_id": "QrUzxR",
+              "url": "https://semgrep.dev/playground/r/3ZTx0L/java.lang.security.audit.formatted-sql-string.formatted-sql-string",
+              "version_id": "3ZTx0L"
+            }
+          },
+          "shortlink": "https://sg.run/OPXp",
+          "source": "https://semgrep.dev/r/java.lang.security.audit.formatted-sql-string.formatted-sql-string",
+          "source-rule-url": "https://find-sec-bugs.github.io/bugs.htm#SQL_INJECTION",
+          "subcategory": [
+            "vuln"
+          ],
+          "technology": [
+            "java"
+          ]
+        },
+        "metavars": {
+          "$ANNOT": {
+            "abstract_content": "void",
+            "end": {
+              "col": 16,
+              "line": 28,
+              "offset": 908
+            },
+            "start": {
+              "col": 12,
+              "line": 28,
+              "offset": 904
+            }
+          },
+          "$C": {
+            "abstract_content": "c",
+            "end": {
+              "col": 25,
+              "line": 32,
+              "offset": 1140
+            },
+            "propagated_value": {
+              "svalue_abstract_content": "new ConnectionMock()",
+              "svalue_end": {
+                "col": 44,
+                "line": 30,
+                "offset": 1075
+              },
+              "svalue_start": {
+                "col": 24,
+                "line": 30,
+                "offset": 1055
+              }
+            },
+            "start": {
+              "col": 24,
+              "line": 32,
+              "offset": 1139
+            }
+          },
+          "$FUNC": {
+            "abstract_content": "selectAllById",
+            "end": {
+              "col": 30,
+              "line": 28,
+              "offset": 922
+            },
+            "start": {
+              "col": 17,
+              "line": 28,
+              "offset": 909
+            }
+          },
+          "$INPUT": {
+            "abstract_content": "id",
+            "end": {
+              "col": 69,
+              "line": 29,
+              "offset": 1024
+            },
+            "start": {
+              "col": 67,
+              "line": 29,
+              "offset": 1022
+            }
+          },
+          "$SQLFUNC": {
+            "abstract_content": "executeQuery",
+            "end": {
+              "col": 56,
+              "line": 32,
+              "offset": 1171
+            },
+            "start": {
+              "col": 44,
+              "line": 32,
+              "offset": 1159
+            }
+          }
+        },
+        "severity": "ERROR"
+      },
+      "path": "src/main/java/se/bjurr/violations/lib/parsers/SemgrepParser.java",
+      "start": {
+        "col": 24,
+        "line": 32,
+        "offset": 1139
+      }
+    },
+    {
+      "check_id": "java.lang.security.audit.formatted-sql-string.formatted-sql-string",
+      "end": {
+        "col": 61,
+        "line": 43,
+        "offset": 1531
+      },
+      "extra": {
+        "dataflow_trace": {
+          "intermediate_vars": [
+            {
+              "content": "sql",
+              "location": {
+                "end": {
+                  "col": 12,
+                  "line": 37,
+                  "offset": 1307
+                },
+                "path": "src/main/java/se/bjurr/violations/lib/parsers/SemgrepParser.java",
+                "start": {
+                  "col": 9,
+                  "line": 37,
+                  "offset": 1304
+                }
+              }
+            }
+          ],
+          "taint_sink": [
+            "CliLoc",
+            [
+              {
+                "end": {
+                  "col": 61,
+                  "line": 43,
+                  "offset": 1531
+                },
+                "path": "src/main/java/se/bjurr/violations/lib/parsers/SemgrepParser.java",
+                "start": {
+                  "col": 24,
+                  "line": 43,
+                  "offset": 1494
+                }
+              },
+              "c.createStatement().executeQuery(sql)"
+            ]
+          ],
+          "taint_source": [
+            "CliLoc",
+            [
+              {
+                "end": {
+                  "col": 21,
+                  "line": 37,
+                  "offset": 1316
+                },
+                "path": "src/main/java/se/bjurr/violations/lib/parsers/SemgrepParser.java",
+                "start": {
+                  "col": 16,
+                  "line": 37,
+                  "offset": 1311
+                }
+              },
+              "field"
+            ]
+          ]
+        },
+        "fingerprint": "0c75d3a6257f74533b02f9e1556166e1ac3979cea329ad86e08d382284f4ee8a2c39eae5103c292b6cd53105a42b3cfad4253484a4843234485c86a012530a03_0",
+        "is_ignored": true,
+        "lines": "        ResultSet rs = c.createStatement().executeQuery(sql);",
+        "message": "Detected a formatted string in a SQL statement. This could lead to SQL injection if variables in the SQL statement are not properly sanitized. Use a prepared statements (java.sql.PreparedStatement) instead. You can obtain a PreparedStatement using 'connection.prepareStatement'.",
+        "metadata": {
+          "asvs": {
+            "control_id": "5.3.5 Injection",
+            "control_url": "https://github.com/OWASP/ASVS/blob/master/4.0/en/0x13-V5-Validation-Sanitization-Encoding.md#v53-output-encoding-and-injection-prevention-requirements",
+            "section": "V5: Validation, Sanitization and Encoding Verification Requirements",
+            "version": "4"
+          },
+          "category": "security",
+          "confidence": "MEDIUM",
+          "cwe": [
+            "CWE-89: Improper Neutralization of Special Elements used in an SQL Command ('SQL Injection')"
+          ],
+          "cwe2021-top25": true,
+          "cwe2022-top25": true,
+          "impact": "MEDIUM",
+          "license": "Commons Clause License Condition v1.0[LGPL-2.1-only]",
+          "likelihood": "HIGH",
+          "owasp": [
+            "A01:2017 - Injection",
+            "A03:2021 - Injection"
+          ],
+          "references": [
+            "https://cheatsheetseries.owasp.org/cheatsheets/SQL_Injection_Prevention_Cheat_Sheet.html",
+            "https://docs.oracle.com/javase/tutorial/jdbc/basics/prepared.html#create_ps",
+            "https://software-security.sans.org/developer-how-to/fix-sql-injection-in-java-using-prepared-callable-statement"
+          ],
+          "semgrep.dev": {
+            "rule": {
+              "rule_id": "QrUzxR",
+              "url": "https://semgrep.dev/playground/r/3ZTx0L/java.lang.security.audit.formatted-sql-string.formatted-sql-string",
+              "version_id": "3ZTx0L"
+            }
+          },
+          "shortlink": "https://sg.run/OPXp",
+          "source": "https://semgrep.dev/r/java.lang.security.audit.formatted-sql-string.formatted-sql-string",
+          "source-rule-url": "https://find-sec-bugs.github.io/bugs.htm#SQL_INJECTION",
+          "subcategory": [
+            "vuln"
+          ],
+          "technology": [
+            "java"
+          ]
+        },
+        "metavars": {
+          "$ANNOT": {
+            "abstract_content": "void",
+            "end": {
+              "col": 16,
+              "line": 35,
+              "offset": 1200
+            },
+            "start": {
+              "col": 12,
+              "line": 35,
+              "offset": 1196
+            }
+          },
+          "$C": {
+            "abstract_content": "c",
+            "end": {
+              "col": 25,
+              "line": 43,
+              "offset": 1495
+            },
+            "propagated_value": {
+              "svalue_abstract_content": "null",
+              "svalue_end": {
+                "col": 28,
+                "line": 41,
+                "offset": 1430
+              },
+              "svalue_start": {
+                "col": 24,
+                "line": 41,
+                "offset": 1426
+              }
+            },
+            "start": {
+              "col": 24,
+              "line": 43,
+              "offset": 1494
+            }
+          },
+          "$FUNC": {
+            "abstract_content": "selectFieldById",
+            "end": {
+              "col": 32,
+              "line": 35,
+              "offset": 1216
+            },
+            "start": {
+              "col": 17,
+              "line": 35,
+              "offset": 1201
+            }
+          },
+          "$INPUT": {
+            "abstract_content": "field",
+            "end": {
+              "col": 21,
+              "line": 37,
+              "offset": 1316
+            },
+            "start": {
+              "col": 16,
+              "line": 37,
+              "offset": 1311
+            }
+          },
+          "$SQLFUNC": {
+            "abstract_content": "executeQuery",
+            "end": {
+              "col": 56,
+              "line": 43,
+              "offset": 1526
+            },
+            "start": {
+              "col": 44,
+              "line": 43,
+              "offset": 1514
+            }
+          }
+        },
+        "severity": "ERROR"
+      },
+      "path": "src/main/java/se/bjurr/violations/lib/parsers/SemgrepParser.java",
+      "start": {
+        "col": 24,
+        "line": 43,
+        "offset": 1494
+      }
+    }
+  ],
+  "version": "1.4.0"
+}
