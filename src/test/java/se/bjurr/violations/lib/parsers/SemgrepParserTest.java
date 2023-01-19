@@ -46,10 +46,12 @@ public class SemgrepParserTest {
                 .setSeverity(SEVERITY.ERROR)
                 .setRule("java.lang.security.audit.formatted-sql-string.formatted-sql-string")
                 .setMessage(
-                    "Detected a formatted string in a SQL statement. This could lead to SQL"
-                        + " injection if variables in the SQL statement are not properly sanitized."
-                        + " Use a prepared statements (java.sql.PreparedStatement) instead. You can"
-                        + " obtain a PreparedStatement using 'connection.prepareStatement'.")
+                    "https://semgrep.dev/r/java.lang.security.audit.formatted-sql-string.formatted-sql-string\n\n"
+                        + "<p>Detected a formatted string in a SQL statement. This could lead to"
+                        + " SQL injection if variables in the SQL statement are not properly"
+                        + " sanitized. Use a prepared statements (java.sql.PreparedStatement)"
+                        + " instead. You can obtain a PreparedStatement using"
+                        + " 'connection.prepareStatement'.</p>")
                 .build());
   }
 
@@ -89,10 +91,12 @@ public class SemgrepParserTest {
                 .setSeverity(SEVERITY.ERROR)
                 .setRule("java.lang.security.audit.formatted-sql-string.formatted-sql-string")
                 .setMessage(
-                    "Detected a formatted string in a SQL statement. This could lead to SQL"
-                        + " injection if variables in the SQL statement are not properly sanitized."
-                        + " Use a prepared statements (java.sql.PreparedStatement) instead. You can"
-                        + " obtain a PreparedStatement using 'connection.prepareStatement'.")
+                    "https://semgrep.dev/r/java.lang.security.audit.formatted-sql-string.formatted-sql-string\n\n"
+                        + "<p>Detected a formatted string in a SQL statement. This could lead to"
+                        + " SQL injection if variables in the SQL statement are not properly"
+                        + " sanitized. Use a prepared statements (java.sql.PreparedStatement)"
+                        + " instead. You can obtain a PreparedStatement using"
+                        + " 'connection.prepareStatement'.</p>")
                 .build());
   }
 }

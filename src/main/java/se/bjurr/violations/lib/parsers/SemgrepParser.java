@@ -28,7 +28,7 @@ public class SemgrepParser implements ViolationsParser {
                 .setFile(result.path)
                 .setSeverity(result.extra.getSeverity())
                 .setRule(result.check_id)
-                .setMessage(result.extra.message)
+                .setMessage(String.format("%s\n\n<p>%s</p>", result.extra.metadata.source, result.extra.message))
                 .build());
       }
     }
@@ -53,6 +53,7 @@ public class SemgrepParser implements ViolationsParser {
     private boolean is_ignored;
     private String lines;
     private String message;
+    private Metadata metadata;
     private String severity;
 
     public SEVERITY getSeverity() {
@@ -73,5 +74,18 @@ public class SemgrepParser implements ViolationsParser {
     private int col;
     private int line;
     private int offset;
+  }
+
+  private class Metadata{
+    private String category;
+    private String confidence;
+    private ArrayList<String> cwe;
+    private String impact;
+    private String license;
+    private String likelihood;
+    private ArrayList<String> owasp;
+    private ArrayList<String> references;
+    private String shortlink;
+    private String source;
   }
 }
