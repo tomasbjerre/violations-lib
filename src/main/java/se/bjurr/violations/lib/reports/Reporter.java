@@ -164,6 +164,7 @@ public enum Reporter {
       "https://github.com/oasis-tcs/sarif-spec",
       "v2.x. Microsoft Visual C# can generate it with `ErrorLog=\"BuildErrors.sarif,version=2\"`."),
   SBTSCALAC("SbtScalac", Parser.SBTSCALAC, "http://www.scala-sbt.org/", ""),
+  SEMGREP("Semgrep", Parser.SEMGREP, "https://semgrep.dev/", "With `--json`."),
   SIMIAN("Simian", Parser.SIMIAN, "http://www.harukizaemon.com/simian/", ""),
   SPOTBUGS("Spotbugs", Parser.FINDBUGS, "https://spotbugs.github.io/", ""),
   STYLECOP("StyleCop", Parser.STYLECOP, "https://stylecop.codeplex.com/", ""),
