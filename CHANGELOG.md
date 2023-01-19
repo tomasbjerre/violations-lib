@@ -2,6 +2,21 @@
 
 Changelog of violations-lib.
 
+## 1.156.1 (2023-01-19)
+
+### Other changes
+
+**Added semgrep parser**
+
+
+[f56e9](https://github.com/tomasbjerre/violations-lib/commit/f56e925523cb3a3) Aurelian Teglas *2023-01-19 15:17:36*
+
+**Added semgrep source information to the violation message**
+
+
+[0370f](https://github.com/tomasbjerre/violations-lib/commit/0370f8f42162fa8) Aurelian Teglas *2023-01-19 15:17:36*
+
+
 ## 1.156.0 (2023-01-16)
 
 ### Features
