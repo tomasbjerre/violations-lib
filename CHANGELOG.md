@@ -2,6 +2,8 @@
 
 Changelog of violations-lib.
 
+## 1.156.2 (2023-03-03)
+
 ## 1.156.1 (2023-01-19)
 
 ### Other changes
