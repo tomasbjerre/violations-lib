@@ -33,6 +33,11 @@ public enum Reporter {
   CHECKSTYLE("Checkstyle", Parser.CHECKSTYLE, "http://checkstyle.sourceforge.net/", ""),
   CODENARC("CodeNarc", Parser.CODENARC, "http://codenarc.sourceforge.net/", ""),
   CODECLIMATE("CodeClimate", Parser.CODECLIMATE, "https://codeclimate.com/", ""),
+  DEPENDENCYCHECK(
+      "Dependency Check",
+      Parser.SARIF,
+      "https://jeremylong.github.io/DependencyCheck/",
+      "Using `--format SARIF`"),
   DETEKT(
       "Detekt",
       Parser.CHECKSTYLE,

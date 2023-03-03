@@ -331,4 +331,40 @@ public class SarifParserTest {
     assertThat(violation0.getSeverity()) //
         .isEqualTo(SEVERITY.INFO);
   }
+
+  @Test
+  public void testThatViolationsCanBeParsed_dependencyCheck() {
+    final String rootFolder = getRootFolder();
+
+    final Set<Violation> actual =
+        violationsApi() //
+            .withPattern(".*/sarif/dependency-check-report.sarif$") //
+            .inFolder(rootFolder) //
+            .findAll(SARIF) //
+            .violations();
+
+    assertThat(actual) //
+        .hasSize(1);
+    final List<Violation> arrayList = new ArrayList<>(actual);
+
+    final Violation violation0 = arrayList.get(0);
+    assertThat(violation0.getMessage()) //
+        .isEqualToIgnoringWhitespace(
+            "CVE-2021-4277\n"
+                + "\n"
+                + "        		Medium severity - CVE-2021-4277 Use of Insufficiently Random Values vulnerability in pkg:maven/org.codehaus.plexus/plexus-utils@3.1.1\n"
+                + "\n"
+                + "        		For additional help see: For more information see [CVE-2021-4277](http://web.nvd.nist.gov/view/vuln/detail?vulnId=CVE-2021-4277).\n"
+                + "\n"
+                + "\n"
+                + "        		If this is a false positive - consider using the HTML report to generate a suppression file. For more information see [How dependency-check works](https://jeremylong.github.io/DependencyCheck/general/internals.html), [How to read the HTML report](https://jeremylong.github.io/DependencyCheck/general/thereport.html), and [Suppressing false positives](https://jeremylong.github.io/DependencyCheck/general/suppression.html).\n"
+                + "\n"
+                + "        		CVE-2021-4277 - A vulnerability, which was classified as problematic, has been found in fredsmith utils. This issue affects some unknown processing of the file screenshot_sync of the component Filename Handler. The manipulation leads to predictable from observable state. The name of the patch is dbab1b66955eeb3d76b34612b358307f5c4e3944. It is recommended to apply a patch to fix this issue. The identifier VDB-216749 was assigned to this vulnerability.");
+    assertThat(violation0.getFile()) //
+        .isEqualTo("-");
+    assertThat(violation0.getStartLine()) //
+        .isEqualTo(0);
+    assertThat(violation0.getSeverity()) //
+        .isEqualTo(SEVERITY.WARN);
+  }
 }
