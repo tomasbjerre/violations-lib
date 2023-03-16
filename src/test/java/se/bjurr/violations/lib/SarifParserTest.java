@@ -367,4 +367,21 @@ public class SarifParserTest {
     assertThat(violation0.getSeverity()) //
         .isEqualTo(SEVERITY.WARN);
   }
+
+  @Test
+  public void testThatViolationsCanBeParsed_resultWithPartialRule() {
+    final String rootFolder = getRootFolder();
+
+    final Set<Violation> actual =
+        violationsApi() //
+            .withPattern(".*/sarif/result-with-partial-rule.json$") //
+            .inFolder(rootFolder) //
+            .findAll(SARIF) //
+            .violations();
+
+    actual
+        .stream() //
+        .map(Violation::getRule) //
+        .forEach(rule -> assertThat(rule).isEqualTo("rule"));
+  }
 }
