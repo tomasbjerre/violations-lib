@@ -9,6 +9,9 @@ import com.google.gson.JsonDeserializer;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonParseException;
 import java.lang.reflect.Type;
+import java.nio.charset.Charset;
+import java.nio.charset.StandardCharsets;
+import java.nio.file.Files;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -150,7 +153,7 @@ public class SarifParser implements ViolationsParser {
   private Set<Violation> parseResults(final Run run) {
     final Set<Violation> violations = new TreeSet<>();
     for (final Result result : run.getResults()) {
-      final String ruleId = result.getRuleId();
+      String ruleId = this.findRuleId(result, result.getRule());
       final Message message = result.getMessage();
       if (message == null) {
         continue;
@@ -168,6 +171,9 @@ public class SarifParser implements ViolationsParser {
           this.findReportingDescriptor(run, result, DescriptorElementOf.RULES).orElse(null);
       final String category = this.getCategory(reportingDescriptor);
       final String reporter = this.getReporter(run, result.getRule());
+      if (ruleId == null && reportingDescriptor != null) {
+        ruleId = reportingDescriptor.getId();
+      }
 
       final Optional<String> helpTextOpt = this.findHelpText(reportingDescriptor);
       final List<Location> locations = this.filterLocations(result.getLocations());
@@ -506,7 +512,7 @@ public class SarifParser implements ViolationsParser {
       final Run run, final Result result, final DescriptorElementOf lookIn) {
     final ReportingDescriptorReference ref = result.getRule();
     final Integer ruleIndex = this.findRuleIndex(result, ref);
-    final String ruleId = result.getRuleId();
+    final String ruleId = this.findRuleId(result, ref);
     return this.findReportingDescriptor(run, lookIn, ref, ruleIndex, ruleId);
   }
 
@@ -535,13 +541,21 @@ public class SarifParser implements ViolationsParser {
 
   private Integer findRuleIndex(final Result result, final ReportingDescriptorReference ref) {
     Integer ruleIndex = result.getRuleIndex();
-    if (ruleIndex == -1) {
-      ruleIndex = null;
-    }
-    if (ruleIndex == null && ref != null) {
+    if (ruleIndex == -1 && ref != null) {
       ruleIndex = ref.getIndex();
     }
+    if (ruleIndex == -1) {
+      return null;
+    }
     return ruleIndex;
+  }
+
+  private String findRuleId(final Result result, final ReportingDescriptorReference ref) {
+    String ruleId = result.getRuleId();
+    if (ruleId == null && ref != null) {
+      return ref.getId();
+    }
+    return ruleId;
   }
 
   private ToolComponent findToolComponent(final Run run, final ReportingDescriptorReference ref) {
@@ -552,6 +566,9 @@ public class SarifParser implements ViolationsParser {
       return run.getTool().getDriver();
     }
     final ToolComponentReference toolRef = ref.getToolComponent();
+    if (toolRef == null) {
+      return run.getTool().getDriver();
+    }
     if (toolRef.getGuid() != null) {
       return this.getToolComponentByGui(run, toolRef.getGuid());
     }
