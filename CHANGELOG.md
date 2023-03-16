@@ -2,6 +2,12 @@
 
 Changelog of violations-lib.
 
+## 1.156.3 (2023-03-16)
+
+### Bug Fixes
+
+-  rule resolution in sarif ([6c70b](https://github.com/tomasbjerre/violations-lib/commit/6c70b500d79cfd9) bug-brain)  
+
 ## 1.156.2 (2023-03-03)
 
 ## 1.156.1 (2023-01-19)
