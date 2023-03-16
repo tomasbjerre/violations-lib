@@ -379,8 +379,7 @@ public class SarifParserTest {
             .findAll(SARIF) //
             .violations();
 
-    actual
-        .stream() //
+    actual.stream() //
         .map(Violation::getRule) //
         .forEach(rule -> assertThat(rule).isEqualTo("rule"));
   }
