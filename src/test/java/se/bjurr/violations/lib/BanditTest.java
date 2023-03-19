@@ -45,4 +45,33 @@ public class BanditTest {
     assertThat(violation1.getSeverity()) //
         .isEqualTo(WARN);
   }
+
+  @Test
+  public void testThatViolationsCanBeParsedFromBanditLog() {
+    final String rootFolder = getRootFolder();
+
+    final Set<Violation> actual =
+        violationsApi() //
+            .withPattern(".*/bandit/bandit\\.log$") //
+            .inFolder(rootFolder) //
+            .findAll(CLANG) //
+            .violations();
+
+    assertThat(actual) //
+        .hasSize(1);
+
+    final Violation violation0 = new ArrayList<>(actual).get(0);
+    assertThat(violation0.getMessage()) //
+        .isEqualTo(
+            "B307: Use of possibly insecure function - consider using safer ast.literal_eval.");
+    assertThat(violation0.getFile()) //
+        .isEqualTo(
+            "/jenkins/workspace/ure_RC_SMTP_Bridge_flake8-bandit@2/rc_smtp_bridge/rc_smtp_bridge.py");
+    assertThat(violation0.getSeverity()) //
+        .isEqualTo(SEVERITY.WARN);
+    assertThat(violation0.getRule()) //
+        .isEqualTo("");
+    assertThat(violation0.getStartLine()) //
+        .isEqualTo(42);
+  }
 }

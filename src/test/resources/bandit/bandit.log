@@ -1,0 +1,1 @@
+/jenkins/workspace/ure_RC_SMTP_Bridge_flake8-bandit@2/rc_smtp_bridge/rc_smtp_bridge.py:42: MEDIUM: B307: Use of possibly insecure function - consider using safer ast.literal_eval.
