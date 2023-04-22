@@ -2,6 +2,12 @@
 
 Changelog of violations-lib.
 
+## 1.156.4 (2023-04-22)
+
+### Bug Fixes
+
+-  **KotlinGradleParser**  support Gradle 7.6 and newer ([d3faf](https://github.com/tomasbjerre/violations-lib/commit/d3faf90be1610ed) Tomas Bjerre)  [#176](https://github.com/tomasbjerre/violations-lib/issues/176)  
+
 ## 1.156.3 (2023-03-16)
 
 ### Bug Fixes
