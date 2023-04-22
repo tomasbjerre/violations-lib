@@ -19,7 +19,7 @@ public class KotlinGradleTest {
 
     final Set<Violation> actual =
         violationsApi() //
-            .withPattern(".*/kotlingradle/.*\\.txt") //
+            .withPattern(".*/kotlingradle/kotlin-gradle-example.*\\.txt") //
             .inFolder(rootFolder) //
             .findAll(KOTLINGRADLE) //
             .violations();
@@ -46,5 +46,35 @@ public class KotlinGradleTest {
         .isEqualTo(
             "C:/Users/User/Documents/testProject/src/main/java/ru/novikov/maps/CameraPosition.kt");
     assertThat(violation3.getStartLine()).isEqualTo(25);
+  }
+
+  @Test
+  public void testThatViolationsCanBeParsedFrom_Gradle_7_6() {
+    final String rootFolder = getRootFolder();
+
+    final Set<Violation> actual =
+        violationsApi() //
+            .withPattern(".*/kotlingradle/kotlin-gradle7_6-example.*\\.txt") //
+            .inFolder(rootFolder) //
+            .findAll(KOTLINGRADLE) //
+            .violations();
+
+    assertThat(actual) //
+        .hasSize(1);
+
+    final Violation violation0 = new ArrayList<>(actual).get(0);
+    assertThat(violation0.getMessage()) //
+        .isEqualTo("Parameter 'uiEvents' is never used");
+    assertThat(violation0.getFile()) //
+        .isEqualTo(
+            "file:///builds/.../feature-cards/src/main/kotlin/.../feature/cards/overview/CardOverviewScreen.kt");
+    assertThat(violation0.getSeverity()) //
+        .isEqualTo(WARN);
+    assertThat(violation0.getRule()) //
+        .isEqualTo("");
+    assertThat(violation0.getParser()) //
+        .isEqualTo(KOTLINGRADLE);
+    assertThat(violation0.getStartLine()).isEqualTo(36);
+    assertThat(violation0.getColumn()).isEqualTo(5);
   }
 }
