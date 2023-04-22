@@ -1,1 +1,9 @@
-w: file:///builds/.../feature-cards/src/main/kotlin/.../feature/cards/overview/CardOverviewScreen.kt:36:5       Parameter 'uiEvents' is never used
+> Task :common-data:kaptDebugKotlin
+e: file:///builds/.../common-data/src/test/kotlin/.../common/data/sample/DatabaseSampleRepositoryTest.kt:37:50 Unresolved reference: SampleModelEntity
+> Task :feature-cards:kaptDebugKotlin
+> Task :common-data:lintAnalyzeDebug
+> Task :common-data:lintReportDebug
+> Task :common-data:lintDebug
+> Task :feature-cards:compileDebugKotlin
+w: file:///builds/.../feature-cards/src/main/kotlin/.../feature/cards/overview/CardOverviewScreen.kt:36:5 Parameter 'uiEvents' is never used
+> Task :feature-cards:extractDebugAnnotations

@@ -8,7 +8,10 @@ import static se.bjurr.violations.lib.reports.Parser.KOTLINGRADLE;
 
 import java.util.ArrayList;
 import java.util.Set;
+
 import org.junit.Test;
+
+import se.bjurr.violations.lib.model.SEVERITY;
 import se.bjurr.violations.lib.model.Violation;
 
 public class KotlinGradleTest {
@@ -60,21 +63,36 @@ public class KotlinGradleTest {
             .violations();
 
     assertThat(actual) //
-        .hasSize(1);
+        .hasSize(2);
 
     final Violation violation0 = new ArrayList<>(actual).get(0);
     assertThat(violation0.getMessage()) //
-        .isEqualTo("Parameter 'uiEvents' is never used");
+        .isEqualTo("Unresolved reference: SampleModelEntity");
     assertThat(violation0.getFile()) //
         .isEqualTo(
-            "file:///builds/.../feature-cards/src/main/kotlin/.../feature/cards/overview/CardOverviewScreen.kt");
+            "file:///builds/.../common-data/src/test/kotlin/.../common/data/sample/DatabaseSampleRepositoryTest.kt");
     assertThat(violation0.getSeverity()) //
-        .isEqualTo(WARN);
+        .isEqualTo(SEVERITY.ERROR);
     assertThat(violation0.getRule()) //
         .isEqualTo("");
     assertThat(violation0.getParser()) //
         .isEqualTo(KOTLINGRADLE);
-    assertThat(violation0.getStartLine()).isEqualTo(36);
-    assertThat(violation0.getColumn()).isEqualTo(5);
+    assertThat(violation0.getStartLine()).isEqualTo(37);
+    assertThat(violation0.getColumn()).isEqualTo(50);
+
+    final Violation violation1 = new ArrayList<>(actual).get(1);
+    assertThat(violation1.getMessage()) //
+        .isEqualTo("Parameter 'uiEvents' is never used");
+    assertThat(violation1.getFile()) //
+        .isEqualTo(
+            "file:///builds/.../feature-cards/src/main/kotlin/.../feature/cards/overview/CardOverviewScreen.kt");
+    assertThat(violation1.getSeverity()) //
+        .isEqualTo(WARN);
+    assertThat(violation1.getRule()) //
+        .isEqualTo("");
+    assertThat(violation1.getParser()) //
+        .isEqualTo(KOTLINGRADLE);
+    assertThat(violation1.getStartLine()).isEqualTo(36);
+    assertThat(violation1.getColumn()).isEqualTo(5);
   }
 }
