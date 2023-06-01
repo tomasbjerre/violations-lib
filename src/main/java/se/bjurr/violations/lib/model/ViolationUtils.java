@@ -13,36 +13,49 @@ import java.util.stream.Stream;
 
 @SuppressFBWarnings("PATH_TRAVERSAL_IN")
 public final class ViolationUtils {
+
   private ViolationUtils() {}
 
-  public static String relativePath(final Violation v) {
-    final String userDir = System.getProperty("user.dir");
+  public static String relativePath(final List<Path> allFiles, final Violation v) {
     final String file = v.getFile();
-    return relativePath(file, userDir);
+    return relativePath(allFiles, file, getUserDir());
   }
 
-  static String relativePath(final String file, final String userDir) {
+  static String relativePath(final List<Path> allFiles, final String file, final String userDir) {
     final String userDirNotNull = Optional.ofNullable(userDir).orElse("");
     final String cwd = Violation.frontSlashes(userDirNotNull);
-    final String relativeToCwd = getFileRelativeToCwd(cwd, file);
+    final String relativeToCwd = getFileRelativeToCwd(allFiles, file);
     return removeSlashAtBeginning(relativeToCwd, cwd);
   }
 
-  private static String getFileRelativeToCwd(final String cwd, final String file) {
-    List<Path> allFound;
-    try (final Stream<Path> stream = Files.walk(Paths.get(cwd))) {
-      allFound =
-          stream
-              .filter(Files::isRegularFile)
-              .filter((it) -> it.toFile().getAbsolutePath().endsWith(file))
-              .collect(Collectors.toList());
-    } catch (final IOException e) {
-      allFound = new ArrayList<>();
-    }
+  private static String getFileRelativeToCwd(List<Path> allFound, final String file) {
+    allFound =
+        allFound.stream()
+            .filter((it) -> it.toFile().getAbsolutePath().endsWith(file))
+            .collect(Collectors.toList());
     if (allFound.isEmpty() || allFound.size() > 1) {
       return file;
     }
     return allFound.get(0).toFile().getAbsolutePath();
+  }
+
+  private static String getUserDir() {
+    return System.getProperty("user.dir");
+  }
+
+  public static List<Path> getAllFiles() {
+    return getAllFiles(getUserDir());
+  }
+
+  public static List<Path> getAllFiles(final String cwd) {
+    if (cwd == null) {
+      return new ArrayList<>();
+    }
+    try (final Stream<Path> stream = Files.walk(Paths.get(cwd))) {
+      return stream.filter(Files::isRegularFile).collect(Collectors.toList());
+    } catch (final IOException e) {
+      return new ArrayList<>();
+    }
   }
 
   private static String removeSlashAtBeginning(final String file, final String cwd) {

@@ -1,5 +1,6 @@
 package se.bjurr.violations.lib.model.sarif;
 
+import java.nio.file.Path;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -23,7 +24,8 @@ import se.bjurr.violations.lib.model.generated.sarif.ToolComponent;
 public class SarifTransformer {
 
   public static SarifSchema fromViolations(final Set<Violation> from) {
-    final List<Result> results = toResults(from);
+    final List<Path> allFiles = ViolationUtils.getAllFiles();
+    final List<Result> results = toResults(allFiles, from);
 
     final Tool tool = toTool();
 
@@ -51,11 +53,11 @@ public class SarifTransformer {
     return tool;
   }
 
-  private static List<Result> toResults(final Set<Violation> from) {
-    return from.stream().map(it -> transform(it)).collect(Collectors.toList());
+  private static List<Result> toResults(final List<Path> allFiles, final Set<Violation> from) {
+    return from.stream().map(it -> transform(allFiles, it)).collect(Collectors.toList());
   }
 
-  private static Result transform(final Violation from) {
+  private static Result transform(final List<Path> allFiles, final Violation from) {
     final String level = toLevel(from.getSeverity());
 
     final Region region =
@@ -66,7 +68,7 @@ public class SarifTransformer {
             .withEndColumn(from.getEndColumn());
 
     final ArtifactLocation artifactLocation =
-        new ArtifactLocation().withUri(ViolationUtils.relativePath(from));
+        new ArtifactLocation().withUri(ViolationUtils.relativePath(allFiles, from));
     final PhysicalLocation logicalLocations =
         new PhysicalLocation().withRegion(region).withArtifactLocation(artifactLocation);
     final List<Location> locations =

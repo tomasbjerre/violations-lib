@@ -1,6 +1,7 @@
 package se.bjurr.violations.lib.model.codeclimate;
 
 import java.nio.charset.StandardCharsets;
+import java.nio.file.Path;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 import java.util.ArrayList;
@@ -14,20 +15,21 @@ import se.bjurr.violations.lib.model.ViolationUtils;
 
 public class CodeClimateTransformer {
   public static List<CodeClimate> fromViolations(final Set<Violation> from) {
+    final List<Path> allFiles = ViolationUtils.getAllFiles();
     return from.stream()
         .map(
             violation -> {
-              return toCodeClimate(violation);
+              return toCodeClimate(allFiles, violation);
             })
         .collect(Collectors.toList());
   }
 
-  private static CodeClimate toCodeClimate(final Violation v) {
+  private static CodeClimate toCodeClimate(final List<Path> allFiles, final Violation v) {
     final String description = v.getMessage();
-    final String fingerprint = toHash(v);
+    final String fingerprint = toHash(allFiles, v);
     final CodeClimateLines lines = new CodeClimateLines(v.getStartLine());
     final CodeClimateLocation location =
-        new CodeClimateLocation(ViolationUtils.relativePath(v), lines, null);
+        new CodeClimateLocation(ViolationUtils.relativePath(allFiles, v), lines, null);
     final CodeClimateSeverity severity = toSeverity(v.getSeverity());
     final String check_name = v.getRule().isEmpty() ? v.getReporter() : v.getRule();
     final String engine_name = v.getReporter();
@@ -47,7 +49,7 @@ public class CodeClimateTransformer {
     return CodeClimateSeverity.info;
   }
 
-  private static String toHash(final Violation v) {
+  private static String toHash(final List<Path> allFiles, final Violation v) {
     MessageDigest digest;
     try {
       digest = MessageDigest.getInstance("SHA-256");
@@ -56,7 +58,7 @@ public class CodeClimateTransformer {
     }
     final String fingerprintString =
         v.getColumn()
-            + ViolationUtils.relativePath(v)
+            + ViolationUtils.relativePath(allFiles, v)
             + v.getMessage()
             + v.getParser()
             + v.getReporter()
