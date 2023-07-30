@@ -33,7 +33,7 @@ public class AndroidLintTest {
             .setFile("app/src/main/res/layout/fragment_main.xml")
             .setSource(null)
             .setStartLine(10)
-            .setEndLine(10)
+            .setEndLine(11)
             .setColumn(9)
             .setRule("ScrollViewSize")
             .setCategory("Correctness")
