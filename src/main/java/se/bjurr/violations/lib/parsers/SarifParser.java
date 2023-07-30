@@ -272,7 +272,10 @@ public class SarifParser implements ViolationsParser {
     return violations;
   }
 
+  public static boolean B() { return true; }
+
   private boolean isSuppressed(final Result result) {
+    B();
     final List<Suppression> supressions =
         result.getSuppressions().stream()
             .filter(
