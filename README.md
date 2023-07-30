@@ -113,34 +113,25 @@ If you need to convert a report from one format to another, the [command line to
 
 The library is used in a bunch of other projects, these are some of them.
 
-GitHub Action:
-
- * [Violation Comments Action](https://github.com/tomasbjerre/violation-comments-action)
-
 Command line:
- * [Violations Command Line](https://github.com/tomasbjerre/violations-command-line) Can parse, log, fail, and/or export to `CodeClimate` and `Sarif` files.
+ * [Violations Command Line](https://github.com/tomasbjerre/violations-command-line) Can parse, log, fail, and/or export to `CodeClimate` and `Sarif` files. This is how Github is supported, se [README](https://github.com/tomasbjerre/violations-command-line).
  * [Violation Comments to GitLab Command Line](https://github.com/tomasbjerre/violation-comments-to-gitlab-command-line)
- * [Violation Comments to GitHub Command Line](https://github.com/tomasbjerre/violation-comments-to-github-command-line)
  * [Violation Comments to Bitbucket Server Command Line](https://github.com/tomasbjerre/violation-comments-to-bitbucket-server-command-line)
  * [Violation Comments to Bitbucket Cloud Command Line](https://github.com/tomasbjerre/violation-comments-to-bitbucket-cloud-command-line)
 
 Gradle:
- * [Violation Comments to GitHub Gradle Plugin](https://github.com/tomasbjerre/violation-comments-to-github-gradle-plugin).
  * [Violation Comments to GitLab Gradle Plugin](https://github.com/tomasbjerre/violation-comments-to-gitlab-gradle-plugin).
  * [Violations Gradle Plugin](https://github.com/tomasbjerre/violations-gradle-plugin).
 
 Maven:
- * [Violation Comments to GitHub Maven Plugin](https://github.com/tomasbjerre/violation-comments-to-github-maven-plugin).
  * [Violation Comments to GitLab Maven Plugin](https://github.com/tomasbjerre/violation-comments-to-gitlab-maven-plugin).
  * [Violations Maven Plugin](https://github.com/tomasbjerre/violations-maven-plugin).
 
 Jenkins:
- * [Violation Comments to GitHub Jenkins Plugin](https://github.com/jenkinsci/violation-comments-to-github-plugin).
  * [Violation Comments to GitLab Jenkins Plugin](https://github.com/jenkinsci/violation-comments-to-gitlab-plugin).
  * [Violation Comments to Bitbucket Server Jenkins Plugin](https://github.com/jenkinsci/violation-comments-to-stash-plugin).
 
 And these supporting libraries:
- * [Violation Comments to GitHub Lib](https://github.com/tomasbjerre/violation-comments-to-github-lib).
  * [Violation Comments to GitLab Lib](https://github.com/tomasbjerre/violation-comments-to-gitlab-lib).
  * [Violation Comments to Bitbucket Cloud Lib](https://github.com/tomasbjerre/violation-comments-to-bitbucket-cloud-lib).
  * [Violation Comments to Bitbucket Server Lib](https://github.com/tomasbjerre/violation-comments-to-bitbucket-server-lib).
