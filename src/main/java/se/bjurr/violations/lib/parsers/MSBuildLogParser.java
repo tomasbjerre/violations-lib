@@ -19,14 +19,14 @@ import se.bjurr.violations.lib.model.Violation;
 
 public class MSBuildLogParser implements ViolationsParser {
 
+  private static final String ParsingRegex =
+      "^\\s*(.*)\\(([0-9]*),([0-9]*)\\):\\s([^\\s]*)\\s([^:]*):([^\\[]*).*$";
+
   @Override
   public Set<Violation> parseReportOutput(
       final String reportContent, final ViolationsLogger violationsLogger) throws Exception {
     final Set<Violation> violations = new TreeSet<>();
-    final List<List<String>> partsPerLine =
-        getLines(
-            reportContent,
-            "^\\s*([^\\(]*)\\(([^,]*),([^\\)]*)\\):\\s([^\\s]*)\\s([^:]*):([^\\[]*).*$");
+    final List<List<String>> partsPerLine = getLines(reportContent, ParsingRegex);
     for (final List<String> parts : partsPerLine) {
       final String fileName = parts.get(1);
       Integer lineNumber = 0;
