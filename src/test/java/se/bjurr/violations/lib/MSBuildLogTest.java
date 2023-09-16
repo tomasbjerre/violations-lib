@@ -51,4 +51,31 @@ public class MSBuildLogTest {
     assertThat(violation3.getStartLine()) //
         .isEqualTo(7);
   }
+
+  @Test
+  public void testThatDotnetCoreViolationsCanBeParsed() {
+    final String rootFolder = getRootFolder();
+
+    final Set<Violation> actual =
+        violationsApi() //
+            .withPattern(".*/msbuildlog/msbuild\\.sdk-style\\.log$") //
+            .inFolder(rootFolder) //
+            .findAll(MSBULDLOG) //
+            .violations();
+
+    assertThat(actual) //
+        .hasSize(1);
+
+    final Violation violation3 = new ArrayList<>(actual).get(0);
+    assertThat(violation3.getMessage()) //
+        .isEqualTo(
+            "There was a mismatch between the processor architecture of the project being built \"AMD64\" and the processor architecture of the reference \"C:\\Users\\aront\\RiderProjects\\Warning\\Dependency\\bin\\Debug\\net7.0\\Dependency.dll\", \"x86\". This mismatch may cause runtime failures. Please consider changing the targeted processor architecture of your project through the Configuration Manager so as to align the processor architectures between your project and references, or take a dependency on references with a processor architecture that matches the targeted processor architecture of your project.");
+    assertThat(violation3.getFile()) //
+        .isEqualTo("C:/Users/aront/RiderProjects/Warning/Warning/Warning.csproj");
+    assertThat(violation3.getSeverity()) //
+        .isEqualTo(WARN);
+    assertThat(violation3.getRule()) //
+        .isEqualTo("MSB3270");
+    ;
+  }
 }

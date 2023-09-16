@@ -20,7 +20,7 @@ import se.bjurr.violations.lib.model.Violation;
 public class MSBuildLogParser implements ViolationsParser {
 
   private static final String ParsingRegex =
-      "^\\s*(.*)\\(([0-9]*),([0-9]*)\\):\\s([^\\s]*)\\s([^:]*):([^\\[]*).*$";
+      "^\\s*(.*)\\(([0-9]*),([0-9]*)\\):\\s([^\\s]*)\\s([^:]*):([^\\[]*)\\[(.*)\\]$";
 
   @Override
   public Set<Violation> parseReportOutput(
@@ -28,13 +28,17 @@ public class MSBuildLogParser implements ViolationsParser {
     final Set<Violation> violations = new TreeSet<>();
     final List<List<String>> partsPerLine = getLines(reportContent, ParsingRegex);
     for (final List<String> parts : partsPerLine) {
-      final String fileName = parts.get(1);
+      final String fileName = parts.get(7);
+      final String sourceName = parts.get(1);
+
+      final boolean sourceMatchesFile = fileName.equals(sourceName);
+
       Integer lineNumber = 0;
-      if (!parts.get(2).isEmpty()) {
+      if (!parts.get(2).isEmpty() && sourceMatchesFile) {
         lineNumber = parseInt(parts.get(2));
       }
       Integer columnNumber = 0;
-      if (parts.get(3) != null && !parts.get(3).isEmpty()) {
+      if (parts.get(3) != null && !parts.get(3).isEmpty() && sourceMatchesFile) {
         columnNumber = parseInt(parts.get(3));
       }
       final String severity = parts.get(4);
