@@ -1,0 +1,18 @@
+MSBuild version 17.6.8+c70978d4d for .NET
+  Determining projects to restore...
+C:\Users\aront\RiderProjects\Warning\Warning\Warning.csproj : warning NU1701: Package 'BouncyCastle 1.8.9' was restored using '.NETFramework,Version=v4.6.1, .NETFramework,Version=v4.6.2, .NETFramework,Version=v4.7, .NETFramework,Version=v4.7.1, .NETFramework,Version=v4.7.2, .NETFramework,Version=v4.8, .NETFramework,Version=v4.8.1' instead of the project target framework 'net7.0'. This package may not be fully compatible with your project.
+  All projects are up-to-date for restore.
+C:\Users\aront\RiderProjects\Warning\Warning\Warning.csproj : warning NU1701: Package 'BouncyCastle 1.8.9' was restored using '.NETFramework,Version=v4.6.1, .NETFramework,Version=v4.6.2, .NETFramework,Version=v4.7, .NETFramework,Version=v4.7.1, .NETFramework,Version=v4.7.2, .NETFramework,Version=v4.8, .NETFramework,Version=v4.8.1' instead of the project target framework 'net7.0'. This package may not be fully compatible with your project.
+  Dependency -> C:\Users\aront\RiderProjects\Warning\Dependency\bin\Debug\net7.0\Dependency.dll
+C:\Program Files (x86)\Microsoft Visual Studio\2022\BuildTools\MSBuild\Current\Bin\Microsoft.Common.CurrentVersion.targets(2352,5): warning MSB3270: There was a mismatch between the processor architecture of the project being built "AMD64" and the processor architecture of the reference "C:\Users\aront\RiderProjects\Warning\Dependency\bin\Debug\net7.0\Dependency.dll", "x86". This mismatch may cause runtime failures. Please consider changing the targeted processor architecture of your project through the Configuration Manager so as to align the processor architectures between your project and references, or take a dependency on references with a processor architecture that matches the targeted processor architecture of your project. [C:\Users\aront\RiderProjects\Warning\Warning\Warning.csproj]
+  Warning -> C:\Users\aront\RiderProjects\Warning\Warning\bin\Debug\net7.0\Warning.dll
+
+Build succeeded.
+
+C:\Users\aront\RiderProjects\Warning\Warning\Warning.csproj : warning NU1701: Package 'BouncyCastle 1.8.9' was restored using '.NETFramework,Version=v4.6.1, .NETFramework,Version=v4.6.2, .NETFramework,Version=v4.7, .NETFramework,Version=v4.7.1, .NETFramework,Version=v4.7.2, .NETFramework,Version=v4.8, .NETFramework,Version=v4.8.1' instead of the project target framework 'net7.0'. This package may not be fully compatible with your project.
+C:\Users\aront\RiderProjects\Warning\Warning\Warning.csproj : warning NU1701: Package 'BouncyCastle 1.8.9' was restored using '.NETFramework,Version=v4.6.1, .NETFramework,Version=v4.6.2, .NETFramework,Version=v4.7, .NETFramework,Version=v4.7.1, .NETFramework,Version=v4.7.2, .NETFramework,Version=v4.8, .NETFramework,Version=v4.8.1' instead of the project target framework 'net7.0'. This package may not be fully compatible with your project.
+C:\Program Files (x86)\Microsoft Visual Studio\2022\BuildTools\MSBuild\Current\Bin\Microsoft.Common.CurrentVersion.targets(2352,5): warning MSB3270: There was a mismatch between the processor architecture of the project being built "AMD64" and the processor architecture of the reference "C:\Users\aront\RiderProjects\Warning\Dependency\bin\Debug\net7.0\Dependency.dll", "x86". This mismatch may cause runtime failures. Please consider changing the targeted processor architecture of your project through the Configuration Manager so as to align the processor architectures between your project and references, or take a dependency on references with a processor architecture that matches the targeted processor architecture of your project. [C:\Users\aront\RiderProjects\Warning\Warning\Warning.csproj]
+    3 Warning(s)
+    0 Error(s)
+
+Time Elapsed 00:00:00.85
