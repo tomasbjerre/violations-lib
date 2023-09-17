@@ -7,7 +7,9 @@ import java.security.NoSuchAlgorithmException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Locale;
+import java.util.Map;
 import java.util.Set;
+import java.util.TreeMap;
 import java.util.stream.Collectors;
 import se.bjurr.violations.lib.model.SEVERITY;
 import se.bjurr.violations.lib.model.Violation;
@@ -16,12 +18,24 @@ import se.bjurr.violations.lib.model.ViolationUtils;
 public class CodeClimateTransformer {
   public static List<CodeClimate> fromViolations(final Set<Violation> from) {
     final List<Path> allFiles = ViolationUtils.getAllFiles();
-    return from.stream()
-        .map(
-            violation -> {
-              return toCodeClimate(allFiles, violation);
-            })
-        .collect(Collectors.toList());
+    final List<CodeClimate> codeClimates =
+        from.stream()
+            .map(
+                violation -> {
+                  return toCodeClimate(allFiles, violation);
+                })
+            .collect(Collectors.toList());
+
+    final Map<String, CodeClimate> codeClimatesPerFingerprint = new TreeMap<>();
+    for (final CodeClimate candidate : codeClimates) {
+      if (codeClimatesPerFingerprint.containsKey(candidate.getFingerprint())) {
+        final CodeClimate existing = codeClimatesPerFingerprint.get(candidate.getFingerprint());
+        existing.getOther_locations().add(candidate.getLocation());
+      } else {
+        codeClimatesPerFingerprint.put(candidate.getFingerprint(), candidate);
+      }
+    }
+    return new ArrayList<CodeClimate>(codeClimatesPerFingerprint.values());
   }
 
   private static CodeClimate toCodeClimate(final List<Path> allFiles, final Violation v) {
@@ -36,7 +50,14 @@ public class CodeClimateTransformer {
     final List<CodeClimateCategory> categories = new ArrayList<>();
     categories.add(CodeClimateCategory.BUGRISK);
     return new CodeClimate(
-        description, fingerprint, location, severity, check_name, engine_name, categories);
+        description,
+        fingerprint,
+        location,
+        severity,
+        check_name,
+        engine_name,
+        categories,
+        new ArrayList<CodeClimateLocation>());
   }
 
   private static CodeClimateSeverity toSeverity(final SEVERITY severity) {

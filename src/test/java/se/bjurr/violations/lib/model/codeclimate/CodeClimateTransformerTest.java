@@ -4,6 +4,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 import static se.bjurr.violations.lib.model.Violation.violationBuilder;
 
 import com.google.gson.GsonBuilder;
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Set;
@@ -60,7 +61,44 @@ public class CodeClimateTransformerTest {
                     severity,
                     check_name,
                     engine_name,
-                    categories)));
+                    categories,
+                    new ArrayList<CodeClimateLocation>())));
+  }
+
+  @Test
+  public void testThatViolationsAreGroupedWithOtherLocations() {
+    final Set<Violation> violationSet = new TreeSet<>();
+
+    violationSet.add(
+        violationBuilder() //
+            .setFile("whatever/path.c") //
+            .setMessage("asdasd") //
+            .setParser(Parser.CHECKSTYLE) //
+            .setRule("Cyclomatic complexity") //
+            .setSeverity(SEVERITY.ERROR) //
+            .setStartLine(123) //
+            .build());
+
+    List<CodeClimate> transformed = CodeClimateTransformer.fromViolations(violationSet);
+
+    assertThat(transformed).hasSize(1);
+    assertThat(transformed.get(0).getOther_locations()).hasSize(0);
+
+    violationSet.add(
+        violationBuilder() //
+            .setFile("whatever/path.c") //
+            .setMessage("asdasd") //
+            .setParser(Parser.CHECKSTYLE) //
+            .setRule("Cyclomatic complexity") //
+            .setSeverity(SEVERITY.ERROR) //
+            .setStartLine(124) //
+            .build());
+
+    transformed = CodeClimateTransformer.fromViolations(violationSet);
+
+    assertThat(transformed).hasSize(1);
+    assertThat(transformed.get(0).getOther_locations()).hasSize(1);
+    assertThat(transformed.get(0).getOther_locations().get(0).getLines().getBegin()).isEqualTo(123);
   }
 
   private String toJson(final Object o) {

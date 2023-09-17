@@ -2,7 +2,9 @@ package se.bjurr.violations.lib.model.codeclimate;
 
 import static se.bjurr.violations.lib.util.Utils.checkNotNull;
 import static se.bjurr.violations.lib.util.Utils.emptyToNull;
+import static se.bjurr.violations.lib.util.Utils.firstNonNull;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -11,6 +13,7 @@ public class CodeClimate {
   private final String description;
   private final String fingerprint;
   private final CodeClimateLocation location;
+  private final List<CodeClimateLocation> other_locations;
   private final CodeClimateSeverity severity;
   private final String type;
   private final List<String> categories;
@@ -26,10 +29,12 @@ public class CodeClimate {
       final CodeClimateSeverity severity,
       final String check_name,
       final String engine_name,
-      final List<CodeClimateCategory> categories) {
+      final List<CodeClimateCategory> categories,
+      final List<CodeClimateLocation> other_locations) {
     this.description = checkNotNull(emptyToNull(description), "description");
     this.fingerprint = checkNotNull(emptyToNull(fingerprint), "fingerprint");
     this.location = checkNotNull(location, "location");
+    this.other_locations = firstNonNull(other_locations, new ArrayList<>());
     this.severity = severity;
     this.type = "issue";
     this.check_name = check_name;
@@ -69,6 +74,10 @@ public class CodeClimate {
 
   public CodeClimateLocation getLocation() {
     return this.location;
+  }
+
+  public List<CodeClimateLocation> getOther_locations() {
+    return this.other_locations;
   }
 
   @Override
