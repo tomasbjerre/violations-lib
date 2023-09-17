@@ -2,6 +2,12 @@
 
 Changelog of violations-lib.
 
+## 1.156.6 (2023-09-17)
+
+### Bug Fixes
+
+-  allow MSBuild in Program Files (x86) and support NU1701 ([7b194](https://github.com/tomasbjerre/violations-lib/commit/7b194532eddcb71) arontsang)  [#182](https://github.com/tomasbjerre/violations-lib/issues/182)  
+
 ## 1.156.5 (2023-06-01)
 
 ### Bug Fixes
