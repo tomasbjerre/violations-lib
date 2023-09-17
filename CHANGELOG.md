@@ -2,6 +2,12 @@
 
 Changelog of violations-lib.
 
+## 1.156.7 (2023-09-17)
+
+### Bug Fixes
+
+-  avoiding duplicated fingerprints in CodeClimate report ([da549](https://github.com/tomasbjerre/violations-lib/commit/da5492338d729dc) Tomas Bjerre)  [#181](https://github.com/tomasbjerre/violations-lib/issues/181)  
+
 ## 1.156.6 (2023-09-17)
 
 ### Bug Fixes
