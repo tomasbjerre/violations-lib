@@ -40,8 +40,6 @@ public class PiTestParser implements ViolationsParser {
         final int eventType = xmlr.next();
         if (eventType == XMLStreamConstants.START_ELEMENT) {
           if (xmlr.getLocalName().equalsIgnoreCase("mutation")) {
-            status = null;
-            detected = null;
             mutatedClass = null;
             sourceFile = null;
             mutatedMethod = null;

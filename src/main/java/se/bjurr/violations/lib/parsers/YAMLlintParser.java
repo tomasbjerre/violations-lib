@@ -24,8 +24,8 @@ import se.bjurr.violations.lib.model.Violation;
  */
 public class YAMLlintParser implements ViolationsParser {
   @Override
-  public Set<Violation> parseReportOutput(final String string, ViolationsLogger violationsLogger)
-      throws Exception {
+  public Set<Violation> parseReportOutput(
+      final String string, final ViolationsLogger violationsLogger) throws Exception {
     final Set<Violation> violations = new TreeSet<>();
     final List<List<String>> partsPerLine =
         getLines(

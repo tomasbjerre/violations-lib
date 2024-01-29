@@ -139,7 +139,7 @@ public class ValgrindParser implements ViolationsParser {
             if ((stacks != null) && !stacks.isEmpty()) {
               for (final StackFrame f : stacks.get(0)) {
                 if ((f.file != null) && !f.file.equals("vg_replace_malloc.c")) {
-                  file = (f.dir != null) ? f.dir + '/' + f.file : f.file;
+                  file = (f.dir == null) ? f.file : f.dir + '/' + f.file;
                   startLine = f.line;
                   break;
                 }

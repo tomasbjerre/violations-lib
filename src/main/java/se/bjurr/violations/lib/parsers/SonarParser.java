@@ -33,7 +33,7 @@ public class SonarParser implements ViolationsParser {
         final String[] parts = this.component.split(":");
         return parts[parts.length - 1];
       } catch (final Throwable t) {
-        throw new RuntimeException("Cannot understand file " + this.component);
+        throw new RuntimeException("Cannot understand file " + this.component, t);
       }
     }
 
@@ -41,7 +41,7 @@ public class SonarParser implements ViolationsParser {
       try {
         return this.rule.split(":")[0];
       } catch (final Throwable t) {
-        throw new RuntimeException("Cannot understand category " + this.rule);
+        throw new RuntimeException("Cannot understand category " + this.rule, t);
       }
     }
 

@@ -32,11 +32,6 @@ public class JCReportParser implements ViolationsParser {
       final XMLStreamReader xmlr = ViolationParserUtils.createXmlReader(input);
 
       String name = null;
-      String findingType = null;
-      Integer line = null;
-      String message = null;
-      String origin = null;
-      String severity = null;
       while (xmlr.hasNext()) {
         final int eventType = xmlr.next();
         if (eventType == START_ELEMENT) {
@@ -44,11 +39,11 @@ public class JCReportParser implements ViolationsParser {
             name = getAttribute(xmlr, "name");
           }
           if (xmlr.getLocalName().equalsIgnoreCase("item")) {
-            findingType = getAttribute(xmlr, "finding-type");
-            line = getIntegerAttribute(xmlr, "line");
-            message = getAttribute(xmlr, "message");
-            origin = getAttribute(xmlr, "origin");
-            severity = getAttribute(xmlr, "severity");
+            final String findingType = getAttribute(xmlr, "finding-type");
+            final Integer line = getIntegerAttribute(xmlr, "line");
+            final String message = getAttribute(xmlr, "message");
+            final String origin = getAttribute(xmlr, "origin");
+            final String severity = getAttribute(xmlr, "severity");
             final Violation violation =
                 violationBuilder() //
                     .setParser(JCREPORT) //

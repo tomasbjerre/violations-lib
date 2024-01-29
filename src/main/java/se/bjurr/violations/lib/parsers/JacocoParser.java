@@ -44,9 +44,9 @@ public class JacocoParser implements ViolationsParser {
       final XMLStreamReader xmlr = ViolationParserUtils.createXmlReader(input);
       while (xmlr.hasNext()) {
         final int eventType = xmlr.next();
-        switch (eventType) {
+        switch (eventType) { // NOPMD
           case XMLStreamConstants.START_ELEMENT:
-            switch (xmlr.getLocalName()) {
+            switch (xmlr.getLocalName()) { // NOPMD
               case "package":
                 builder.setPackageDetails(getAttribute(xmlr, "name"));
                 break;

@@ -136,7 +136,7 @@ public class JUnitParser implements ViolationsParser {
       fl.line = Integer.parseInt(matcher.group(3));
       found.add(fl);
     }
-    if (found.size() == 0) {
+    if (found.isEmpty()) {
       return null;
     }
     if (found.size() == 1) {

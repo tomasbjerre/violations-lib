@@ -1,8 +1,9 @@
 package se.bjurr.violations.lib.util;
 
+import edu.umd.cs.findbugs.annotations.SuppressFBWarnings;
 import java.util.Collections;
-import java.util.HashMap;
 import java.util.Map;
+import java.util.concurrent.ConcurrentHashMap;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -12,7 +13,7 @@ public final class StringUtils {
   private static final char XML_ESCAPE_START = '&';
 
   static {
-    final Map<String, Character> temp = new HashMap<>();
+    final Map<String, Character> temp = new ConcurrentHashMap<>();
     temp.put("&apos;", '\'');
     temp.put("&quot;", '\"');
     temp.put("&amp;", '&');
@@ -77,6 +78,7 @@ public final class StringUtils {
     return out.toString();
   }
 
+  @SuppressFBWarnings
   public static String padRight(final String s, final int n) {
     return String.format("%1$-" + n + "s", s);
   }

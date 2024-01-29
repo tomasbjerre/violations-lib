@@ -8,10 +8,45 @@ import static se.bjurr.violations.lib.util.Utils.nullToEmpty;
 import java.io.Serializable;
 import java.util.HashMap;
 import java.util.Map;
-import se.bjurr.violations.lib.parsers.CPPCheckParser;
 import se.bjurr.violations.lib.reports.Parser;
 
 public class Violation implements Serializable, Comparable<Violation> {
+
+  private static final long serialVersionUID = -6052921679385466168L;
+  /** A {@link #file} used when there is no file specified in the parsed report. */
+  public static final String NO_FILE = "-";
+  /** A {@link #startLine} used when there is no line specified in the parsed report. */
+  public static final Integer NO_LINE = 0;
+
+  private Integer column;
+  private final Integer endLine;
+  private final Integer endColumn;
+  /** Also see {@link #NO_FILE} */
+  private final String file;
+
+  private final String message;
+  /** The algorithm, the format, used. */
+  private final Parser parser;
+  /**
+   * Intended as the tool used to find the violation. Like Detekt, when it is being used to find
+   * violations and report them in the {@link Parser#CHECKSTYLE} format.
+   */
+  private String reporter;
+
+  private final String rule;
+  private final String category;
+  /**
+   * Something that identifies a group that this violation belongs to. First introduced with {@link
+   * se.bjurr.violations.lib.parsers.CPPCheckParser} to record what error tag each violation belongs
+   * to.
+   */
+  private final String group;
+
+  private final SEVERITY severity;
+  private final String source;
+  private final Map<String, String> specifics;
+  private final Integer startLine;
+
   public static class ViolationBuilder {
 
     private Integer column;
@@ -116,43 +151,9 @@ public class Violation implements Serializable, Comparable<Violation> {
     }
   }
 
-  private static final long serialVersionUID = -6052921679385466168L;
-  /** A {@link #file} used when there is no file specified in the parsed report. */
-  public static final String NO_FILE = "-";
-  /** A {@link #startLine} used when there is no line specified in the parsed report. */
-  public static final Integer NO_LINE = 0;
-
   public static ViolationBuilder violationBuilder() {
     return new ViolationBuilder();
   }
-
-  private Integer column;
-  private final Integer endLine;
-  private final Integer endColumn;
-  /** Also see {@link #NO_FILE} */
-  private final String file;
-
-  private final String message;
-  /** The algorithm, the format, used. */
-  private final Parser parser;
-  /**
-   * Intended as the tool used to find the violation. Like Detekt, when it is being used to find
-   * violations and report them in the {@link Parser#CHECKSTYLE} format.
-   */
-  private String reporter;
-
-  private final String rule;
-  private final String category;
-  /**
-   * Something that identifies a group that this violation belongs to. First introduced with {@link
-   * CPPCheckParser} to record what error tag each violation belongs to.
-   */
-  private final String group;
-
-  private final SEVERITY severity;
-  private final String source;
-  private final Map<String, String> specifics;
-  private final Integer startLine;
 
   public Violation() {
     this.startLine = null;

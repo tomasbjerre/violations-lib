@@ -20,7 +20,7 @@ public class PatchParserUtil {
   private final Map<Integer, Optional<Integer>> newLineToOldLineTable;
   private final Map<Integer, Optional<Integer>> newLineToLineInDiffTable;
 
-  private String patchString;
+  private final String patchString;
 
   public PatchParserUtil(final String patchString) {
     this.patchString = patchString;

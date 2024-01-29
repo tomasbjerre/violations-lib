@@ -32,7 +32,7 @@ public class Flake8Parser implements ViolationsParser {
         getLines(string, "([^:]*):(\\d+)?:?(\\d+)?:? \\[?(\\D+)(\\d*)\\]? (.*)");
     for (final List<String> parts : partsPerLine) {
       final String filename = parts.get(1);
-      Integer line = null;
+      Integer line;
       try {
         line = parseInt(parts.get(2));
       } catch (final Exception e) {

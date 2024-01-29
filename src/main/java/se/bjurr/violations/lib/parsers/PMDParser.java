@@ -33,14 +33,6 @@ public class PMDParser implements ViolationsParser {
     try (InputStream input = new ByteArrayInputStream(content.getBytes(StandardCharsets.UTF_8))) {
       final XMLStreamReader xmlr = ViolationParserUtils.createXmlReader(input);
       String filename = null;
-      Integer beginLine = null;
-      Integer endLine = null;
-      Optional<Integer> beginColumn = null;
-      Optional<Integer> endColumn = null;
-      String rule = null;
-      Optional<String> ruleSetOpt = null;
-      SEVERITY severity = null;
-      String message = null;
       while (xmlr.hasNext()) {
         final int eventType = xmlr.next();
         if (eventType == XMLStreamConstants.START_ELEMENT) {
@@ -48,17 +40,17 @@ public class PMDParser implements ViolationsParser {
             filename = getAttribute(xmlr, "name");
           }
           if (xmlr.getLocalName().equalsIgnoreCase("violation")) {
-            beginLine = getIntegerAttribute(xmlr, "beginline");
-            endLine = getIntegerAttribute(xmlr, "endline");
-            beginColumn = findIntegerAttribute(xmlr, "begincolumn");
-            endColumn = findIntegerAttribute(xmlr, "endcolumn");
-            rule = getAttribute(xmlr, "rule").trim();
-            ruleSetOpt = findAttribute(xmlr, "ruleset");
+            final Integer beginLine = getIntegerAttribute(xmlr, "beginline");
+            final Integer endLine = getIntegerAttribute(xmlr, "endline");
+            final Optional<Integer> beginColumn = findIntegerAttribute(xmlr, "begincolumn");
+            final Optional<Integer> endColumn = findIntegerAttribute(xmlr, "endcolumn");
+            final String rule = getAttribute(xmlr, "rule").trim();
+            final Optional<String> ruleSetOpt = findAttribute(xmlr, "ruleset");
             final Optional<String> externalInfoUrlOpt = findAttribute(xmlr, "externalInfoUrl");
             final Integer priority = getIntegerAttribute(xmlr, "priority");
-            severity = this.toSeverity(priority);
+            final SEVERITY severity = this.toSeverity(priority);
             final String violationContent = xmlr.getElementText();
-            message =
+            final String message =
                 violationContent
                     + "\n\n"
                     + ruleSetOpt.orElse("")

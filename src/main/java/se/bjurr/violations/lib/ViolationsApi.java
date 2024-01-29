@@ -24,7 +24,7 @@ import se.bjurr.violations.lib.reports.Parser;
 import se.bjurr.violations.lib.reports.ViolationsFinder;
 
 @SuppressFBWarnings("CRLF_INJECTION_LOGS")
-public class ViolationsApi {
+public final class ViolationsApi {
   private final Logger LOGGER = Logger.getLogger(ViolationsApi.class.getSimpleName());
   private String pattern;
   private ViolationsParser violationsParser;

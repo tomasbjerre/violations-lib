@@ -29,11 +29,6 @@ public class JSLintParser implements ViolationsParser {
     try (InputStream input = new ByteArrayInputStream(content.getBytes(StandardCharsets.UTF_8))) {
       final XMLStreamReader xmlr = ViolationParserUtils.createXmlReader(input);
       String filename = null;
-      Integer line = null;
-      Integer charAttrib = null;
-      String severity = null;
-      String message = null;
-      String evidence = null;
       while (xmlr.hasNext()) {
         final int eventType = xmlr.next();
         if (eventType == XMLStreamConstants.START_ELEMENT) {
@@ -41,12 +36,12 @@ public class JSLintParser implements ViolationsParser {
             filename = getAttribute(xmlr, "name");
           }
           if (xmlr.getLocalName().equalsIgnoreCase("issue")) {
-            line = getIntegerAttribute(xmlr, "line");
-            charAttrib = getIntegerAttribute(xmlr, "char");
-            severity = getAttribute(xmlr, "severity");
+            final Integer line = getIntegerAttribute(xmlr, "line");
+            final Integer charAttrib = getIntegerAttribute(xmlr, "char");
+            final String severity = getAttribute(xmlr, "severity");
             final String reason = getAttribute(xmlr, "reason").trim();
-            evidence = getAttribute(xmlr, "evidence").trim();
-            message = reason + ": " + evidence;
+            final String evidence = getAttribute(xmlr, "evidence").trim();
+            final String message = reason + ": " + evidence;
             final Violation violation =
                 violationBuilder()
                     .setParser(JSLINT) //

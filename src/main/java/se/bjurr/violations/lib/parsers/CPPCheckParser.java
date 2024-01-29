@@ -119,7 +119,7 @@ public class CPPCheckParser implements ViolationsParser {
 
   private String constructMessage(
       final String msg, final Optional<String> verbose, final Optional<String> info) {
-    String message = "";
+    String message;
     if (verbose.orElse("").startsWith(msg)) {
       message = verbose.get();
     } else {

@@ -132,7 +132,6 @@ public final class ViolationParserUtils {
   public static XMLStreamReader createXmlReader(final InputStream input) throws XMLStreamException {
     final XMLInputFactory factory = XMLInputFactory.newInstance();
     factory.setProperty(XMLInputFactory.SUPPORT_DTD, false);
-    final XMLStreamReader xmlr = factory.createXMLStreamReader(input);
-    return xmlr;
+    return factory.createXMLStreamReader(input);
   }
 }

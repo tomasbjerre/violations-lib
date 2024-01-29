@@ -52,9 +52,6 @@ public class CodeNarcParser implements ViolationsParser {
 
       String path = null;
       String name = null;
-      String ruleName = null;
-      Integer priority = null;
-      Integer lineNumber = null;
       while (xmlr.hasNext()) {
         final int eventType = xmlr.next();
         if (eventType == START_ELEMENT) {
@@ -65,10 +62,10 @@ public class CodeNarcParser implements ViolationsParser {
             name = getAttribute(xmlr, "name");
           }
           if (xmlr.getLocalName().equalsIgnoreCase("Violation")) {
-            ruleName = getAttribute(xmlr, "ruleName");
-            priority = getIntegerAttribute(xmlr, "priority");
+            final String ruleName = getAttribute(xmlr, "ruleName");
+            final Integer priority = getIntegerAttribute(xmlr, "priority");
             final String lineNumberString = getAttribute(xmlr, "lineNumber");
-            lineNumber = 1;
+            int lineNumber = 1;
             if (!lineNumberString.isEmpty()) {
               lineNumber = Integer.parseInt(lineNumberString);
             }
@@ -76,7 +73,7 @@ public class CodeNarcParser implements ViolationsParser {
             if (message == null) {
               message = ruleName;
             }
-            String fileString = null;
+            String fileString;
             if (sourceDirectory.isEmpty()) {
               fileString = path + "/" + name;
             } else {
@@ -119,7 +116,6 @@ public class CodeNarcParser implements ViolationsParser {
     try (InputStream input = new ByteArrayInputStream(string.getBytes(StandardCharsets.UTF_8))) {
       final XMLStreamReader xmlr = ViolationParserUtils.createXmlReader(input);
       String name = null;
-      String description = null;
       while (xmlr.hasNext()) {
         final int eventType = xmlr.next();
         if (eventType == START_ELEMENT) {
@@ -127,7 +123,7 @@ public class CodeNarcParser implements ViolationsParser {
             name = getAttribute(xmlr, "name");
           }
           if (xmlr.getLocalName().equalsIgnoreCase("Description")) {
-            description = xmlr.getElementText().trim();
+            final String description = xmlr.getElementText().trim();
             rules.put(name, description);
           }
         }

@@ -31,10 +31,7 @@ public class SimianParser implements ViolationsParser {
 
       final XMLStreamReader xmlr = ViolationParserUtils.createXmlReader(input);
 
-      String sourceFile = null;
       Integer lineCount = null;
-      Integer startLineNumber = null;
-      Integer endLineNumber = null;
       while (xmlr.hasNext()) {
         final int eventType = xmlr.next();
         if (eventType == START_ELEMENT) {
@@ -42,9 +39,9 @@ public class SimianParser implements ViolationsParser {
             lineCount = getIntegerAttribute(xmlr, "lineCount");
           }
           if (xmlr.getLocalName().equalsIgnoreCase("block")) {
-            sourceFile = getAttribute(xmlr, "sourceFile");
-            startLineNumber = getIntegerAttribute(xmlr, "startLineNumber");
-            endLineNumber = getIntegerAttribute(xmlr, "endLineNumber");
+            final String sourceFile = getAttribute(xmlr, "sourceFile");
+            final Integer startLineNumber = getIntegerAttribute(xmlr, "startLineNumber");
+            final Integer endLineNumber = getIntegerAttribute(xmlr, "endLineNumber");
 
             final Violation violation =
                 violationBuilder() //

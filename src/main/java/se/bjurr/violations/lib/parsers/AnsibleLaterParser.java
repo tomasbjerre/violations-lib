@@ -16,8 +16,6 @@ import se.bjurr.violations.lib.reports.Parser;
 public class AnsibleLaterParser implements ViolationsParser {
 
   public class AnsibleLaterEntry {
-    public AnsibleLaterEntry() {}
-
     public String asctime;
     public String levelname;
     public String message;
@@ -28,6 +26,8 @@ public class AnsibleLaterParser implements ViolationsParser {
     public String later_sid;
     public Integer later_lineno;
     public String later_message;
+
+    public AnsibleLaterEntry() {}
   }
 
   @Override

@@ -7,7 +7,6 @@ import com.google.gson.GsonBuilder;
 import com.google.gson.JsonDeserializationContext;
 import com.google.gson.JsonDeserializer;
 import com.google.gson.JsonElement;
-import com.google.gson.JsonParseException;
 import java.lang.reflect.Type;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -69,8 +68,7 @@ public class SarifParser implements ViolationsParser {
 
     @Override
     public Notification.Level deserialize(
-        final JsonElement json, final Type typeOfT, final JsonDeserializationContext context)
-        throws JsonParseException {
+        final JsonElement json, final Type typeOfT, final JsonDeserializationContext context) {
       try {
         final String asString = json.getAsString();
         return Notification.Level.fromValue(asString);
@@ -85,8 +83,7 @@ public class SarifParser implements ViolationsParser {
 
     @Override
     public ReportingConfiguration.Level deserialize(
-        final JsonElement json, final Type typeOfT, final JsonDeserializationContext context)
-        throws JsonParseException {
+        final JsonElement json, final Type typeOfT, final JsonDeserializationContext context) {
       try {
         final String asString = json.getAsString();
         return ReportingConfiguration.Level.fromValue(asString);
@@ -100,8 +97,7 @@ public class SarifParser implements ViolationsParser {
 
     @Override
     public MessageStrings deserialize(
-        final JsonElement json, final Type typeOfT, final JsonDeserializationContext context)
-        throws JsonParseException {
+        final JsonElement json, final Type typeOfT, final JsonDeserializationContext context) {
       try {
         final MessageStrings messageStrings = new MessageStrings();
 
@@ -321,7 +317,7 @@ public class SarifParser implements ViolationsParser {
   }
 
   private boolean notEmptyOrNull(final List<Location> locations) {
-    return locations != null && locations.size() > 0;
+    return locations != null && !locations.isEmpty();
   }
 
   private List<Location> filter(final Set<Location> locations) {
@@ -548,7 +544,7 @@ public class SarifParser implements ViolationsParser {
   }
 
   private String findRuleId(final Result result, final ReportingDescriptorReference ref) {
-    String ruleId = result.getRuleId();
+    final String ruleId = result.getRuleId();
     if (ruleId == null && ref != null) {
       return ref.getId();
     }

@@ -4,7 +4,7 @@ import static java.util.logging.Level.FINE;
 import static java.util.logging.Level.SEVERE;
 
 import java.io.File;
-import java.io.FileInputStream;
+import java.nio.file.Files;
 import java.util.List;
 import java.util.Set;
 import java.util.TreeSet;
@@ -27,7 +27,7 @@ public class ViolationsFinder {
     for (final File file : includedFiles) {
       String content = null;
       try {
-        content = Utils.toString(new FileInputStream(file));
+        content = Utils.toString(Files.newInputStream(file.toPath()));
         if (Logger.getLogger(Parser.class.getSimpleName()).isLoggable(FINE)) {
           violationsLogger.log(
               FINE, "Using " + this.violationsParser.getClass().getName() + " to parse " + content);

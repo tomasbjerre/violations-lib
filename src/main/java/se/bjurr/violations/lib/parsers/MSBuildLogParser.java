@@ -9,7 +9,10 @@ import static se.bjurr.violations.lib.reports.Parser.MSBULDLOG;
 import static se.bjurr.violations.lib.util.Utils.isNullOrEmpty;
 import static se.bjurr.violations.lib.util.ViolationParserUtils.getLines;
 
-import java.util.*;
+import java.util.List;
+import java.util.Locale;
+import java.util.Set;
+import java.util.TreeSet;
 import se.bjurr.violations.lib.ViolationsLogger;
 import se.bjurr.violations.lib.model.SEVERITY;
 import se.bjurr.violations.lib.model.Violation;
@@ -19,8 +22,7 @@ public class MSBuildLogParser implements ViolationsParser {
   private static final String ParsingRegex =
       "^\\s*(.*)(\\(([0-9]*),([0-9]*)\\)|\\s):\\s([^\\s]*)\\s([^:]*):([^\\[]*)((\\[(.*)\\])?)$";
 
-  private static final String[] MsBuildTargetFiles =
-      new String[] {"Microsoft.Common.CurrentVersion.targets"};
+  private static final String[] MsBuildTargetFiles = {"Microsoft.Common.CurrentVersion.targets"};
 
   @Override
   public Set<Violation> parseReportOutput(
@@ -76,9 +78,11 @@ public class MSBuildLogParser implements ViolationsParser {
     return INFO;
   }
 
-  private static boolean isMsBuildTarget(String sourceName) {
+  private static boolean isMsBuildTarget(final String sourceName) {
     for (final String target : MsBuildTargetFiles) {
-      if (sourceName.endsWith(target)) return true;
+      if (sourceName.endsWith(target)) {
+        return true;
+      }
     }
     return false;
   }
