@@ -19,7 +19,8 @@ import se.bjurr.violations.lib.model.Violation;
 /**
  * PyLint. Format used by Flake8.<br>
  * <code>
- * msg-template='{path}:{line}:{column} [{msg_id}] {msg}'
+ * msg-template(pylint)='{path1}:{line2}: [{severity4}{code5}] {msg6}'
+ * msg-template(default)='{path1}:{line2}:{column7}: {severity8}{code9} {msg10}'
  * </code>
  */
 public class Flake8Parser implements ViolationsParser {
@@ -29,7 +30,10 @@ public class Flake8Parser implements ViolationsParser {
       final String string, final ViolationsLogger violationsLogger) throws Exception {
     final Set<Violation> violations = new TreeSet<>();
     final List<List<String>> partsPerLine =
-        getLines(string, "([^:]*):(\\d+)?:?(\\d+)?:? \\[?(\\D+)(\\d*)\\]? (.*)");
+        /** 
+         * group            1       2              4          5            6     7         8           9         10    
+         * field           path    line        severity     code          msg  column   severity     code        msg */
+        getLines(string, "([^:]+):(\\d+):( \\[([A-Z]{1,8})([0-9]{0,6})\\] (.+)|(\\d+): ([A-Z]{1,8})([0-9]{0,6}) (.+))");
     for (final List<String> parts : partsPerLine) {
       final String filename = parts.get(1);
       Integer line;
@@ -39,12 +43,22 @@ public class Flake8Parser implements ViolationsParser {
         continue;
       }
       Integer column = null;
-      if (!isNullOrEmpty(parts.get(3))) {
-        column = parseInt(parts.get(3));
+      String severity = null;
+      String rule = null;
+      String message = null;
+      if (!isNullOrEmpty(parts.get(7))) {
+        column = parseInt(parts.get(7));
+        severity = parts.get(8);
+        rule = parts.get(9);
+        message = parts.get(10);
+      } else {
+        severity = parts.get(4);
+        rule = parts.get(5);
+        message = parts.get(6);
       }
-      final String severity = parts.get(4);
-      final String rule = parts.get(5);
-      final String message = parts.get(6);
+      if (isNullOrEmpty(message)) {
+        continue;
+      }
       violations.add( //
           violationBuilder()
               .setParser(FLAKE8)
