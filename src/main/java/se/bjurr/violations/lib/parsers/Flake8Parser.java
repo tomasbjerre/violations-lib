@@ -30,10 +30,9 @@ public class Flake8Parser implements ViolationsParser {
       final String string, final ViolationsLogger violationsLogger) throws Exception {
     final Set<Violation> violations = new TreeSet<>();
     final List<List<String>> partsPerLine =
-        /** 
-         * group            1       2              4          5            6     7         8           9         10    
-         * field           path    line        severity     code          msg  column   severity     code        msg */
-        getLines(string, "([^:]+):(\\d+):( \\[([A-Z]{1,8})([0-9]{0,6})\\] (.+)|(\\d+): ([A-Z]{1,8})([0-9]{0,6}) (.+))");
+        getLines(
+            string,
+            "([^:]+):(\\d+):( \\[([A-Z]{1,8})([0-9]{0,6})\\] (.+)|(\\d+): ([A-Z]{1,8})([0-9]{0,6}) (.+))");
     for (final List<String> parts : partsPerLine) {
       final String filename = parts.get(1);
       Integer line;
@@ -43,9 +42,9 @@ public class Flake8Parser implements ViolationsParser {
         continue;
       }
       Integer column = null;
-      String severity = null;
-      String rule = null;
-      String message = null;
+      String severity;
+      String rule;
+      String message;
       if (!isNullOrEmpty(parts.get(7))) {
         column = parseInt(parts.get(7));
         severity = parts.get(8);
