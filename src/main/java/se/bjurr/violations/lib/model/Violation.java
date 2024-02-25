@@ -13,20 +13,25 @@ import se.bjurr.violations.lib.reports.Parser;
 public class Violation implements Serializable, Comparable<Violation> {
 
   private static final long serialVersionUID = -6052921679385466168L;
+
   /** A {@link #file} used when there is no file specified in the parsed report. */
   public static final String NO_FILE = "-";
+
   /** A {@link #startLine} used when there is no line specified in the parsed report. */
   public static final Integer NO_LINE = 0;
 
   private Integer column;
   private final Integer endLine;
   private final Integer endColumn;
+
   /** Also see {@link #NO_FILE} */
   private final String file;
 
   private final String message;
+
   /** The algorithm, the format, used. */
   private final Parser parser;
+
   /**
    * Intended as the tool used to find the violation. Like Detekt, when it is being used to find
    * violations and report them in the {@link Parser#CHECKSTYLE} format.
@@ -35,6 +40,7 @@ public class Violation implements Serializable, Comparable<Violation> {
 
   private final String rule;
   private final String category;
+
   /**
    * Something that identifies a group that this violation belongs to. First introduced with {@link
    * se.bjurr.violations.lib.parsers.CPPCheckParser} to record what error tag each violation belongs

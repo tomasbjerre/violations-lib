@@ -17,8 +17,10 @@ public class CodeClimate {
   private final CodeClimateSeverity severity;
   private final String type;
   private final List<String> categories;
+
   /** Rule within the tool. */
   private final String check_name;
+
   /** Name of tool. */
   private final String engine_name;
 
