@@ -114,7 +114,7 @@ If you need to convert a report from one format to another, the [command line to
 The library is used in a bunch of other projects, these are some of them.
 
 Command line:
- * [Violations Command Line](https://github.com/tomasbjerre/violations-command-line) Can parse, log, fail, and/or export to `CodeClimate` and `Sarif` files. This is how Github is supported, se [README](https://github.com/tomasbjerre/violations-command-line).
+ * [Violations Command Line](https://github.com/tomasbjerre/violations-command-line) Can parse, log, fail, and/or export to `CodeClimate` and `Sarif` files. `Sarif` is how GitHub is supported, and `CodeClimate` can be used with GitLab, see [README](https://github.com/tomasbjerre/violations-command-line).
  * [Violation Comments to GitLab Command Line](https://github.com/tomasbjerre/violation-comments-to-gitlab-command-line)
  * [Violation Comments to Bitbucket Server Command Line](https://github.com/tomasbjerre/violation-comments-to-bitbucket-server-command-line)
  * [Violation Comments to Bitbucket Cloud Command Line](https://github.com/tomasbjerre/violation-comments-to-bitbucket-cloud-command-line)
