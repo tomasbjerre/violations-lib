@@ -1,0 +1,125 @@
+2023-11-09 11:52:49 Starting Build: 
+
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Professional\MSBuild\Current\Bin\MSBuild.exe scripts/ddcom.sln -t:Rebuild /p:Configuration=release /p:Platform="Any CPU"  -m
+Microsoft (R) Build Engine version 16.11.2+f32259642 for .NET Framework
+Copyright (C) Microsoft Corporation. All rights reserved.
+
+Build started 09/11/2023 11:54:11.
+     1>Project "N:\tools\mytool\scripts\ddcom.sln" on node 1 (Rebuild target(s)).
+     1>ValidateSolutionConfiguration:
+         Building solution configuration "release|Any CPU".
+     1>Project "N:\tools\mytool\scripts\ddcom.sln" (1) is building "N:\tools\mytool\scripts\VisioImageExport\VisioImageExport.csproj" (2) on node 1 (Rebuild target(s)).
+     2>CoreClean:
+         Creating directory "obj\Release\".
+       PrepareForBuild:
+         Creating directory "bin\Release\".
+       GenerateBindingRedirects:
+         No suggested binding redirects from ResolveAssemblyReferences.
+     1>Project "N:\tools\mytool\scripts\ddcom.sln" (1) is building "N:\tools\mytool\scripts\EAImageExport\EAImageExport.csproj" (3) on node 2 (Rebuild target(s)).
+     3>CoreClean:
+         Creating directory "obj\Release\".
+       PrepareForBuild:
+         Creating directory "bin\Release\".
+       GenerateBindingRedirects:
+         No suggested binding redirects from ResolveAssemblyReferences.
+       CoreCompile:
+         C:\Program Files (x86)\Microsoft Visual Studio\2019\Professional\MSBuild\Current\Bin\Roslyn\csc.exe /noconfig /nowarn:1701,1702 /fullpaths /nostdlib+ /platform:anycpu32bitpreferred /errorreport:prompt /warn:4 /define:TRACE /highentropyva+ /reference:N:\tools\mytool\scripts\packages\CommandLineParser\lib\net461\CommandLine.dll /link:N:\tools\mytool\scripts\EAImageExport\Interop.EA.dll /reference:"C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.6.1\Microsoft.CSharp.dll" /reference:"C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.6.1\mscorlib.dll" /reference:"C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.6.1\System.Core.dll" /reference:"C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.6.1\System.Data.DataSetExtensions.dll" /reference:"C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.6.1\System.Data.dll" /reference:"C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.6.1\System.dll" /reference:"C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.6.1\System.Net.Http.dll" /reference:"C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.6.1\System.Xml.dll" /reference:"C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.6.1\System.Xml.Linq.dll" /debug:pdbonly /filealign:512 /optimize+ /out:obj\Release\EAImageExport.exe /subsystemversion:6.00 /target:exe /utf8output /deterministic+ /langversion:7.3 Program.cs Properties\AssemblyInfo.cs "obj\Release\.NETFramework,Version=v4.6.1.AssemblyAttributes.cs"
+     2>CoreCompile:
+         C:\Program Files (x86)\Microsoft Visual Studio\2019\Professional\MSBuild\Current\Bin\Roslyn\csc.exe /noconfig /nowarn:1701,1702 /fullpaths /nostdlib+ /platform:anycpu32bitpreferred /errorreport:prompt /warn:4 /define:TRACE /highentropyva+ /reference:N:\tools\mytool\scripts\packages\CommandLineParser\lib\net461\CommandLine.dll /reference:"C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.6.1\Microsoft.CSharp.dll" /reference:"C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.6.1\mscorlib.dll" /reference:"C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.6.1\System.Core.dll" /reference:"C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.6.1\System.Data.DataSetExtensions.dll" /reference:"C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.6.1\System.Data.dll" /reference:"C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.6.1\System.dll" /reference:"C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.6.1\System.Net.Http.dll" /reference:"C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.6.1\System.Xml.dll" /reference:"C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.6.1\System.Xml.Linq.dll" /link:C:\WINDOWS\assembly\GAC_MSIL\Microsoft.Office.Interop.Visio\15.0.0.0__71e9bce111e9429c\Microsoft.Office.Interop.Visio.dll /link:C:\WINDOWS\assembly\GAC\stdole\7.0.3300.0__b03f5f7f11d50a3a\stdole.dll /debug:pdbonly /filealign:512 /optimize+ /out:obj\Release\VisioImageExport.exe /subsystemversion:6.00 /target:exe /utf8output /deterministic+ /langversion:7.3 Program.cs Properties\AssemblyInfo.cs "obj\Release\.NETFramework,Version=v4.6.1.AssemblyAttributes.cs"
+         CompilerServer: server - server processed compilation - 59436945-0879-4ccf-99d5-6ee5ec252973
+     3>CoreCompile:
+         CompilerServer: server - server processed compilation - 9b498230-7d68-49d9-b8f6-42a665a1206a
+     2>_CopyFilesMarkedCopyLocal:
+         Copying file from "N:\tools\mytool\scripts\packages\CommandLineParser\lib\net461\CommandLine.dll" to "N:\tools\mytool\scripts\VisioImageExport\bin\Release\CommandLine.dll".
+         Copying file from "N:\tools\mytool\scripts\packages\CommandLineParser\lib\net461\CommandLine.xml" to "N:\tools\mytool\scripts\VisioImageExport\bin\Release\CommandLine.xml".
+         Creating "N:\tools\mytool\scripts\VisioImageExport\obj\Release\VisioImageExport.csproj.CopyComplete" because "AlwaysCreate" was specified.
+     3>_CopyFilesMarkedCopyLocal:
+         Copying file from "N:\tools\mytool\scripts\packages\CommandLineParser\lib\net461\CommandLine.dll" to "N:\tools\mytool\scripts\EAImageExport\bin\Release\CommandLine.dll".
+         Copying file from "N:\tools\mytool\scripts\packages\CommandLineParser\lib\net461\CommandLine.xml" to "N:\tools\mytool\scripts\EAImageExport\bin\Release\CommandLine.xml".
+         Creating "N:\tools\mytool\scripts\EAImageExport\obj\Release\EAImageExport.csproj.CopyComplete" because "AlwaysCreate" was specified.
+     2>_CopyAppConfigFile:
+         Copying file from "N:\tools\mytool\scripts\VisioImageExport\App.config" to "N:\tools\mytool\scripts\VisioImageExport\bin\Release\VisioImageExport.exe.config".
+       CopyFilesToOutputDirectory:
+         Copying file from "N:\tools\mytool\scripts\VisioImageExport\obj\Release\VisioImageExport.exe" to "N:\tools\mytool\scripts\VisioImageExport\bin\Release\VisioImageExport.exe".
+         VisioImageExport -> N:\tools\mytool\scripts\VisioImageExport\bin\Release\VisioImageExport.exe
+         Copying file from "N:\tools\mytool\scripts\VisioImageExport\obj\Release\VisioImageExport.pdb" to "N:\tools\mytool\scripts\VisioImageExport\bin\Release\VisioImageExport.pdb".
+     3>_CopyAppConfigFile:
+         Copying file from "N:\tools\mytool\scripts\EAImageExport\App.config" to "N:\tools\mytool\scripts\EAImageExport\bin\Release\EAImageExport.exe.config".
+     2>Done Building Project "N:\tools\mytool\scripts\VisioImageExport\VisioImageExport.csproj" (Rebuild target(s)).
+     3>CopyFilesToOutputDirectory:
+         Copying file from "N:\tools\mytool\scripts\EAImageExport\obj\Release\EAImageExport.exe" to "N:\tools\mytool\scripts\EAImageExport\bin\Release\EAImageExport.exe".
+         EAImageExport -> N:\tools\mytool\scripts\EAImageExport\bin\Release\EAImageExport.exe
+         Copying file from "N:\tools\mytool\scripts\EAImageExport\obj\Release\EAImageExport.pdb" to "N:\tools\mytool\scripts\EAImageExport\bin\Release\EAImageExport.pdb".
+     3>Done Building Project "N:\tools\mytool\scripts\EAImageExport\EAImageExport.csproj" (Rebuild target(s)).
+     1>Done Building Project "N:\tools\mytool\scripts\ddcom.sln" (Rebuild target(s)).
+
+Build succeeded.
+    0 Warning(s)
+    0 Error(s)
+
+Time Elapsed 00:00:03.58
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Professional\MSBuild\Current\Bin\MSBuild.exe scripts/ddcom.sln -t:Rebuild /p:Configuration=debug /p:Platform="Any CPU"  -m
+Microsoft (R) Build Engine version 16.11.2+f32259642 for .NET Framework
+Copyright (C) Microsoft Corporation. All rights reserved.
+
+Build started 09/11/2023 11:54:14.
+     1>Project "N:\tools\mytool\scripts\ddcom.sln" on node 1 (Rebuild target(s)).
+     1>ValidateSolutionConfiguration:
+         Building solution configuration "debug|Any CPU".
+     1>Project "N:\tools\mytool\scripts\ddcom.sln" (1) is building "N:\tools\mytool\scripts\EAImageExport\EAImageExport.csproj" (2) on node 2 (Rebuild target(s)).
+     2>CoreClean:
+         Creating directory "obj\Debug\".
+       PrepareForBuild:
+         Creating directory "bin\Debug\".
+       GenerateBindingRedirects:
+         No suggested binding redirects from ResolveAssemblyReferences.
+       CoreCompile:
+         C:\Program Files (x86)\Microsoft Visual Studio\2019\Professional\MSBuild\Current\Bin\Roslyn\csc.exe /noconfig /nowarn:1701,1702 /fullpaths /nostdlib+ /platform:anycpu32bitpreferred /errorreport:prompt /warn:4 /define:DEBUG;TRACE /highentropyva+ /reference:N:\tools\mytool\scripts\packages\CommandLineParser\lib\net461\CommandLine.dll /link:N:\tools\mytool\scripts\EAImageExport\Interop.EA.dll /reference:"C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.6.1\Microsoft.CSharp.dll" /reference:"C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.6.1\mscorlib.dll" /reference:"C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.6.1\System.Core.dll" /reference:"C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.6.1\System.Data.DataSetExtensions.dll" /reference:"C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.6.1\System.Data.dll" /reference:"C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.6.1\System.dll" /reference:"C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.6.1\System.Net.Http.dll" /reference:"C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.6.1\System.Xml.dll" /reference:"C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.6.1\System.Xml.Linq.dll" /debug+ /debug:full /filealign:512 /optimize- /out:obj\Debug\EAImageExport.exe /subsystemversion:6.00 /target:exe /utf8output /deterministic+ /langversion:7.3 Program.cs Properties\AssemblyInfo.cs "obj\Debug\.NETFramework,Version=v4.6.1.AssemblyAttributes.cs"
+         CompilerServer: server - server processed compilation - cc38b200-89b0-4531-917c-df9e4d2b36c4
+       _CopyFilesMarkedCopyLocal:
+         Copying file from "N:\tools\mytool\scripts\packages\CommandLineParser\lib\net461\CommandLine.dll" to "N:\tools\mytool\scripts\EAImageExport\bin\Debug\CommandLine.dll".
+         Copying file from "N:\tools\mytool\scripts\packages\CommandLineParser\lib\net461\CommandLine.xml" to "N:\tools\mytool\scripts\EAImageExport\bin\Debug\CommandLine.xml".
+         Creating "N:\tools\mytool\scripts\EAImageExport\obj\Debug\EAImageExport.csproj.CopyComplete" because "AlwaysCreate" was specified.
+       _CopyAppConfigFile:
+         Copying file from "N:\tools\mytool\scripts\EAImageExport\App.config" to "N:\tools\mytool\scripts\EAImageExport\bin\Debug\EAImageExport.exe.config".
+     1>Project "N:\tools\mytool\scripts\ddcom.sln" (1) is building "N:\tools\mytool\scripts\VisioImageExport\VisioImageExport.csproj" (3) on node 1 (Rebuild target(s)).
+     3>CoreClean:
+         Creating directory "obj\Debug\".
+     2>CopyFilesToOutputDirectory:
+         Copying file from "N:\tools\mytool\scripts\EAImageExport\obj\Debug\EAImageExport.exe" to "N:\tools\mytool\scripts\EAImageExport\bin\Debug\EAImageExport.exe".
+         EAImageExport -> N:\tools\mytool\scripts\EAImageExport\bin\Debug\EAImageExport.exe
+         Copying file from "N:\tools\mytool\scripts\EAImageExport\obj\Debug\EAImageExport.pdb" to "N:\tools\mytool\scripts\EAImageExport\bin\Debug\EAImageExport.pdb".
+     2>Done Building Project "N:\tools\mytool\scripts\EAImageExport\EAImageExport.csproj" (Rebuild target(s)).
+     3>PrepareForBuild:
+         Creating directory "bin\Debug\".
+       GenerateBindingRedirects:
+         No suggested binding redirects from ResolveAssemblyReferences.
+       CoreCompile:
+         C:\Program Files (x86)\Microsoft Visual Studio\2019\Professional\MSBuild\Current\Bin\Roslyn\csc.exe /noconfig /nowarn:1701,1702 /fullpaths /nostdlib+ /platform:anycpu32bitpreferred /errorreport:prompt /warn:4 /define:DEBUG;TRACE /highentropyva+ /reference:N:\tools\mytool\scripts\packages\CommandLineParser\lib\net461\CommandLine.dll /reference:"C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.6.1\Microsoft.CSharp.dll" /reference:"C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.6.1\mscorlib.dll" /reference:"C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.6.1\System.Core.dll" /reference:"C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.6.1\System.Data.DataSetExtensions.dll" /reference:"C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.6.1\System.Data.dll" /reference:"C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.6.1\System.dll" /reference:"C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.6.1\System.Net.Http.dll" /reference:"C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.6.1\System.Xml.dll" /reference:"C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.6.1\System.Xml.Linq.dll" /link:C:\WINDOWS\assembly\GAC_MSIL\Microsoft.Office.Interop.Visio\15.0.0.0__71e9bce111e9429c\Microsoft.Office.Interop.Visio.dll /link:C:\WINDOWS\assembly\GAC\stdole\7.0.3300.0__b03f5f7f11d50a3a\stdole.dll /debug+ /debug:full /filealign:512 /optimize- /out:obj\Debug\VisioImageExport.exe /subsystemversion:6.00 /target:exe /utf8output /deterministic+ /langversion:7.3 Program.cs Properties\AssemblyInfo.cs "obj\Debug\.NETFramework,Version=v4.6.1.AssemblyAttributes.cs"
+         CompilerServer: server - server processed compilation - 07896f65-295e-4396-a117-992bbe7c1d16
+       _CopyFilesMarkedCopyLocal:
+         Copying file from "N:\tools\mytool\scripts\packages\CommandLineParser\lib\net461\CommandLine.dll" to "N:\tools\mytool\scripts\VisioImageExport\bin\Debug\CommandLine.dll".
+         Copying file from "N:\tools\mytool\scripts\packages\CommandLineParser\lib\net461\CommandLine.xml" to "N:\tools\mytool\scripts\VisioImageExport\bin\Debug\CommandLine.xml".
+         Creating "N:\tools\mytool\scripts\VisioImageExport\obj\Debug\VisioImageExport.csproj.CopyComplete" because "AlwaysCreate" was specified.
+       _CopyAppConfigFile:
+         Copying file from "N:\tools\mytool\scripts\VisioImageExport\App.config" to "N:\tools\mytool\scripts\VisioImageExport\bin\Debug\VisioImageExport.exe.config".
+       CopyFilesToOutputDirectory:
+         Copying file from "N:\tools\mytool\scripts\VisioImageExport\obj\Debug\VisioImageExport.exe" to "N:\tools\mytool\scripts\VisioImageExport\bin\Debug\VisioImageExport.exe".
+         VisioImageExport -> N:\tools\mytool\scripts\VisioImageExport\bin\Debug\VisioImageExport.exe
+         Copying file from "N:\tools\mytool\scripts\VisioImageExport\obj\Debug\VisioImageExport.pdb" to "N:\tools\mytool\scripts\VisioImageExport\bin\Debug\VisioImageExport.pdb".
+     3>Done Building Project "N:\tools\mytool\scripts\VisioImageExport\VisioImageExport.csproj" (Rebuild target(s)).
+     1>Done Building Project "N:\tools\mytool\scripts\ddcom.sln" (Rebuild target(s)).
+
+Build succeeded.
+    0 Warning(s)
+    0 Error(s)
+
+Time Elapsed 00:00:00.80
+
+flake8 mytool --config config\flake8.ini --exit-zero
+mytool\__init__.py:102:9: E731 do not assign a lambda expression, use a def
+mytool\__init__.py:197:1: C901 'check_prerequesites' is too complex (10)
+mytool\__init__.py:338:121: E501 line too long (129 > 120 characters)
+mytool\read_config.py:182:121: E501 line too long (133 > 120 characters)
+mytool\read_config.py:183:121: E501 line too long (176 > 120 characters)
+mytool\read_config.py:187:84: E231 missing whitespace after ','

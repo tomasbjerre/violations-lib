@@ -171,10 +171,25 @@ public class Flake8Test {
             .violations();
 
     assertThat(actual) //
-        .hasSize(6);
+        .hasSize(1);
 
     final Violation violation0 = new ArrayList<>(actual).get(0);
     assertThat(violation0.getMessage()) //
-        .startsWith("HOME=/var/jenkins_home/workspace/");
+        .startsWith("undefined name 'FALSE'");
+  }
+
+  @Test
+  public void testFailedReportFlake8() {
+    final String rootFolder = getRootFolder();
+
+    final Set<Violation> actual =
+        violationsApi() //
+            .withPattern(".*/flake8/failed_report_flake8\\.txt$") //
+            .inFolder(rootFolder) //
+            .findAll(FLAKE8) //
+            .violations();
+
+    assertThat(actual) //
+        .hasSize(6);
   }
 }
