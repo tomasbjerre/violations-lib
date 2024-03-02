@@ -2,6 +2,12 @@
 
 Changelog of violations-lib.
 
+## 1.156.8 (2024-03-02)
+
+### Bug Fixes
+
+-  make flake8 regex more precise to avoid false positives (#185) ([50ffc](https://github.com/tomasbjerre/violations-lib/commit/50ffc15e9a5ba5a) Holger Englert)  
+
 ## 1.156.7 (2023-09-17)
 
 ### Bug Fixes
