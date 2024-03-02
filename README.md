@@ -1,4 +1,5 @@
 # Violations Lib
+
 [![Maven Central](https://maven-badges.herokuapp.com/maven-central/se.bjurr.violations/violations-lib/badge.svg)](https://maven-badges.herokuapp.com/maven-central/se.bjurr.violations/violations-lib)
 
 This is a Java library for parsing report files like static code analysis.
@@ -106,34 +107,37 @@ Very easy to use with a nice builder pattern
 
 It can also export the violations to the [_CodeClimate_](https://codeclimate.com/) and [_SARIF_](https://github.com/oasis-tcs/sarif-spec) formats with:
 
- * `.codeClimate()`
- * `.sarif()`
+* `.codeClimate()`
+* `.sarif()`
 
 If you need to convert a report from one format to another, the [command line tool](https://github.com/tomasbjerre/violations-command-line/) is probably easiest to use.
 
 The library is used in a bunch of other projects, these are some of them.
 
 Command line:
- * [Violations Command Line](https://github.com/tomasbjerre/violations-command-line) Can parse, log, fail, and/or export to `CodeClimate` and `Sarif` files. `Sarif` is how GitHub is supported, and `CodeClimate` can be used with GitLab, see [README](https://github.com/tomasbjerre/violations-command-line).
- * [Violation Comments to GitLab Command Line](https://github.com/tomasbjerre/violation-comments-to-gitlab-command-line)
- * [Violation Comments to Bitbucket Server Command Line](https://github.com/tomasbjerre/violation-comments-to-bitbucket-server-command-line)
- * [Violation Comments to Bitbucket Cloud Command Line](https://github.com/tomasbjerre/violation-comments-to-bitbucket-cloud-command-line)
+
+* [Violations Command Line](https://github.com/tomasbjerre/violations-command-line) Can parse, log, fail, and/or export to `CodeClimate` and `Sarif` files. `Sarif` is how GitHub is supported, and `CodeClimate` can be used with GitLab, see [README](https://github.com/tomasbjerre/violations-command-line).
+* [Violation Comments to GitLab Command Line](https://github.com/tomasbjerre/violation-comments-to-gitlab-command-line)
+* [Violation Comments to Bitbucket Server Command Line](https://github.com/tomasbjerre/violation-comments-to-bitbucket-server-command-line)
+* [Violation Comments to Bitbucket Cloud Command Line](https://github.com/tomasbjerre/violation-comments-to-bitbucket-cloud-command-line)
 
 Gradle:
- * [Violation Comments to GitLab Gradle Plugin](https://github.com/tomasbjerre/violation-comments-to-gitlab-gradle-plugin).
- * [Violations Gradle Plugin](https://github.com/tomasbjerre/violations-gradle-plugin).
+
+* [Violations Gradle Plugin](https://github.com/tomasbjerre/violations-gradle-plugin).
 
 Maven:
- * [Violation Comments to GitLab Maven Plugin](https://github.com/tomasbjerre/violation-comments-to-gitlab-maven-plugin).
- * [Violations Maven Plugin](https://github.com/tomasbjerre/violations-maven-plugin).
+
+* [Violations Maven Plugin](https://github.com/tomasbjerre/violations-maven-plugin).
 
 Jenkins:
- * [Violation Comments to GitLab Jenkins Plugin](https://github.com/jenkinsci/violation-comments-to-gitlab-plugin).
- * [Violation Comments to Bitbucket Server Jenkins Plugin](https://github.com/jenkinsci/violation-comments-to-stash-plugin).
+
+* [Violation Comments to GitLab Jenkins Plugin](https://github.com/jenkinsci/violation-comments-to-gitlab-plugin).
+* [Violation Comments to Bitbucket Server Jenkins Plugin](https://github.com/jenkinsci/violation-comments-to-stash-plugin).
 
 And these supporting libraries:
- * [Violation Comments to GitLab Lib](https://github.com/tomasbjerre/violation-comments-to-gitlab-lib).
- * [Violation Comments to Bitbucket Cloud Lib](https://github.com/tomasbjerre/violation-comments-to-bitbucket-cloud-lib).
- * [Violation Comments to Bitbucket Server Lib](https://github.com/tomasbjerre/violation-comments-to-bitbucket-server-lib).
- * [Violation Comments Lib](https://github.com/tomasbjerre/violation-comments-lib).
- * [Violations Git Lib](https://github.com/tomasbjerre/violations-git-lib).
+
+* [Violation Comments to GitLab Lib](https://github.com/tomasbjerre/violation-comments-to-gitlab-lib).
+* [Violation Comments to Bitbucket Cloud Lib](https://github.com/tomasbjerre/violation-comments-to-bitbucket-cloud-lib).
+* [Violation Comments to Bitbucket Server Lib](https://github.com/tomasbjerre/violation-comments-to-bitbucket-server-lib).
+* [Violation Comments Lib](https://github.com/tomasbjerre/violation-comments-lib).
+* [Violations Git Lib](https://github.com/tomasbjerre/violations-git-lib).
