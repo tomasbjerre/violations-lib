@@ -1,5 +1,4 @@
 
-src/gen/java/se
 .idea
 out
 .okhttpcache
@@ -18,4 +17,3 @@ codeclimate.json
 *.received.txt
 *.DS_Store
 .vscode*
-src/gen/java
