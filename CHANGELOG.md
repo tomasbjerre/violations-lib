@@ -2,6 +2,12 @@
 
 Changelog of violations-lib.
 
+## 1.157.0 (2024-03-24)
+
+### Features
+
+-  coverity parser ([2fed4](https://github.com/tomasbjerre/violations-lib/commit/2fed4bbe43d9be6) Tomas Bjerre)  [#186](https://github.com/tomasbjerre/violations-lib/issues/186)  
+
 ## 1.156.8 (2024-03-02)
 
 ### Bug Fixes
