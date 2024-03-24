@@ -1,0 +1,196 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "type": "object",
+  "properties": {
+    "type": {
+      "type": "string"
+    },
+    "formatVersion": {
+      "type": "integer"
+    },
+    "suppressedIssueCount": {
+      "type": "integer"
+    },
+    "issues": {
+      "type": "array",
+      "items": {
+        "$ref": "#/definitions/issue"
+      }
+    },
+    "desktopAnalysisSettings": {
+      "type": "null"
+    },
+    "error": {
+      "type": "null"
+    },
+    "warnings": {
+      "type": "array",
+      "items": {}
+    }
+  },
+  "definitions": {
+    "issue": {
+      "type": "object",
+      "properties": {
+        "mergeKey": {
+          "type": "string"
+        },
+        "occurrenceCountForMK": {
+          "type": "integer"
+        },
+        "occurrenceNumberInMK": {
+          "type": "integer"
+        },
+        "referenceOccurrenceCountForMK": {
+          "type": "null"
+        },
+        "checkerName": {
+          "type": "string"
+        },
+        "subcategory": {
+          "type": "string"
+        },
+        "type": {
+          "type": "string"
+        },
+        "subtype": {
+          "type": "string"
+        },
+        "code-language": {
+          "type": "string"
+        },
+        "extra": {
+          "type": "string"
+        },
+        "domain": {
+          "type": "string"
+        },
+        "language": {
+          "type": "string"
+        },
+        "mainEventFilePathname": {
+          "type": "string"
+        },
+        "strippedMainEventFilePathname": {
+          "type": "string"
+        },
+        "mainEventLineNumber": {
+          "type": "integer"
+        },
+        "properties": {
+          "type": "object"
+        },
+        "functionDisplayName": {
+          "type": "string"
+        },
+        "functionMangledName": {
+          "type": "string"
+        },
+        "localStatus": {
+          "type": "null"
+        },
+        "ordered": {
+          "type": "boolean"
+        },
+        "stateOnServer": {
+          "type": "null"
+        },
+        "events": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/event"
+          }
+        },
+        "checkerProperties": {
+          "$ref": "#/definitions/checkerProperty"
+        }
+      }
+    },
+    "event": {
+      "type": "object",
+      "properties": {
+        "covLStrEventDescription": {
+          "type": "string"
+        },
+        "eventDescription": {
+          "type": "string"
+        },
+        "eventNumber": {
+          "type": "integer"
+        },
+        "eventTreePosition": {
+          "type": "string"
+        },
+        "eventSet": {
+          "type": "integer"
+        },
+        "eventTag": {
+          "type": "string"
+        },
+        "filePathname": {
+          "type": "string"
+        },
+        "strippedFilePathname": {
+          "type": "string"
+        },
+        "lineNumber": {
+          "type": "integer"
+        },
+        "main": {
+          "type": "boolean"
+        },
+        "moreInformationId": {
+          "type": "null"
+        },
+        "remediation": {
+          "type": "boolean"
+        },
+        "events": {
+          "type": "null"
+        }
+      }
+    },
+    "checkerProperty": {
+      "type": "object",
+      "properties": {
+        "category": {
+          "type": "string"
+        },
+        "categoryDescription": {
+          "type": "string"
+        },
+        "cweCategory": {
+          "type": "string"
+        },
+        "issueKinds": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/issueKind"
+          }
+        },
+        "eventSetCaptions": {
+          "type": "array",
+          "items": {}
+        },
+        "impact": {
+          "type": "string"
+        },
+        "impactDescription": {
+          "type": "string"
+        },
+        "subcategoryLocalEffect": {
+          "type": "string"
+        },
+        "subcategoryShortDescription": {
+          "type": "string"
+        },
+        "subcategoryLongDescription": {
+          "type": "string"
+        }
+      }
+    },
+    "issueKind": {
+      "type": "string"
+    }
+  }
+}

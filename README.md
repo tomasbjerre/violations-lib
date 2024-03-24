@@ -24,6 +24,7 @@ A number of **parsers** have been implemented. Some **parsers** can parse output
 | [_CloudFormation Linter_](https://github.com/aws-cloudformation/cfn-lint)             | `JUNIT`              | `cfn-lint . -f junit --output-file report-junit.xml`
 | [_CodeClimate_](https://codeclimate.com/)                                             | `CODECLIMATE`        | 
 | [_CodeNarc_](http://codenarc.sourceforge.net/)                                        | `CODENARC`           | 
+| [_Coverity_](https://scan.coverity.com/)                                              | `COVERITY`           | 
 | [_Dart_](https://dart.dev/)                                                           | `MACHINE`            | With `dart analyze --format=machine`
 | [_Dependency Check_](https://jeremylong.github.io/DependencyCheck/)                   | `SARIF`              | Using `--format SARIF`
 | [_Detekt_](https://github.com/arturbosch/detekt)                                      | `CHECKSTYLE`         | With `--output-format xml`.
@@ -89,7 +90,7 @@ A number of **parsers** have been implemented. Some **parsers** can parse output
 | [_YAMLLint_](https://yamllint.readthedocs.io/en/stable/index.html)                    | `YAMLLINT`           | With `-f parsable`
 | [_ZPTLint_](https://pypi.python.org/pypi/zptlint)                                     | `ZPTLINT`            |
 
-51 parsers and 78 reporters.
+52 parsers and 79 reporters.
 
 Missing a format? Open an issue [here](https://github.com/tomasbjerre/violations-lib/issues)!
 

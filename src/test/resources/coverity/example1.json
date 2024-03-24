@@ -1,0 +1,62 @@
+{
+  "type": "Coverity issues",
+  "formatVersion": 7,
+  "suppressedIssueCount": 0,
+  "issues": [
+    {
+      "mergeKey": "884ed7531feed32eb916d9038a3b9bd6",
+      "occurrenceCountForMK": 1,
+      "occurrenceNumberInMK": 1,
+      "referenceOccurrenceCountForMK": null,
+      "checkerName": "CONSTANT_EXPRESSION_RESULT",
+      "subcategory": "bit_and_with_zero",
+      "type": "constant_expression_result",
+      "subtype": "bit_and_with_zero",
+      "code-language": "c#",
+      "extra": "status",
+      "domain": "STATIC_CS",
+      "language": "C#",
+      "mainEventFilePathname": "C:\\Workspace\\workspace\\Build_jenkins_development\\somefile.cs",
+      "strippedMainEventFilePathname": "\\workspace\\Build_jenkins_development\\Architecture\\somefile.cs",
+      "mainEventLineNumber": 79,
+      "properties": {},
+      "functionDisplayName": "somename",
+      "functionMangledName": "somename",
+      "localStatus": null,
+      "ordered": false,
+      "events": [
+        {
+          "covLStrEventDescription": "{CovLStrv2{{t{{0} is always 0.}{{code{status & System.Printing.PrintJobStatus.None}}}}{t{ This occurs as a value.}}}}",
+          "eventDescription": "\"status & System.Printing.PrintJobStatus.None\" is always 0. This occurs as a value.",
+          "eventNumber": 1,
+          "eventTreePosition": "1",
+          "eventSet": 0,
+          "eventTag": "bit_and_with_zero",
+          "filePathname": "C:\\Workspace\\workspace\\Build_jenkins_development\\somefile.cs",
+          "strippedFilePathname": "\\workspace\\Build_jenkins_development\\Architecture\\somefile.cs",
+          "lineNumber": 79,
+          "main": true,
+          "moreInformationId": null,
+          "remediation": false,
+          "events": null
+        }
+      ],
+      "stateOnServer": null,
+      "checkerProperties": {
+        "category": "Integer handling issues",
+        "categoryDescription": "Integer handling issues",
+        "cweCategory": "569",
+        "issueKinds": ["QUALITY"],
+        "eventSetCaptions": [],
+        "impact": "Medium",
+        "impactDescription": "Medium",
+        "subcategoryLocalEffect": "The expression's value is always zero; construct may indicate an inadvertent logic error.",
+        "subcategoryShortDescription": "Bitwise-and with zero",
+        "subcategoryLongDescription": "Bitwise-and ('&amp;') operation applied to zero always produces zero"
+      }
+    }
+  ],
+  "desktopAnalysisSettings": null,
+  "error": null,
+  "warnings": []
+}
