@@ -17,6 +17,7 @@ public enum Reporter {
       "https://github.com/PyCQA/bandit",
       "With `bandit -r examples/ -f custom -o bandit.out --msg-template \"{abspath}:{line}: {severity}: {test_id}: {msg}\"`"),
   CLANG("CLang", Parser.CLANG, "https://clang-analyzer.llvm.org/", ""),
+  COVERITY("Coverity", Parser.COVERITY, "https://scan.coverity.com/", ""),
   CFN(
       "CloudFormation Linter",
       Parser.JUNIT,

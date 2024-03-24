@@ -14,6 +14,7 @@ import se.bjurr.violations.lib.parsers.CSSLintParser;
 import se.bjurr.violations.lib.parsers.CheckStyleParser;
 import se.bjurr.violations.lib.parsers.CodeClimateParser;
 import se.bjurr.violations.lib.parsers.CodeNarcParser;
+import se.bjurr.violations.lib.parsers.CoverityParser;
 import se.bjurr.violations.lib.parsers.CppLintParser;
 import se.bjurr.violations.lib.parsers.DocFXParser;
 import se.bjurr.violations.lib.parsers.FindbugsParser;
@@ -64,6 +65,7 @@ public enum Parser {
   CHECKSTYLE(new CheckStyleParser()), //
   CODENARC(new CodeNarcParser()), //
   CLANG(new CLangParser()), //
+  COVERITY(new CoverityParser()), //
   CPD(new CPDParser()), //
   CPPCHECK(new CPPCheckParser()), //
   CPPLINT(new CppLintParser()), //
