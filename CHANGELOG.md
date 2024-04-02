@@ -2,6 +2,12 @@
 
 Changelog of violations-lib.
 
+## 1.157.1 (2024-04-02)
+
+### Bug Fixes
+
+-  avoid repeated message in the Coverity parser ([6c147](https://github.com/tomasbjerre/violations-lib/commit/6c14711cba4dcca) Tomas Bjerre)  [#188](https://github.com/tomasbjerre/violations-lib/issues/188)  
+
 ## 1.157.0 (2024-03-24)
 
 ### Features
