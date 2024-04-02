@@ -64,6 +64,6 @@ dependencies {
  testImplementation 'junit:junit:4.13.2'
  testImplementation 'org.assertj:assertj-core:3.25.3'
  testImplementation 'uk.co.jemos.podam:podam:8.0.1.RELEASE'
- testImplementation 'com.approvaltests:approvaltests:23.0.0'
+ testImplementation 'com.approvaltests:approvaltests:23.0.1'
  testImplementation 'com.networknt:json-schema-validator:1.4.0'
 }

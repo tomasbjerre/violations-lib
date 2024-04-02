@@ -30,7 +30,7 @@ public class CoverityTest {
     final Violation violation0 = new ArrayList<>(actual).get(0);
     assertThat(violation0.getMessage()) //
         .isEqualTo(
-            "The expression's value is always zero; construct may indicate an inadvertent logic error.\nThe expression's value is always zero; construct may indicate an inadvertent logic error.");
+            "Bitwise-and ('&amp;') operation applied to zero always produces zero.\nThe expression's value is always zero; construct may indicate an inadvertent logic error.");
     assertThat(violation0.getFile()) //
         .isEqualTo("C:/Workspace/workspace/Build_jenkins_development/somefile.cs");
     assertThat(violation0.getSeverity()) //

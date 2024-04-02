@@ -11,9 +11,11 @@ import java.util.TreeSet;
 import se.bjurr.violations.lib.ViolationsLogger;
 import se.bjurr.violations.lib.model.SEVERITY;
 import se.bjurr.violations.lib.model.Violation;
+import se.bjurr.violations.lib.model.generated.coverity.CheckerProperty;
 import se.bjurr.violations.lib.model.generated.coverity.CoveritySchema;
 import se.bjurr.violations.lib.model.generated.coverity.Issue;
 import se.bjurr.violations.lib.reports.Parser;
+import se.bjurr.violations.lib.util.Utils;
 
 public class CoverityParser implements ViolationsParser {
 
@@ -32,10 +34,7 @@ public class CoverityParser implements ViolationsParser {
       violations.add(
           violationBuilder() //
               .setFile(issue.getMainEventFilePathname()) //
-              .setMessage(
-                  issue.getCheckerProperties().getSubcategoryLocalEffect()
-                      + "\n"
-                      + issue.getCheckerProperties().getSubcategoryLocalEffect()) //
+              .setMessage(this.getMessage(issue.getCheckerProperties())) //
               .setParser(Parser.COVERITY) //
               .setCategory(issue.getCheckerProperties().getCategory())
               .setRule(issue.getType() + "/" + issue.getSubtype()) //
@@ -44,6 +43,28 @@ public class CoverityParser implements ViolationsParser {
               .build());
     }
     return violations;
+  }
+
+  private String getMessage(final CheckerProperty checkerProperty) {
+    final boolean hasLongDescription =
+        !Utils.isNullOrEmpty(checkerProperty.getSubcategoryLongDescription());
+    final boolean hasLocalEffect =
+        !Utils.isNullOrEmpty(checkerProperty.getSubcategoryLocalEffect());
+    if (hasLongDescription && hasLocalEffect) {
+      if (checkerProperty
+          .getSubcategoryLongDescription()
+          .contains(checkerProperty.getSubcategoryLocalEffect())) {
+        return checkerProperty.getSubcategoryLongDescription();
+      }
+      return checkerProperty.getSubcategoryLongDescription()
+          + ".\n"
+          + checkerProperty.getSubcategoryLocalEffect();
+    } else if (hasLongDescription) {
+      return checkerProperty.getSubcategoryLongDescription();
+    } else if (hasLocalEffect) {
+      return checkerProperty.getSubcategoryLocalEffect();
+    }
+    return checkerProperty.getImpactDescription();
   }
 
   private SEVERITY toSeverity(final String from) {
