@@ -28,7 +28,25 @@ public class SarifParserTest {
             .violations();
 
     assertThat(actual) //
-        .hasSize(53);
+        .hasSize(56);
+  }
+
+  @Test
+  public void testThatViolationsCanBeParsed_OriginalUriBaseIds() {
+    final String rootFolder = getRootFolder();
+
+    final Set<Violation> actual =
+        violationsApi() //
+            .withPattern(".*/sarif/samples/OriginalUriBaseIds.sarif$") //
+            .inFolder(rootFolder) //
+            .findAll(SARIF) //
+            .violations();
+
+    assertThat(actual) //
+        .hasSize(4);
+    assertThat(actual.stream().sorted().map(it -> it.getFile()).collect(Collectors.joining("\n")))
+        .isEqualToIgnoringWhitespace(
+            ".\n" + "						README.md\n" + "						src/added-stuff.md\n" + "						src/io/kb.c");
   }
 
   @Test
@@ -47,7 +65,12 @@ public class SarifParserTest {
 
     final Violation first = new ArrayList<>(actual).get(0);
     assertThat(first.getMessage()) //
-        .isEqualTo("'x' is assigned a value but never used.");
+        .isEqualTo(
+            "no-unused-vars\n"
+                + "\n"
+                + "disallow unused variables\n"
+                + "\n"
+                + "'x' is assigned a value but never used.");
     assertThat(first.getFile()) //
         .isEqualTo("file:///C:/dev/sarif/sarif-tutorials/samples/Introduction/simple-example.js");
     assertThat(first.getSeverity()) //
@@ -92,7 +115,11 @@ public class SarifParserTest {
     final Violation fourth = new ArrayList<>(actual).get(4);
     assertThat(fourth.getMessage()) //
         .isEqualTo(
-            "'unsigned char' doesn't provide information about its size. Define and use typedefs clarifying type and size for numerical types or use one of the exact-width numerical types defined in <stdint.h>.\n\nFor additional help see: [How to resolve polyspace misra-c-2812](https://www.mathworks.com/matlabcentral/answers/479913-how-to-resolve-polyspace-misra-c-2012-d4-14-rule-when-am-passing-pointer-as-parameter-to-function)");
+            "MISRA C:2012 D4.6: Dir 4.6 typedefs that indicate size and signedness should be used in place of the basic numerical types.\n"
+                + "\n"
+                + "For additional help see: [How to resolve polyspace misra-c-2812](https://www.mathworks.com/matlabcentral/answers/479913-how-to-resolve-polyspace-misra-c-2012-d4-14-rule-when-am-passing-pointer-as-parameter-to-function)\n"
+                + "\n"
+                + "'unsigned char' doesn't provide information about its size. Define and use typedefs clarifying type and size for numerical types or use one of the exact-width numerical types defined in <stdint.h>.");
     assertThat(fourth.getFile()) //
         .isEqualTo(
             "file:/c:/var/lib/jenkins/workspace/PSBF_PIControl_DeclPipeline_Access/pi_alg/pi_alg.c");
@@ -126,7 +153,9 @@ public class SarifParserTest {
     final Violation first = arrayList.get(0);
     assertThat(first.getMessage()) //
         .isEqualTo(
-            "The cookie is missing 'HttpOnly' flag.\n"
+            "SCS0009\n"
+                + "\n"
+                + "The cookie is missing 'HttpOnly' flag.\n"
                 + "\n"
                 + "For additional help see: Cookies without 'HttpOnly' may be stolen in case of JavaScript injection (XSS).");
     assertThat(first.getFile()) //
@@ -199,33 +228,51 @@ public class SarifParserTest {
     final Violation violation1 = arrayList.get(1);
     assertThat(violation1.getMessage()) //
         .isEqualToIgnoringWhitespace(
-            "Exception type System.Exception is not sufficiently specific For additional help see: An exception of type that is not sufficiently specific or reserved by the runtime should never be raised by user code. This makes the original error difficult to detect and debug. If this exception instance might be thrown, use a different exception type.");
+            "CA1305\n"
+                + "\n"
+                + "Specify IFormatProvider\n"
+                + "\n"
+                + "For additional help see: A method or constructor calls one or more members that have overloads that accept a System.IFormatProvider parameter, and the method or constructor does not call the overload that takes the IFormatProvider parameter. When a System.Globalization.CultureInfo or IFormatProvider object is not supplied, the default value that is supplied by the overloaded member might not have the effect that you want in all locales. If the result will be based on the input from/output displayed to the user, specify 'CultureInfo.CurrentCulture' as the 'IFormatProvider'. Otherwise, if the result will be stored and accessed by software, such as when it is loaded from disk/database and when it is persisted to disk/database, specify 'CultureInfo.InvariantCulture'.\n"
+                + "\n"
+                + "The behavior of 'string.Format(string, object)' could vary based on the current user's locale settings. Replace this call in 'Class1.M(string)' with a call to 'string.Format(IFormatProvider, string, params object[])'.");
     assertThat(violation1.getFile()) //
         .isEqualTo("file:///C:/Projects/SarifCategoryDemo/Class1.cs");
     assertThat(violation1.getSeverity()) //
         .isEqualTo(SEVERITY.WARN);
     assertThat(violation1.getCategory()) //
-        .isEqualTo("Usage");
+        .isEqualTo("Globalization");
     assertThat(violation1.getSpecifics().get(SarifParser.SARIF_RESULTS_SUPPRESSED)) //
         .isEqualTo("false");
 
     final Violation violation2 = arrayList.get(2);
     assertThat(violation2.getMessage()) //
         .isEqualToIgnoringWhitespace(
-            "The behavior of 'string.Format(string, object)' could vary based on the current user's locale settings. Replace this call in 'Class1.M(string)' with a call to 'string.Format(IFormatProvider, string, params object[])'. For additional help see: A method or constructor calls one or more members that have overloads that accept a System.IFormatProvider parameter, and the method or constructor does not call the overload that takes the IFormatProvider parameter. When a System.Globalization.CultureInfo or IFormatProvider object is not supplied, the default value that is supplied by the overloaded member might not have the effect that you want in all locales. If the result will be based on the input from/output displayed to the user, specify 'CultureInfo.CurrentCulture' as the 'IFormatProvider'. Otherwise, if the result will be stored and accessed by software, such as when it is loaded from disk/database and when it is persisted to disk/database, specify 'CultureInfo.InvariantCulture'.");
+            "CA2201\n"
+                + "\n"
+                + "Do not raise reserved exception types\n"
+                + "\n"
+                + "For additional help see: An exception of type that is not sufficiently specific or reserved by the runtime should never be raised by user code. This makes the original error difficult to detect and debug. If this exception instance might be thrown, use a different exception type.\n"
+                + "\n"
+                + "Exception type System.Exception is not sufficiently specific");
     assertThat(violation2.getFile()) //
         .isEqualTo("file:///C:/Projects/SarifCategoryDemo/Class1.cs");
     assertThat(violation2.getSeverity()) //
         .isEqualTo(SEVERITY.WARN);
     assertThat(violation2.getCategory()) //
-        .isEqualTo("Globalization");
+        .isEqualTo("Usage");
     assertThat(violation2.getSpecifics().get(SarifParser.SARIF_RESULTS_SUPPRESSED)) //
         .isEqualTo("false");
 
     final Violation violation3 = arrayList.get(3);
     assertThat(violation3.getMessage()) //
         .isEqualToIgnoringWhitespace(
-            "'string.Contains(string)' has a method overload that takes a 'StringComparison' parameter. Replace this call in 'SarifCategoryDemo.Class1.M(string)' with a call to 'string.Contains(string, System.StringComparison)' for clarity of intent. For additional help see: A string comparison operation uses a method overload that does not set a StringComparison parameter. It is recommended to use the overload with StringComparison parameter for clarity of intent. If the result will be displayed to the user, such as when sorting a list of items for display in a list box, specify 'StringComparison.CurrentCulture' or 'StringComparison.CurrentCultureIgnoreCase' as the 'StringComparison' parameter. If comparing case-insensitive identifiers, such as file paths, environment variables, or registry keys and values, specify 'StringComparison.OrdinalIgnoreCase'. Otherwise, if comparing case-sensitive identifiers, specify 'StringComparison.Ordinal'.");
+            "CA1307\n"
+                + "\n"
+                + "Specify StringComparison for clarity\n"
+                + "\n"
+                + "For additional help see: A string comparison operation uses a method overload that does not set a StringComparison parameter. It is recommended to use the overload with StringComparison parameter for clarity of intent. If the result will be displayed to the user, such as when sorting a list of items for display in a list box, specify 'StringComparison.CurrentCulture' or 'StringComparison.CurrentCultureIgnoreCase' as the 'StringComparison' parameter. If comparing case-insensitive identifiers, such as file paths, environment variables, or registry keys and values, specify 'StringComparison.OrdinalIgnoreCase'. Otherwise, if comparing case-sensitive identifiers, specify 'StringComparison.Ordinal'.\n"
+                + "\n"
+                + "'string.Contains(string)' has a method overload that takes a 'StringComparison' parameter. Replace this call in 'SarifCategoryDemo.Class1.M(string)' with a call to 'string.Contains(string, System.StringComparison)' for clarity of intent.");
     assertThat(violation3.getFile()) //
         .isEqualTo("file:///C:/Projects/SarifCategoryDemo/Class1.cs");
     assertThat(violation3.getSeverity()) //
@@ -238,7 +285,13 @@ public class SarifParserTest {
     final Violation violation4 = arrayList.get(4);
     assertThat(violation4.getMessage()) //
         .isEqualToIgnoringWhitespace(
-            "Use 'string.Contains(char)' instead of 'string.Contains(string)' when searching for a single character For additional help see: 'string.Contains(char)' is available as a better performing overload for single char lookup.");
+            "CA1847\n"
+                + "\n"
+                + "Use char literal for a single character lookup\n"
+                + "\n"
+                + "For additional help see: 'string.Contains(char)' is available as a better performing overload for single char lookup.\n"
+                + "\n"
+                + "Use 'string.Contains(char)' instead of 'string.Contains(string)' when searching for a single character");
     assertThat(violation4.getFile()) //
         .isEqualTo("file:///C:/Projects/SarifCategoryDemo/Class1.cs");
     assertThat(violation4.getSeverity()) //
@@ -251,7 +304,13 @@ public class SarifParserTest {
     final Violation violation5 = arrayList.get(5);
     assertThat(violation5.getMessage()) //
         .isEqualToIgnoringWhitespace(
-            "Member 'M' does not access instance data and can be marked as static For additional help see: Members that do not access instance data or call instance methods can be marked as static. After you mark the methods as static, the compiler will emit nonvirtual call sites to these members. This can give you a measurable performance gain for performance-sensitive code.");
+            "CA1822\n"
+                + "\n"
+                + "Mark members as static\n"
+                + "\n"
+                + "For additional help see: Members that do not access instance data or call instance methods can be marked as static. After you mark the methods as static, the compiler will emit nonvirtual call sites to these members. This can give you a measurable performance gain for performance-sensitive code.\n"
+                + "\n"
+                + "Member 'M' does not access instance data and can be marked as static");
     assertThat(violation5.getFile()) //
         .isEqualTo("file:///C:/Projects/SarifCategoryDemo/Class1.cs");
     assertThat(violation5.getSeverity()) //
@@ -272,7 +331,7 @@ public class SarifParserTest {
             .violations();
 
     assertThat(actual) //
-        .hasSize(1);
+        .hasSize(2);
     final List<Violation> arrayList = new ArrayList<>(actual);
 
     final Violation violation0 = arrayList.get(0);
@@ -317,13 +376,15 @@ public class SarifParserTest {
     final Violation violation0 = arrayList.get(0);
     assertThat(violation0.getMessage()) //
         .isEqualToIgnoringWhitespace(
-            "runs[0].tool.driver.rules[5]: The rule 'CA1822' does not provide a \"friendly name\" in its 'name' property. The friendly name should be a single Pascal-case identifier, for example, 'ProvideRuleFriendlyName', that helps users see at a glance the purpose of the analysis rule.\n"
+            "SARIF2012: ProvideRuleProperties\n"
                 + "\n"
                 + "For additional help see: Rule metadata should provide information that makes it easy to understand and fix the problem.\n"
                 + "\n"
                 + "Provide the 'name' property, which contains a \"friendly name\" that helps users see at a glance the purpose of the rule. For uniformity of experience across all tools that produce SARIF, the friendly name should be a single Pascal-case identifier, for example, 'ProvideRuleFriendlyName'.\n"
                 + "\n"
-                + "Provide the 'helpUri' property, which contains a URI where users can find detailed information about the rule. This information should include a detailed description of the invalid pattern, an explanation of why the pattern is poor practice (particularly in contexts such as security or accessibility where driving considerations might not be readily apparent), guidance for resolving the problem (including describing circumstances in which ignoring the problem altogether might be appropriate), examples of invalid and valid patterns, and special considerations (such as noting when a violation should never be ignored or suppressed, noting when a violation could cause downstream tool noise, and noting when a rule can be configured in some way to refine or alter the analysis).");
+                + "Provide the 'helpUri' property, which contains a URI where users can find detailed information about the rule. This information should include a detailed description of the invalid pattern, an explanation of why the pattern is poor practice (particularly in contexts such as security or accessibility where driving considerations might not be readily apparent), guidance for resolving the problem (including describing circumstances in which ignoring the problem altogether might be appropriate), examples of invalid and valid patterns, and special considerations (such as noting when a violation should never be ignored or suppressed, noting when a violation could cause downstream tool noise, and noting when a rule can be configured in some way to refine or alter the analysis).\n"
+                + "\n"
+                + "runs[0].tool.driver.rules[5]: The rule 'CA1822' does not provide a \"friendly name\" in its 'name' property. The friendly name should be a single Pascal-case identifier, for example, 'ProvideRuleFriendlyName', that helps users see at a glance the purpose of the analysis rule.");
     assertThat(violation0.getFile()) //
         .isEqualTo("file:///C:/TEMP/log.sarif");
     assertThat(violation0.getStartLine()) //
@@ -361,7 +422,7 @@ public class SarifParserTest {
                 + "\n"
                 + "        		CVE-2021-4277 - A vulnerability, which was classified as problematic, has been found in fredsmith utils. This issue affects some unknown processing of the file screenshot_sync of the component Filename Handler. The manipulation leads to predictable from observable state. The name of the patch is dbab1b66955eeb3d76b34612b358307f5c4e3944. It is recommended to apply a patch to fix this issue. The identifier VDB-216749 was assigned to this vulnerability.");
     assertThat(violation0.getFile()) //
-        .endsWith("-");
+        .endsWith("plexus-utils-3.1.1.jar");
     assertThat(violation0.getStartLine()) //
         .isEqualTo(0);
     assertThat(violation0.getSeverity()) //

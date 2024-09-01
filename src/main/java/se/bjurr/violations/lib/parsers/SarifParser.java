@@ -11,6 +11,7 @@ import com.google.gson.JsonObject;
 import com.google.gson.JsonPrimitive;
 import java.lang.reflect.Type;
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -267,9 +268,8 @@ public class SarifParser implements ViolationsParser {
       }
 
       final Optional<String> helpTextOpt = this.findHelpText(reportingDescriptor);
-      final List<Location> locations = this.filterLocations(result.getLocations());
-      if (this.notEmptyOrNull(locations)) {
-        for (final Location location : locations) {
+      if (this.notEmptyOrNull(result.getLocations())) {
+        for (final Location location : result.getLocations()) {
           final ParsedPhysicalLocation parsedPhysicalLocation =
               this.parsePhysicalLocation(
                   location.getPhysicalLocation(), run.getArtifacts(), originalUriBaseIdsMap);
@@ -289,7 +289,7 @@ public class SarifParser implements ViolationsParser {
                   .build());
         }
       } else {
-        final String fullMessage = this.toMessage(message, helpTextOpt, reportingDescriptor);
+        final String fullMessage = this.toMessage(message, helpTextOpt, null, reportingDescriptor);
         violations.add(
             violationBuilder()
                 .setParser(Parser.SARIF)
@@ -323,9 +323,8 @@ public class SarifParser implements ViolationsParser {
 
         final String reportingDescriptorName = this.getName(reportingDescriptor);
         final SEVERITY severity = this.toSeverity(notification.getLevel(), reportingDescriptor);
-        final List<Location> locations = this.filter(notification.getLocations());
-        if (this.notEmptyOrNull(locations)) {
-          for (final Location location : locations) {
+        if (this.notEmptyOrNull(notification.getLocations())) {
+          for (final Location location : notification.getLocations()) {
             final ParsedPhysicalLocation parsedPhysicalLocation =
                 this.parsePhysicalLocation(
                     location.getPhysicalLocation(), run.getArtifacts(), originalUriBaseIdsMap);
@@ -417,26 +416,8 @@ public class SarifParser implements ViolationsParser {
     return null;
   }
 
-  private boolean notEmptyOrNull(final List<Location> locations) {
+  private boolean notEmptyOrNull(final Collection<Location> locations) {
     return locations != null && !locations.isEmpty();
-  }
-
-  private List<Location> filter(final Set<Location> locations) {
-    return this.filterLocations(new ArrayList<>(locations));
-  }
-
-  private List<Location> filterLocations(final List<Location> locations) {
-    if (locations == null) {
-      return new ArrayList<>();
-    }
-    return locations.stream()
-        .filter(
-            (it) -> {
-              return it.getPhysicalLocation() != null
-                  && it.getPhysicalLocation().getRegion() != null
-                  && it.getPhysicalLocation().getRegion().getStartLine() != null;
-            })
-        .collect(Collectors.toList());
   }
 
   private String toMessage(
@@ -444,22 +425,11 @@ public class SarifParser implements ViolationsParser {
       final Optional<String> helpTextOpt,
       final ParsedPhysicalLocation parsedPhysicalLocation,
       final ReportingDescriptor reportingDescriptor) {
-    final StringBuilder fullMessage =
-        new StringBuilder(this.extractMessage(message, reportingDescriptor));
-    if (!Utils.isNullOrEmpty(parsedPhysicalLocation.regionMessage)) {
-      fullMessage.append("\n\n").append(parsedPhysicalLocation.regionMessage);
-    }
-    if (helpTextOpt.isPresent()) {
-      fullMessage.append("\n\nFor additional help see: ").append(helpTextOpt.get());
-    }
-    return fullMessage.toString().trim();
-  }
-
-  private String toMessage(
-      final Message message,
-      final Optional<String> helpTextOpt,
-      final ReportingDescriptor reportingDescriptor) {
     final StringBuilder fullMessage = new StringBuilder();
+    if (parsedPhysicalLocation != null
+        && !Utils.isNullOrEmpty(parsedPhysicalLocation.regionMessage)) {
+      fullMessage.append(parsedPhysicalLocation.regionMessage).append("\n\n");
+    }
     if (reportingDescriptor != null && reportingDescriptor.getId() != null) {
       fullMessage.append(reportingDescriptor.getId());
     }
@@ -480,11 +450,11 @@ public class SarifParser implements ViolationsParser {
     if (helpTextOpt.isPresent()) {
       fullMessage.append("\n\nFor additional help see: ").append(helpTextOpt.get());
     }
-    final String messageText = this.extractMessage(message, null);
+    final String messageText = this.extractMessage(message, reportingDescriptor);
     if (fullMessage.indexOf(messageText) < 0) {
       fullMessage.append("\n\n").append(messageText);
     }
-    return fullMessage.toString();
+    return fullMessage.toString().trim();
   }
 
   private ParsedPhysicalLocation parsePhysicalLocation(
