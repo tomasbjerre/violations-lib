@@ -2,6 +2,13 @@
 
 Changelog of violations-lib.
 
+## 1.157.2 (2024-09-01)
+
+### Bug Fixes
+
+-  **sarif**  including some Sarif violations that were ignored ([3f681](https://github.com/tomasbjerre/violations-lib/commit/3f681333633d25d) Tomas Bjerre)  
+-  **sarif**  originalUriBaseIds lookup ([6f483](https://github.com/tomasbjerre/violations-lib/commit/6f4835855456ec3) Tomas Bjerre)  [#189](https://github.com/tomasbjerre/violations-lib/issues/189)  
+
 ## 1.157.1 (2024-04-02)
 
 ### Bug Fixes
