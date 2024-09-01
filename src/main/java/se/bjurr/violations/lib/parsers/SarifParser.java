@@ -7,6 +7,8 @@ import com.google.gson.GsonBuilder;
 import com.google.gson.JsonDeserializationContext;
 import com.google.gson.JsonDeserializer;
 import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import com.google.gson.JsonPrimitive;
 import java.lang.reflect.Type;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -15,18 +17,23 @@ import java.util.Map;
 import java.util.Map.Entry;
 import java.util.Optional;
 import java.util.Set;
+import java.util.TreeMap;
 import java.util.TreeSet;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import java.util.stream.Collectors;
 import se.bjurr.violations.lib.ViolationsLogger;
 import se.bjurr.violations.lib.model.SEVERITY;
 import se.bjurr.violations.lib.model.Violation;
 import se.bjurr.violations.lib.model.generated.sarif.Artifact;
+import se.bjurr.violations.lib.model.generated.sarif.ArtifactLocation;
 import se.bjurr.violations.lib.model.generated.sarif.Invocation;
 import se.bjurr.violations.lib.model.generated.sarif.Location;
 import se.bjurr.violations.lib.model.generated.sarif.Message;
 import se.bjurr.violations.lib.model.generated.sarif.MessageStrings;
 import se.bjurr.violations.lib.model.generated.sarif.MultiformatMessageString;
 import se.bjurr.violations.lib.model.generated.sarif.Notification;
+import se.bjurr.violations.lib.model.generated.sarif.OriginalUriBaseIds;
 import se.bjurr.violations.lib.model.generated.sarif.PhysicalLocation;
 import se.bjurr.violations.lib.model.generated.sarif.PropertyBag;
 import se.bjurr.violations.lib.model.generated.sarif.Region;
@@ -43,6 +50,7 @@ import se.bjurr.violations.lib.reports.Parser;
 import se.bjurr.violations.lib.util.Utils;
 
 public class SarifParser implements ViolationsParser {
+  private static Logger LOGGER = Logger.getLogger(SarifParser.class.getSimpleName());
   public static final String SARIF_RESULTS_CORRELATION_GUID = "correlationGuid";
   public static final String SARIF_RESULTS_SUPPRESSED = "suppressed";
 
@@ -73,6 +81,7 @@ public class SarifParser implements ViolationsParser {
         final String asString = json.getAsString();
         return Notification.Level.fromValue(asString);
       } catch (final Exception e) {
+        LOGGER.log(Level.SEVERE, json.toString(), e);
         return Notification.Level.NONE;
       }
     }
@@ -88,6 +97,7 @@ public class SarifParser implements ViolationsParser {
         final String asString = json.getAsString();
         return ReportingConfiguration.Level.fromValue(asString);
       } catch (final Exception e) {
+        LOGGER.log(Level.SEVERE, json.toString(), e);
         return ReportingConfiguration.Level.NONE;
       }
     }
@@ -112,8 +122,54 @@ public class SarifParser implements ViolationsParser {
 
         return messageStrings;
       } catch (final RuntimeException e) {
+        LOGGER.log(Level.SEVERE, json.toString(), e);
         return new MessageStrings();
       }
+    }
+  }
+
+  private static class OriginalUriBaseIdsStringsDeserializer
+      implements JsonDeserializer<OriginalUriBaseIds> {
+
+    @Override
+    public OriginalUriBaseIds deserialize(
+        final JsonElement json, final Type typeOfT, final JsonDeserializationContext context) {
+      try {
+        final OriginalUriBaseIds to = new OriginalUriBaseIds();
+
+        for (final Entry<String, JsonElement> entry : json.getAsJsonObject().entrySet()) {
+          final ArtifactLocation al = this.toArtifactLocation(entry.getValue());
+          to.setAdditionalProperty(entry.getKey(), al);
+        }
+
+        return to;
+      } catch (final RuntimeException e) {
+        LOGGER.log(Level.SEVERE, json.toString(), e);
+        return new OriginalUriBaseIds();
+      }
+    }
+
+    private ArtifactLocation toArtifactLocation(final JsonElement artifactLocationJsonElement) {
+      final ArtifactLocation al = new ArtifactLocation();
+      if (artifactLocationJsonElement instanceof JsonObject) {
+        final JsonObject valueObject = artifactLocationJsonElement.getAsJsonObject();
+
+        final JsonElement uriAttr = valueObject.get("uri");
+        if (uriAttr != null) {
+          al.setUri(uriAttr.getAsString());
+        }
+
+        final JsonElement uriBaseIdAttr = valueObject.get("uriBaseId");
+        if (uriBaseIdAttr != null) {
+          al.setUriBaseId(uriBaseIdAttr.getAsString());
+        }
+      } else if (artifactLocationJsonElement instanceof JsonPrimitive) {
+        al.setUri(artifactLocationJsonElement.getAsString());
+      }
+      if (al.getUri() == null) {
+        al.setUri("");
+      }
+      return al;
     }
   }
 
@@ -126,6 +182,8 @@ public class SarifParser implements ViolationsParser {
             .registerTypeAdapter(
                 ReportingConfiguration.Level.class, new ReportingConfigurationDeserializer())
             .registerTypeAdapter(MessageStrings.class, new MessageStringsDeserializer())
+            .registerTypeAdapter(
+                OriginalUriBaseIds.class, new OriginalUriBaseIdsStringsDeserializer())
             .create()
             .fromJson(reportContent, SarifSchema.class);
 
@@ -136,14 +194,54 @@ public class SarifParser implements ViolationsParser {
     }
 
     for (final Run run : report.getRuns()) {
-      violations.addAll(this.parseNotifications(run));
-      violations.addAll(this.parseResults(run));
+      final Map<String, String> originalUriBaseIdsMap =
+          this.getOriginalUriBaseIdsMap(run.getOriginalUriBaseIds());
+      violations.addAll(this.parseNotifications(run, originalUriBaseIdsMap));
+      violations.addAll(this.parseResults(run, originalUriBaseIdsMap));
     }
 
     return violations;
   }
 
-  private Set<Violation> parseResults(final Run run) {
+  private Map<String, String> getOriginalUriBaseIdsMap(
+      final OriginalUriBaseIds originalUriBaseIds) {
+    final Map<String, String> originalUriBaseIdsMap = new TreeMap<String, String>();
+    if (originalUriBaseIds == null) {
+      return originalUriBaseIdsMap;
+    }
+    final Map<String, ArtifactLocation> additionalProperties =
+        originalUriBaseIds.getAdditionalProperties();
+    if (additionalProperties == null) {
+      return originalUriBaseIdsMap;
+    }
+
+    for (final String baseId : additionalProperties.keySet()) {
+      originalUriBaseIdsMap.put(
+          baseId, this.getOriginalUriBaseIdsMapValue(additionalProperties, baseId));
+    }
+
+    return originalUriBaseIdsMap;
+  }
+
+  private String getOriginalUriBaseIdsMapValue(
+      final Map<String, ArtifactLocation> additionalProperties, final String baseId) {
+    for (final Entry<String, ArtifactLocation> candidate : additionalProperties.entrySet()) {
+      if (candidate.getKey().equals(baseId)) {
+        final String uriBaseId = candidate.getValue().getUriBaseId();
+        if (uriBaseId != null) {
+          final String resolvedBase =
+              this.getOriginalUriBaseIdsMapValue(additionalProperties, uriBaseId);
+          return resolvedBase + candidate.getValue().getUri();
+        } else {
+          return candidate.getValue().getUri();
+        }
+      }
+    }
+    return "";
+  }
+
+  private Set<Violation> parseResults(
+      final Run run, final Map<String, String> originalUriBaseIdsMap) {
     final Set<Violation> violations = new TreeSet<>();
     for (final Result result : run.getResults()) {
       String ruleId = this.findRuleId(result, result.getRule());
@@ -173,7 +271,8 @@ public class SarifParser implements ViolationsParser {
       if (this.notEmptyOrNull(locations)) {
         for (final Location location : locations) {
           final ParsedPhysicalLocation parsedPhysicalLocation =
-              this.parsePhysicalLocation(location.getPhysicalLocation(), run.getArtifacts());
+              this.parsePhysicalLocation(
+                  location.getPhysicalLocation(), run.getArtifacts(), originalUriBaseIdsMap);
           final String fullMessage =
               this.toMessage(message, helpTextOpt, parsedPhysicalLocation, reportingDescriptor);
           violations.add(
@@ -208,7 +307,8 @@ public class SarifParser implements ViolationsParser {
     return violations;
   }
 
-  private Set<Violation> parseNotifications(final Run run) {
+  private Set<Violation> parseNotifications(
+      final Run run, final Map<String, String> originalUriBaseIdsMap) {
     final Set<Violation> violations = new TreeSet<>();
     for (final Invocation invocation : run.getInvocations()) {
       for (final Notification notification : invocation.getToolConfigurationNotifications()) {
@@ -227,7 +327,8 @@ public class SarifParser implements ViolationsParser {
         if (this.notEmptyOrNull(locations)) {
           for (final Location location : locations) {
             final ParsedPhysicalLocation parsedPhysicalLocation =
-                this.parsePhysicalLocation(location.getPhysicalLocation(), run.getArtifacts());
+                this.parsePhysicalLocation(
+                    location.getPhysicalLocation(), run.getArtifacts(), originalUriBaseIdsMap);
             final Optional<String> helpTextOpt = Optional.empty();
             final String fullMessage =
                 this.toMessage(
@@ -387,20 +488,39 @@ public class SarifParser implements ViolationsParser {
   }
 
   private ParsedPhysicalLocation parsePhysicalLocation(
-      final PhysicalLocation physicalLocation, final Set<Artifact> artifacts) {
+      final PhysicalLocation physicalLocation,
+      final Set<Artifact> artifacts,
+      final Map<String, String> originalUriBaseIdsMap) {
     final ParsedPhysicalLocation parsed = new ParsedPhysicalLocation();
     final Region region = physicalLocation.getRegion();
-    if (region == null) {
-      return parsed;
+    if (region != null) {
+      parsed.startLine = Optional.ofNullable(region.getStartLine()).orElse(Violation.NO_LINE);
+      parsed.regionMessage = this.extractMessage(region.getMessage(), null);
+    } else {
+      parsed.startLine = Violation.NO_LINE;
+      parsed.regionMessage = "";
     }
-    parsed.startLine = Optional.ofNullable(region.getStartLine()).orElse(Violation.NO_LINE);
-    parsed.regionMessage = this.extractMessage(region.getMessage(), null);
+    parsed.filename = "";
+    final String uriBaseId = physicalLocation.getArtifactLocation().getUriBaseId();
+    if (uriBaseId != null) {
+      final String originalUriBaseId = originalUriBaseIdsMap.get(uriBaseId);
+      if (originalUriBaseId == null) {
+        LOGGER.warning(
+            "Did not find '"
+                + uriBaseId
+                + "' in originalUriBaseIds "
+                + originalUriBaseIdsMap.keySet());
+      }
+      if (originalUriBaseId != null && !originalUriBaseId.isEmpty()) {
+        parsed.filename += originalUriBaseId;
+      }
+    }
     final Integer artifactLocationIndex = physicalLocation.getArtifactLocation().getIndex();
     if (artifactLocationIndex != null && artifactLocationIndex != -1) {
-      parsed.filename =
+      parsed.filename +=
           new ArrayList<>(artifacts).get(artifactLocationIndex).getLocation().getUri();
     } else {
-      parsed.filename = physicalLocation.getArtifactLocation().getUri();
+      parsed.filename += physicalLocation.getArtifactLocation().getUri();
     }
     return parsed;
   }

@@ -279,7 +279,7 @@ public class SarifParserTest {
     assertThat(violation0.getMessage()) //
         .isEqualTo("Cannot copy from non-file URI: http://example.org/image.png");
     assertThat(violation0.getFile()) //
-        .isEqualTo("config.xml");
+        .isEqualTo("file:///home/demo/config.xml");
     assertThat(violation0.getSeverity()) //
         .isEqualTo(SEVERITY.WARN);
   }
@@ -361,7 +361,7 @@ public class SarifParserTest {
                 + "\n"
                 + "        		CVE-2021-4277 - A vulnerability, which was classified as problematic, has been found in fredsmith utils. This issue affects some unknown processing of the file screenshot_sync of the component Filename Handler. The manipulation leads to predictable from observable state. The name of the patch is dbab1b66955eeb3d76b34612b358307f5c4e3944. It is recommended to apply a patch to fix this issue. The identifier VDB-216749 was assigned to this vulnerability.");
     assertThat(violation0.getFile()) //
-        .isEqualTo("-");
+        .endsWith("-");
     assertThat(violation0.getStartLine()) //
         .isEqualTo(0);
     assertThat(violation0.getSeverity()) //

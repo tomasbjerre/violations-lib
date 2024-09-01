@@ -58,6 +58,17 @@
                   }
                 }
               }
+            },
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "added-stuff.md",
+                  "uriBaseId": "SRCROOT",
+                  "properties": {
+                    "comment": "not in the original example"
+                  }
+                }
+              }
             }
           ]
         },
