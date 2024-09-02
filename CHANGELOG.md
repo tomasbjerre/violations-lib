@@ -2,6 +2,12 @@
 
 Changelog of violations-lib.
 
+## 1.157.3 (2024-09-02)
+
+### Bug Fixes
+
+-  building for java 11, was 17 ([21e66](https://github.com/tomasbjerre/violations-lib/commit/21e6690579a6435) Tomas Bjerre)  [#190](https://github.com/tomasbjerre/violations-lib/issues/190)  
+
 ## 1.157.2 (2024-09-01)
 
 ### Bug Fixes
