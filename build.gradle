@@ -23,6 +23,8 @@ project.ext.buildConfig = [
   staticCodeAnalysis: [
     maxViolations: 5
   ],
+  sourceCompatibility: 11,
+  targetCompatibility: 11
 ]
 apply from: project.buildscript.classLoader.getResource('main.gradle').toURI()
 
