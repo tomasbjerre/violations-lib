@@ -1,18 +1,18 @@
-{  
-   "version":"6.7.4.38452",
-   "issues":[  
-      {  
-         "key":"AfhgjhgUhjhkhkOqm3c-",
-         "component":"com.example:myapp:src/main/java/com/example/myapp/App.java",
-         "line":28,
-         "startLine":28,
-         "endLine":28,
-         "message":"Complete the task associated to this TODO comment.",
-         "severity":"INFO",
-         "rule":"squid:S1135",
-         "status":"OPEN",
-         "isNew":false,
-         "creationDate":"2019-01-01T11:12:13+0900"
-      }
-   ]
+{
+  "version": "6.7.4.38452",
+  "issues": [
+    {
+      "key": "AfhgjhgUhjhkhkOqm3c-",
+      "component": "com.example:myapp:src/main/java/com/example/myapp/App.java",
+      "line": 28,
+      "startLine": 28,
+      "endLine": 28,
+      "message": "Complete the task associated to this TODO comment.",
+      "severity": "INFO",
+      "rule": "squid:S1135",
+      "status": "OPEN",
+      "isNew": false,
+      "creationDate": "2019-01-01T11:12:13+0900"
+    }
+  ]
 }

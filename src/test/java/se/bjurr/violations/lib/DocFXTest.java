@@ -19,7 +19,7 @@ public class DocFXTest {
 
     final Set<Violation> actual =
         violationsApi() //
-            .withPattern(".*/docfx/.*\\.json$") //
+            .withPattern(".*/docfx/.*\\.txt$") //
             .inFolder(rootFolder) //
             .findAll(DOCFX) //
             .violations();

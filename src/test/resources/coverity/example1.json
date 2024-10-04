@@ -46,7 +46,9 @@
         "category": "Integer handling issues",
         "categoryDescription": "Integer handling issues",
         "cweCategory": "569",
-        "issueKinds": ["QUALITY"],
+        "issueKinds": [
+          "QUALITY"
+        ],
         "eventSetCaptions": [],
         "impact": "Medium",
         "impactDescription": "Medium",

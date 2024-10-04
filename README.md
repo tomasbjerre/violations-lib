@@ -6,6 +6,11 @@ This is a Java library for parsing report files like static code analysis.
 
 Example of supported reports are available [here](https://github.com/tomasbjerre/violations-lib/tree/master/src/test/resources).
 
+| Version             | Java Version |
+| --------------------| ------------ |
+| version < 1.156.8   | 8            |
+| 1.156.8 <= version  | 11           |
+
 A number of **parsers** have been implemented. Some **parsers** can parse output from several **reporters**.
 
 | Reporter | Parser | Notes

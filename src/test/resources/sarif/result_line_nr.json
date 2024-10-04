@@ -379,7 +379,7 @@
           "ruleId": "NON_INIT_VAR",
           "ruleIndex": 1,
           "message": {
-            "text": "Local variable \u0027abs_control_output\u0027 may be read before being initialized."
+            "text": "Local variable 'abs_control_output' may be read before being initialized."
           },
           "level": "error",
           "baselineState": "unchanged",
@@ -436,7 +436,7 @@
           "ruleId": "PTR_CAST",
           "ruleIndex": 2,
           "message": {
-            "text": "Invalid cast from:\n pointer to \u0027const uint8\u0027\nto\n pointer to \u0027const uint16\u0027.\nA pointer to an object type cannot reliably be cast to a pointer to a different object type."
+            "text": "Invalid cast from:\n pointer to 'const uint8'\nto\n pointer to 'const uint16'.\nA pointer to an object type cannot reliably be cast to a pointer to a different object type."
           },
           "level": "error",
           "baselineState": "unchanged",
@@ -548,7 +548,7 @@
           "ruleId": "MISSING_RETURN",
           "ruleIndex": 4,
           "message": {
-            "text": "Missing return statement in non-void function \u0027pi_alg\u0027."
+            "text": "Missing return statement in non-void function 'pi_alg'."
           },
           "level": "error",
           "baselineState": "unchanged",
@@ -605,7 +605,7 @@
           "ruleId": "USELESS_WRITE",
           "ruleIndex": 5,
           "message": {
-            "text": "Variable \u0027k\u0027 is never read after this point."
+            "text": "Variable 'k' is never read after this point."
           },
           "level": "error",
           "baselineState": "unchanged",
@@ -773,7 +773,7 @@
           "ruleId": "MISRA C:2012 9.1",
           "ruleIndex": 8,
           "message": {
-            "text": "Local variable \u0027abs_control_output\u0027 may be read before being initialized."
+            "text": "Local variable 'abs_control_output' may be read before being initialized."
           },
           "level": "error",
           "baselineState": "unchanged",
@@ -829,7 +829,7 @@
           "ruleId": "MISRA C:2012 2.2",
           "ruleIndex": 9,
           "message": {
-            "text": "The call to function \u0027pi_reset_app\u0027 has no effect."
+            "text": "The call to function 'pi_reset_app' has no effect."
           },
           "level": "error",
           "baselineState": "unchanged",
@@ -885,7 +885,7 @@
           "ruleId": "MISRA C:2012 2.2",
           "ruleIndex": 9,
           "message": {
-            "text": "The call to function \u0027pi_reset_app\u0027 has no effect."
+            "text": "The call to function 'pi_reset_app' has no effect."
           },
           "level": "error",
           "baselineState": "unchanged",
@@ -941,7 +941,7 @@
           "ruleId": "MISRA C:2012 2.2",
           "ruleIndex": 9,
           "message": {
-            "text": "The call to function \u0027pi_reset_app\u0027 has no effect."
+            "text": "The call to function 'pi_reset_app' has no effect."
           },
           "level": "error",
           "baselineState": "unchanged",
@@ -983,7 +983,7 @@
                   "startLine": 90,
                   "startColumn": 93,
                   "snippet": {
-                    "text": "        if(pthread_create(\u0026ph[2],((void *)0),intp_task,((void *)0))!=0)       { pi_reset_app(); }"
+                    "text": "        if(pthread_create(&ph[2],((void *)0),intp_task,((void *)0))!=0)       { pi_reset_app(); }"
                   }
                 }
               },
@@ -1000,7 +1000,7 @@
           "ruleId": "MISRA C:2012 2.2",
           "ruleIndex": 9,
           "message": {
-            "text": "The call to function \u0027read_input_reg\u0027 has no effect."
+            "text": "The call to function 'read_input_reg' has no effect."
           },
           "level": "error",
           "baselineState": "unchanged",
@@ -1056,7 +1056,7 @@
           "ruleId": "MISRA C:2012 2.2",
           "ruleIndex": 9,
           "message": {
-            "text": "The call to function \u0027set_output_reg\u0027 has no effect."
+            "text": "The call to function 'set_output_reg' has no effect."
           },
           "level": "error",
           "baselineState": "unchanged",
@@ -1112,7 +1112,7 @@
           "ruleId": "MISRA C:2012 2.2",
           "ruleIndex": 9,
           "message": {
-            "text": "The call to function \u0027pi_reset_app\u0027 has no effect."
+            "text": "The call to function 'pi_reset_app' has no effect."
           },
           "level": "error",
           "baselineState": "unchanged",
@@ -1154,7 +1154,7 @@
                   "startLine": 88,
                   "startColumn": 93,
                   "snippet": {
-                    "text": "        if(pthread_create(\u0026ph[0],((void *)0),cyc_task1,((void *)0))!=0)       { pi_reset_app(); }"
+                    "text": "        if(pthread_create(&ph[0],((void *)0),cyc_task1,((void *)0))!=0)       { pi_reset_app(); }"
                   }
                 }
               },
@@ -1171,7 +1171,7 @@
           "ruleId": "MISRA C:2012 2.2",
           "ruleIndex": 9,
           "message": {
-            "text": "The call to function \u0027pi_reset_app\u0027 has no effect."
+            "text": "The call to function 'pi_reset_app' has no effect."
           },
           "level": "error",
           "baselineState": "unchanged",
@@ -1227,7 +1227,7 @@
           "ruleId": "MISRA C:2012 5.8",
           "ruleIndex": 10,
           "message": {
-            "text": "variable \u0027direction\u0027 conflicts with the variable name \u0027direction\u0027 (pi_alg.c line 12)."
+            "text": "variable 'direction' conflicts with the variable name 'direction' (pi_alg.c line 12)."
           },
           "level": "error",
           "baselineState": "unchanged",
@@ -1283,7 +1283,7 @@
           "ruleId": "MISRA C:2012 2.5",
           "ruleIndex": 11,
           "message": {
-            "text": "Macro \u0027VER__\u0027 is not used."
+            "text": "Macro 'VER__' is not used."
           },
           "level": "error",
           "baselineState": "unchanged",
@@ -1339,7 +1339,7 @@
           "ruleId": "MISRA C:2012 2.2",
           "ruleIndex": 9,
           "message": {
-            "text": "The call to function \u0027pi_reset_app\u0027 has no effect."
+            "text": "The call to function 'pi_reset_app' has no effect."
           },
           "level": "error",
           "baselineState": "unchanged",
@@ -1381,7 +1381,7 @@
                   "startLine": 89,
                   "startColumn": 93,
                   "snippet": {
-                    "text": "        if(pthread_create(\u0026ph[1],((void *)0),cyc_task2,((void *)0))!=0)       { pi_reset_app(); }"
+                    "text": "        if(pthread_create(&ph[1],((void *)0),cyc_task2,((void *)0))!=0)       { pi_reset_app(); }"
                   }
                 }
               },
@@ -1398,7 +1398,7 @@
           "ruleId": "MISRA C:2012 2.2",
           "ruleIndex": 9,
           "message": {
-            "text": "The call to function \u0027pi_reset_app\u0027 has no effect."
+            "text": "The call to function 'pi_reset_app' has no effect."
           },
           "level": "error",
           "baselineState": "unchanged",
@@ -1454,7 +1454,7 @@
           "ruleId": "MISRA C:2012 2.2",
           "ruleIndex": 9,
           "message": {
-            "text": "Variable \u0027k\u0027 is never read after this point."
+            "text": "Variable 'k' is never read after this point."
           },
           "level": "error",
           "baselineState": "unchanged",
@@ -2014,7 +2014,7 @@
           "ruleId": "MISRA C:2012 8.7",
           "ruleIndex": 16,
           "message": {
-            "text": "Variable \u0027duty_cycle\u0027 should have internal linkage"
+            "text": "Variable 'duty_cycle' should have internal linkage"
           },
           "level": "error",
           "baselineState": "unchanged",
@@ -2129,7 +2129,7 @@
           "ruleId": "MISRA C:2012 2.2",
           "ruleIndex": 9,
           "message": {
-            "text": "The call to function \u0027pi_reset_app\u0027 has no effect."
+            "text": "The call to function 'pi_reset_app' has no effect."
           },
           "level": "error",
           "baselineState": "unchanged",
@@ -2241,7 +2241,7 @@
           "ruleId": "MISRA C:2012 8.6",
           "ruleIndex": 18,
           "message": {
-            "text": "The global variable \u0027log_buffer\u0027 has multiple tentative definitions\nThis defect occurs when linking the 2 translation units: pi_main.c and pi_log.c"
+            "text": "The global variable 'log_buffer' has multiple tentative definitions\nThis defect occurs when linking the 2 translation units: pi_main.c and pi_log.c"
           },
           "level": "error",
           "baselineState": "unchanged",
@@ -2353,7 +2353,7 @@
           "ruleId": "MISRA C:2012 2.2",
           "ruleIndex": 9,
           "message": {
-            "text": "The call to function \u0027pi_reset_app\u0027 has no effect."
+            "text": "The call to function 'pi_reset_app' has no effect."
           },
           "level": "error",
           "baselineState": "unchanged",
@@ -2409,7 +2409,7 @@
           "ruleId": "MISRA C:2012 2.2",
           "ruleIndex": 9,
           "message": {
-            "text": "The call to function \u0027pi_reset_app\u0027 has no effect."
+            "text": "The call to function 'pi_reset_app' has no effect."
           },
           "level": "error",
           "baselineState": "unchanged",
@@ -2465,7 +2465,7 @@
           "ruleId": "MISRA C:2012 2.2",
           "ruleIndex": 9,
           "message": {
-            "text": "The call to function \u0027pi_reset_app\u0027 has no effect."
+            "text": "The call to function 'pi_reset_app' has no effect."
           },
           "level": "error",
           "baselineState": "unchanged",
@@ -2521,7 +2521,7 @@
           "ruleId": "MISRA C:2012 2.2",
           "ruleIndex": 9,
           "message": {
-            "text": "The call to function \u0027pi_reset_app\u0027 has no effect."
+            "text": "The call to function 'pi_reset_app' has no effect."
           },
           "level": "error",
           "baselineState": "unchanged",
@@ -2784,7 +2784,7 @@
                   "startLine": 42,
                   "startColumn": 8,
                   "snippet": {
-                    "text": "    if(8 \u003c 4)"
+                    "text": "    if(8 < 4)"
                   }
                 }
               },
@@ -2916,7 +2916,7 @@
           "ruleId": "MISRA C:2012 17.4",
           "ruleIndex": 21,
           "message": {
-            "text": "Missing return statement in non-void function \u0027pi_alg\u0027."
+            "text": "Missing return statement in non-void function 'pi_alg'."
           },
           "level": "error",
           "baselineState": "unchanged",
@@ -3535,7 +3535,7 @@
           "ruleId": "MISRA C:2012 D4.6",
           "ruleIndex": 26,
           "message": {
-            "text": "\u0027int\u0027 doesn\u0027t provide information about its size. Define and use typedefs clarifying type and size for numerical types or use one of the exact-width numerical types defined in \u003cstdint.h\u003e."
+            "text": "'int' doesn't provide information about its size. Define and use typedefs clarifying type and size for numerical types or use one of the exact-width numerical types defined in <stdint.h>."
           },
           "level": "error",
           "baselineState": "unchanged",
@@ -3647,7 +3647,7 @@
           "ruleId": "MISRA C:2012 8.4",
           "ruleIndex": 27,
           "message": {
-            "text": "Global definition of \u0027norm_factor\u0027 variable has no previous declaration."
+            "text": "Global definition of 'norm_factor' variable has no previous declaration."
           },
           "level": "error",
           "baselineState": "unchanged",
@@ -3815,7 +3815,7 @@
           "ruleId": "MISRA C:2012 D4.6",
           "ruleIndex": 26,
           "message": {
-            "text": "\u0027unsigned char\u0027 doesn\u0027t provide information about its size. Define and use typedefs clarifying type and size for numerical types or use one of the exact-width numerical types defined in \u003cstdint.h\u003e."
+            "text": "'unsigned char' doesn't provide information about its size. Define and use typedefs clarifying type and size for numerical types or use one of the exact-width numerical types defined in <stdint.h>."
           },
           "level": "error",
           "baselineState": "unchanged",

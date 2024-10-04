@@ -19,7 +19,7 @@ public class AnsibleLaterParserTest {
 
     final Set<Violation> actual =
         violationsApi() //
-            .withPattern(".*/ansiblelater/ansible-later.*\\.json$") //
+            .withPattern(".*/ansiblelater/ansible-later.*\\.txt$") //
             .inFolder(rootFolder) //
             .findAll(ANSIBLELATER) //
             .violations();

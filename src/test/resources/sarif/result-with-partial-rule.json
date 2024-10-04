@@ -5,7 +5,7 @@
     {
       "results": [
         {
-          "ruleIndex":  0,
+          "ruleIndex": 0,
           "message": {
             "text": "reference rule by ruleIndex"
           }
@@ -19,7 +19,7 @@
           }
         },
         {
-          "ruleId":  "rule",
+          "ruleId": "rule",
           "message": {
             "text": "reference rule by ruleId"
           }
