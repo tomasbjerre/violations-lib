@@ -1,3 +1,11 @@
+pluginManagement {
+	repositories {
+		mavenLocal()
+		mavenCentral()
+		gradlePluginPortal()
+	}
+}
+
 plugins {
 	id "se.bjurr.gradle.conventional-release" version "0.+" apply false
 	id "se.bjurr.gradle.java-convention" version "0.+" apply false
