@@ -1,3 +1,11 @@
+## 1.158.0 (2025-03-02)
+
+### Features
+
+-  adding Automatic-Module-Name ([f4a76](https://github.com/tomasbjerre/violations-lib/commit/f4a76aff42a93d4) Tomas Bjerre)  
+-  adding Automatic-Module-Name ([32605](https://github.com/tomasbjerre/violations-lib/commit/32605bb6cf34425) Tomas Bjerre)  
+-  upgrading dependencies ([b78d5](https://github.com/tomasbjerre/violations-lib/commit/b78d51060e05717) Tomas Bjerre)  
+
 # violations-lib changelog
 
 Changelog of violations-lib.
