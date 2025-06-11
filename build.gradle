@@ -34,11 +34,11 @@ plugins {
  */
 
 dependencies {
-	api 'com.google.code.gson:gson:2.11.0'
+	api 'com.google.code.gson:gson:2.13.1'
 
 	testImplementation 'junit:junit:4.13.2'
-	testImplementation 'org.assertj:assertj-core:3.26.3'
+	testImplementation 'org.assertj:assertj-core:3.27.3'
 	testImplementation 'uk.co.jemos.podam:podam:8.0.2.RELEASE'
-	testImplementation 'com.approvaltests:approvaltests:24.7.0'
-	testImplementation 'com.networknt:json-schema-validator:1.5.2'
+	testImplementation 'com.approvaltests:approvaltests:24.22.0'
+	testImplementation 'com.networknt:json-schema-validator:1.5.7'
 }
