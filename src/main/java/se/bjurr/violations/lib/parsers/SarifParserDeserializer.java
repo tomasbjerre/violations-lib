@@ -1,17 +1,21 @@
 package se.bjurr.violations.lib.parsers;
 
 import com.google.gson.GsonBuilder;
+import com.google.gson.JsonArray;
 import com.google.gson.JsonDeserializationContext;
 import com.google.gson.JsonDeserializer;
 import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
 import java.lang.reflect.Type;
 import java.util.Map.Entry;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import java.util.stream.Collectors;
 import se.bjurr.violations.lib.model.generated.sarif.MessageStrings;
 import se.bjurr.violations.lib.model.generated.sarif.MultiformatMessageString;
 import se.bjurr.violations.lib.model.generated.sarif.Notification;
 import se.bjurr.violations.lib.model.generated.sarif.OriginalUriBaseIds;
+import se.bjurr.violations.lib.model.generated.sarif.PropertyBag;
 import se.bjurr.violations.lib.model.generated.sarif.ReportingConfiguration;
 import se.bjurr.violations.lib.model.generated.sarif.SarifSchema;
 
@@ -24,6 +28,7 @@ public class SarifParserDeserializer {
         .registerTypeAdapter(
             ReportingConfiguration.Level.class, new ReportingConfigurationDeserializer())
         .registerTypeAdapter(MessageStrings.class, new MessageStringsDeserializer())
+        .registerTypeAdapter(PropertyBag.class, new PropertyBagDeserializer())
         .registerTypeAdapter(
             OriginalUriBaseIds.class,
             new SarifParserOriginalUri.OriginalUriBaseIdsStringsDeserializer())
@@ -83,6 +88,34 @@ public class SarifParserDeserializer {
       } catch (final RuntimeException e) {
         LOGGER.log(Level.SEVERE, json.toString(), e);
         return new MessageStrings();
+      }
+    }
+  }
+
+  private static class PropertyBagDeserializer implements JsonDeserializer<PropertyBag> {
+
+    @Override
+    public PropertyBag deserialize(
+        final JsonElement json, final Type typeOfT, final JsonDeserializationContext context) {
+      try {
+        final PropertyBag pb = new PropertyBag();
+        JsonObject jsonObject = json.getAsJsonObject();
+        JsonElement categoryValue = jsonObject.get("category");
+        if (categoryValue != null) {
+          if (categoryValue instanceof JsonArray) {
+            String arrayAsString =
+                categoryValue.getAsJsonArray().asList().stream()
+                    .map(it -> it.getAsString())
+                    .collect(Collectors.joining(","));
+            pb.setCategory(arrayAsString);
+          } else {
+            pb.setCategory(categoryValue.getAsString());
+          }
+        }
+        return pb;
+      } catch (final RuntimeException e) {
+        LOGGER.log(Level.SEVERE, json.toString(), e);
+        return new PropertyBag();
       }
     }
   }

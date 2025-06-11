@@ -1,0 +1,660 @@
+{
+  "version": "2.1.0",
+  "$schema": "http://json.schemastore.org/sarif-2.1.0",
+  "runs": [
+    {
+      "tool": {
+        "driver": {
+          "name": "regex",
+          "semanticVersion": "0.22.0",
+          "informationUri": "https://developer.salesforce.com/docs/platform/salesforce-code-analyzer/guide/engines.html",
+          "rules": [
+            {
+              "id": "NoTrailingWhitespace",
+              "properties": {
+                "category": [
+                  "Recommended",
+                  "CodeStyle",
+                  "Apex"
+                ],
+                "severity": 5
+              }
+            }
+          ]
+        }
+      },
+      "results": [
+        {
+          "ruleId": "NoTrailingWhitespace",
+          "ruleIndex": 0,
+          "level": "warning",
+          "message": {
+            "text": "Found trailing whitespace at the end of a line of code."
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "force-app/main/default/classes/HelloWorld.cls",
+                  "uriBaseId": "/Users/hogehoge/Documents/Project/sarif-sample/"
+                },
+                "region": {
+                  "startLine": 7,
+                  "startColumn": 1,
+                  "endLine": 7,
+                  "endColumn": 5
+                }
+              }
+            }
+          ],
+          "relatedLocations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "force-app/main/default/classes/HelloWorld.cls",
+                  "uriBaseId": "/Users/hogehoge/Documents/Project/sarif-sample/"
+                },
+                "region": {
+                  "startLine": 7,
+                  "startColumn": 1,
+                  "endLine": 7,
+                  "endColumn": 5
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "NoTrailingWhitespace",
+          "ruleIndex": 0,
+          "level": "warning",
+          "message": {
+            "text": "Found trailing whitespace at the end of a line of code."
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "force-app/main/default/classes/HelloWorld.cls",
+                  "uriBaseId": "/Users/hogehoge/Documents/Project/sarif-sample/"
+                },
+                "region": {
+                  "startLine": 14,
+                  "startColumn": 6,
+                  "endLine": 14,
+                  "endColumn": 12
+                }
+              }
+            }
+          ],
+          "relatedLocations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "force-app/main/default/classes/HelloWorld.cls",
+                  "uriBaseId": "/Users/hogehoge/Documents/Project/sarif-sample/"
+                },
+                "region": {
+                  "startLine": 14,
+                  "startColumn": 6,
+                  "endLine": 14,
+                  "endColumn": 12
+                }
+              }
+            }
+          ]
+        }
+      ],
+      "invocations": [
+        {
+          "executionSuccessful": true,
+          "workingDirectory": {
+            "uri": "/Users/hogehoge/Documents/Project/sarif-sample/"
+          }
+        }
+      ]
+    },
+    {
+      "tool": {
+        "driver": {
+          "name": "eslint",
+          "semanticVersion": "0.25.0",
+          "informationUri": "https://developer.salesforce.com/docs/platform/salesforce-code-analyzer/guide/engines.html",
+          "rules": [
+            {
+              "id": "no-undef",
+              "properties": {
+                "category": [
+                  "Recommended",
+                  "ErrorProne",
+                  "JavaScript"
+                ],
+                "severity": 2
+              },
+              "helpUri": "https://eslint.org/docs/latest/rules/no-undef"
+            }
+          ]
+        }
+      },
+      "results": [
+        {
+          "ruleId": "no-undef",
+          "ruleIndex": 0,
+          "level": "error",
+          "message": {
+            "text": "'module' is not defined."
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "jest.config.js",
+                  "uriBaseId": "/Users/hogehoge/Documents/Project/sarif-sample/"
+                },
+                "region": {
+                  "startLine": 3,
+                  "startColumn": 1,
+                  "endLine": 3,
+                  "endColumn": 7
+                }
+              }
+            }
+          ],
+          "relatedLocations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "jest.config.js",
+                  "uriBaseId": "/Users/hogehoge/Documents/Project/sarif-sample/"
+                },
+                "region": {
+                  "startLine": 3,
+                  "startColumn": 1,
+                  "endLine": 3,
+                  "endColumn": 7
+                }
+              }
+            }
+          ]
+        }
+      ],
+      "invocations": [
+        {
+          "executionSuccessful": true,
+          "workingDirectory": {
+            "uri": "/Users/hogehoge/Documents/Project/sarif-sample/"
+          }
+        }
+      ]
+    },
+    {
+      "tool": {
+        "driver": {
+          "name": "pmd",
+          "semanticVersion": "0.25.0",
+          "informationUri": "https://developer.salesforce.com/docs/platform/salesforce-code-analyzer/guide/engines.html",
+          "rules": [
+            {
+              "id": "ApexDoc",
+              "properties": {
+                "category": [
+                  "Recommended",
+                  "Documentation",
+                  "Apex"
+                ],
+                "severity": 4
+              },
+              "helpUri": "https://docs.pmd-code.org/pmd-doc-7.13.0/pmd_rules_apex_documentation.html#apexdoc"
+            },
+            {
+              "id": "AvoidDebugStatements",
+              "properties": {
+                "category": [
+                  "Recommended",
+                  "Performance",
+                  "Apex"
+                ],
+                "severity": 4
+              },
+              "helpUri": "https://docs.pmd-code.org/pmd-doc-7.13.0/pmd_rules_apex_performance.html#avoiddebugstatements"
+            },
+            {
+              "id": "DebugsShouldUseLoggingLevel",
+              "properties": {
+                "category": [
+                  "Recommended",
+                  "BestPractices",
+                  "Apex"
+                ],
+                "severity": 4
+              },
+              "helpUri": "https://docs.pmd-code.org/pmd-doc-7.13.0/pmd_rules_apex_bestpractices.html#debugsshoulduselogginglevel"
+            },
+            {
+              "id": "UnusedLocalVariable",
+              "properties": {
+                "category": [
+                  "Recommended",
+                  "BestPractices",
+                  "Apex"
+                ],
+                "severity": 3
+              },
+              "helpUri": "https://docs.pmd-code.org/pmd-doc-7.13.0/pmd_rules_apex_bestpractices.html#unusedlocalvariable"
+            }
+          ]
+        }
+      },
+      "results": [
+        {
+          "ruleId": "ApexDoc",
+          "ruleIndex": 0,
+          "level": "warning",
+          "message": {
+            "text": "Missing ApexDoc comment"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "force-app/main/default/classes/HelloWorld.cls",
+                  "uriBaseId": "/Users/hogehoge/Documents/Project/sarif-sample/"
+                },
+                "region": {
+                  "startLine": 1,
+                  "startColumn": 8,
+                  "endLine": 15,
+                  "endColumn": 2
+                }
+              }
+            }
+          ],
+          "relatedLocations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "force-app/main/default/classes/HelloWorld.cls",
+                  "uriBaseId": "/Users/hogehoge/Documents/Project/sarif-sample/"
+                },
+                "region": {
+                  "startLine": 1,
+                  "startColumn": 8,
+                  "endLine": 15,
+                  "endColumn": 2
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "ApexDoc",
+          "ruleIndex": 0,
+          "level": "warning",
+          "message": {
+            "text": "Missing ApexDoc comment"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "force-app/main/default/classes/HelloWorld.cls",
+                  "uriBaseId": "/Users/hogehoge/Documents/Project/sarif-sample/"
+                },
+                "region": {
+                  "startLine": 2,
+                  "startColumn": 19,
+                  "endLine": 6,
+                  "endColumn": 6
+                }
+              }
+            }
+          ],
+          "relatedLocations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "force-app/main/default/classes/HelloWorld.cls",
+                  "uriBaseId": "/Users/hogehoge/Documents/Project/sarif-sample/"
+                },
+                "region": {
+                  "startLine": 2,
+                  "startColumn": 19,
+                  "endLine": 6,
+                  "endColumn": 6
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "AvoidDebugStatements",
+          "ruleIndex": 1,
+          "level": "warning",
+          "message": {
+            "text": "Avoid debug statements since they impact on performance"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "force-app/main/default/classes/HelloWorld.cls",
+                  "uriBaseId": "/Users/hogehoge/Documents/Project/sarif-sample/"
+                },
+                "region": {
+                  "startLine": 4,
+                  "startColumn": 9,
+                  "endLine": 4,
+                  "endColumn": 37
+                }
+              }
+            }
+          ],
+          "relatedLocations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "force-app/main/default/classes/HelloWorld.cls",
+                  "uriBaseId": "/Users/hogehoge/Documents/Project/sarif-sample/"
+                },
+                "region": {
+                  "startLine": 4,
+                  "startColumn": 9,
+                  "endLine": 4,
+                  "endColumn": 37
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "DebugsShouldUseLoggingLevel",
+          "ruleIndex": 2,
+          "level": "warning",
+          "message": {
+            "text": "Calls to System.debug should specify a logging level."
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "force-app/main/default/classes/HelloWorld.cls",
+                  "uriBaseId": "/Users/hogehoge/Documents/Project/sarif-sample/"
+                },
+                "region": {
+                  "startLine": 4,
+                  "startColumn": 9,
+                  "endLine": 4,
+                  "endColumn": 37
+                }
+              }
+            }
+          ],
+          "relatedLocations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "force-app/main/default/classes/HelloWorld.cls",
+                  "uriBaseId": "/Users/hogehoge/Documents/Project/sarif-sample/"
+                },
+                "region": {
+                  "startLine": 4,
+                  "startColumn": 9,
+                  "endLine": 4,
+                  "endColumn": 37
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "AvoidDebugStatements",
+          "ruleIndex": 1,
+          "level": "warning",
+          "message": {
+            "text": "Avoid debug statements since they impact on performance"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "force-app/main/default/classes/HelloWorld.cls",
+                  "uriBaseId": "/Users/hogehoge/Documents/Project/sarif-sample/"
+                },
+                "region": {
+                  "startLine": 5,
+                  "startColumn": 9,
+                  "endLine": 5,
+                  "endColumn": 46
+                }
+              }
+            }
+          ],
+          "relatedLocations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "force-app/main/default/classes/HelloWorld.cls",
+                  "uriBaseId": "/Users/hogehoge/Documents/Project/sarif-sample/"
+                },
+                "region": {
+                  "startLine": 5,
+                  "startColumn": 9,
+                  "endLine": 5,
+                  "endColumn": 46
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "DebugsShouldUseLoggingLevel",
+          "ruleIndex": 2,
+          "level": "warning",
+          "message": {
+            "text": "Calls to System.debug should specify a logging level."
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "force-app/main/default/classes/HelloWorld.cls",
+                  "uriBaseId": "/Users/hogehoge/Documents/Project/sarif-sample/"
+                },
+                "region": {
+                  "startLine": 5,
+                  "startColumn": 9,
+                  "endLine": 5,
+                  "endColumn": 46
+                }
+              }
+            }
+          ],
+          "relatedLocations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "force-app/main/default/classes/HelloWorld.cls",
+                  "uriBaseId": "/Users/hogehoge/Documents/Project/sarif-sample/"
+                },
+                "region": {
+                  "startLine": 5,
+                  "startColumn": 9,
+                  "endLine": 5,
+                  "endColumn": 46
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "ApexDoc",
+          "ruleIndex": 0,
+          "level": "warning",
+          "message": {
+            "text": "Missing ApexDoc comment"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "force-app/main/default/classes/HelloWorld.cls",
+                  "uriBaseId": "/Users/hogehoge/Documents/Project/sarif-sample/"
+                },
+                "region": {
+                  "startLine": 9,
+                  "startColumn": 12,
+                  "endLine": 14,
+                  "endColumn": 6
+                }
+              }
+            }
+          ],
+          "relatedLocations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "force-app/main/default/classes/HelloWorld.cls",
+                  "uriBaseId": "/Users/hogehoge/Documents/Project/sarif-sample/"
+                },
+                "region": {
+                  "startLine": 9,
+                  "startColumn": 12,
+                  "endLine": 14,
+                  "endColumn": 6
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "UnusedLocalVariable",
+          "ruleIndex": 3,
+          "level": "warning",
+          "message": {
+            "text": "Variable 'unused' defined but not used"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "force-app/main/default/classes/HelloWorld.cls",
+                  "uriBaseId": "/Users/hogehoge/Documents/Project/sarif-sample/"
+                },
+                "region": {
+                  "startLine": 10,
+                  "startColumn": 16,
+                  "endLine": 10,
+                  "endColumn": 42
+                }
+              }
+            }
+          ],
+          "relatedLocations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "force-app/main/default/classes/HelloWorld.cls",
+                  "uriBaseId": "/Users/hogehoge/Documents/Project/sarif-sample/"
+                },
+                "region": {
+                  "startLine": 10,
+                  "startColumn": 16,
+                  "endLine": 10,
+                  "endColumn": 42
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "AvoidDebugStatements",
+          "ruleIndex": 1,
+          "level": "warning",
+          "message": {
+            "text": "Avoid debug statements since they impact on performance"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "force-app/main/default/classes/HelloWorld.cls",
+                  "uriBaseId": "/Users/hogehoge/Documents/Project/sarif-sample/"
+                },
+                "region": {
+                  "startLine": 12,
+                  "startColumn": 13,
+                  "endLine": 12,
+                  "endColumn": 40
+                }
+              }
+            }
+          ],
+          "relatedLocations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "force-app/main/default/classes/HelloWorld.cls",
+                  "uriBaseId": "/Users/hogehoge/Documents/Project/sarif-sample/"
+                },
+                "region": {
+                  "startLine": 12,
+                  "startColumn": 13,
+                  "endLine": 12,
+                  "endColumn": 40
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "DebugsShouldUseLoggingLevel",
+          "ruleIndex": 2,
+          "level": "warning",
+          "message": {
+            "text": "Calls to System.debug should specify a logging level."
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "force-app/main/default/classes/HelloWorld.cls",
+                  "uriBaseId": "/Users/hogehoge/Documents/Project/sarif-sample/"
+                },
+                "region": {
+                  "startLine": 12,
+                  "startColumn": 13,
+                  "endLine": 12,
+                  "endColumn": 40
+                }
+              }
+            }
+          ],
+          "relatedLocations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "force-app/main/default/classes/HelloWorld.cls",
+                  "uriBaseId": "/Users/hogehoge/Documents/Project/sarif-sample/"
+                },
+                "region": {
+                  "startLine": 12,
+                  "startColumn": 13,
+                  "endLine": 12,
+                  "endColumn": 40
+                }
+              }
+            }
+          ]
+        }
+      ],
+      "invocations": [
+        {
+          "executionSuccessful": true,
+          "workingDirectory": {
+            "uri": "/Users/hogehoge/Documents/Project/sarif-sample/"
+          }
+        }
+      ]
+    }
+  ]
+}

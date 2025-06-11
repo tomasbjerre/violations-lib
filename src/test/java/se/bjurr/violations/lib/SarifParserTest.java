@@ -444,4 +444,38 @@ public class SarifParserTest {
         .map(Violation::getRule) //
         .forEach(rule -> assertThat(rule).isEqualTo("rule"));
   }
+
+  @Test
+  public void testThatSarifReportWithListOfCategoriesCanBeParsed() {
+    final String rootFolder = getRootFolder();
+
+    final Set<Violation> actual =
+        violationsApi() //
+            .withPattern(".*/sarif/categories.json$") //
+            .inFolder(rootFolder) //
+            .findAll(SARIF) //
+            .violations();
+
+    assertThat(actual) //
+        .hasSize(13);
+    assertThat(
+            actual.stream()
+                .sorted()
+                .map(it -> it.getFile() + ": " + it.getCategory())
+                .collect(Collectors.joining("\n")))
+        .isEqualToIgnoringWhitespace(
+            "force-app/main/default/classes/HelloWorld.cls: Recommended,CodeStyle,Apex\n"
+                + "force-app/main/default/classes/HelloWorld.cls: Recommended,Performance,Apex\n"
+                + "force-app/main/default/classes/HelloWorld.cls: Recommended,BestPractices,Apex\n"
+                + "force-app/main/default/classes/HelloWorld.cls: Recommended,BestPractices,Apex\n"
+                + "force-app/main/default/classes/HelloWorld.cls: Recommended,Documentation,Apex\n"
+                + "force-app/main/default/classes/HelloWorld.cls: Recommended,CodeStyle,Apex\n"
+                + "force-app/main/default/classes/HelloWorld.cls: Recommended,Performance,Apex\n"
+                + "force-app/main/default/classes/HelloWorld.cls: Recommended,BestPractices,Apex\n"
+                + "force-app/main/default/classes/HelloWorld.cls: Recommended,Performance,Apex\n"
+                + "force-app/main/default/classes/HelloWorld.cls: Recommended,BestPractices,Apex\n"
+                + "force-app/main/default/classes/HelloWorld.cls: Recommended,Documentation,Apex\n"
+                + "force-app/main/default/classes/HelloWorld.cls: Recommended,Documentation,Apex\n"
+                + "jest.config.js: Recommended,ErrorProne,JavaScript");
+  }
 }
