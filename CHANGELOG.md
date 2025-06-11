@@ -1,3 +1,12 @@
+## 1.158.1 (2025-06-11)
+
+### Bug Fixes
+
+-  sarif, accepting list of categories ([534ba](https://github.com/tomasbjerre/violations-lib/commit/534ba7b068ececd) Tomas Bjerre)  [#191](https://github.com/tomasbjerre/violations-lib/issues/191)  
+
+### Dependency updates
+
+- upgrading dependencies ([551a0](https://github.com/tomasbjerre/violations-lib/commit/551a09923dd20c9) Tomas Bjerre)  
 ## 1.158.0 (2025-03-02)
 
 ### Features
