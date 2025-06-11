@@ -6,10 +6,6 @@
 -  adding Automatic-Module-Name ([32605](https://github.com/tomasbjerre/violations-lib/commit/32605bb6cf34425) Tomas Bjerre)  
 -  upgrading dependencies ([b78d5](https://github.com/tomasbjerre/violations-lib/commit/b78d51060e05717) Tomas Bjerre)  
 
-# violations-lib changelog
-
-Changelog of violations-lib.
-
 ## 1.157.3 (2024-09-02)
 
 ### Bug Fixes
