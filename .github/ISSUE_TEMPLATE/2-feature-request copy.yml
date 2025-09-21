@@ -1,0 +1,11 @@
+name: '🚀 Feature request'
+labels: 'enhancement'
+description: I have a suggestion
+
+body:
+  - type: textarea
+    attributes:
+      label: Details
+      description: |
+        If you are asking for a new parser. Provide relevant information like a sample report file and links to any documentation.
+        ```

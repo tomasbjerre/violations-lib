@@ -1,0 +1,11 @@
+name: '🐛 Bug report or other problems'
+labels: 'bug'
+description: Create a problem report to help us improve
+
+body:
+  - type: textarea
+    attributes:
+      label: Details
+      description: |
+        If you are having problems parsing a report, provide that report file.
+        ```
