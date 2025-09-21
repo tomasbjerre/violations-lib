@@ -1,3 +1,12 @@
+## 1.159.0 (2025-09-21)
+
+### Features
+
+-  high performance escapeHTML with encoder from OWASP ([a30cc](https://github.com/tomasbjerre/violations-lib/commit/a30cc22caa3ae52) Jeremy Long)  [#151](https://github.com/tomasbjerre/violations-lib/issues/151)  
+
+### Dependency updates
+
+- dependencies ([42b49](https://github.com/tomasbjerre/violations-lib/commit/42b49b11712d81f) Tomas Bjerre)  
 ## 1.158.1 (2025-06-11)
 
 ### Bug Fixes
