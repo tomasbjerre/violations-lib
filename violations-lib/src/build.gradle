@@ -1,0 +1,44 @@
+plugins {
+	id "se.bjurr.gradle.conventional-release"
+	id "se.bjurr.gradle.java-convention"
+	id "se.bjurr.gradle.update-versions"
+}
+
+/*
+ apply plugin: 'jsonschema2pojo'
+ // A bit ugly: https://github.com/joelittlejohn/jsonschema2pojo/issues/1594
+ [
+ //  [
+ //    from: "${rootDir}/src/main/resources/json/sarif-schema.json",
+ //    to: "se.bjurr.violations.lib.model.generated.sarif"
+ //  ],
+ //  [
+ //    from: "${rootDir}/src/main/resources/json/coverity-schema.json",
+ //    to: "se.bjurr.violations.lib.model.generated.coverity"
+ //  ]
+ ].each { codeGen ->
+ logger.lifecycle("Generating ${codeGen.from} to ${codeGen.to}")
+ jsonSchema2Pojo {
+ source = files(codeGen.from)
+ targetDirectory = file("src/gen/java")
+ targetPackage = codeGen.to
+ generateBuilders = true
+ annotationStyle = 'none'
+ includeGeneratedAnnotation = false
+ removeOldOutput = false
+ }
+ }
+ spotlessJava.dependsOn generateJsonSchema2Pojo
+ sourcesJar.dependsOn generateJsonSchema2Pojo
+ javadocJar.dependsOn generateJsonSchema2Pojo
+ */
+
+dependencies {
+	api 'com.google.code.gson:gson:2.13.1'
+
+	testImplementation 'junit:junit:4.13.2'
+	testImplementation 'org.assertj:assertj-core:3.27.3'
+	testImplementation 'uk.co.jemos.podam:podam:8.0.2.RELEASE'
+	testImplementation 'com.approvaltests:approvaltests:24.22.0'
+	testImplementation 'com.networknt:json-schema-validator:1.5.7'
+}
