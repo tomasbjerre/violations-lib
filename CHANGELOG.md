@@ -1,3 +1,9 @@
+## 1.159.1 (2025-09-21)
+
+### Bug Fixes
+
+-  removing accidentally copied files ([9c68f](https://github.com/tomasbjerre/violations-lib/commit/9c68f0883e2416c) Tomas Bjerre)  
+
 ## 1.159.0 (2025-09-21)
 
 ### Features
