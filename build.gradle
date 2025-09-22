@@ -1,5 +1,5 @@
 plugins {
-	id "se.bjurr.gradle.bundle-jar-shadow" version "1.+"
+	id "se.bjurr.gradle.bundle-jar-shadow" version "1.1.1"
 	id "org.jsonschema2pojo" version "1.2.2" apply false
 }
 
@@ -60,7 +60,7 @@ project(":violations-lib") {
 
 		testImplementation 'junit:junit:4.13.2'
 		testImplementation "org.assertj:assertj-core:3.27.5"
-		testImplementation 'uk.co.jemos.podam:podam:8.0.2.RELEASE'
+		testImplementation "uk.co.jemos.podam:podam:8.0.2.RELEASE"
 		testImplementation "com.approvaltests:approvaltests:25.4.3"
 		testImplementation "com.networknt:json-schema-validator:1.5.9"
 	}
