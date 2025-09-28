@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<pmd-cpd xmlns="https://pmd-code.org/schema/cpd-report"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         pmdVersion="7.17.0"
+         timestamp="2025-09-18T23:55:33.81744+03:00"
+         version="1.0.0"
+         xsi:schemaLocation="https://pmd-code.org/schema/cpd-report https://pmd.github.io/schema/cpd-report_1_0_0.xsd">
+   <duplication lines="29" tokens="67">
+      <file begintoken="14"
+            column="49"
+            endcolumn="27"
+            endline="46"
+            endtoken="80"
+            line="18"
+            path="/Users/xyz/AFSEViewControllerProtocol.swift"/>
+      <file begintoken="361"
+            column="58"
+            endcolumn="27"
+            endline="206"
+            endtoken="427"
+            line="178"
+            path="/Users/xyz/AFSEViewControllerProtocol.swift"/>
+      <codefragment><![CDATA[@objc public protocol AFSEViewControllerProtocol: NSObjectProtocol {
+
+    /// The container stack view of the view controller
+    var containerStackView: ContainerStackViewProtocol? { get }
+
+    /// The background image view of the view controller
+    var backgroundImageView: UIImageView! { get set }
+
+    /// The desired distance between the navigation items, used with the helper methods bellow.
+    /// The default is 24.0f pt.
+    var desiredDistanceBetweenNavigationbarItems: CGFloat { get set }
+
+    /// The desired distance between the last(first) item and the end of the navigation bar,
+    /// used with the helper methods bellow.
+    /// The default is 10.0 pt.
+    var desiredDistanceBetweenLastItemAndNavigationBar: CGFloat { get set }
+
+    /// The default background image. Subclasses can set their own or nil to remove the background.
+    var backgroundImage: UIImage? { get set }
+
+    /// Touching non UITextField views results in keyboard being dismissed
+    /// Default value is NO
+    var touchesInBackgroundDismissKeyboard: Bool { get set }
+
+    /// define if the keyboard diss/appearance should be handled
+    var shouldHandleKeyboard: Bool { get set }
+
+    /// Let self know whether controller is presented modaly
+    func isModal() -> Bool
+]]></codefragment>
+   </duplication>
+</pmd-cpd>
