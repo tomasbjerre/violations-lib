@@ -1,3 +1,13 @@
+## 1.160.0 (2025-09-28)
+
+### Features
+
+-  PMDCPD 7 ([5c615](https://github.com/tomasbjerre/violations-lib/commit/5c615bad1645586) Tomas Bjerre)  [#192](https://github.com/tomasbjerre/violations-lib/issues/192)  
+
+### Dependency updates
+
+- assertj-core:3.27.6 ([8111a](https://github.com/tomasbjerre/violations-lib/commit/8111a246ac4296e) Tomas Bjerre)  
+- dependencies ([15943](https://github.com/tomasbjerre/violations-lib/commit/1594328123df91f) Tomas Bjerre)  
 ## 1.159.1 (2025-09-21)
 
 ### Bug Fixes
