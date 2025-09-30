@@ -1,3 +1,9 @@
+## 1.160.1 (2025-09-30)
+
+### Bug Fixes
+
+-  include the Automatic-Module-Name and name ([2ffd2](https://github.com/tomasbjerre/violations-lib/commit/2ffd2ad6567ba89) Tomas Bjerre)  
+
 ## 1.160.0 (2025-09-28)
 
 ### Features
