@@ -25,7 +25,7 @@ public class DocFXParser implements ViolationsParser {
       @SuppressWarnings("unchecked")
       final Map<String, Object> parsedMap = new Gson().fromJson(rawLineToParse, Map.class);
       final String message = (String) parsedMap.get("message");
-      final String messageSeverity = (String) parsedMap.get("message_severity");
+      final String messageSeverity = (String) parsedMap.get("severity");
       final String fileEncoded = (String) parsedMap.get("file");
       if (fileEncoded == null) {
         violationsLogger.log(
