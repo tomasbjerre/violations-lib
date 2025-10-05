@@ -1,3 +1,10 @@
+## 1.160.2 (2025-10-05)
+
+### Bug Fixes
+
+-  docfx, be backwards compatible ([14b98](https://github.com/tomasbjerre/violations-lib/commit/14b986f5979189f) Tomas Bjerre)  [#193](https://github.com/tomasbjerre/violations-lib/issues/193)  
+-  docfx severity (#193) ([3db31](https://github.com/tomasbjerre/violations-lib/commit/3db31d6e5dad606) batje)  
+
 ## 1.160.1 (2025-09-30)
 
 ### Bug Fixes
