@@ -17,4 +17,4 @@ codeclimate.json
 *.received.txt
 *.DS_Store
 .vscode*
-violations-lib-*
+violations-lib-*/*/*
