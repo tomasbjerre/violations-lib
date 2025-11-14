@@ -38,6 +38,7 @@ public class CPPCheckParser implements ViolationsParser {
       Optional<String> verbose = null;
       String id = null;
       int errorIndex = -1;
+      int order = 0;
       boolean violationAddedFromError = false;
       String message = null;
       while (xmlr.hasNext()) {
@@ -106,6 +107,7 @@ public class CPPCheckParser implements ViolationsParser {
                     .setSeverity(severity) //
                     .setRule(id) //
                     .setGroup(Integer.toString(errorIndex)) //
+                    .setSpecific("order", order++)
                     .build();
             violations.add(v);
             violationAddedFromError = true;

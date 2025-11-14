@@ -54,6 +54,7 @@ public class CPPCheckTest {
             .setMessage(MSG_1) //
             .setSeverity(INFO) //
             .setGroup("1") //
+            .setSpecific("order", 1)
             .build();
 
     final Violation v2 =
@@ -66,6 +67,7 @@ public class CPPCheckTest {
             .setMessage(MSG_2) //
             .setSeverity(ERROR) //
             .setGroup("2") //
+            .setSpecific("order", 2)
             .build();
     ViolationAsserter.assertThat(actual) //
         .contains(v2, 2) //
@@ -267,6 +269,24 @@ public class CPPCheckTest {
         .isEqualTo(0);
     assertThat(violation.getEndLine()) //
         .isEqualTo(0);
+  }
+
+  @Test
+  public void testThatViolationsCanBeParsedFromIssue75217() {
+    final String rootFolder = getRootFolder();
+
+    final Set<Violation> actual =
+        violationsApi() //
+            .withPattern(".*issue75217\\.xml$") //
+            .inFolder(rootFolder) //
+            .findAll(CPPCHECK) //
+            .violations();
+
+    assertThat(actual)
+        .hasSize(2)
+        .satisfiesExactly(
+            v -> assertThat(v.getSpecifics()).containsEntry("order", "1"),
+            v -> assertThat(v.getSpecifics()).containsEntry("order", "0"));
   }
 
   @Test
