@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<results version="2">
+  <cppcheck version="2.0"/>
+  <errors>
+    <error id="missingOverride" severity="style" msg="The function 'reset' overrides a function in a base class but is not marked with a 'override' specifier." verbose="The function 'reset' overrides a function in a base class but is not marked with a 'override' specifier.">
+      <location file="derived.hpp" line="115" column="7" info="Function in derived class"/>
+      <location file="base.hpp" line="117" column="15" info="Virtual function in base class"/>
+      <symbol>reset</symbol>
+    </error>
+  </errors>
+</results>
