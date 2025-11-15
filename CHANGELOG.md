@@ -1,3 +1,12 @@
+## Unreleased ()
+
+### Bug Fixes
+
+-  The CppCheck parser should retain the order of violations (#195) ([c42bc](https://github.com/tomasbjerre/violations-lib/commit/c42bc1337957d0e) Ullrich Hafner)  
+
+### Dependency updates
+
+- gradle 9 ([4dd80](https://github.com/tomasbjerre/violations-lib/commit/4dd80bce2d4a287) Tomas Bjerre)  
 ## 1.160.2 (2025-10-05)
 
 ### Bug Fixes
