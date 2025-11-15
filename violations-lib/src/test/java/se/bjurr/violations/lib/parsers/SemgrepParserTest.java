@@ -7,7 +7,7 @@ import static se.bjurr.violations.lib.model.Violation.violationBuilder;
 import static se.bjurr.violations.lib.reports.Parser.SEMGREP;
 
 import java.util.Set;
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 import se.bjurr.violations.lib.model.SEVERITY;
 import se.bjurr.violations.lib.model.Violation;
 

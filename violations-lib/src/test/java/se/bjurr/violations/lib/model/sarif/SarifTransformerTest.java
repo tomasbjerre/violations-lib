@@ -18,7 +18,7 @@ import java.util.TreeSet;
 import org.approvaltests.Approvals;
 import org.approvaltests.core.Options;
 import org.approvaltests.reporters.AutoApproveReporter;
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 import se.bjurr.violations.lib.model.SEVERITY;
 import se.bjurr.violations.lib.model.Violation;
 import se.bjurr.violations.lib.reports.Parser;

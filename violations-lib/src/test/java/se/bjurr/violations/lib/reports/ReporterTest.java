@@ -3,7 +3,7 @@ package se.bjurr.violations.lib.reports;
 import static org.assertj.core.api.Assertions.assertThat;
 
 import java.io.IOException;
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 import se.bjurr.violations.lib.util.Utils;
 
 public class ReporterTest {

@@ -6,5 +6,9 @@ pluginManagement {
 	}
 }
 
+plugins {
+	id "se.bjurr.gradle.include-virtual" version "1.0.0"
+}
+
 rootProject.name = "violations-lib-base"
-include "violations-lib-sarif", "violations-lib-coverty", "violations-lib"
+includeVirtual "violations-lib-sarif", "violations-lib-coverty", "violations-lib"

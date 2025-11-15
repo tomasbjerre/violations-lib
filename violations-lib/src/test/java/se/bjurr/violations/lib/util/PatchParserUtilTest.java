@@ -6,7 +6,7 @@ import java.util.Map;
 import java.util.Optional;
 import java.util.logging.Logger;
 import org.approvaltests.Approvals;
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 
 public class PatchParserUtilTest {
   private static Logger LOG = Logger.getLogger(PatchParserUtil.class.getSimpleName());

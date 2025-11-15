@@ -4,7 +4,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 import static se.bjurr.violations.lib.model.ViolationUtils.relativePath;
 
 import java.io.File;
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 
 public class ViolationUtilsTest {
 

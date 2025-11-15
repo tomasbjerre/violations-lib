@@ -9,7 +9,7 @@ import static se.bjurr.violations.lib.reports.Parser.MYPY;
 
 import java.util.ArrayList;
 import java.util.Set;
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 import se.bjurr.violations.lib.model.Violation;
 
 /** Created by matthew on 27/04/16. */

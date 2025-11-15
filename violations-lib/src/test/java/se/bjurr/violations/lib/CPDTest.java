@@ -9,7 +9,7 @@ import static se.bjurr.violations.lib.reports.Parser.CPD;
 
 import java.util.ArrayList;
 import java.util.Set;
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 import se.bjurr.violations.lib.model.Violation;
 
 public class CPDTest {

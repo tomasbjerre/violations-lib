@@ -5,7 +5,7 @@ import static se.bjurr.violations.lib.model.SEVERITY.ERROR;
 import static se.bjurr.violations.lib.model.Violation.violationBuilder;
 import static se.bjurr.violations.lib.reports.Parser.CHECKSTYLE;
 
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 import se.bjurr.violations.lib.model.Violation.ViolationBuilder;
 import uk.co.jemos.podam.api.PodamFactoryImpl;
 
