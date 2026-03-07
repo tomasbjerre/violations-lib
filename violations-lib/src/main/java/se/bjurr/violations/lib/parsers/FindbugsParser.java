@@ -181,26 +181,20 @@ public class FindbugsParser implements ViolationsParser {
   }
 
   /**
-   * Resolves the complete file path by combining a directory-type {@code SrcDir} with the {@code
-   * sourcepath}. Only applies if there is exactly one directory-type entry (i.e. not ending with
-   * {@code .java}); otherwise returns {@code sourcepath} unchanged.
+   * Resolves the complete file path by combining the single {@code SrcDir} with the {@code
+   * sourcepath}. Only applies if there is exactly one {@code SrcDir} entry in total and it is a
+   * directory (i.e. not ending with {@code .java}); otherwise returns {@code sourcepath} unchanged.
    */
   private String resolveFilePath(final String sourcepath, final List<String> srcDirs) {
-    if (sourcepath == null || sourcepath.isEmpty() || srcDirs.isEmpty()) {
+    if (sourcepath == null || sourcepath.isEmpty() || srcDirs.size() != 1) {
       return sourcepath;
     }
-    final List<String> dirSrcDirs = new ArrayList<>();
-    for (final String srcDir : srcDirs) {
-      final String normalized = srcDir.replace("\\", "/").trim();
-      if (!normalized.endsWith(".java")) {
-        dirSrcDirs.add(normalized);
-      }
-    }
-    if (dirSrcDirs.size() != 1) {
+    final String normalized = srcDirs.get(0).replace("\\", "/").trim();
+    if (normalized.endsWith(".java")) {
       return sourcepath;
     }
-    final String dir = dirSrcDirs.get(0);
-    final String trimmed = dir.endsWith("/") ? dir.substring(0, dir.length() - 1) : dir;
+    final String trimmed =
+        normalized.endsWith("/") ? normalized.substring(0, normalized.length() - 1) : normalized;
     return trimmed + "/" + sourcepath;
   }
 

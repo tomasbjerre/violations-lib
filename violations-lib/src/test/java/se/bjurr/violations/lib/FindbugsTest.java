@@ -131,8 +131,7 @@ public class FindbugsTest {
         .hasSize(3);
     final Violation violation0 = new ArrayList<>(actual).get(0);
     assertThat(violation0.getFile()) //
-        .isEqualTo(
-            "/home/bjerre/workspace/violations/violations-lib/src/main/java/se/bjurr/violations/lib/reports/ReportsFinder.java");
+        .isEqualTo("se/bjurr/violations/lib/reports/ReportsFinder.java");
   }
 
 }
