@@ -1,3 +1,9 @@
+## 1.160.4 (2026-03-07)
+
+### Bug Fixes
+
+-  combine SrcDir with sourcepath in FindbugsParser to produce complete file paths ([73e10](https://github.com/tomasbjerre/violations-lib/commit/73e10ce11f31f56) Copilot)  [#197](https://github.com/tomasbjerre/violations-lib/issues/197)  
+
 ## Unreleased ()
 
 ### Bug Fixes
