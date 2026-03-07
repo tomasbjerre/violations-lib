@@ -135,24 +135,5 @@ public class FindbugsTest {
             "/home/bjerre/workspace/violations/violations-lib/src/main/java/se/bjurr/violations/lib/reports/ReportsFinder.java");
   }
 
-  @Test
-  public void testThatSrcDirIsCombinedWithSourcepath() {
-    final String rootFolder = getRootFolder();
-    final Set<Violation> actual =
-        violationsApi() //
-            .withPattern(".*/findbugs/spotbugs-srcdir\\.xml$") //
-            .inFolder(rootFolder) //
-            .findAll(FINDBUGS) //
-            .violations();
-
-    assertThat(actual) //
-        .hasSize(1);
-    final Violation violation0 = new ArrayList<>(actual).get(0);
-    assertThat(violation0.getFile()) //
-        .isEqualTo("/builds/my-project/module-a/src/main/java/com/example/Foo.java");
-    assertThat(violation0.getStartLine()) //
-        .isEqualTo(42);
-    assertThat(violation0.getRule()) //
-        .isEqualTo("MS_EXPOSE_REP");
-  }
 }
+

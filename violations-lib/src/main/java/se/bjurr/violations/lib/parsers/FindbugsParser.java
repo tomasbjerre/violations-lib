@@ -181,24 +181,27 @@ public class FindbugsParser implements ViolationsParser {
   }
 
   /**
-   * Resolves the complete file path by combining a directory-type {@code SrcDir} with the
-   * {@code sourcepath}. Only the first directory-type entry (i.e. not ending with {@code .java})
-   * is used. Returns {@code sourcepath} unchanged if no directory-type {@code SrcDir} is found.
+   * Resolves the complete file path by combining a directory-type {@code SrcDir} with the {@code
+   * sourcepath}. Only applies if there is exactly one directory-type entry (i.e. not ending with
+   * {@code .java}); otherwise returns {@code sourcepath} unchanged.
    */
   private String resolveFilePath(final String sourcepath, final List<String> srcDirs) {
     if (sourcepath == null || sourcepath.isEmpty() || srcDirs.isEmpty()) {
       return sourcepath;
     }
+    final List<String> dirSrcDirs = new ArrayList<>();
     for (final String srcDir : srcDirs) {
       final String normalized = srcDir.replace("\\", "/").trim();
-      if (normalized.endsWith(".java")) {
-        continue;
+      if (!normalized.endsWith(".java")) {
+        dirSrcDirs.add(normalized);
       }
-      final String trimmed =
-          normalized.endsWith("/") ? normalized.substring(0, normalized.length() - 1) : normalized;
-      return trimmed + "/" + sourcepath;
     }
-    return sourcepath;
+    if (dirSrcDirs.size() != 1) {
+      return sourcepath;
+    }
+    final String dir = dirSrcDirs.get(0);
+    final String trimmed = dir.endsWith("/") ? dir.substring(0, dir.length() - 1) : dir;
+    return trimmed + "/" + sourcepath;
   }
 
   private String getMessagesXml(final String staticValue, final String messagesResourceFilename)
