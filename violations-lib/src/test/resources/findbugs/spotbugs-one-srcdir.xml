@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<BugCollection version="4.0.0" sequence="0" timestamp="1570255404454" analysisTimestamp="1570255404481" release="">
+  <Project projectName="module-a">
+    <SrcDir>/builds/my-project/module-a/src/main/java</SrcDir>
+  </Project>
+  <BugInstance type="MS_EXPOSE_REP" priority="1" rank="7" abbrev="MS" category="MALICIOUS_CODE">
+    <Class classname="com.example.Foo">
+      <SourceLine classname="com.example.Foo" start="1" end="50" sourcefile="Foo.java" sourcepath="com/example/Foo.java"/>
+    </Class>
+    <Method classname="com.example.Foo" name="getValues" signature="()[Ljava/lang/Object;" isStatic="false">
+      <SourceLine classname="com.example.Foo" start="42" end="42" sourcefile="Foo.java" sourcepath="com/example/Foo.java"/>
+    </Method>
+    <SourceLine classname="com.example.Foo" start="42" end="42" sourcefile="Foo.java" sourcepath="com/example/Foo.java"/>
+  </BugInstance>
+  <Errors errors="0" missingClasses="0"></Errors>
+  <FindBugsSummary timestamp="Wed, 12 Sep 2018 18:19:36 +0200" total_classes="1" referenced_classes="1" total_bugs="1" total_size="50" num_packages="1" java_version="1.8.0" vm_version="25.0" cpu_seconds="1.00" clock_seconds="1.00" peak_mbytes="100.00" alloc_mbytes="512.00" gc_seconds="0.01" priority_1="1">
+    <PackageStats package="com.example" total_bugs="1" total_types="1" total_size="50">
+      <ClassStats class="com.example.Foo" sourceFile="Foo.java" interface="false" size="50" bugs="1"/>
+    </PackageStats>
+  </FindBugsSummary>
+  <ClassFeatures></ClassFeatures>
+  <History></History>
+</BugCollection>

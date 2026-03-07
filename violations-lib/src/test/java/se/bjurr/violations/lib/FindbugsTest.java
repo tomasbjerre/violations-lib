@@ -118,6 +118,23 @@ public class FindbugsTest {
   }
 
   @Test
+  public void testThatSrcDirIsCombinedWithSourcepathWhenExactlyOneSrcDir() {
+    final String rootFolder = getRootFolder();
+    final Set<Violation> actual =
+        violationsApi() //
+            .withPattern(".*/findbugs/spotbugs-one-srcdir\\.xml$") //
+            .inFolder(rootFolder) //
+            .findAll(FINDBUGS) //
+            .violations();
+
+    assertThat(actual) //
+        .hasSize(1);
+    final Violation violation0 = new ArrayList<>(actual).get(0);
+    assertThat(violation0.getFile()) //
+        .isEqualTo("/builds/my-project/module-a/src/main/java/com/example/Foo.java");
+  }
+
+  @Test
   public void testThatViolationsCanBeParsedFromSpotbugs2() {
     final String rootFolder = getRootFolder();
     final Set<Violation> actual =
