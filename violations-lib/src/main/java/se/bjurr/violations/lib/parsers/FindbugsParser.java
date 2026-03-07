@@ -84,7 +84,8 @@ public class FindbugsParser implements ViolationsParser {
   private void parseBugInstance(
       final XMLStreamReader xmlr,
       final Set<Violation> violations,
-      final Map<String, String> messagesPerType)
+      final Map<String, String> messagesPerType,
+      final List<String> srcDirs)
       throws XMLStreamException {
     final String type = getAttribute(xmlr, "type");
     final Integer rank = getIntegerAttribute(xmlr, "rank");
@@ -105,7 +106,8 @@ public class FindbugsParser implements ViolationsParser {
           if (!startLine.isPresent() || !endLine.isPresent()) {
             continue;
           }
-          final String filename = getAttribute(xmlr, "sourcepath");
+          final String sourcepath = getAttribute(xmlr, "sourcepath");
+          final String filename = resolveFilePath(sourcepath, srcDirs);
           final String classname = getAttribute(xmlr, "classname");
           candidates.add( //
               violationBuilder() //
@@ -152,18 +154,51 @@ public class FindbugsParser implements ViolationsParser {
             violationsLogger,
             this.getMessagesXml(findSecurityBugsMessagesXml, "/findbugs/fsb-messages.xml")));
 
+    final List<String> srcDirs = new ArrayList<>();
+
     try (InputStream input = new ByteArrayInputStream(string.getBytes(StandardCharsets.UTF_8))) {
       final XMLStreamReader xmlr = ViolationParserUtils.createXmlReader(input);
+      boolean inProject = false;
       while (xmlr.hasNext()) {
         final int eventType = xmlr.next();
         if (eventType == XMLStreamConstants.START_ELEMENT) {
-          if (xmlr.getLocalName().equalsIgnoreCase("BugInstance")) {
-            this.parseBugInstance(xmlr, violations, messagesPerType);
+          if (xmlr.getLocalName().equalsIgnoreCase("Project")) {
+            inProject = true;
+          } else if (inProject && xmlr.getLocalName().equalsIgnoreCase("SrcDir")) {
+            srcDirs.add(xmlr.getElementText());
+          } else if (xmlr.getLocalName().equalsIgnoreCase("BugInstance")) {
+            this.parseBugInstance(xmlr, violations, messagesPerType, srcDirs);
+          }
+        }
+        if (eventType == XMLStreamConstants.END_ELEMENT) {
+          if (xmlr.getLocalName().equalsIgnoreCase("Project")) {
+            inProject = false;
           }
         }
       }
     }
     return violations;
+  }
+
+  /**
+   * Resolves the complete file path by combining a directory-type {@code SrcDir} with the
+   * {@code sourcepath}. Only the first directory-type entry (i.e. not ending with {@code .java})
+   * is used. Returns {@code sourcepath} unchanged if no directory-type {@code SrcDir} is found.
+   */
+  private String resolveFilePath(final String sourcepath, final List<String> srcDirs) {
+    if (sourcepath == null || sourcepath.isEmpty() || srcDirs.isEmpty()) {
+      return sourcepath;
+    }
+    for (final String srcDir : srcDirs) {
+      final String normalized = srcDir.replace("\\", "/").trim();
+      if (normalized.endsWith(".java")) {
+        continue;
+      }
+      final String trimmed =
+          normalized.endsWith("/") ? normalized.substring(0, normalized.length() - 1) : normalized;
+      return trimmed + "/" + sourcepath;
+    }
+    return sourcepath;
   }
 
   private String getMessagesXml(final String staticValue, final String messagesResourceFilename)

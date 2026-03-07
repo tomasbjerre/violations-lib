@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<BugCollection version="4.0.0" sequence="0" timestamp="1536769176459" analysisTimestamp="1536769176478" release="">
+  <Project projectName="">
+    <Jar>/builds/my-project/module-a/build/classes/java/main</Jar>
+    <SrcDir>/builds/my-project/module-a/src/main/java</SrcDir>
+  </Project>
+  <BugInstance type="MS_EXPOSE_REP" priority="1" rank="7" abbrev="MS" category="MALICIOUS_CODE">
+    <Class classname="com.example.Foo">
+      <SourceLine classname="com.example.Foo" start="1" end="50" sourcefile="Foo.java" sourcepath="com/example/Foo.java"/>
+    </Class>
+    <Method classname="com.example.Foo" name="getItems" signature="()Ljava/util/List;" isStatic="false">
+      <SourceLine classname="com.example.Foo" start="42" end="42" startBytecode="0" endBytecode="4" sourcefile="Foo.java" sourcepath="com/example/Foo.java"/>
+    </Method>
+    <SourceLine classname="com.example.Foo" start="42" end="42" startBytecode="0" endBytecode="4" sourcefile="Foo.java" sourcepath="com/example/Foo.java"/>
+  </BugInstance>
+  <Errors errors="0" missingClasses="0"></Errors>
+</BugCollection>
