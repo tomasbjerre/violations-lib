@@ -138,7 +138,7 @@ public enum Reporter {
   PHPCS(
       "PHPCS",
       Parser.CHECKSTYLE,
-      "https://github.com/squizlabs/PHP_CodeSniffer",
+      "https://github.com/PHPCSStandards/PHP_CodeSniffer",
       "With `phpcs api.php --report=checkstyle`."),
   PHPPMD("PHPPMD", Parser.PMD, "https://phpmd.org/", "With `phpmd api.php xml ruleset.xml`."),
   PMD("PMD", Parser.PMD, "https://pmd.github.io/", ""),
