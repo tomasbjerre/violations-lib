@@ -1,3 +1,9 @@
+## 1.160.5 (2026-03-28)
+
+### Bug Fixes
+
+-  doc PHP_CodeSniffer URL in Reporter.java ([766a1](https://github.com/tomasbjerre/violations-lib/commit/766a1b728bdcbd3) Tomas Bjerre)  
+
 ## 1.160.4 (2026-03-07)
 
 ### Bug Fixes
