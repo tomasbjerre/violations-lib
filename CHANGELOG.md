@@ -1,3 +1,19 @@
+## Unreleased ()
+
+### Breaking changes
+
+-  json-schema-validator:3.0.7 and java 17 ([ecdac](https://github.com/tomasbjerre/violations-lib/commit/ecdac0898a18082) Tomas Bjerre)  
+
+### Bug Fixes
+
+-  ignore the per-file inventory in PMD CPD reports ([36de6](https://github.com/tomasbjerre/violations-lib/commit/36de67f258ec165) colin)  
+
+### Dependency updates
+
+- gson:2.14.0 encoder:1.4.0 ([7fe91](https://github.com/tomasbjerre/violations-lib/commit/7fe91e5cf2f403a) Tomas Bjerre)  
+### Other changes
+
+
 ## 1.160.5 (2026-03-28)
 
 ### Bug Fixes
