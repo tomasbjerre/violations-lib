@@ -6,6 +6,7 @@ import static se.bjurr.violations.lib.model.SEVERITY.INFO;
 import static se.bjurr.violations.lib.model.SEVERITY.WARN;
 import static se.bjurr.violations.lib.model.Violation.violationBuilder;
 import static se.bjurr.violations.lib.reports.Parser.CPD;
+import static se.bjurr.violations.lib.util.ViolationParserUtils.findIntegerAttribute;
 import static se.bjurr.violations.lib.util.ViolationParserUtils.getAttribute;
 import static se.bjurr.violations.lib.util.ViolationParserUtils.getIntegerAttribute;
 
@@ -14,6 +15,7 @@ import java.io.InputStream;
 import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 import java.util.Set;
 import java.util.TreeSet;
 import javax.xml.stream.XMLStreamReader;
@@ -89,13 +91,21 @@ public class CPDParser implements ViolationsParser {
           tokens = getIntegerAttribute(xmlr, "tokens");
         }
         if (xmlr.getLocalName().equalsIgnoreCase("file")) {
-          final String path = getAttribute(xmlr, "path");
-          final Integer startLine = getIntegerAttribute(xmlr, "line");
-          final Integer endLine = getIntegerAttribute(xmlr, "endline");
-          final Integer column = getIntegerAttribute(xmlr, "column");
-          final Integer endColumn = getIntegerAttribute(xmlr, "endcolumn");
+          // A CPD report has <file> elements at two levels: one top level
+          // <file path="..." totalNumberOfTokens="..."/> per scanned file (schema type
+          // "file"), and the duplication occurrences within each <duplication> (schema type
+          // "fileLocation"). Only the occurrences declare line/endline/column/endcolumn and
+          // describe a violation, so the per-file inventory is skipped here.
+          // See https://pmd.github.io/schema/cpd-report_1_0_0.xsd
+          final Optional<Integer> startLine = findIntegerAttribute(xmlr, "line");
+          if (startLine.isPresent()) {
+            final String path = getAttribute(xmlr, "path");
+            final Integer endLine = getIntegerAttribute(xmlr, "endline");
+            final Integer column = getIntegerAttribute(xmlr, "column");
+            final Integer endColumn = getIntegerAttribute(xmlr, "endcolumn");
 
-          files.add(new FileInfo(path, startLine, endLine, column, endColumn));
+            files.add(new FileInfo(path, startLine.get(), endLine, column, endColumn));
+          }
         }
         if (xmlr.getLocalName().equalsIgnoreCase("codefragment")) {
           String codeFragment = xmlr.getElementText().trim();
@@ -138,8 +148,13 @@ public class CPDParser implements ViolationsParser {
           tokens = getIntegerAttribute(xmlr, "tokens");
         }
         if (xmlr.getLocalName().equalsIgnoreCase("file")) {
-          files.add(getAttribute(xmlr, "path"));
-          filesLine.add(getIntegerAttribute(xmlr, "line"));
+          // Skip the per-file inventory of a PMD CPD report; see the comment in
+          // parseNewPmdCpdFormat.
+          final Optional<Integer> line = findIntegerAttribute(xmlr, "line");
+          if (line.isPresent()) {
+            files.add(getAttribute(xmlr, "path"));
+            filesLine.add(line.get());
+          }
         }
         if (xmlr.getLocalName().equalsIgnoreCase("codefragment")) {
           final String codeFragment = xmlr.getElementText().trim();

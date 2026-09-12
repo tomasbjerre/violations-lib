@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<pmd-cpd pmdVersion="7.0.0"
+         timestamp="2026-09-08T12:53:01.439834236-07:00"
+         version="1.0.0">
+   <file path="/example/project/model/src/main/java/AbstractEntity.java"
+         totalNumberOfTokens="264"/>
+   <file path="/example/project/model/src/main/java/AbstractStatsCdr.java"
+         totalNumberOfTokens="132"/>
+   <file path="/example/project/model/src/main/java/Account.java"
+         totalNumberOfTokens="530"/>
+   <duplication lines="36" tokens="143">
+      <file begintoken="17575"
+            column="35"
+            endcolumn="16"
+            endline="75"
+            endtoken="17717"
+            line="40"
+            path="/example/project/model/src/main/java/SiteComputedUsageCdr.java"/>
+      <file begintoken="18224"
+            column="37"
+            endcolumn="16"
+            endline="73"
+            endtoken="18366"
+            line="38"
+            path="/example/project/model/src/main/java/SystemComputedUsageCdr.java"/>
+      <codefragment><![CDATA[public class SiteComputedUsageCdr extends AbstractEntity<Integer> {
+    private static final long serialVersionUID = 1L;
+]]></codefragment>
+   </duplication>
+   <duplication lines="28" tokens="109">
+      <file begintoken="33411"
+            column="48"
+            endcolumn="9"
+            endline="88"
+            endtoken="33519"
+            line="61"
+            path="/example/project/model/src/main/java/GatewayCdr.java"/>
+      <file begintoken="34685"
+            column="54"
+            endcolumn="9"
+            endline="85"
+            endtoken="34793"
+            line="58"
+            path="/example/project/model/src/main/java/PrivateRadioCdr.java"/>
+      <codefragment><![CDATA[    @Description("Is gateway connected, required")
+    @Column(nullable = false)
+]]></codefragment>
+   </duplication>
+   <duplication lines="13" tokens="105">
+      <file begintoken="23495"
+            column="3"
+            endcolumn="16"
+            endline="59"
+            endtoken="23599"
+            line="47"
+            path="/example/project/model/src/main/java/SubscriberLatestCdr.java"/>
+      <file begintoken="26182"
+            column="3"
+            endcolumn="16"
+            endline="65"
+            endtoken="26286"
+            line="53"
+            path="/example/project/model/src/main/java/SubscriberSiteLatestCdr.java"/>
+      <codefragment><![CDATA[    @Description("Latest session cdr")
+    @OneToOne(fetch = FetchType.LAZY)
+]]></codefragment>
+   </duplication>
+</pmd-cpd>

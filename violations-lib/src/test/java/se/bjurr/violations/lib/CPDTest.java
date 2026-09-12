@@ -7,6 +7,9 @@ import static se.bjurr.violations.lib.model.SEVERITY.INFO;
 import static se.bjurr.violations.lib.model.SEVERITY.WARN;
 import static se.bjurr.violations.lib.reports.Parser.CPD;
 
+import java.nio.charset.StandardCharsets;
+import java.nio.file.Files;
+import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.Set;
 import org.junit.jupiter.api.Test;
@@ -109,5 +112,119 @@ public class CPDTest {
         .isEqualTo(58);
     assertThat(secondViolation.getEndColumn()) //
         .isEqualTo(27);
+  }
+
+  /**
+   * A PMD CPD report contains one top level {@code <file path="..." totalNumberOfTokens="..."/>}
+   * per scanned file. Those have no line attribute and must not be mistaken for duplication
+   * occurrences.
+   */
+  @Test
+  public void testThatPmdCpdFileInventoryIsIgnored() throws Exception {
+    final String report = readReport("pmd7-cpd-report-with-file-inventory.xml");
+
+    final Set<Violation> actual = CPD.getViolationsParser().parseReportOutput(report, null);
+
+    assertThat(actual) //
+        .hasSize(6);
+
+    assertThat(actual) //
+        .extracting(Violation::getFile) //
+        .doesNotContain(
+            "/example/project/model/src/main/java/AbstractEntity.java",
+            "/example/project/model/src/main/java/AbstractStatsCdr.java",
+            "/example/project/model/src/main/java/Account.java");
+
+    assertThat(actual) //
+        .extracting(Violation::getStartLine) //
+        .containsExactlyInAnyOrder(40, 38, 61, 58, 47, 53);
+
+    final Violation violation = withStartLine(actual, 40);
+    assertThat(violation.getFile()) //
+        .isEqualTo("/example/project/model/src/main/java/SiteComputedUsageCdr.java");
+    assertThat(violation.getMessage()) //
+        .startsWith("Duplicated code detected (36 lines, 143 tokens) found in 2 files:");
+    assertThat(violation.getRule()) //
+        .isEqualTo("Code Duplication");
+    assertThat(violation.getSeverity()) //
+        .isEqualTo(WARN);
+    assertThat(violation.getEndLine()) //
+        .isEqualTo(75);
+    assertThat(violation.getColumn()) //
+        .isEqualTo(35);
+    assertThat(violation.getEndColumn()) //
+        .isEqualTo(16);
+  }
+
+  /**
+   * The file inventory made the parser throw, and {@link
+   * se.bjurr.violations.lib.reports.ViolationsFinder} logs and swallows that, so every duplication
+   * in the report was lost without any error being reported to the caller.
+   */
+  @Test
+  public void testThatPmdCpdFileInventoryDoesNotDiscardTheReport() {
+    final String rootFolder = getRootFolder();
+
+    final Set<Violation> actual =
+        violationsApi() //
+            .withPattern(".*/cpd/pmd7-cpd-report-with-file-inventory\\.xml$") //
+            .inFolder(rootFolder) //
+            .findAll(CPD) //
+            .violations();
+
+    assertThat(actual) //
+        .hasSize(6);
+  }
+
+  /** PMD 7.0.0 reports have the file inventory but no namespace, so they take the old code path. */
+  @Test
+  public void testThatPmdCpdFileInventoryIsIgnoredWithoutNamespace() throws Exception {
+    final String report = readReport("pmd7-cpd-report-no-namespace.xml");
+
+    final Set<Violation> actual = CPD.getViolationsParser().parseReportOutput(report, null);
+
+    assertThat(actual) //
+        .hasSize(6);
+
+    assertThat(actual) //
+        .extracting(Violation::getFile) //
+        .doesNotContain("/example/project/model/src/main/java/AbstractEntity.java");
+
+    final Violation violation = withStartLine(actual, 40);
+    assertThat(violation.getFile()) //
+        .isEqualTo("/example/project/model/src/main/java/SiteComputedUsageCdr.java");
+    assertThat(violation.getRule()) //
+        .isEqualTo("DUPLICATION");
+    assertThat(violation.getSeverity()) //
+        .isEqualTo(WARN);
+  }
+
+  @Test
+  public void testThatPmdCpdFileInventoryDoesNotDiscardTheReportWithoutNamespace() {
+    final String rootFolder = getRootFolder();
+
+    final Set<Violation> actual =
+        violationsApi() //
+            .withPattern(".*/cpd/pmd7-cpd-report-no-namespace\\.xml$") //
+            .inFolder(rootFolder) //
+            .findAll(CPD) //
+            .violations();
+
+    assertThat(actual) //
+        .hasSize(6);
+  }
+
+  private static String readReport(final String name) throws Exception {
+    return new String(
+        Files.readAllBytes(Paths.get(getRootFolder(), "cpd", name)), StandardCharsets.UTF_8);
+  }
+
+  private static Violation withStartLine(final Set<Violation> violations, final int startLine) {
+    for (final Violation violation : violations) {
+      if (violation.getStartLine().equals(startLine)) {
+        return violation;
+      }
+    }
+    throw new AssertionError("No violation with start line " + startLine + " in " + violations);
   }
 }
