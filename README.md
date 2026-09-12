@@ -10,6 +10,7 @@ Example of supported reports are available [here](https://github.com/tomasbjerre
 | --------------------| ------------ |
 | version < 1.156.8   | 8            |
 | 1.156.8 <= version  | 11           |
+| 2.0.0 <= version    | 17           |
 
 A number of **parsers** have been implemented. Some **parsers** can parse output from several **reporters**.
 
