@@ -4,7 +4,6 @@ import static java.util.logging.Level.FINE;
 import static se.bjurr.violations.lib.model.Violation.violationBuilder;
 import static se.bjurr.violations.lib.reports.Parser.SONAR;
 
-import com.google.gson.Gson;
 import edu.umd.cs.findbugs.annotations.SuppressFBWarnings;
 import java.util.ArrayList;
 import java.util.List;
@@ -13,6 +12,7 @@ import java.util.TreeSet;
 import se.bjurr.violations.lib.ViolationsLogger;
 import se.bjurr.violations.lib.model.SEVERITY;
 import se.bjurr.violations.lib.model.Violation;
+import se.bjurr.violations.lib.util.JsonMappers;
 
 public class SonarParser implements ViolationsParser {
 
@@ -105,7 +105,7 @@ public class SonarParser implements ViolationsParser {
   @SuppressFBWarnings("UWF_UNWRITTEN_FIELD")
   public Set<Violation> parseReportOutput(
       final String string, final ViolationsLogger violationsLogger) throws Exception {
-    final SonarReport sonarReport = new Gson().fromJson(string, SonarReport.class);
+    final SonarReport sonarReport = JsonMappers.JSON_MAPPER.readValue(string, SonarReport.class);
 
     final Set<Violation> violations = new TreeSet<>();
 

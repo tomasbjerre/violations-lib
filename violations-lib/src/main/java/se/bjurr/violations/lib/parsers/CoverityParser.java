@@ -4,7 +4,6 @@ import static se.bjurr.violations.lib.model.SEVERITY.ERROR;
 import static se.bjurr.violations.lib.model.SEVERITY.WARN;
 import static se.bjurr.violations.lib.model.Violation.violationBuilder;
 
-import com.google.gson.Gson;
 import java.util.List;
 import java.util.Set;
 import java.util.TreeSet;
@@ -15,6 +14,7 @@ import se.bjurr.violations.lib.model.generated.coverity.CheckerProperty;
 import se.bjurr.violations.lib.model.generated.coverity.CoveritySchema;
 import se.bjurr.violations.lib.model.generated.coverity.Issue;
 import se.bjurr.violations.lib.reports.Parser;
+import se.bjurr.violations.lib.util.JsonMappers;
 import se.bjurr.violations.lib.util.Utils;
 
 public class CoverityParser implements ViolationsParser {
@@ -22,7 +22,8 @@ public class CoverityParser implements ViolationsParser {
   @Override
   public Set<Violation> parseReportOutput(
       final String string, final ViolationsLogger violationsLogger) throws Exception {
-    final CoveritySchema coverityReport = new Gson().fromJson(string, CoveritySchema.class);
+    final CoveritySchema coverityReport =
+        JsonMappers.JSON_MAPPER.readValue(string, CoveritySchema.class);
 
     final Set<Violation> violations = new TreeSet<>();
     final List<Issue> issues = coverityReport.getIssues();

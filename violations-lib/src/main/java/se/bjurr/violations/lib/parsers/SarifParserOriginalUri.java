@@ -1,11 +1,5 @@
 package se.bjurr.violations.lib.parsers;
 
-import com.google.gson.JsonDeserializationContext;
-import com.google.gson.JsonDeserializer;
-import com.google.gson.JsonElement;
-import com.google.gson.JsonObject;
-import com.google.gson.JsonPrimitive;
-import java.lang.reflect.Type;
 import java.util.Map;
 import java.util.Map.Entry;
 import java.util.TreeMap;
@@ -13,20 +7,23 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import se.bjurr.violations.lib.model.generated.sarif.ArtifactLocation;
 import se.bjurr.violations.lib.model.generated.sarif.OriginalUriBaseIds;
+import tools.jackson.core.JsonParser;
+import tools.jackson.databind.DeserializationContext;
+import tools.jackson.databind.JsonNode;
+import tools.jackson.databind.ValueDeserializer;
 
 public class SarifParserOriginalUri {
   private static Logger LOGGER = Logger.getLogger(SarifParserOriginalUri.class.getSimpleName());
 
-  static class OriginalUriBaseIdsStringsDeserializer
-      implements JsonDeserializer<OriginalUriBaseIds> {
+  static class OriginalUriBaseIdsStringsDeserializer extends ValueDeserializer<OriginalUriBaseIds> {
 
     @Override
-    public OriginalUriBaseIds deserialize(
-        final JsonElement json, final Type typeOfT, final JsonDeserializationContext context) {
+    public OriginalUriBaseIds deserialize(final JsonParser p, final DeserializationContext ctxt) {
+      final JsonNode json = ctxt.readTree(p);
       try {
         final OriginalUriBaseIds to = new OriginalUriBaseIds();
 
-        for (final Entry<String, JsonElement> entry : json.getAsJsonObject().entrySet()) {
+        for (final Entry<String, JsonNode> entry : json.properties()) {
           final ArtifactLocation al = this.toArtifactLocation(entry.getValue());
           to.setAdditionalProperty(entry.getKey(), al);
         }
@@ -38,22 +35,20 @@ public class SarifParserOriginalUri {
       }
     }
 
-    private ArtifactLocation toArtifactLocation(final JsonElement artifactLocationJsonElement) {
+    private ArtifactLocation toArtifactLocation(final JsonNode artifactLocationJson) {
       final ArtifactLocation al = new ArtifactLocation();
-      if (artifactLocationJsonElement instanceof JsonObject) {
-        final JsonObject valueObject = artifactLocationJsonElement.getAsJsonObject();
-
-        final JsonElement uriAttr = valueObject.get("uri");
+      if (artifactLocationJson.isObject()) {
+        final JsonNode uriAttr = artifactLocationJson.get("uri");
         if (uriAttr != null) {
-          al.setUri(uriAttr.getAsString());
+          al.setUri(uriAttr.asText());
         }
 
-        final JsonElement uriBaseIdAttr = valueObject.get("uriBaseId");
+        final JsonNode uriBaseIdAttr = artifactLocationJson.get("uriBaseId");
         if (uriBaseIdAttr != null) {
-          al.setUriBaseId(uriBaseIdAttr.getAsString());
+          al.setUriBaseId(uriBaseIdAttr.asText());
         }
-      } else if (artifactLocationJsonElement instanceof JsonPrimitive) {
-        al.setUri(artifactLocationJsonElement.getAsString());
+      } else if (artifactLocationJson.isValueNode()) {
+        al.setUri(artifactLocationJson.asText());
       }
       if (al.getUri() == null) {
         al.setUri("");

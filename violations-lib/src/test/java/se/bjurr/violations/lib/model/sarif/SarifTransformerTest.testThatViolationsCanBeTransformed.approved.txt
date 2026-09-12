@@ -1,135 +1,121 @@
 {
-  "version": "2.1.0",
-  "runs": [
-    {
-      "tool": {
-        "driver": {
-          "name": "Violations Lib",
-          "notifications": [],
-          "rules": [],
-          "taxa": [],
-          "locations": [],
-          "language": "en-US",
-          "contents": [
-            "nonLocalizedData"
-          ],
-          "isComprehensive": true,
-          "supportedTaxonomies": []
+  "inlineExternalProperties" : [ ],
+  "runs" : [ {
+    "addresses" : [ ],
+    "artifacts" : [ ],
+    "graphs" : [ ],
+    "invocations" : [ ],
+    "language" : "en-US",
+    "logicalLocations" : [ ],
+    "newlineSequences" : [ "\r\n", "\n" ],
+    "policies" : [ ],
+    "redactionTokens" : [ ],
+    "results" : [ {
+      "attachments" : [ ],
+      "codeFlows" : [ ],
+      "fixes" : [ ],
+      "graphTraversals" : [ ],
+      "graphs" : [ ],
+      "kind" : "fail",
+      "level" : "none",
+      "locations" : [ {
+        "annotations" : [ ],
+        "id" : -1,
+        "logicalLocations" : [ ],
+        "physicalLocation" : {
+          "artifactLocation" : {
+            "index" : -1,
+            "uri" : "whatever/path.c"
+          },
+          "region" : {
+            "byteOffset" : -1,
+            "charOffset" : -1,
+            "endLine" : 123,
+            "message" : {
+              "arguments" : [ ],
+              "text" : "asdasd"
+            },
+            "startLine" : 123
+          }
         },
-        "extensions": []
+        "relationships" : [ ]
+      } ],
+      "message" : {
+        "arguments" : [ ],
+        "text" : "asdasd"
       },
-      "invocations": [],
-      "language": "en-US",
-      "versionControlProvenance": [],
-      "artifacts": [],
-      "logicalLocations": [],
-      "graphs": [],
-      "results": [
-        {
-          "ruleId": "",
-          "ruleIndex": -1,
-          "kind": "fail",
-          "level": "none",
-          "message": {
-            "text": "asdasd",
-            "arguments": []
+      "rank" : -1.0,
+      "relatedLocations" : [ ],
+      "ruleId" : "",
+      "ruleIndex" : -1,
+      "stacks" : [ ],
+      "suppressions" : [ ],
+      "taxa" : [ ],
+      "workItemUris" : [ ]
+    }, {
+      "attachments" : [ ],
+      "codeFlows" : [ ],
+      "fixes" : [ ],
+      "graphTraversals" : [ ],
+      "graphs" : [ ],
+      "kind" : "fail",
+      "level" : "error",
+      "locations" : [ {
+        "annotations" : [ ],
+        "id" : -1,
+        "logicalLocations" : [ ],
+        "physicalLocation" : {
+          "artifactLocation" : {
+            "index" : -1,
+            "uri" : "whatever/path.c"
           },
-          "locations": [
-            {
-              "id": -1,
-              "physicalLocation": {
-                "artifactLocation": {
-                  "uri": "whatever/path.c",
-                  "index": -1
-                },
-                "region": {
-                  "startLine": 123,
-                  "endLine": 123,
-                  "charOffset": -1,
-                  "byteOffset": -1,
-                  "message": {
-                    "text": "asdasd",
-                    "arguments": []
-                  }
-                }
-              },
-              "logicalLocations": [],
-              "annotations": [],
-              "relationships": []
-            }
-          ],
-          "stacks": [],
-          "codeFlows": [],
-          "graphs": [],
-          "graphTraversals": [],
-          "relatedLocations": [],
-          "suppressions": [],
-          "rank": -1.0,
-          "attachments": [],
-          "workItemUris": [],
-          "fixes": [],
-          "taxa": []
+          "region" : {
+            "byteOffset" : -1,
+            "charOffset" : -1,
+            "endLine" : 123,
+            "message" : {
+              "arguments" : [ ],
+              "text" : "asdasd"
+            },
+            "startLine" : 123
+          }
         },
-        {
-          "ruleId": "Cyclomatic complexity",
-          "ruleIndex": -1,
-          "kind": "fail",
-          "level": "error",
-          "message": {
-            "text": "asdasd",
-            "arguments": []
-          },
-          "locations": [
-            {
-              "id": -1,
-              "physicalLocation": {
-                "artifactLocation": {
-                  "uri": "whatever/path.c",
-                  "index": -1
-                },
-                "region": {
-                  "startLine": 123,
-                  "endLine": 123,
-                  "charOffset": -1,
-                  "byteOffset": -1,
-                  "message": {
-                    "text": "asdasd",
-                    "arguments": []
-                  }
-                }
-              },
-              "logicalLocations": [],
-              "annotations": [],
-              "relationships": []
-            }
-          ],
-          "stacks": [],
-          "codeFlows": [],
-          "graphs": [],
-          "graphTraversals": [],
-          "relatedLocations": [],
-          "suppressions": [],
-          "rank": -1.0,
-          "attachments": [],
-          "workItemUris": [],
-          "fixes": [],
-          "taxa": []
-        }
-      ],
-      "runAggregates": [],
-      "redactionTokens": [],
-      "newlineSequences": [
-        "\r\n",
-        "\n"
-      ],
-      "threadFlowLocations": [],
-      "taxonomies": [],
-      "addresses": [],
-      "translations": [],
-      "policies": [],
-      "webRequests": [],
-      "webResponses": []
-    }
-  ],
-  "inlineExternalProperties": []
+        "relationships" : [ ]
+      } ],
+      "message" : {
+        "arguments" : [ ],
+        "text" : "asdasd"
+      },
+      "rank" : -1.0,
+      "relatedLocations" : [ ],
+      "ruleId" : "Cyclomatic complexity",
+      "ruleIndex" : -1,
+      "stacks" : [ ],
+      "suppressions" : [ ],
+      "taxa" : [ ],
+      "workItemUris" : [ ]
+    } ],
+    "runAggregates" : [ ],
+    "taxonomies" : [ ],
+    "threadFlowLocations" : [ ],
+    "tool" : {
+      "driver" : {
+        "contents" : [ "nonLocalizedData" ],
+        "isComprehensive" : true,
+        "language" : "en-US",
+        "locations" : [ ],
+        "name" : "Violations Lib",
+        "notifications" : [ ],
+        "rules" : [ ],
+        "supportedTaxonomies" : [ ],
+        "taxa" : [ ]
+      },
+      "extensions" : [ ]
+    },
+    "translations" : [ ],
+    "versionControlProvenance" : [ ],
+    "webRequests" : [ ],
+    "webResponses" : [ ]
+  } ],
+  "version" : "2.1.0"
 }

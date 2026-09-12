@@ -6,7 +6,6 @@ import static se.bjurr.violations.lib.model.Violation.violationBuilder;
 import static se.bjurr.violations.lib.reports.Parser.VALGRIND;
 import static se.bjurr.violations.lib.util.ViolationParserUtils.createXmlReader;
 
-import com.google.gson.Gson;
 import java.io.ByteArrayInputStream;
 import java.io.InputStream;
 import java.util.ArrayList;
@@ -19,6 +18,7 @@ import javax.xml.stream.XMLStreamConstants;
 import javax.xml.stream.XMLStreamReader;
 import se.bjurr.violations.lib.ViolationsLogger;
 import se.bjurr.violations.lib.model.Violation;
+import se.bjurr.violations.lib.util.JsonMappers;
 
 public class ValgrindParser implements ViolationsParser {
 
@@ -28,7 +28,6 @@ public class ValgrindParser implements ViolationsParser {
     final Set<Violation> violations = new TreeSet<>();
     try (InputStream input = new ByteArrayInputStream(reportContent.getBytes(UTF_8))) {
       final XMLStreamReader xml = createXmlReader(input);
-      final Gson gson = new Gson();
 
       String reporter = null;
       String source = null;
@@ -133,7 +132,7 @@ public class ValgrindParser implements ViolationsParser {
             }
 
             if ((auxWhats != null) && !auxWhats.isEmpty()) {
-              specifics.put("auxwhats", gson.toJson(auxWhats));
+              specifics.put("auxwhats", JsonMappers.JSON_MAPPER.writeValueAsString(auxWhats));
             }
 
             if ((stacks != null) && !stacks.isEmpty()) {
@@ -145,7 +144,7 @@ public class ValgrindParser implements ViolationsParser {
                 }
               }
 
-              specifics.put("stacks", gson.toJson(stacks));
+              specifics.put("stacks", JsonMappers.JSON_MAPPER.writeValueAsString(stacks));
             }
 
             if (suppression != null) {

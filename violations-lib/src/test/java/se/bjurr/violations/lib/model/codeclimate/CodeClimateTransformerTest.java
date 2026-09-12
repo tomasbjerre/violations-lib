@@ -3,7 +3,6 @@ package se.bjurr.violations.lib.model.codeclimate;
 import static org.assertj.core.api.Assertions.assertThat;
 import static se.bjurr.violations.lib.model.Violation.violationBuilder;
 
-import com.google.gson.GsonBuilder;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -13,8 +12,13 @@ import org.junit.jupiter.api.Test;
 import se.bjurr.violations.lib.model.SEVERITY;
 import se.bjurr.violations.lib.model.Violation;
 import se.bjurr.violations.lib.reports.Parser;
+import se.bjurr.violations.lib.util.JsonMappers;
+import tools.jackson.databind.SerializationFeature;
+import tools.jackson.databind.json.JsonMapper;
 
 public class CodeClimateTransformerTest {
+  private static final JsonMapper JSON_MAPPER =
+      JsonMappers.JSON_MAPPER.rebuild().enable(SerializationFeature.INDENT_OUTPUT).build();
 
   @Test
   public void testThatViolationsCanBeTransformed() {
@@ -102,6 +106,6 @@ public class CodeClimateTransformerTest {
   }
 
   private String toJson(final Object o) {
-    return new GsonBuilder().setPrettyPrinting().create().toJson(o);
+    return JSON_MAPPER.writeValueAsString(o);
   }
 }

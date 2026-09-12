@@ -4,13 +4,13 @@ import static java.util.logging.Level.FINE;
 import static se.bjurr.violations.lib.model.Violation.violationBuilder;
 import static se.bjurr.violations.lib.reports.Parser.DOCFX;
 
-import com.google.gson.Gson;
 import java.util.Map;
 import java.util.Set;
 import java.util.TreeSet;
 import se.bjurr.violations.lib.ViolationsLogger;
 import se.bjurr.violations.lib.model.SEVERITY;
 import se.bjurr.violations.lib.model.Violation;
+import se.bjurr.violations.lib.util.JsonMappers;
 import se.bjurr.violations.lib.util.StringUtils;
 
 public class DocFXParser implements ViolationsParser {
@@ -23,7 +23,8 @@ public class DocFXParser implements ViolationsParser {
     final String[] lines = reportContent.split("\\r?\\n");
     for (final String rawLineToParse : lines) {
       @SuppressWarnings("unchecked")
-      final Map<String, Object> parsedMap = new Gson().fromJson(rawLineToParse, Map.class);
+      final Map<String, Object> parsedMap =
+          JsonMappers.JSON_MAPPER.readValue(rawLineToParse, Map.class);
       final String message = (String) parsedMap.get("message");
       String messageSeverity = (String) parsedMap.get("severity");
       final String messageSeverityOld = (String) parsedMap.get("message_severity");

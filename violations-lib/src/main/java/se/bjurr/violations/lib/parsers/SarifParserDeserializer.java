@@ -1,12 +1,5 @@
 package se.bjurr.violations.lib.parsers;
 
-import com.google.gson.GsonBuilder;
-import com.google.gson.JsonArray;
-import com.google.gson.JsonDeserializationContext;
-import com.google.gson.JsonDeserializer;
-import com.google.gson.JsonElement;
-import com.google.gson.JsonObject;
-import java.lang.reflect.Type;
 import java.util.Map.Entry;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -18,33 +11,45 @@ import se.bjurr.violations.lib.model.generated.sarif.OriginalUriBaseIds;
 import se.bjurr.violations.lib.model.generated.sarif.PropertyBag;
 import se.bjurr.violations.lib.model.generated.sarif.ReportingConfiguration;
 import se.bjurr.violations.lib.model.generated.sarif.SarifSchema;
+import se.bjurr.violations.lib.util.JsonMappers;
+import tools.jackson.core.JsonParser;
+import tools.jackson.databind.DeserializationContext;
+import tools.jackson.databind.JsonNode;
+import tools.jackson.databind.ValueDeserializer;
+import tools.jackson.databind.json.JsonMapper;
+import tools.jackson.databind.module.SimpleModule;
 
 public class SarifParserDeserializer {
   private static Logger LOGGER = Logger.getLogger(SarifParserDeserializer.class.getSimpleName());
 
+  private static final JsonMapper JSON_MAPPER =
+      JsonMappers.JSON_MAPPER
+          .rebuild()
+          .addModule(
+              new SimpleModule()
+                  .addDeserializer(Notification.Level.class, new NotificationDeserializer())
+                  .addDeserializer(
+                      ReportingConfiguration.Level.class, new ReportingConfigurationDeserializer())
+                  .addDeserializer(MessageStrings.class, new MessageStringsDeserializer())
+                  .addDeserializer(PropertyBag.class, new PropertyBagDeserializer())
+                  .addDeserializer(
+                      OriginalUriBaseIds.class,
+                      new SarifParserOriginalUri.OriginalUriBaseIdsStringsDeserializer()))
+          .build();
+
   public static SarifSchema fromJson(final String reportContent) {
-    return new GsonBuilder()
-        .registerTypeAdapter(Notification.Level.class, new NotificationDeserializer())
-        .registerTypeAdapter(
-            ReportingConfiguration.Level.class, new ReportingConfigurationDeserializer())
-        .registerTypeAdapter(MessageStrings.class, new MessageStringsDeserializer())
-        .registerTypeAdapter(PropertyBag.class, new PropertyBagDeserializer())
-        .registerTypeAdapter(
-            OriginalUriBaseIds.class,
-            new SarifParserOriginalUri.OriginalUriBaseIdsStringsDeserializer())
-        .create()
-        .fromJson(reportContent, SarifSchema.class);
+    return JSON_MAPPER.readValue(reportContent, SarifSchema.class);
   }
 
-  private static class NotificationDeserializer implements JsonDeserializer<Notification.Level> {
+  private static class NotificationDeserializer extends ValueDeserializer<Notification.Level> {
 
     @Override
-    public Notification.Level deserialize(
-        final JsonElement json, final Type typeOfT, final JsonDeserializationContext context) {
+    public Notification.Level deserialize(final JsonParser p, final DeserializationContext ctxt) {
+      final JsonNode json = ctxt.readTree(p);
       try {
-        final String asString = json.getAsString();
+        final String asString = json.asText();
         return Notification.Level.fromValue(asString);
-      } catch (final Exception e) {
+      } catch (final RuntimeException e) {
         LOGGER.log(Level.SEVERE, json.toString(), e);
         return Notification.Level.NONE;
       }
@@ -52,34 +57,34 @@ public class SarifParserDeserializer {
   }
 
   private static class ReportingConfigurationDeserializer
-      implements JsonDeserializer<ReportingConfiguration.Level> {
+      extends ValueDeserializer<ReportingConfiguration.Level> {
 
     @Override
     public ReportingConfiguration.Level deserialize(
-        final JsonElement json, final Type typeOfT, final JsonDeserializationContext context) {
+        final JsonParser p, final DeserializationContext ctxt) {
+      final JsonNode json = ctxt.readTree(p);
       try {
-        final String asString = json.getAsString();
+        final String asString = json.asText();
         return ReportingConfiguration.Level.fromValue(asString);
-      } catch (final Exception e) {
+      } catch (final RuntimeException e) {
         LOGGER.log(Level.SEVERE, json.toString(), e);
         return ReportingConfiguration.Level.NONE;
       }
     }
   }
 
-  private static class MessageStringsDeserializer implements JsonDeserializer<MessageStrings> {
+  private static class MessageStringsDeserializer extends ValueDeserializer<MessageStrings> {
 
     @Override
-    public MessageStrings deserialize(
-        final JsonElement json, final Type typeOfT, final JsonDeserializationContext context) {
+    public MessageStrings deserialize(final JsonParser p, final DeserializationContext ctxt) {
+      final JsonNode json = ctxt.readTree(p);
       try {
         final MessageStrings messageStrings = new MessageStrings();
 
-        for (final Entry<String, JsonElement> entry : json.getAsJsonObject().entrySet()) {
-          for (final Entry<String, JsonElement> valueEntry :
-              entry.getValue().getAsJsonObject().entrySet()) {
+        for (final Entry<String, JsonNode> entry : json.properties()) {
+          for (final Entry<String, JsonNode> valueEntry : entry.getValue().properties()) {
             final MultiformatMessageString mv = new MultiformatMessageString();
-            mv.setText(valueEntry.getValue().getAsString());
+            mv.setText(valueEntry.getValue().asText());
             messageStrings.getAdditionalProperties().put(entry.getKey(), mv);
           }
         }
@@ -92,24 +97,21 @@ public class SarifParserDeserializer {
     }
   }
 
-  private static class PropertyBagDeserializer implements JsonDeserializer<PropertyBag> {
+  private static class PropertyBagDeserializer extends ValueDeserializer<PropertyBag> {
 
     @Override
-    public PropertyBag deserialize(
-        final JsonElement json, final Type typeOfT, final JsonDeserializationContext context) {
+    public PropertyBag deserialize(final JsonParser p, final DeserializationContext ctxt) {
+      final JsonNode json = ctxt.readTree(p);
       try {
         final PropertyBag pb = new PropertyBag();
-        JsonObject jsonObject = json.getAsJsonObject();
-        JsonElement categoryValue = jsonObject.get("category");
+        final JsonNode categoryValue = json.get("category");
         if (categoryValue != null) {
-          if (categoryValue instanceof JsonArray) {
-            String arrayAsString =
-                categoryValue.getAsJsonArray().asList().stream()
-                    .map(it -> it.getAsString())
-                    .collect(Collectors.joining(","));
+          if (categoryValue.isArray()) {
+            final String arrayAsString =
+                categoryValue.valueStream().map(it -> it.asText()).collect(Collectors.joining(","));
             pb.setCategory(arrayAsString);
           } else {
-            pb.setCategory(categoryValue.getAsString());
+            pb.setCategory(categoryValue.asText());
           }
         }
         return pb;

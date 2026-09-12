@@ -4,7 +4,6 @@ import static se.bjurr.violations.lib.model.SEVERITY.ERROR;
 import static se.bjurr.violations.lib.model.SEVERITY.INFO;
 import static se.bjurr.violations.lib.model.SEVERITY.WARN;
 
-import com.google.gson.Gson;
 import java.util.Arrays;
 import java.util.Set;
 import java.util.stream.Collectors;
@@ -12,6 +11,7 @@ import se.bjurr.violations.lib.ViolationsLogger;
 import se.bjurr.violations.lib.model.SEVERITY;
 import se.bjurr.violations.lib.model.Violation;
 import se.bjurr.violations.lib.reports.Parser;
+import se.bjurr.violations.lib.util.JsonMappers;
 
 public class AnsibleLaterParser implements ViolationsParser {
 
@@ -35,7 +35,7 @@ public class AnsibleLaterParser implements ViolationsParser {
       final String string, final ViolationsLogger violationsLogger) throws Exception {
     return Arrays.asList(string.split("\\r?\\n|\\r")).stream()
         .filter(it -> !it.trim().isEmpty())
-        .map(it -> new Gson().fromJson(it, AnsibleLaterEntry.class))
+        .map(it -> JsonMappers.JSON_MAPPER.readValue(it, AnsibleLaterEntry.class))
         .map(
             it ->
                 Violation.violationBuilder()

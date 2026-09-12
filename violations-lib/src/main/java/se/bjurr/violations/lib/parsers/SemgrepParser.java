@@ -3,7 +3,6 @@ package se.bjurr.violations.lib.parsers;
 import static se.bjurr.violations.lib.model.Violation.violationBuilder;
 import static se.bjurr.violations.lib.reports.Parser.SEMGREP;
 
-import com.google.gson.Gson;
 import edu.umd.cs.findbugs.annotations.SuppressFBWarnings;
 import java.util.LinkedHashSet;
 import java.util.List;
@@ -11,6 +10,7 @@ import java.util.Set;
 import se.bjurr.violations.lib.ViolationsLogger;
 import se.bjurr.violations.lib.model.SEVERITY;
 import se.bjurr.violations.lib.model.Violation;
+import se.bjurr.violations.lib.util.JsonMappers;
 
 public class SemgrepParser implements ViolationsParser {
 
@@ -22,7 +22,8 @@ public class SemgrepParser implements ViolationsParser {
   public Set<Violation> parseReportOutput(
       final String reportContent, final ViolationsLogger violationsLogger) throws Exception {
     final Set<Violation> violations = new LinkedHashSet<>();
-    final SemgrepReport report = new Gson().fromJson(reportContent, SemgrepReport.class);
+    final SemgrepReport report =
+        JsonMappers.JSON_MAPPER.readValue(reportContent, SemgrepReport.class);
     for (final SemgrepResult result : report.results) {
       if (!result.extra.is_ignored) {
         violations.add(

@@ -3,7 +3,6 @@ package se.bjurr.violations.lib.model.sarif;
 import static org.assertj.core.api.Assertions.assertThat;
 import static se.bjurr.violations.lib.model.Violation.violationBuilder;
 
-import com.google.gson.GsonBuilder;
 import com.networknt.schema.Error;
 import com.networknt.schema.InputFormat;
 import com.networknt.schema.Schema;
@@ -21,8 +20,13 @@ import org.junit.jupiter.api.Test;
 import se.bjurr.violations.lib.model.SEVERITY;
 import se.bjurr.violations.lib.model.Violation;
 import se.bjurr.violations.lib.reports.Parser;
+import se.bjurr.violations.lib.util.JsonMappers;
+import tools.jackson.databind.SerializationFeature;
+import tools.jackson.databind.json.JsonMapper;
 
 public class SarifTransformerTest {
+  private static final JsonMapper JSON_MAPPER =
+      JsonMappers.JSON_MAPPER.rebuild().enable(SerializationFeature.INDENT_OUTPUT).build();
 
   @Test
   public void testThatViolationsCanBeTransformed() throws Exception {
@@ -74,6 +78,6 @@ public class SarifTransformerTest {
   }
 
   private String toJson(final Object o) {
-    return new GsonBuilder().setPrettyPrinting().create().toJson(o);
+    return JSON_MAPPER.writeValueAsString(o);
   }
 }
