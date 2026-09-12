@@ -1,4 +1,4 @@
-## Unreleased ()
+## 2.0.0 (2026-09-12)
 
 ### Breaking changes
 
