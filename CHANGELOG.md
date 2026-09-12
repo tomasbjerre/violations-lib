@@ -1,3 +1,8 @@
+## 2.0.1 (2026-09-12)
+
+### Dependency updates
+
+- replacing gson with jackson ([4a209](https://github.com/tomasbjerre/violations-lib/commit/4a209c0abed6d16) Tomas Bjerre)  
 ## 2.0.0 (2026-09-12)
 
 ### Breaking changes
