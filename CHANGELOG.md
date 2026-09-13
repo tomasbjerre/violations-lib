@@ -1,3 +1,10 @@
+## 2.0.2 (2026-09-13)
+
+### Bug Fixes
+
+-  stop relocating JDK org.w3c.dom/org.xml.sax in shaded jar ([88817](https://github.com/tomasbjerre/violations-lib/commit/88817543e65c73b) Tomas Bjerre)  
+-  removing java 21 and 23 classes ([c807d](https://github.com/tomasbjerre/violations-lib/commit/c807d52bf3a824b) Tomas Bjerre)  [#200](https://github.com/tomasbjerre/violations-lib/issues/200)  
+
 ## 2.0.1 (2026-09-12)
 
 ### Dependency updates

@@ -96,9 +96,9 @@ project(":violations-lib") {
 		dependsOn(tasks.named("shadowJar"))
 		doFirst {
 			systemProperty(
-				"violations.lib.shadowJarPath",
-				tasks.named("shadowJar").get().archiveFile.get().asFile.absolutePath
-			)
+					"violations.lib.shadowJarPath",
+					tasks.named("shadowJar").get().archiveFile.get().asFile.absolutePath
+					)
 		}
 	}
 }
