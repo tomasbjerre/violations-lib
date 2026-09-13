@@ -76,8 +76,13 @@ project(":violations-lib") {
 	}
 
 
+	// Do not relocate "com": it would rewrite com.fasterxml.jackson.annotation
+	// references inside the bundled (unrelocated) tools.jackson.databind classes too,
+	// producing a MapperBuilder with the same FQN as the real one but an incompatible
+	// JsonInclude.Value type, causing a ClassCastException for consumers that also use
+	// Jackson 3 on the same classpath (e.g. git-changelog-lib).
 	shadowExtension {
-		relocate.set("se:se,com")
+		relocate.set("se:se")
 	}
 
 	// Jackson ships Java 21/23 optimized class variants in its multi-release
