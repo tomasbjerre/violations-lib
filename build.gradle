@@ -1,5 +1,5 @@
 plugins {
-	id "se.bjurr.gradle.bundle-jar-shadow" version "2.1.1"
+	id "se.bjurr.gradle.bundle-jar" version "2.1.1"
 	id "org.jsonschema2pojo" version "1.3.3" apply false
 }
 
@@ -59,7 +59,7 @@ allprojects {
 
 project(":violations-lib") {
 	dependencies {
-		implementation project(":violations-lib-sarif")
+		api project(":violations-lib-sarif")
 		implementation project(":violations-lib-coverty")
 		implementation "tools.jackson.core:jackson-databind:3.2.2"
 		implementation "org.owasp.encoder:encoder:1.4.0"
@@ -75,35 +75,7 @@ project(":violations-lib") {
 		testImplementation "com.networknt:json-schema-validator:3.0.7"
 	}
 
-
-	// Do not relocate "com": it would rewrite com.fasterxml.jackson.annotation
-	// references inside the bundled (unrelocated) tools.jackson.databind classes too,
-	// producing a MapperBuilder with the same FQN as the real one but an incompatible
-	// JsonInclude.Value type, causing a ClassCastException for consumers that also use
-	// Jackson 3 on the same classpath (e.g. git-changelog-lib).
-	shadowExtension {
-		relocate.set("se:se")
-	}
-
-	// Jackson ships Java 21/23 optimized class variants in its multi-release
-	tasks.named("shadowJar") {
-		exclude "META-INF/versions/21/**"
-		exclude "META-INF/versions/23/**"
-
-		relocate("org", "se.bjurr.violations.violationslib.org") {
-			exclude "org.w3c.dom.**"
-			exclude "org.xml.sax.**"
-		}
-	}
-
 	test {
 		useJUnitPlatform()
-		dependsOn(tasks.named("shadowJar"))
-		doFirst {
-			systemProperty(
-					"violations.lib.shadowJarPath",
-					tasks.named("shadowJar").get().archiveFile.get().asFile.absolutePath
-					)
-		}
 	}
 }
