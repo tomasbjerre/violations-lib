@@ -83,4 +83,10 @@ project(":violations-lib") {
 	shadowExtension {
 		relocate.set("se:se,com,org")
 	}
+
+	// Jackson ships Java 21/23 optimized class variants in its multi-release
+	tasks.named("shadowJar") {
+		exclude "META-INF/versions/21/**"
+		exclude "META-INF/versions/23/**"
+	}
 }
