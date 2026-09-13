@@ -76,17 +76,29 @@ project(":violations-lib") {
 	}
 
 
-	test {
-		useJUnitPlatform()
-	}
-
 	shadowExtension {
-		relocate.set("se:se,com,org")
+		relocate.set("se:se,com")
 	}
 
 	// Jackson ships Java 21/23 optimized class variants in its multi-release
 	tasks.named("shadowJar") {
 		exclude "META-INF/versions/21/**"
 		exclude "META-INF/versions/23/**"
+
+		relocate("org", "se.bjurr.violations.violationslib.org") {
+			exclude "org.w3c.dom.**"
+			exclude "org.xml.sax.**"
+		}
+	}
+
+	test {
+		useJUnitPlatform()
+		dependsOn(tasks.named("shadowJar"))
+		doFirst {
+			systemProperty(
+				"violations.lib.shadowJarPath",
+				tasks.named("shadowJar").get().archiveFile.get().asFile.absolutePath
+			)
+		}
 	}
 }
