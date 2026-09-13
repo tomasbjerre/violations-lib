@@ -1,3 +1,28 @@
+## 2.1.0 (2026-09-13)
+
+### Features
+
+-  avoiding fat jar to reduce file sizes and make dependencies clear ([78d42](https://github.com/tomasbjerre/violations-lib/commit/78d42b517daecaf) Tomas Bjerre)  
+
+### Bug Fixes
+
+-  stop relocating com.fasterxml.jackson in shaded jar ([68f3f](https://github.com/tomasbjerre/violations-lib/commit/68f3fbaefd0b974) Tomas Bjerre)  
+
+### Dependency updates
+
+- pin junit-platform-launcher version ([dadc6](https://github.com/tomasbjerre/violations-lib/commit/dadc6f5ff66146c) Tomas Bjerre)  
+### Other changes
+
+**Fix broken Maven Central badge in README**
+
+* maven-badges.herokuapp.com is down; switch to img.shields.io badge 
+* linking to search.maven.org. 
+* Co-Authored-By: Claude Sonnet 5 &lt;noreply@anthropic.com&gt; 
+* Claude-Session: https://claude.ai/code/session_011PGVf85V1VhJj4oM3rKh7b 
+
+[d3976](https://github.com/tomasbjerre/violations-lib/commit/d39768f169fb3c3) Tomas Bjerre *2026-09-13 08:52:01*
+
+
 ## 2.0.2 (2026-09-13)
 
 ### Bug Fixes
