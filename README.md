@@ -1,6 +1,6 @@
 # Violations Lib
 
-[![Maven Central](https://maven-badges.herokuapp.com/maven-central/se.bjurr.violations/violations-lib/badge.svg)](https://maven-badges.herokuapp.com/maven-central/se.bjurr.violations/violations-lib)
+[![Maven Central](https://img.shields.io/maven-central/v/se.bjurr.violations/violations-lib.svg?label=Maven%20Central)](https://search.maven.org/artifact/se.bjurr.violations/violations-lib)
 
 This is a Java library for parsing report files like static code analysis.
 
