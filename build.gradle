@@ -1,5 +1,5 @@
 plugins {
-	id "se.bjurr.gradle.bundle-jar" version "2.1.1"
+	id "se.bjurr.gradle.bundle-jar" version "2.2.1"
 	id "org.jsonschema2pojo" version "1.3.3" apply false
 }
 
