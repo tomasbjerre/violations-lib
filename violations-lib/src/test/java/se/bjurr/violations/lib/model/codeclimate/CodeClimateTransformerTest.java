@@ -70,6 +70,24 @@ public class CodeClimateTransformerTest {
   }
 
   @Test
+  public void testThatCategoriesAreSerializedAsSpecValues() {
+    final CodeClimate codeClimate =
+        new CodeClimate(
+            "Some description",
+            "fingerprintvalue",
+            new CodeClimateLocation("src/main/java/Some.java", new CodeClimateLines(1), null),
+            CodeClimateSeverity.critical,
+            "SomeCheck",
+            "Checkstyle",
+            Arrays.asList(CodeClimateCategory.BUGRISK),
+            new ArrayList<CodeClimateLocation>());
+
+    assertThat(this.toJson(codeClimate)) //
+        .contains("\"Bug Risk\"") //
+        .doesNotContain("\"BUGRISK\"");
+  }
+
+  @Test
   public void testThatViolationsAreGroupedWithOtherLocations() {
     final Set<Violation> violationSet = new TreeSet<>();
 
