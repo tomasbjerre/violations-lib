@@ -1,8 +1,10 @@
 package se.bjurr.violations.lib.reports;
 
 import java.io.File;
+import java.util.Arrays;
 import java.util.List;
 import java.util.Set;
+import java.util.stream.Collectors;
 import se.bjurr.violations.lib.ViolationsLogger;
 import se.bjurr.violations.lib.model.Violation;
 import se.bjurr.violations.lib.parsers.AndroidLintParser;
@@ -125,5 +127,24 @@ public enum Parser {
 
   public ViolationsParser getViolationsParser() {
     return this.violationsParser;
+  }
+
+  /**
+   * Looks up a {@link Parser} by name, case-insensitively.
+   *
+   * <p>Prefer this over {@link #valueOf(String)} when the name comes from user input, since it
+   * throws an {@link IllegalArgumentException} that lists the available parsers, instead of the
+   * JDK's default unhelpful "No enum constant ..." message.
+   */
+  public static Parser fromString(final String parserName) {
+    for (final Parser parser : Parser.values()) {
+      if (parser.name().equalsIgnoreCase(parserName)) {
+        return parser;
+      }
+    }
+    final String availableParsers =
+        Arrays.stream(Parser.values()).map(Parser::name).collect(Collectors.joining(", "));
+    throw new IllegalArgumentException(
+        "Unknown parser \"" + parserName + "\". Available parsers are: " + availableParsers);
   }
 }
