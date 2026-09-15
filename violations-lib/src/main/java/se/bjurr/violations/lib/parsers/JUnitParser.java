@@ -2,6 +2,7 @@ package se.bjurr.violations.lib.parsers;
 
 import static java.nio.charset.StandardCharsets.UTF_8;
 import static se.bjurr.violations.lib.model.SEVERITY.ERROR;
+import static se.bjurr.violations.lib.model.SEVERITY.WARN;
 import static se.bjurr.violations.lib.model.Violation.violationBuilder;
 import static se.bjurr.violations.lib.reports.Parser.JUNIT;
 import static se.bjurr.violations.lib.util.ViolationParserUtils.findAttribute;
@@ -19,6 +20,7 @@ import java.util.regex.Pattern;
 import javax.xml.stream.XMLStreamConstants;
 import javax.xml.stream.XMLStreamReader;
 import se.bjurr.violations.lib.ViolationsLogger;
+import se.bjurr.violations.lib.model.SEVERITY;
 import se.bjurr.violations.lib.model.Violation;
 import se.bjurr.violations.lib.util.ViolationParserUtils;
 
@@ -41,7 +43,10 @@ public class JUnitParser implements ViolationsParser {
             name = getAttribute(xmlr, "name");
           } else if (xmlr.getLocalName().equalsIgnoreCase("failure")
               || xmlr.getLocalName().equalsIgnoreCase("error")) {
-            final Violation v = this.parseFailure(xmlr, className, name, violationsLogger);
+            final Violation v = this.parseFailure(xmlr, className, name, ERROR, violationsLogger);
+            violations.add(v);
+          } else if (xmlr.getLocalName().equalsIgnoreCase("skipped")) {
+            final Violation v = this.parseFailure(xmlr, className, name, WARN, violationsLogger);
             violations.add(v);
           }
         }
@@ -60,6 +65,7 @@ public class JUnitParser implements ViolationsParser {
       final XMLStreamReader xmlr,
       final String className,
       final String name,
+      final SEVERITY severity,
       final ViolationsLogger violationsLogger)
       throws Exception {
     final String messageAttr = xmlr.getAttributeValue("", "message");
@@ -82,7 +88,7 @@ public class JUnitParser implements ViolationsParser {
         .setStartLine(fl.line) //
         .setFile(fl.file) //
         .setSource(className) //
-        .setSeverity(ERROR) //
+        .setSeverity(severity) //
         .build();
   }
 

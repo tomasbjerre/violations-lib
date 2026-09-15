@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="com.example.SkippedTest" tests="2" errors="0" failures="0" skipped="1">
+  <testcase classname="com.example.SkippedTest" name="testPassing" time="0.01"/>
+  <testcase classname="com.example.SkippedTest" name="testSkipped" time="0.0">
+    <skipped message="Ignored, not implemented yet"/>
+  </testcase>
+</testsuite>
