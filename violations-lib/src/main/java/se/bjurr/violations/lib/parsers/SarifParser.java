@@ -17,6 +17,9 @@ import se.bjurr.violations.lib.ViolationsLogger;
 import se.bjurr.violations.lib.model.SEVERITY;
 import se.bjurr.violations.lib.model.Violation;
 import se.bjurr.violations.lib.model.generated.sarif.Artifact;
+import se.bjurr.violations.lib.model.generated.sarif.ArtifactChange;
+import se.bjurr.violations.lib.model.generated.sarif.ArtifactContent;
+import se.bjurr.violations.lib.model.generated.sarif.Fix;
 import se.bjurr.violations.lib.model.generated.sarif.Invocation;
 import se.bjurr.violations.lib.model.generated.sarif.Location;
 import se.bjurr.violations.lib.model.generated.sarif.Message;
@@ -24,6 +27,7 @@ import se.bjurr.violations.lib.model.generated.sarif.Notification;
 import se.bjurr.violations.lib.model.generated.sarif.PhysicalLocation;
 import se.bjurr.violations.lib.model.generated.sarif.PropertyBag;
 import se.bjurr.violations.lib.model.generated.sarif.Region;
+import se.bjurr.violations.lib.model.generated.sarif.Replacement;
 import se.bjurr.violations.lib.model.generated.sarif.ReportingConfiguration;
 import se.bjurr.violations.lib.model.generated.sarif.ReportingDescriptor;
 import se.bjurr.violations.lib.model.generated.sarif.ReportingDescriptorReference;
@@ -96,6 +100,7 @@ public class SarifParser implements ViolationsParser {
               .orElse(null);
       final String category = this.getCategory(reportingDescriptor);
       final String reporter = this.getReporter(run, result.getRule());
+      final String suggestedChange = this.getSuggestedChange(result);
       if (ruleId == null && reportingDescriptor != null) {
         ruleId = reportingDescriptor.getId();
       }
@@ -119,6 +124,7 @@ public class SarifParser implements ViolationsParser {
                   .setReporter(reporter)
                   .setCategory(category)
                   .setSpecifics(specifics)
+                  .setSuggestedChange(suggestedChange)
                   .build());
         }
       } else {
@@ -135,6 +141,7 @@ public class SarifParser implements ViolationsParser {
                 .setReporter(reporter)
                 .setCategory(category)
                 .setSpecifics(specifics)
+                .setSuggestedChange(suggestedChange)
                 .build());
       }
     }
@@ -236,6 +243,31 @@ public class SarifParser implements ViolationsParser {
       parsed.filename += physicalLocation.getArtifactLocation().getUri();
     }
     return parsed;
+  }
+
+  /**
+   * SARIF {@code fixes} describe a proposed change as a set of artifact replacements. This takes
+   * the first {@code fix} and joins the replacement text of each of its {@code artifactChanges}, to
+   * give a simple, best-effort suggestion; it doesn't attempt to reproduce a full diff.
+   */
+  private String getSuggestedChange(final Result result) {
+    if (result.getFixes() == null || result.getFixes().isEmpty()) {
+      return null;
+    }
+    final Fix fix = result.getFixes().iterator().next();
+    final List<String> insertedTexts = new ArrayList<>();
+    for (final ArtifactChange artifactChange : fix.getArtifactChanges()) {
+      for (final Replacement replacement : artifactChange.getReplacements()) {
+        final ArtifactContent insertedContent = replacement.getInsertedContent();
+        if (insertedContent != null && insertedContent.getText() != null) {
+          insertedTexts.add(insertedContent.getText());
+        }
+      }
+    }
+    if (insertedTexts.isEmpty()) {
+      return null;
+    }
+    return String.join("\n", insertedTexts);
   }
 
   private boolean isSuppressed(final Result result) {
