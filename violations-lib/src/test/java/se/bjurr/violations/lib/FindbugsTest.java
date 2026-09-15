@@ -6,6 +6,9 @@ import static se.bjurr.violations.lib.TestUtils.getRootFolder;
 import static se.bjurr.violations.lib.ViolationsApi.violationsApi;
 import static se.bjurr.violations.lib.model.SEVERITY.ERROR;
 import static se.bjurr.violations.lib.model.SEVERITY.INFO;
+import static se.bjurr.violations.lib.model.SEVERITY.WARN;
+import static se.bjurr.violations.lib.parsers.FindbugsParser.FINDBUGS_RULE_ANALYSIS_ERROR;
+import static se.bjurr.violations.lib.parsers.FindbugsParser.FINDBUGS_RULE_MISSING_CLASS;
 import static se.bjurr.violations.lib.parsers.FindbugsParser.FINDBUGS_SPECIFIC_RANK;
 import static se.bjurr.violations.lib.reports.Parser.FINDBUGS;
 
@@ -149,5 +152,44 @@ public class FindbugsTest {
     final Violation violation0 = new ArrayList<>(actual).get(0);
     assertThat(violation0.getFile()) //
         .isEqualTo("se/bjurr/violations/lib/reports/ReportsFinder.java");
+  }
+
+  @Test
+  public void testThatMissingClassesAndErrorsAreParsed() {
+    final String rootFolder = getRootFolder();
+    final Set<Violation> actual =
+        violationsApi() //
+            .withPattern(".*/findbugs/spotbugs-missing-class-and-error\\.xml$") //
+            .inFolder(rootFolder) //
+            .findAll(FINDBUGS) //
+            .violations();
+
+    assertThat(actual) //
+        .hasSize(3);
+
+    final Iterable<Violation> errors = filterRule(actual, FINDBUGS_RULE_ANALYSIS_ERROR);
+    assertThat(errors) //
+        .hasSize(1);
+    final Violation error = errors.iterator().next();
+    assertThat(error.getMessage()) //
+        .startsWith("Error scanning class com.example.Foo") //
+        .contains("java.lang.RuntimeException: bad class file") //
+        .contains("edu.umd.cs.findbugs.Foo.bar(Foo.java:10)") //
+        .contains("edu.umd.cs.findbugs.Foo.baz(Foo.java:20)");
+    assertThat(error.getSeverity()) //
+        .isEqualTo(ERROR);
+    assertThat(error.getFile()) //
+        .isEqualTo(Violation.NO_FILE);
+
+    final Iterable<Violation> missingClasses = filterRule(actual, FINDBUGS_RULE_MISSING_CLASS);
+    assertThat(missingClasses) //
+        .hasSize(2);
+    final Violation missingClass = missingClasses.iterator().next();
+    assertThat(missingClass.getMessage()) //
+        .contains("com.example.");
+    assertThat(missingClass.getSeverity()) //
+        .isEqualTo(WARN);
+    assertThat(missingClass.getFile()) //
+        .isEqualTo(Violation.NO_FILE);
   }
 }

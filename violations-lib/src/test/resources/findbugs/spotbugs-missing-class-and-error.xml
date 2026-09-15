@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<BugCollection version="4.7.3" sequence="0" timestamp="0" analysisTimestamp="0" release="">
+  <Project projectName="Example">
+    <SrcDir>src/main/java</SrcDir>
+  </Project>
+  <Errors errors="1" missingClasses="2">
+    <Error>
+      <ErrorMessage>Error scanning class com.example.Foo</ErrorMessage>
+      <Exception>java.lang.RuntimeException: bad class file</Exception>
+      <StackTrace>edu.umd.cs.findbugs.Foo.bar(Foo.java:10)</StackTrace>
+      <StackTrace>edu.umd.cs.findbugs.Foo.baz(Foo.java:20)</StackTrace>
+    </Error>
+    <MissingClass>com.example.MissingDependency</MissingClass>
+    <MissingClass>com.example.AnotherMissingDependency</MissingClass>
+  </Errors>
+</BugCollection>
