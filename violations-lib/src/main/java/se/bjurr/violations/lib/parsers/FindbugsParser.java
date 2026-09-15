@@ -34,6 +34,14 @@ public class FindbugsParser implements ViolationsParser {
   /** Severity rank. */
   public static final String FINDBUGS_SPECIFIC_RANK = "RANK";
 
+  /** {@link Violation#getRule()} for a violation created from an {@code <Errors>/<Error>}. */
+  public static final String FINDBUGS_RULE_ANALYSIS_ERROR = "AnalysisError";
+
+  /**
+   * {@link Violation#getRule()} for a violation created from an {@code <Errors>/<MissingClass>}.
+   */
+  public static final String FINDBUGS_RULE_MISSING_CLASS = "MissingClass";
+
   private static String findbugsMessagesXml;
   private static String findSecurityBugsMessagesXml;
 
@@ -141,6 +149,65 @@ public class FindbugsParser implements ViolationsParser {
     }
   }
 
+  /**
+   * A {@code <MissingClass>} is a class that SpotBugs needed but couldn't find on the analysis
+   * classpath, e.g. {@code <MissingClass>com.example.SomeClass</MissingClass>}.
+   */
+  private Violation parseMissingClass(final XMLStreamReader xmlr) throws XMLStreamException {
+    final String className = xmlr.getElementText().trim();
+    return violationBuilder() //
+        .setParser(FINDBUGS) //
+        .setMessage("Missing class: " + className) //
+        .setFile(Violation.NO_FILE) //
+        .setStartLine(Violation.NO_LINE) //
+        .setRule(FINDBUGS_RULE_MISSING_CLASS) //
+        .setSeverity(SEVERITY.WARN) //
+        .setSource(className) //
+        .build();
+  }
+
+  /**
+   * An {@code <Error>} describes an exception that happened during the analysis itself, as opposed
+   * to a bug found in the analyzed code. It contains an {@code <ErrorMessage>} and, optionally, an
+   * {@code <Exception>} message and one or more {@code <StackTrace>} lines.
+   */
+  private Violation parseError(final XMLStreamReader xmlr) throws XMLStreamException {
+    String errorMessage = "";
+    String exceptionMessage = null;
+    final List<String> stackTrace = new ArrayList<>();
+    while (xmlr.hasNext()) {
+      final int eventType = xmlr.next();
+      if (eventType == XMLStreamConstants.START_ELEMENT) {
+        if (xmlr.getLocalName().equalsIgnoreCase("ErrorMessage")) {
+          errorMessage = xmlr.getElementText().trim();
+        } else if (xmlr.getLocalName().equalsIgnoreCase("Exception")) {
+          exceptionMessage = xmlr.getElementText().trim();
+        } else if (xmlr.getLocalName().equalsIgnoreCase("StackTrace")) {
+          stackTrace.add(xmlr.getElementText().trim());
+        }
+      }
+      if (eventType == XMLStreamConstants.END_ELEMENT
+          && xmlr.getLocalName().equalsIgnoreCase("Error")) {
+        break;
+      }
+    }
+    final StringBuilder message = new StringBuilder(errorMessage);
+    if (exceptionMessage != null) {
+      message.append("\n\n").append(exceptionMessage);
+    }
+    for (final String stackTraceLine : stackTrace) {
+      message.append("\n\tat ").append(stackTraceLine);
+    }
+    return violationBuilder() //
+        .setParser(FINDBUGS) //
+        .setMessage(message.toString().trim()) //
+        .setFile(Violation.NO_FILE) //
+        .setStartLine(Violation.NO_LINE) //
+        .setRule(FINDBUGS_RULE_ANALYSIS_ERROR) //
+        .setSeverity(SEVERITY.ERROR) //
+        .build();
+  }
+
   @Override
   public Set<Violation> parseReportOutput(
       final String string, final ViolationsLogger violationsLogger) throws Exception {
@@ -168,6 +235,10 @@ public class FindbugsParser implements ViolationsParser {
             srcDirs.add(xmlr.getElementText());
           } else if (xmlr.getLocalName().equalsIgnoreCase("BugInstance")) {
             this.parseBugInstance(xmlr, violations, messagesPerType, srcDirs);
+          } else if (xmlr.getLocalName().equalsIgnoreCase("MissingClass")) {
+            violations.add(this.parseMissingClass(xmlr));
+          } else if (xmlr.getLocalName().equalsIgnoreCase("Error")) {
+            violations.add(this.parseError(xmlr));
           }
         }
         if (eventType == XMLStreamConstants.END_ELEMENT) {
