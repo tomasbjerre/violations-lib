@@ -4,6 +4,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 import static se.bjurr.violations.lib.TestUtils.getRootFolder;
 import static se.bjurr.violations.lib.ViolationsApi.violationsApi;
 import static se.bjurr.violations.lib.model.SEVERITY.ERROR;
+import static se.bjurr.violations.lib.model.SEVERITY.WARN;
 import static se.bjurr.violations.lib.reports.Parser.JUNIT;
 
 import java.util.ArrayList;
@@ -346,7 +347,7 @@ public class JUnitTest {
             .violations();
 
     assertThat(actual) //
-        .hasSize(2);
+        .hasSize(21);
 
     final Violation violation0 = new ArrayList<>(actual).get(0);
     assertThat(violation0.getSource()) //
@@ -359,5 +360,34 @@ public class JUnitTest {
             "E3012 Check resource properties values : Property Resources/ActivitiesTable/Properties/ProvisionedThroughput/ReadCapacityUnits should be of type Long at sam-python-crud-sample/template.yaml:142:9");
     assertThat(violation0.getSeverity()) //
         .isEqualTo(ERROR);
+
+    final Violation lastViolation = new ArrayList<>(actual).get(actual.size() - 1);
+    assertThat(lastViolation.getMessage()) //
+        .isEqualTo("W3037 Check IAM Permission configuration : Experimental rule - not enabled");
+    assertThat(lastViolation.getSeverity()) //
+        .isEqualTo(WARN);
+  }
+
+  @Test
+  public void testThatSkippedTestsAreParsedAsWarnings() {
+    final String rootFolder = getRootFolder();
+
+    final Set<Violation> actual =
+        violationsApi() //
+            .withPattern(".*/junit/skipped\\.xml$") //
+            .inFolder(rootFolder) //
+            .findAll(JUNIT) //
+            .violations();
+
+    assertThat(actual) //
+        .hasSize(1);
+
+    final Violation violation0 = new ArrayList<>(actual).get(0);
+    assertThat(violation0.getSource()) //
+        .isEqualTo("com.example.SkippedTest");
+    assertThat(violation0.getMessage()) //
+        .isEqualTo("testSkipped : Ignored, not implemented yet");
+    assertThat(violation0.getSeverity()) //
+        .isEqualTo(WARN);
   }
 }
