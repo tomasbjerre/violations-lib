@@ -42,6 +42,13 @@ public class FindbugsParser implements ViolationsParser {
    */
   public static final String FINDBUGS_RULE_MISSING_CLASS = "MissingClass";
 
+  /**
+   * The, potentially long and HTML-formatted, bug pattern details. Kept out of the {@link
+   * Violation#getMessage()} to avoid making it hard to read; consumers that want it can look it up
+   * in {@link Violation#getSpecifics()}.
+   */
+  public static final String FINDBUGS_SPECIFIC_DETAILS = "DETAILS";
+
   private static String findbugsMessagesXml;
   private static String findSecurityBugsMessagesXml;
 
@@ -53,9 +60,19 @@ public class FindbugsParser implements ViolationsParser {
     FindbugsParser.findSecurityBugsMessagesXml = findSecurityBugsMessagesXml;
   }
 
-  private Map<String, String> getMessagesPerType(
+  private static class BugPatternMessage {
+    private final String shortDescription;
+    private final String details;
+
+    BugPatternMessage(final String shortDescription, final String details) {
+      this.shortDescription = shortDescription;
+      this.details = details;
+    }
+  }
+
+  private Map<String, BugPatternMessage> getMessagesPerType(
       final ViolationsLogger violationsLogger, final String messagesXml) throws Exception {
-    final Map<String, String> messagesPerType = new HashMap<>();
+    final Map<String, BugPatternMessage> messagesPerType = new HashMap<>();
     try {
 
       try (InputStream input = new ByteArrayInputStream(messagesXml.getBytes(UTF_8))) {
@@ -78,7 +95,7 @@ public class FindbugsParser implements ViolationsParser {
           }
           if (eventType == XMLStreamConstants.END_ELEMENT) {
             if (xmlr.getLocalName().equalsIgnoreCase("BugPattern")) {
-              messagesPerType.put(type, shortDescription + "\n\n" + details);
+              messagesPerType.put(type, new BugPatternMessage(shortDescription, details));
             }
           }
         }
@@ -92,15 +109,17 @@ public class FindbugsParser implements ViolationsParser {
   private void parseBugInstance(
       final XMLStreamReader xmlr,
       final Set<Violation> violations,
-      final Map<String, String> messagesPerType,
+      final Map<String, BugPatternMessage> messagesPerType,
       final List<String> srcDirs)
       throws XMLStreamException {
     final String type = getAttribute(xmlr, "type");
     final Integer rank = getIntegerAttribute(xmlr, "rank");
-    String message = messagesPerType.get(type);
-    if (message == null) {
-      message = type;
-    }
+    final BugPatternMessage bugPatternMessage = messagesPerType.get(type);
+    final String message =
+        bugPatternMessage != null && !isNullOrEmpty(bugPatternMessage.shortDescription)
+            ? bugPatternMessage.shortDescription
+            : type;
+    final String details = bugPatternMessage != null ? bugPatternMessage.details : null;
     final SEVERITY severity = this.toSeverity(rank);
 
     final List<Violation> candidates = new ArrayList<>();
@@ -117,7 +136,7 @@ public class FindbugsParser implements ViolationsParser {
           final String sourcepath = getAttribute(xmlr, "sourcepath");
           final String filename = resolveFilePath(sourcepath, srcDirs);
           final String classname = getAttribute(xmlr, "classname");
-          candidates.add( //
+          final Violation.ViolationBuilder violationBuilder =
               violationBuilder() //
                   .setParser(FINDBUGS) //
                   .setMessage(message) //
@@ -127,9 +146,11 @@ public class FindbugsParser implements ViolationsParser {
                   .setRule(type) //
                   .setSeverity(severity) //
                   .setSource(classname) //
-                  .setSpecific(FINDBUGS_SPECIFIC_RANK, rank) //
-                  .build() //
-              );
+                  .setSpecific(FINDBUGS_SPECIFIC_RANK, rank); //
+          if (!isNullOrEmpty(details)) {
+            violationBuilder.setSpecific(FINDBUGS_SPECIFIC_DETAILS, details);
+          }
+          candidates.add(violationBuilder.build());
         }
       }
       if (eventType == XMLStreamConstants.END_ELEMENT) {
@@ -213,7 +234,7 @@ public class FindbugsParser implements ViolationsParser {
       final String string, final ViolationsLogger violationsLogger) throws Exception {
     final Set<Violation> violations = new TreeSet<>();
 
-    final Map<String, String> messagesPerType =
+    final Map<String, BugPatternMessage> messagesPerType =
         this.getMessagesPerType(
             violationsLogger, this.getMessagesXml(findbugsMessagesXml, "/findbugs/messages.xml"));
     messagesPerType.putAll(

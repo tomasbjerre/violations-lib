@@ -9,6 +9,7 @@ import static se.bjurr.violations.lib.model.SEVERITY.INFO;
 import static se.bjurr.violations.lib.model.SEVERITY.WARN;
 import static se.bjurr.violations.lib.parsers.FindbugsParser.FINDBUGS_RULE_ANALYSIS_ERROR;
 import static se.bjurr.violations.lib.parsers.FindbugsParser.FINDBUGS_RULE_MISSING_CLASS;
+import static se.bjurr.violations.lib.parsers.FindbugsParser.FINDBUGS_SPECIFIC_DETAILS;
 import static se.bjurr.violations.lib.parsers.FindbugsParser.FINDBUGS_SPECIFIC_RANK;
 import static se.bjurr.violations.lib.reports.Parser.FINDBUGS;
 
@@ -72,8 +73,8 @@ public class FindbugsTest {
     assertThat(violation0.getFile()) //
         .isEqualTo("se/bjurr/violations/lib/example/MyClass.java");
     assertThat(violation0.getMessage()) //
-        .startsWith("equals method always returns true") //
-        .doesNotContain("CDATA");
+        .isEqualTo("equals method always returns true") //
+        .doesNotContain("CDATA", "<p>", "imaginative");
     assertThat(violation0.getStartLine()) //
         .isEqualTo(17);
     assertThat(violation0.getEndLine()) //
@@ -86,6 +87,8 @@ public class FindbugsTest {
         .isEqualTo("se.bjurr.violations.lib.example.MyClass");
     assertThat(violation0.getSpecifics().get(FINDBUGS_SPECIFIC_RANK)) //
         .isEqualTo("7");
+    assertThat(violation0.getSpecifics().get(FINDBUGS_SPECIFIC_DETAILS)) //
+        .contains("imaginative");
   }
 
   @Test
