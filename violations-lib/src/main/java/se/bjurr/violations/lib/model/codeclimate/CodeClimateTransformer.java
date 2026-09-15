@@ -14,6 +14,8 @@ import java.util.stream.Collectors;
 import se.bjurr.violations.lib.model.SEVERITY;
 import se.bjurr.violations.lib.model.Violation;
 import se.bjurr.violations.lib.model.ViolationUtils;
+import se.bjurr.violations.lib.parsers.FindbugsParser;
+import se.bjurr.violations.lib.util.HtmlToMarkdown;
 
 public class CodeClimateTransformer {
   public static List<CodeClimate> fromViolations(final Set<Violation> from) {
@@ -40,6 +42,7 @@ public class CodeClimateTransformer {
 
   private static CodeClimate toCodeClimate(final List<Path> allFiles, final Violation v) {
     final String description = v.getMessage();
+    final CodeClimateContent content = toContent(v);
     final String fingerprint = toHash(allFiles, v);
     final CodeClimateLines lines = new CodeClimateLines(v.getStartLine());
     final CodeClimateLocation location =
@@ -51,6 +54,7 @@ public class CodeClimateTransformer {
     categories.add(CodeClimateCategory.BUGRISK);
     return new CodeClimate(
         description,
+        content,
         fingerprint,
         location,
         severity,
@@ -58,6 +62,19 @@ public class CodeClimateTransformer {
         engine_name,
         categories,
         new ArrayList<CodeClimateLocation>());
+  }
+
+  /**
+   * FindBugs/SpotBugs' bug pattern details are HTML-formatted, which the CodeClimate spec disallows
+   * in {@code description}. When present, they are converted to Markdown and put in the optional
+   * {@code content} field instead.
+   */
+  private static CodeClimateContent toContent(final Violation v) {
+    final String details = v.getSpecifics().get(FindbugsParser.FINDBUGS_SPECIFIC_DETAILS);
+    if (details == null || details.trim().isEmpty()) {
+      return null;
+    }
+    return new CodeClimateContent(HtmlToMarkdown.convert(details));
   }
 
   private static CodeClimateSeverity toSeverity(final SEVERITY severity) {

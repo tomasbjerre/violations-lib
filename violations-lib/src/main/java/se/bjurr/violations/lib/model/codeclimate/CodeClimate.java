@@ -11,6 +11,7 @@ import java.util.stream.Collectors;
 
 public class CodeClimate {
   private final String description;
+  private final CodeClimateContent content;
   private final String fingerprint;
   private final CodeClimateLocation location;
   private final List<CodeClimateLocation> other_locations;
@@ -33,7 +34,30 @@ public class CodeClimate {
       final String engine_name,
       final List<CodeClimateCategory> categories,
       final List<CodeClimateLocation> other_locations) {
+    this(
+        description,
+        null,
+        fingerprint,
+        location,
+        severity,
+        check_name,
+        engine_name,
+        categories,
+        other_locations);
+  }
+
+  public CodeClimate(
+      final String description,
+      final CodeClimateContent content,
+      final String fingerprint,
+      final CodeClimateLocation location,
+      final CodeClimateSeverity severity,
+      final String check_name,
+      final String engine_name,
+      final List<CodeClimateCategory> categories,
+      final List<CodeClimateLocation> other_locations) {
     this.description = checkNotNull(emptyToNull(description), "description");
+    this.content = content;
     this.fingerprint = checkNotNull(emptyToNull(fingerprint), "fingerprint");
     this.location = checkNotNull(location, "location");
     this.other_locations = firstNonNull(other_locations, new ArrayList<>());
@@ -42,6 +66,10 @@ public class CodeClimate {
     this.check_name = check_name;
     this.engine_name = engine_name;
     this.categories = categories.stream().map((it) -> it.getName()).collect(Collectors.toList());
+  }
+
+  public CodeClimateContent getContent() {
+    return this.content;
   }
 
   public String getCheck_name() {
@@ -86,6 +114,8 @@ public class CodeClimate {
   public String toString() {
     return "CodeClimate [description="
         + this.description
+        + ", content="
+        + this.content
         + ", fingerprint="
         + this.fingerprint
         + ", location="
@@ -111,6 +141,7 @@ public class CodeClimate {
     result = prime * result + (this.check_name == null ? 0 : this.check_name.hashCode());
     result = prime * result + (this.engine_name == null ? 0 : this.engine_name.hashCode());
     result = prime * result + (this.description == null ? 0 : this.description.hashCode());
+    result = prime * result + (this.content == null ? 0 : this.content.hashCode());
     result = prime * result + (this.fingerprint == null ? 0 : this.fingerprint.hashCode());
     result = prime * result + (this.location == null ? 0 : this.location.hashCode());
     result = prime * result + (this.severity == null ? 0 : this.severity.hashCode());
@@ -156,6 +187,13 @@ public class CodeClimate {
         return false;
       }
     } else if (!this.description.equals(other.description)) {
+      return false;
+    }
+    if (this.content == null) {
+      if (other.content != null) {
+        return false;
+      }
+    } else if (!this.content.equals(other.content)) {
       return false;
     }
     if (this.fingerprint == null) {
