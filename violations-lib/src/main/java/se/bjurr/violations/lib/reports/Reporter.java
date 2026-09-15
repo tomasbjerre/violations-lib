@@ -79,8 +79,6 @@ public enum Reporter {
       "https://github.com/golangci/golangci-lint/",
       "With `--out-format=checkstyle`."),
   GOVET("GoVet", Parser.GOLINT, "https://golang.org/cmd/vet/", "Same format as GoLint."),
-  GOOGLEERRORPRONE(
-      "GoogleErrorProne", Parser.GOOGLEERRORPRONE, "https://github.com/google/error-prone", ""),
   HADOLINT(
       "HadoLint",
       Parser.CHECKSTYLE,
@@ -125,11 +123,6 @@ public enum Reporter {
       "https://docs.microsoft.com/en-us/visualstudio/msbuild/obtaining-build-logs-with-msbuild?view=vs-2019",
       "With `-fileLogger` use `.*msbuild\\\\.log$` as pattern or `-fl -flp:logfile=MyProjectOutput.log;verbosity=diagnostic` for a custom output filename"),
   MSCPP("MSCpp", Parser.MSCPP, "https://visualstudio.microsoft.com/vs/features/cplusplus/", ""),
-  NULLAWAY(
-      "NullAway",
-      Parser.GOOGLEERRORPRONE,
-      "https://github.com/uber/NullAway",
-      "Same format as Google Error Prone."),
   PCLINT(
       "PCLint",
       Parser.PCLINT,

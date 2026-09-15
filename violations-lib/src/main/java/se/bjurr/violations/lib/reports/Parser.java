@@ -24,7 +24,6 @@ import se.bjurr.violations.lib.parsers.GHSParser;
 import se.bjurr.violations.lib.parsers.GendarmeParser;
 import se.bjurr.violations.lib.parsers.GenericParser;
 import se.bjurr.violations.lib.parsers.GoLintParser;
-import se.bjurr.violations.lib.parsers.GoogleErrorProneParser;
 import se.bjurr.violations.lib.parsers.IARParser;
 import se.bjurr.violations.lib.parsers.JCReportParser;
 import se.bjurr.violations.lib.parsers.JSLintParser;
@@ -90,7 +89,6 @@ public enum Parser {
   MSBULDLOG(new MSBuildLogParser()), //
   MYPY(new MyPyParser()), //
   GOLINT(new GoLintParser()), //
-  GOOGLEERRORPRONE(new GoogleErrorProneParser()), //
   PERLCRITIC(new PerlCriticParser()), //
   PITEST(new PiTestParser()), //
   PMD(new PMDParser()), //
