@@ -53,6 +53,13 @@ public class Violation implements Serializable, Comparable<Violation> {
   private final Map<String, String> specifics;
   private final Integer startLine;
 
+  /**
+   * A proposed fix for this violation, when the report format carries one, e.g. the replacement
+   * text of a SARIF {@code fix}. Free-form; parsers that don't support suggestions leave this
+   * empty.
+   */
+  private final String suggestedChange;
+
   public static class ViolationBuilder {
 
     private Integer column;
@@ -69,6 +76,7 @@ public class Violation implements Serializable, Comparable<Violation> {
     private Map<String, String> specifics = new HashMap<>();
     private Integer startLine;
     private String group;
+    private String suggestedChange;
 
     private ViolationBuilder() {}
 
@@ -155,6 +163,11 @@ public class Violation implements Serializable, Comparable<Violation> {
       this.group = group;
       return this;
     }
+
+    public ViolationBuilder setSuggestedChange(final String suggestedChange) {
+      this.suggestedChange = suggestedChange;
+      return this;
+    }
   }
 
   public static ViolationBuilder violationBuilder() {
@@ -175,6 +188,7 @@ public class Violation implements Serializable, Comparable<Violation> {
     this.specifics = null;
     this.parser = null;
     this.group = null;
+    this.suggestedChange = null;
   }
 
   public Violation(final ViolationBuilder vb) {
@@ -195,6 +209,7 @@ public class Violation implements Serializable, Comparable<Violation> {
     this.rule = nullToEmpty(vb.rule);
     this.category = nullToEmpty(vb.category);
     this.group = nullToEmpty(vb.group);
+    this.suggestedChange = nullToEmpty(vb.suggestedChange);
     this.specifics = vb.specifics;
   }
 
@@ -216,6 +231,7 @@ public class Violation implements Serializable, Comparable<Violation> {
     this.rule = v.rule;
     this.category = v.category;
     this.group = v.group;
+    this.suggestedChange = v.suggestedChange;
     this.specifics = v.specifics;
   }
 
@@ -321,6 +337,13 @@ public class Violation implements Serializable, Comparable<Violation> {
     } else if (!this.startLine.equals(other.startLine)) {
       return false;
     }
+    if (this.suggestedChange == null) {
+      if (other.suggestedChange != null) {
+        return false;
+      }
+    } else if (!this.suggestedChange.equals(other.suggestedChange)) {
+      return false;
+    }
     return true;
   }
 
@@ -389,6 +412,14 @@ public class Violation implements Serializable, Comparable<Violation> {
     return this.group;
   }
 
+  /**
+   * A proposed fix for this violation, when the report format carries one. Empty when the parser
+   * didn't find, or doesn't support, a suggestion.
+   */
+  public String getSuggestedChange() {
+    return this.suggestedChange;
+  }
+
   @Override
   public int hashCode() {
     final int prime = 31;
@@ -407,6 +438,7 @@ public class Violation implements Serializable, Comparable<Violation> {
     result = prime * result + (this.source == null ? 0 : this.source.hashCode());
     result = prime * result + (this.specifics == null ? 0 : this.specifics.hashCode());
     result = prime * result + (this.startLine == null ? 0 : this.startLine.hashCode());
+    result = prime * result + (this.suggestedChange == null ? 0 : this.suggestedChange.hashCode());
     return result;
   }
 
@@ -440,6 +472,8 @@ public class Violation implements Serializable, Comparable<Violation> {
         + this.startLine
         + ", group="
         + this.group
+        + ", suggestedChange="
+        + this.suggestedChange
         + "]";
   }
 
@@ -475,6 +509,8 @@ public class Violation implements Serializable, Comparable<Violation> {
     compare.append(o.getCategory());
     compare.append("_");
     compare.append(o.getGroup());
+    compare.append("_");
+    compare.append(o.getSuggestedChange());
     o.getSpecifics().forEach((k, v) -> compare.append("_").append(k).append(v));
     return compare.toString();
   }

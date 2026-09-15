@@ -478,4 +478,23 @@ public class SarifParserTest {
                 + "force-app/main/default/classes/HelloWorld.cls: Recommended,Documentation,Apex\n"
                 + "jest.config.js: Recommended,ErrorProne,JavaScript");
   }
+
+  @Test
+  public void testThatSuggestedChangeIsParsedFromFixes() {
+    final String rootFolder = getRootFolder();
+
+    final Set<Violation> actual =
+        violationsApi() //
+            .withPattern(".*/sarif/with-fix.json$") //
+            .inFolder(rootFolder) //
+            .findAll(SARIF) //
+            .violations();
+
+    assertThat(actual) //
+        .hasSize(1);
+
+    final Violation violation0 = new ArrayList<>(actual).get(0);
+    assertThat(violation0.getSuggestedChange()) //
+        .isEqualTo("String.valueOf(x)");
+  }
 }
