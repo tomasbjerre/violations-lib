@@ -1,3 +1,38 @@
+## 3.0.0 (2026-09-15)
+
+### Breaking changes
+
+-  remove GoogleErrorProne parser (#203) ([b89d7](https://github.com/tomasbjerre/violations-lib/commit/b89d754e7ae12d1) Tomas Bjerre)  
+
+### Features
+
+-  convert FindBugs HTML details to Markdown content in CodeClimateTransformer ([ce721](https://github.com/tomasbjerre/violations-lib/commit/ce721147f334c41) Tomas Bjerre)  
+-  add Parser.fromString for a friendlier unknown-parser error ([24a6a](https://github.com/tomasbjerre/violations-lib/commit/24a6ac28266955a) Tomas Bjerre)  
+-  add Violation.suggestedChange, populated from SARIF fixes ([87fc9](https://github.com/tomasbjerre/violations-lib/commit/87fc9ff146deac0) Tomas Bjerre)  
+-  parse SpotBugs missing class and analysis error reports ([00460](https://github.com/tomasbjerre/violations-lib/commit/00460ea571a4d02) Tomas Bjerre)  
+-  parse JUnit skipped tests as warnings ([9c116](https://github.com/tomasbjerre/violations-lib/commit/9c1169a2ccadc6d) Tomas Bjerre)  
+
+### Bug Fixes
+
+-  keep FindBugs bug pattern details out of the message field ([fef26](https://github.com/tomasbjerre/violations-lib/commit/fef264e46cb0e3b) Tomas Bjerre)  
+
+### Dependency updates
+
+- update plugin se.bjurr.gradle.bundle-jar to v2.3.0 (#211) ([83d09](https://github.com/tomasbjerre/violations-lib/commit/83d09cd17d56229) renovate[bot])  
+- update plugin se.bjurr.gradle.include-virtual to v1.1.0 (#204) ([5c78d](https://github.com/tomasbjerre/violations-lib/commit/5c78dc3f3a2aac1) renovate[bot])  
+### Other changes
+
+**Superseded by centralized publish-draft-releases.yaml in .github**
+
+
+[929fc](https://github.com/tomasbjerre/violations-lib/commit/929fcb62cb4e625) Tomas Bjerre *2026-09-14 19:58:30*
+
+**Auto-publish pending draft releases weekly**
+
+
+[50791](https://github.com/tomasbjerre/violations-lib/commit/50791314a5dcd76) Tomas Bjerre *2026-09-14 19:47:32*
+
+
 ## 2.1.0 (2026-09-13)
 
 ### Features
