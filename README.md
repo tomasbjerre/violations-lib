@@ -125,6 +125,7 @@ Command line:
 * [Violation Comments to GitLab Command Line](https://github.com/tomasbjerre/violation-comments-to-gitlab-command-line)
 * [Violation Comments to Bitbucket Server Command Line](https://github.com/tomasbjerre/violation-comments-to-bitbucket-server-command-line)
 * [Violation Comments to Bitbucket Cloud Command Line](https://github.com/tomasbjerre/violation-comments-to-bitbucket-cloud-command-line)
+* [Violation Comments to Gitea Command Line](https://github.com/tomasbjerre/violation-comments-to-gitea-command-line)
 
 Gradle:
 
