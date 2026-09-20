@@ -13,9 +13,6 @@ import java.io.InputStream;
 import java.util.List;
 import java.util.Set;
 import java.util.TreeSet;
-import org.approvaltests.Approvals;
-import org.approvaltests.core.Options;
-import org.approvaltests.reporters.AutoApproveReporter;
 import org.junit.jupiter.api.Test;
 import se.bjurr.violations.lib.model.SEVERITY;
 import se.bjurr.violations.lib.model.Violation;
@@ -27,6 +24,130 @@ import tools.jackson.databind.json.JsonMapper;
 public class SarifTransformerTest {
   private static final JsonMapper JSON_MAPPER =
       JsonMappers.JSON_MAPPER.rebuild().enable(SerializationFeature.INDENT_OUTPUT).build();
+
+  private static final String EXPECTED_SARIF_JSON =
+      """
+      {
+        "inlineExternalProperties" : [ ],
+        "runs" : [ {
+          "addresses" : [ ],
+          "artifacts" : [ ],
+          "graphs" : [ ],
+          "invocations" : [ ],
+          "language" : "en-US",
+          "logicalLocations" : [ ],
+          "newlineSequences" : [ "\\r\\n", "\\n" ],
+          "policies" : [ ],
+          "redactionTokens" : [ ],
+          "results" : [ {
+            "attachments" : [ ],
+            "codeFlows" : [ ],
+            "fixes" : [ ],
+            "graphTraversals" : [ ],
+            "graphs" : [ ],
+            "kind" : "fail",
+            "level" : "none",
+            "locations" : [ {
+              "annotations" : [ ],
+              "id" : -1,
+              "logicalLocations" : [ ],
+              "physicalLocation" : {
+                "artifactLocation" : {
+                  "index" : -1,
+                  "uri" : "whatever/path.c"
+                },
+                "region" : {
+                  "byteOffset" : -1,
+                  "charOffset" : -1,
+                  "endLine" : 123,
+                  "message" : {
+                    "arguments" : [ ],
+                    "text" : "asdasd"
+                  },
+                  "startLine" : 123
+                }
+              },
+              "relationships" : [ ]
+            } ],
+            "message" : {
+              "arguments" : [ ],
+              "text" : "asdasd"
+            },
+            "rank" : -1.0,
+            "relatedLocations" : [ ],
+            "ruleId" : "",
+            "ruleIndex" : -1,
+            "stacks" : [ ],
+            "suppressions" : [ ],
+            "taxa" : [ ],
+            "workItemUris" : [ ]
+          }, {
+            "attachments" : [ ],
+            "codeFlows" : [ ],
+            "fixes" : [ ],
+            "graphTraversals" : [ ],
+            "graphs" : [ ],
+            "kind" : "fail",
+            "level" : "error",
+            "locations" : [ {
+              "annotations" : [ ],
+              "id" : -1,
+              "logicalLocations" : [ ],
+              "physicalLocation" : {
+                "artifactLocation" : {
+                  "index" : -1,
+                  "uri" : "whatever/path.c"
+                },
+                "region" : {
+                  "byteOffset" : -1,
+                  "charOffset" : -1,
+                  "endLine" : 123,
+                  "message" : {
+                    "arguments" : [ ],
+                    "text" : "asdasd"
+                  },
+                  "startLine" : 123
+                }
+              },
+              "relationships" : [ ]
+            } ],
+            "message" : {
+              "arguments" : [ ],
+              "text" : "asdasd"
+            },
+            "rank" : -1.0,
+            "relatedLocations" : [ ],
+            "ruleId" : "Cyclomatic complexity",
+            "ruleIndex" : -1,
+            "stacks" : [ ],
+            "suppressions" : [ ],
+            "taxa" : [ ],
+            "workItemUris" : [ ]
+          } ],
+          "runAggregates" : [ ],
+          "taxonomies" : [ ],
+          "threadFlowLocations" : [ ],
+          "tool" : {
+            "driver" : {
+              "contents" : [ "nonLocalizedData" ],
+              "isComprehensive" : true,
+              "language" : "en-US",
+              "locations" : [ ],
+              "name" : "Violations Lib",
+              "notifications" : [ ],
+              "rules" : [ ],
+              "supportedTaxonomies" : [ ],
+              "taxa" : [ ]
+            },
+            "extensions" : [ ]
+          },
+          "translations" : [ ],
+          "versionControlProvenance" : [ ],
+          "webRequests" : [ ],
+          "webResponses" : [ ]
+        } ],
+        "version" : "2.1.0"
+      }""";
 
   @Test
   public void testThatViolationsCanBeTransformed() throws Exception {
@@ -59,7 +180,7 @@ public class SarifTransformerTest {
 
     this.validateJson(actual);
 
-    Approvals.verify(actual, new Options().withReporter(new AutoApproveReporter()));
+    assertThat(actual).isEqualTo(EXPECTED_SARIF_JSON);
 
     final Set<Violation> parsedViolations =
         Parser.SARIF.getViolationsParser().parseReportOutput(actual, null);
