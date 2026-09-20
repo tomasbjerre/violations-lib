@@ -73,7 +73,6 @@ project(":violations-lib") {
 
 		testImplementation "org.assertj:assertj-core:3.27.7"
 		testImplementation "uk.co.jemos.podam:podam:8.0.2.RELEASE"
-		testImplementation "com.approvaltests:approvaltests:31.0.0"
 		testImplementation "com.networknt:json-schema-validator:3.0.7"
 	}
 
