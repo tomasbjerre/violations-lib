@@ -63,7 +63,7 @@ project(":violations-lib") {
 	dependencies {
 		api project(":violations-lib-sarif")
 		implementation project(":violations-lib-coverty")
-		implementation "tools.jackson.core:jackson-databind:3.2.2"
+		implementation "tools.jackson.core:jackson-databind:3.2.3"
 		implementation "org.owasp.encoder:encoder:1.4.0"
 
 		testImplementation "org.junit.jupiter:junit-jupiter:6.1.3"
