@@ -74,8 +74,6 @@ public class Flake8Parser implements ViolationsParser {
   }
 
   /**
-   *
-   *
    * <pre>
    * The different message types are:
    * (C) convention, for programming standard violation

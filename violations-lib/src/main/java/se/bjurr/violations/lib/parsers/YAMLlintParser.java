@@ -56,8 +56,6 @@ public class YAMLlintParser implements ViolationsParser {
   }
 
   /**
-   *
-   *
    * <pre>
    * The different message types are:
    * warning, for non critical syntax errors

@@ -53,8 +53,6 @@ public class PyLintParser implements ViolationsParser {
   }
 
   /**
-   *
-   *
    * <pre>
    * The different message types are:
    * (C) convention, for programming standard violation
