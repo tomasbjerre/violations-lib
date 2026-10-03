@@ -74,10 +74,9 @@ public class Flake8Parser implements ViolationsParser {
   }
 
   /**
-   *
+   * The different message types are:
    *
    * <pre>
-   * The different message types are:
    * (C) convention, for programming standard violation
    * (R) refactor, for bad code smell
    * (W) warning, for python specific problems
