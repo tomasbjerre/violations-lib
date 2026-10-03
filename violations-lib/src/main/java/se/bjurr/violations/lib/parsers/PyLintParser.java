@@ -53,8 +53,9 @@ public class PyLintParser implements ViolationsParser {
   }
 
   /**
-   * <pre>
    * The different message types are:
+   *
+   * <pre>
    * (C) convention, for programming standard violation
    * (R) refactor, for bad code smell
    * (W) warning, for python specific problems
