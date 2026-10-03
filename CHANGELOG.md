@@ -1,3 +1,14 @@
+## 3.0.2 (2026-10-03)
+
+### Bug Fixes
+
+-  update to bundle-jar 2.4.4 and set maxViolations to 0 ([44b13](https://github.com/tomasbjerre/violations-lib/commit/44b13af6136db84) Tomas Bjerre)  
+
+### Dependency updates
+
+- update plugin se.bjurr.gradle.bundle-jar to v2.4.3 (#218) ([4a379](https://github.com/tomasbjerre/violations-lib/commit/4a3798f0f160608) renovate[bot])  
+- update plugin se.bjurr.gradle.include-virtual to v1.1.1 (#220) ([cfb52](https://github.com/tomasbjerre/violations-lib/commit/cfb527b8e77839b) renovate[bot])  
+- update dependency org.owasp.encoder:encoder to v1.4.1 (#217) ([6ef2b](https://github.com/tomasbjerre/violations-lib/commit/6ef2be91c989cd3) renovate[bot])  
 ## 3.0.0 (2026-09-15)
 
 ### Breaking changes
