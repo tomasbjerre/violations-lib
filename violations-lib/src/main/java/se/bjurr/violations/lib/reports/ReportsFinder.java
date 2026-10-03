@@ -27,7 +27,7 @@ public class ReportsFinder {
     try {
       walkFileTree(
           startPath,
-          new SimpleFileVisitor<Path>() {
+          new SimpleFileVisitor<>() {
             @Override
             public FileVisitResult visitFile(final Path file, final BasicFileAttributes attrs)
                 throws IOException {

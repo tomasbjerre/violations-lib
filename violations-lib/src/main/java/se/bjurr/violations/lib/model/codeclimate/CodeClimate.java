@@ -65,7 +65,8 @@ public class CodeClimate {
     this.type = "issue";
     this.check_name = check_name;
     this.engine_name = engine_name;
-    this.categories = categories.stream().map((it) -> it.getName()).collect(Collectors.toList());
+    this.categories =
+        categories.stream().map(CodeClimateCategory::getName).collect(Collectors.toList());
   }
 
   public CodeClimateContent getContent() {

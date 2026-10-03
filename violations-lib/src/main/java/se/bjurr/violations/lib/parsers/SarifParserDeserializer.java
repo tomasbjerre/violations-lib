@@ -108,7 +108,7 @@ public class SarifParserDeserializer {
         if (categoryValue != null) {
           if (categoryValue.isArray()) {
             final String arrayAsString =
-                categoryValue.valueStream().map(it -> it.asText()).collect(Collectors.joining(","));
+                categoryValue.valueStream().map(JsonNode::asText).collect(Collectors.joining(","));
             pb.setCategory(arrayAsString);
           } else {
             pb.setCategory(categoryValue.asText());

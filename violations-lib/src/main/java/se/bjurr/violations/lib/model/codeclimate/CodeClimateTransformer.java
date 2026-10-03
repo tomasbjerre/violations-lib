@@ -37,7 +37,7 @@ public class CodeClimateTransformer {
         codeClimatesPerFingerprint.put(candidate.getFingerprint(), candidate);
       }
     }
-    return new ArrayList<CodeClimate>(codeClimatesPerFingerprint.values());
+    return new ArrayList<>(codeClimatesPerFingerprint.values());
   }
 
   private static CodeClimate toCodeClimate(final List<Path> allFiles, final Violation v) {
@@ -61,7 +61,7 @@ public class CodeClimateTransformer {
         check_name,
         engine_name,
         categories,
-        new ArrayList<CodeClimateLocation>());
+        new ArrayList<>());
   }
 
   /**
