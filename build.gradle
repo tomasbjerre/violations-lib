@@ -71,7 +71,7 @@ project(":violations-lib") {
 
 		testImplementation "org.assertj:assertj-core:3.27.7"
 		testImplementation "uk.co.jemos.podam:podam:8.0.2.RELEASE"
-		testImplementation "com.networknt:json-schema-validator:3.0.7"
+		testImplementation "com.networknt:json-schema-validator:3.0.8"
 	}
 
 	test {
