@@ -1,3 +1,19 @@
+## 3.0.3 (2026-10-28)
+
+### Bug Fixes
+
+-  parse SARIF locations without physicalLocation or artifactLocation ([2f566](https://github.com/tomasbjerre/violations-lib/commit/2f5662cdb70d016) RobinT)  [#232](https://github.com/tomasbjerre/violations-lib/issues/232)  
+
+### Dependency updates
+
+- update dependency tools.jackson.core:jackson-databind to v3.2.4 (#230) ([bca91](https://github.com/tomasbjerre/violations-lib/commit/bca91c807fa020a) renovate[bot])  
+- update dependency org.owasp.encoder:encoder to v1.6.0 (#229) ([3400c](https://github.com/tomasbjerre/violations-lib/commit/3400c436d84b249) renovate[bot])  
+- update dependency org.owasp.encoder:encoder to v1.5.1 (#228) ([df261](https://github.com/tomasbjerre/violations-lib/commit/df2619a7d7091ce) renovate[bot])  
+- update dependency gradle to v9.8.2 (#227) ([a0e90](https://github.com/tomasbjerre/violations-lib/commit/a0e90ba5725ed69) renovate[bot])  
+- update dependency gradle to v9.8.1 (#226) ([38582](https://github.com/tomasbjerre/violations-lib/commit/38582d4e73a750b) renovate[bot])  
+- update dependency com.networknt:json-schema-validator to v3.0.8 (#224) ([533c9](https://github.com/tomasbjerre/violations-lib/commit/533c9676686b5af) renovate[bot])  
+- update plugin se.bjurr.gradle.include-virtual to v1.1.2 (#223) ([3a7bc](https://github.com/tomasbjerre/violations-lib/commit/3a7bc88c668ef77) renovate[bot])  
+- update dependency org.owasp.encoder:encoder to v1.5.0 (#222) ([c4f4d](https://github.com/tomasbjerre/violations-lib/commit/c4f4d349816386c) renovate[bot])  
 ## 3.0.2 (2026-10-03)
 
 ### Bug Fixes
