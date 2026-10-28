@@ -198,6 +198,58 @@ public class SarifParserTest {
   }
 
   @Test
+  public void testThatViolationsCanBeParsed_location_without_physical_location() {
+    final String rootFolder = getRootFolder();
+
+    final Set<Violation> actual =
+        violationsApi() //
+            .withPattern(".*/sarif/location-without-physical-location.json$") //
+            .inFolder(rootFolder) //
+            .findAll(SARIF) //
+            .violations();
+
+    assertThat(actual) //
+        .hasSize(2);
+    final List<Violation> arrayList = new ArrayList<>(actual);
+
+    final Violation withoutFile =
+        arrayList.stream().filter(v -> v.getRule().equals("chatty_service")).findFirst().get();
+    assertThat(withoutFile.getFile()) //
+        .isEqualTo(Violation.NO_FILE);
+    assertThat(withoutFile.getStartLine()) //
+        .isEqualTo(Violation.NO_LINE);
+    assertThat(withoutFile.getMessage()) //
+        .isEqualTo("Chatty service pattern detected in gateway-svc");
+
+    final Violation withFile =
+        arrayList.stream().filter(v -> v.getRule().equals("n_plus_one_sql")).findFirst().get();
+    assertThat(withFile.getFile()) //
+        .isEqualTo("src/main/java/OrderItemRepository.java");
+    assertThat(withFile.getStartLine()) //
+        .isEqualTo(42);
+  }
+
+  @Test
+  public void testThatViolationsCanBeParsed_physical_location_without_artifact_location() {
+    final String rootFolder = getRootFolder();
+
+    final Set<Violation> actual =
+        violationsApi() //
+            .withPattern(".*/sarif/physical-location-without-artifact-location.json$") //
+            .inFolder(rootFolder) //
+            .findAll(SARIF) //
+            .violations();
+
+    assertThat(actual) //
+        .hasSize(1);
+    final Violation first = actual.iterator().next();
+    assertThat(first.getFile()) //
+        .isEqualTo(Violation.NO_FILE);
+    assertThat(first.getStartLine()) //
+        .isEqualTo(7);
+  }
+
+  @Test
   public void testThatViolationsCanBeParsed_with_category() {
     final String rootFolder = getRootFolder();
 

@@ -1,0 +1,61 @@
+{
+  "$schema": "https://json.schemastore.org/sarif-2.1.0.json",
+  "version": "2.1.0",
+  "runs": [
+    {
+      "tool": {
+        "driver": {
+          "name": "perf-sentinel"
+        }
+      },
+      "results": [
+        {
+          "ruleId": "chatty_service",
+          "level": "warning",
+          "message": {
+            "text": "Chatty service pattern detected in gateway-svc"
+          },
+          "locations": [
+            {
+              "logicalLocations": [
+                {
+                  "name": "gateway-svc",
+                  "kind": "module"
+                },
+                {
+                  "name": "GET /api/dashboard",
+                  "kind": "function"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "ruleId": "n_plus_one_sql",
+          "level": "warning",
+          "message": {
+            "text": "N+1 SQL query pattern detected in order-svc"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "src/main/java/OrderItemRepository.java"
+                },
+                "region": {
+                  "startLine": 42
+                }
+              },
+              "logicalLocations": [
+                {
+                  "name": "order-svc",
+                  "kind": "module"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

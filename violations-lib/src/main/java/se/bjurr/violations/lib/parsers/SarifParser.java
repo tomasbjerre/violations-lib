@@ -19,6 +19,7 @@ import se.bjurr.violations.lib.model.Violation;
 import se.bjurr.violations.lib.model.generated.sarif.Artifact;
 import se.bjurr.violations.lib.model.generated.sarif.ArtifactChange;
 import se.bjurr.violations.lib.model.generated.sarif.ArtifactContent;
+import se.bjurr.violations.lib.model.generated.sarif.ArtifactLocation;
 import se.bjurr.violations.lib.model.generated.sarif.Fix;
 import se.bjurr.violations.lib.model.generated.sarif.Invocation;
 import se.bjurr.violations.lib.model.generated.sarif.Location;
@@ -212,6 +213,10 @@ public class SarifParser implements ViolationsParser {
       final Set<Artifact> artifacts,
       final Map<String, String> originalUriBaseIdsMap) {
     final ParsedPhysicalLocation parsed = new ParsedPhysicalLocation();
+    // Both are optional in SARIF 2.1.0 (3.28.3, 3.29.3): keep NO_FILE and NO_LINE then.
+    if (physicalLocation == null) {
+      return parsed;
+    }
     final Region region = physicalLocation.getRegion();
     if (region != null) {
       parsed.startLine = Optional.ofNullable(region.getStartLine()).orElse(Violation.NO_LINE);
@@ -220,8 +225,12 @@ public class SarifParser implements ViolationsParser {
       parsed.startLine = Violation.NO_LINE;
       parsed.regionMessage = "";
     }
+    final ArtifactLocation artifactLocation = physicalLocation.getArtifactLocation();
+    if (artifactLocation == null) {
+      return parsed;
+    }
     parsed.filename = "";
-    final String uriBaseId = physicalLocation.getArtifactLocation().getUriBaseId();
+    final String uriBaseId = artifactLocation.getUriBaseId();
     if (uriBaseId != null) {
       final String originalUriBaseId = originalUriBaseIdsMap.get(uriBaseId);
       if (originalUriBaseId == null) {
@@ -235,12 +244,12 @@ public class SarifParser implements ViolationsParser {
         parsed.filename += originalUriBaseId;
       }
     }
-    final Integer artifactLocationIndex = physicalLocation.getArtifactLocation().getIndex();
+    final Integer artifactLocationIndex = artifactLocation.getIndex();
     if (artifactLocationIndex != null && artifactLocationIndex != -1) {
       parsed.filename +=
           new ArrayList<>(artifacts).get(artifactLocationIndex).getLocation().getUri();
     } else {
-      parsed.filename += physicalLocation.getArtifactLocation().getUri();
+      parsed.filename += artifactLocation.getUri();
     }
     return parsed;
   }
