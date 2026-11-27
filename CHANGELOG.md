@@ -1,3 +1,26 @@
+## 3.0.4 (2026-11-27)
+
+### Bug Fixes
+
+-  keep the first directory of relative JUnit paths ([7e757](https://github.com/tomasbjerre/violations-lib/commit/7e757d1c73c1dba) Nigel Banks)  [#241](https://github.com/tomasbjerre/violations-lib/issues/241)  
+
+### Dependency updates
+
+- update dependency tools.jackson.core:jackson-databind to v3.3.0 (#239) ([39758](https://github.com/tomasbjerre/violations-lib/commit/397585999a0e77d) renovate[bot])  
+- update dependency gradle to v9.9.1 (#238) ([7e66b](https://github.com/tomasbjerre/violations-lib/commit/7e66bcd0dd40866) renovate[bot])  
+- update dependency com.networknt:json-schema-validator to v3.0.9 (#237) ([d5807](https://github.com/tomasbjerre/violations-lib/commit/d5807f58cea6960) renovate[bot])  
+- update dependency gradle to v9.9.0 (#236) ([b8d30](https://github.com/tomasbjerre/violations-lib/commit/b8d3024037bcd98) renovate[bot])  
+- update plugin se.bjurr.gradle.include-virtual to v1.1.3 (#235) ([abb0d](https://github.com/tomasbjerre/violations-lib/commit/abb0d0fb7400b2b) renovate[bot])  
+- update plugin se.bjurr.gradle.bundle-jar to v2.4.5 (#234) ([3144e](https://github.com/tomasbjerre/violations-lib/commit/3144e32b5523eda) renovate[bot])  
+### Other changes
+
+**Merge pull request #242 from nigelgbanks/fix/junit-relative-path-first-dir**
+
+* fix: keep the first directory of relative JUnit paths (refs #241) 
+
+[63134](https://github.com/tomasbjerre/violations-lib/commit/631342f760d7242) Tomas Bjerre *2026-11-27 17:04:03*
+
+
 ## 3.0.3 (2026-10-28)
 
 ### Bug Fixes
