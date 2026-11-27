@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<testsuites name="pytest tests">
+  <testsuite name="pytest" errors="0" failures="1" skipped="3" tests="4">
+    <testcase classname="my-lib.tests.test_x" name="test_skipped_hyphen">
+      <skipped type="pytest.skip" message="not today">my-lib/tests/test_x.py:86: not today</skipped>
+    </testcase>
+    <testcase classname="third_party.foo.test_x" name="test_failed_underscore">
+      <failure message="assert 1 == 2">def test_failed_underscore() -&gt; None:
+&gt;       assert 1 == 2
+E       assert 1 == 2
+
+third_party/foo/test_x.py:12: AssertionError</failure>
+    </testcase>
+    <testcase classname=".config.test_x" name="test_skipped_dot">
+      <skipped type="pytest.skip" message="not today">.config/test_x.py:3: not today</skipped>
+    </testcase>
+    <testcase classname="tests.test_x" name="test_skipped_current_dir">
+      <skipped type="pytest.skip" message="not today">./tests/test_x.py:9: not today</skipped>
+    </testcase>
+  </testsuite>
+</testsuites>

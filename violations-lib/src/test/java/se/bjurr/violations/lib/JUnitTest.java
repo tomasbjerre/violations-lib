@@ -1,6 +1,7 @@
 package se.bjurr.violations.lib;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.tuple;
 import static se.bjurr.violations.lib.TestUtils.getRootFolder;
 import static se.bjurr.violations.lib.ViolationsApi.violationsApi;
 import static se.bjurr.violations.lib.model.SEVERITY.ERROR;
@@ -389,5 +390,25 @@ public class JUnitTest {
         .isEqualTo("testSkipped : Ignored, not implemented yet");
     assertThat(violation0.getSeverity()) //
         .isEqualTo(WARN);
+  }
+
+  @Test
+  public void testThatRelativePathsKeepTheirFirstDirectory() {
+    final String rootFolder = getRootFolder();
+
+    final Set<Violation> actual =
+        violationsApi() //
+            .withPattern(".*/junit/relative-paths\\.xml$") //
+            .inFolder(rootFolder) //
+            .findAll(JUNIT) //
+            .violations();
+
+    assertThat(actual) //
+        .extracting(Violation::getFile, Violation::getStartLine) //
+        .containsExactlyInAnyOrder(
+            tuple("my-lib/tests/test_x.py", 86),
+            tuple("third_party/foo/test_x.py", 12),
+            tuple(".config/test_x.py", 3),
+            tuple("./tests/test_x.py", 9));
   }
 }
