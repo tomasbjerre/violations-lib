@@ -95,7 +95,7 @@ public class JUnitParser implements ViolationsParser {
   private FileAndLine deriveFileFromClass(final String failureContent) {
     final String failureContentFrontSlash = failureContent.replace("\\", "/");
     final Matcher matcher =
-        Pattern.compile("((([a-zA-Z]+?/)|([a-zA-Z]:/)|(/))([^:]+?)):(\\d+)")
+        Pattern.compile("((([\\w.-]+?/)|([a-zA-Z]:/)|(/))([^:]+?)):(\\d+)")
             .matcher(failureContentFrontSlash);
     final boolean foundFilePath = matcher.find();
     if (foundFilePath) {
